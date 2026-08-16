@@ -4,15 +4,15 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
-use App\Models\Role;
-use App\Models\Role_user;
-use App\Models\Permision;
-use App\Models\Role_permision;
-use Illuminate\support\facades\Auth;
+use App\Models\role;
+use App\Models\role_user;
+use App\Models\permision;
+use App\Models\role_permision;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
-use App\Http\middleware\checkUserExist;
-use App\Http\middleware\checkAuthUser;
-use Illuminate\support\facades\storage;
+use App\Http\Middleware\checkUserExist;
+use App\Http\Middleware\checkAuthUser;
+use Illuminate\Support\Facades\storage;
 use Illuminate\Support\Str;
 use Log;
 class UserController extends Controller
