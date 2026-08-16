@@ -4,10 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
-use App\Models\Role;
-use App\Models\Role_user;
-use App\Models\Permision;
-use App\Models\Role_permision;
+use App\Models\role;
+use App\Models\role_user;
+use App\Models\permision;
+use App\Models\role_permision;
 use Log;
 class PermisionController extends Controller
 {

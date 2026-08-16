@@ -15,7 +15,7 @@ use App\Models\attribute_package;
 use App\Models\package_media;
 use App\Models\brand;
 use Illuminate\Support\Str;
-use Illuminate\support\facades\storage;
+use Illuminate\Support\Facades\storage;
 
 class CategoryController extends Controller
 {
