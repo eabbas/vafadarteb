@@ -27,11 +27,11 @@ class ProductController extends Controller
         // dd($brands);
         array_shift($categories);
         return view('product.create',['categories'=>$categories,'brands'=>$brands]);
-        dd('create');
+        // dd('create');
     }
     public function store(Request $request ,product $product){
 
-        dd($request->all());
+        // dd($request->all());
         $validation=$request->validate([
             'title'=>['required'],
             'description'=>['required'],
@@ -245,7 +245,7 @@ class ProductController extends Controller
         }
 
         return view("product.list",['products'=>$products]);
-        dd('list');
+        // dd('list');
     }
     public function single(product $product){
         $result= brand::where('id',$product->brand_id)->first();
@@ -275,7 +275,7 @@ class ProductController extends Controller
         // $product->gallery=$gallery;
         // dd($product);
         return view("product.single",['product'=>$product]);
-        dd('single');
+        // dd('single');
     }
 
     public function singlePackage(Package $package){
@@ -292,7 +292,7 @@ class ProductController extends Controller
         $packages=$package->packages;
         $package->attributes;
         return view("product.singlePackage",['package'=>$package ]);
-        dd('single');
+        // dd('single');
     }
     public function edit(product $product){
         $categories = category::all();
@@ -309,7 +309,7 @@ class ProductController extends Controller
         }
         // dd($product->packages);
         return view('product.edit',['categories'=>$categories,'brands'=>$brands,'product'=>$product]);
-        dd('edit');
+        // dd('edit');
     }
     public function update(Request $request ,product $product){
         // dd($request->all());
@@ -598,7 +598,7 @@ class ProductController extends Controller
         return to_route('product.list');
 
 
-        dd('update');
+        // dd('update');
     }
     public function delete(product $product){
         $product->medias;
@@ -621,7 +621,7 @@ class ProductController extends Controller
         $product->delete();
 
         return to_route('product.list');
-        dd('delete');
+        // dd('delete');
     }
     public function categoryAttributes(category $category){
         $attributes = $category->attributes->pluck('title' , 'id');
@@ -638,7 +638,7 @@ class ProductController extends Controller
     public function attributes(product $product){
         $attribut_array=[];
         $product->attributes;
-        dd($product->attributes);
+        // dd($product->attributes);
         foreach ($attributes as $attribute) {
             $attribute=attribute::find($attribute->attribute_id);
             $attribut_array[]=1;
