@@ -29,7 +29,8 @@ Route::group([
     Route::post('/change/avatar/{user}','changeAvatar')->name('changeAvatar');
     Route::post('/change/password/{user}','changePassword')->name('changePassword');
 
-    Route::get('/login/page','loginPage')->name('loginPage')->middleware(checkAuthUser::class);
+    Route::get('/','loginPage')->name('loginPage')->middleware(checkAuthUser::class);
+    // Route::get('/login/page','loginPage')->name('loginPage')->middleware(checkAuthUser::class);
     Route::post('/login','login')->name('login')->middleware(checkUserExist::class);
     Route::post('/signup','signup')->name('signup');
     Route::get('/logOut','logOut')->name('logOut');
