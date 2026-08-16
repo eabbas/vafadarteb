@@ -57,8 +57,8 @@ class UserController extends Controller
             "email"=>$validation['email'],
             "password"=>$validation['password'],
         ]);
-        $role=Role::where('ea_title','user')->first();
-        Role_user::create([
+        $role=role::where('ea_title','user')->first();
+        role_user::create([
             'user_id'=>$createdUser->id,
             'role_id'=>$role->id,
         ]);
@@ -104,14 +104,14 @@ class UserController extends Controller
         if(isset($request->roles)){
 
             foreach ($request->roles as $role_id) {
-                Role_user::create([
+                role_user::create([
                     'user_id'=>$createdUser->id,
                     'role_id'=>$role_id,
                 ]);
             }
         }else{
-            $role=Role::where('ea_title','user')->first();
-            Role_user::create([
+            $role=role::where('ea_title','user')->first();
+            role_user::create([
                 'user_id'=>$createdUser->id,
                 'role_id'=>$role->id,
             ]);
@@ -132,7 +132,7 @@ class UserController extends Controller
     }
     public function edit(User $user){
         $user->roles;
-        $roles=Role::all();
+        $roles=role::all();
         return view('admin.user.edit',['user'=>$user , 'roles'=>$roles]);
     }
     public function update(Request $request , User $user){
@@ -151,14 +151,14 @@ class UserController extends Controller
         }
         if(isset($request->roles)){
             foreach ($request->roles as $role_id) {
-                Role_user::create([
+                role_user::create([
                     'user_id'=>$user->id,
                     'role_id'=>$role_id,
                 ]);
             }
         }else{
-            $role=Role::where('ea_title','user')->first();
-            Role_user::create([
+            $role=role::where('ea_title','user')->first();
+            role_user::create([
                 'user_id'=>$user->id,
                 'role_id'=>$role->id,
             ]);
