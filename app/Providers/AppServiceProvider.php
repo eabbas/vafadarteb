@@ -3,7 +3,7 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
-use Illuminate\support\facades\Gate;
+use Illuminate\Support\Facades\Gate;
 use App\Models\User;
 use App\Models\Role;
 use App\Models\Role_user;
