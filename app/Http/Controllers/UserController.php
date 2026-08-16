@@ -242,7 +242,7 @@ class UserController extends Controller
 
     public function loginPage(){
         // dd('loginPage');
-        return view('loginPage');
+        return view('loginpage');
     }
 
     public function logOut(){
