@@ -212,7 +212,7 @@ class ProductController extends Controller
                         product_attribute::create([
                             'product_id'=>$createdProduct->id,
                             'attribute_id'=>$id,
-                            'value'=>$package['attributes_value'][$key],
+                            'value'=>$package['attribute_value'][$key],
                         ]);
                     }
                 }
