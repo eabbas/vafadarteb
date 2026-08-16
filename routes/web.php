@@ -1,14 +1,14 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\controllers\RoleController;
-use App\Http\controllers\PermisionController;
-use App\Http\controllers\UserController;
-use App\Http\controllers\categoryController;
-use App\Http\controllers\productController;
-use App\Http\controllers\brandController;
-use App\Http\middleware\checkUserExist;
-use App\Http\middleware\checkAuthUser;
+use App\Http\Controllers\RoleController;
+use App\Http\Controllers\PermisionController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\categoryController;
+use App\Http\Controllers\productController;
+use App\Http\Controllers\brandController;
+use App\Http\Middleware\checkUserExist;
+use App\Http\Middleware\checkAuthUser;
 
 
 Route::group([

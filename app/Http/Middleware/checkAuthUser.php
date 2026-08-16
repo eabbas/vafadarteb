@@ -6,7 +6,7 @@ use Closure;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 use App\Models\User;
-use Illuminate\support\facades\Auth;
+use Illuminate\Support\Facades\Auth;
 class checkAuthUser
 {
     /**
