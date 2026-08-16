@@ -4,9 +4,9 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\PermisionController;
 use App\Http\Controllers\UserController;
-use App\Http\Controllers\categoryController;
-use App\Http\Controllers\productController;
-use App\Http\Controllers\brandController;
+use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\ProductController;
+use App\Http\Controllers\BrandController;
 use App\Http\Middleware\checkUserExist;
 use App\Http\Middleware\checkAuthUser;
 
@@ -76,7 +76,7 @@ Route::group([
 route::group([
     'prefix'=>'product',
     'as'=>'product.',
-    'controller'=>productController::class,
+    'controller'=>ProductController::class,
 ],function(){
     Route::get('/create','create')->name('create');
     Route::post('/store','store')->name('store');
@@ -94,7 +94,7 @@ route::group([
 route::group([
     'prefix'=>'category',
     'as'=>'category.',
-    'controller'=>categoryController::class,
+    'controller'=>CategoryController::class,
 ],function(){
     Route::get('/create','create')->name('create');
     Route::post('/store','store')->name('store');
@@ -109,7 +109,7 @@ route::group([
 route::group([
     'prefix'=>'brand',
     'as'=>'brand.',
-    'controller'=>brandController::class,
+    'controller'=>BrandController::class,
 ],function(){
     Route::get('/create','create')->name('create');
     Route::post('/store','store')->name('store');
