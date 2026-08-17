@@ -37,7 +37,7 @@ Route::group([
     Route::get('/profile','profile')->name('profile');
 
 });
-Rout::get('/',[UserController::class , "loginPage"])->middleware(checkAuthUser::class);
+Route::get('/',[UserController::class , "loginPage"])->middleware(checkAuthUser::class);
 
 Route::group([
     'prefix'=>'role',
