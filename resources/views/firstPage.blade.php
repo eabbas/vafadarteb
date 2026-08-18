@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>تجهیزات پزشکی</title>
-    <script src="{{asset(asstes/js/tailwind.js)}}"></script>
+    <script src="{{asset('asstes/js/tailwind.js')}}"></script>
     <link rel="stylesheet" href="asstes/css/index.css">
 </head>
 
