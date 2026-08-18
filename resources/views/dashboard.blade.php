@@ -512,6 +512,65 @@
                             </div>
                         </div>
                     </div>
+                    <!-- =====  تنظیمات ===== -->
+                    <div class='element flex flex-col items-center gap-2 px-4 py-3 rounded-xl bg-[#1a1a20] shadow-sm hover:shadow-md transition-all mb-3'>
+                        <div class='flex w-full justify-between items-center text-center cursor-pointer'>
+                            <div class='flex items-center gap-2 text-white text-base font-medium'>
+                                <svg class='section-icon' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="#d97706">
+                                    <path d="M499.1 6.3c-8.1-6-12.9-17.1-11.1-27.1L496 0c-44.3 0-80 35.7-80 80c0 14.3 3.8 27.7 10.4 39.3L352 193.4l-25.4-25.4c-12.5-12.5-32.8-12.5-45.3 0l-56.6 56.6c-12.5 12.5-12.5 32.8 0 45.3l22.6 22.6-56.6 56.6-22.6-22.6c-12.5-12.5-32.8-12.5-45.3 0L88.1 368c-12.5 12.5-12.5 32.8 0 45.3l13.7 13.7L64 464l48 48 36.9-36.9 13.7 13.7c12.5 12.5 32.8 12.5 45.3 0l56.6-56.6 22.6 22.6c12.5 12.5 32.8 12.5 45.3 0l56.6-56.6c12.5-12.5 12.5-32.8 0-45.3l-25.4-25.4L405.3 206c11.6 6.6 25 10.4 38.7 10.4c44.3 0 80-35.7 80-80c0-4.9-.4-9.7-1.2-14.4L505.7 15.4c1.5-7.8-1.8-15.9-6.6-19.1z"/>
+                                </svg>
+                                <span class="text-[#9A9CAE]">تنظیمات</span>
+                            </div>
+                            <svg class='size-4 fill-white transition-all duration-700 rotate-0' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+                                <path d="M241 337c-9.4 9.4-24.6 9.4-33.9 0L47 177c-9.4-9.4-9.4-24.6 0-33.9s24.6-9.4 33.9 0l143 143L367 143c9.4-9.4 24.6-9.4 33.9 0s9.4 24.6 0 33.9L241 337z"/>
+                            </svg>
+                        </div>
+                        <div class='w-full grid grid-cols-1 text-end max-h-0 overflow-hidden transition-all duration-500'>
+                            <div class='element flex flex-col items-center gap-2 px-4 py-3 rounded-xl bg-[#1a1a20] shadow-sm hover:shadow-md transition-all'>
+                                <div class='flex w-full justify-between items-center text-center cursor-pointer'>
+                                    <div class='flex items-center gap-2 text-white text-base font-medium'>
+                                        <svg class='section-icon' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="#d97706">
+                                            <path d="M499.1 6.3c-8.1-6-12.9-17.1-11.1-27.1L496 0c-44.3 0-80 35.7-80 80c0 14.3 3.8 27.7 10.4 39.3L352 193.4l-25.4-25.4c-12.5-12.5-32.8-12.5-45.3 0l-56.6 56.6c-12.5 12.5-12.5 32.8 0 45.3l22.6 22.6-56.6 56.6-22.6-22.6c-12.5-12.5-32.8-12.5-45.3 0L88.1 368c-12.5 12.5-12.5 32.8 0 45.3l13.7 13.7L64 464l48 48 36.9-36.9 13.7 13.7c12.5 12.5 32.8 12.5 45.3 0l56.6-56.6 22.6 22.6c12.5 12.5 32.8 12.5 45.3 0l56.6-56.6c12.5-12.5 12.5-32.8 0-45.3l-25.4-25.4L405.3 206c11.6 6.6 25 10.4 38.7 10.4c44.3 0 80-35.7 80-80c0-4.9-.4-9.7-1.2-14.4L505.7 15.4c1.5-7.8-1.8-15.9-6.6-19.1z"/>
+                                        </svg>
+                                        <span class="text-[#9A9CAE]">لوگو</span>
+                                    </div>
+                                    <svg class='size-4 fill-white transition-all duration-700 rotate-0' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+                                        <path d="M241 337c-9.4 9.4-24.6 9.4-33.9 0L47 177c-9.4-9.4-9.4-24.6 0-33.9s24.6-9.4 33.9 0l143 143L367 143c9.4-9.4 24.6-9.4 33.9 0s9.4 24.6 0 33.9L241 337z"/>
+                                    </svg>
+                                </div>
+                                <div class='w-full grid grid-cols-1 text-end max-h-0 overflow-hidden transition-all duration-500'>
+                                    <div class='w-12/12 justify-start text-white flex p-2 text-base gap-2 sub-menu-item'>
+                                        <svg class='size-4 fill-[#059669]' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+                                            <path d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z"/>
+                                        </svg>
+                                        <a href="{{route('brand.create')}}" class="hover:text-white transition-colors font-medium">تغییر لوگو</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class='element flex flex-col items-center gap-2 px-4 py-3 rounded-xl bg-[#1a1a20] shadow-sm hover:shadow-md transition-all'>
+                                <div class='flex w-full justify-between items-center text-center cursor-pointer'>
+                                    <div class='flex items-center gap-2 text-white text-base font-medium'>
+                                        <svg class='section-icon' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="#d97706">
+                                            <path d="M499.1 6.3c-8.1-6-12.9-17.1-11.1-27.1L496 0c-44.3 0-80 35.7-80 80c0 14.3 3.8 27.7 10.4 39.3L352 193.4l-25.4-25.4c-12.5-12.5-32.8-12.5-45.3 0l-56.6 56.6c-12.5 12.5-12.5 32.8 0 45.3l22.6 22.6-56.6 56.6-22.6-22.6c-12.5-12.5-32.8-12.5-45.3 0L88.1 368c-12.5 12.5-12.5 32.8 0 45.3l13.7 13.7L64 464l48 48 36.9-36.9 13.7 13.7c12.5 12.5 32.8 12.5 45.3 0l56.6-56.6 22.6 22.6c12.5 12.5 32.8 12.5 45.3 0l56.6-56.6c12.5-12.5 12.5-32.8 0-45.3l-25.4-25.4L405.3 206c11.6 6.6 25 10.4 38.7 10.4c44.3 0 80-35.7 80-80c0-4.9-.4-9.7-1.2-14.4L505.7 15.4c1.5-7.8-1.8-15.9-6.6-19.1z"/>
+                                        </svg>
+                                        <span class="text-[#9A9CAE]">هیرو</span>
+                                    </div>
+                                    <svg class='size-4 fill-white transition-all duration-700 rotate-0' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+                                        <path d="M241 337c-9.4 9.4-24.6 9.4-33.9 0L47 177c-9.4-9.4-9.4-24.6 0-33.9s24.6-9.4 33.9 0l143 143L367 143c9.4-9.4 24.6-9.4 33.9 0s9.4 24.6 0 33.9L241 337z"/>
+                                    </svg>
+                                </div>
+                                <div class='w-full grid grid-cols-1 text-end max-h-0 overflow-hidden transition-all duration-500'>
+                                    <div class='w-12/12 justify-start text-white flex p-2 text-base gap-2 sub-menu-item'>
+                                        <svg class='size-4 fill-[#059669]' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+                                            <path d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z"/>
+                                        </svg>
+                                        <a href="{{route('brand.create')}}" class="hover:text-white transition-colors font-medium"> اطلاعات هیرو</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
 
                     <!-- =====  کاربر ===== -->
                     <div class='element flex flex-col items-center gap-2 px-4 py-3 rounded-xl bg-[#1a1a20] shadow-sm hover:shadow-md transition-all mb-3'>
