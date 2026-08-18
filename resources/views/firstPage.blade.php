@@ -120,6 +120,15 @@
                                     <path d="M1 1h4l2.68 13.39A2 2 0 0 0 9.64 16H19a2 2 0 0 0 2-1.72L23 6H6" />
                                 </svg>
                             </div>
+                            @if(Auth::check())
+                            <a href="{{route('user.profile')}}">
+                                <div class='px-4 py-3 bg-[#EBECEE] shadow-md rounded-xl duration-500 transition-all hover:shadow-[#099975]'>{{Auth::user()->name}}  خوش آمدید</div>
+                            </a>
+                            @else
+                            <a href="{{route('user.loginPage')}}">
+                                <svg class='w-5'  xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M224 256A128 128 0 1 0 224 0a128 128 0 1 0 0 256zm-45.7 48C79.8 304 0 383.8 0 482.3C0 498.7 13.3 512 29.7 512H418.3c16.4 0 29.7-13.3 29.7-29.7C448 383.8 368.2 304 269.7 304H178.3z"/></svg>
+                            </a>
+                            @endif
                             <div onclick="hambarger_menue('open')">
                                 <svg class="w-6 h-8 hidden max-lg:block" xmlns="http://www.w3.org/2000/svg" width="10"
                                     height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
