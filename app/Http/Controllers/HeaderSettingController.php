@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Model\headerSetting;
+use App\Models\headerSetting;
 use Illuminate\Support\Facades\storage;
 use Illuminate\Support\Str;
 class HeaderSettingController extends Controller
