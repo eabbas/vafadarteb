@@ -7,6 +7,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\BrandController;
+use App\Http\Controllers\HeaderSettingController;
 use App\Http\Middleware\checkUserExist;
 use App\Http\Middleware\checkAuthUser;
 
@@ -121,6 +122,16 @@ route::group([
     Route::get('/edit/{brand}','edit')->name('edit');
     Route::post('/update/{brand}','update')->name('update');
     Route::get('/delete/{brand}','delete')->name('delete');
+});
+
+
+route::group([
+    'prefix'=>'logo',
+    'as'=>'logo.',
+    'controller'=>HeaderSettingController::class,
+],function(){
+    Route::get('/create','create')->name('create');
+    Route::post('/store','store')->name('store');
 });
 
 
