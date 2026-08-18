@@ -247,7 +247,7 @@ class UserController extends Controller
 
     public function logOut(){
         Auth::logout();
-        return view('firstpage');
+        return redirect('/');
         // dd('logOut');
     }
     public function dashboard(){
