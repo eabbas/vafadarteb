@@ -38,9 +38,7 @@ Route::group([
     Route::get('/profile','profile')->name('profile');
 
 });
-Route::get('/',function(){ 
-    return view("firstPage");
-});
+Route::get('/',[UserController::class,'firstPage']);
 
 Route::group([
     'prefix'=>'role',
