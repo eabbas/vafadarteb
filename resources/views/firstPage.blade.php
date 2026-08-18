@@ -21,7 +21,7 @@
             <div class="flex w-19/20 bg-[#ffffff]/70 justify-center py-5 mt-5 head">
                 <div class="w-19/20 flex justify-between">
                     <div class="flex items-center gap-10">
-                        <img src="{{asset('assets\img\header\logo.png')}}" alt=""
+                        <img src="{{asset('assets\storage'.$logo->logo_path)}}" alt=""
                             class="w-25 sm:w-30 md:w-40">
                         <ul class="flex gap-7 xl:gap-9 max-lg:hidden h-full items-center">
                             <li class="lable-1">

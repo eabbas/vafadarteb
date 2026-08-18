@@ -256,4 +256,8 @@ class UserController extends Controller
     public function profile(){
         return view('profile');
     }
+    public function firstPage(){
+        $logo = headerSetting::find(1);
+        return view('firstPage',['logo'=>$logo]);
+    }
 }
