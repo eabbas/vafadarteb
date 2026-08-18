@@ -15,7 +15,7 @@ class HeaderSettingController extends Controller
         // dd($request->all());
         $fullName=$request->logo_path->getClientOriginalName();
         $path=$request->file("logo_path")->storeAs("logo",$fullName,"public");
-        headerSetting::upsert(['logo_path'=>$path],["id"],['logo_path']);
+        headerSetting::upsert(['logo_path'=>$path , 'id'=>1],["id"],['logo_path']);
         return redirect('/');
     }
 }
