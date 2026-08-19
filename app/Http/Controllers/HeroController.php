@@ -24,7 +24,7 @@ class HeroController extends Controller
         return view('admin.hero.create',['categories'=>$categories]);
     }
     public function store(Request $request){
-        dd($request->all());
+        // dd($request->all());
 
         $background_image_name=$request->background_image_path->getClientOriginalName();
         $background_image_path=$request->file("background_image_path")->storeAs("hero_medias",$background_image_name,"public");
@@ -36,10 +36,11 @@ class HeroController extends Controller
             'title'=>$request->title,
             'summary'=>$request->summary,
             'addres'=>"category/".$request->addres,
-            'background_image_path'=>$request->background_image_path,
-            'hero_image_path'=>$request->hero_image_path,
+            'background_image_path'=>$background_image_path,
+            'hero_image_path'=>$hero_image_path,
             'is_active'=>$request->is_active,
         ]);
+        return to_route('hero.list');
     }
     public function list(){
         $heros=hero::all();
