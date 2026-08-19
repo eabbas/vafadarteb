@@ -140,10 +140,10 @@ route::group([
 ],function(){
     Route::get('/create','create')->name('create');
     Route::post('/store','store')->name('store');
-    Route::post('/list','list')->name('list');
-    Route::get('/edit','edit')->name('edit');
-    Route::post('/update','update')->name('update');
-    Route::get('/delete','/delete')->name('/delete');
+    Route::get('/list','list')->name('list');
+    Route::get('/edit/{hero}','edit')->name('edit');
+    Route::post('/update/{hero}','update')->name('update');
+    Route::get('/delete/{hero}','/delete')->name('/delete');
 });
 
 
