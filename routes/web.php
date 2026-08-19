@@ -6,6 +6,7 @@ use App\Http\Controllers\PermisionController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\HeroController;
 use App\Http\Controllers\BrandController;
 use App\Http\Controllers\HeaderSettingController;
 use App\Http\Middleware\checkUserExist;
@@ -130,6 +131,19 @@ route::group([
 ],function(){
     Route::get('/create','create')->name('create');
     Route::post('/store','store')->name('store');
+});
+
+route::group([
+    'prefix'=>'hero',
+    'as'=>'hero.',
+    'controller'=>HeroController::class,
+],function(){
+    Route::get('/create','create')->name('create');
+    Route::post('/store','store')->name('store');
+    Route::post('/list','list')->name('list');
+    Route::get('/edit','edit')->name('edit');
+    Route::post('/update','update')->name('update');
+    Route::get('/delete','/delete')->name('/delete');
 });
 
 
