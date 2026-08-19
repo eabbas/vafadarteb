@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('addres');
             $table->string('background_image_path');
             $table->string('hero_image_path');
+            $table->string('is_active');
             $table->timestamps();
         });
     }

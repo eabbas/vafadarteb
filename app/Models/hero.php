@@ -12,5 +12,6 @@ class hero extends Model
         'addres',
         'background_image_path',
         'hero_image_path',
+        'is_active',
     ];
 }
