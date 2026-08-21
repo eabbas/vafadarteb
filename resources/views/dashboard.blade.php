@@ -423,7 +423,10 @@
 
             <!-- منو -->
             <nav class="px-4 py-6">
-                <p class="text-xs font-semibold text-[#9A9CAE] uppercase tracking-wider px-3 mb-4">منوی اصلی</p>
+                <a href="https://vafadarteb.com" class="text-md font-semibold text-[#9A9CAE] uppercase tracking-wider px-3 mb-4 flex gap-1 text-center items-center"> 
+                    <svg class='w-7' viewBox="-1.6 -1.6 19.20 19.20" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="#1fd699" stroke-width="0.00016" transform="matrix(1, 0, 0, 1, 0, 0)"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round" stroke="#CCCCCC" stroke-width="0.032"></g><g id="SVGRepo_iconCarrier"> <path fill-rule="evenodd" clip-rule="evenodd" d="M8 0L0 6V8H1V15H4V10H7V15H15V8H16V6L14 4.5V1H11V2.25L8 0ZM9 10H12V13H9V10Z" fill="#18c390"></path> </g></svg>
+                    <span>رفتن به خانه</span>
+                </a>
                 @can('admin_dashboard',['admin1','admin2'])
 
                     <!-- =====  محصولات ===== -->
