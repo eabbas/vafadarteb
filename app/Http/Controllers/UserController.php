@@ -9,6 +9,7 @@ use App\Models\role_user;
 use App\Models\permision;
 use App\Models\role_permision;
 use App\Models\headerSetting;
+use App\Models\heroSetting;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use App\Http\Middleware\checkUserExist;
@@ -258,7 +259,8 @@ class UserController extends Controller
         return view('profile');
     }
     public function firstPage(){
-        $logo = headerSetting::find(1);
-        return view('firstPage',['logo'=>$logo]);
+        $logo = headerSetting::first();
+        $hero = heroSetting::first();
+        return view('firstPage',['logo'=>$logo ,'hero'=>$hero]);
     }
 }
