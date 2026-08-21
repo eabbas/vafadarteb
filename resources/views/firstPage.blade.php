@@ -14,7 +14,7 @@
 
     <header class="relative min-h-screen">
         <!-- هدر -->
-        <div class="absolute w-full flex justify-center">
+        <div class="absolute w-full flex justify-center z-3">
             <div class="flex w-19/20 bg-[#ffffff]/70 justify-center py-5 mt-5 head">
                 <div class="w-19/20 flex justify-between">
                     <div class="flex items-center gap-10">
@@ -142,12 +142,12 @@
         </div>
 
         <!-- عکس پس‌زمینه به صورت absolute -->
-        <img class="absolute w-full h-full top-0 left-0 object-cover" src="{{ asset('storage/' . $hero->background_image_path) }}" alt="Background">
+        <img class="absolute w-full h-full top-0 left-0 object-cover z-2" src="{{ asset('storage/' . $hero->background_image_path) }}" alt="Background">
 
         <!-- محتوای اصلی -->
-        <div class="relative w-full h-full">
+        <div class="relative w-full h-full z-2 flex justify-between ">
             <!-- بخش متن و دکمه (سمت چپ) -->
-            <div class="w-1/3 flex flex-col items-center text-center gap-4 absolute top-100 -translate-y-1/2 left-0 px-8">
+            <div class="w-1/3 flex flex-col items-center text-center gap-4 absolute top-100 -translate-y-1/2 left-20 px-8">
                 <h3 class="text-3xl font-bold ">
                     {{ $hero->title }}
                 </h3>
@@ -165,7 +165,7 @@
             </div>
 
             <!-- عکس hero (سمت راست) -->
-            <div class="w-2/3 h-full flex items-center justify-center ml-auto">
+            <div class="w-112 translate-y-40 -translate-x-30 flex items-center justify-center ml-auto">
                 <img class="w-full h-full object-contain" src="{{ asset('storage/' . $hero->hero_image_path) }}" alt="{{ $hero->title }}">
             </div>
         </div>
