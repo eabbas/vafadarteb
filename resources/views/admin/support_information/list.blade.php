@@ -1,5 +1,4 @@
 @extends('dashboard')
-
 @section('content')
 
 <style>
@@ -11,7 +10,6 @@
         --metronic-shadow: #F5F5F5;
         --metronic-border: #DBDFE9;
         --metronic-text-dark: #9A9CAE;
-        --metronic-text-hover: #F5F5F5;
         --metronic-blue: #1B84FF;
     }
 
@@ -82,6 +80,31 @@
         padding: 4px 14px;
         border-radius: 50px;
         border: 1px solid var(--metronic-border);
+    }
+
+    /* ===== دکمه اضافه کردن ===== */
+    .metronic-add-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        padding: 8px 16px;
+        background: var(--metronic-blue);
+        color: #fff;
+        border-radius: 10px;
+        font-weight: 600;
+        font-size: 13px;
+        transition: all 0.3s ease;
+        text-decoration: none;
+        border: none;
+        box-shadow: 0 4px 12px rgba(27, 132, 255, 0.15);
+    }
+    .metronic-add-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 20px rgba(27, 132, 255, 0.25);
+        color: #fff;
+    }
+    .metronic-add-btn:active {
+        transform: translateY(0) scale(0.97);
     }
 
     /* ===== جدول ===== */
@@ -306,6 +329,10 @@
         .metronic-action-btn span {
             display: none;
         }
+        .metronic-add-btn {
+            padding: 6px 12px;
+            font-size: 12px;
+        }
     }
 
     @media (max-width: 480px) {
@@ -360,7 +387,7 @@
                     <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="currentColor">
                         <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
                     </svg>
-                    {{ count($supportInformations) }} مورد
+                    {{ count($support_informations) }} مورد
                 </span>
                 <a href="{{route('support_information.create')}}" class="metronic-add-btn">
                     <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
@@ -384,59 +411,37 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @forelse($supportInformations as $support)
+                    @forelse($support_informations as $SI)
                     <tr>
                         <td>
-                            <span class="metronic-badge">#{{$support->id}}</span>
+                            <span class="metronic-badge">#{{$SI->id}}</span>
                         </td>
                         <td>
-                            @if($support->image)
-                                <img class="metronic-thumb" src="{{asset('storage/'.$support->image)}}" alt="{{$support->title}}">
+                            @if($SI->image)
+                                <img class="metronic-thumb" src="{{asset('storage/'.$SI->image)}}" alt="{{$SI->title}}">
                             @else
                                 <div class="metronic-thumb-placeholder">🖼️</div>
                             @endif
                         </td>
                         <td>
-                            <div class="font-semibold">{{$support->title}}</div>
+                            <div class="font-semibold">{{$SI->title}}</div>
                             <div class="text-xs sm:hidden" style="color: var(--metronic-text-dark);">
-                                @if($support->summary)
-                                    {{ Str::limit($support->summary, 20) }}
+                                @if($SI->summary)
+                                    {{ Str::limit($SI->summary, 20) }}
                                 @else
                                     —
                                 @endif
                             </div>
                         </td>
                         <td class="hidden sm:table-cell" style="color: var(--metronic-text-dark);">
-                            @if($support->summary)
-                                {{ Str::limit($support->summary, 30) }}
+                            @if($SI->summary)
+                                {{ Str::limit($SI->summary, 30) }}
                             @else
                                 —
                             @endif
                         </td>
                         <td>
-                            <div class="metronic-action-group">
-                                <a href="{{route('support_information.single',['support_information'=>$support->id])}}" class="metronic-action-btn view" title="مشاهده">
-                                    <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                        <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
-                                        <circle cx="12" cy="12" r="3"/>
-                                    </svg>
-                                    <span class="hidden sm:inline">مشاهده</span>
-                                </a>
-                                <a href="{{route('support_information.edit',['support_information'=>$support->id])}}" class="metronic-action-btn edit" title="ویرایش">
-                                    <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                        <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/>
-                                        <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/>
-                                    </svg>
-                                    <span class="hidden sm:inline">ویرایش</span>
-                                </a>
-                                <a href="{{route('support_information.delete',['support_information'=>$support->id])}}" class="metronic-action-btn delete" title="حذف" onclick="return confirm('آیا از حذف «{{$support->title}}» مطمئن هستید؟')">
-                                    <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                        <path d="M3 6h18"/>
-                                        <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/>
-                                    </svg>
-                                    <span class="hidden sm:inline">حذف</span>
-                                </a>
-                            </div>
+
                         </td>
                     </tr>
                     @empty
@@ -456,7 +461,7 @@
 
         <!-- ===== فوتر ===== -->
         <div class="metronic-table-footer">
-            <span>تعداد کل: <strong>{{ count($supportInformations) }}</strong> مورد</span>
+            <span>تعداد کل: <strong>{{ count($support_informations) }}</strong> مورد</span>
             <span>آخرین بروزرسانی: <strong>{{ now()->format('Y/m/d H:i') }}</strong></span>
         </div>
 

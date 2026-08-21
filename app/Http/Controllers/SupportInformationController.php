@@ -15,7 +15,7 @@ class SupportInformationController extends Controller
     public function store(Request $request){
         $fullName=str::uuid().$request->image->getClientOriginalName();
         $path=$request->file('image')->storeAs("support_informations_images","$fullName","public");
-        supportInformation::create([
+        support_information::create([
             'title'=>$request->title,
             'summary'=>$request->summary,
             'image'=>$path,
