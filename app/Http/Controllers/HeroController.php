@@ -31,16 +31,36 @@ class HeroController extends Controller
 
         $hero_image_name=$request->hero_image_path->getClientOriginalName();
         $hero_image_path=$request->file("hero_image_path")->storeAs("hero_medias",$hero_image_name,"public");
-        
-        hero::create([
+
+        hero::upsert(
+            [
+            'id'=>1,
             'title'=>$request->title,
             'summary'=>$request->summary,
             'addres'=>"category/".$request->addres,
             'background_image_path'=>$background_image_path,
             'hero_image_path'=>$hero_image_path,
             'is_active'=>$request->is_active,
-        ]);
-        return to_route('hero.list');
+            ]
+            ,["id"],
+            ['title',
+            'summary',
+            'addres',
+            'background_image_path',
+            'hero_image_path',
+            'is_active'
+            ]
+        );
+
+        // hero::create([
+        //     'title'=>$request->title,
+        //     'summary'=>$request->summary,
+        //     'addres'=>"category/".$request->addres,
+        //     'background_image_path'=>$background_image_path,
+        //     'hero_image_path'=>$hero_image_path,
+        //     'is_active'=>$request->is_active,
+        // ]);
+        return redirect('/');
     }
     public function list(){
         $heros=hero::all();

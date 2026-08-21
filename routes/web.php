@@ -12,6 +12,7 @@ use App\Http\Controllers\HeaderSettingController;
 use App\Http\Middleware\checkUserExist;
 use App\Http\Middleware\checkAuthUser;
 
+Route::get('/',[UserController::class,'firstPage']);
 
 Route::group([
     'prefix'=>'user',
@@ -39,7 +40,6 @@ Route::group([
     Route::get('/profile','profile')->name('profile');
 
 });
-Route::get('/',[UserController::class,'firstPage']);
 
 Route::group([
     'prefix'=>'role',
