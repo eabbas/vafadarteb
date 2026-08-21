@@ -9,7 +9,7 @@ use App\Models\role_user;
 use App\Models\permision;
 use App\Models\role_permision;
 use App\Models\headerSetting;
-use App\Models\heroSetting;
+use App\Models\hero;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use App\Http\Middleware\checkUserExist;
