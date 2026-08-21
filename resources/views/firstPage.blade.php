@@ -165,7 +165,7 @@
             </div>
 
             <!-- عکس hero (سمت راست) -->
-            <div class="w-112 translate-y-40 -translate-x-30 flex items-center justify-center ml-auto">
+            <div class="lg:w-112 md:w-85 w-70 translate-y-40 -translate-x-30 flex items-center justify-center ml-auto">
                 <img class="w-full h-full object-contain" src="{{ asset('storage/' . $hero->hero_image_path) }}" alt="{{ $hero->title }}">
             </div>
         </div>
