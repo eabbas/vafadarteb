@@ -8,6 +8,7 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\HeroController;
 use App\Http\Controllers\BrandController;
+use App\Http\Controllers\SupportInformationController;
 use App\Http\Controllers\HeaderSettingController;
 use App\Http\Middleware\checkUserExist;
 use App\Http\Middleware\checkAuthUser;
@@ -144,6 +145,19 @@ route::group([
     Route::get('/edit/{hero}','edit')->name('edit');
     Route::post('/update/{hero}','update')->name('update');
     Route::get('/delete/{hero}','/delete')->name('/delete');
+});
+
+route::group([
+    'prefix'=>'support_information',
+    'as'=>'support_information.',
+    'controller'=>SupportInformationController::class,
+],function(){
+    Route::get('/create','create')->name('create');
+    Route::post('/store','store')->name('store');
+    Route::get('/list','list')->name('list');
+    Route::get('/edit/{support_information}','edit')->name('edit');
+    Route::post('/update/{support_information}','update')->name('update');
+    Route::get('/delete/{support_information}','/delete')->name('/delete');
 });
 
 
