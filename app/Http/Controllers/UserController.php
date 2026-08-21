@@ -260,7 +260,7 @@ class UserController extends Controller
     }
     public function firstPage(){
         $logo = headerSetting::first();
-        $hero = heroSetting::first();
+        $hero = hero::first();
         return view('firstPage',['logo'=>$logo ,'hero'=>$hero]);
     }
 }
