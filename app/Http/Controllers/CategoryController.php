@@ -25,7 +25,7 @@ class CategoryController extends Controller
         dd("create");
     }
     public function store(Request $request){
-        // dd($request->all());
+        dd($request->all());
         $validation=$request->validate([
             'title'=>['required','max:255'],
             'description'=>['required','max:255'],
