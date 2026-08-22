@@ -5,8 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>تجهیزات پزشکی</title>
-    <script src="asstes/js/tailwind.js"></script>
-    <link rel="stylesheet" href="asstes/css/index.css">
+    <script src="{{asset('assets/js/tailwind.js')}}"></script>
+    <link rel="stylesheet" href="{{asset('assets/css/index.css')}}">
 </head>
 
 <body>
@@ -14,13 +14,13 @@
 
     <header class="relative h-120 lg:min-h-screen">
         <!-- عکس پس زمینه -->
-        <img src="asstes/img/header/13.jpg" alt="" class="absolute w-full h-full object-cover">
+        <img src="assets/img/header/13.jpg" alt="" class="absolute w-full h-full object-cover">
         <!-- لای تیره -->
         <div class="absolute w-full flex justify-center fixed z-100">
             <div class="flex w-19/20 bg-[#f3f4f6] justify-center py-5 mt-5 head">
                 <div class="w-19/20 flex justify-between">
                     <div class="flex items-center gap-10">
-                        <img src="asstes/img/header/logo.png" alt="" class="w-25 sm:w-30 md:w-40">
+                        <img src="assets/img/header/logo.png" alt="" class="w-25 sm:w-30 md:w-40">
                         <ul class="flex gap-7 xl:gap-9 max-lg:hidden h-full items-center">
                             <li class="lable-1">
                                 <a href="">
@@ -107,7 +107,6 @@
                                     id="search">
                                     <div class="flex gap-2 w-95/100 mx-auto mt-3 bg-[#f0f0f1] rounded-lg ">
                                         <button class="w-1/10 md:w-10 h-10  flex justify-center items-center">
-                                            <?xml version="1.0" encoding="utf-8"?>
                                             <svg class="size-7" viewBox="0 0 24 24" fill="none"
                                                 xmlns="http://www.w3.org/2000/svg">
                                                 <path
@@ -122,7 +121,6 @@
                                     <div class="w-95/100 mx-auto h-auto flex flex-col overflow-y-auto">
                                         <div class="py-3 text-(--title) flex justify-between">
                                             <span>ARTANNNNNN</span>
-                                            <?xml version="1.0" encoding="utf-8"?>
                                             <svg class="size-7" viewBox="0 0 24 24" fill="none"
                                                 xmlns="http://www.w3.org/2000/svg">
                                                 <path
@@ -133,7 +131,6 @@
                                         </div>
                                         <div class="py-3 text-(--title) flex justify-between">
                                             <span>ARTANNNNNN</span>
-                                            <?xml version="1.0" encoding="utf-8"?>
                                             <svg class="size-7" viewBox="0 0 24 24" fill="none"
                                                 xmlns="http://www.w3.org/2000/svg">
                                                 <path
@@ -144,7 +141,6 @@
                                         </div>
                                         <div class="py-3 text-(--title) flex justify-between">
                                             <span>ARTANNNNNN</span>
-                                            <?xml version="1.0" encoding="utf-8"?>
                                             <svg class="size-7" viewBox="0 0 24 24" fill="none"
                                                 xmlns="http://www.w3.org/2000/svg">
                                                 <path
@@ -155,7 +151,6 @@
                                         </div>
                                         <div class="py-3 text-(--title) flex justify-between">
                                             <span>ARTANNNNNN</span>
-                                            <?xml version="1.0" encoding="utf-8"?>
                                             <svg class="size-7" viewBox="0 0 24 24" fill="none"
                                                 xmlns="http://www.w3.org/2000/svg">
                                                 <path
@@ -181,6 +176,9 @@
                                     <path d="M1 1h4l2.68 13.39A2 2 0 0 0 9.64 16H19a2 2 0 0 0 2-1.72L23 6H6" />
                                 </svg>
                             </div>
+                            <a href="{{route('user.loginPage')}}" class="flex h-full items-center">
+                                    <svg class='w-5' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Pro 6.5.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M336 128a112 112 0 1 0 -224 0 112 112 0 1 0 224 0zM96 128a128 128 0 1 1 256 0A128 128 0 1 1 96 128zM16 482.3c0 7.6 6.1 13.7 13.7 13.7H418.3c7.6 0 13.7-6.1 13.7-13.7C432 392.7 359.3 320 269.7 320H178.3C88.7 320 16 392.7 16 482.3zm-16 0C0 383.8 79.8 304 178.3 304h91.4C368.2 304 448 383.8 448 482.3c0 16.4-13.3 29.7-29.7 29.7H29.7C13.3 512 0 498.7 0 482.3z"/></svg>
+                            </a>
                             <div onclick="hambarger_menue('open')">
                                 <svg class="w-6 h-8 hidden max-lg:block" xmlns="http://www.w3.org/2000/svg" width="10"
                                     height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
@@ -227,10 +225,9 @@
             <div class="w-[300px] h-full top-0 right-0 bg-white z-200 flex flex-col gap-15">
                 <div class="w-full h-25 flex border-b justify-between items-center">
                     <div>
-                        <img src="asstes/img/header/logo.png" alt="" class="w-30 h-full">
+                        <img src="{{asset('assets/img/header/logo.png')}}" alt="" class="w-30 h-full">
                     </div>
                     <div onclick="hambarger_menue('close')">
-                        <?xml version="1.0" encoding="utf-8"?><!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
                         <svg width="45px" height="45px" viewBox="0 0 24 24" fill="none"
                             xmlns="http://www.w3.org/2000/svg">
                             <path
@@ -246,7 +243,6 @@
                                 <span>خانه</span>
                             </div>
                             <div>
-                                <?xml version="1.0" ?>
                                 <!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
                                 <svg width="20px" height="20px" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
                                     <defs>
@@ -273,7 +269,6 @@
                                 <span>خانه</span>
                             </div>
                             <div>
-                                <?xml version="1.0" ?>
                                 <!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
                                 <svg width="20px" height="20px" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
                                     <defs>
@@ -300,7 +295,6 @@
                                 <span>درباره ما</span>
                             </div>
                             <div>
-                                <?xml version="1.0" ?>
                                 <!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
                                 <svg width="20px" height="20px" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
                                     <defs>
@@ -327,7 +321,6 @@
                                 <span>صفحات</span>
                             </div>
                             <div>
-                                <?xml version="1.0" ?>
                                 <!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
                                 <svg width="20px" height="20px" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
                                     <defs>
@@ -354,7 +347,6 @@
                                 <span>حساب</span>
                             </div>
                             <div>
-                                <?xml version="1.0" ?>
                                 <!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
                                 <svg width="20px" height="20px" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
                                     <defs>
@@ -381,7 +373,6 @@
                                 <span>دسته بندی</span>
                             </div>
                             <div>
-                                <?xml version="1.0" ?>
                                 <!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
                                 <svg width="20px" height="20px" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
                                     <defs>
@@ -408,7 +399,6 @@
                                 <span>فروشگاه</span>
                             </div>
                             <div>
-                                <?xml version="1.0" ?>
                                 <!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
                                 <svg width="20px" height="20px" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
                                     <defs>
@@ -435,7 +425,6 @@
                                 <span>وبلاگ</span>
                             </div>
                             <div>
-                                <?xml version="1.0" ?>
                                 <!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
                                 <svg width="20px" height="20px" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
                                     <defs>
@@ -462,7 +451,6 @@
                                 <span>تماس</span>
                             </div>
                             <div>
-                                <?xml version="1.0" ?>
                                 <!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
                                 <svg width="20px" height="20px" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
                                     <defs>
@@ -495,10 +483,8 @@
         <div class="w-11/12 h-30 bg-white mx-auto flex overflow-x-auto mt-20">
             <a href="" class="min-w-50 h-auto flex flex-col gap-5 items-center">
                 <div>
-                    <?xml version="1.0" encoding="iso-8859-1"?>
                     <!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
 
-                    <?xml version="1.0" encoding="utf-8"?>
                     <!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
                     <svg width="50px" height="50px" viewBox="0 0 1024 1024" class="icon" version="1.1"
                         xmlns="http://www.w3.org/2000/svg">
@@ -525,10 +511,8 @@
             </a>
             <a href="" class="min-w-50 h-auto flex flex-col gap-5 items-center">
                 <div>
-                    <?xml version="1.0" encoding="iso-8859-1"?>
                     <!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
 
-                    <?xml version="1.0" encoding="utf-8"?>
                     <!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
                     <svg width="50px" height="50px" viewBox="0 0 1024 1024" class="icon" version="1.1"
                         xmlns="http://www.w3.org/2000/svg">
@@ -556,7 +540,6 @@
             <a href="" class="min-w-50 h-auto flex flex-col gap-5 items-center">
                 <div>
 
-                    <?xml version="1.0" encoding="utf-8"?>
                     <!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
                     <svg width="50px" height="50px" viewBox="0 0 1024 1024" class="icon" version="1.1"
                         xmlns="http://www.w3.org/2000/svg">
@@ -589,7 +572,6 @@
                 <div>
                     <!-- Uploaded to: SVG Repo, www.svgrepo.com, Transformed by: SVG Repo Mixer Tools -->
 
-                    <?xml version="1.0" encoding="utf-8"?>
                     <!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
                     <svg width="50px" height="50px" viewBox="0 0 1024 1024" class="icon" version="1.1"
                         xmlns="http://www.w3.org/2000/svg">
@@ -612,7 +594,6 @@
                 <div>
                     <!-- Uploaded to: SVG Repo, www.svgrepo.com, Transformed by: SVG Repo Mixer Tools -->
 
-                    <?xml version="1.0" encoding="utf-8"?>
                     <!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
                     <svg width="50px" height="50px" viewBox="0 0 1024 1024" class="icon" version="1.1"
                         xmlns="http://www.w3.org/2000/svg">
@@ -653,7 +634,6 @@
                 <div>
                     <!-- Uploaded to: SVG Repo, www.svgrepo.com, Transformed by: SVG Repo Mixer Tools -->
 
-                    <?xml version="1.0" encoding="utf-8"?>
                     <!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
                     <svg width="50px" height="50px" viewBox="0 0 1024 1024" class="icon" version="1.1"
                         xmlns="http://www.w3.org/2000/svg">
@@ -715,7 +695,6 @@
                 <div>
                     <!-- Uploaded to: SVG Repo, www.svgrepo.com, Transformed by: SVG Repo Mixer Tools -->
 
-                    <?xml version="1.0" encoding="utf-8"?>
                     <!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
                     <svg width="50px" height="50px" viewBox="0 0 1024 1024" class="icon" version="1.1"
                         xmlns="http://www.w3.org/2000/svg">
@@ -741,7 +720,6 @@
                 <div>
                     <!-- Uploaded to: SVG Repo, www.svgrepo.com, Transformed by: SVG Repo Mixer Tools -->
 
-                    <?xml version="1.0" encoding="utf-8"?>
                     <!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
                     <svg width="50px" height="50px" viewBox="0 0 1024 1024" class="icon" version="1.1"
                         xmlns="http://www.w3.org/2000/svg">
@@ -776,7 +754,6 @@
                 <div>
                     <!-- Uploaded to: SVG Repo, www.svgrepo.com, Transformed by: SVG Repo Mixer Tools -->
 
-                    <?xml version="1.0" encoding="utf-8"?>
                     <!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
                     <svg width="50px" height="50px" viewBox="0 0 1024 1024" class="icon" version="1.1"
                         xmlns="http://www.w3.org/2000/svg">
@@ -805,7 +782,7 @@
         </div>
         <div class="w-19/20 h-auto mx-auto flex flex-wrap gap-5 justify-center items-center mt-8 md:mt-12 lg:mt-10">
             <div class="max-sm:w-85 max-md:w-3/4 min-md:w-80 lg:w-2/7 h-full flex justify-end relative">
-                <img src="asstes/img/baner/img3.webp" alt="" class="rounded-lg">
+                <img src="{{asset('assets/img/baner/img3.webp')}}" alt="" class="rounded-lg">
                 <div class="absolute w-1/2 h-full flex gap-3 flex-col justify-center items-center">
                     <p class="py-1 px-5 bg-green-400 rounded-2xl">Sanitizer</p>
                     <h3 class="text-center font-bold text-[1.2rem] sm:text-[3.5vw] md:text-[1.9vw] lg:text-[1.8vw]">
@@ -819,7 +796,7 @@
                 </div>
             </div>
             <div class="max-sm:w-85 max-md:w-3/4 min-md:w-80 lg:w-2/7 h-full flex justify-end relative">
-                <img src="asstes/img/baner/img1.webp" alt="" class="rounded-lg">
+                <img src="{{asset('assets/img/baner/img1.webp')}}" alt="" class="rounded-lg">
                 <div class="absolute w-1/2 h-full flex gap-3 flex-col justify-center items-center">
                     <p class="py-1 px-5 bg-green-400 rounded-2xl">Sanitizer</p>
                     <h3 class="text-center font-bold text-[1.2rem] sm:text-[3.5vw] md:text-[1.9vw] lg:text-[1.8vw]">
@@ -833,7 +810,7 @@
                 </div>
             </div>
             <div class="max-sm:w-85 max-md:w-3/4 min-md:w-80 lg:w-2/7 h-full flex justify-end relative">
-                <img src="asstes/img/baner/img2.webp" alt="" class="rounded-lg">
+                <img src="{{asset('assets/img/baner/img2.webp')}}" alt="" class="rounded-lg">
                 <div class="absolute w-1/2 h-full flex gap-3 flex-col justify-center items-center">
                     <p class="py-1 px-5 bg-green-400 rounded-2xl">Sanitizer</p>
                     <h3 class="text-center font-bold text-[1.2rem] sm:text-[3.5vw] md:text-[1.9vw] lg:text-[1.8vw]">
@@ -891,7 +868,7 @@
                     </div>
                 </div>
                 <a href="" class="flex justify-center">
-                    <img src="asstes/img/silyder.producte/01.webp" alt="" class="w-50 h-auto object-cover">
+                    <img src="{{asset('assets/img/silyder.producte/01.webp')}}" alt="" class="w-50 h-auto object-cover">
                 </a>
                 <div class="absolute w-full mx-autoh-auto bg-[#ebf8f7] rounded-b-2xl overflow-hidden">
                     <div class="w-18/20 mx-auto py-6 bg-[#ebf8f7] flex justify-between gap-3 items-end">
@@ -900,7 +877,6 @@
                                 فلورا</span>
                             <ul class="flex gap-1">
                                 <li>
-                                    <?xml version="1.0" encoding="utf-8"?>
                                     <!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
                                     <svg class="fill-[#fba707]" width="16px" height="16px" viewBox="0 0 24 24"
                                         xmlns="http://www.w3.org/2000/svg">
@@ -911,7 +887,6 @@
                                     </svg>
                                 </li>
                                 <li>
-                                    <?xml version="1.0" encoding="utf-8"?>
                                     <!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
                                     <svg class="fill-[#fba707]" width="16px" height="16px" viewBox="0 0 24 24"
                                         xmlns="http://www.w3.org/2000/svg">
@@ -922,7 +897,6 @@
                                     </svg>
                                 </li>
                                 <li>
-                                    <?xml version="1.0" encoding="utf-8"?>
                                     <!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
                                     <svg class="fill-[#fba707]" width="16px" height="16px" viewBox="0 0 24 24"
                                         xmlns="http://www.w3.org/2000/svg">
@@ -933,7 +907,6 @@
                                     </svg>
                                 </li>
                                 <li>
-                                    <?xml version="1.0" encoding="utf-8"?>
                                     <!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
                                     <svg class="" width="16px" height="16px" viewBox="0 0 24 24" fill="none"
                                         xmlns="http://www.w3.org/2000/svg">
@@ -944,7 +917,6 @@
                                     </svg>
                                 </li>
                                 <li>
-                                    <?xml version="1.0" encoding="utf-8"?>
                                     <!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
                                     <svg class="" width="16px" height="16px" viewBox="0 0 24 24" fill="none"
                                         xmlns="http://www.w3.org/2000/svg">
@@ -1019,7 +991,7 @@
                     </div>
                 </div>
                 <a href="" class="flex justify-center">
-                    <img src="asstes/img/silyder.producte/03.webp" alt="" class="w-50 h-auto object-cover">
+                    <img src="{{asset('assets/img/silyder.producte/03.webp')}}" alt="" class="w-50 h-auto object-cover">
                 </a>
                 <div class="absolute w-full mx-autoh-auto bg-[#ebf8f7] rounded-b-2xl overflow-hidden">
                     <div class="w-18/20 mx-auto py-6 bg-[#ebf8f7] flex justify-between gap-3 items-end">
@@ -1028,7 +1000,6 @@
                                 فلورا</span>
                             <ul class="flex gap-1">
                                 <li>
-                                    <?xml version="1.0" encoding="utf-8"?>
                                     <!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
                                     <svg class="fill-[#fba707]" width="16px" height="16px" viewBox="0 0 24 24"
                                         xmlns="http://www.w3.org/2000/svg">
@@ -1039,7 +1010,6 @@
                                     </svg>
                                 </li>
                                 <li>
-                                    <?xml version="1.0" encoding="utf-8"?>
                                     <!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
                                     <svg class="fill-[#fba707]" width="16px" height="16px" viewBox="0 0 24 24"
                                         xmlns="http://www.w3.org/2000/svg">
@@ -1050,7 +1020,6 @@
                                     </svg>
                                 </li>
                                 <li>
-                                    <?xml version="1.0" encoding="utf-8"?>
                                     <!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
                                     <svg class="fill-[#fba707]" width="16px" height="16px" viewBox="0 0 24 24"
                                         xmlns="http://www.w3.org/2000/svg">
@@ -1061,7 +1030,6 @@
                                     </svg>
                                 </li>
                                 <li>
-                                    <?xml version="1.0" encoding="utf-8"?>
                                     <!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
                                     <svg class="" width="16px" height="16px" viewBox="0 0 24 24" fill="none"
                                         xmlns="http://www.w3.org/2000/svg">
@@ -1072,7 +1040,6 @@
                                     </svg>
                                 </li>
                                 <li>
-                                    <?xml version="1.0" encoding="utf-8"?>
                                     <!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
                                     <svg class="" width="16px" height="16px" viewBox="0 0 24 24" fill="none"
                                         xmlns="http://www.w3.org/2000/svg">
@@ -1147,7 +1114,7 @@
                     </div>
                 </div>
                 <a href="" class="flex justify-center">
-                    <img src="asstes/img/silyder.producte/01.png" alt="" class="w-50 h-auto object-cover">
+                    <img src="{{asset('assets/img/silyder.producte/01.png')}}" alt="" class="w-50 h-auto object-cover">
                 </a>
                 <div class="absolute w-full mx-autoh-auto bg-[#ebf8f7] rounded-b-2xl overflow-hidden">
                     <div class="w-18/20 mx-auto py-6 bg-[#ebf8f7] flex justify-between gap-3 items-end">
@@ -1156,7 +1123,6 @@
                                 فلورا</span>
                             <ul class="flex gap-1">
                                 <li>
-                                    <?xml version="1.0" encoding="utf-8"?>
                                     <!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
                                     <svg class="fill-[#fba707]" width="16px" height="16px" viewBox="0 0 24 24"
                                         xmlns="http://www.w3.org/2000/svg">
@@ -1167,7 +1133,6 @@
                                     </svg>
                                 </li>
                                 <li>
-                                    <?xml version="1.0" encoding="utf-8"?>
                                     <!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
                                     <svg class="fill-[#fba707]" width="16px" height="16px" viewBox="0 0 24 24"
                                         xmlns="http://www.w3.org/2000/svg">
@@ -1178,7 +1143,6 @@
                                     </svg>
                                 </li>
                                 <li>
-                                    <?xml version="1.0" encoding="utf-8"?>
                                     <!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
                                     <svg class="fill-[#fba707]" width="16px" height="16px" viewBox="0 0 24 24"
                                         xmlns="http://www.w3.org/2000/svg">
@@ -1189,7 +1153,6 @@
                                     </svg>
                                 </li>
                                 <li>
-                                    <?xml version="1.0" encoding="utf-8"?>
                                     <!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
                                     <svg class="" width="16px" height="16px" viewBox="0 0 24 24" fill="none"
                                         xmlns="http://www.w3.org/2000/svg">
@@ -1200,7 +1163,6 @@
                                     </svg>
                                 </li>
                                 <li>
-                                    <?xml version="1.0" encoding="utf-8"?>
                                     <!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
                                     <svg class="" width="16px" height="16px" viewBox="0 0 24 24" fill="none"
                                         xmlns="http://www.w3.org/2000/svg">
@@ -1275,7 +1237,7 @@
                     </div>
                 </div>
                 <a href="" class="flex justify-center">
-                    <img src="asstes/img/silyder.producte/03.webp" alt="" class="w-50 h-auto object-cover">
+                    <img src="{{asset('assets/img/silyder.producte/03.webp')}}" alt="" class="w-50 h-auto object-cover">
                 </a>
                 <div class="absolute w-full mx-autoh-auto bg-[#ebf8f7] rounded-b-2xl overflow-hidden">
                     <div class="w-18/20 mx-auto py-6 bg-[#ebf8f7] flex justify-between gap-3 items-end">
@@ -1284,7 +1246,6 @@
                                 فلورا</span>
                             <ul class="flex gap-1">
                                 <li>
-                                    <?xml version="1.0" encoding="utf-8"?>
                                     <!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
                                     <svg class="fill-[#fba707]" width="16px" height="16px" viewBox="0 0 24 24"
                                         xmlns="http://www.w3.org/2000/svg">
@@ -1295,7 +1256,6 @@
                                     </svg>
                                 </li>
                                 <li>
-                                    <?xml version="1.0" encoding="utf-8"?>
                                     <!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
                                     <svg class="fill-[#fba707]" width="16px" height="16px" viewBox="0 0 24 24"
                                         xmlns="http://www.w3.org/2000/svg">
@@ -1306,7 +1266,6 @@
                                     </svg>
                                 </li>
                                 <li>
-                                    <?xml version="1.0" encoding="utf-8"?>
                                     <!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
                                     <svg class="fill-[#fba707]" width="16px" height="16px" viewBox="0 0 24 24"
                                         xmlns="http://www.w3.org/2000/svg">
@@ -1317,7 +1276,6 @@
                                     </svg>
                                 </li>
                                 <li>
-                                    <?xml version="1.0" encoding="utf-8"?>
                                     <!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
                                     <svg class="" width="16px" height="16px" viewBox="0 0 24 24" fill="none"
                                         xmlns="http://www.w3.org/2000/svg">
@@ -1328,7 +1286,6 @@
                                     </svg>
                                 </li>
                                 <li>
-                                    <?xml version="1.0" encoding="utf-8"?>
                                     <!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
                                     <svg class="" width="16px" height="16px" viewBox="0 0 24 24" fill="none"
                                         xmlns="http://www.w3.org/2000/svg">
@@ -1403,7 +1360,7 @@
                     </div>
                 </div>
                 <a href="" class="flex justify-center">
-                    <img src="asstes/img/silyder.producte/01.png" alt="" class="w-50 h-auto object-cover">
+                    <img src="{{asset('assets/img/silyder.producte/01.png')}}" alt="" class="w-50 h-auto object-cover">
                 </a>
                 <div class="absolute w-full mx-autoh-auto bg-[#ebf8f7] rounded-b-2xl overflow-hidden">
                     <div class="w-18/20 mx-auto py-6 bg-[#ebf8f7] flex justify-between gap-3 items-end">
@@ -1412,7 +1369,6 @@
                                 فلورا</span>
                             <ul class="flex gap-1">
                                 <li>
-                                    <?xml version="1.0" encoding="utf-8"?>
                                     <!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
                                     <svg class="fill-[#fba707]" width="16px" height="16px" viewBox="0 0 24 24"
                                         xmlns="http://www.w3.org/2000/svg">
@@ -1423,7 +1379,6 @@
                                     </svg>
                                 </li>
                                 <li>
-                                    <?xml version="1.0" encoding="utf-8"?>
                                     <!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
                                     <svg class="fill-[#fba707]" width="16px" height="16px" viewBox="0 0 24 24"
                                         xmlns="http://www.w3.org/2000/svg">
@@ -1434,7 +1389,6 @@
                                     </svg>
                                 </li>
                                 <li>
-                                    <?xml version="1.0" encoding="utf-8"?>
                                     <!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
                                     <svg class="fill-[#fba707]" width="16px" height="16px" viewBox="0 0 24 24"
                                         xmlns="http://www.w3.org/2000/svg">
@@ -1445,7 +1399,6 @@
                                     </svg>
                                 </li>
                                 <li>
-                                    <?xml version="1.0" encoding="utf-8"?>
                                     <!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
                                     <svg class="" width="16px" height="16px" viewBox="0 0 24 24" fill="none"
                                         xmlns="http://www.w3.org/2000/svg">
@@ -1456,7 +1409,6 @@
                                     </svg>
                                 </li>
                                 <li>
-                                    <?xml version="1.0" encoding="utf-8"?>
                                     <!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
                                     <svg class="" width="16px" height="16px" viewBox="0 0 24 24" fill="none"
                                         xmlns="http://www.w3.org/2000/svg">
@@ -1531,7 +1483,7 @@
                     </div>
                 </div>
                 <a href="" class="flex justify-center">
-                    <img src="asstes/img/silyder.producte/01.webp" alt="" class="w-50 h-auto object-cover">
+                    <img src="{{asset('assets/img/silyder.producte/01.webp')}}" alt="" class="w-50 h-auto object-cover">
                 </a>
                 <div class="absolute w-full mx-autoh-auto bg-[#ebf8f7] rounded-b-2xl overflow-hidden">
                     <div class="w-18/20 mx-auto py-6 bg-[#ebf8f7] flex justify-between gap-3 items-end">
@@ -1540,7 +1492,6 @@
                                 فلورا</span>
                             <ul class="flex gap-1">
                                 <li>
-                                    <?xml version="1.0" encoding="utf-8"?>
                                     <!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
                                     <svg class="fill-[#fba707]" width="16px" height="16px" viewBox="0 0 24 24"
                                         xmlns="http://www.w3.org/2000/svg">
@@ -1551,7 +1502,6 @@
                                     </svg>
                                 </li>
                                 <li>
-                                    <?xml version="1.0" encoding="utf-8"?>
                                     <!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
                                     <svg class="fill-[#fba707]" width="16px" height="16px" viewBox="0 0 24 24"
                                         xmlns="http://www.w3.org/2000/svg">
@@ -1562,7 +1512,6 @@
                                     </svg>
                                 </li>
                                 <li>
-                                    <?xml version="1.0" encoding="utf-8"?>
                                     <!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
                                     <svg class="fill-[#fba707]" width="16px" height="16px" viewBox="0 0 24 24"
                                         xmlns="http://www.w3.org/2000/svg">
@@ -1573,7 +1522,6 @@
                                     </svg>
                                 </li>
                                 <li>
-                                    <?xml version="1.0" encoding="utf-8"?>
                                     <!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
                                     <svg class="" width="16px" height="16px" viewBox="0 0 24 24" fill="none"
                                         xmlns="http://www.w3.org/2000/svg">
@@ -1584,7 +1532,6 @@
                                     </svg>
                                 </li>
                                 <li>
-                                    <?xml version="1.0" encoding="utf-8"?>
                                     <!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
                                     <svg class="" width="16px" height="16px" viewBox="0 0 24 24" fill="none"
                                         xmlns="http://www.w3.org/2000/svg">
@@ -1838,7 +1785,7 @@
     <section>
         <div class="w-11/12 mx-auto h-auto flex gap-2 mt-20">
             <div class="w-5/20 max-xl:hidden flex items-end">
-                <img src="https://live.themewild.com/medion/assets/img/banner/product-banner.jpg" alt=""
+                <img src="{{asset('assets/img/banner/product-banner.jpg')}}" alt=""
                     class="h-140 overflow-hidden rounded-2xl object-cover">
             </div>
             <div class="w-full flex flex-col">
@@ -1846,7 +1793,6 @@
                     <a href=""
                         class="flex flex-row-reverse gap-2 fill-[#54ab9a] text-[#54ab9a] hover:text-[#fd6a6a] hover:fill-[#fd6a6a] transition-all duration-300">
                         <span class="">All Products </span>
-                        <?xml version="1.0" encoding="iso-8859-1"?>
                         <!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
                         <!DOCTYPE svg
                             PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
@@ -1871,7 +1817,7 @@
                 </div>
                 <div class="w-full flex flex-wrap gap-2 justify-center mt-5">
                     <div class="w-80 sm:w-5/11 lg:w-3/13 h-100 group overflow-hidden rounded-2xl relative">
-                        <img src="asstes/img/silyder.producte/03.webp" alt=""
+                        <img src="{{asset('assets/img/silyder.producte/03.webp')}}" alt=""
                             class="absolute h-2/3 w-full z-60 object-top">
                         <div class="absolute w-full h-25 bg-[#ebf8f7] bottom-0 flex justify-between">
                             <div class="w-11/12 mx-auto h-1/3 flex flex-col justify-between py-2">
@@ -1880,7 +1826,6 @@
                                         عالی قطره فلورا</span>
                                     <ul class="flex gap-1">
                                         <li>
-                                            <?xml version="1.0" encoding="utf-8"?>
                                             <!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
                                             <svg class="fill-[#fba707]" width="16px" height="16px" viewBox="0 0 24 24"
                                                 xmlns="http://www.w3.org/2000/svg">
@@ -1891,7 +1836,6 @@
                                             </svg>
                                         </li>
                                         <li>
-                                            <?xml version="1.0" encoding="utf-8"?>
                                             <!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
                                             <svg class="fill-[#fba707]" width="16px" height="16px" viewBox="0 0 24 24"
                                                 xmlns="http://www.w3.org/2000/svg">
@@ -1902,7 +1846,6 @@
                                             </svg>
                                         </li>
                                         <li>
-                                            <?xml version="1.0" encoding="utf-8"?>
                                             <!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
                                             <svg class="fill-[#fba707]" width="16px" height="16px" viewBox="0 0 24 24"
                                                 xmlns="http://www.w3.org/2000/svg">
@@ -1913,7 +1856,6 @@
                                             </svg>
                                         </li>
                                         <li>
-                                            <?xml version="1.0" encoding="utf-8"?>
                                             <!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
                                             <svg class="" width="16px" height="16px" viewBox="0 0 24 24" fill="none"
                                                 xmlns="http://www.w3.org/2000/svg">
@@ -1924,7 +1866,6 @@
                                             </svg>
                                         </li>
                                         <li>
-                                            <?xml version="1.0" encoding="utf-8"?>
                                             <!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
                                             <svg class="" width="16px" height="16px" viewBox="0 0 24 24" fill="none"
                                                 xmlns="http://www.w3.org/2000/svg">
@@ -2004,7 +1945,7 @@
                         </div>
                     </div>
                     <div class="w-80 sm:w-5/11 lg:w-3/13 h-100 group overflow-hidden rounded-2xl relative">
-                        <img src="asstes/img/silyder.producte/01.png" alt=""
+                        <img src="{{asset('assets/img/silyder.producte/01.png')}}" alt=""
                             class="absolute h-2/3 w-full z-60 object-top">
                         <div class="absolute w-full h-25 bg-[#ebf8f7] bottom-0 flex justify-between">
                             <div class="w-11/12 mx-auto flex">
@@ -2013,7 +1954,6 @@
                                         فلورا</span>
                                     <ul class="flex gap-1">
                                         <li>
-                                            <?xml version="1.0" encoding="utf-8"?>
                                             <!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
                                             <svg class="fill-[#fba707]" width="16px" height="16px" viewBox="0 0 24 24"
                                                 xmlns="http://www.w3.org/2000/svg">
@@ -2024,7 +1964,6 @@
                                             </svg>
                                         </li>
                                         <li>
-                                            <?xml version="1.0" encoding="utf-8"?>
                                             <!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
                                             <svg class="fill-[#fba707]" width="16px" height="16px" viewBox="0 0 24 24"
                                                 xmlns="http://www.w3.org/2000/svg">
@@ -2035,7 +1974,6 @@
                                             </svg>
                                         </li>
                                         <li>
-                                            <?xml version="1.0" encoding="utf-8"?>
                                             <!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
                                             <svg class="fill-[#fba707]" width="16px" height="16px" viewBox="0 0 24 24"
                                                 xmlns="http://www.w3.org/2000/svg">
@@ -2046,7 +1984,6 @@
                                             </svg>
                                         </li>
                                         <li>
-                                            <?xml version="1.0" encoding="utf-8"?>
                                             <!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
                                             <svg class="" width="16px" height="16px" viewBox="0 0 24 24" fill="none"
                                                 xmlns="http://www.w3.org/2000/svg">
@@ -2057,7 +1994,6 @@
                                             </svg>
                                         </li>
                                         <li>
-                                            <?xml version="1.0" encoding="utf-8"?>
                                             <!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
                                             <svg class="" width="16px" height="16px" viewBox="0 0 24 24" fill="none"
                                                 xmlns="http://www.w3.org/2000/svg">
@@ -2137,7 +2073,7 @@
                         </div>
                     </div>
                     <div class="w-80 sm:w-5/11 lg:w-3/13 h-100 group overflow-hidden rounded-2xl relative">
-                        <img src="asstes/img/silyder.producte/03.webp" alt=""
+                        <img src="{{asset('assets/img/silyder.producte/03.webp')}}" alt=""
                             class="absolute h-2/3 w-full z-60 object-top">
                         <div class="absolute w-full h-25 bg-[#ebf8f7] bottom-0 flex justify-between">
                             <div class="w-11/12 mx-auto flex">
@@ -2146,7 +2082,6 @@
                                         فلورا</span>
                                     <ul class="flex gap-1">
                                         <li>
-                                            <?xml version="1.0" encoding="utf-8"?>
                                             <!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
                                             <svg class="fill-[#fba707]" width="16px" height="16px" viewBox="0 0 24 24"
                                                 xmlns="http://www.w3.org/2000/svg">
@@ -2157,7 +2092,6 @@
                                             </svg>
                                         </li>
                                         <li>
-                                            <?xml version="1.0" encoding="utf-8"?>
                                             <!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
                                             <svg class="fill-[#fba707]" width="16px" height="16px" viewBox="0 0 24 24"
                                                 xmlns="http://www.w3.org/2000/svg">
@@ -2168,7 +2102,6 @@
                                             </svg>
                                         </li>
                                         <li>
-                                            <?xml version="1.0" encoding="utf-8"?>
                                             <!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
                                             <svg class="fill-[#fba707]" width="16px" height="16px" viewBox="0 0 24 24"
                                                 xmlns="http://www.w3.org/2000/svg">
@@ -2179,7 +2112,6 @@
                                             </svg>
                                         </li>
                                         <li>
-                                            <?xml version="1.0" encoding="utf-8"?>
                                             <!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
                                             <svg class="" width="16px" height="16px" viewBox="0 0 24 24" fill="none"
                                                 xmlns="http://www.w3.org/2000/svg">
@@ -2190,7 +2122,6 @@
                                             </svg>
                                         </li>
                                         <li>
-                                            <?xml version="1.0" encoding="utf-8"?>
                                             <!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
                                             <svg class="" width="16px" height="16px" viewBox="0 0 24 24" fill="none"
                                                 xmlns="http://www.w3.org/2000/svg">
@@ -2270,7 +2201,7 @@
                         </div>
                     </div>
                     <div class="w-80 sm:w-5/11 lg:w-3/13 h-100 group overflow-hidden rounded-2xl relative">
-                        <img src="asstes/img/silyder.producte/01.png" alt=""
+                        <img src="{{asset('assets/img/silyder.producte/01.png')}}" alt=""
                             class="absolute h-2/3 w-full z-60 object-top">
                         <div class="absolute w-full h-25 bg-[#ebf8f7] bottom-0 flex justify-between">
                             <div class="w-11/12 mx-auto flex">
@@ -2279,7 +2210,6 @@
                                         فلورا</span>
                                     <ul class="flex gap-1">
                                         <li>
-                                            <?xml version="1.0" encoding="utf-8"?>
                                             <!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
                                             <svg class="fill-[#fba707]" width="16px" height="16px" viewBox="0 0 24 24"
                                                 xmlns="http://www.w3.org/2000/svg">
@@ -2290,7 +2220,6 @@
                                             </svg>
                                         </li>
                                         <li>
-                                            <?xml version="1.0" encoding="utf-8"?>
                                             <!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
                                             <svg class="fill-[#fba707]" width="16px" height="16px" viewBox="0 0 24 24"
                                                 xmlns="http://www.w3.org/2000/svg">
@@ -2301,7 +2230,6 @@
                                             </svg>
                                         </li>
                                         <li>
-                                            <?xml version="1.0" encoding="utf-8"?>
                                             <!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
                                             <svg class="fill-[#fba707]" width="16px" height="16px" viewBox="0 0 24 24"
                                                 xmlns="http://www.w3.org/2000/svg">
@@ -2312,7 +2240,6 @@
                                             </svg>
                                         </li>
                                         <li>
-                                            <?xml version="1.0" encoding="utf-8"?>
                                             <!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
                                             <svg class="" width="16px" height="16px" viewBox="0 0 24 24" fill="none"
                                                 xmlns="http://www.w3.org/2000/svg">
@@ -2323,7 +2250,6 @@
                                             </svg>
                                         </li>
                                         <li>
-                                            <?xml version="1.0" encoding="utf-8"?>
                                             <!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
                                             <svg class="" width="16px" height="16px" viewBox="0 0 24 24" fill="none"
                                                 xmlns="http://www.w3.org/2000/svg">
@@ -2406,13 +2332,13 @@
             </div>
         </div>
         <div class="w-11/12 mx-auto h-30 md:h-50 hidden max-xl:block my-8">
-            <img src="asstes/img/logo/IMG_20260730_170917_821.jpg" alt="" class="w-full h-30 md:h-50 rounded-2xl">
+            <img src="{{asset('assets/img/logo/IMG_20260730_170917_821.jpg')}}" alt="" class="w-full h-30 md:h-50 rounded-2xl">
         </div>
     </section>
     <!-- بنر2 -->
     <section>
         <div class="w-11/12 mx-auto h-85 mt-25 relative">
-            <img src="asstes/img/baner/big-banner.webp" alt="" class="w-full h-full rounded-2xl object-cover">
+            <img src="{{asset('assets/img/baner/big-banner.webp')}}" alt="" class="w-full h-full rounded-2xl object-cover">
             <div class="absolute w-full h-full top-0 flex flex-col justify-center items-center gap-2">
                 <h6 class="text-[25px] text-[#023350]">Mega Collections</h6>
                 <h2 class="text-[#023350] text-[40px] lg:text-[45px] font-bold text-center">Huge Sale Up To
@@ -2432,7 +2358,6 @@
             <a href=""
                 class="flex flex-row-reverse gap-2 fill-[#54ab9a] text-[#54ab9a] hover:text-[#fd6a6a] hover:fill-[#fd6a6a] transition-all duration-300">
                 <span class="">All Products </span>
-                <?xml version="1.0" encoding="iso-8859-1"?>
                 <!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
                 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
                 <svg height="20px" width="20px" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg"
@@ -2451,48 +2376,48 @@
             <div class="w-11/12 mx-auto mb-10">
                 <!-- Brands -->
                 <div class="flex gap-8 items-center h-30 overflow-x-auto">
-                    <img src="https://live.themewild.com/medion/assets/img/brand/03.png"
+                    <img src="{{asset('assets/img/brand/03.png')}}"
                         class="h-20 min-w-40 opacity-60 hover:opacity-100 transition duration-300">
-                    <img src="https://live.themewild.com/medion/assets/img/brand/03.png"
+                    <img src="{{asset('assets/img/brand/03.png')}}"
                         class="h-20 min-w-40 opacity-60 hover:opacity-100 transition duration-300">
-                    <img src="https://live.themewild.com/medion/assets/img/brand/03.png"
+                    <img src="{{asset('assets/img/brand/03.png')}}"
                         class="h-20 min-w-40 opacity-60 hover:opacity-100 transition duration-300">
-                    <img src="https://live.themewild.com/medion/assets/img/brand/03.png"
+                    <img src="{{asset('assets/img/brand/03.png')}}"
                         class="h-20 min-w-40 opacity-60 hover:opacity-100 transition duration-300">
-                    <img src="https://live.themewild.com/medion/assets/img/brand/03.png"
+                    <img src="{{asset('assets/img/brand/03.png')}}"
                         class="h-20 min-w-40 opacity-60 hover:opacity-100 transition duration-300">
-                    <img src="https://live.themewild.com/medion/assets/img/brand/03.png"
+                    <img src="{{asset('assets/img/brand/03.png')}}"
                         class="h-20 min-w-40 opacity-60 hover:opacity-100 transition duration-300">
-                    <img src="https://live.themewild.com/medion/assets/img/brand/03.png"
+                    <img src="{{asset('assets/img/brand/03.png')}}"
                         class="h-20 min-w-40 opacity-60 hover:opacity-100 transition duration-300">
                 </div>
             </div>
         </div>
         <!-- <div class="w-11/12 h-auto mx-auto overflow-x-auto flex gap-1 pb-4 my-5">
             <div class="min-w-1/2 md:min-w-40 border-2 rounded-2xl">
-                <img src="https://live.themewild.com/medion/assets/img/brand/04.png" alt="" class="w-full h-full">
+                <img src="assets/img/brand/04.png" alt="" class="w-full h-full">
             </div>
             <div class="min-w-1/2 md:min-w-40 border-2 rounded-2xl">
-                <img src="https://live.themewild.com/medion/assets/img/brand/05.png" alt="" class="w-full h-full">
+                <img src="assets/img/brand/05.png" alt="" class="w-full h-full">
             </div>
             <div class="min-w-1/2 md:min-w-40 border-2 rounded-2xl">
-                <img src="https://live.themewild.com/medion/assets/img/brand/01.png" alt="" class="w-full h-full">
+                <img src="assets/img/brand/01.png" alt="" class="w-full h-full">
             </div>
             <div class="min-w-1/2 md:min-w-40 border-2 rounded-2xl">
-                <img src="https://live.themewild.com/medion/assets/img/brand/02.png" alt="" class="w-full h-full">
+                <img src="assets/img/brand/02.png" alt="" class="w-full h-full">
             </div>
             <div class="min-w-1/2 md:min-w-40 border-2 rounded-2xl">
-                <img src="https://live.themewild.com/medion/assets/img/brand/06.png" alt="" class="w-full h-full">
+                <img src="assets/img/brand/06.png" alt="" class="w-full h-full">
             </div>
             <div class="min-w-1/2 md:min-w-40 border-2 rounded-2xl">
-                <img src="https://live.themewild.com/medion/assets/img/brand/03.png" alt="" class="w-full h-full">
+                <img src="assets/img/brand/03.png" alt="" class="w-full h-full">
             </div>
         </div> -->
     </section>
     <!-- بهترین محصولات -->
     <section>
         <div class="w-11/12 mx-auto">
-            <img src="asstes/img/logo/IMG_20260730_170917_821.jpg" alt=""
+            <img src="{{asset('assets/img/logo/IMG_20260730_170917_821.jpg')}}" alt=""
                 class="w-full h-60 lg:h-80 object-cover rounded-2xl">
             <div class="relative -top-20 w-full flex justify-center">
                 <div class="w-11/12 flex flex-wrap justify-center gap-10 lg:gap-5">
@@ -2511,7 +2436,6 @@
                                         <h2 class="text-[16px] font-bold text-center">تجهیزات پزشکی</h2>
                                         <ul class="flex">
                                             <li>
-                                                <?xml version="1.0" encoding="utf-8"?>
                                                 <!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
                                                 <svg class="" width="16px" height="16px" viewBox="0 0 24 24" fill="none"
                                                     xmlns="http://www.w3.org/2000/svg">
@@ -2522,7 +2446,6 @@
                                                 </svg>
                                             </li>
                                             <li>
-                                                <?xml version="1.0" encoding="utf-8"?>
                                                 <!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
                                                 <svg class="" width="16px" height="16px" viewBox="0 0 24 24" fill="none"
                                                     xmlns="http://www.w3.org/2000/svg">
@@ -2533,7 +2456,6 @@
                                                 </svg>
                                             </li>
                                             <li>
-                                                <?xml version="1.0" encoding="utf-8"?>
                                                 <!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
                                                 <svg class="" width="16px" height="16px" viewBox="0 0 24 24" fill="none"
                                                     xmlns="http://www.w3.org/2000/svg">
@@ -2544,7 +2466,6 @@
                                                 </svg>
                                             </li>
                                             <li>
-                                                <?xml version="1.0" encoding="utf-8"?>
                                                 <!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
                                                 <svg class="" width="16px" height="16px" viewBox="0 0 24 24" fill="none"
                                                     xmlns="http://www.w3.org/2000/svg">
@@ -2555,7 +2476,6 @@
                                                 </svg>
                                             </li>
                                             <li>
-                                                <?xml version="1.0" encoding="utf-8"?>
                                                 <!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
                                                 <svg class="" width="16px" height="16px" viewBox="0 0 24 24" fill="none"
                                                     xmlns="http://www.w3.org/2000/svg">
@@ -2596,7 +2516,7 @@
                                     </div>
                                 </div>
                                 <div class="w-4/10 h-25 flex justify-end">
-                                    <img src="asstes/img/silyder.producte/01.png" alt=""
+                                    <img src="{{asset('assets/img/silyder.producte/01.png')}}" alt=""
                                         class="full h-full object-top rounded-lg">
                                 </div>
                             </div>
@@ -2607,7 +2527,6 @@
                                         <h2 class="text-[16px] font-bold text-center">تجهیزات پزشکی</h2>
                                         <ul class="flex">
                                             <li>
-                                                <?xml version="1.0" encoding="utf-8"?>
                                                 <!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
                                                 <svg class="" width="16px" height="16px" viewBox="0 0 24 24" fill="none"
                                                     xmlns="http://www.w3.org/2000/svg">
@@ -2618,7 +2537,6 @@
                                                 </svg>
                                             </li>
                                             <li>
-                                                <?xml version="1.0" encoding="utf-8"?>
                                                 <!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
                                                 <svg class="" width="16px" height="16px" viewBox="0 0 24 24" fill="none"
                                                     xmlns="http://www.w3.org/2000/svg">
@@ -2629,7 +2547,6 @@
                                                 </svg>
                                             </li>
                                             <li>
-                                                <?xml version="1.0" encoding="utf-8"?>
                                                 <!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
                                                 <svg class="" width="16px" height="16px" viewBox="0 0 24 24" fill="none"
                                                     xmlns="http://www.w3.org/2000/svg">
@@ -2640,7 +2557,6 @@
                                                 </svg>
                                             </li>
                                             <li>
-                                                <?xml version="1.0" encoding="utf-8"?>
                                                 <!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
                                                 <svg class="" width="16px" height="16px" viewBox="0 0 24 24" fill="none"
                                                     xmlns="http://www.w3.org/2000/svg">
@@ -2651,7 +2567,6 @@
                                                 </svg>
                                             </li>
                                             <li>
-                                                <?xml version="1.0" encoding="utf-8"?>
                                                 <!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
                                                 <svg class="" width="16px" height="16px" viewBox="0 0 24 24" fill="none"
                                                     xmlns="http://www.w3.org/2000/svg">
@@ -2692,7 +2607,7 @@
                                     </div>
                                 </div>
                                 <div class="w-4/10 h-25 flex justify-end">
-                                    <img src="asstes/img/silyder.producte/01.png" alt=""
+                                    <img src="{{asset('assets/img/silyder.producte/01.png')}}" alt=""
                                         class="full h-full object-top rounded-lg">
                                 </div>
                             </div>
@@ -2703,7 +2618,6 @@
                                         <h2 class="text-[16px] font-bold text-center">تجهیزات پزشکی</h2>
                                         <ul class="flex">
                                             <li>
-                                                <?xml version="1.0" encoding="utf-8"?>
                                                 <!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
                                                 <svg class="" width="16px" height="16px" viewBox="0 0 24 24" fill="none"
                                                     xmlns="http://www.w3.org/2000/svg">
@@ -2714,7 +2628,6 @@
                                                 </svg>
                                             </li>
                                             <li>
-                                                <?xml version="1.0" encoding="utf-8"?>
                                                 <!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
                                                 <svg class="" width="16px" height="16px" viewBox="0 0 24 24" fill="none"
                                                     xmlns="http://www.w3.org/2000/svg">
@@ -2725,7 +2638,6 @@
                                                 </svg>
                                             </li>
                                             <li>
-                                                <?xml version="1.0" encoding="utf-8"?>
                                                 <!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
                                                 <svg class="" width="16px" height="16px" viewBox="0 0 24 24" fill="none"
                                                     xmlns="http://www.w3.org/2000/svg">
@@ -2736,7 +2648,6 @@
                                                 </svg>
                                             </li>
                                             <li>
-                                                <?xml version="1.0" encoding="utf-8"?>
                                                 <!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
                                                 <svg class="" width="16px" height="16px" viewBox="0 0 24 24" fill="none"
                                                     xmlns="http://www.w3.org/2000/svg">
@@ -2747,7 +2658,6 @@
                                                 </svg>
                                             </li>
                                             <li>
-                                                <?xml version="1.0" encoding="utf-8"?>
                                                 <!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
                                                 <svg class="" width="16px" height="16px" viewBox="0 0 24 24" fill="none"
                                                     xmlns="http://www.w3.org/2000/svg">
@@ -2788,7 +2698,7 @@
                                     </div>
                                 </div>
                                 <div class="w-4/10 h-25 flex justify-end">
-                                    <img src="asstes/img/silyder.producte/01.png" alt=""
+                                    <img src="{{asset('assets/img/silyder.producte/01.png')}}" alt=""
                                         class="full h-full object-top rounded-lg">
                                 </div>
                             </div>
@@ -2809,7 +2719,6 @@
                                         <h2 class="text-[16px] font-bold text-center">تجهیزات پزشکی</h2>
                                         <ul class="flex">
                                             <li>
-                                                <?xml version="1.0" encoding="utf-8"?>
                                                 <!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
                                                 <svg class="" width="16px" height="16px" viewBox="0 0 24 24" fill="none"
                                                     xmlns="http://www.w3.org/2000/svg">
@@ -2820,7 +2729,6 @@
                                                 </svg>
                                             </li>
                                             <li>
-                                                <?xml version="1.0" encoding="utf-8"?>
                                                 <!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
                                                 <svg class="" width="16px" height="16px" viewBox="0 0 24 24" fill="none"
                                                     xmlns="http://www.w3.org/2000/svg">
@@ -2831,7 +2739,6 @@
                                                 </svg>
                                             </li>
                                             <li>
-                                                <?xml version="1.0" encoding="utf-8"?>
                                                 <!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
                                                 <svg class="" width="16px" height="16px" viewBox="0 0 24 24" fill="none"
                                                     xmlns="http://www.w3.org/2000/svg">
@@ -2842,7 +2749,6 @@
                                                 </svg>
                                             </li>
                                             <li>
-                                                <?xml version="1.0" encoding="utf-8"?>
                                                 <!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
                                                 <svg class="" width="16px" height="16px" viewBox="0 0 24 24" fill="none"
                                                     xmlns="http://www.w3.org/2000/svg">
@@ -2853,7 +2759,6 @@
                                                 </svg>
                                             </li>
                                             <li>
-                                                <?xml version="1.0" encoding="utf-8"?>
                                                 <!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
                                                 <svg class="" width="16px" height="16px" viewBox="0 0 24 24" fill="none"
                                                     xmlns="http://www.w3.org/2000/svg">
@@ -2894,7 +2799,7 @@
                                     </div>
                                 </div>
                                 <div class="w-4/10 h-25 flex justify-end">
-                                    <img src="asstes/img/silyder.producte/01.png" alt=""
+                                    <img src="{{asset('assets/img/silyder.producte/01.png')}}" alt=""
                                         class="full h-full object-top rounded-lg">
                                 </div>
                             </div>
@@ -2905,7 +2810,6 @@
                                         <h2 class="text-[16px] font-bold text-center">تجهیزات پزشکی</h2>
                                         <ul class="flex">
                                             <li>
-                                                <?xml version="1.0" encoding="utf-8"?>
                                                 <!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
                                                 <svg class="" width="16px" height="16px" viewBox="0 0 24 24" fill="none"
                                                     xmlns="http://www.w3.org/2000/svg">
@@ -2916,7 +2820,6 @@
                                                 </svg>
                                             </li>
                                             <li>
-                                                <?xml version="1.0" encoding="utf-8"?>
                                                 <!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
                                                 <svg class="" width="16px" height="16px" viewBox="0 0 24 24" fill="none"
                                                     xmlns="http://www.w3.org/2000/svg">
@@ -2927,7 +2830,6 @@
                                                 </svg>
                                             </li>
                                             <li>
-                                                <?xml version="1.0" encoding="utf-8"?>
                                                 <!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
                                                 <svg class="" width="16px" height="16px" viewBox="0 0 24 24" fill="none"
                                                     xmlns="http://www.w3.org/2000/svg">
@@ -2938,7 +2840,6 @@
                                                 </svg>
                                             </li>
                                             <li>
-                                                <?xml version="1.0" encoding="utf-8"?>
                                                 <!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
                                                 <svg class="" width="16px" height="16px" viewBox="0 0 24 24" fill="none"
                                                     xmlns="http://www.w3.org/2000/svg">
@@ -2949,7 +2850,6 @@
                                                 </svg>
                                             </li>
                                             <li>
-                                                <?xml version="1.0" encoding="utf-8"?>
                                                 <!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
                                                 <svg class="" width="16px" height="16px" viewBox="0 0 24 24" fill="none"
                                                     xmlns="http://www.w3.org/2000/svg">
@@ -2990,7 +2890,7 @@
                                     </div>
                                 </div>
                                 <div class="w-4/10 h-25 flex justify-end">
-                                    <img src="asstes/img/silyder.producte/01.png" alt=""
+                                    <img src="{{asset('assets/img/silyder.producte/01.png')}}" alt=""
                                         class="full h-full object-top rounded-lg">
                                 </div>
                             </div>
@@ -3001,7 +2901,6 @@
                                         <h2 class="text-[16px] font-bold text-center">تجهیزات پزشکی</h2>
                                         <ul class="flex">
                                             <li>
-                                                <?xml version="1.0" encoding="utf-8"?>
                                                 <!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
                                                 <svg class="" width="16px" height="16px" viewBox="0 0 24 24" fill="none"
                                                     xmlns="http://www.w3.org/2000/svg">
@@ -3012,7 +2911,6 @@
                                                 </svg>
                                             </li>
                                             <li>
-                                                <?xml version="1.0" encoding="utf-8"?>
                                                 <!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
                                                 <svg class="" width="16px" height="16px" viewBox="0 0 24 24" fill="none"
                                                     xmlns="http://www.w3.org/2000/svg">
@@ -3023,7 +2921,6 @@
                                                 </svg>
                                             </li>
                                             <li>
-                                                <?xml version="1.0" encoding="utf-8"?>
                                                 <!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
                                                 <svg class="" width="16px" height="16px" viewBox="0 0 24 24" fill="none"
                                                     xmlns="http://www.w3.org/2000/svg">
@@ -3034,7 +2931,6 @@
                                                 </svg>
                                             </li>
                                             <li>
-                                                <?xml version="1.0" encoding="utf-8"?>
                                                 <!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
                                                 <svg class="" width="16px" height="16px" viewBox="0 0 24 24" fill="none"
                                                     xmlns="http://www.w3.org/2000/svg">
@@ -3045,7 +2941,6 @@
                                                 </svg>
                                             </li>
                                             <li>
-                                                <?xml version="1.0" encoding="utf-8"?>
                                                 <!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
                                                 <svg class="" width="16px" height="16px" viewBox="0 0 24 24" fill="none"
                                                     xmlns="http://www.w3.org/2000/svg">
@@ -3086,7 +2981,7 @@
                                     </div>
                                 </div>
                                 <div class="w-4/10 h-25 flex justify-end">
-                                    <img src="asstes/img/silyder.producte/01.png" alt=""
+                                    <img src="{{asset('assets/img/silyder.producte/01.png')}}" alt=""
                                         class="full h-full object-top rounded-lg">
                                 </div>
                             </div>
@@ -3107,7 +3002,6 @@
                                         <h2 class="text-[16px] font-bold text-center">تجهیزات پزشکی</h2>
                                         <ul class="flex">
                                             <li>
-                                                <?xml version="1.0" encoding="utf-8"?>
                                                 <!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
                                                 <svg class="" width="16px" height="16px" viewBox="0 0 24 24" fill="none"
                                                     xmlns="http://www.w3.org/2000/svg">
@@ -3118,7 +3012,6 @@
                                                 </svg>
                                             </li>
                                             <li>
-                                                <?xml version="1.0" encoding="utf-8"?>
                                                 <!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
                                                 <svg class="" width="16px" height="16px" viewBox="0 0 24 24" fill="none"
                                                     xmlns="http://www.w3.org/2000/svg">
@@ -3129,7 +3022,6 @@
                                                 </svg>
                                             </li>
                                             <li>
-                                                <?xml version="1.0" encoding="utf-8"?>
                                                 <!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
                                                 <svg class="" width="16px" height="16px" viewBox="0 0 24 24" fill="none"
                                                     xmlns="http://www.w3.org/2000/svg">
@@ -3140,7 +3032,6 @@
                                                 </svg>
                                             </li>
                                             <li>
-                                                <?xml version="1.0" encoding="utf-8"?>
                                                 <!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
                                                 <svg class="" width="16px" height="16px" viewBox="0 0 24 24" fill="none"
                                                     xmlns="http://www.w3.org/2000/svg">
@@ -3151,7 +3042,6 @@
                                                 </svg>
                                             </li>
                                             <li>
-                                                <?xml version="1.0" encoding="utf-8"?>
                                                 <!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
                                                 <svg class="" width="16px" height="16px" viewBox="0 0 24 24" fill="none"
                                                     xmlns="http://www.w3.org/2000/svg">
@@ -3192,7 +3082,7 @@
                                     </div>
                                 </div>
                                 <div class="w-4/10 h-25 flex justify-end">
-                                    <img src="asstes/img/silyder.producte/01.png" alt=""
+                                    <img src="{{asset('assets/img/silyder.producte/01.png')}}" alt=""
                                         class="full h-full object-top rounded-lg">
                                 </div>
                             </div>
@@ -3203,7 +3093,6 @@
                                         <h2 class="text-[16px] font-bold text-center">تجهیزات پزشکی</h2>
                                         <ul class="flex">
                                             <li>
-                                                <?xml version="1.0" encoding="utf-8"?>
                                                 <!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
                                                 <svg class="" width="16px" height="16px" viewBox="0 0 24 24" fill="none"
                                                     xmlns="http://www.w3.org/2000/svg">
@@ -3214,7 +3103,6 @@
                                                 </svg>
                                             </li>
                                             <li>
-                                                <?xml version="1.0" encoding="utf-8"?>
                                                 <!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
                                                 <svg class="" width="16px" height="16px" viewBox="0 0 24 24" fill="none"
                                                     xmlns="http://www.w3.org/2000/svg">
@@ -3225,7 +3113,6 @@
                                                 </svg>
                                             </li>
                                             <li>
-                                                <?xml version="1.0" encoding="utf-8"?>
                                                 <!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
                                                 <svg class="" width="16px" height="16px" viewBox="0 0 24 24" fill="none"
                                                     xmlns="http://www.w3.org/2000/svg">
@@ -3236,7 +3123,6 @@
                                                 </svg>
                                             </li>
                                             <li>
-                                                <?xml version="1.0" encoding="utf-8"?>
                                                 <!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
                                                 <svg class="" width="16px" height="16px" viewBox="0 0 24 24" fill="none"
                                                     xmlns="http://www.w3.org/2000/svg">
@@ -3247,7 +3133,6 @@
                                                 </svg>
                                             </li>
                                             <li>
-                                                <?xml version="1.0" encoding="utf-8"?>
                                                 <!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
                                                 <svg class="" width="16px" height="16px" viewBox="0 0 24 24" fill="none"
                                                     xmlns="http://www.w3.org/2000/svg">
@@ -3288,7 +3173,7 @@
                                     </div>
                                 </div>
                                 <div class="w-4/10 h-25 flex justify-end">
-                                    <img src="asstes/img/silyder.producte/01.png" alt=""
+                                    <img src="{{asset('assets/img/silyder.producte/01.png')}}" alt=""
                                         class="full h-full object-top rounded-lg">
                                 </div>
                             </div>
@@ -3299,7 +3184,6 @@
                                         <h2 class="text-[16px] font-bold text-center">تجهیزات پزشکی</h2>
                                         <ul class="flex">
                                             <li>
-                                                <?xml version="1.0" encoding="utf-8"?>
                                                 <!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
                                                 <svg class="" width="16px" height="16px" viewBox="0 0 24 24" fill="none"
                                                     xmlns="http://www.w3.org/2000/svg">
@@ -3310,7 +3194,6 @@
                                                 </svg>
                                             </li>
                                             <li>
-                                                <?xml version="1.0" encoding="utf-8"?>
                                                 <!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
                                                 <svg class="" width="16px" height="16px" viewBox="0 0 24 24" fill="none"
                                                     xmlns="http://www.w3.org/2000/svg">
@@ -3321,7 +3204,6 @@
                                                 </svg>
                                             </li>
                                             <li>
-                                                <?xml version="1.0" encoding="utf-8"?>
                                                 <!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
                                                 <svg class="" width="16px" height="16px" viewBox="0 0 24 24" fill="none"
                                                     xmlns="http://www.w3.org/2000/svg">
@@ -3332,7 +3214,6 @@
                                                 </svg>
                                             </li>
                                             <li>
-                                                <?xml version="1.0" encoding="utf-8"?>
                                                 <!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
                                                 <svg class="" width="16px" height="16px" viewBox="0 0 24 24" fill="none"
                                                     xmlns="http://www.w3.org/2000/svg">
@@ -3343,7 +3224,6 @@
                                                 </svg>
                                             </li>
                                             <li>
-                                                <?xml version="1.0" encoding="utf-8"?>
                                                 <!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
                                                 <svg class="" width="16px" height="16px" viewBox="0 0 24 24" fill="none"
                                                     xmlns="http://www.w3.org/2000/svg">
@@ -3384,7 +3264,7 @@
                                     </div>
                                 </div>
                                 <div class="w-4/10 h-25 flex justify-end">
-                                    <img src="asstes/img/silyder.producte/01.png" alt=""
+                                    <img src="{{asset('assets/img/silyder.producte/01.png')}}" alt=""
                                         class="full h-full object-top rounded-lg">
                                 </div>
                             </div>
@@ -3404,31 +3284,31 @@
             <div class="grid grid-cols-12 gap-5">
                 <!-- تصویر بزرگ -->
                 <div class="col-span-12 lg:col-span-6 h-[180px] rounded-[28px] overflow-hidden group">
-                    <img src="asstes/img/baner/gallery/06.webp"
+                    <img src="{{asset('assets/img/baner/gallery/06.webp')}}"
                         class="w-full h-full object-cover transition duration-500 group-hover:scale-110">
                 </div>
                 <!-- دو تصویر بالا -->
                 <div class="col-span-6 lg:col-span-3 h-[180px] rounded-[28px] overflow-hidden group">
-                    <img src="asstes/img/baner/gallery/02.webp"
+                    <img src="{{asset('assets/img/baner/gallery/02.webp')}}"
                         class="w-full h-full object-cover transition duration-500 group-hover:scale-110">
                 </div>
                 <div class="col-span-6 lg:col-span-3 h-[180px] rounded-[28px] overflow-hidden group">
-                    <img src="asstes/img/baner/gallery/05.webp"
+                    <img src="{{asset('assets/img/baner/gallery/05.webp')}}"
                         class="w-full h-full object-cover transition duration-500 group-hover:scale-110">
                 </div>
                 <!-- پایین چپ -->
                 <div class="col-span-6 lg:col-span-3 h-[180px] rounded-[28px] overflow-hidden group">
-                    <img src="asstes/img/baner/gallery/03.webp"
+                    <img src="{{asset('assets/img/baner/gallery/03.webp')}}"
                         class="w-full h-full object-cover transition duration-500 group-hover:scale-110">
                 </div>
                 <!-- پایین وسط -->
                 <div class="col-span-6 lg:col-span-3 h-[180px] rounded-[28px] overflow-hidden group">
-                    <img src="asstes/img/baner/gallery/04.webp"
+                    <img src="{{asset('assets/img/baner/gallery/04.webp')}}"
                         class="w-full h-full object-cover transition duration-500 group-hover:scale-110">
                 </div>
                 <!-- پایین راست -->
                 <div class="col-span-12 lg:col-span-6 h-[180px] rounded-[28px] overflow-hidden group">
-                    <img src="asstes/img/baner/gallery/01 (1).webp"
+                    <img src="{{asset('assets/img/baner/gallery/01 (1).webp')}}"
                         class="w-full h-full object-cover transition duration-500 group-hover:scale-110">
                 </div>
             </div>
@@ -3451,7 +3331,7 @@
                             <div class="">
                                 <div class="bg-[#FFF8F1] rounded-[40px] p-6 relative h-[430px]">
                                     <div class="bg-[#172230] rounded-full flex items-center gap-4 p-3">
-                                        <img src="asstes/img/baner/gallery/01 (1).webp"
+                                        <img src="{{asset('assets/img/baner/gallery/01 (1).webp')}}"
                                             class="w-16 h-16 rounded-full object-cover">
                                         <div>
                                             <h3 class="text-white font-bold text-xl">
@@ -3482,7 +3362,7 @@
                             <div class="">
                                 <div class="bg-[#FFF8F1] rounded-[40px] p-6 relative h-[430px]">
                                     <div class="bg-[#172230] rounded-full flex items-center gap-4 p-3">
-                                        <img src="asstes/img/baner/gallery/02.webp"
+                                        <img src="{{asset('assets/img/baner/gallery/02.webp')}}"
                                             class="w-16 h-16 rounded-full object-cover">
                                         <div>
                                             <h3 class="text-white font-bold text-xl">
@@ -3513,7 +3393,7 @@
                             <div class="">
                                 <div class="bg-[#FFF8F1] rounded-[40px] p-6 relative h-[430px]">
                                     <div class="bg-[#172230] rounded-full flex items-center gap-4 p-3">
-                                        <img src="asstes/img/baner/gallery/03.webp"
+                                        <img src="{{asset('assets/img/baner/gallery/03.webp')}}"
                                             class="w-16 h-16 rounded-full object-cover">
                                         <div>
                                             <h3 class="text-white font-bold text-xl">
@@ -3544,7 +3424,7 @@
                             <div class="">
                                 <div class="bg-[#FFF8F1] rounded-[40px] p-6 relative h-[430px]">
                                     <div class="bg-[#172230] rounded-full flex items-center gap-4 p-3">
-                                        <img src="asstes/img/baner/gallery/04.webp"
+                                        <img src="{{asset('assets/img/baner/gallery/04.webp')}}"
                                             class="w-16 h-16 rounded-full object-cover">
                                         <div>
                                             <h3 class="text-white font-bold text-xl">
