@@ -371,7 +371,7 @@ class CategoryController extends Controller
 
         }
 
-        storage::disk('public')->delete("category_medias/".$category->image_path);
+        Storage::disk('public')->delete("category_medias/".$category->image_path);
         $category->delete();
 
         return to_route('category.list');
