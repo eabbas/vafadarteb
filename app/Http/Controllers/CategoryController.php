@@ -48,41 +48,50 @@ class CategoryController extends Controller
             }else{
             $is_active=0;
         }
+        $parent_id=0;
         if(isset($request->parent_id)){
-            $created_category=category::create([
-                'title'=>$validation['title'],
-                'description'=>$validation['description'],
-                'summary'=>$validation['summary'],
-                'show_in_home'=>$show_in_home,
-                'is_active'=>$is_active,
-                'image_path'=>$request['image_path'],
-                'slug'=>$request['slug'],
-                'parent_id'=>$request->parent_id,
-            ]);
-            
-            if(isset($request['attributes'])){
-                foreach ($request['attributes'] as $attribute) {
-                    $permision=true;
-                    if($attribute==null){
-                        $permision=false;
-                    }
-                    if($permision){
-                        $attribute=attribute::create([
-                            "title"=>$attribute,
-                            "category_id"=>$created_category->id,
-                        ]);
-                    }
+            $parent_id=$request->parent_id;
+        }
+        $created_category=category::create([
+            'title'=>$validation['title'],
+            'description'=>$validation['description'],
+            'summary'=>$validation['summary'],
+            'show_in_home'=>$show_in_home,
+            'is_active'=>$is_active,
+            'image_path'=>$request['image_path'],
+            'slug'=>$request['slug'],
+            'parent_id'=>$parent_id,
+        ]);
+        
+        if(isset($request['attributes'])){
+            foreach ($request['attributes'] as $attribute) {
+                $permision=true;
+                if($attribute==null){
+                    $permision=false;
+                }
+                if($permision){
+                    $attribute=attribute::create([
+                        "title"=>$attribute,
+                        "category_id"=>$created_category->id,
+                    ]);
                 }
             }
-            if(isset($request->image_path)){
-                $fullName=Str::uuid().$request->image_path->getClientOriginalName();
-                $format=$request->image_path->getClientOriginalExtension();
-                $request->image_path->storeAs("category_medias","$fullName","public");
-                $created_category->image_path=$fullName;
-                $created_category->save();
-            }
         }
-        dd($created_category);
+        if(isset($request->image_path)){
+            $fullName=Str::uuid().$request->image_path->getClientOriginalName();
+            $format=$request->image_path->getClientOriginalExtension();
+            $request->image_path->storeAs("category_medias","$fullName","public");
+            $created_category->image_path=$fullName;
+            $created_category->save();
+        }
+        // dd($created_category);
+
+
+
+
+
+
+        
         // if(!isset($request->parent_id)){
         //     $created_category=category::create([
         //         'title'=>$validation['title'],
