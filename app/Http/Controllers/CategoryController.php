@@ -25,7 +25,7 @@ class CategoryController extends Controller
         dd("create");
     }
     public function store(Request $request){
-        dd($request->all());
+        // dd($request->all());
         $validation=$request->validate([
             'title'=>['required','max:255'],
             'description'=>['required','max:255'],
@@ -82,6 +82,7 @@ class CategoryController extends Controller
                 $created_category->save();
             }
         }
+        dd($created_category);
         // if(!isset($request->parent_id)){
         //     $created_category=category::create([
         //         'title'=>$validation['title'],
