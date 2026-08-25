@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\support_information;
-use Illuminate\Support\Facades\storage;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 class SupportInformationController extends Controller
 {
@@ -37,7 +37,7 @@ class SupportInformationController extends Controller
         dd('update');
     }
     public function delete(support_information $support_information){
-        storage::disk('public')->delete("user_medias/".$support_information->path);
+        Storage::disk('public')->delete("user_medias/".$support_information->path);
         $support_information->delete();
         return to_route('support_information.list');
         // dd('delete');
