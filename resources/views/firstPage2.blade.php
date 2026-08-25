@@ -1472,8 +1472,8 @@
         <div class="w-11/12 mx-auto bg-[#023350] py-10 gap-5 grid grid-cols-4 rounded-3xl mt-20">
             @foreach($SI as $support)
                 <div class="w-full md:w-4/9 lg:w-10/43 h-auto flex flex-row-reverse justify-center items-center gap-5 ">
-                    <div>
-                        <img class='w-15' src="{{asset('storage/'.$support->image)}}" alt="">
+                    <div class='min-w-15'>
+                        <img class='w-full' src="{{asset('storage/'.$support->image)}}" alt="">
                     </div>
                     <div class="text-white flex flex-col gap-3">
                         <h4 class="font-bold text-lg">{{$support->title}}</h4>
