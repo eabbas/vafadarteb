@@ -1469,79 +1469,18 @@
     </section>
     <!-- خدمات -->
     <section>
-        <div class="w-11/12 mx-auto bg-[#023350] py-10 flex gap-5 flex-wrap rounded-3xl mt-20">
-            <div
-                class="w-full md:w-4/9 lg:w-10/43 h-auto flex flex-row-reverse justify-center items-center gap-5 ">
-                <div>
-                    <svg class="fill-green-500" xmlns="http://www.w3.org/2000/svg" width="70" height="70"
-                        viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
-                        stroke-linejoin="round">
-                        <path d="M1 4h11v9H1z" />
-                        <path d="M12 7h4l3 3v3h-7" />
-                        <circle cx="6" cy="17" r="1.5" />
-                        <circle cx="17" cy="17" r="1.5" />
-                        <path d="M3 8h4" />
-                        <path d="M3 11h6" />
-                    </svg>
+        <div class="w-11/12 mx-auto bg-[#023350] py-10 gap-5 grid grid-cols-4 rounded-3xl mt-20">
+            @foreach($SI as $support)
+                <div class="w-full md:w-4/9 lg:w-10/43 h-auto flex flex-row-reverse justify-center items-center gap-5 ">
+                    <div>
+                        <img src="{{asset('assets/storage/'.$support->image)}}" alt="">
+                    </div>
+                    <div class="text-white flex flex-col gap-3">
+                        <h4 class="font-bold text-lg">{{$support->title}}</h4>
+                        <p class="text-md">{{$support->summary}}</p>
+                    </div>
                 </div>
-                <div class="text-white flex flex-col gap-3">
-                    <h4 class="font-bold text-lg">#023350</h4>
-                    <p class="text-md">Orders Over $120</p>
-                </div>
-            </div>
-            <div
-                class="w-full md:w-4/9 lg:w-10/43 h-auto flex flex-row-reverse justify-center items-center gap-5 ">
-                <div>
-                    <svg class="fill-green-500" xmlns="http://www.w3.org/2000/svg" width="70" height="70"
-                        viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
-                        stroke-linejoin="round">
-                        <path d="M6 8V4L2 8l4 4V8" />
-                        <path d="M18 16v4l4-4-4-4v4" />
-                        <path d="M6 8a7 7 0 0112-2" />
-                        <path d="M18 16a7 7 0 01-12 2" />
-                    </svg>
-
-                </div>
-                <div class="text-white flex flex-col gap-3">
-                    <h4 class="font-bold text-lg">#023350</h4>
-                    <p class="text-md">Orders Over $120</p>
-                </div>
-            </div>
-            <div
-                class="w-full md:w-4/9 lg:w-10/43 h-auto flex flex-row-reverse justify-center items-center gap-5 ">
-                <div>
-                    <svg class="fill-green-500" xmlns="http://www.w3.org/2000/svg" width="70" height="70"
-                        viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
-                        stroke-linejoin="round">
-                        <path d="M3 7a2 2 0 012-2h13a2 2 0 012 2v10a2 2 0 01-2 2H5a2 2 0 01-2-2V7z" />
-                        <path d="M15 12h4" />
-                        <circle cx="16.8" cy="12" r=".6" fill="currentColor" />
-                    </svg>
-                </div>
-                <div class="text-white flex flex-col gap-3">
-                    <h4 class="font-bold text-lg">#023350</h4>
-                    <p class="text-md">Orders Over $120</p>
-                </div>
-            </div>
-            <div
-                class="w-full md:w-4/9 lg:w-10/43 h-auto flex flex-row-reverse justify-center items-center gap-5">
-                <div>
-                    <svg class="fill-green-500" xmlns="http://www.w3.org/2000/svg" width="70" height="70"
-                        viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
-                        stroke-linejoin="round">
-                        <path d="M5 12a7 7 0 0114 0" />
-                        <rect x="3" y="11" width="3" height="6" rx="1.5" />
-                        <rect x="18" y="11" width="3" height="6" rx="1.5" />
-                        <path d="M12 19v2" />
-                        <path d="M10 21h4" />
-                        <path d="M12 19a2 2 0 002-2" />
-                    </svg>
-                </div>
-                <div class="text-white flex flex-col gap-3">
-                    <h4 class="font-bold text-lg">#023350</h4>
-                    <p class="text-md">Orders Over $120</p>
-                </div>
-            </div>
+            @endforeach 
         </div>
     </section>
     <!-- Popular Items -->
