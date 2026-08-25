@@ -1473,7 +1473,7 @@
             @foreach($SI as $support)
                 <div class="w-full md:w-4/9 lg:w-10/43 h-auto flex flex-row-reverse justify-center items-center gap-5 ">
                     <div>
-                        <img src="{{asset('storage/'.$support->image)}}" alt="">
+                        <img class='w-15' src="{{asset('storage/'.$support->image)}}" alt="">
                     </div>
                     <div class="text-white flex flex-col gap-3">
                         <h4 class="font-bold text-lg">{{$support->title}}</h4>
