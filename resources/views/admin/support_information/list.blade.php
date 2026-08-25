@@ -443,7 +443,7 @@
                             @endif
                         </td>
                         <td>
-                            <a class='metronic-action-btn bg-red-500 text-white p-1 ' href="{{route('support_information.delete',['support_information'=>$SI->id])}}"> حذف  </a>
+                            <a class='metronic-action-btn bg-green-300 text-white p-1 transition-all duration-500 hover:bg-green-500' href="{{route('support_information.edit',['support_information'=>$SI->id])}}"> ویرایش  </a>
                         </td>
                     </tr>
                     @empty

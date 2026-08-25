@@ -30,12 +30,23 @@ class SupportInformationController extends Controller
         $SI=support_information::all();
         return view('admin.support_information.list',['support_informations'=>$SI]);
     }
-    public function edit( support_information $SI){
+    public function edit( support_information $support_information){
+        return view("admin.support_information.edit",['support_information'=>$support_information]);
         dd('edit');
     }
-    public function update(Request $request , support_information $SI){
+    public function update(Request $request , support_information $support_information){
+        $support_information->title=$request->title;
+        $support_information->summary=$request->summary;
+        if(isset($request->image)){
+            Storage::disk('public')->delete("user_medias/".$support_information->path);
+            $fullName=str::uuid().$request->image->getClientOriginalName();
+            $path=$request->file('image')->storeAs("support_informations_images","$fullName","public");
+            $support_information->image=$path;
+        }
+        $support_information->save();
+        return to_route('support_information.list');
         dd('update');
-    }
+    }   
     public function delete(support_information $support_information){
         Storage::disk('public')->delete("user_medias/".$support_information->path);
         $support_information->delete();
