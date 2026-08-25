@@ -14,7 +14,7 @@ use App\Http\Middleware\checkUserExist;
 use App\Http\Middleware\checkAuthUser;
 
 Route::get('/',[UserController::class,'firstPage']);
-Route::get('/setting',[UserController::class,'firstPage']);
+Route::get('/setting',[UserController::class,'setting']);
 
 Route::group([
     'prefix'=>'user',

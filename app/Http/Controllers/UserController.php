@@ -263,4 +263,9 @@ class UserController extends Controller
         $hero = hero::first();
         return view('firstPage',['logo'=>$logo ,'hero'=>$hero]);
     }
+    public function setting(){
+        $logo = headerSetting::first();
+        $hero = hero::first();
+        return view('firstPage2',['logo'=>$logo ,'hero'=>$hero]);
+    }
 }
