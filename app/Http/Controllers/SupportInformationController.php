@@ -6,11 +6,15 @@ use Illuminate\Http\Request;
 use App\Models\support_information;
 use Illuminate\Support\Facades\storage;
 use Illuminate\Support\Str;
-
 class SupportInformationController extends Controller
 {
     public function create(){
-        return view('admin.support_information.create');
+        $flag=false;
+        $SI = support_information::all();
+        if(count($SI)<4){
+            $flag=true;
+        }
+        return view('admin.support_information.create' ,['flag'=>$flag]);
     }
     public function store(Request $request){
         $fullName=str::uuid().$request->image->getClientOriginalName();
@@ -32,7 +36,10 @@ class SupportInformationController extends Controller
     public function update(Request $request , support_information $SI){
         dd('update');
     }
-    public function delete(support_information $SI){
-        dd('delete');
+    public function delete(support_information $support_information){
+        storage::disk('public')->delete("user_medias/".$support_information->path);
+        $support_information->delete();
+        return to_route('support_information.list');
+        // dd('delete');
     }
 }

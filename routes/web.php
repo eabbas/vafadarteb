@@ -158,7 +158,7 @@ route::group([
     Route::get('/list','list')->name('list');
     Route::get('/edit/{support_information}','edit')->name('edit');
     Route::post('/update/{support_information}','update')->name('update');
-    Route::get('/delete/{support_information}','/delete')->name('/delete');
+    Route::get('/delete/{support_information}','delete')->name('delete');
 });
 
 

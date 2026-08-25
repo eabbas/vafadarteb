@@ -389,12 +389,14 @@
                     </svg>
                     {{ count($support_informations) }} مورد
                 </span>
-                <a href="{{route('support_information.create')}}" class="metronic-add-btn">
-                    <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-                        <path d="M12 5v14M5 12h14"/>
-                    </svg>
-                    جدید
-                </a>
+                @if(count($support_informations)<4)
+                    <a href="{{route('support_information.create')}}" class="metronic-add-btn">
+                        <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                            <path d="M12 5v14M5 12h14"/>
+                        </svg>
+                        جدید
+                    </a>
+                @endif
             </div>
         </div>
 
@@ -441,7 +443,7 @@
                             @endif
                         </td>
                         <td>
-
+                            <a class='metronic-action-btn bg-red-500 text-white p-1 ' href="{{route('support_information.delete',['support_information'=>$SI->id])}}"> حذف  </a>
                         </td>
                     </tr>
                     @empty
