@@ -10,6 +10,7 @@ use App\Models\permision;
 use App\Models\role_permision;
 use App\Models\headerSetting;
 use App\Models\hero;
+use App\Models\support_information;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use App\Http\Middleware\checkUserExist;
@@ -264,8 +265,9 @@ class UserController extends Controller
         return view('firstPage',['logo'=>$logo ,'hero'=>$hero]);
     }
     public function setting(){
+        $support_informations=support_information::all();
         $logo = headerSetting::first();
         $hero = hero::first();
-        return view('firstPage2',['logo'=>$logo ,'hero'=>$hero]);
+        return view('firstPage2',['logo'=>$logo ,'hero'=>$hero , 'SI'=>$support_informations]);
     }
 }
