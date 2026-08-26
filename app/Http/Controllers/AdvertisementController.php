@@ -17,7 +17,9 @@ class AdvertisementController extends Controller
     public function store(Request $request ){
         $ad=advertisement::find(1);
         if(isset($request->image_path)){
-            Storage::disk('public')->delete($ad->image_path);
+            if($ad){
+                Storage::disk('public')->delete($ad->image_path);
+            }
             $fullName=$request->image_path->getClientOriginalName();
             $path=$request->file("image_path")->storeAs("advertisement_medias",$fullName,"public");
         }else{
