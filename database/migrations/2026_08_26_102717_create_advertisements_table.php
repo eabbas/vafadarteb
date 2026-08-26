@@ -18,7 +18,6 @@ return new class extends Migration
             $table->string('summary');
             $table->string('category_id');
             $table->string('image_path');
-            $table->string('image_path');
             $table->string('is_active');
             $table->timestamps();
         });
