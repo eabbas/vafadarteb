@@ -12,5 +12,6 @@ class advertisement extends Model
         'summary',
         'category_id',
         'image_path',
+        'is_active',
     ];
 }
