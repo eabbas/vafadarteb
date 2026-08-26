@@ -15,11 +15,12 @@ class AdvertisementController extends Controller
         return view('admin.advertisement.create',['categories'=>$categories,'advertisement'=>$advertisement]);
     }
     public function store(Request $request ){
+        $ad=advertisement::find(1);
         if(isset($request->image_path)){
+            Storage::disk('public')->delete($ad->image_path);
             $fullName=$request->image_path->getClientOriginalName();
             $path=$request->file("image_path")->storeAs("advertisement_medias",$fullName,"public");
         }else{
-            $ad=advertisement::find(1);
             $path=$ad->image_path;
         }
         if(isset($request->is_active)){
