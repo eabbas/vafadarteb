@@ -73,7 +73,6 @@
 
         <!-- دکمه‌های اقدام -->
         <div class="form-actions">
-            <a href="{{route('advertisement.index')}}" class="btn btn-secondary">لغو</a>
             <button type="submit" class="btn btn-primary">ذخیره آگهی</button>
         </div>
     </form>
