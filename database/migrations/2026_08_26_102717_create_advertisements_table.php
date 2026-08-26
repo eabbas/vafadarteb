@@ -13,6 +13,13 @@ return new class extends Migration
     {
         Schema::create('advertisements', function (Blueprint $table) {
             $table->id();
+            $table->string('title');
+            $table->string('subtitle');
+            $table->string('summary');
+            $table->string('category_id');
+            $table->string('image_path');
+            $table->string('image_path');
+            $table->string('is_active');
             $table->timestamps();
         });
     }

@@ -8,6 +8,7 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\HeroController;
 use App\Http\Controllers\BrandController;
+use App\Http\Controllers\AdvertisementController;
 use App\Http\Controllers\SupportInformationController;
 use App\Http\Controllers\HeaderSettingController;
 use App\Http\Middleware\checkUserExist;
@@ -159,6 +160,14 @@ route::group([
     Route::get('/edit/{support_information}','edit')->name('edit');
     Route::post('/update/{support_information}','update')->name('update');
     Route::get('/delete/{support_information}','delete')->name('delete');
+});
+route::group([
+    'prefix'=>'advertisement',
+    'as'=>'advertisement.',
+    'controller'=>AdvertisementController::class,
+],function(){
+    Route::get('/create','create')->name('create');
+    Route::post('/store','store')->name('store');
 });
 
 
