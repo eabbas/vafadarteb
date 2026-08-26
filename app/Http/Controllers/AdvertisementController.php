@@ -15,20 +15,27 @@ class AdvertisementController extends Controller
         return view('admin.advertisement.create',['categories'=>$categories,'advertisement'=>$advertisement]);
     }
     public function store(Request $request ){
-        $ad=advertisement::find(1);
-        $path=$ad->image_path;
         if(isset($request->image_path)){
             $fullName=$request->image_path->getClientOriginalName();
             $path=$request->file("image_path")->storeAs("advertisement_medias",$fullName,"public");
-        }   
-        headerSetting::upsert(
+        }else{
+            $ad=advertisement::find(1);
+            $path=$ad->image_path;
+        }
+        if(isset($request->is_active)){
+            $is_active=$request->is_active;
+        }else{
+            $is_active=0;
+
+        }
+        advertisement::upsert(
         [
             'title'=>$request->title,
             'subtitle'=>$request->subtitle,
             'summary'=>$request->summary,
             'category_id'=>$request->category_id,
             'image_path'=>$path,
-            'is_active'=>$request->is_active,
+            'is_active'=>$is_active,
             'id'=>1
         ],[
             "id"
@@ -40,6 +47,6 @@ class AdvertisementController extends Controller
             'image_path',
             'is_active'
         ]);
-        return view('/');
+        return redirect('/');
     }
 }
