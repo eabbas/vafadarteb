@@ -2089,13 +2089,13 @@
     <!-- بهترین محصولات -->
     <section>
         <div class="w-11/12 mx-auto">
-            <img src="{{asset('assets/img/logo/IMG_20260730_170917_821.jpg')}}" alt="" class="w-full h-60 lg:h-80 object-cover rounded-2xl">
+            <img src="{{asset('storage/'.$product_label->image)}}" alt="" class="w-full h-60 lg:h-80 object-cover rounded-2xl">
             <div class="relative -top-20 w-full flex justify-center">
                 <div class="w-11/12 flex flex-wrap justify-center gap-10 lg:gap-5">
                     <div class="w-10/11 sm:w-2/3 md:w-5/11 xl:w-5/16 h-130 flex flex-col gap-5 bg-white rounded-2xl">
                         <div class="w-11/12 mx-auto">
                             <div class="w-full py-3">
-                                <span class="text-[30px] pb-3 border-b-3 items-end">تجهیزات</span>
+                                <span class="text-[30px] pb-3 border-b-3 items-end">{{$product_label->label_1}}</span>
                             </div>
                             <div class="w-full border-b-1"></div>
                         </div>
@@ -2363,7 +2363,7 @@
                     <div class="w-10/11 sm:w-2/3 md:w-5/11 xl:w-5/16 h-130 flex flex-col gap-5 bg-white rounded-2xl">
                         <div class="w-11/12 mx-auto">
                             <div class="w-full py-3">
-                                <span class="text-[30px] pb-3 border-b-3 items-end">تجهیزات</span>
+                                <span class="text-[30px] pb-3 border-b-3 items-end">{{$product_label->label_2}}</span>
                             </div>
                             <div class="w-full border-b-1"></div>
                         </div>
@@ -2631,7 +2631,7 @@
                     <div class="w-10/11 sm:w-2/3 md:w-5/11 xl:w-5/16 h-130 flex flex-col gap-5 bg-white rounded-2xl">
                         <div class="w-11/12 mx-auto">
                             <div class="w-full py-3">
-                                <span class="text-[30px] pb-3 border-b-3 items-end">تجهیزات</span>
+                                <span class="text-[30px] pb-3 border-b-3 items-end">{{$product_label->label_3}}</span>
                             </div>
                             <div class="w-full border-b-1"></div>
                         </div>
