@@ -2016,17 +2016,12 @@
     <!-- بنر2 -->
     <section>
         <div class="w-11/12 mx-auto h-85 mt-25 relative">
-            <img src="{{asset('assets/img/baner/big-banner.webp')}}" alt="" class="w-full h-full rounded-2xl object-cover">
+            <img src="{{asset('storage/'.$advertisement->image_path)}}" alt="" class="w-full h-full rounded-2xl object-cover">
             <div class="absolute w-full h-full top-0 flex flex-col justify-center items-center gap-2">
-                <h6 class="text-[25px] text-[#023350]">Mega Collections</h6>
-                <h2 class="text-[#023350] text-[40px] lg:text-[45px] font-bold text-center">Huge Sale Up To
-                    <span>40%</span>
-                    Off
-                </h2>
-                <p class="text-[18px] px-4 py-1 border-b border-t my-6">at our outlet stores</p>
-                <div class="px-4 py-2 bg-[#03a297] rounded-4xl">
-                    artan vafadar
-                </div>
+                <h6 class="text-[25px] text-[#023350] text-wrap">{{$advertisement->subtitle}}</h6>
+                <h2 class="text-[#023350] text-[40px] lg:text-[45px] font-bold text-center text-wrap">{{$advertisement->title}}</h2>
+                <p class="text-[18px] px-4 py-1 border-b border-t my-6 text-wrap">{{$advertisement->summary}}</p>
+                <a href="{{$advertisement->category_id}}" class="px-4 py-2 bg-[#03a297] rounded-4xl">{{$advertisement->category_id}}</a>
             </div>
         </div>
     </section>
