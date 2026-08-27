@@ -11,6 +11,7 @@ use App\Models\role_permision;
 use App\Models\headerSetting;
 use App\Models\hero;
 use App\Models\advertisement;
+use App\Models\product_labels;
 use App\Models\support_information;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -269,7 +270,14 @@ class UserController extends Controller
         $support_informations=support_information::all();
         $logo = headerSetting::first();
         $hero = hero::first();
+        $product_label = product_labels::first();
         $advertisement = advertisement::first();
-        return view('firstPage2',['logo'=>$logo ,'hero'=>$hero , 'SI'=>$support_informations ,'advertisement'=>$advertisement]);
+        return view('firstPage2',[
+            'logo'=>$logo ,
+            'hero'=>$hero ,
+            'SI'=>$support_informations ,
+            'advertisement'=>$advertisement,
+            'product_label'=>$product_label
+        ]);
     }
 }
