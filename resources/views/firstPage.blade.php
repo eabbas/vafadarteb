@@ -9,18 +9,18 @@
     <link rel="stylesheet" href="{{asset('assets/css/index.css')}}">
 </head>
 
-<body>
+<body class="bg-[#f3f4f6]">
 
 
     <header class="relative h-120 lg:min-h-screen">
         <!-- عکس پس زمینه -->
-        <img src="assets/img/header/13.jpg" alt="" class="absolute w-full h-full object-cover">
+        <img src="{{asset('assets/img/header/13.jpg')}}" alt="" class="absolute w-full h-full object-cover">
         <!-- لای تیره -->
         <div class="absolute w-full flex justify-center fixed z-100">
             <div class="flex w-19/20 bg-[#f3f4f6] justify-center py-5 mt-5 head">
                 <div class="w-19/20 flex justify-between">
                     <div class="flex items-center gap-10">
-                        <img src="assets/img/header/logo.png" alt="" class="w-25 sm:w-30 md:w-40">
+                        <img src="{{asset('assets/img/header/logo.png')}}" alt="" class="w-25 sm:w-30 md:w-40">
                         <ul class="flex gap-7 xl:gap-9 max-lg:hidden h-full items-center">
                             <li class="lable-1">
                                 <a href="">
@@ -107,6 +107,7 @@
                                     id="search">
                                     <div class="flex gap-2 w-95/100 mx-auto mt-3 bg-[#f0f0f1] rounded-lg ">
                                         <button class="w-1/10 md:w-10 h-10  flex justify-center items-center">
+                                            <?xml version="1.0" encoding="utf-8"?>
                                             <svg class="size-7" viewBox="0 0 24 24" fill="none"
                                                 xmlns="http://www.w3.org/2000/svg">
                                                 <path
@@ -121,6 +122,7 @@
                                     <div class="w-95/100 mx-auto h-auto flex flex-col overflow-y-auto">
                                         <div class="py-3 text-(--title) flex justify-between">
                                             <span>ARTANNNNNN</span>
+                                            <?xml version="1.0" encoding="utf-8"?>
                                             <svg class="size-7" viewBox="0 0 24 24" fill="none"
                                                 xmlns="http://www.w3.org/2000/svg">
                                                 <path
@@ -131,6 +133,7 @@
                                         </div>
                                         <div class="py-3 text-(--title) flex justify-between">
                                             <span>ARTANNNNNN</span>
+                                            <?xml version="1.0" encoding="utf-8"?>
                                             <svg class="size-7" viewBox="0 0 24 24" fill="none"
                                                 xmlns="http://www.w3.org/2000/svg">
                                                 <path
@@ -141,6 +144,7 @@
                                         </div>
                                         <div class="py-3 text-(--title) flex justify-between">
                                             <span>ARTANNNNNN</span>
+                                            <?xml version="1.0" encoding="utf-8"?>
                                             <svg class="size-7" viewBox="0 0 24 24" fill="none"
                                                 xmlns="http://www.w3.org/2000/svg">
                                                 <path
@@ -151,6 +155,7 @@
                                         </div>
                                         <div class="py-3 text-(--title) flex justify-between">
                                             <span>ARTANNNNNN</span>
+                                            <?xml version="1.0" encoding="utf-8"?>
                                             <svg class="size-7" viewBox="0 0 24 24" fill="none"
                                                 xmlns="http://www.w3.org/2000/svg">
                                                 <path
@@ -176,9 +181,6 @@
                                     <path d="M1 1h4l2.68 13.39A2 2 0 0 0 9.64 16H19a2 2 0 0 0 2-1.72L23 6H6" />
                                 </svg>
                             </div>
-                            <a href="{{route('user.loginPage')}}" class="flex h-full items-center">
-                                    <svg class='w-5' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Pro 6.5.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M336 128a112 112 0 1 0 -224 0 112 112 0 1 0 224 0zM96 128a128 128 0 1 1 256 0A128 128 0 1 1 96 128zM16 482.3c0 7.6 6.1 13.7 13.7 13.7H418.3c7.6 0 13.7-6.1 13.7-13.7C432 392.7 359.3 320 269.7 320H178.3C88.7 320 16 392.7 16 482.3zm-16 0C0 383.8 79.8 304 178.3 304h91.4C368.2 304 448 383.8 448 482.3c0 16.4-13.3 29.7-29.7 29.7H29.7C13.3 512 0 498.7 0 482.3z"/></svg>
-                            </a>
                             <div onclick="hambarger_menue('open')">
                                 <svg class="w-6 h-8 hidden max-lg:block" xmlns="http://www.w3.org/2000/svg" width="10"
                                     height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
@@ -195,7 +197,7 @@
         </div>
         <!-- محتوای هدر -->
         <div class="absolute top-1/5 sm:left-20 left-10 translate-y-1/5 z-10 max-w-xl flex flex-col items-center">
-            <h1 class="mt-6 text-2xl sm:text-3xl md:text-4xl lg:text-5xl lg:leading-15 text-center font-bold">
+            <h1 class="mt-6 text-2xl sm:text-3xl md:text-3.9xl lg:text-5xl lg:leading-15 text-center font-bold">
                 تجهیزات پزشکی
                 <br>
                 با کیفیت برای مراکز درمانی
@@ -222,13 +224,14 @@
     <!-- منوهنبرگر -->
     <section>
         <div class="w-full h-[100vh] fixed top-0 right-0 bg-white/40 overflow-hidden z-100 hidden flex" id="naser">
-            <div class="w-[300px] h-full top-0 right-0 bg-white z-200 flex flex-col gap-15">
+            <div class="w-[600px] h-full top-0 right-0 bg-white z-200 flex flex-col gap-15">
                 <div class="w-full h-25 flex border-b justify-between items-center">
                     <div>
                         <img src="{{asset('assets/img/header/logo.png')}}" alt="" class="w-30 h-full">
                     </div>
                     <div onclick="hambarger_menue('close')">
-                        <svg width="45px" height="45px" viewBox="0 0 24 24" fill="none"
+                        <?xml version="1.0" encoding="utf-8"?><!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
+                        <svg class="w-10 md:w-15 h-20" viewBox="0 0 24 24" fill="none"
                             xmlns="http://www.w3.org/2000/svg">
                             <path
                                 d="M12 13.4142L16.9497 18.364L18.364 16.9498L13.4142 12L18.364 7.05026L16.9497 5.63605L12 10.5858L7.05025 5.63605L5.63604 7.05026L10.5858 12L5.63604 16.9498L7.05025 18.364L12 13.4142Z"
@@ -243,6 +246,7 @@
                                 <span>خانه</span>
                             </div>
                             <div>
+                                <?xml version="1.0" ?>
                                 <!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
                                 <svg width="20px" height="20px" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
                                     <defs>
@@ -269,6 +273,7 @@
                                 <span>خانه</span>
                             </div>
                             <div>
+                                <?xml version="1.0" ?>
                                 <!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
                                 <svg width="20px" height="20px" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
                                     <defs>
@@ -295,6 +300,7 @@
                                 <span>درباره ما</span>
                             </div>
                             <div>
+                                <?xml version="1.0" ?>
                                 <!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
                                 <svg width="20px" height="20px" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
                                     <defs>
@@ -321,6 +327,7 @@
                                 <span>صفحات</span>
                             </div>
                             <div>
+                                <?xml version="1.0" ?>
                                 <!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
                                 <svg width="20px" height="20px" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
                                     <defs>
@@ -347,6 +354,7 @@
                                 <span>حساب</span>
                             </div>
                             <div>
+                                <?xml version="1.0" ?>
                                 <!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
                                 <svg width="20px" height="20px" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
                                     <defs>
@@ -373,6 +381,7 @@
                                 <span>دسته بندی</span>
                             </div>
                             <div>
+                                <?xml version="1.0" ?>
                                 <!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
                                 <svg width="20px" height="20px" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
                                     <defs>
@@ -399,6 +408,7 @@
                                 <span>فروشگاه</span>
                             </div>
                             <div>
+                                <?xml version="1.0" ?>
                                 <!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
                                 <svg width="20px" height="20px" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
                                     <defs>
@@ -425,6 +435,7 @@
                                 <span>وبلاگ</span>
                             </div>
                             <div>
+                                <?xml version="1.0" ?>
                                 <!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
                                 <svg width="20px" height="20px" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
                                     <defs>
@@ -451,6 +462,7 @@
                                 <span>تماس</span>
                             </div>
                             <div>
+                                <?xml version="1.0" ?>
                                 <!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
                                 <svg width="20px" height="20px" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
                                     <defs>
@@ -480,11 +492,13 @@
     </section>
     <!-- سلایدر -->
     <section>
-        <div class="w-11/12 h-30 bg-white mx-auto flex overflow-x-auto mt-20">
-            <a href="" class="min-w-50 h-auto flex flex-col gap-5 items-center">
+        <div class="w-11/12 h-30 mx-auto flex overflow-x-auto mt-20">
+            <a href="" class="px-8 h-auto flex flex-col gap-5 items-center">
                 <div>
+                    <?xml version="1.0" encoding="iso-8859-1"?>
                     <!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
 
+                    <?xml version="1.0" encoding="utf-8"?>
                     <!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
                     <svg width="50px" height="50px" viewBox="0 0 1024 1024" class="icon" version="1.1"
                         xmlns="http://www.w3.org/2000/svg">
@@ -506,13 +520,15 @@
                     </svg>
                 </div>
                 <div>
-                    <span>بخش تجهیزات</span>
+                    <span class="text-nowrap">بخش تجهیزات</span>
                 </div>
             </a>
-            <a href="" class="min-w-50 h-auto flex flex-col gap-5 items-center">
+            <a href="" class="px-8 h-auto flex flex-col gap-5 items-center">
                 <div>
+                    <?xml version="1.0" encoding="iso-8859-1"?>
                     <!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
 
+                    <?xml version="1.0" encoding="utf-8"?>
                     <!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
                     <svg width="50px" height="50px" viewBox="0 0 1024 1024" class="icon" version="1.1"
                         xmlns="http://www.w3.org/2000/svg">
@@ -534,12 +550,13 @@
                     </svg>
                 </div>
                 <div>
-                    <span>تجهیزات پانسمان</span>
+                    <span class="text-nowrap">تجهیزات پانسمان</span>
                 </div>
             </a>
-            <a href="" class="min-w-50 h-auto flex flex-col gap-5 items-center">
+            <a href="" class="px-8 h-auto flex flex-col gap-5 items-center">
                 <div>
 
+                    <?xml version="1.0" encoding="utf-8"?>
                     <!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
                     <svg width="50px" height="50px" viewBox="0 0 1024 1024" class="icon" version="1.1"
                         xmlns="http://www.w3.org/2000/svg">
@@ -565,13 +582,14 @@
                     </svg>
                 </div>
                 <div>
-                    <span>حفاظت و بهداشت فردی</span>
+                    <span class="text-nowrap">حفاظت و بهداشت فردی</span>
                 </div>
             </a>
-            <a href="" class="min-w-50 h-auto flex flex-col gap-5 items-center">
+            <a href="" class="px-8 h-auto flex flex-col gap-5 items-center">
                 <div>
                     <!-- Uploaded to: SVG Repo, www.svgrepo.com, Transformed by: SVG Repo Mixer Tools -->
 
+                    <?xml version="1.0" encoding="utf-8"?>
                     <!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
                     <svg width="50px" height="50px" viewBox="0 0 1024 1024" class="icon" version="1.1"
                         xmlns="http://www.w3.org/2000/svg">
@@ -587,13 +605,14 @@
                     </svg>
                 </div>
                 <div>
-                    <span>تزریقات</span>
+                    <span class="text-nowrap">تزریقات</span>
                 </div>
             </a>
-            <a href="" class="min-w-50 h-auto flex flex-col gap-5 items-center">
+            <a href="" class="px-8 h-auto flex flex-col gap-5 items-center">
                 <div>
                     <!-- Uploaded to: SVG Repo, www.svgrepo.com, Transformed by: SVG Repo Mixer Tools -->
 
+                    <?xml version="1.0" encoding="utf-8"?>
                     <!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
                     <svg width="50px" height="50px" viewBox="0 0 1024 1024" class="icon" version="1.1"
                         xmlns="http://www.w3.org/2000/svg">
@@ -627,13 +646,14 @@
                     </svg>
                 </div>
                 <div>
-                    <span>بهداشت و لوازم یکبار مصرف</span>
+                    <span class="text-nowrap">بهداشت و لوازم یکبار مصرف</span>
                 </div>
             </a>
-            <a href="" class="min-w-50 h-auto flex flex-col gap-5 items-center">
+            <a href="" class="px-8 h-auto flex flex-col gap-5 items-center">
                 <div>
                     <!-- Uploaded to: SVG Repo, www.svgrepo.com, Transformed by: SVG Repo Mixer Tools -->
 
+                    <?xml version="1.0" encoding="utf-8"?>
                     <!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
                     <svg width="50px" height="50px" viewBox="0 0 1024 1024" class="icon" version="1.1"
                         xmlns="http://www.w3.org/2000/svg">
@@ -688,13 +708,14 @@
                     </svg>
                 </div>
                 <div>
-                    <span>بهداشت و مراقب شخصی</span>
+                    <span class="text-nowrap">بهداشت و مراقب شخصی</span>
                 </div>
             </a>
-            <a href="" class="min-w-50 h-auto flex flex-col gap-5 items-center">
+            <a href="" class="px-8 h-auto flex flex-col gap-5 items-center">
                 <div>
                     <!-- Uploaded to: SVG Repo, www.svgrepo.com, Transformed by: SVG Repo Mixer Tools -->
 
+                    <?xml version="1.0" encoding="utf-8"?>
                     <!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
                     <svg width="50px" height="50px" viewBox="0 0 1024 1024" class="icon" version="1.1"
                         xmlns="http://www.w3.org/2000/svg">
@@ -713,13 +734,14 @@
                     </svg>
                 </div>
                 <div>
-                    <span>مراقبت از بیمار</span>
+                    <span class="text-nowrap">مراقبت از بیمار</span>
                 </div>
             </a>
-            <a href="" class="min-w-50 h-auto flex flex-col gap-5 items-center">
+            <a href="" class="px-8 h-auto flex flex-col gap-5 items-center">
                 <div>
                     <!-- Uploaded to: SVG Repo, www.svgrepo.com, Transformed by: SVG Repo Mixer Tools -->
 
+                    <?xml version="1.0" encoding="utf-8"?>
                     <!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
                     <svg width="50px" height="50px" viewBox="0 0 1024 1024" class="icon" version="1.1"
                         xmlns="http://www.w3.org/2000/svg">
@@ -747,13 +769,14 @@
                     </svg>
                 </div>
                 <div>
-                    <span>تجهیزات مصرفی</span>
+                    <span class="text-nowrap">تجهیزات مصرفی</span>
                 </div>
             </a>
-            <a href="" class="min-w-50 h-auto flex flex-col gap-5 items-center">
+            <a href="" class="px-8 h-auto flex flex-col gap-5 items-center">
                 <div>
                     <!-- Uploaded to: SVG Repo, www.svgrepo.com, Transformed by: SVG Repo Mixer Tools -->
 
+                    <?xml version="1.0" encoding="utf-8"?>
                     <!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
                     <svg width="50px" height="50px" viewBox="0 0 1024 1024" class="icon" version="1.1"
                         xmlns="http://www.w3.org/2000/svg">
@@ -770,7 +793,7 @@
                     </svg>
                 </div>
                 <div>
-                    <span>لوازم جانبی</span>
+                    <span class="text-nowrap">لوازم جانبی</span>
                 </div>
             </a>
         </div>
@@ -781,45 +804,45 @@
             <h1 class="font-bold text-[6vw] sm:text-[5vw] md:text-[4vw] lg:text-[3vw]">محصولات ویژه</h1>
         </div>
         <div class="w-19/20 h-auto mx-auto flex flex-wrap gap-5 justify-center items-center mt-8 md:mt-12 lg:mt-10">
-            <div class="max-sm:w-85 max-md:w-3/4 min-md:w-80 lg:w-2/7 h-full flex justify-end relative">
+            <div class="w-full sm:w-15/32 lg:w-10/32 h-full flex justify-end relative">
                 <img src="{{asset('assets/img/baner/img3.webp')}}" alt="" class="rounded-lg">
                 <div class="absolute w-1/2 h-full flex gap-3 flex-col justify-center items-center">
-                    <p class="py-1 px-5 bg-green-400 rounded-2xl">Sanitizer</p>
-                    <h3 class="text-center font-bold text-[1.2rem] sm:text-[3.5vw] md:text-[1.9vw] lg:text-[1.8vw]">
+                    <p class="py-1 px-3 md:px-5 bg-green-400 rounded-2xl">Sanitizer</p>
+                    <h3 class="text-center font-bold text-[1.2rem] sm:text-[2vw] md:text-[1.9vw] lg:text-[1.8vw]">
                         Hand Sanitizer
                         <br>
                         Collectons
                     </h3>
                     <a href="" class="border-b-1 border-red-500">
-                        <span class="text-[1.2rem]">shop new</span>
+                        <span class="text-[1rem] md:text-[1.2rem]">shop new</span>
                     </a>
                 </div>
             </div>
-            <div class="max-sm:w-85 max-md:w-3/4 min-md:w-80 lg:w-2/7 h-full flex justify-end relative">
+            <div class="w-full sm:w-15/32 lg:w-10/32 h-full flex justify-end relative">
                 <img src="{{asset('assets/img/baner/img1.webp')}}" alt="" class="rounded-lg">
                 <div class="absolute w-1/2 h-full flex gap-3 flex-col justify-center items-center">
-                    <p class="py-1 px-5 bg-green-400 rounded-2xl">Sanitizer</p>
-                    <h3 class="text-center font-bold text-[1.2rem] sm:text-[3.5vw] md:text-[1.9vw] lg:text-[1.8vw]">
+                    <p class="py-1 px-3 md:px-5 bg-green-400 rounded-2xl">Sanitizer</p>
+                    <h3 class="text-center font-bold text-[1.2rem] sm:text-[2vw] md:text-[1.9vw] lg:text-[1.8vw]">
                         Hand Sanitizer
                         <br>
                         Collectons
                     </h3>
                     <a href="" class="border-b-1 border-red-500">
-                        <span class="text-[1.2rem]">shop new</span>
+                        <span class="text-[1rem] md:text-[1.2rem]">shop new</span>
                     </a>
                 </div>
             </div>
-            <div class="max-sm:w-85 max-md:w-3/4 min-md:w-80 lg:w-2/7 h-full flex justify-end relative">
+            <div class="w-full sm:w-15/32 lg:w-10/32 h-full flex justify-end relative">
                 <img src="{{asset('assets/img/baner/img2.webp')}}" alt="" class="rounded-lg">
                 <div class="absolute w-1/2 h-full flex gap-3 flex-col justify-center items-center">
-                    <p class="py-1 px-5 bg-green-400 rounded-2xl">Sanitizer</p>
-                    <h3 class="text-center font-bold text-[1.2rem] sm:text-[3.5vw] md:text-[1.9vw] lg:text-[1.8vw]">
+                    <p class="py-1 px-3 md:px-5 bg-green-400 rounded-2xl">Sanitizer</p>
+                    <h3 class="text-center font-bold text-[1.2rem] sm:text-[2vw] md:text-[1.9vw] lg:text-[1.8vw]">
                         Hand Sanitizer
                         <br>
                         Collectons
                     </h3>
                     <a href="" class="border-b-1 border-red-500">
-                        <span class="text-[1.2rem]">shop new</span>
+                        <span class="text-[1rem] md:text-[1.2rem]">shop new</span>
                     </a>
                 </div>
             </div>
@@ -877,6 +900,7 @@
                                 فلورا</span>
                             <ul class="flex gap-1">
                                 <li>
+                                    <?xml version="1.0" encoding="utf-8"?>
                                     <!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
                                     <svg class="fill-[#fba707]" width="16px" height="16px" viewBox="0 0 24 24"
                                         xmlns="http://www.w3.org/2000/svg">
@@ -887,6 +911,7 @@
                                     </svg>
                                 </li>
                                 <li>
+                                    <?xml version="1.0" encoding="utf-8"?>
                                     <!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
                                     <svg class="fill-[#fba707]" width="16px" height="16px" viewBox="0 0 24 24"
                                         xmlns="http://www.w3.org/2000/svg">
@@ -897,6 +922,7 @@
                                     </svg>
                                 </li>
                                 <li>
+                                    <?xml version="1.0" encoding="utf-8"?>
                                     <!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
                                     <svg class="fill-[#fba707]" width="16px" height="16px" viewBox="0 0 24 24"
                                         xmlns="http://www.w3.org/2000/svg">
@@ -907,6 +933,7 @@
                                     </svg>
                                 </li>
                                 <li>
+                                    <?xml version="1.0" encoding="utf-8"?>
                                     <!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
                                     <svg class="" width="16px" height="16px" viewBox="0 0 24 24" fill="none"
                                         xmlns="http://www.w3.org/2000/svg">
@@ -917,252 +944,7 @@
                                     </svg>
                                 </li>
                                 <li>
-                                    <!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
-                                    <svg class="" width="16px" height="16px" viewBox="0 0 24 24" fill="none"
-                                        xmlns="http://www.w3.org/2000/svg">
-                                        <path
-                                            d="M11.2691 4.41115C11.5006 3.89177 11.6164 3.63208 11.7776 3.55211C11.9176 3.48263 12.082 3.48263 12.222 3.55211C12.3832 3.63208 12.499 3.89177 12.7305 4.41115L14.5745 8.54808C14.643 8.70162 14.6772 8.77839 14.7302 8.83718C14.777 8.8892 14.8343 8.93081 14.8982 8.95929C14.9705 8.99149 15.0541 9.00031 15.2213 9.01795L19.7256 9.49336C20.2911 9.55304 20.5738 9.58288 20.6997 9.71147C20.809 9.82316 20.8598 9.97956 20.837 10.1342C20.8108 10.3122 20.5996 10.5025 20.1772 10.8832L16.8125 13.9154C16.6877 14.0279 16.6252 14.0842 16.5857 14.1527C16.5507 14.2134 16.5288 14.2807 16.5215 14.3503C16.5132 14.429 16.5306 14.5112 16.5655 14.6757L17.5053 19.1064C17.6233 19.6627 17.6823 19.9408 17.5989 20.1002C17.5264 20.2388 17.3934 20.3354 17.2393 20.3615C17.0619 20.3915 16.8156 20.2495 16.323 19.9654L12.3995 17.7024C12.2539 17.6184 12.1811 17.5765 12.1037 17.56C12.0352 17.5455 11.9644 17.5455 11.8959 17.56C11.8185 17.5765 11.7457 17.6184 11.6001 17.7024L7.67662 19.9654C7.18404 20.2495 6.93775 20.3915 6.76034 20.3615C6.60623 20.3354 6.47319 20.2388 6.40075 20.1002C6.31736 19.9408 6.37635 19.6627 6.49434 19.1064L7.4341 14.6757C7.46898 14.5112 7.48642 14.429 7.47814 14.3503C7.47081 14.2807 7.44894 14.2134 7.41394 14.1527C7.37439 14.0842 7.31195 14.0279 7.18708 13.9154L3.82246 10.8832C3.40005 10.5025 3.18884 10.3122 3.16258 10.1342C3.13978 9.97956 3.19059 9.82316 3.29993 9.71147C3.42581 9.58288 3.70856 9.55304 4.27406 9.49336L8.77835 9.01795C8.94553 9.00031 9.02911 8.99149 9.10139 8.95929C9.16534 8.93081 9.2226 8.8892 9.26946 8.83718C9.32241 8.77839 9.35663 8.70162 9.42508 8.54808L11.2691 4.41115Z"
-                                            stroke="#fba707" stroke-width="2" stroke-linecap="round"
-                                            stroke-linejoin="round" />
-                                    </svg>
-                                </li>
-                            </ul>
-                            <span class="text-[#fd6a6a]">100.000 تومان</span>
-                        </div>
-                        <div>
-                            <svg class="w-13 h-9" fill="#000000" viewBox="0 0 32 32"
-                                style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;"
-                                version="1.1" xml:space="preserve" xmlns="http://www.w3.org/2000/svg"
-                                xmlns:serif="http://www.serif.com/" xmlns:xlink="http://www.w3.org/1999/xlink">
-                                <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
-                                <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round">
-                                </g>
-                                <g id="SVGRepo_iconCarrier">
-                                    <g transform="matrix(1,0,0,1,-432,0)">
-                                        <g transform="matrix(1.125,0,0,1,375.898,0)">
-                                            <path
-                                                d="M71.196,10.9C71.148,9.836 70.367,9 69.42,9C66.684,9 61.316,9 58.58,9C57.633,9 56.852,9.836 56.804,10.9C56.638,14.653 56.267,22.991 56.093,26.9C56.069,27.447 56.245,27.982 56.581,28.378C56.916,28.775 57.382,29 57.869,29C60.948,29 67.052,29 70.131,29C70.618,29 71.084,28.775 71.419,28.378C71.755,27.982 71.931,27.447 71.907,26.9C71.733,22.991 71.362,14.653 71.196,10.9Z"
-                                                style="fill:#03a297;"></path>
-                                        </g>
-                                        <path
-                                            d="M442.898,8L441.8,8C440.201,8 438.884,9.254 438.804,10.85C438.616,14.603 438.199,22.941 438.004,26.85C437.963,27.671 438.26,28.472 438.826,29.068C439.393,29.663 440.178,30 441,30L454.795,30C455.617,30 456.402,29.663 456.969,29.068C457.535,28.472 457.832,27.671 457.791,26.85L456.991,10.85C456.911,9.254 455.594,8 453.995,8L452.898,8L452.898,6C452.898,3.24 450.657,1 447.898,1C445.138,1 442.898,3.24 442.898,6L442.898,8ZM455.746,26L455.794,26.95C455.807,27.224 455.708,27.491 455.52,27.689C455.331,27.888 455.069,28 454.795,28C454.795,28 441,28 441,28C440.726,28 440.464,27.888 440.275,27.689C440.087,27.491 439.988,27.224 440.001,26.95L440.049,26L455.746,26ZM452.898,10L452.898,13C452.898,13.552 452.449,14 451.898,14C451.346,14 450.898,13.552 450.898,13L450.898,10L444.898,10L444.898,13C444.898,13.552 444.449,14 443.898,14C443.346,14 442.898,13.552 442.898,13L442.898,10L441.8,10C441.267,10 440.828,10.418 440.801,10.95L440.149,24L455.646,24L454.994,10.95C454.967,10.418 454.528,10 453.995,10L452.898,10ZM450.898,8L450.898,6C450.898,4.344 449.553,3 447.898,3C446.242,3 444.898,4.344 444.898,6L444.898,8L450.898,8Z"
-                                            style="fill:#03a297;"></path>
-                                    </g>
-                                </g>
-                            </svg>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="min-w-65 h-55 relative group">
-                <div
-                    class="absolute bottom-0 w-full h-1/3 bg-[#ebf8f7]/90 -z-50 group-hover:h-2/3 transition-all duration-300">
-                </div>
-                <div
-                    class="absolute w-2/3 h-10 rounded-b-2xl bottom-5 right-1/6 z-50 hidden group-hover:block transition-all duration-400">
-                    <div class="flex gap-4 flex justify-center items-center">
-                        <div class="p-2 bg-green-400 rounded-2xl">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="21" height="21" fill="none"
-                                viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M17 1l4 4-4 4" />
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M21 5H9a5 5 0 0 0-5 5" />
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M7 23l-4-4 4-4" />
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M3 19h12a5 5 0 0 0 5-5" />
-                            </svg>
-                        </div>
-                        <div class="p-2 bg-green-400 rounded-2xl">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="21" height="21" fill="none"
-                                viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M17 1l4 4-4 4" />
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M21 5H9a5 5 0 0 0-5 5" />
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M7 23l-4-4 4-4" />
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M3 19h12a5 5 0 0 0 5-5" />
-                            </svg>
-                        </div>
-                        <div class="p-2 bg-green-400 rounded-2xl">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="21" height="21" fill="none"
-                                viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M17 1l4 4-4 4" />
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M21 5H9a5 5 0 0 0-5 5" />
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M7 23l-4-4 4-4" />
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M3 19h12a5 5 0 0 0 5-5" />
-                            </svg>
-                        </div>
-                    </div>
-                </div>
-                <a href="" class="flex justify-center">
-                    <img src="{{asset('assets/img/silyder.producte/03.webp')}}" alt="" class="w-50 h-auto object-cover">
-                </a>
-                <div class="absolute w-full mx-autoh-auto bg-[#ebf8f7] rounded-b-2xl overflow-hidden">
-                    <div class="w-18/20 mx-auto py-6 bg-[#ebf8f7] flex justify-between gap-3 items-end">
-                        <div class="flex flex-col gap-2">
-                            <span class="font-bold text-lg text-[#023350] hover:text-[#03a297]">ایرانی و عالی قطره
-                                فلورا</span>
-                            <ul class="flex gap-1">
-                                <li>
-                                    <!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
-                                    <svg class="fill-[#fba707]" width="16px" height="16px" viewBox="0 0 24 24"
-                                        xmlns="http://www.w3.org/2000/svg">
-                                        <path
-                                            d="M11.2691 4.41115C11.5006 3.89177 11.6164 3.63208 11.7776 3.55211C11.9176 3.48263 12.082 3.48263 12.222 3.55211C12.3832 3.63208 12.499 3.89177 12.7305 4.41115L14.5745 8.54808C14.643 8.70162 14.6772 8.77839 14.7302 8.83718C14.777 8.8892 14.8343 8.93081 14.8982 8.95929C14.9705 8.99149 15.0541 9.00031 15.2213 9.01795L19.7256 9.49336C20.2911 9.55304 20.5738 9.58288 20.6997 9.71147C20.809 9.82316 20.8598 9.97956 20.837 10.1342C20.8108 10.3122 20.5996 10.5025 20.1772 10.8832L16.8125 13.9154C16.6877 14.0279 16.6252 14.0842 16.5857 14.1527C16.5507 14.2134 16.5288 14.2807 16.5215 14.3503C16.5132 14.429 16.5306 14.5112 16.5655 14.6757L17.5053 19.1064C17.6233 19.6627 17.6823 19.9408 17.5989 20.1002C17.5264 20.2388 17.3934 20.3354 17.2393 20.3615C17.0619 20.3915 16.8156 20.2495 16.323 19.9654L12.3995 17.7024C12.2539 17.6184 12.1811 17.5765 12.1037 17.56C12.0352 17.5455 11.9644 17.5455 11.8959 17.56C11.8185 17.5765 11.7457 17.6184 11.6001 17.7024L7.67662 19.9654C7.18404 20.2495 6.93775 20.3915 6.76034 20.3615C6.60623 20.3354 6.47319 20.2388 6.40075 20.1002C6.31736 19.9408 6.37635 19.6627 6.49434 19.1064L7.4341 14.6757C7.46898 14.5112 7.48642 14.429 7.47814 14.3503C7.47081 14.2807 7.44894 14.2134 7.41394 14.1527C7.37439 14.0842 7.31195 14.0279 7.18708 13.9154L3.82246 10.8832C3.40005 10.5025 3.18884 10.3122 3.16258 10.1342C3.13978 9.97956 3.19059 9.82316 3.29993 9.71147C3.42581 9.58288 3.70856 9.55304 4.27406 9.49336L8.77835 9.01795C8.94553 9.00031 9.02911 8.99149 9.10139 8.95929C9.16534 8.93081 9.2226 8.8892 9.26946 8.83718C9.32241 8.77839 9.35663 8.70162 9.42508 8.54808L11.2691 4.41115Z"
-                                            stroke="#fba707" stroke-width="2" stroke-linecap="round"
-                                            stroke-linejoin="round" />
-                                    </svg>
-                                </li>
-                                <li>
-                                    <!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
-                                    <svg class="fill-[#fba707]" width="16px" height="16px" viewBox="0 0 24 24"
-                                        xmlns="http://www.w3.org/2000/svg">
-                                        <path
-                                            d="M11.2691 4.41115C11.5006 3.89177 11.6164 3.63208 11.7776 3.55211C11.9176 3.48263 12.082 3.48263 12.222 3.55211C12.3832 3.63208 12.499 3.89177 12.7305 4.41115L14.5745 8.54808C14.643 8.70162 14.6772 8.77839 14.7302 8.83718C14.777 8.8892 14.8343 8.93081 14.8982 8.95929C14.9705 8.99149 15.0541 9.00031 15.2213 9.01795L19.7256 9.49336C20.2911 9.55304 20.5738 9.58288 20.6997 9.71147C20.809 9.82316 20.8598 9.97956 20.837 10.1342C20.8108 10.3122 20.5996 10.5025 20.1772 10.8832L16.8125 13.9154C16.6877 14.0279 16.6252 14.0842 16.5857 14.1527C16.5507 14.2134 16.5288 14.2807 16.5215 14.3503C16.5132 14.429 16.5306 14.5112 16.5655 14.6757L17.5053 19.1064C17.6233 19.6627 17.6823 19.9408 17.5989 20.1002C17.5264 20.2388 17.3934 20.3354 17.2393 20.3615C17.0619 20.3915 16.8156 20.2495 16.323 19.9654L12.3995 17.7024C12.2539 17.6184 12.1811 17.5765 12.1037 17.56C12.0352 17.5455 11.9644 17.5455 11.8959 17.56C11.8185 17.5765 11.7457 17.6184 11.6001 17.7024L7.67662 19.9654C7.18404 20.2495 6.93775 20.3915 6.76034 20.3615C6.60623 20.3354 6.47319 20.2388 6.40075 20.1002C6.31736 19.9408 6.37635 19.6627 6.49434 19.1064L7.4341 14.6757C7.46898 14.5112 7.48642 14.429 7.47814 14.3503C7.47081 14.2807 7.44894 14.2134 7.41394 14.1527C7.37439 14.0842 7.31195 14.0279 7.18708 13.9154L3.82246 10.8832C3.40005 10.5025 3.18884 10.3122 3.16258 10.1342C3.13978 9.97956 3.19059 9.82316 3.29993 9.71147C3.42581 9.58288 3.70856 9.55304 4.27406 9.49336L8.77835 9.01795C8.94553 9.00031 9.02911 8.99149 9.10139 8.95929C9.16534 8.93081 9.2226 8.8892 9.26946 8.83718C9.32241 8.77839 9.35663 8.70162 9.42508 8.54808L11.2691 4.41115Z"
-                                            stroke="#fba707" stroke-width="2" stroke-linecap="round"
-                                            stroke-linejoin="round" />
-                                    </svg>
-                                </li>
-                                <li>
-                                    <!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
-                                    <svg class="fill-[#fba707]" width="16px" height="16px" viewBox="0 0 24 24"
-                                        xmlns="http://www.w3.org/2000/svg">
-                                        <path
-                                            d="M11.2691 4.41115C11.5006 3.89177 11.6164 3.63208 11.7776 3.55211C11.9176 3.48263 12.082 3.48263 12.222 3.55211C12.3832 3.63208 12.499 3.89177 12.7305 4.41115L14.5745 8.54808C14.643 8.70162 14.6772 8.77839 14.7302 8.83718C14.777 8.8892 14.8343 8.93081 14.8982 8.95929C14.9705 8.99149 15.0541 9.00031 15.2213 9.01795L19.7256 9.49336C20.2911 9.55304 20.5738 9.58288 20.6997 9.71147C20.809 9.82316 20.8598 9.97956 20.837 10.1342C20.8108 10.3122 20.5996 10.5025 20.1772 10.8832L16.8125 13.9154C16.6877 14.0279 16.6252 14.0842 16.5857 14.1527C16.5507 14.2134 16.5288 14.2807 16.5215 14.3503C16.5132 14.429 16.5306 14.5112 16.5655 14.6757L17.5053 19.1064C17.6233 19.6627 17.6823 19.9408 17.5989 20.1002C17.5264 20.2388 17.3934 20.3354 17.2393 20.3615C17.0619 20.3915 16.8156 20.2495 16.323 19.9654L12.3995 17.7024C12.2539 17.6184 12.1811 17.5765 12.1037 17.56C12.0352 17.5455 11.9644 17.5455 11.8959 17.56C11.8185 17.5765 11.7457 17.6184 11.6001 17.7024L7.67662 19.9654C7.18404 20.2495 6.93775 20.3915 6.76034 20.3615C6.60623 20.3354 6.47319 20.2388 6.40075 20.1002C6.31736 19.9408 6.37635 19.6627 6.49434 19.1064L7.4341 14.6757C7.46898 14.5112 7.48642 14.429 7.47814 14.3503C7.47081 14.2807 7.44894 14.2134 7.41394 14.1527C7.37439 14.0842 7.31195 14.0279 7.18708 13.9154L3.82246 10.8832C3.40005 10.5025 3.18884 10.3122 3.16258 10.1342C3.13978 9.97956 3.19059 9.82316 3.29993 9.71147C3.42581 9.58288 3.70856 9.55304 4.27406 9.49336L8.77835 9.01795C8.94553 9.00031 9.02911 8.99149 9.10139 8.95929C9.16534 8.93081 9.2226 8.8892 9.26946 8.83718C9.32241 8.77839 9.35663 8.70162 9.42508 8.54808L11.2691 4.41115Z"
-                                            stroke="#fba707" stroke-width="2" stroke-linecap="round"
-                                            stroke-linejoin="round" />
-                                    </svg>
-                                </li>
-                                <li>
-                                    <!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
-                                    <svg class="" width="16px" height="16px" viewBox="0 0 24 24" fill="none"
-                                        xmlns="http://www.w3.org/2000/svg">
-                                        <path
-                                            d="M11.2691 4.41115C11.5006 3.89177 11.6164 3.63208 11.7776 3.55211C11.9176 3.48263 12.082 3.48263 12.222 3.55211C12.3832 3.63208 12.499 3.89177 12.7305 4.41115L14.5745 8.54808C14.643 8.70162 14.6772 8.77839 14.7302 8.83718C14.777 8.8892 14.8343 8.93081 14.8982 8.95929C14.9705 8.99149 15.0541 9.00031 15.2213 9.01795L19.7256 9.49336C20.2911 9.55304 20.5738 9.58288 20.6997 9.71147C20.809 9.82316 20.8598 9.97956 20.837 10.1342C20.8108 10.3122 20.5996 10.5025 20.1772 10.8832L16.8125 13.9154C16.6877 14.0279 16.6252 14.0842 16.5857 14.1527C16.5507 14.2134 16.5288 14.2807 16.5215 14.3503C16.5132 14.429 16.5306 14.5112 16.5655 14.6757L17.5053 19.1064C17.6233 19.6627 17.6823 19.9408 17.5989 20.1002C17.5264 20.2388 17.3934 20.3354 17.2393 20.3615C17.0619 20.3915 16.8156 20.2495 16.323 19.9654L12.3995 17.7024C12.2539 17.6184 12.1811 17.5765 12.1037 17.56C12.0352 17.5455 11.9644 17.5455 11.8959 17.56C11.8185 17.5765 11.7457 17.6184 11.6001 17.7024L7.67662 19.9654C7.18404 20.2495 6.93775 20.3915 6.76034 20.3615C6.60623 20.3354 6.47319 20.2388 6.40075 20.1002C6.31736 19.9408 6.37635 19.6627 6.49434 19.1064L7.4341 14.6757C7.46898 14.5112 7.48642 14.429 7.47814 14.3503C7.47081 14.2807 7.44894 14.2134 7.41394 14.1527C7.37439 14.0842 7.31195 14.0279 7.18708 13.9154L3.82246 10.8832C3.40005 10.5025 3.18884 10.3122 3.16258 10.1342C3.13978 9.97956 3.19059 9.82316 3.29993 9.71147C3.42581 9.58288 3.70856 9.55304 4.27406 9.49336L8.77835 9.01795C8.94553 9.00031 9.02911 8.99149 9.10139 8.95929C9.16534 8.93081 9.2226 8.8892 9.26946 8.83718C9.32241 8.77839 9.35663 8.70162 9.42508 8.54808L11.2691 4.41115Z"
-                                            stroke="#fba707" stroke-width="2" stroke-linecap="round"
-                                            stroke-linejoin="round" />
-                                    </svg>
-                                </li>
-                                <li>
-                                    <!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
-                                    <svg class="" width="16px" height="16px" viewBox="0 0 24 24" fill="none"
-                                        xmlns="http://www.w3.org/2000/svg">
-                                        <path
-                                            d="M11.2691 4.41115C11.5006 3.89177 11.6164 3.63208 11.7776 3.55211C11.9176 3.48263 12.082 3.48263 12.222 3.55211C12.3832 3.63208 12.499 3.89177 12.7305 4.41115L14.5745 8.54808C14.643 8.70162 14.6772 8.77839 14.7302 8.83718C14.777 8.8892 14.8343 8.93081 14.8982 8.95929C14.9705 8.99149 15.0541 9.00031 15.2213 9.01795L19.7256 9.49336C20.2911 9.55304 20.5738 9.58288 20.6997 9.71147C20.809 9.82316 20.8598 9.97956 20.837 10.1342C20.8108 10.3122 20.5996 10.5025 20.1772 10.8832L16.8125 13.9154C16.6877 14.0279 16.6252 14.0842 16.5857 14.1527C16.5507 14.2134 16.5288 14.2807 16.5215 14.3503C16.5132 14.429 16.5306 14.5112 16.5655 14.6757L17.5053 19.1064C17.6233 19.6627 17.6823 19.9408 17.5989 20.1002C17.5264 20.2388 17.3934 20.3354 17.2393 20.3615C17.0619 20.3915 16.8156 20.2495 16.323 19.9654L12.3995 17.7024C12.2539 17.6184 12.1811 17.5765 12.1037 17.56C12.0352 17.5455 11.9644 17.5455 11.8959 17.56C11.8185 17.5765 11.7457 17.6184 11.6001 17.7024L7.67662 19.9654C7.18404 20.2495 6.93775 20.3915 6.76034 20.3615C6.60623 20.3354 6.47319 20.2388 6.40075 20.1002C6.31736 19.9408 6.37635 19.6627 6.49434 19.1064L7.4341 14.6757C7.46898 14.5112 7.48642 14.429 7.47814 14.3503C7.47081 14.2807 7.44894 14.2134 7.41394 14.1527C7.37439 14.0842 7.31195 14.0279 7.18708 13.9154L3.82246 10.8832C3.40005 10.5025 3.18884 10.3122 3.16258 10.1342C3.13978 9.97956 3.19059 9.82316 3.29993 9.71147C3.42581 9.58288 3.70856 9.55304 4.27406 9.49336L8.77835 9.01795C8.94553 9.00031 9.02911 8.99149 9.10139 8.95929C9.16534 8.93081 9.2226 8.8892 9.26946 8.83718C9.32241 8.77839 9.35663 8.70162 9.42508 8.54808L11.2691 4.41115Z"
-                                            stroke="#fba707" stroke-width="2" stroke-linecap="round"
-                                            stroke-linejoin="round" />
-                                    </svg>
-                                </li>
-                            </ul>
-                            <span class="text-[#fd6a6a]">100.000 تومان</span>
-                        </div>
-                        <div>
-                            <svg class="w-13 h-9" fill="#000000" viewBox="0 0 32 32"
-                                style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;"
-                                version="1.1" xml:space="preserve" xmlns="http://www.w3.org/2000/svg"
-                                xmlns:serif="http://www.serif.com/" xmlns:xlink="http://www.w3.org/1999/xlink">
-                                <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
-                                <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round">
-                                </g>
-                                <g id="SVGRepo_iconCarrier">
-                                    <g transform="matrix(1,0,0,1,-432,0)">
-                                        <g transform="matrix(1.125,0,0,1,375.898,0)">
-                                            <path
-                                                d="M71.196,10.9C71.148,9.836 70.367,9 69.42,9C66.684,9 61.316,9 58.58,9C57.633,9 56.852,9.836 56.804,10.9C56.638,14.653 56.267,22.991 56.093,26.9C56.069,27.447 56.245,27.982 56.581,28.378C56.916,28.775 57.382,29 57.869,29C60.948,29 67.052,29 70.131,29C70.618,29 71.084,28.775 71.419,28.378C71.755,27.982 71.931,27.447 71.907,26.9C71.733,22.991 71.362,14.653 71.196,10.9Z"
-                                                style="fill:#03a297;"></path>
-                                        </g>
-                                        <path
-                                            d="M442.898,8L441.8,8C440.201,8 438.884,9.254 438.804,10.85C438.616,14.603 438.199,22.941 438.004,26.85C437.963,27.671 438.26,28.472 438.826,29.068C439.393,29.663 440.178,30 441,30L454.795,30C455.617,30 456.402,29.663 456.969,29.068C457.535,28.472 457.832,27.671 457.791,26.85L456.991,10.85C456.911,9.254 455.594,8 453.995,8L452.898,8L452.898,6C452.898,3.24 450.657,1 447.898,1C445.138,1 442.898,3.24 442.898,6L442.898,8ZM455.746,26L455.794,26.95C455.807,27.224 455.708,27.491 455.52,27.689C455.331,27.888 455.069,28 454.795,28C454.795,28 441,28 441,28C440.726,28 440.464,27.888 440.275,27.689C440.087,27.491 439.988,27.224 440.001,26.95L440.049,26L455.746,26ZM452.898,10L452.898,13C452.898,13.552 452.449,14 451.898,14C451.346,14 450.898,13.552 450.898,13L450.898,10L444.898,10L444.898,13C444.898,13.552 444.449,14 443.898,14C443.346,14 442.898,13.552 442.898,13L442.898,10L441.8,10C441.267,10 440.828,10.418 440.801,10.95L440.149,24L455.646,24L454.994,10.95C454.967,10.418 454.528,10 453.995,10L452.898,10ZM450.898,8L450.898,6C450.898,4.344 449.553,3 447.898,3C446.242,3 444.898,4.344 444.898,6L444.898,8L450.898,8Z"
-                                            style="fill:#03a297;"></path>
-                                    </g>
-                                </g>
-                            </svg>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="min-w-65 h-55 relative group">
-                <div
-                    class="absolute bottom-0 w-full h-1/3 bg-[#ebf8f7]/90 -z-50 group-hover:h-2/3 transition-all duration-300">
-                </div>
-                <div
-                    class="absolute w-2/3 h-10 rounded-b-2xl bottom-5 right-1/6 z-50 hidden group-hover:block transition-all duration-400">
-                    <div class="flex gap-4 flex justify-center items-center">
-                        <div class="p-2 bg-green-400 rounded-2xl">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="21" height="21" fill="none"
-                                viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M17 1l4 4-4 4" />
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M21 5H9a5 5 0 0 0-5 5" />
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M7 23l-4-4 4-4" />
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M3 19h12a5 5 0 0 0 5-5" />
-                            </svg>
-                        </div>
-                        <div class="p-2 bg-green-400 rounded-2xl">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="21" height="21" fill="none"
-                                viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M17 1l4 4-4 4" />
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M21 5H9a5 5 0 0 0-5 5" />
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M7 23l-4-4 4-4" />
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M3 19h12a5 5 0 0 0 5-5" />
-                            </svg>
-                        </div>
-                        <div class="p-2 bg-green-400 rounded-2xl">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="21" height="21" fill="none"
-                                viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M17 1l4 4-4 4" />
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M21 5H9a5 5 0 0 0-5 5" />
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M7 23l-4-4 4-4" />
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M3 19h12a5 5 0 0 0 5-5" />
-                            </svg>
-                        </div>
-                    </div>
-                </div>
-                <a href="" class="flex justify-center">
-                    <img src="{{asset('assets/img/silyder.producte/01.png')}}" alt="" class="w-50 h-auto object-cover">
-                </a>
-                <div class="absolute w-full mx-autoh-auto bg-[#ebf8f7] rounded-b-2xl overflow-hidden">
-                    <div class="w-18/20 mx-auto py-6 bg-[#ebf8f7] flex justify-between gap-3 items-end">
-                        <div class="flex flex-col gap-2">
-                            <span class="font-bold text-lg text-[#023350] hover:text-[#03a297]">ایرانی و عالی قطره
-                                فلورا</span>
-                            <ul class="flex gap-1">
-                                <li>
-                                    <!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
-                                    <svg class="fill-[#fba707]" width="16px" height="16px" viewBox="0 0 24 24"
-                                        xmlns="http://www.w3.org/2000/svg">
-                                        <path
-                                            d="M11.2691 4.41115C11.5006 3.89177 11.6164 3.63208 11.7776 3.55211C11.9176 3.48263 12.082 3.48263 12.222 3.55211C12.3832 3.63208 12.499 3.89177 12.7305 4.41115L14.5745 8.54808C14.643 8.70162 14.6772 8.77839 14.7302 8.83718C14.777 8.8892 14.8343 8.93081 14.8982 8.95929C14.9705 8.99149 15.0541 9.00031 15.2213 9.01795L19.7256 9.49336C20.2911 9.55304 20.5738 9.58288 20.6997 9.71147C20.809 9.82316 20.8598 9.97956 20.837 10.1342C20.8108 10.3122 20.5996 10.5025 20.1772 10.8832L16.8125 13.9154C16.6877 14.0279 16.6252 14.0842 16.5857 14.1527C16.5507 14.2134 16.5288 14.2807 16.5215 14.3503C16.5132 14.429 16.5306 14.5112 16.5655 14.6757L17.5053 19.1064C17.6233 19.6627 17.6823 19.9408 17.5989 20.1002C17.5264 20.2388 17.3934 20.3354 17.2393 20.3615C17.0619 20.3915 16.8156 20.2495 16.323 19.9654L12.3995 17.7024C12.2539 17.6184 12.1811 17.5765 12.1037 17.56C12.0352 17.5455 11.9644 17.5455 11.8959 17.56C11.8185 17.5765 11.7457 17.6184 11.6001 17.7024L7.67662 19.9654C7.18404 20.2495 6.93775 20.3915 6.76034 20.3615C6.60623 20.3354 6.47319 20.2388 6.40075 20.1002C6.31736 19.9408 6.37635 19.6627 6.49434 19.1064L7.4341 14.6757C7.46898 14.5112 7.48642 14.429 7.47814 14.3503C7.47081 14.2807 7.44894 14.2134 7.41394 14.1527C7.37439 14.0842 7.31195 14.0279 7.18708 13.9154L3.82246 10.8832C3.40005 10.5025 3.18884 10.3122 3.16258 10.1342C3.13978 9.97956 3.19059 9.82316 3.29993 9.71147C3.42581 9.58288 3.70856 9.55304 4.27406 9.49336L8.77835 9.01795C8.94553 9.00031 9.02911 8.99149 9.10139 8.95929C9.16534 8.93081 9.2226 8.8892 9.26946 8.83718C9.32241 8.77839 9.35663 8.70162 9.42508 8.54808L11.2691 4.41115Z"
-                                            stroke="#fba707" stroke-width="2" stroke-linecap="round"
-                                            stroke-linejoin="round" />
-                                    </svg>
-                                </li>
-                                <li>
-                                    <!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
-                                    <svg class="fill-[#fba707]" width="16px" height="16px" viewBox="0 0 24 24"
-                                        xmlns="http://www.w3.org/2000/svg">
-                                        <path
-                                            d="M11.2691 4.41115C11.5006 3.89177 11.6164 3.63208 11.7776 3.55211C11.9176 3.48263 12.082 3.48263 12.222 3.55211C12.3832 3.63208 12.499 3.89177 12.7305 4.41115L14.5745 8.54808C14.643 8.70162 14.6772 8.77839 14.7302 8.83718C14.777 8.8892 14.8343 8.93081 14.8982 8.95929C14.9705 8.99149 15.0541 9.00031 15.2213 9.01795L19.7256 9.49336C20.2911 9.55304 20.5738 9.58288 20.6997 9.71147C20.809 9.82316 20.8598 9.97956 20.837 10.1342C20.8108 10.3122 20.5996 10.5025 20.1772 10.8832L16.8125 13.9154C16.6877 14.0279 16.6252 14.0842 16.5857 14.1527C16.5507 14.2134 16.5288 14.2807 16.5215 14.3503C16.5132 14.429 16.5306 14.5112 16.5655 14.6757L17.5053 19.1064C17.6233 19.6627 17.6823 19.9408 17.5989 20.1002C17.5264 20.2388 17.3934 20.3354 17.2393 20.3615C17.0619 20.3915 16.8156 20.2495 16.323 19.9654L12.3995 17.7024C12.2539 17.6184 12.1811 17.5765 12.1037 17.56C12.0352 17.5455 11.9644 17.5455 11.8959 17.56C11.8185 17.5765 11.7457 17.6184 11.6001 17.7024L7.67662 19.9654C7.18404 20.2495 6.93775 20.3915 6.76034 20.3615C6.60623 20.3354 6.47319 20.2388 6.40075 20.1002C6.31736 19.9408 6.37635 19.6627 6.49434 19.1064L7.4341 14.6757C7.46898 14.5112 7.48642 14.429 7.47814 14.3503C7.47081 14.2807 7.44894 14.2134 7.41394 14.1527C7.37439 14.0842 7.31195 14.0279 7.18708 13.9154L3.82246 10.8832C3.40005 10.5025 3.18884 10.3122 3.16258 10.1342C3.13978 9.97956 3.19059 9.82316 3.29993 9.71147C3.42581 9.58288 3.70856 9.55304 4.27406 9.49336L8.77835 9.01795C8.94553 9.00031 9.02911 8.99149 9.10139 8.95929C9.16534 8.93081 9.2226 8.8892 9.26946 8.83718C9.32241 8.77839 9.35663 8.70162 9.42508 8.54808L11.2691 4.41115Z"
-                                            stroke="#fba707" stroke-width="2" stroke-linecap="round"
-                                            stroke-linejoin="round" />
-                                    </svg>
-                                </li>
-                                <li>
-                                    <!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
-                                    <svg class="fill-[#fba707]" width="16px" height="16px" viewBox="0 0 24 24"
-                                        xmlns="http://www.w3.org/2000/svg">
-                                        <path
-                                            d="M11.2691 4.41115C11.5006 3.89177 11.6164 3.63208 11.7776 3.55211C11.9176 3.48263 12.082 3.48263 12.222 3.55211C12.3832 3.63208 12.499 3.89177 12.7305 4.41115L14.5745 8.54808C14.643 8.70162 14.6772 8.77839 14.7302 8.83718C14.777 8.8892 14.8343 8.93081 14.8982 8.95929C14.9705 8.99149 15.0541 9.00031 15.2213 9.01795L19.7256 9.49336C20.2911 9.55304 20.5738 9.58288 20.6997 9.71147C20.809 9.82316 20.8598 9.97956 20.837 10.1342C20.8108 10.3122 20.5996 10.5025 20.1772 10.8832L16.8125 13.9154C16.6877 14.0279 16.6252 14.0842 16.5857 14.1527C16.5507 14.2134 16.5288 14.2807 16.5215 14.3503C16.5132 14.429 16.5306 14.5112 16.5655 14.6757L17.5053 19.1064C17.6233 19.6627 17.6823 19.9408 17.5989 20.1002C17.5264 20.2388 17.3934 20.3354 17.2393 20.3615C17.0619 20.3915 16.8156 20.2495 16.323 19.9654L12.3995 17.7024C12.2539 17.6184 12.1811 17.5765 12.1037 17.56C12.0352 17.5455 11.9644 17.5455 11.8959 17.56C11.8185 17.5765 11.7457 17.6184 11.6001 17.7024L7.67662 19.9654C7.18404 20.2495 6.93775 20.3915 6.76034 20.3615C6.60623 20.3354 6.47319 20.2388 6.40075 20.1002C6.31736 19.9408 6.37635 19.6627 6.49434 19.1064L7.4341 14.6757C7.46898 14.5112 7.48642 14.429 7.47814 14.3503C7.47081 14.2807 7.44894 14.2134 7.41394 14.1527C7.37439 14.0842 7.31195 14.0279 7.18708 13.9154L3.82246 10.8832C3.40005 10.5025 3.18884 10.3122 3.16258 10.1342C3.13978 9.97956 3.19059 9.82316 3.29993 9.71147C3.42581 9.58288 3.70856 9.55304 4.27406 9.49336L8.77835 9.01795C8.94553 9.00031 9.02911 8.99149 9.10139 8.95929C9.16534 8.93081 9.2226 8.8892 9.26946 8.83718C9.32241 8.77839 9.35663 8.70162 9.42508 8.54808L11.2691 4.41115Z"
-                                            stroke="#fba707" stroke-width="2" stroke-linecap="round"
-                                            stroke-linejoin="round" />
-                                    </svg>
-                                </li>
-                                <li>
-                                    <!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
-                                    <svg class="" width="16px" height="16px" viewBox="0 0 24 24" fill="none"
-                                        xmlns="http://www.w3.org/2000/svg">
-                                        <path
-                                            d="M11.2691 4.41115C11.5006 3.89177 11.6164 3.63208 11.7776 3.55211C11.9176 3.48263 12.082 3.48263 12.222 3.55211C12.3832 3.63208 12.499 3.89177 12.7305 4.41115L14.5745 8.54808C14.643 8.70162 14.6772 8.77839 14.7302 8.83718C14.777 8.8892 14.8343 8.93081 14.8982 8.95929C14.9705 8.99149 15.0541 9.00031 15.2213 9.01795L19.7256 9.49336C20.2911 9.55304 20.5738 9.58288 20.6997 9.71147C20.809 9.82316 20.8598 9.97956 20.837 10.1342C20.8108 10.3122 20.5996 10.5025 20.1772 10.8832L16.8125 13.9154C16.6877 14.0279 16.6252 14.0842 16.5857 14.1527C16.5507 14.2134 16.5288 14.2807 16.5215 14.3503C16.5132 14.429 16.5306 14.5112 16.5655 14.6757L17.5053 19.1064C17.6233 19.6627 17.6823 19.9408 17.5989 20.1002C17.5264 20.2388 17.3934 20.3354 17.2393 20.3615C17.0619 20.3915 16.8156 20.2495 16.323 19.9654L12.3995 17.7024C12.2539 17.6184 12.1811 17.5765 12.1037 17.56C12.0352 17.5455 11.9644 17.5455 11.8959 17.56C11.8185 17.5765 11.7457 17.6184 11.6001 17.7024L7.67662 19.9654C7.18404 20.2495 6.93775 20.3915 6.76034 20.3615C6.60623 20.3354 6.47319 20.2388 6.40075 20.1002C6.31736 19.9408 6.37635 19.6627 6.49434 19.1064L7.4341 14.6757C7.46898 14.5112 7.48642 14.429 7.47814 14.3503C7.47081 14.2807 7.44894 14.2134 7.41394 14.1527C7.37439 14.0842 7.31195 14.0279 7.18708 13.9154L3.82246 10.8832C3.40005 10.5025 3.18884 10.3122 3.16258 10.1342C3.13978 9.97956 3.19059 9.82316 3.29993 9.71147C3.42581 9.58288 3.70856 9.55304 4.27406 9.49336L8.77835 9.01795C8.94553 9.00031 9.02911 8.99149 9.10139 8.95929C9.16534 8.93081 9.2226 8.8892 9.26946 8.83718C9.32241 8.77839 9.35663 8.70162 9.42508 8.54808L11.2691 4.41115Z"
-                                            stroke="#fba707" stroke-width="2" stroke-linecap="round"
-                                            stroke-linejoin="round" />
-                                    </svg>
-                                </li>
-                                <li>
+                                    <?xml version="1.0" encoding="utf-8"?>
                                     <!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
                                     <svg class="" width="16px" height="16px" viewBox="0 0 24 24" fill="none"
                                         xmlns="http://www.w3.org/2000/svg">
@@ -1246,6 +1028,7 @@
                                 فلورا</span>
                             <ul class="flex gap-1">
                                 <li>
+                                    <?xml version="1.0" encoding="utf-8"?>
                                     <!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
                                     <svg class="fill-[#fba707]" width="16px" height="16px" viewBox="0 0 24 24"
                                         xmlns="http://www.w3.org/2000/svg">
@@ -1256,6 +1039,7 @@
                                     </svg>
                                 </li>
                                 <li>
+                                    <?xml version="1.0" encoding="utf-8"?>
                                     <!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
                                     <svg class="fill-[#fba707]" width="16px" height="16px" viewBox="0 0 24 24"
                                         xmlns="http://www.w3.org/2000/svg">
@@ -1266,6 +1050,7 @@
                                     </svg>
                                 </li>
                                 <li>
+                                    <?xml version="1.0" encoding="utf-8"?>
                                     <!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
                                     <svg class="fill-[#fba707]" width="16px" height="16px" viewBox="0 0 24 24"
                                         xmlns="http://www.w3.org/2000/svg">
@@ -1276,6 +1061,7 @@
                                     </svg>
                                 </li>
                                 <li>
+                                    <?xml version="1.0" encoding="utf-8"?>
                                     <!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
                                     <svg class="" width="16px" height="16px" viewBox="0 0 24 24" fill="none"
                                         xmlns="http://www.w3.org/2000/svg">
@@ -1286,6 +1072,7 @@
                                     </svg>
                                 </li>
                                 <li>
+                                    <?xml version="1.0" encoding="utf-8"?>
                                     <!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
                                     <svg class="" width="16px" height="16px" viewBox="0 0 24 24" fill="none"
                                         xmlns="http://www.w3.org/2000/svg">
@@ -1369,6 +1156,7 @@
                                 فلورا</span>
                             <ul class="flex gap-1">
                                 <li>
+                                    <?xml version="1.0" encoding="utf-8"?>
                                     <!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
                                     <svg class="fill-[#fba707]" width="16px" height="16px" viewBox="0 0 24 24"
                                         xmlns="http://www.w3.org/2000/svg">
@@ -1379,6 +1167,7 @@
                                     </svg>
                                 </li>
                                 <li>
+                                    <?xml version="1.0" encoding="utf-8"?>
                                     <!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
                                     <svg class="fill-[#fba707]" width="16px" height="16px" viewBox="0 0 24 24"
                                         xmlns="http://www.w3.org/2000/svg">
@@ -1389,6 +1178,7 @@
                                     </svg>
                                 </li>
                                 <li>
+                                    <?xml version="1.0" encoding="utf-8"?>
                                     <!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
                                     <svg class="fill-[#fba707]" width="16px" height="16px" viewBox="0 0 24 24"
                                         xmlns="http://www.w3.org/2000/svg">
@@ -1399,6 +1189,7 @@
                                     </svg>
                                 </li>
                                 <li>
+                                    <?xml version="1.0" encoding="utf-8"?>
                                     <!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
                                     <svg class="" width="16px" height="16px" viewBox="0 0 24 24" fill="none"
                                         xmlns="http://www.w3.org/2000/svg">
@@ -1409,6 +1200,263 @@
                                     </svg>
                                 </li>
                                 <li>
+                                    <?xml version="1.0" encoding="utf-8"?>
+                                    <!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
+                                    <svg class="" width="16px" height="16px" viewBox="0 0 24 24" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path
+                                            d="M11.2691 4.41115C11.5006 3.89177 11.6164 3.63208 11.7776 3.55211C11.9176 3.48263 12.082 3.48263 12.222 3.55211C12.3832 3.63208 12.499 3.89177 12.7305 4.41115L14.5745 8.54808C14.643 8.70162 14.6772 8.77839 14.7302 8.83718C14.777 8.8892 14.8343 8.93081 14.8982 8.95929C14.9705 8.99149 15.0541 9.00031 15.2213 9.01795L19.7256 9.49336C20.2911 9.55304 20.5738 9.58288 20.6997 9.71147C20.809 9.82316 20.8598 9.97956 20.837 10.1342C20.8108 10.3122 20.5996 10.5025 20.1772 10.8832L16.8125 13.9154C16.6877 14.0279 16.6252 14.0842 16.5857 14.1527C16.5507 14.2134 16.5288 14.2807 16.5215 14.3503C16.5132 14.429 16.5306 14.5112 16.5655 14.6757L17.5053 19.1064C17.6233 19.6627 17.6823 19.9408 17.5989 20.1002C17.5264 20.2388 17.3934 20.3354 17.2393 20.3615C17.0619 20.3915 16.8156 20.2495 16.323 19.9654L12.3995 17.7024C12.2539 17.6184 12.1811 17.5765 12.1037 17.56C12.0352 17.5455 11.9644 17.5455 11.8959 17.56C11.8185 17.5765 11.7457 17.6184 11.6001 17.7024L7.67662 19.9654C7.18404 20.2495 6.93775 20.3915 6.76034 20.3615C6.60623 20.3354 6.47319 20.2388 6.40075 20.1002C6.31736 19.9408 6.37635 19.6627 6.49434 19.1064L7.4341 14.6757C7.46898 14.5112 7.48642 14.429 7.47814 14.3503C7.47081 14.2807 7.44894 14.2134 7.41394 14.1527C7.37439 14.0842 7.31195 14.0279 7.18708 13.9154L3.82246 10.8832C3.40005 10.5025 3.18884 10.3122 3.16258 10.1342C3.13978 9.97956 3.19059 9.82316 3.29993 9.71147C3.42581 9.58288 3.70856 9.55304 4.27406 9.49336L8.77835 9.01795C8.94553 9.00031 9.02911 8.99149 9.10139 8.95929C9.16534 8.93081 9.2226 8.8892 9.26946 8.83718C9.32241 8.77839 9.35663 8.70162 9.42508 8.54808L11.2691 4.41115Z"
+                                            stroke="#fba707" stroke-width="2" stroke-linecap="round"
+                                            stroke-linejoin="round" />
+                                    </svg>
+                                </li>
+                            </ul>
+                            <span class="text-[#fd6a6a]">100.000 تومان</span>
+                        </div>
+                        <div>
+                            <svg class="w-13 h-9" fill="#000000" viewBox="0 0 32 32"
+                                style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;"
+                                version="1.1" xml:space="preserve" xmlns="http://www.w3.org/2000/svg"
+                                xmlns:serif="http://www.serif.com/" xmlns:xlink="http://www.w3.org/1999/xlink">
+                                <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                                <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round">
+                                </g>
+                                <g id="SVGRepo_iconCarrier">
+                                    <g transform="matrix(1,0,0,1,-432,0)">
+                                        <g transform="matrix(1.125,0,0,1,375.898,0)">
+                                            <path
+                                                d="M71.196,10.9C71.148,9.836 70.367,9 69.42,9C66.684,9 61.316,9 58.58,9C57.633,9 56.852,9.836 56.804,10.9C56.638,14.653 56.267,22.991 56.093,26.9C56.069,27.447 56.245,27.982 56.581,28.378C56.916,28.775 57.382,29 57.869,29C60.948,29 67.052,29 70.131,29C70.618,29 71.084,28.775 71.419,28.378C71.755,27.982 71.931,27.447 71.907,26.9C71.733,22.991 71.362,14.653 71.196,10.9Z"
+                                                style="fill:#03a297;"></path>
+                                        </g>
+                                        <path
+                                            d="M442.898,8L441.8,8C440.201,8 438.884,9.254 438.804,10.85C438.616,14.603 438.199,22.941 438.004,26.85C437.963,27.671 438.26,28.472 438.826,29.068C439.393,29.663 440.178,30 441,30L454.795,30C455.617,30 456.402,29.663 456.969,29.068C457.535,28.472 457.832,27.671 457.791,26.85L456.991,10.85C456.911,9.254 455.594,8 453.995,8L452.898,8L452.898,6C452.898,3.24 450.657,1 447.898,1C445.138,1 442.898,3.24 442.898,6L442.898,8ZM455.746,26L455.794,26.95C455.807,27.224 455.708,27.491 455.52,27.689C455.331,27.888 455.069,28 454.795,28C454.795,28 441,28 441,28C440.726,28 440.464,27.888 440.275,27.689C440.087,27.491 439.988,27.224 440.001,26.95L440.049,26L455.746,26ZM452.898,10L452.898,13C452.898,13.552 452.449,14 451.898,14C451.346,14 450.898,13.552 450.898,13L450.898,10L444.898,10L444.898,13C444.898,13.552 444.449,14 443.898,14C443.346,14 442.898,13.552 442.898,13L442.898,10L441.8,10C441.267,10 440.828,10.418 440.801,10.95L440.149,24L455.646,24L454.994,10.95C454.967,10.418 454.528,10 453.995,10L452.898,10ZM450.898,8L450.898,6C450.898,4.344 449.553,3 447.898,3C446.242,3 444.898,4.344 444.898,6L444.898,8L450.898,8Z"
+                                            style="fill:#03a297;"></path>
+                                    </g>
+                                </g>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="min-w-65 h-55 relative group">
+                <div
+                    class="absolute bottom-0 w-full h-1/3 bg-[#ebf8f7]/90 -z-50 group-hover:h-2/3 transition-all duration-300">
+                </div>
+                <div
+                    class="absolute w-2/3 h-10 rounded-b-2xl bottom-5 right-1/6 z-50 hidden group-hover:block transition-all duration-400">
+                    <div class="flex gap-4 flex justify-center items-center">
+                        <div class="p-2 bg-green-400 rounded-2xl">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="21" height="21" fill="none"
+                                viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M17 1l4 4-4 4" />
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M21 5H9a5 5 0 0 0-5 5" />
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M7 23l-4-4 4-4" />
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M3 19h12a5 5 0 0 0 5-5" />
+                            </svg>
+                        </div>
+                        <div class="p-2 bg-green-400 rounded-2xl">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="21" height="21" fill="none"
+                                viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M17 1l4 4-4 4" />
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M21 5H9a5 5 0 0 0-5 5" />
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M7 23l-4-4 4-4" />
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M3 19h12a5 5 0 0 0 5-5" />
+                            </svg>
+                        </div>
+                        <div class="p-2 bg-green-400 rounded-2xl">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="21" height="21" fill="none"
+                                viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M17 1l4 4-4 4" />
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M21 5H9a5 5 0 0 0-5 5" />
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M7 23l-4-4 4-4" />
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M3 19h12a5 5 0 0 0 5-5" />
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+                <a href="" class="flex justify-center">
+                    <img src="{{asset('assets/img/silyder.producte/03.webp')}}" alt="" class="w-50 h-auto object-cover">
+                </a>
+                <div class="absolute w-full mx-autoh-auto bg-[#ebf8f7] rounded-b-2xl overflow-hidden">
+                    <div class="w-18/20 mx-auto py-6 bg-[#ebf8f7] flex justify-between gap-3 items-end">
+                        <div class="flex flex-col gap-2">
+                            <span class="font-bold text-lg text-[#023350] hover:text-[#03a297]">ایرانی و عالی قطره
+                                فلورا</span>
+                            <ul class="flex gap-1">
+                                <li>
+                                    <?xml version="1.0" encoding="utf-8"?>
+                                    <!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
+                                    <svg class="fill-[#fba707]" width="16px" height="16px" viewBox="0 0 24 24"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path
+                                            d="M11.2691 4.41115C11.5006 3.89177 11.6164 3.63208 11.7776 3.55211C11.9176 3.48263 12.082 3.48263 12.222 3.55211C12.3832 3.63208 12.499 3.89177 12.7305 4.41115L14.5745 8.54808C14.643 8.70162 14.6772 8.77839 14.7302 8.83718C14.777 8.8892 14.8343 8.93081 14.8982 8.95929C14.9705 8.99149 15.0541 9.00031 15.2213 9.01795L19.7256 9.49336C20.2911 9.55304 20.5738 9.58288 20.6997 9.71147C20.809 9.82316 20.8598 9.97956 20.837 10.1342C20.8108 10.3122 20.5996 10.5025 20.1772 10.8832L16.8125 13.9154C16.6877 14.0279 16.6252 14.0842 16.5857 14.1527C16.5507 14.2134 16.5288 14.2807 16.5215 14.3503C16.5132 14.429 16.5306 14.5112 16.5655 14.6757L17.5053 19.1064C17.6233 19.6627 17.6823 19.9408 17.5989 20.1002C17.5264 20.2388 17.3934 20.3354 17.2393 20.3615C17.0619 20.3915 16.8156 20.2495 16.323 19.9654L12.3995 17.7024C12.2539 17.6184 12.1811 17.5765 12.1037 17.56C12.0352 17.5455 11.9644 17.5455 11.8959 17.56C11.8185 17.5765 11.7457 17.6184 11.6001 17.7024L7.67662 19.9654C7.18404 20.2495 6.93775 20.3915 6.76034 20.3615C6.60623 20.3354 6.47319 20.2388 6.40075 20.1002C6.31736 19.9408 6.37635 19.6627 6.49434 19.1064L7.4341 14.6757C7.46898 14.5112 7.48642 14.429 7.47814 14.3503C7.47081 14.2807 7.44894 14.2134 7.41394 14.1527C7.37439 14.0842 7.31195 14.0279 7.18708 13.9154L3.82246 10.8832C3.40005 10.5025 3.18884 10.3122 3.16258 10.1342C3.13978 9.97956 3.19059 9.82316 3.29993 9.71147C3.42581 9.58288 3.70856 9.55304 4.27406 9.49336L8.77835 9.01795C8.94553 9.00031 9.02911 8.99149 9.10139 8.95929C9.16534 8.93081 9.2226 8.8892 9.26946 8.83718C9.32241 8.77839 9.35663 8.70162 9.42508 8.54808L11.2691 4.41115Z"
+                                            stroke="#fba707" stroke-width="2" stroke-linecap="round"
+                                            stroke-linejoin="round" />
+                                    </svg>
+                                </li>
+                                <li>
+                                    <?xml version="1.0" encoding="utf-8"?>
+                                    <!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
+                                    <svg class="fill-[#fba707]" width="16px" height="16px" viewBox="0 0 24 24"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path
+                                            d="M11.2691 4.41115C11.5006 3.89177 11.6164 3.63208 11.7776 3.55211C11.9176 3.48263 12.082 3.48263 12.222 3.55211C12.3832 3.63208 12.499 3.89177 12.7305 4.41115L14.5745 8.54808C14.643 8.70162 14.6772 8.77839 14.7302 8.83718C14.777 8.8892 14.8343 8.93081 14.8982 8.95929C14.9705 8.99149 15.0541 9.00031 15.2213 9.01795L19.7256 9.49336C20.2911 9.55304 20.5738 9.58288 20.6997 9.71147C20.809 9.82316 20.8598 9.97956 20.837 10.1342C20.8108 10.3122 20.5996 10.5025 20.1772 10.8832L16.8125 13.9154C16.6877 14.0279 16.6252 14.0842 16.5857 14.1527C16.5507 14.2134 16.5288 14.2807 16.5215 14.3503C16.5132 14.429 16.5306 14.5112 16.5655 14.6757L17.5053 19.1064C17.6233 19.6627 17.6823 19.9408 17.5989 20.1002C17.5264 20.2388 17.3934 20.3354 17.2393 20.3615C17.0619 20.3915 16.8156 20.2495 16.323 19.9654L12.3995 17.7024C12.2539 17.6184 12.1811 17.5765 12.1037 17.56C12.0352 17.5455 11.9644 17.5455 11.8959 17.56C11.8185 17.5765 11.7457 17.6184 11.6001 17.7024L7.67662 19.9654C7.18404 20.2495 6.93775 20.3915 6.76034 20.3615C6.60623 20.3354 6.47319 20.2388 6.40075 20.1002C6.31736 19.9408 6.37635 19.6627 6.49434 19.1064L7.4341 14.6757C7.46898 14.5112 7.48642 14.429 7.47814 14.3503C7.47081 14.2807 7.44894 14.2134 7.41394 14.1527C7.37439 14.0842 7.31195 14.0279 7.18708 13.9154L3.82246 10.8832C3.40005 10.5025 3.18884 10.3122 3.16258 10.1342C3.13978 9.97956 3.19059 9.82316 3.29993 9.71147C3.42581 9.58288 3.70856 9.55304 4.27406 9.49336L8.77835 9.01795C8.94553 9.00031 9.02911 8.99149 9.10139 8.95929C9.16534 8.93081 9.2226 8.8892 9.26946 8.83718C9.32241 8.77839 9.35663 8.70162 9.42508 8.54808L11.2691 4.41115Z"
+                                            stroke="#fba707" stroke-width="2" stroke-linecap="round"
+                                            stroke-linejoin="round" />
+                                    </svg>
+                                </li>
+                                <li>
+                                    <?xml version="1.0" encoding="utf-8"?>
+                                    <!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
+                                    <svg class="fill-[#fba707]" width="16px" height="16px" viewBox="0 0 24 24"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path
+                                            d="M11.2691 4.41115C11.5006 3.89177 11.6164 3.63208 11.7776 3.55211C11.9176 3.48263 12.082 3.48263 12.222 3.55211C12.3832 3.63208 12.499 3.89177 12.7305 4.41115L14.5745 8.54808C14.643 8.70162 14.6772 8.77839 14.7302 8.83718C14.777 8.8892 14.8343 8.93081 14.8982 8.95929C14.9705 8.99149 15.0541 9.00031 15.2213 9.01795L19.7256 9.49336C20.2911 9.55304 20.5738 9.58288 20.6997 9.71147C20.809 9.82316 20.8598 9.97956 20.837 10.1342C20.8108 10.3122 20.5996 10.5025 20.1772 10.8832L16.8125 13.9154C16.6877 14.0279 16.6252 14.0842 16.5857 14.1527C16.5507 14.2134 16.5288 14.2807 16.5215 14.3503C16.5132 14.429 16.5306 14.5112 16.5655 14.6757L17.5053 19.1064C17.6233 19.6627 17.6823 19.9408 17.5989 20.1002C17.5264 20.2388 17.3934 20.3354 17.2393 20.3615C17.0619 20.3915 16.8156 20.2495 16.323 19.9654L12.3995 17.7024C12.2539 17.6184 12.1811 17.5765 12.1037 17.56C12.0352 17.5455 11.9644 17.5455 11.8959 17.56C11.8185 17.5765 11.7457 17.6184 11.6001 17.7024L7.67662 19.9654C7.18404 20.2495 6.93775 20.3915 6.76034 20.3615C6.60623 20.3354 6.47319 20.2388 6.40075 20.1002C6.31736 19.9408 6.37635 19.6627 6.49434 19.1064L7.4341 14.6757C7.46898 14.5112 7.48642 14.429 7.47814 14.3503C7.47081 14.2807 7.44894 14.2134 7.41394 14.1527C7.37439 14.0842 7.31195 14.0279 7.18708 13.9154L3.82246 10.8832C3.40005 10.5025 3.18884 10.3122 3.16258 10.1342C3.13978 9.97956 3.19059 9.82316 3.29993 9.71147C3.42581 9.58288 3.70856 9.55304 4.27406 9.49336L8.77835 9.01795C8.94553 9.00031 9.02911 8.99149 9.10139 8.95929C9.16534 8.93081 9.2226 8.8892 9.26946 8.83718C9.32241 8.77839 9.35663 8.70162 9.42508 8.54808L11.2691 4.41115Z"
+                                            stroke="#fba707" stroke-width="2" stroke-linecap="round"
+                                            stroke-linejoin="round" />
+                                    </svg>
+                                </li>
+                                <li>
+                                    <?xml version="1.0" encoding="utf-8"?>
+                                    <!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
+                                    <svg class="" width="16px" height="16px" viewBox="0 0 24 24" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path
+                                            d="M11.2691 4.41115C11.5006 3.89177 11.6164 3.63208 11.7776 3.55211C11.9176 3.48263 12.082 3.48263 12.222 3.55211C12.3832 3.63208 12.499 3.89177 12.7305 4.41115L14.5745 8.54808C14.643 8.70162 14.6772 8.77839 14.7302 8.83718C14.777 8.8892 14.8343 8.93081 14.8982 8.95929C14.9705 8.99149 15.0541 9.00031 15.2213 9.01795L19.7256 9.49336C20.2911 9.55304 20.5738 9.58288 20.6997 9.71147C20.809 9.82316 20.8598 9.97956 20.837 10.1342C20.8108 10.3122 20.5996 10.5025 20.1772 10.8832L16.8125 13.9154C16.6877 14.0279 16.6252 14.0842 16.5857 14.1527C16.5507 14.2134 16.5288 14.2807 16.5215 14.3503C16.5132 14.429 16.5306 14.5112 16.5655 14.6757L17.5053 19.1064C17.6233 19.6627 17.6823 19.9408 17.5989 20.1002C17.5264 20.2388 17.3934 20.3354 17.2393 20.3615C17.0619 20.3915 16.8156 20.2495 16.323 19.9654L12.3995 17.7024C12.2539 17.6184 12.1811 17.5765 12.1037 17.56C12.0352 17.5455 11.9644 17.5455 11.8959 17.56C11.8185 17.5765 11.7457 17.6184 11.6001 17.7024L7.67662 19.9654C7.18404 20.2495 6.93775 20.3915 6.76034 20.3615C6.60623 20.3354 6.47319 20.2388 6.40075 20.1002C6.31736 19.9408 6.37635 19.6627 6.49434 19.1064L7.4341 14.6757C7.46898 14.5112 7.48642 14.429 7.47814 14.3503C7.47081 14.2807 7.44894 14.2134 7.41394 14.1527C7.37439 14.0842 7.31195 14.0279 7.18708 13.9154L3.82246 10.8832C3.40005 10.5025 3.18884 10.3122 3.16258 10.1342C3.13978 9.97956 3.19059 9.82316 3.29993 9.71147C3.42581 9.58288 3.70856 9.55304 4.27406 9.49336L8.77835 9.01795C8.94553 9.00031 9.02911 8.99149 9.10139 8.95929C9.16534 8.93081 9.2226 8.8892 9.26946 8.83718C9.32241 8.77839 9.35663 8.70162 9.42508 8.54808L11.2691 4.41115Z"
+                                            stroke="#fba707" stroke-width="2" stroke-linecap="round"
+                                            stroke-linejoin="round" />
+                                    </svg>
+                                </li>
+                                <li>
+                                    <?xml version="1.0" encoding="utf-8"?>
+                                    <!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
+                                    <svg class="" width="16px" height="16px" viewBox="0 0 24 24" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path
+                                            d="M11.2691 4.41115C11.5006 3.89177 11.6164 3.63208 11.7776 3.55211C11.9176 3.48263 12.082 3.48263 12.222 3.55211C12.3832 3.63208 12.499 3.89177 12.7305 4.41115L14.5745 8.54808C14.643 8.70162 14.6772 8.77839 14.7302 8.83718C14.777 8.8892 14.8343 8.93081 14.8982 8.95929C14.9705 8.99149 15.0541 9.00031 15.2213 9.01795L19.7256 9.49336C20.2911 9.55304 20.5738 9.58288 20.6997 9.71147C20.809 9.82316 20.8598 9.97956 20.837 10.1342C20.8108 10.3122 20.5996 10.5025 20.1772 10.8832L16.8125 13.9154C16.6877 14.0279 16.6252 14.0842 16.5857 14.1527C16.5507 14.2134 16.5288 14.2807 16.5215 14.3503C16.5132 14.429 16.5306 14.5112 16.5655 14.6757L17.5053 19.1064C17.6233 19.6627 17.6823 19.9408 17.5989 20.1002C17.5264 20.2388 17.3934 20.3354 17.2393 20.3615C17.0619 20.3915 16.8156 20.2495 16.323 19.9654L12.3995 17.7024C12.2539 17.6184 12.1811 17.5765 12.1037 17.56C12.0352 17.5455 11.9644 17.5455 11.8959 17.56C11.8185 17.5765 11.7457 17.6184 11.6001 17.7024L7.67662 19.9654C7.18404 20.2495 6.93775 20.3915 6.76034 20.3615C6.60623 20.3354 6.47319 20.2388 6.40075 20.1002C6.31736 19.9408 6.37635 19.6627 6.49434 19.1064L7.4341 14.6757C7.46898 14.5112 7.48642 14.429 7.47814 14.3503C7.47081 14.2807 7.44894 14.2134 7.41394 14.1527C7.37439 14.0842 7.31195 14.0279 7.18708 13.9154L3.82246 10.8832C3.40005 10.5025 3.18884 10.3122 3.16258 10.1342C3.13978 9.97956 3.19059 9.82316 3.29993 9.71147C3.42581 9.58288 3.70856 9.55304 4.27406 9.49336L8.77835 9.01795C8.94553 9.00031 9.02911 8.99149 9.10139 8.95929C9.16534 8.93081 9.2226 8.8892 9.26946 8.83718C9.32241 8.77839 9.35663 8.70162 9.42508 8.54808L11.2691 4.41115Z"
+                                            stroke="#fba707" stroke-width="2" stroke-linecap="round"
+                                            stroke-linejoin="round" />
+                                    </svg>
+                                </li>
+                            </ul>
+                            <span class="text-[#fd6a6a]">100.000 تومان</span>
+                        </div>
+                        <div>
+                            <svg class="w-13 h-9" fill="#000000" viewBox="0 0 32 32"
+                                style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;"
+                                version="1.1" xml:space="preserve" xmlns="http://www.w3.org/2000/svg"
+                                xmlns:serif="http://www.serif.com/" xmlns:xlink="http://www.w3.org/1999/xlink">
+                                <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                                <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round">
+                                </g>
+                                <g id="SVGRepo_iconCarrier">
+                                    <g transform="matrix(1,0,0,1,-432,0)">
+                                        <g transform="matrix(1.125,0,0,1,375.898,0)">
+                                            <path
+                                                d="M71.196,10.9C71.148,9.836 70.367,9 69.42,9C66.684,9 61.316,9 58.58,9C57.633,9 56.852,9.836 56.804,10.9C56.638,14.653 56.267,22.991 56.093,26.9C56.069,27.447 56.245,27.982 56.581,28.378C56.916,28.775 57.382,29 57.869,29C60.948,29 67.052,29 70.131,29C70.618,29 71.084,28.775 71.419,28.378C71.755,27.982 71.931,27.447 71.907,26.9C71.733,22.991 71.362,14.653 71.196,10.9Z"
+                                                style="fill:#03a297;"></path>
+                                        </g>
+                                        <path
+                                            d="M442.898,8L441.8,8C440.201,8 438.884,9.254 438.804,10.85C438.616,14.603 438.199,22.941 438.004,26.85C437.963,27.671 438.26,28.472 438.826,29.068C439.393,29.663 440.178,30 441,30L454.795,30C455.617,30 456.402,29.663 456.969,29.068C457.535,28.472 457.832,27.671 457.791,26.85L456.991,10.85C456.911,9.254 455.594,8 453.995,8L452.898,8L452.898,6C452.898,3.24 450.657,1 447.898,1C445.138,1 442.898,3.24 442.898,6L442.898,8ZM455.746,26L455.794,26.95C455.807,27.224 455.708,27.491 455.52,27.689C455.331,27.888 455.069,28 454.795,28C454.795,28 441,28 441,28C440.726,28 440.464,27.888 440.275,27.689C440.087,27.491 439.988,27.224 440.001,26.95L440.049,26L455.746,26ZM452.898,10L452.898,13C452.898,13.552 452.449,14 451.898,14C451.346,14 450.898,13.552 450.898,13L450.898,10L444.898,10L444.898,13C444.898,13.552 444.449,14 443.898,14C443.346,14 442.898,13.552 442.898,13L442.898,10L441.8,10C441.267,10 440.828,10.418 440.801,10.95L440.149,24L455.646,24L454.994,10.95C454.967,10.418 454.528,10 453.995,10L452.898,10ZM450.898,8L450.898,6C450.898,4.344 449.553,3 447.898,3C446.242,3 444.898,4.344 444.898,6L444.898,8L450.898,8Z"
+                                            style="fill:#03a297;"></path>
+                                    </g>
+                                </g>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="min-w-65 h-55 relative group">
+                <div
+                    class="absolute bottom-0 w-full h-1/3 bg-[#ebf8f7]/90 -z-50 group-hover:h-2/3 transition-all duration-300">
+                </div>
+                <div
+                    class="absolute w-2/3 h-10 rounded-b-2xl bottom-5 right-1/6 z-50 hidden group-hover:block transition-all duration-400">
+                    <div class="flex gap-4 flex justify-center items-center">
+                        <div class="p-2 bg-green-400 rounded-2xl">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="21" height="21" fill="none"
+                                viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M17 1l4 4-4 4" />
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M21 5H9a5 5 0 0 0-5 5" />
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M7 23l-4-4 4-4" />
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M3 19h12a5 5 0 0 0 5-5" />
+                            </svg>
+                        </div>
+                        <div class="p-2 bg-green-400 rounded-2xl">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="21" height="21" fill="none"
+                                viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M17 1l4 4-4 4" />
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M21 5H9a5 5 0 0 0-5 5" />
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M7 23l-4-4 4-4" />
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M3 19h12a5 5 0 0 0 5-5" />
+                            </svg>
+                        </div>
+                        <div class="p-2 bg-green-400 rounded-2xl">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="21" height="21" fill="none"
+                                viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M17 1l4 4-4 4" />
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M21 5H9a5 5 0 0 0-5 5" />
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M7 23l-4-4 4-4" />
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M3 19h12a5 5 0 0 0 5-5" />
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+                <a href="" class="flex justify-center">
+                    <img src="{{asset('assets/img/silyder.producte/03.webp')}}" alt="" class="w-50 h-auto object-cover">
+                </a>
+                <div class="absolute w-full mx-autoh-auto bg-[#ebf8f7] rounded-b-2xl overflow-hidden">
+                    <div class="w-18/20 mx-auto py-6 bg-[#ebf8f7] flex justify-between gap-3 items-end">
+                        <div class="flex flex-col gap-2">
+                            <span class="font-bold text-lg text-[#023350] hover:text-[#03a297]">ایرانی و عالی قطره
+                                فلورا</span>
+                            <ul class="flex gap-1">
+                                <li>
+                                    <?xml version="1.0" encoding="utf-8"?>
+                                    <!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
+                                    <svg class="fill-[#fba707]" width="16px" height="16px" viewBox="0 0 24 24"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path
+                                            d="M11.2691 4.41115C11.5006 3.89177 11.6164 3.63208 11.7776 3.55211C11.9176 3.48263 12.082 3.48263 12.222 3.55211C12.3832 3.63208 12.499 3.89177 12.7305 4.41115L14.5745 8.54808C14.643 8.70162 14.6772 8.77839 14.7302 8.83718C14.777 8.8892 14.8343 8.93081 14.8982 8.95929C14.9705 8.99149 15.0541 9.00031 15.2213 9.01795L19.7256 9.49336C20.2911 9.55304 20.5738 9.58288 20.6997 9.71147C20.809 9.82316 20.8598 9.97956 20.837 10.1342C20.8108 10.3122 20.5996 10.5025 20.1772 10.8832L16.8125 13.9154C16.6877 14.0279 16.6252 14.0842 16.5857 14.1527C16.5507 14.2134 16.5288 14.2807 16.5215 14.3503C16.5132 14.429 16.5306 14.5112 16.5655 14.6757L17.5053 19.1064C17.6233 19.6627 17.6823 19.9408 17.5989 20.1002C17.5264 20.2388 17.3934 20.3354 17.2393 20.3615C17.0619 20.3915 16.8156 20.2495 16.323 19.9654L12.3995 17.7024C12.2539 17.6184 12.1811 17.5765 12.1037 17.56C12.0352 17.5455 11.9644 17.5455 11.8959 17.56C11.8185 17.5765 11.7457 17.6184 11.6001 17.7024L7.67662 19.9654C7.18404 20.2495 6.93775 20.3915 6.76034 20.3615C6.60623 20.3354 6.47319 20.2388 6.40075 20.1002C6.31736 19.9408 6.37635 19.6627 6.49434 19.1064L7.4341 14.6757C7.46898 14.5112 7.48642 14.429 7.47814 14.3503C7.47081 14.2807 7.44894 14.2134 7.41394 14.1527C7.37439 14.0842 7.31195 14.0279 7.18708 13.9154L3.82246 10.8832C3.40005 10.5025 3.18884 10.3122 3.16258 10.1342C3.13978 9.97956 3.19059 9.82316 3.29993 9.71147C3.42581 9.58288 3.70856 9.55304 4.27406 9.49336L8.77835 9.01795C8.94553 9.00031 9.02911 8.99149 9.10139 8.95929C9.16534 8.93081 9.2226 8.8892 9.26946 8.83718C9.32241 8.77839 9.35663 8.70162 9.42508 8.54808L11.2691 4.41115Z"
+                                            stroke="#fba707" stroke-width="2" stroke-linecap="round"
+                                            stroke-linejoin="round" />
+                                    </svg>
+                                </li>
+                                <li>
+                                    <?xml version="1.0" encoding="utf-8"?>
+                                    <!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
+                                    <svg class="fill-[#fba707]" width="16px" height="16px" viewBox="0 0 24 24"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path
+                                            d="M11.2691 4.41115C11.5006 3.89177 11.6164 3.63208 11.7776 3.55211C11.9176 3.48263 12.082 3.48263 12.222 3.55211C12.3832 3.63208 12.499 3.89177 12.7305 4.41115L14.5745 8.54808C14.643 8.70162 14.6772 8.77839 14.7302 8.83718C14.777 8.8892 14.8343 8.93081 14.8982 8.95929C14.9705 8.99149 15.0541 9.00031 15.2213 9.01795L19.7256 9.49336C20.2911 9.55304 20.5738 9.58288 20.6997 9.71147C20.809 9.82316 20.8598 9.97956 20.837 10.1342C20.8108 10.3122 20.5996 10.5025 20.1772 10.8832L16.8125 13.9154C16.6877 14.0279 16.6252 14.0842 16.5857 14.1527C16.5507 14.2134 16.5288 14.2807 16.5215 14.3503C16.5132 14.429 16.5306 14.5112 16.5655 14.6757L17.5053 19.1064C17.6233 19.6627 17.6823 19.9408 17.5989 20.1002C17.5264 20.2388 17.3934 20.3354 17.2393 20.3615C17.0619 20.3915 16.8156 20.2495 16.323 19.9654L12.3995 17.7024C12.2539 17.6184 12.1811 17.5765 12.1037 17.56C12.0352 17.5455 11.9644 17.5455 11.8959 17.56C11.8185 17.5765 11.7457 17.6184 11.6001 17.7024L7.67662 19.9654C7.18404 20.2495 6.93775 20.3915 6.76034 20.3615C6.60623 20.3354 6.47319 20.2388 6.40075 20.1002C6.31736 19.9408 6.37635 19.6627 6.49434 19.1064L7.4341 14.6757C7.46898 14.5112 7.48642 14.429 7.47814 14.3503C7.47081 14.2807 7.44894 14.2134 7.41394 14.1527C7.37439 14.0842 7.31195 14.0279 7.18708 13.9154L3.82246 10.8832C3.40005 10.5025 3.18884 10.3122 3.16258 10.1342C3.13978 9.97956 3.19059 9.82316 3.29993 9.71147C3.42581 9.58288 3.70856 9.55304 4.27406 9.49336L8.77835 9.01795C8.94553 9.00031 9.02911 8.99149 9.10139 8.95929C9.16534 8.93081 9.2226 8.8892 9.26946 8.83718C9.32241 8.77839 9.35663 8.70162 9.42508 8.54808L11.2691 4.41115Z"
+                                            stroke="#fba707" stroke-width="2" stroke-linecap="round"
+                                            stroke-linejoin="round" />
+                                    </svg>
+                                </li>
+                                <li>
+                                    <?xml version="1.0" encoding="utf-8"?>
+                                    <!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
+                                    <svg class="fill-[#fba707]" width="16px" height="16px" viewBox="0 0 24 24"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path
+                                            d="M11.2691 4.41115C11.5006 3.89177 11.6164 3.63208 11.7776 3.55211C11.9176 3.48263 12.082 3.48263 12.222 3.55211C12.3832 3.63208 12.499 3.89177 12.7305 4.41115L14.5745 8.54808C14.643 8.70162 14.6772 8.77839 14.7302 8.83718C14.777 8.8892 14.8343 8.93081 14.8982 8.95929C14.9705 8.99149 15.0541 9.00031 15.2213 9.01795L19.7256 9.49336C20.2911 9.55304 20.5738 9.58288 20.6997 9.71147C20.809 9.82316 20.8598 9.97956 20.837 10.1342C20.8108 10.3122 20.5996 10.5025 20.1772 10.8832L16.8125 13.9154C16.6877 14.0279 16.6252 14.0842 16.5857 14.1527C16.5507 14.2134 16.5288 14.2807 16.5215 14.3503C16.5132 14.429 16.5306 14.5112 16.5655 14.6757L17.5053 19.1064C17.6233 19.6627 17.6823 19.9408 17.5989 20.1002C17.5264 20.2388 17.3934 20.3354 17.2393 20.3615C17.0619 20.3915 16.8156 20.2495 16.323 19.9654L12.3995 17.7024C12.2539 17.6184 12.1811 17.5765 12.1037 17.56C12.0352 17.5455 11.9644 17.5455 11.8959 17.56C11.8185 17.5765 11.7457 17.6184 11.6001 17.7024L7.67662 19.9654C7.18404 20.2495 6.93775 20.3915 6.76034 20.3615C6.60623 20.3354 6.47319 20.2388 6.40075 20.1002C6.31736 19.9408 6.37635 19.6627 6.49434 19.1064L7.4341 14.6757C7.46898 14.5112 7.48642 14.429 7.47814 14.3503C7.47081 14.2807 7.44894 14.2134 7.41394 14.1527C7.37439 14.0842 7.31195 14.0279 7.18708 13.9154L3.82246 10.8832C3.40005 10.5025 3.18884 10.3122 3.16258 10.1342C3.13978 9.97956 3.19059 9.82316 3.29993 9.71147C3.42581 9.58288 3.70856 9.55304 4.27406 9.49336L8.77835 9.01795C8.94553 9.00031 9.02911 8.99149 9.10139 8.95929C9.16534 8.93081 9.2226 8.8892 9.26946 8.83718C9.32241 8.77839 9.35663 8.70162 9.42508 8.54808L11.2691 4.41115Z"
+                                            stroke="#fba707" stroke-width="2" stroke-linecap="round"
+                                            stroke-linejoin="round" />
+                                    </svg>
+                                </li>
+                                <li>
+                                    <?xml version="1.0" encoding="utf-8"?>
+                                    <!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
+                                    <svg class="" width="16px" height="16px" viewBox="0 0 24 24" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path
+                                            d="M11.2691 4.41115C11.5006 3.89177 11.6164 3.63208 11.7776 3.55211C11.9176 3.48263 12.082 3.48263 12.222 3.55211C12.3832 3.63208 12.499 3.89177 12.7305 4.41115L14.5745 8.54808C14.643 8.70162 14.6772 8.77839 14.7302 8.83718C14.777 8.8892 14.8343 8.93081 14.8982 8.95929C14.9705 8.99149 15.0541 9.00031 15.2213 9.01795L19.7256 9.49336C20.2911 9.55304 20.5738 9.58288 20.6997 9.71147C20.809 9.82316 20.8598 9.97956 20.837 10.1342C20.8108 10.3122 20.5996 10.5025 20.1772 10.8832L16.8125 13.9154C16.6877 14.0279 16.6252 14.0842 16.5857 14.1527C16.5507 14.2134 16.5288 14.2807 16.5215 14.3503C16.5132 14.429 16.5306 14.5112 16.5655 14.6757L17.5053 19.1064C17.6233 19.6627 17.6823 19.9408 17.5989 20.1002C17.5264 20.2388 17.3934 20.3354 17.2393 20.3615C17.0619 20.3915 16.8156 20.2495 16.323 19.9654L12.3995 17.7024C12.2539 17.6184 12.1811 17.5765 12.1037 17.56C12.0352 17.5455 11.9644 17.5455 11.8959 17.56C11.8185 17.5765 11.7457 17.6184 11.6001 17.7024L7.67662 19.9654C7.18404 20.2495 6.93775 20.3915 6.76034 20.3615C6.60623 20.3354 6.47319 20.2388 6.40075 20.1002C6.31736 19.9408 6.37635 19.6627 6.49434 19.1064L7.4341 14.6757C7.46898 14.5112 7.48642 14.429 7.47814 14.3503C7.47081 14.2807 7.44894 14.2134 7.41394 14.1527C7.37439 14.0842 7.31195 14.0279 7.18708 13.9154L3.82246 10.8832C3.40005 10.5025 3.18884 10.3122 3.16258 10.1342C3.13978 9.97956 3.19059 9.82316 3.29993 9.71147C3.42581 9.58288 3.70856 9.55304 4.27406 9.49336L8.77835 9.01795C8.94553 9.00031 9.02911 8.99149 9.10139 8.95929C9.16534 8.93081 9.2226 8.8892 9.26946 8.83718C9.32241 8.77839 9.35663 8.70162 9.42508 8.54808L11.2691 4.41115Z"
+                                            stroke="#fba707" stroke-width="2" stroke-linecap="round"
+                                            stroke-linejoin="round" />
+                                    </svg>
+                                </li>
+                                <li>
+                                    <?xml version="1.0" encoding="utf-8"?>
                                     <!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
                                     <svg class="" width="16px" height="16px" viewBox="0 0 24 24" fill="none"
                                         xmlns="http://www.w3.org/2000/svg">
@@ -1492,6 +1540,7 @@
                                 فلورا</span>
                             <ul class="flex gap-1">
                                 <li>
+                                    <?xml version="1.0" encoding="utf-8"?>
                                     <!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
                                     <svg class="fill-[#fba707]" width="16px" height="16px" viewBox="0 0 24 24"
                                         xmlns="http://www.w3.org/2000/svg">
@@ -1502,6 +1551,7 @@
                                     </svg>
                                 </li>
                                 <li>
+                                    <?xml version="1.0" encoding="utf-8"?>
                                     <!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
                                     <svg class="fill-[#fba707]" width="16px" height="16px" viewBox="0 0 24 24"
                                         xmlns="http://www.w3.org/2000/svg">
@@ -1512,6 +1562,7 @@
                                     </svg>
                                 </li>
                                 <li>
+                                    <?xml version="1.0" encoding="utf-8"?>
                                     <!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
                                     <svg class="fill-[#fba707]" width="16px" height="16px" viewBox="0 0 24 24"
                                         xmlns="http://www.w3.org/2000/svg">
@@ -1522,6 +1573,7 @@
                                     </svg>
                                 </li>
                                 <li>
+                                    <?xml version="1.0" encoding="utf-8"?>
                                     <!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
                                     <svg class="" width="16px" height="16px" viewBox="0 0 24 24" fill="none"
                                         xmlns="http://www.w3.org/2000/svg">
@@ -1532,6 +1584,7 @@
                                     </svg>
                                 </li>
                                 <li>
+                                    <?xml version="1.0" encoding="utf-8"?>
                                     <!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
                                     <svg class="" width="16px" height="16px" viewBox="0 0 24 24" fill="none"
                                         xmlns="http://www.w3.org/2000/svg">
@@ -1573,60 +1626,24 @@
     </section>
     <!-- خدمات -->
     <section>
-        <div class="w-11/12 mx-auto bg-[#023350] py-10 flex gap-5 flex-wrap rounded-3xl mt-20">
+        <div class="w-11/12 mx-auto bg-[#023350] py-10 flex justify-center gap-5 flex-wrap rounded-3xl mt-20">
             <div
-                class="w-full md:w-4/9 lg:w-10/43 h-auto flex flex-row-reverse justify-center items-center gap-5 items-center">
+                class="w-60 xl:w-80 h-auto flex flex-row-reverse justify-center items-center gap-5 items-center">
                 <div>
-
-                    <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-
-                    <!-- Uploaded to: SVG Repo, www.svgrepo.com, Transformed by: SVG Repo Mixer Tools -->
-                    <svg width="70px" height="70px" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"
-                        xmlns:xlink="http://www.w3.org/1999/xlink" fill="#000000">
-
-                        <g id="SVGRepo_bgCarrier" stroke-width="0" />
-
-                        <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round" />
-
-                        <g id="SVGRepo_iconCarrier">
-                            <defs>
-                                <clipPath id="clip-headset">
-                                    <rect width="32" height="32" />
-                                </clipPath>
-                            </defs>
-                            <g id="headset" clip-path="url(#clip-headset)">
-                                <g id="Group_3402" data-name="Group 3402" transform="translate(-260)">
-                                    <g id="Group_3395" data-name="Group 3395">
-                                        <g id="Group_3394" data-name="Group 3394">
-                                            <g id="Group_3393" data-name="Group 3393">
-                                                <path id="Path_4055" data-name="Path 4055"
-                                                    d="M276,0a12.549,12.549,0,0,0-12.534,12.535v7.414a5.511,5.511,0,0,0,5.505,5.505.92.92,0,0,0,.92-.921V15.365a.92.92,0,0,0-.92-.921,5.477,5.477,0,0,0-3.664,1.408V12.535a10.643,10.643,0,0,1,.308-2.5c1.622-3.32,5.66-5.682,10.385-5.682s8.763,2.362,10.385,5.682a10.643,10.643,0,0,1,.308,2.5v3.317a5.477,5.477,0,0,0-3.664-1.408.92.92,0,0,0-.92.921v9.168a.92.92,0,0,0,.92.921,5.465,5.465,0,0,0,2.478-.6v2.025a2.891,2.891,0,0,1-2.888,2.888h-1.471a1.709,1.709,0,0,0-1.634-1.229h-3.058a1.729,1.729,0,0,0,0,3.458h3.058a1.7,1.7,0,0,0,1.629-1.229h1.476a3.892,3.892,0,0,0,3.888-3.888V24.212a5.5,5.5,0,0,0,2.027-4.263V12.535A12.549,12.549,0,0,0,276,0Zm-7.95,16.4V23.5a3.665,3.665,0,0,1,0-7.094ZM276,3.43a13.393,13.393,0,0,0-8.928,3.234,10.675,10.675,0,0,1,17.856,0A13.393,13.393,0,0,0,276,3.43ZM279.514,31h-3.058a.721.721,0,0,1-.713-.745.713.713,0,0,1,.713-.713h3.058a.722.722,0,0,1,.713.745A.714.714,0,0,1,279.514,31Zm4.436-7.5V16.4a3.665,3.665,0,0,1,0,7.094Z"
-                                                    fill="#4fa16e" />
-                                            </g>
-                                        </g>
-                                    </g>
-                                    <g id="Group_3398" data-name="Group 3398">
-                                        <g id="Group_3397" data-name="Group 3397">
-                                            <g id="Group_3396" data-name="Group 3396">
-                                                <path id="Path_4056" data-name="Path 4056"
-                                                    d="M270.813,14.519a.459.459,0,0,0-.46.46v9.94a.46.46,0,0,0,.92,0v-9.94A.459.459,0,0,0,270.813,14.519Z"
-                                                    fill="#4fa16e" />
-                                            </g>
-                                        </g>
-                                    </g>
-                                    <g id="Group_3401" data-name="Group 3401">
-                                        <g id="Group_3400" data-name="Group 3400">
-                                            <g id="Group_3399" data-name="Group 3399">
-                                                <path id="Path_4057" data-name="Path 4057"
-                                                    d="M281.647,24.919v-9.94a.46.46,0,0,0-.92,0v9.94a.46.46,0,0,0,.92,0Z"
-                                                    fill="#4fa16e" />
-                                            </g>
-                                        </g>
-                                    </g>
-                                </g>
-                            </g>
-                        </g>
-
+                    <svg xmlns="http://www.w3.org/2000/svg" width="90px" height="90px" viewBox="0 0 100 100">
+                        <circle cx="50" cy="50" r="48" fill="#EDE0D7"/>
+                        <path d="M25 55V42C25 22 38 12 50 12C62 12 75 22 75 42V55"
+                                fill="none"
+                                stroke="#0A131D"
+                                stroke-width="7"
+                                stroke-linecap="round"/>
+                        <rect x="20" y="50" width="13" height="28" rx="6" fill="#0A131D"/>
+                        <rect x="67" y="50" width="13" height="28" rx="6" fill="#0A131D"/>
+                        <path d="M36 37H64C69 37 73 41 73 46V55C73 60 69 64 64 64H54L46 70L48 63H44C39 63 35 59 35 54V46C35 41 39 37 44 37Z"
+                                fill="#EA8332"/>
+                        <circle cx="45" cy="51" r="2.5" fill="#FFFFFF"/>
+                        <circle cx="54" cy="51" r="2.5" fill="#FFFFFF"/>
+                        <circle cx="63" cy="51" r="2.5" fill="#FFFFFF"/>
                     </svg>
                 </div>
                 <div class="text-white flex flex-col gap-3">
@@ -1635,75 +1652,29 @@
                 </div>
             </div>
             <div
-                class="w-full md:w-4/9 lg:w-10/43 h-auto flex flex-row-reverse justify-center items-center gap-5 items-center">
+                class="w-60 xl:w-80 h-auto flex flex-row-reverse justify-center items-center gap-5 items-center">
                 <div>
-
-                    <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-
-                    <!-- Uploaded to: SVG Repo, www.svgrepo.com, Transformed by: SVG Repo Mixer Tools -->
-                    <svg fill="#378168" height="70px" width="70px" version="1.1" id="Capa_1"
-                        xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-                        viewBox="0 0 60 60" xml:space="preserve" stroke="#378168">
-
-                        <g id="SVGRepo_bgCarrier" stroke-width="0" />
-
-                        <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round" />
-
-                        <g id="SVGRepo_iconCarrier">
-                            <g>
-                                <path
-                                    d="M5.508,12.424c0.502-0.229,0.723-0.822,0.493-1.325c-0.23-0.502-0.822-0.725-1.325-0.493 c-0.693,0.316-1.338,0.731-1.915,1.231c-0.417,0.362-0.462,0.994-0.101,1.411c0.198,0.228,0.477,0.345,0.756,0.345 c0.232,0,0.466-0.08,0.655-0.244C4.504,12.973,4.987,12.662,5.508,12.424z" />
-                                <path
-                                    d="M9,11.884h2c0.553,0,1-0.447,1-1s-0.447-1-1-1H9c-0.553,0-1,0.447-1,1S8.447,11.884,9,11.884z" />
-                                <path
-                                    d="M15,11.884h2c0.553,0,1-0.447,1-1s-0.447-1-1-1h-2c-0.553,0-1,0.447-1,1S14.447,11.884,15,11.884z" />
-                                <path
-                                    d="M11,23.884H9c-0.553,0-1,0.447-1,1s0.447,1,1,1h2c0.553,0,1-0.447,1-1S11.553,23.884,11,23.884z" />
-                                <path
-                                    d="M23,23.884h-2c-0.553,0-1,0.447-1,1s0.447,1,1,1h2c0.553,0,1-0.447,1-1S23.553,23.884,23,23.884z" />
-                                <path
-                                    d="M17,23.884h-2c-0.553,0-1,0.447-1,1s0.447,1,1,1h2c0.553,0,1-0.447,1-1S17.553,23.884,17,23.884z" />
-                                <path
-                                    d="M5.508,23.344c-0.52-0.238-1.003-0.549-1.436-0.925c-0.417-0.361-1.048-0.316-1.411,0.101 c-0.361,0.417-0.316,1.049,0.101,1.411c0.577,0.5,1.221,0.914,1.914,1.231c0.135,0.062,0.276,0.091,0.415,0.091 c0.38,0,0.742-0.217,0.91-0.584C6.23,24.167,6.01,23.573,5.508,23.344z" />
-                                <path
-                                    d="M29,23.884h-2c-0.553,0-1,0.447-1,1s0.447,1,1,1h2c0.553,0,1-0.447,1-1S29.553,23.884,29,23.884z" />
-                                <path
-                                    d="M47,23.884h-2c-0.553,0-1,0.447-1,1s0.447,1,1,1h2c0.553,0,1-0.447,1-1S47.553,23.884,47,23.884z" />
-                                <path
-                                    d="M53,23.884h-2c-0.553,0-1,0.447-1,1s0.447,1,1,1h2c0.553,0,1-0.447,1-1S53.553,23.884,53,23.884z" />
-                                <path
-                                    d="M35,23.884h-2c-0.553,0-1,0.447-1,1s0.447,1,1,1h2c0.553,0,1-0.447,1-1S35.553,23.884,35,23.884z" />
-                                <path
-                                    d="M41,23.884h-2c-0.553,0-1,0.447-1,1s0.447,1,1,1h2c0.553,0,1-0.447,1-1S41.553,23.884,41,23.884z" />
-                                <path
-                                    d="M5.508,53.344c-0.52-0.238-1.003-0.549-1.436-0.925c-0.417-0.361-1.048-0.316-1.411,0.101 c-0.361,0.417-0.316,1.049,0.101,1.411c0.577,0.5,1.221,0.914,1.914,1.231c0.135,0.062,0.276,0.091,0.415,0.091 c0.38,0,0.742-0.217,0.91-0.584C6.23,54.167,6.01,53.573,5.508,53.344z" />
-                                <path
-                                    d="M17,53.884h-2c-0.553,0-1,0.447-1,1s0.447,1,1,1h2c0.553,0,1-0.447,1-1S17.553,53.884,17,53.884z" />
-                                <path
-                                    d="M11,53.884H9c-0.553,0-1,0.447-1,1s0.447,1,1,1h2c0.553,0,1-0.447,1-1S11.553,53.884,11,53.884z" />
-                                <path
-                                    d="M35,53.884h-2c-0.553,0-1,0.447-1,1s0.447,1,1,1h2c0.553,0,1-0.447,1-1S35.553,53.884,35,53.884z" />
-                                <path
-                                    d="M38,54.884c0,0.553,0.447,1,1,1h2c0.553,0,1-0.447,1-1s-0.447-1-1-1h-2C38.447,53.884,38,54.331,38,54.884z" />
-                                <path
-                                    d="M45,55.884h2c0.553,0,1-0.447,1-1s-0.447-1-1-1h-2c-0.553,0-1,0.447-1,1S44.447,55.884,45,55.884z" />
-                                <path
-                                    d="M29,53.884h-2c-0.553,0-1,0.447-1,1s0.447,1,1,1h2c0.553,0,1-0.447,1-1S29.553,53.884,29,53.884z" />
-                                <path
-                                    d="M51,55.884h2c0.553,0,1-0.447,1-1s-0.447-1-1-1h-2c-0.553,0-1,0.447-1,1S50.447,55.884,51,55.884z" />
-                                <path
-                                    d="M23,53.884h-2c-0.553,0-1,0.447-1,1s0.447,1,1,1h2c0.553,0,1-0.447,1-1S23.553,53.884,23,53.884z" />
-                                <path
-                                    d="M44,38.884c0,2.206,1.794,4,4,4s4-1.794,4-4s-1.794-4-4-4S44,36.678,44,38.884z M48,36.884c1.103,0,2,0.897,2,2 s-0.897,2-2,2s-2-0.897-2-2S46.897,36.884,48,36.884z" />
-                                <path
-                                    d="M42.942,5.884l-5.436-5.436c-0.443-0.443-1.166-0.443-1.609,0l-2.046,2.046l-2.046-2.046c-0.443-0.443-1.166-0.443-1.609,0 L24.76,5.884H8c-4.411,0-8,3.589-8,8v38.848c0,3.943,3.209,7.152,7.152,7.152H60v-14v-14v-10v-2v-14H42.942z M36.702,2.472 l3.412,3.412l14,14h-5.391L37.456,8.616c-0.423-0.411-1.086-0.41-1.519,0.011L24.681,19.884H19.29L35.266,3.909l0,0L36.702,2.472z M45.896,19.884H27.509l9.193-9.193L45.896,19.884z M31,2.472l1.437,1.437L16.462,19.884h-2.874l14-14L31,2.472z M8,7.884h14.76 l-2.061,2.061c-0.303,0.098-0.535,0.329-0.633,0.633l-9.306,9.306H8c-3.309,0-6-2.691-6-6S4.691,7.884,8,7.884z M58,43.884H47 c-2.757,0-5-2.243-5-5s2.243-5,5-5h11V43.884z M58,23.884h-1c-0.553,0-1,0.447-1,1s0.447,1,1,1h1v6H47c-3.859,0-7,3.141-7,7 s3.141,7,7,7h11v8h-1c-0.553,0-1,0.447-1,1s0.447,1,1,1h1v2H7.152C4.312,57.884,2,55.573,2,52.732v-2.204 c0.233-0.25,0.345-0.603,0.241-0.954C2.081,49.028,2,48.459,2,47.884V20.528c0.233-0.25,0.345-0.603,0.241-0.954 c-0.019-0.065-0.026-0.132-0.043-0.197c0.09,0.095,0.181,0.188,0.275,0.278c0.086,0.083,0.175,0.162,0.265,0.241 c0.112,0.098,0.226,0.193,0.343,0.285c0.094,0.074,0.19,0.145,0.287,0.215c0.121,0.087,0.246,0.169,0.372,0.249 c0.101,0.064,0.202,0.126,0.306,0.186c0.132,0.075,0.267,0.145,0.403,0.213c0.105,0.053,0.21,0.106,0.318,0.154 c0.143,0.063,0.289,0.119,0.435,0.174c0.108,0.041,0.215,0.083,0.325,0.119c0.157,0.051,0.317,0.092,0.477,0.134 c0.106,0.027,0.21,0.059,0.318,0.082c0.181,0.039,0.365,0.065,0.55,0.091c0.092,0.013,0.182,0.032,0.275,0.042 c0.28,0.03,0.564,0.047,0.851,0.047h3.816h2.828h2.874h2.828H25.3h22.805h4.953h2.828H58V23.884z M56.942,19.884l-8-8H49 c0.553,0,1-0.447,1-1s-0.447-1-1-1h-2c-0.017,0-0.031,0.009-0.048,0.01l-2.01-2.01H58v12H56.942z" />
-                                <path
-                                    d="M55,9.884h-2c-0.553,0-1,0.447-1,1s0.447,1,1,1h2c0.553,0,1-0.447,1-1S55.553,9.884,55,9.884z" />
-                            </g>
-                        </g>
-
+                    <svg xmlns="http://www.w3.org/2000/svg" width="90" height="90" viewBox="0 0 100 100">
+                        <circle cx="50" cy="50" r="48" fill="#EDE0D7"/>
+                        <path d="M24 35C30 18 55 12 70 25"
+                                fill="none"
+                                stroke="#EA8332"
+                                stroke-width="6"
+                                stroke-linecap="round"/>
+                        <path d="M66 17L74 27L62 30Z" fill="#EA8332"/>
+                        <rect x="18" y="48" width="64" height="32" rx="6" fill="#0A131D"/>
+                        <path d="M18 53C18 47 24 43 31 44L82 55V80H18Z"
+                                fill="#0A131D"/>
+                        <rect x="68" y="59" width="18" height="12" rx="3" fill="#85512F"/>
+                        <circle cx="77" cy="65" r="3" fill="#C8AD9A"/>
+                        <path d="M32 28L66 37L60 56L26 47Z"
+                                fill="#C8AD9A"/>
+                        <circle cx="46" cy="42" r="7" fill="#EA8332"/>
+                        <path d="M43 42H49M46 39V45"
+                                stroke="#FFFFFF"
+                                stroke-width="2"
+                                stroke-linecap="round"/>
                     </svg>
-
                 </div>
                 <div class="text-white flex flex-col gap-3">
                     <h4 class="font-bold text-lg">پرداخت امن</h4>
@@ -1711,35 +1682,27 @@
                 </div>
             </div>
             <div
-                class="w-full md:w-4/9 lg:w-10/43 h-auto flex flex-row-reverse justify-center items-center gap-5 items-center">
+                class="w-60 xl:w-80 h-auto flex flex-row-reverse justify-center items-center gap-5 items-center">
                 <div>
-
-                    <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-
-                    <!-- Uploaded to: SVG Repo, www.svgrepo.com, Transformed by: SVG Repo Mixer Tools -->
-                    <svg width="70px" height="70px" viewBox="0 -0.5 17 17" version="1.1"
-                        xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-                        class="si-glyph si-glyph-arrow-change" fill="#445f4c" stroke="#445f4c">
-
-                        <g id="SVGRepo_bgCarrier" stroke-width="0" />
-
-                        <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round" />
-
-                        <g id="SVGRepo_iconCarrier">
-                            <title>950</title>
-                            <defs> </defs>
-                            <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                                <g transform="translate(1.000000, 0.000000)" fill="#3f885b">
-                                    <path
-                                        d="M1.539,8.001 C2.367,8.001 2.918,7.45 2.918,6.622 L2.914,6.187 C2.914,6.187 2.709,4.954 4.354,4.954 L11.015,5 L11.015,6.759 C11.338,7.081 11.862,7.081 12.185,6.759 L14.758,4.187 C15.08,3.863 15.08,3.339 14.758,3.017 L12.185,0.292 C11.862,-0.03 11.338,-0.03 11.015,0.292 L11.015,2.137 C10.854,2.09 4.562,2.063 4.562,2.063 C0.851,2.063 0.039,4.492 0.039,5.47 L0.039,6.501 C0.039,7.329 0.711,8.001 1.539,8.001 L1.539,8.001 Z"
-                                        class="si-glyph-fill"> </path>
-                                    <path
-                                        d="M13.5,8.042 C12.672,8.042 12,8.626 12,9.454 L12.002,10.411 C11.957,10.768 11.357,11.001 10.477,11.001 L3.938,11.001 L3.936,9.442 C3.614,9.12 3.09,9.12 2.766,9.442 L0.194,12.014 C-0.128,12.338 -0.128,12.862 0.194,13.184 L2.766,15.756 C3.09,16.08 3.614,16.08 3.936,15.756 L3.938,13.905 L10.477,13.905 C14.188,13.905 15,11.463 15,10.484 L15,9.453 C15,8.626 14.328,8.042 13.5,8.042 L13.5,8.042 Z"
-                                        class="si-glyph-fill"> </path>
-                                </g>
-                            </g>
-                        </g>
-
+                    <svg xmlns="http://www.w3.org/2000/svg" width="90" height="90" viewBox="0 0 100 100">
+                    <circle cx="50" cy="50" r="48" fill="#EDE0D7"/>
+                    <rect x="15" y="35" width="48" height="32" rx="5" fill="#0A131D"/>
+                    <rect x="15" y="43" width="48" height="6" fill="#85512F"/>
+                    <rect x="22" y="55" width="18" height="5" rx="2" fill="#C8AD9A"/>
+                    <path d="M68 24L88 32V52C88 68 79 79 68 84C57 79 48 68 48 52V32Z"
+                            fill="#EA8332"/>
+                    <rect x="59" y="50" width="18" height="16" rx="3" fill="#FFFFFF"/>
+                    <path d="M62 50V44C62 36 74 36 74 44V50"
+                            fill="none"
+                            stroke="#FFFFFF"
+                            stroke-width="4"
+                            stroke-linecap="round"/>
+                    <path d="M63 58L67 62L74 54"
+                            fill="none"
+                            stroke="#EA8332"
+                            stroke-width="3"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"/>
                     </svg>
                 </div>
                 <div class="text-white flex flex-col gap-3">
@@ -1748,30 +1711,22 @@
                 </div>
             </div>
             <div
-                class="w-full md:w-4/9 lg:w-10/43 h-auto flex flex-row-reverse justify-center items-center gap-5 items-center">
+                class="w-60 xl:w-80 h-auto flex flex-row-reverse justify-center items-center gap-5 items-center">
                 <div>
-
-                    <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-
-                    <!-- Uploaded to: SVG Repo, www.svgrepo.com, Transformed by: SVG Repo Mixer Tools -->
-                    <svg width="70px" height="70px" viewBox="0 -1 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
-
-                        <g id="SVGRepo_bgCarrier" stroke-width="0" />
-
-                        <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round" />
-
-                        <g id="SVGRepo_iconCarrier">
-                            <path fill-rule="evenodd" clip-rule="evenodd"
-                                d="M12.31 16.826C12.2864 17.9963 11.3464 18.9278 10.2052 18.9118C9.06401 18.8957 8.14927 17.9382 8.15697 16.7676C8.16467 15.5971 9.09191 14.6522 10.2332 14.652C10.7897 14.6578 11.3212 14.8901 11.7106 15.2978C12.1001 15.7055 12.3157 16.2552 12.31 16.826V16.826Z"
-                                stroke="#2c7d5a" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-                            <path fill-rule="evenodd" clip-rule="evenodd"
-                                d="M22.2014 16.826C22.1778 17.9963 21.2378 18.9278 20.0966 18.9118C18.9554 18.8957 18.0407 17.9382 18.0484 16.7676C18.0561 15.5971 18.9833 14.6522 20.1246 14.652C20.6811 14.6578 21.2126 14.8901 21.602 15.2978C21.9915 15.7055 22.2071 16.2552 22.2014 16.826V16.826Z"
-                                stroke="#2c7d5a" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-                            <path
-                                d="M17.8032 17.576C18.2174 17.576 18.5532 17.2402 18.5532 16.826C18.5532 16.4118 18.2174 16.076 17.8032 16.076V17.576ZM12.31 16.076C11.8958 16.076 11.56 16.4118 11.56 16.826C11.56 17.2402 11.8958 17.576 12.31 17.576V16.076ZM17.0571 16.826C17.0571 17.2402 17.3928 17.576 17.8071 17.576C18.2213 17.576 18.5571 17.2402 18.5571 16.826H17.0571ZM18.5571 11.559C18.5571 11.1448 18.2213 10.809 17.8071 10.809C17.3928 10.809 17.0571 11.1448 17.0571 11.559H18.5571ZM17.8071 16.076C17.3928 16.076 17.0571 16.4118 17.0571 16.826C17.0571 17.2402 17.3928 17.576 17.8071 17.576V16.076ZM18.0518 17.576C18.466 17.576 18.8018 17.2402 18.8018 16.826C18.8018 16.4118 18.466 16.076 18.0518 16.076V17.576ZM22.189 16.0762C21.7749 16.0852 21.4465 16.4281 21.4555 16.8423C21.4644 17.2564 21.8074 17.5848 22.2215 17.5758L22.189 16.0762ZM24.4 14.485L25.1499 14.4718C25.1492 14.4331 25.1455 14.3946 25.1389 14.3565L24.4 14.485ZM24.63 11.4305C24.559 11.0224 24.1706 10.7491 23.7625 10.8201C23.3544 10.8911 23.0812 11.2794 23.1521 11.6875L24.63 11.4305ZM17.8031 6.127C17.3889 6.127 17.0531 6.46279 17.0531 6.877C17.0531 7.29121 17.3889 7.627 17.8031 7.627V6.127ZM21.2849 6.877L21.2849 7.62702L21.2897 7.62698L21.2849 6.877ZM22.8737 7.56387L22.327 8.07731L22.327 8.07731L22.8737 7.56387ZM23.4835 9.218L22.7342 9.18603C22.7319 9.23979 22.7354 9.29363 22.7446 9.34663L23.4835 9.218ZM23.1522 11.6876C23.2232 12.0957 23.6116 12.3689 24.0197 12.2979C24.4278 12.2268 24.701 11.8384 24.6299 11.4304L23.1522 11.6876ZM18.5531 6.877C18.5531 6.46279 18.2174 6.127 17.8031 6.127C17.3889 6.127 17.0531 6.46279 17.0531 6.877H18.5531ZM17.0531 11.559C17.0531 11.9732 17.3889 12.309 17.8031 12.309C18.2174 12.309 18.5531 11.9732 18.5531 11.559H17.0531ZM17.0531 6.877C17.0531 7.29121 17.3889 7.627 17.8031 7.627C18.2174 7.627 18.5531 7.29121 18.5531 6.877H17.0531ZM17.8031 6.077L17.0531 6.0722V6.077H17.8031ZM16.7657 5L16.77 4.25H16.7657V5ZM7.42037 5L7.42037 4.24999L7.41679 4.25001L7.42037 5ZM6.68411 5.31693L6.14467 4.79587L6.14467 4.79587L6.68411 5.31693ZM6.382 6.075L7.13201 6.075L7.13199 6.07158L6.382 6.075ZM6.382 15.75L7.132 15.7534V15.75H6.382ZM6.68411 16.5081L6.14467 17.0291L6.14467 17.0291L6.68411 16.5081ZM7.42037 16.825L7.41679 17.575H7.42037V16.825ZM8.1526 17.575C8.56681 17.575 8.9026 17.2392 8.9026 16.825C8.9026 16.4108 8.56681 16.075 8.1526 16.075V17.575ZM17.8051 10.808C17.3909 10.808 17.0551 11.1438 17.0551 11.558C17.0551 11.9722 17.3909 12.308 17.8051 12.308V10.808ZM23.893 12.308C24.3072 12.308 24.643 11.9722 24.643 11.558C24.643 11.1438 24.3072 10.808 23.893 10.808V12.308ZM1 6.25C0.585786 6.25 0.25 6.58579 0.25 7C0.25 7.41421 0.585786 7.75 1 7.75V6.25ZM4.05175 7.75C4.46596 7.75 4.80175 7.41421 4.80175 7C4.80175 6.58579 4.46596 6.25 4.05175 6.25V7.75ZM1.975 9.25C1.56079 9.25 1.225 9.58579 1.225 10C1.225 10.4142 1.56079 10.75 1.975 10.75V9.25ZM3.925 10.75C4.33921 10.75 4.675 10.4142 4.675 10C4.675 9.58579 4.33921 9.25 3.925 9.25V10.75ZM2.56975 12.25C2.15554 12.25 1.81975 12.5858 1.81975 13C1.81975 13.4142 2.15554 13.75 2.56975 13.75V12.25ZM3.925 13.75C4.33921 13.75 4.675 13.4142 4.675 13C4.675 12.5858 4.33921 12.25 3.925 12.25V13.75ZM17.8032 16.076H12.31V17.576H17.8032V16.076ZM18.5571 16.826V11.559H17.0571V16.826H18.5571ZM17.8071 17.576H18.0518V16.076H17.8071V17.576ZM22.2215 17.5758C23.8876 17.5397 25.1791 16.1341 25.1499 14.4718L23.6501 14.4982C23.6655 15.3704 22.9939 16.0587 22.189 16.0762L22.2215 17.5758ZM25.1389 14.3565L24.63 11.4305L23.1521 11.6875L23.6611 14.6135L25.1389 14.3565ZM17.8031 7.627H21.2849V6.127H17.8031V7.627ZM21.2897 7.62698C21.6768 7.62448 22.0522 7.7847 22.327 8.07731L23.4204 7.05042C22.8641 6.4581 22.0909 6.12177 21.28 6.12702L21.2897 7.62698ZM22.327 8.07731C22.6025 8.37065 22.7519 8.7712 22.7342 9.18603L24.2328 9.24997C24.2675 8.43728 23.976 7.642 23.4204 7.05042L22.327 8.07731ZM22.7446 9.34663L23.1522 11.6876L24.6299 11.4304L24.2224 9.08937L22.7446 9.34663ZM17.0531 6.877V11.559H18.5531V6.877H17.0531ZM18.5531 6.877V6.077H17.0531V6.877H18.5531ZM18.5531 6.0818C18.5562 5.60485 18.3745 5.14259 18.0422 4.79768L16.9619 5.83829C17.0188 5.8974 17.0537 5.98123 17.0532 6.0722L18.5531 6.0818ZM18.0422 4.79768C17.7094 4.45212 17.2522 4.25277 16.77 4.25001L16.7615 5.74999C16.8331 5.7504 16.9056 5.77984 16.9619 5.83829L18.0422 4.79768ZM16.7657 4.25H7.42037V5.75H16.7657V4.25ZM7.41679 4.25001C6.93498 4.25231 6.4778 4.45098 6.14467 4.79587L7.22355 5.83799C7.27989 5.77967 7.3524 5.75033 7.42396 5.74999L7.41679 4.25001ZM6.14467 4.79587C5.81216 5.1401 5.62983 5.60177 5.63201 6.07843L7.13199 6.07158C7.13158 5.98066 7.16659 5.89696 7.22355 5.83799L6.14467 4.79587ZM5.632 6.075V15.75H7.132V6.075H5.632ZM5.63201 15.7466C5.62983 16.2232 5.81216 16.6849 6.14467 17.0291L7.22355 15.987C7.16659 15.928 7.13158 15.8443 7.13199 15.7534L5.63201 15.7466ZM6.14467 17.0291C6.4778 17.374 6.93498 17.5727 7.41679 17.575L7.42396 16.075C7.3524 16.0747 7.27988 16.0453 7.22355 15.987L6.14467 17.0291ZM7.42037 17.575H8.1526V16.075H7.42037V17.575ZM17.8051 12.308H23.893V10.808H17.8051V12.308ZM1 7.75H4.05175V6.25H1V7.75ZM1.975 10.75H3.925V9.25H1.975V10.75ZM2.56975 13.75H3.925V12.25H2.56975V13.75Z"
-                                fill="#2c7d5a" />
-                        </g>
-
+                    <svg xmlns="http://www.w3.org/2000/svg" width="90" height="90" viewBox="0 0 100 100">
+                        <circle cx="50" cy="50" r="48" fill="#EDE0D7"/>
+                        <path d="M15 38H58V68H15Z" fill="#0A131D"/>
+                        <path d="M58 45H72L84 57V68H58Z" fill="#EA8332"/>
+                        <path d="M62 48H70L77 57H62Z" fill="#FFFFFF"/>
+                        <circle cx="30" cy="70" r="9" fill="#3A2D26"/>
+                        <circle cx="30" cy="70" r="4" fill="#EDE0D7"/>
+                        <circle cx="70" cy="70" r="9" fill="#3A2D26"/>
+                        <circle cx="70" cy="70" r="4" fill="#EDE0D7"/>
+                        <path d="M18 30H35M12 36H32M20 42H35"
+                                fill="none"
+                                stroke="#EA8332"
+                                stroke-width="4"
+                                stroke-linecap="round"/>
                     </svg>
                 </div>
                 <div class="text-white flex flex-col gap-3">
@@ -1785,7 +1740,7 @@
     <section>
         <div class="w-11/12 mx-auto h-auto flex gap-2 mt-20">
             <div class="w-5/20 max-xl:hidden flex items-end">
-                <img src="{{asset('assets/img/banner/product-banner.jpg')}}" alt=""
+                <img src="{{asset('assets/img/silyder.producte/01.png')}}" alt=""
                     class="h-140 overflow-hidden rounded-2xl object-cover">
             </div>
             <div class="w-full flex flex-col">
@@ -1793,6 +1748,7 @@
                     <a href=""
                         class="flex flex-row-reverse gap-2 fill-[#54ab9a] text-[#54ab9a] hover:text-[#fd6a6a] hover:fill-[#fd6a6a] transition-all duration-300">
                         <span class="">All Products </span>
+                        <?xml version="1.0" encoding="iso-8859-1"?>
                         <!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
                         <!DOCTYPE svg
                             PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
@@ -1808,17 +1764,17 @@
                     </a>
                     <span class="text-[17px] md:text-[25px] font-bold text-[#023350]">Popular Items</span>
                 </div>
-                <div class="flex flex-wrap gap-4 justify-center mb-15">
-                    <button class="px-9 py-3 rounded-4xl bg-green-400">Baby & Mom Care</button>
-                    <button class="px-9 py-3 rounded-4xl bg-green-400">Medical Equipments</button>
-                    <button class="px-9 py-3 rounded-4xl bg-green-400">Medicine</button>
-                    <button class="px-9 py-3 rounded-4xl bg-green-400">تجهیزات</button>
-                    <button class="px-9 py-3 rounded-4xl bg-green-400">Medicine</button>
+                <div class="flex max-w-full overflow-x-auto gap-4 justify-center mb-15">
+                    <button class="px-9 py-3 rounded-4xl bg-green-400 text-nowrap">Baby & Mom Care</button>
+                    <button class="px-9 py-3 rounded-4xl bg-green-400 text-nowrap">Medical Equipments</button>
+                    <button class="px-9 py-3 rounded-4xl bg-green-400 text-nowrap">Medicine</button>
+                    <button class="px-9 py-3 rounded-4xl bg-green-400 text-nowrap">تجهیزات</button>
+                    <button class="px-9 py-3 rounded-4xl bg-green-400 text-nowrap">Medicine</button>
                 </div>
                 <div class="w-full flex flex-wrap gap-2 justify-center mt-5">
                     <div class="w-80 sm:w-5/11 lg:w-3/13 h-100 group overflow-hidden rounded-2xl relative">
                         <img src="{{asset('assets/img/silyder.producte/03.webp')}}" alt=""
-                            class="absolute h-2/3 w-full z-60 object-top">
+                            class="absolute h-5/8 w-full z-60 object-top">
                         <div class="absolute w-full h-25 bg-[#ebf8f7] bottom-0 flex justify-between">
                             <div class="w-11/12 mx-auto h-1/3 flex flex-col justify-between py-2">
                                 <div class="flex flex-col gap-2">
@@ -1826,6 +1782,7 @@
                                         عالی قطره فلورا</span>
                                     <ul class="flex gap-1">
                                         <li>
+                                            <?xml version="1.0" encoding="utf-8"?>
                                             <!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
                                             <svg class="fill-[#fba707]" width="16px" height="16px" viewBox="0 0 24 24"
                                                 xmlns="http://www.w3.org/2000/svg">
@@ -1836,6 +1793,7 @@
                                             </svg>
                                         </li>
                                         <li>
+                                            <?xml version="1.0" encoding="utf-8"?>
                                             <!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
                                             <svg class="fill-[#fba707]" width="16px" height="16px" viewBox="0 0 24 24"
                                                 xmlns="http://www.w3.org/2000/svg">
@@ -1846,6 +1804,7 @@
                                             </svg>
                                         </li>
                                         <li>
+                                            <?xml version="1.0" encoding="utf-8"?>
                                             <!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
                                             <svg class="fill-[#fba707]" width="16px" height="16px" viewBox="0 0 24 24"
                                                 xmlns="http://www.w3.org/2000/svg">
@@ -1856,6 +1815,7 @@
                                             </svg>
                                         </li>
                                         <li>
+                                            <?xml version="1.0" encoding="utf-8"?>
                                             <!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
                                             <svg class="" width="16px" height="16px" viewBox="0 0 24 24" fill="none"
                                                 xmlns="http://www.w3.org/2000/svg">
@@ -1866,6 +1826,7 @@
                                             </svg>
                                         </li>
                                         <li>
+                                            <?xml version="1.0" encoding="utf-8"?>
                                             <!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
                                             <svg class="" width="16px" height="16px" viewBox="0 0 24 24" fill="none"
                                                 xmlns="http://www.w3.org/2000/svg">
@@ -1946,14 +1907,15 @@
                     </div>
                     <div class="w-80 sm:w-5/11 lg:w-3/13 h-100 group overflow-hidden rounded-2xl relative">
                         <img src="{{asset('assets/img/silyder.producte/01.png')}}" alt=""
-                            class="absolute h-2/3 w-full z-60 object-top">
-                        <div class="absolute w-full h-25 bg-[#ebf8f7] bottom-0 flex justify-between">
+                            class="absolute h-5/8 w-full z-60 object-top">
+                        <div class="absolute w-full h-30 bg-[#ebf8f7] bottom-0 flex justify-between">
                             <div class="w-11/12 mx-auto flex">
                                 <div class="flex h-11/12 flex-col mx-auto gap-1">
                                     <span class="font-bold text-[16px] group-hover:text-[#03a297]">ایرانی و عالی قطره
                                         فلورا</span>
                                     <ul class="flex gap-1">
                                         <li>
+                                            <?xml version="1.0" encoding="utf-8"?>
                                             <!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
                                             <svg class="fill-[#fba707]" width="16px" height="16px" viewBox="0 0 24 24"
                                                 xmlns="http://www.w3.org/2000/svg">
@@ -1964,6 +1926,7 @@
                                             </svg>
                                         </li>
                                         <li>
+                                            <?xml version="1.0" encoding="utf-8"?>
                                             <!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
                                             <svg class="fill-[#fba707]" width="16px" height="16px" viewBox="0 0 24 24"
                                                 xmlns="http://www.w3.org/2000/svg">
@@ -1974,6 +1937,7 @@
                                             </svg>
                                         </li>
                                         <li>
+                                            <?xml version="1.0" encoding="utf-8"?>
                                             <!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
                                             <svg class="fill-[#fba707]" width="16px" height="16px" viewBox="0 0 24 24"
                                                 xmlns="http://www.w3.org/2000/svg">
@@ -1984,6 +1948,7 @@
                                             </svg>
                                         </li>
                                         <li>
+                                            <?xml version="1.0" encoding="utf-8"?>
                                             <!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
                                             <svg class="" width="16px" height="16px" viewBox="0 0 24 24" fill="none"
                                                 xmlns="http://www.w3.org/2000/svg">
@@ -1994,6 +1959,7 @@
                                             </svg>
                                         </li>
                                         <li>
+                                            <?xml version="1.0" encoding="utf-8"?>
                                             <!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
                                             <svg class="" width="16px" height="16px" viewBox="0 0 24 24" fill="none"
                                                 xmlns="http://www.w3.org/2000/svg">
@@ -2072,16 +2038,17 @@
                             </div>
                         </div>
                     </div>
-                    <div class="w-80 sm:w-5/11 lg:w-3/13 h-100 group overflow-hidden rounded-2xl relative">
+                    <div class="w-80 sm:w-5/11 lg:w-3/13 h-100 group overflow-hidden rounded-2xl relative">                       
                         <img src="{{asset('assets/img/silyder.producte/03.webp')}}" alt=""
-                            class="absolute h-2/3 w-full z-60 object-top">
-                        <div class="absolute w-full h-25 bg-[#ebf8f7] bottom-0 flex justify-between">
+                            class="absolute h-5/8 w-full z-60 object-top">
+                        <div class="absolute w-full h-30 bg-[#ebf8f7] bottom-0 flex justify-between">
                             <div class="w-11/12 mx-auto flex">
                                 <div class="flex h-11/12 flex-col mx-auto gap-1">
                                     <span class="font-bold text-[16px] group-hover:text-[#03a297]">ایرانی و عالی قطره
                                         فلورا</span>
                                     <ul class="flex gap-1">
                                         <li>
+                                            <?xml version="1.0" encoding="utf-8"?>
                                             <!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
                                             <svg class="fill-[#fba707]" width="16px" height="16px" viewBox="0 0 24 24"
                                                 xmlns="http://www.w3.org/2000/svg">
@@ -2092,6 +2059,7 @@
                                             </svg>
                                         </li>
                                         <li>
+                                            <?xml version="1.0" encoding="utf-8"?>
                                             <!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
                                             <svg class="fill-[#fba707]" width="16px" height="16px" viewBox="0 0 24 24"
                                                 xmlns="http://www.w3.org/2000/svg">
@@ -2102,6 +2070,7 @@
                                             </svg>
                                         </li>
                                         <li>
+                                            <?xml version="1.0" encoding="utf-8"?>
                                             <!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
                                             <svg class="fill-[#fba707]" width="16px" height="16px" viewBox="0 0 24 24"
                                                 xmlns="http://www.w3.org/2000/svg">
@@ -2112,6 +2081,7 @@
                                             </svg>
                                         </li>
                                         <li>
+                                            <?xml version="1.0" encoding="utf-8"?>
                                             <!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
                                             <svg class="" width="16px" height="16px" viewBox="0 0 24 24" fill="none"
                                                 xmlns="http://www.w3.org/2000/svg">
@@ -2122,6 +2092,7 @@
                                             </svg>
                                         </li>
                                         <li>
+                                            <?xml version="1.0" encoding="utf-8"?>
                                             <!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
                                             <svg class="" width="16px" height="16px" viewBox="0 0 24 24" fill="none"
                                                 xmlns="http://www.w3.org/2000/svg">
@@ -2202,14 +2173,15 @@
                     </div>
                     <div class="w-80 sm:w-5/11 lg:w-3/13 h-100 group overflow-hidden rounded-2xl relative">
                         <img src="{{asset('assets/img/silyder.producte/01.png')}}" alt=""
-                            class="absolute h-2/3 w-full z-60 object-top">
-                        <div class="absolute w-full h-25 bg-[#ebf8f7] bottom-0 flex justify-between">
+                            class="absolute h-5/8 w-full z-60 object-top">
+                        <div class="absolute w-full h-30 bg-[#ebf8f7] bottom-0 flex justify-between">
                             <div class="w-11/12 mx-auto flex">
                                 <div class="flex h-11/12 flex-col mx-auto gap-1">
                                     <span class="font-bold text-[16px] group-hover:text-[#03a297]">ایرانی و عالی قطره
                                         فلورا</span>
                                     <ul class="flex gap-1">
                                         <li>
+                                            <?xml version="1.0" encoding="utf-8"?>
                                             <!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
                                             <svg class="fill-[#fba707]" width="16px" height="16px" viewBox="0 0 24 24"
                                                 xmlns="http://www.w3.org/2000/svg">
@@ -2220,6 +2192,7 @@
                                             </svg>
                                         </li>
                                         <li>
+                                            <?xml version="1.0" encoding="utf-8"?>
                                             <!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
                                             <svg class="fill-[#fba707]" width="16px" height="16px" viewBox="0 0 24 24"
                                                 xmlns="http://www.w3.org/2000/svg">
@@ -2230,6 +2203,7 @@
                                             </svg>
                                         </li>
                                         <li>
+                                            <?xml version="1.0" encoding="utf-8"?>
                                             <!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
                                             <svg class="fill-[#fba707]" width="16px" height="16px" viewBox="0 0 24 24"
                                                 xmlns="http://www.w3.org/2000/svg">
@@ -2240,6 +2214,7 @@
                                             </svg>
                                         </li>
                                         <li>
+                                            <?xml version="1.0" encoding="utf-8"?>
                                             <!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
                                             <svg class="" width="16px" height="16px" viewBox="0 0 24 24" fill="none"
                                                 xmlns="http://www.w3.org/2000/svg">
@@ -2250,6 +2225,7 @@
                                             </svg>
                                         </li>
                                         <li>
+                                            <?xml version="1.0" encoding="utf-8"?>
                                             <!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
                                             <svg class="" width="16px" height="16px" viewBox="0 0 24 24" fill="none"
                                                 xmlns="http://www.w3.org/2000/svg">
@@ -2331,9 +2307,9 @@
                 </div>
             </div>
         </div>
-        <div class="w-11/12 mx-auto h-30 md:h-50 hidden max-xl:block my-8">
-            <img src="{{asset('assets/img/logo/IMG_20260730_170917_821.jpg')}}" alt="" class="w-full h-30 md:h-50 rounded-2xl">
-        </div>
+        <!-- <div class="w-11/12 mx-auto h-30 md:h-50 hidden max-xl:block my-8">
+            <img src="asstes/img/logo/IMG_20260730_170917_821.jpg" alt="" class="w-full h-30 md:h-50 rounded-2xl">
+        </div> -->
     </section>
     <!-- بنر2 -->
     <section>
@@ -2341,7 +2317,7 @@
             <img src="{{asset('assets/img/baner/big-banner.webp')}}" alt="" class="w-full h-full rounded-2xl object-cover">
             <div class="absolute w-full h-full top-0 flex flex-col justify-center items-center gap-2">
                 <h6 class="text-[25px] text-[#023350]">Mega Collections</h6>
-                <h2 class="text-[#023350] text-[40px] lg:text-[45px] font-bold text-center">Huge Sale Up To
+                <h2 class="text-[#023350] text-[30px] sm:text-[35px] md:text-[40px] lg:text-[45px] font-bold text-center">Huge Sale Up To
                     <span>40%</span>
                     Off
                 </h2>
@@ -2358,6 +2334,7 @@
             <a href=""
                 class="flex flex-row-reverse gap-2 fill-[#54ab9a] text-[#54ab9a] hover:text-[#fd6a6a] hover:fill-[#fd6a6a] transition-all duration-300">
                 <span class="">All Products </span>
+                <?xml version="1.0" encoding="iso-8859-1"?>
                 <!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
                 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
                 <svg height="20px" width="20px" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg"
@@ -2372,45 +2349,45 @@
             </a>
             <span class="text-[17px] md:text-[25px] font-bold text-[#023350]">Popular Items</span>
         </div>
-        <div class="py-8 bg-white">
+        <div class="py-8">
             <div class="w-11/12 mx-auto mb-10">
                 <!-- Brands -->
                 <div class="flex gap-8 items-center h-30 overflow-x-auto">
-                    <img src="{{asset('assets/img/brand/03.png')}}"
+                    <img src="https://live.themewild.com/medion/assets/img/brand/03.png"
                         class="h-20 min-w-40 opacity-60 hover:opacity-100 transition duration-300">
-                    <img src="{{asset('assets/img/brand/03.png')}}"
+                    <img src="https://live.themewild.com/medion/assets/img/brand/03.png"
                         class="h-20 min-w-40 opacity-60 hover:opacity-100 transition duration-300">
-                    <img src="{{asset('assets/img/brand/03.png')}}"
+                    <img src="https://live.themewild.com/medion/assets/img/brand/03.png"
                         class="h-20 min-w-40 opacity-60 hover:opacity-100 transition duration-300">
-                    <img src="{{asset('assets/img/brand/03.png')}}"
+                    <img src="https://live.themewild.com/medion/assets/img/brand/03.png"
                         class="h-20 min-w-40 opacity-60 hover:opacity-100 transition duration-300">
-                    <img src="{{asset('assets/img/brand/03.png')}}"
+                    <img src="https://live.themewild.com/medion/assets/img/brand/03.png"
                         class="h-20 min-w-40 opacity-60 hover:opacity-100 transition duration-300">
-                    <img src="{{asset('assets/img/brand/03.png')}}"
+                    <img src="https://live.themewild.com/medion/assets/img/brand/03.png"
                         class="h-20 min-w-40 opacity-60 hover:opacity-100 transition duration-300">
-                    <img src="{{asset('assets/img/brand/03.png')}}"
+                    <img src="https://live.themewild.com/medion/assets/img/brand/03.png"
                         class="h-20 min-w-40 opacity-60 hover:opacity-100 transition duration-300">
                 </div>
             </div>
         </div>
         <!-- <div class="w-11/12 h-auto mx-auto overflow-x-auto flex gap-1 pb-4 my-5">
             <div class="min-w-1/2 md:min-w-40 border-2 rounded-2xl">
-                <img src="assets/img/brand/04.png" alt="" class="w-full h-full">
+                <img src="https://live.themewild.com/medion/assets/img/brand/04.png" alt="" class="w-full h-full">
             </div>
             <div class="min-w-1/2 md:min-w-40 border-2 rounded-2xl">
-                <img src="assets/img/brand/05.png" alt="" class="w-full h-full">
+                <img src="https://live.themewild.com/medion/assets/img/brand/05.png" alt="" class="w-full h-full">
             </div>
             <div class="min-w-1/2 md:min-w-40 border-2 rounded-2xl">
-                <img src="assets/img/brand/01.png" alt="" class="w-full h-full">
+                <img src="https://live.themewild.com/medion/assets/img/brand/01.png" alt="" class="w-full h-full">
             </div>
             <div class="min-w-1/2 md:min-w-40 border-2 rounded-2xl">
-                <img src="assets/img/brand/02.png" alt="" class="w-full h-full">
+                <img src="https://live.themewild.com/medion/assets/img/brand/02.png" alt="" class="w-full h-full">
             </div>
             <div class="min-w-1/2 md:min-w-40 border-2 rounded-2xl">
-                <img src="assets/img/brand/06.png" alt="" class="w-full h-full">
+                <img src="https://live.themewild.com/medion/assets/img/brand/06.png" alt="" class="w-full h-full">
             </div>
             <div class="min-w-1/2 md:min-w-40 border-2 rounded-2xl">
-                <img src="assets/img/brand/03.png" alt="" class="w-full h-full">
+                <img src="https://live.themewild.com/medion/assets/img/brand/03.png" alt="" class="w-full h-full">
             </div>
         </div> -->
     </section>
@@ -2424,9 +2401,9 @@
                     <div class="w-10/11 sm:w-2/3 md:w-5/11 xl:w-5/16 h-130 flex flex-col gap-5 bg-white rounded-2xl">
                         <div class="w-11/12 mx-auto">
                             <div class="w-full py-3">
-                                <span class="text-[30px] pb-3 border-b-3 items-end">تجهیزات</span>
+                                <span class="text-[28px] pb-3 border-b-3 items-end font-bold">تجهیزات</span>
                             </div>
-                            <div class="w-full border-b-1"></div>
+                            <div class="w-full"></div>
                         </div>
                         <div class="flex flex-col gap-5">
                             <div
@@ -2436,83 +2413,170 @@
                                         <h2 class="text-[16px] font-bold text-center">تجهیزات پزشکی</h2>
                                         <ul class="flex">
                                             <li>
-                                                <!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
-                                                <svg class="" width="16px" height="16px" viewBox="0 0 24 24" fill="none"
+                                                <?xml version="1.0" encoding="utf-8"?>
+                                                <svg class="fill-[#fba707]" width="16px" height="16px" viewBox="0 0 24 24" 
                                                     xmlns="http://www.w3.org/2000/svg">
                                                     <path
                                                         d="M11.2691 4.41115C11.5006 3.89177 11.6164 3.63208 11.7776 3.55211C11.9176 3.48263 12.082 3.48263 12.222 3.55211C12.3832 3.63208 12.499 3.89177 12.7305 4.41115L14.5745 8.54808C14.643 8.70162 14.6772 8.77839 14.7302 8.83718C14.777 8.8892 14.8343 8.93081 14.8982 8.95929C14.9705 8.99149 15.0541 9.00031 15.2213 9.01795L19.7256 9.49336C20.2911 9.55304 20.5738 9.58288 20.6997 9.71147C20.809 9.82316 20.8598 9.97956 20.837 10.1342C20.8108 10.3122 20.5996 10.5025 20.1772 10.8832L16.8125 13.9154C16.6877 14.0279 16.6252 14.0842 16.5857 14.1527C16.5507 14.2134 16.5288 14.2807 16.5215 14.3503C16.5132 14.429 16.5306 14.5112 16.5655 14.6757L17.5053 19.1064C17.6233 19.6627 17.6823 19.9408 17.5989 20.1002C17.5264 20.2388 17.3934 20.3354 17.2393 20.3615C17.0619 20.3915 16.8156 20.2495 16.323 19.9654L12.3995 17.7024C12.2539 17.6184 12.1811 17.5765 12.1037 17.56C12.0352 17.5455 11.9644 17.5455 11.8959 17.56C11.8185 17.5765 11.7457 17.6184 11.6001 17.7024L7.67662 19.9654C7.18404 20.2495 6.93775 20.3915 6.76034 20.3615C6.60623 20.3354 6.47319 20.2388 6.40075 20.1002C6.31736 19.9408 6.37635 19.6627 6.49434 19.1064L7.4341 14.6757C7.46898 14.5112 7.48642 14.429 7.47814 14.3503C7.47081 14.2807 7.44894 14.2134 7.41394 14.1527C7.37439 14.0842 7.31195 14.0279 7.18708 13.9154L3.82246 10.8832C3.40005 10.5025 3.18884 10.3122 3.16258 10.1342C3.13978 9.97956 3.19059 9.82316 3.29993 9.71147C3.42581 9.58288 3.70856 9.55304 4.27406 9.49336L8.77835 9.01795C8.94553 9.00031 9.02911 8.99149 9.10139 8.95929C9.16534 8.93081 9.2226 8.8892 9.26946 8.83718C9.32241 8.77839 9.35663 8.70162 9.42508 8.54808L11.2691 4.41115Z"
-                                                        stroke="#000000" stroke-width="2" stroke-linecap="round"
+                                                        stroke="#fba707" stroke-width="2" stroke-linecap="round"
                                                         stroke-linejoin="round" />
                                                 </svg>
                                             </li>
                                             <li>
-                                                <!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
-                                                <svg class="" width="16px" height="16px" viewBox="0 0 24 24" fill="none"
+                                                <?xml version="1.0" encoding="utf-8"?>
+                                                <svg class="fill-[#fba707]" width="16px" height="16px" viewBox="0 0 24 24" 
                                                     xmlns="http://www.w3.org/2000/svg">
                                                     <path
                                                         d="M11.2691 4.41115C11.5006 3.89177 11.6164 3.63208 11.7776 3.55211C11.9176 3.48263 12.082 3.48263 12.222 3.55211C12.3832 3.63208 12.499 3.89177 12.7305 4.41115L14.5745 8.54808C14.643 8.70162 14.6772 8.77839 14.7302 8.83718C14.777 8.8892 14.8343 8.93081 14.8982 8.95929C14.9705 8.99149 15.0541 9.00031 15.2213 9.01795L19.7256 9.49336C20.2911 9.55304 20.5738 9.58288 20.6997 9.71147C20.809 9.82316 20.8598 9.97956 20.837 10.1342C20.8108 10.3122 20.5996 10.5025 20.1772 10.8832L16.8125 13.9154C16.6877 14.0279 16.6252 14.0842 16.5857 14.1527C16.5507 14.2134 16.5288 14.2807 16.5215 14.3503C16.5132 14.429 16.5306 14.5112 16.5655 14.6757L17.5053 19.1064C17.6233 19.6627 17.6823 19.9408 17.5989 20.1002C17.5264 20.2388 17.3934 20.3354 17.2393 20.3615C17.0619 20.3915 16.8156 20.2495 16.323 19.9654L12.3995 17.7024C12.2539 17.6184 12.1811 17.5765 12.1037 17.56C12.0352 17.5455 11.9644 17.5455 11.8959 17.56C11.8185 17.5765 11.7457 17.6184 11.6001 17.7024L7.67662 19.9654C7.18404 20.2495 6.93775 20.3915 6.76034 20.3615C6.60623 20.3354 6.47319 20.2388 6.40075 20.1002C6.31736 19.9408 6.37635 19.6627 6.49434 19.1064L7.4341 14.6757C7.46898 14.5112 7.48642 14.429 7.47814 14.3503C7.47081 14.2807 7.44894 14.2134 7.41394 14.1527C7.37439 14.0842 7.31195 14.0279 7.18708 13.9154L3.82246 10.8832C3.40005 10.5025 3.18884 10.3122 3.16258 10.1342C3.13978 9.97956 3.19059 9.82316 3.29993 9.71147C3.42581 9.58288 3.70856 9.55304 4.27406 9.49336L8.77835 9.01795C8.94553 9.00031 9.02911 8.99149 9.10139 8.95929C9.16534 8.93081 9.2226 8.8892 9.26946 8.83718C9.32241 8.77839 9.35663 8.70162 9.42508 8.54808L11.2691 4.41115Z"
-                                                        stroke="#000000" stroke-width="2" stroke-linecap="round"
+                                                        stroke="#fba707" stroke-width="2" stroke-linecap="round"
                                                         stroke-linejoin="round" />
                                                 </svg>
                                             </li>
                                             <li>
-                                                <!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
-                                                <svg class="" width="16px" height="16px" viewBox="0 0 24 24" fill="none"
+                                                <?xml version="1.0" encoding="utf-8"?>
+                                                <svg class="fill-[#fba707]" width="16px" height="16px" viewBox="0 0 24 24" 
                                                     xmlns="http://www.w3.org/2000/svg">
                                                     <path
                                                         d="M11.2691 4.41115C11.5006 3.89177 11.6164 3.63208 11.7776 3.55211C11.9176 3.48263 12.082 3.48263 12.222 3.55211C12.3832 3.63208 12.499 3.89177 12.7305 4.41115L14.5745 8.54808C14.643 8.70162 14.6772 8.77839 14.7302 8.83718C14.777 8.8892 14.8343 8.93081 14.8982 8.95929C14.9705 8.99149 15.0541 9.00031 15.2213 9.01795L19.7256 9.49336C20.2911 9.55304 20.5738 9.58288 20.6997 9.71147C20.809 9.82316 20.8598 9.97956 20.837 10.1342C20.8108 10.3122 20.5996 10.5025 20.1772 10.8832L16.8125 13.9154C16.6877 14.0279 16.6252 14.0842 16.5857 14.1527C16.5507 14.2134 16.5288 14.2807 16.5215 14.3503C16.5132 14.429 16.5306 14.5112 16.5655 14.6757L17.5053 19.1064C17.6233 19.6627 17.6823 19.9408 17.5989 20.1002C17.5264 20.2388 17.3934 20.3354 17.2393 20.3615C17.0619 20.3915 16.8156 20.2495 16.323 19.9654L12.3995 17.7024C12.2539 17.6184 12.1811 17.5765 12.1037 17.56C12.0352 17.5455 11.9644 17.5455 11.8959 17.56C11.8185 17.5765 11.7457 17.6184 11.6001 17.7024L7.67662 19.9654C7.18404 20.2495 6.93775 20.3915 6.76034 20.3615C6.60623 20.3354 6.47319 20.2388 6.40075 20.1002C6.31736 19.9408 6.37635 19.6627 6.49434 19.1064L7.4341 14.6757C7.46898 14.5112 7.48642 14.429 7.47814 14.3503C7.47081 14.2807 7.44894 14.2134 7.41394 14.1527C7.37439 14.0842 7.31195 14.0279 7.18708 13.9154L3.82246 10.8832C3.40005 10.5025 3.18884 10.3122 3.16258 10.1342C3.13978 9.97956 3.19059 9.82316 3.29993 9.71147C3.42581 9.58288 3.70856 9.55304 4.27406 9.49336L8.77835 9.01795C8.94553 9.00031 9.02911 8.99149 9.10139 8.95929C9.16534 8.93081 9.2226 8.8892 9.26946 8.83718C9.32241 8.77839 9.35663 8.70162 9.42508 8.54808L11.2691 4.41115Z"
-                                                        stroke="#000000" stroke-width="2" stroke-linecap="round"
+                                                        stroke="#fba707" stroke-width="2" stroke-linecap="round"
                                                         stroke-linejoin="round" />
                                                 </svg>
                                             </li>
                                             <li>
-                                                <!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
-                                                <svg class="" width="16px" height="16px" viewBox="0 0 24 24" fill="none"
+                                                <?xml version="1.0" encoding="utf-8"?>
+                                                <svg class="fill-[#fba707]" width="16px" height="16px" viewBox="0 0 24 24" 
                                                     xmlns="http://www.w3.org/2000/svg">
                                                     <path
                                                         d="M11.2691 4.41115C11.5006 3.89177 11.6164 3.63208 11.7776 3.55211C11.9176 3.48263 12.082 3.48263 12.222 3.55211C12.3832 3.63208 12.499 3.89177 12.7305 4.41115L14.5745 8.54808C14.643 8.70162 14.6772 8.77839 14.7302 8.83718C14.777 8.8892 14.8343 8.93081 14.8982 8.95929C14.9705 8.99149 15.0541 9.00031 15.2213 9.01795L19.7256 9.49336C20.2911 9.55304 20.5738 9.58288 20.6997 9.71147C20.809 9.82316 20.8598 9.97956 20.837 10.1342C20.8108 10.3122 20.5996 10.5025 20.1772 10.8832L16.8125 13.9154C16.6877 14.0279 16.6252 14.0842 16.5857 14.1527C16.5507 14.2134 16.5288 14.2807 16.5215 14.3503C16.5132 14.429 16.5306 14.5112 16.5655 14.6757L17.5053 19.1064C17.6233 19.6627 17.6823 19.9408 17.5989 20.1002C17.5264 20.2388 17.3934 20.3354 17.2393 20.3615C17.0619 20.3915 16.8156 20.2495 16.323 19.9654L12.3995 17.7024C12.2539 17.6184 12.1811 17.5765 12.1037 17.56C12.0352 17.5455 11.9644 17.5455 11.8959 17.56C11.8185 17.5765 11.7457 17.6184 11.6001 17.7024L7.67662 19.9654C7.18404 20.2495 6.93775 20.3915 6.76034 20.3615C6.60623 20.3354 6.47319 20.2388 6.40075 20.1002C6.31736 19.9408 6.37635 19.6627 6.49434 19.1064L7.4341 14.6757C7.46898 14.5112 7.48642 14.429 7.47814 14.3503C7.47081 14.2807 7.44894 14.2134 7.41394 14.1527C7.37439 14.0842 7.31195 14.0279 7.18708 13.9154L3.82246 10.8832C3.40005 10.5025 3.18884 10.3122 3.16258 10.1342C3.13978 9.97956 3.19059 9.82316 3.29993 9.71147C3.42581 9.58288 3.70856 9.55304 4.27406 9.49336L8.77835 9.01795C8.94553 9.00031 9.02911 8.99149 9.10139 8.95929C9.16534 8.93081 9.2226 8.8892 9.26946 8.83718C9.32241 8.77839 9.35663 8.70162 9.42508 8.54808L11.2691 4.41115Z"
-                                                        stroke="#000000" stroke-width="2" stroke-linecap="round"
+                                                        stroke="#fba707" stroke-width="2" stroke-linecap="round"
                                                         stroke-linejoin="round" />
                                                 </svg>
                                             </li>
                                             <li>
-                                                <!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
-                                                <svg class="" width="16px" height="16px" viewBox="0 0 24 24" fill="none"
+                                                <?xml version="1.0" encoding="utf-8"?>
+                                                <svg class="fill-[none]" width="16px" height="16px" viewBox="0 0 24 24" 
                                                     xmlns="http://www.w3.org/2000/svg">
                                                     <path
                                                         d="M11.2691 4.41115C11.5006 3.89177 11.6164 3.63208 11.7776 3.55211C11.9176 3.48263 12.082 3.48263 12.222 3.55211C12.3832 3.63208 12.499 3.89177 12.7305 4.41115L14.5745 8.54808C14.643 8.70162 14.6772 8.77839 14.7302 8.83718C14.777 8.8892 14.8343 8.93081 14.8982 8.95929C14.9705 8.99149 15.0541 9.00031 15.2213 9.01795L19.7256 9.49336C20.2911 9.55304 20.5738 9.58288 20.6997 9.71147C20.809 9.82316 20.8598 9.97956 20.837 10.1342C20.8108 10.3122 20.5996 10.5025 20.1772 10.8832L16.8125 13.9154C16.6877 14.0279 16.6252 14.0842 16.5857 14.1527C16.5507 14.2134 16.5288 14.2807 16.5215 14.3503C16.5132 14.429 16.5306 14.5112 16.5655 14.6757L17.5053 19.1064C17.6233 19.6627 17.6823 19.9408 17.5989 20.1002C17.5264 20.2388 17.3934 20.3354 17.2393 20.3615C17.0619 20.3915 16.8156 20.2495 16.323 19.9654L12.3995 17.7024C12.2539 17.6184 12.1811 17.5765 12.1037 17.56C12.0352 17.5455 11.9644 17.5455 11.8959 17.56C11.8185 17.5765 11.7457 17.6184 11.6001 17.7024L7.67662 19.9654C7.18404 20.2495 6.93775 20.3915 6.76034 20.3615C6.60623 20.3354 6.47319 20.2388 6.40075 20.1002C6.31736 19.9408 6.37635 19.6627 6.49434 19.1064L7.4341 14.6757C7.46898 14.5112 7.48642 14.429 7.47814 14.3503C7.47081 14.2807 7.44894 14.2134 7.41394 14.1527C7.37439 14.0842 7.31195 14.0279 7.18708 13.9154L3.82246 10.8832C3.40005 10.5025 3.18884 10.3122 3.16258 10.1342C3.13978 9.97956 3.19059 9.82316 3.29993 9.71147C3.42581 9.58288 3.70856 9.55304 4.27406 9.49336L8.77835 9.01795C8.94553 9.00031 9.02911 8.99149 9.10139 8.95929C9.16534 8.93081 9.2226 8.8892 9.26946 8.83718C9.32241 8.77839 9.35663 8.70162 9.42508 8.54808L11.2691 4.41115Z"
-                                                        stroke="#000000" stroke-width="2" stroke-linecap="round"
+                                                        stroke="#fba707" stroke-width="2" stroke-linecap="round"
                                                         stroke-linejoin="round" />
                                                 </svg>
                                             </li>
                                         </ul>
                                         <div class="pt-2 flex gap-3">
-                                            <span class=" font-bold">$40.00</span>
+                                            <span class=" font-bold">1.000.000تومان</span>
                                         </div>
                                     </div>
                                     <div class="absolute bottom-0 right-1 ">
-                                        <svg class="w-12 h-8" fill="#000000" viewBox="0 0 32 32"
-                                            style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;"
-                                            version="1.1" xml:space="preserve" xmlns="http://www.w3.org/2000/svg"
-                                            xmlns:serif="http://www.serif.com/"
-                                            xmlns:xlink="http://www.w3.org/1999/xlink">
-                                            <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
-                                            <g id="SVGRepo_tracerCarrier" stroke-linecap="round"
-                                                stroke-linejoin="round">
-                                            </g>
-                                            <g id="SVGRepo_iconCarrier">
-                                                <g transform="matrix(1,0,0,1,-432,0)">
-                                                    <g transform="matrix(1.125,0,0,1,375.898,0)">
-                                                        <path
-                                                            d="M71.196,10.9C71.148,9.836 70.367,9 69.42,9C66.684,9 61.316,9 58.58,9C57.633,9 56.852,9.836 56.804,10.9C56.638,14.653 56.267,22.991 56.093,26.9C56.069,27.447 56.245,27.982 56.581,28.378C56.916,28.775 57.382,29 57.869,29C60.948,29 67.052,29 70.131,29C70.618,29 71.084,28.775 71.419,28.378C71.755,27.982 71.931,27.447 71.907,26.9C71.733,22.991 71.362,14.653 71.196,10.9Z"
-                                                            style="fill:#1fe564;"></path>
-                                                    </g>
+                                        <svg class="w-13 h-9" fill="#000000" viewBox="0 0 32 32"
+                                        style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;"
+                                        version="1.1" xml:space="preserve" xmlns="http://www.w3.org/2000/svg"
+                                        xmlns:serif="http://www.serif.com/" xmlns:xlink="http://www.w3.org/1999/xlink">
+                                        <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                                        <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round">
+                                        </g>
+                                        <g id="SVGRepo_iconCarrier">
+                                            <g transform="matrix(1,0,0,1,-432,0)">
+                                                <g transform="matrix(1.125,0,0,1,375.898,0)">
                                                     <path
-                                                        d="M442.898,8L441.8,8C440.201,8 438.884,9.254 438.804,10.85C438.616,14.603 438.199,22.941 438.004,26.85C437.963,27.671 438.26,28.472 438.826,29.068C439.393,29.663 440.178,30 441,30L454.795,30C455.617,30 456.402,29.663 456.969,29.068C457.535,28.472 457.832,27.671 457.791,26.85L456.991,10.85C456.911,9.254 455.594,8 453.995,8L452.898,8L452.898,6C452.898,3.24 450.657,1 447.898,1C445.138,1 442.898,3.24 442.898,6L442.898,8ZM455.746,26L455.794,26.95C455.807,27.224 455.708,27.491 455.52,27.689C455.331,27.888 455.069,28 454.795,28C454.795,28 441,28 441,28C440.726,28 440.464,27.888 440.275,27.689C440.087,27.491 439.988,27.224 440.001,26.95L440.049,26L455.746,26ZM452.898,10L452.898,13C452.898,13.552 452.449,14 451.898,14C451.346,14 450.898,13.552 450.898,13L450.898,10L444.898,10L444.898,13C444.898,13.552 444.449,14 443.898,14C443.346,14 442.898,13.552 442.898,13L442.898,10L441.8,10C441.267,10 440.828,10.418 440.801,10.95L440.149,24L455.646,24L454.994,10.95C454.967,10.418 454.528,10 453.995,10L452.898,10ZM450.898,8L450.898,6C450.898,4.344 449.553,3 447.898,3C446.242,3 444.898,4.344 444.898,6L444.898,8L450.898,8Z"
-                                                        style="fill:#92d398;"></path>
+                                                        d="M71.196,10.9C71.148,9.836 70.367,9 69.42,9C66.684,9 61.316,9 58.58,9C57.633,9 56.852,9.836 56.804,10.9C56.638,14.653 56.267,22.991 56.093,26.9C56.069,27.447 56.245,27.982 56.581,28.378C56.916,28.775 57.382,29 57.869,29C60.948,29 67.052,29 70.131,29C70.618,29 71.084,28.775 71.419,28.378C71.755,27.982 71.931,27.447 71.907,26.9C71.733,22.991 71.362,14.653 71.196,10.9Z"
+                                                        style="fill:#03a297;"></path>
                                                 </g>
+                                                <path
+                                                    d="M442.898,8L441.8,8C440.201,8 438.884,9.254 438.804,10.85C438.616,14.603 438.199,22.941 438.004,26.85C437.963,27.671 438.26,28.472 438.826,29.068C439.393,29.663 440.178,30 441,30L454.795,30C455.617,30 456.402,29.663 456.969,29.068C457.535,28.472 457.832,27.671 457.791,26.85L456.991,10.85C456.911,9.254 455.594,8 453.995,8L452.898,8L452.898,6C452.898,3.24 450.657,1 447.898,1C445.138,1 442.898,3.24 442.898,6L442.898,8ZM455.746,26L455.794,26.95C455.807,27.224 455.708,27.491 455.52,27.689C455.331,27.888 455.069,28 454.795,28C454.795,28 441,28 441,28C440.726,28 440.464,27.888 440.275,27.689C440.087,27.491 439.988,27.224 440.001,26.95L440.049,26L455.746,26ZM452.898,10L452.898,13C452.898,13.552 452.449,14 451.898,14C451.346,14 450.898,13.552 450.898,13L450.898,10L444.898,10L444.898,13C444.898,13.552 444.449,14 443.898,14C443.346,14 442.898,13.552 442.898,13L442.898,10L441.8,10C441.267,10 440.828,10.418 440.801,10.95L440.149,24L455.646,24L454.994,10.95C454.967,10.418 454.528,10 453.995,10L452.898,10ZM450.898,8L450.898,6C450.898,4.344 449.553,3 447.898,3C446.242,3 444.898,4.344 444.898,6L444.898,8L450.898,8Z"
+                                                    style="fill:#03a297;"></path>
                                             </g>
-                                        </svg>
+                                        </g>
+                                    </svg>
+                                    </div>
+                                </div>
+                                <div class="w-4/10 h-25 flex justify-end">
+                                    <img src="asstes/img/silyder.producte/01.png" alt=""
+                                        class="full h-full object-top rounded-lg">
+                                </div>
+                            </div>
+                            <div
+                                class="w-11/12 mx-auto h-auto flex gap-2 justify-between p-[10px] bg-[#ebf8f7] rounded-lg">
+                                <div class="w-6/10 flex items-center justify-end relative">
+                                    <div class="flex flex-col gap-2 items-end">
+                                        <h2 class="text-[16px] font-bold text-center">تجهیزات پزشکی</h2>
+                                        <ul class="flex">
+                                            <li>
+                                                <?xml version="1.0" encoding="utf-8"?>
+                                                <svg class="fill-[#fba707]" width="16px" height="16px" viewBox="0 0 24 24" 
+                                                    xmlns="http://www.w3.org/2000/svg">
+                                                    <path
+                                                        d="M11.2691 4.41115C11.5006 3.89177 11.6164 3.63208 11.7776 3.55211C11.9176 3.48263 12.082 3.48263 12.222 3.55211C12.3832 3.63208 12.499 3.89177 12.7305 4.41115L14.5745 8.54808C14.643 8.70162 14.6772 8.77839 14.7302 8.83718C14.777 8.8892 14.8343 8.93081 14.8982 8.95929C14.9705 8.99149 15.0541 9.00031 15.2213 9.01795L19.7256 9.49336C20.2911 9.55304 20.5738 9.58288 20.6997 9.71147C20.809 9.82316 20.8598 9.97956 20.837 10.1342C20.8108 10.3122 20.5996 10.5025 20.1772 10.8832L16.8125 13.9154C16.6877 14.0279 16.6252 14.0842 16.5857 14.1527C16.5507 14.2134 16.5288 14.2807 16.5215 14.3503C16.5132 14.429 16.5306 14.5112 16.5655 14.6757L17.5053 19.1064C17.6233 19.6627 17.6823 19.9408 17.5989 20.1002C17.5264 20.2388 17.3934 20.3354 17.2393 20.3615C17.0619 20.3915 16.8156 20.2495 16.323 19.9654L12.3995 17.7024C12.2539 17.6184 12.1811 17.5765 12.1037 17.56C12.0352 17.5455 11.9644 17.5455 11.8959 17.56C11.8185 17.5765 11.7457 17.6184 11.6001 17.7024L7.67662 19.9654C7.18404 20.2495 6.93775 20.3915 6.76034 20.3615C6.60623 20.3354 6.47319 20.2388 6.40075 20.1002C6.31736 19.9408 6.37635 19.6627 6.49434 19.1064L7.4341 14.6757C7.46898 14.5112 7.48642 14.429 7.47814 14.3503C7.47081 14.2807 7.44894 14.2134 7.41394 14.1527C7.37439 14.0842 7.31195 14.0279 7.18708 13.9154L3.82246 10.8832C3.40005 10.5025 3.18884 10.3122 3.16258 10.1342C3.13978 9.97956 3.19059 9.82316 3.29993 9.71147C3.42581 9.58288 3.70856 9.55304 4.27406 9.49336L8.77835 9.01795C8.94553 9.00031 9.02911 8.99149 9.10139 8.95929C9.16534 8.93081 9.2226 8.8892 9.26946 8.83718C9.32241 8.77839 9.35663 8.70162 9.42508 8.54808L11.2691 4.41115Z"
+                                                        stroke="#fba707" stroke-width="2" stroke-linecap="round"
+                                                        stroke-linejoin="round" />
+                                                </svg>
+                                            </li>
+                                            <li>
+                                                <?xml version="1.0" encoding="utf-8"?>
+                                                <svg class="fill-[#fba707]" width="16px" height="16px" viewBox="0 0 24 24" 
+                                                    xmlns="http://www.w3.org/2000/svg">
+                                                    <path
+                                                        d="M11.2691 4.41115C11.5006 3.89177 11.6164 3.63208 11.7776 3.55211C11.9176 3.48263 12.082 3.48263 12.222 3.55211C12.3832 3.63208 12.499 3.89177 12.7305 4.41115L14.5745 8.54808C14.643 8.70162 14.6772 8.77839 14.7302 8.83718C14.777 8.8892 14.8343 8.93081 14.8982 8.95929C14.9705 8.99149 15.0541 9.00031 15.2213 9.01795L19.7256 9.49336C20.2911 9.55304 20.5738 9.58288 20.6997 9.71147C20.809 9.82316 20.8598 9.97956 20.837 10.1342C20.8108 10.3122 20.5996 10.5025 20.1772 10.8832L16.8125 13.9154C16.6877 14.0279 16.6252 14.0842 16.5857 14.1527C16.5507 14.2134 16.5288 14.2807 16.5215 14.3503C16.5132 14.429 16.5306 14.5112 16.5655 14.6757L17.5053 19.1064C17.6233 19.6627 17.6823 19.9408 17.5989 20.1002C17.5264 20.2388 17.3934 20.3354 17.2393 20.3615C17.0619 20.3915 16.8156 20.2495 16.323 19.9654L12.3995 17.7024C12.2539 17.6184 12.1811 17.5765 12.1037 17.56C12.0352 17.5455 11.9644 17.5455 11.8959 17.56C11.8185 17.5765 11.7457 17.6184 11.6001 17.7024L7.67662 19.9654C7.18404 20.2495 6.93775 20.3915 6.76034 20.3615C6.60623 20.3354 6.47319 20.2388 6.40075 20.1002C6.31736 19.9408 6.37635 19.6627 6.49434 19.1064L7.4341 14.6757C7.46898 14.5112 7.48642 14.429 7.47814 14.3503C7.47081 14.2807 7.44894 14.2134 7.41394 14.1527C7.37439 14.0842 7.31195 14.0279 7.18708 13.9154L3.82246 10.8832C3.40005 10.5025 3.18884 10.3122 3.16258 10.1342C3.13978 9.97956 3.19059 9.82316 3.29993 9.71147C3.42581 9.58288 3.70856 9.55304 4.27406 9.49336L8.77835 9.01795C8.94553 9.00031 9.02911 8.99149 9.10139 8.95929C9.16534 8.93081 9.2226 8.8892 9.26946 8.83718C9.32241 8.77839 9.35663 8.70162 9.42508 8.54808L11.2691 4.41115Z"
+                                                        stroke="#fba707" stroke-width="2" stroke-linecap="round"
+                                                        stroke-linejoin="round" />
+                                                </svg>
+                                            </li>
+                                            <li>
+                                                <?xml version="1.0" encoding="utf-8"?>
+                                                <svg class="fill-[#fba707]" width="16px" height="16px" viewBox="0 0 24 24" 
+                                                    xmlns="http://www.w3.org/2000/svg">
+                                                    <path
+                                                        d="M11.2691 4.41115C11.5006 3.89177 11.6164 3.63208 11.7776 3.55211C11.9176 3.48263 12.082 3.48263 12.222 3.55211C12.3832 3.63208 12.499 3.89177 12.7305 4.41115L14.5745 8.54808C14.643 8.70162 14.6772 8.77839 14.7302 8.83718C14.777 8.8892 14.8343 8.93081 14.8982 8.95929C14.9705 8.99149 15.0541 9.00031 15.2213 9.01795L19.7256 9.49336C20.2911 9.55304 20.5738 9.58288 20.6997 9.71147C20.809 9.82316 20.8598 9.97956 20.837 10.1342C20.8108 10.3122 20.5996 10.5025 20.1772 10.8832L16.8125 13.9154C16.6877 14.0279 16.6252 14.0842 16.5857 14.1527C16.5507 14.2134 16.5288 14.2807 16.5215 14.3503C16.5132 14.429 16.5306 14.5112 16.5655 14.6757L17.5053 19.1064C17.6233 19.6627 17.6823 19.9408 17.5989 20.1002C17.5264 20.2388 17.3934 20.3354 17.2393 20.3615C17.0619 20.3915 16.8156 20.2495 16.323 19.9654L12.3995 17.7024C12.2539 17.6184 12.1811 17.5765 12.1037 17.56C12.0352 17.5455 11.9644 17.5455 11.8959 17.56C11.8185 17.5765 11.7457 17.6184 11.6001 17.7024L7.67662 19.9654C7.18404 20.2495 6.93775 20.3915 6.76034 20.3615C6.60623 20.3354 6.47319 20.2388 6.40075 20.1002C6.31736 19.9408 6.37635 19.6627 6.49434 19.1064L7.4341 14.6757C7.46898 14.5112 7.48642 14.429 7.47814 14.3503C7.47081 14.2807 7.44894 14.2134 7.41394 14.1527C7.37439 14.0842 7.31195 14.0279 7.18708 13.9154L3.82246 10.8832C3.40005 10.5025 3.18884 10.3122 3.16258 10.1342C3.13978 9.97956 3.19059 9.82316 3.29993 9.71147C3.42581 9.58288 3.70856 9.55304 4.27406 9.49336L8.77835 9.01795C8.94553 9.00031 9.02911 8.99149 9.10139 8.95929C9.16534 8.93081 9.2226 8.8892 9.26946 8.83718C9.32241 8.77839 9.35663 8.70162 9.42508 8.54808L11.2691 4.41115Z"
+                                                        stroke="#fba707" stroke-width="2" stroke-linecap="round"
+                                                        stroke-linejoin="round" />
+                                                </svg>
+                                            </li>
+                                            <li>
+                                                <?xml version="1.0" encoding="utf-8"?>
+                                                <svg class="fill-[#fba707]" width="16px" height="16px" viewBox="0 0 24 24" 
+                                                    xmlns="http://www.w3.org/2000/svg">
+                                                    <path
+                                                        d="M11.2691 4.41115C11.5006 3.89177 11.6164 3.63208 11.7776 3.55211C11.9176 3.48263 12.082 3.48263 12.222 3.55211C12.3832 3.63208 12.499 3.89177 12.7305 4.41115L14.5745 8.54808C14.643 8.70162 14.6772 8.77839 14.7302 8.83718C14.777 8.8892 14.8343 8.93081 14.8982 8.95929C14.9705 8.99149 15.0541 9.00031 15.2213 9.01795L19.7256 9.49336C20.2911 9.55304 20.5738 9.58288 20.6997 9.71147C20.809 9.82316 20.8598 9.97956 20.837 10.1342C20.8108 10.3122 20.5996 10.5025 20.1772 10.8832L16.8125 13.9154C16.6877 14.0279 16.6252 14.0842 16.5857 14.1527C16.5507 14.2134 16.5288 14.2807 16.5215 14.3503C16.5132 14.429 16.5306 14.5112 16.5655 14.6757L17.5053 19.1064C17.6233 19.6627 17.6823 19.9408 17.5989 20.1002C17.5264 20.2388 17.3934 20.3354 17.2393 20.3615C17.0619 20.3915 16.8156 20.2495 16.323 19.9654L12.3995 17.7024C12.2539 17.6184 12.1811 17.5765 12.1037 17.56C12.0352 17.5455 11.9644 17.5455 11.8959 17.56C11.8185 17.5765 11.7457 17.6184 11.6001 17.7024L7.67662 19.9654C7.18404 20.2495 6.93775 20.3915 6.76034 20.3615C6.60623 20.3354 6.47319 20.2388 6.40075 20.1002C6.31736 19.9408 6.37635 19.6627 6.49434 19.1064L7.4341 14.6757C7.46898 14.5112 7.48642 14.429 7.47814 14.3503C7.47081 14.2807 7.44894 14.2134 7.41394 14.1527C7.37439 14.0842 7.31195 14.0279 7.18708 13.9154L3.82246 10.8832C3.40005 10.5025 3.18884 10.3122 3.16258 10.1342C3.13978 9.97956 3.19059 9.82316 3.29993 9.71147C3.42581 9.58288 3.70856 9.55304 4.27406 9.49336L8.77835 9.01795C8.94553 9.00031 9.02911 8.99149 9.10139 8.95929C9.16534 8.93081 9.2226 8.8892 9.26946 8.83718C9.32241 8.77839 9.35663 8.70162 9.42508 8.54808L11.2691 4.41115Z"
+                                                        stroke="#fba707" stroke-width="2" stroke-linecap="round"
+                                                        stroke-linejoin="round" />
+                                                </svg>
+                                            </li>
+                                            <li>
+                                                <?xml version="1.0" encoding="utf-8"?>
+                                                <svg class="fill-[none]" width="16px" height="16px" viewBox="0 0 24 24" 
+                                                    xmlns="http://www.w3.org/2000/svg">
+                                                    <path
+                                                        d="M11.2691 4.41115C11.5006 3.89177 11.6164 3.63208 11.7776 3.55211C11.9176 3.48263 12.082 3.48263 12.222 3.55211C12.3832 3.63208 12.499 3.89177 12.7305 4.41115L14.5745 8.54808C14.643 8.70162 14.6772 8.77839 14.7302 8.83718C14.777 8.8892 14.8343 8.93081 14.8982 8.95929C14.9705 8.99149 15.0541 9.00031 15.2213 9.01795L19.7256 9.49336C20.2911 9.55304 20.5738 9.58288 20.6997 9.71147C20.809 9.82316 20.8598 9.97956 20.837 10.1342C20.8108 10.3122 20.5996 10.5025 20.1772 10.8832L16.8125 13.9154C16.6877 14.0279 16.6252 14.0842 16.5857 14.1527C16.5507 14.2134 16.5288 14.2807 16.5215 14.3503C16.5132 14.429 16.5306 14.5112 16.5655 14.6757L17.5053 19.1064C17.6233 19.6627 17.6823 19.9408 17.5989 20.1002C17.5264 20.2388 17.3934 20.3354 17.2393 20.3615C17.0619 20.3915 16.8156 20.2495 16.323 19.9654L12.3995 17.7024C12.2539 17.6184 12.1811 17.5765 12.1037 17.56C12.0352 17.5455 11.9644 17.5455 11.8959 17.56C11.8185 17.5765 11.7457 17.6184 11.6001 17.7024L7.67662 19.9654C7.18404 20.2495 6.93775 20.3915 6.76034 20.3615C6.60623 20.3354 6.47319 20.2388 6.40075 20.1002C6.31736 19.9408 6.37635 19.6627 6.49434 19.1064L7.4341 14.6757C7.46898 14.5112 7.48642 14.429 7.47814 14.3503C7.47081 14.2807 7.44894 14.2134 7.41394 14.1527C7.37439 14.0842 7.31195 14.0279 7.18708 13.9154L3.82246 10.8832C3.40005 10.5025 3.18884 10.3122 3.16258 10.1342C3.13978 9.97956 3.19059 9.82316 3.29993 9.71147C3.42581 9.58288 3.70856 9.55304 4.27406 9.49336L8.77835 9.01795C8.94553 9.00031 9.02911 8.99149 9.10139 8.95929C9.16534 8.93081 9.2226 8.8892 9.26946 8.83718C9.32241 8.77839 9.35663 8.70162 9.42508 8.54808L11.2691 4.41115Z"
+                                                        stroke="#fba707" stroke-width="2" stroke-linecap="round"
+                                                        stroke-linejoin="round" />
+                                                </svg>
+                                            </li>
+                                        </ul>
+                                        <div class="pt-2 flex gap-3">
+                                            <span class=" font-bold">1.000.000تومان</span>
+                                        </div>
+                                    </div>
+                                    <div class="absolute bottom-0 right-1 ">
+                                        <svg class="w-13 h-9" fill="#000000" viewBox="0 0 32 32"
+                                        style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;"
+                                        version="1.1" xml:space="preserve" xmlns="http://www.w3.org/2000/svg"
+                                        xmlns:serif="http://www.serif.com/" xmlns:xlink="http://www.w3.org/1999/xlink">
+                                        <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                                        <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round">
+                                        </g>
+                                        <g id="SVGRepo_iconCarrier">
+                                            <g transform="matrix(1,0,0,1,-432,0)">
+                                                <g transform="matrix(1.125,0,0,1,375.898,0)">
+                                                    <path
+                                                        d="M71.196,10.9C71.148,9.836 70.367,9 69.42,9C66.684,9 61.316,9 58.58,9C57.633,9 56.852,9.836 56.804,10.9C56.638,14.653 56.267,22.991 56.093,26.9C56.069,27.447 56.245,27.982 56.581,28.378C56.916,28.775 57.382,29 57.869,29C60.948,29 67.052,29 70.131,29C70.618,29 71.084,28.775 71.419,28.378C71.755,27.982 71.931,27.447 71.907,26.9C71.733,22.991 71.362,14.653 71.196,10.9Z"
+                                                        style="fill:#03a297;"></path>
+                                                </g>
+                                                <path
+                                                    d="M442.898,8L441.8,8C440.201,8 438.884,9.254 438.804,10.85C438.616,14.603 438.199,22.941 438.004,26.85C437.963,27.671 438.26,28.472 438.826,29.068C439.393,29.663 440.178,30 441,30L454.795,30C455.617,30 456.402,29.663 456.969,29.068C457.535,28.472 457.832,27.671 457.791,26.85L456.991,10.85C456.911,9.254 455.594,8 453.995,8L452.898,8L452.898,6C452.898,3.24 450.657,1 447.898,1C445.138,1 442.898,3.24 442.898,6L442.898,8ZM455.746,26L455.794,26.95C455.807,27.224 455.708,27.491 455.52,27.689C455.331,27.888 455.069,28 454.795,28C454.795,28 441,28 441,28C440.726,28 440.464,27.888 440.275,27.689C440.087,27.491 439.988,27.224 440.001,26.95L440.049,26L455.746,26ZM452.898,10L452.898,13C452.898,13.552 452.449,14 451.898,14C451.346,14 450.898,13.552 450.898,13L450.898,10L444.898,10L444.898,13C444.898,13.552 444.449,14 443.898,14C443.346,14 442.898,13.552 442.898,13L442.898,10L441.8,10C441.267,10 440.828,10.418 440.801,10.95L440.149,24L455.646,24L454.994,10.95C454.967,10.418 454.528,10 453.995,10L452.898,10ZM450.898,8L450.898,6C450.898,4.344 449.553,3 447.898,3C446.242,3 444.898,4.344 444.898,6L444.898,8L450.898,8Z"
+                                                    style="fill:#03a297;"></path>
+                                            </g>
+                                        </g>
+                                    </svg>
                                     </div>
                                 </div>
                                 <div class="w-4/10 h-25 flex justify-end">
@@ -2527,174 +2591,81 @@
                                         <h2 class="text-[16px] font-bold text-center">تجهیزات پزشکی</h2>
                                         <ul class="flex">
                                             <li>
-                                                <!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
-                                                <svg class="" width="16px" height="16px" viewBox="0 0 24 24" fill="none"
+                                                <?xml version="1.0" encoding="utf-8"?>
+                                                <svg class="fill-[#fba707]" width="16px" height="16px" viewBox="0 0 24 24" 
                                                     xmlns="http://www.w3.org/2000/svg">
                                                     <path
                                                         d="M11.2691 4.41115C11.5006 3.89177 11.6164 3.63208 11.7776 3.55211C11.9176 3.48263 12.082 3.48263 12.222 3.55211C12.3832 3.63208 12.499 3.89177 12.7305 4.41115L14.5745 8.54808C14.643 8.70162 14.6772 8.77839 14.7302 8.83718C14.777 8.8892 14.8343 8.93081 14.8982 8.95929C14.9705 8.99149 15.0541 9.00031 15.2213 9.01795L19.7256 9.49336C20.2911 9.55304 20.5738 9.58288 20.6997 9.71147C20.809 9.82316 20.8598 9.97956 20.837 10.1342C20.8108 10.3122 20.5996 10.5025 20.1772 10.8832L16.8125 13.9154C16.6877 14.0279 16.6252 14.0842 16.5857 14.1527C16.5507 14.2134 16.5288 14.2807 16.5215 14.3503C16.5132 14.429 16.5306 14.5112 16.5655 14.6757L17.5053 19.1064C17.6233 19.6627 17.6823 19.9408 17.5989 20.1002C17.5264 20.2388 17.3934 20.3354 17.2393 20.3615C17.0619 20.3915 16.8156 20.2495 16.323 19.9654L12.3995 17.7024C12.2539 17.6184 12.1811 17.5765 12.1037 17.56C12.0352 17.5455 11.9644 17.5455 11.8959 17.56C11.8185 17.5765 11.7457 17.6184 11.6001 17.7024L7.67662 19.9654C7.18404 20.2495 6.93775 20.3915 6.76034 20.3615C6.60623 20.3354 6.47319 20.2388 6.40075 20.1002C6.31736 19.9408 6.37635 19.6627 6.49434 19.1064L7.4341 14.6757C7.46898 14.5112 7.48642 14.429 7.47814 14.3503C7.47081 14.2807 7.44894 14.2134 7.41394 14.1527C7.37439 14.0842 7.31195 14.0279 7.18708 13.9154L3.82246 10.8832C3.40005 10.5025 3.18884 10.3122 3.16258 10.1342C3.13978 9.97956 3.19059 9.82316 3.29993 9.71147C3.42581 9.58288 3.70856 9.55304 4.27406 9.49336L8.77835 9.01795C8.94553 9.00031 9.02911 8.99149 9.10139 8.95929C9.16534 8.93081 9.2226 8.8892 9.26946 8.83718C9.32241 8.77839 9.35663 8.70162 9.42508 8.54808L11.2691 4.41115Z"
-                                                        stroke="#000000" stroke-width="2" stroke-linecap="round"
+                                                        stroke="#fba707" stroke-width="2" stroke-linecap="round"
                                                         stroke-linejoin="round" />
                                                 </svg>
                                             </li>
                                             <li>
-                                                <!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
-                                                <svg class="" width="16px" height="16px" viewBox="0 0 24 24" fill="none"
+                                                <?xml version="1.0" encoding="utf-8"?>
+                                                <svg class="fill-[#fba707]" width="16px" height="16px" viewBox="0 0 24 24" 
                                                     xmlns="http://www.w3.org/2000/svg">
                                                     <path
                                                         d="M11.2691 4.41115C11.5006 3.89177 11.6164 3.63208 11.7776 3.55211C11.9176 3.48263 12.082 3.48263 12.222 3.55211C12.3832 3.63208 12.499 3.89177 12.7305 4.41115L14.5745 8.54808C14.643 8.70162 14.6772 8.77839 14.7302 8.83718C14.777 8.8892 14.8343 8.93081 14.8982 8.95929C14.9705 8.99149 15.0541 9.00031 15.2213 9.01795L19.7256 9.49336C20.2911 9.55304 20.5738 9.58288 20.6997 9.71147C20.809 9.82316 20.8598 9.97956 20.837 10.1342C20.8108 10.3122 20.5996 10.5025 20.1772 10.8832L16.8125 13.9154C16.6877 14.0279 16.6252 14.0842 16.5857 14.1527C16.5507 14.2134 16.5288 14.2807 16.5215 14.3503C16.5132 14.429 16.5306 14.5112 16.5655 14.6757L17.5053 19.1064C17.6233 19.6627 17.6823 19.9408 17.5989 20.1002C17.5264 20.2388 17.3934 20.3354 17.2393 20.3615C17.0619 20.3915 16.8156 20.2495 16.323 19.9654L12.3995 17.7024C12.2539 17.6184 12.1811 17.5765 12.1037 17.56C12.0352 17.5455 11.9644 17.5455 11.8959 17.56C11.8185 17.5765 11.7457 17.6184 11.6001 17.7024L7.67662 19.9654C7.18404 20.2495 6.93775 20.3915 6.76034 20.3615C6.60623 20.3354 6.47319 20.2388 6.40075 20.1002C6.31736 19.9408 6.37635 19.6627 6.49434 19.1064L7.4341 14.6757C7.46898 14.5112 7.48642 14.429 7.47814 14.3503C7.47081 14.2807 7.44894 14.2134 7.41394 14.1527C7.37439 14.0842 7.31195 14.0279 7.18708 13.9154L3.82246 10.8832C3.40005 10.5025 3.18884 10.3122 3.16258 10.1342C3.13978 9.97956 3.19059 9.82316 3.29993 9.71147C3.42581 9.58288 3.70856 9.55304 4.27406 9.49336L8.77835 9.01795C8.94553 9.00031 9.02911 8.99149 9.10139 8.95929C9.16534 8.93081 9.2226 8.8892 9.26946 8.83718C9.32241 8.77839 9.35663 8.70162 9.42508 8.54808L11.2691 4.41115Z"
-                                                        stroke="#000000" stroke-width="2" stroke-linecap="round"
+                                                        stroke="#fba707" stroke-width="2" stroke-linecap="round"
                                                         stroke-linejoin="round" />
                                                 </svg>
                                             </li>
                                             <li>
-                                                <!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
-                                                <svg class="" width="16px" height="16px" viewBox="0 0 24 24" fill="none"
+                                                <?xml version="1.0" encoding="utf-8"?>
+                                                <svg class="fill-[#fba707]" width="16px" height="16px" viewBox="0 0 24 24" 
                                                     xmlns="http://www.w3.org/2000/svg">
                                                     <path
                                                         d="M11.2691 4.41115C11.5006 3.89177 11.6164 3.63208 11.7776 3.55211C11.9176 3.48263 12.082 3.48263 12.222 3.55211C12.3832 3.63208 12.499 3.89177 12.7305 4.41115L14.5745 8.54808C14.643 8.70162 14.6772 8.77839 14.7302 8.83718C14.777 8.8892 14.8343 8.93081 14.8982 8.95929C14.9705 8.99149 15.0541 9.00031 15.2213 9.01795L19.7256 9.49336C20.2911 9.55304 20.5738 9.58288 20.6997 9.71147C20.809 9.82316 20.8598 9.97956 20.837 10.1342C20.8108 10.3122 20.5996 10.5025 20.1772 10.8832L16.8125 13.9154C16.6877 14.0279 16.6252 14.0842 16.5857 14.1527C16.5507 14.2134 16.5288 14.2807 16.5215 14.3503C16.5132 14.429 16.5306 14.5112 16.5655 14.6757L17.5053 19.1064C17.6233 19.6627 17.6823 19.9408 17.5989 20.1002C17.5264 20.2388 17.3934 20.3354 17.2393 20.3615C17.0619 20.3915 16.8156 20.2495 16.323 19.9654L12.3995 17.7024C12.2539 17.6184 12.1811 17.5765 12.1037 17.56C12.0352 17.5455 11.9644 17.5455 11.8959 17.56C11.8185 17.5765 11.7457 17.6184 11.6001 17.7024L7.67662 19.9654C7.18404 20.2495 6.93775 20.3915 6.76034 20.3615C6.60623 20.3354 6.47319 20.2388 6.40075 20.1002C6.31736 19.9408 6.37635 19.6627 6.49434 19.1064L7.4341 14.6757C7.46898 14.5112 7.48642 14.429 7.47814 14.3503C7.47081 14.2807 7.44894 14.2134 7.41394 14.1527C7.37439 14.0842 7.31195 14.0279 7.18708 13.9154L3.82246 10.8832C3.40005 10.5025 3.18884 10.3122 3.16258 10.1342C3.13978 9.97956 3.19059 9.82316 3.29993 9.71147C3.42581 9.58288 3.70856 9.55304 4.27406 9.49336L8.77835 9.01795C8.94553 9.00031 9.02911 8.99149 9.10139 8.95929C9.16534 8.93081 9.2226 8.8892 9.26946 8.83718C9.32241 8.77839 9.35663 8.70162 9.42508 8.54808L11.2691 4.41115Z"
-                                                        stroke="#000000" stroke-width="2" stroke-linecap="round"
+                                                        stroke="#fba707" stroke-width="2" stroke-linecap="round"
                                                         stroke-linejoin="round" />
                                                 </svg>
                                             </li>
                                             <li>
-                                                <!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
-                                                <svg class="" width="16px" height="16px" viewBox="0 0 24 24" fill="none"
+                                                <?xml version="1.0" encoding="utf-8"?>
+                                                <svg class="fill-[#fba707]" width="16px" height="16px" viewBox="0 0 24 24" 
                                                     xmlns="http://www.w3.org/2000/svg">
                                                     <path
                                                         d="M11.2691 4.41115C11.5006 3.89177 11.6164 3.63208 11.7776 3.55211C11.9176 3.48263 12.082 3.48263 12.222 3.55211C12.3832 3.63208 12.499 3.89177 12.7305 4.41115L14.5745 8.54808C14.643 8.70162 14.6772 8.77839 14.7302 8.83718C14.777 8.8892 14.8343 8.93081 14.8982 8.95929C14.9705 8.99149 15.0541 9.00031 15.2213 9.01795L19.7256 9.49336C20.2911 9.55304 20.5738 9.58288 20.6997 9.71147C20.809 9.82316 20.8598 9.97956 20.837 10.1342C20.8108 10.3122 20.5996 10.5025 20.1772 10.8832L16.8125 13.9154C16.6877 14.0279 16.6252 14.0842 16.5857 14.1527C16.5507 14.2134 16.5288 14.2807 16.5215 14.3503C16.5132 14.429 16.5306 14.5112 16.5655 14.6757L17.5053 19.1064C17.6233 19.6627 17.6823 19.9408 17.5989 20.1002C17.5264 20.2388 17.3934 20.3354 17.2393 20.3615C17.0619 20.3915 16.8156 20.2495 16.323 19.9654L12.3995 17.7024C12.2539 17.6184 12.1811 17.5765 12.1037 17.56C12.0352 17.5455 11.9644 17.5455 11.8959 17.56C11.8185 17.5765 11.7457 17.6184 11.6001 17.7024L7.67662 19.9654C7.18404 20.2495 6.93775 20.3915 6.76034 20.3615C6.60623 20.3354 6.47319 20.2388 6.40075 20.1002C6.31736 19.9408 6.37635 19.6627 6.49434 19.1064L7.4341 14.6757C7.46898 14.5112 7.48642 14.429 7.47814 14.3503C7.47081 14.2807 7.44894 14.2134 7.41394 14.1527C7.37439 14.0842 7.31195 14.0279 7.18708 13.9154L3.82246 10.8832C3.40005 10.5025 3.18884 10.3122 3.16258 10.1342C3.13978 9.97956 3.19059 9.82316 3.29993 9.71147C3.42581 9.58288 3.70856 9.55304 4.27406 9.49336L8.77835 9.01795C8.94553 9.00031 9.02911 8.99149 9.10139 8.95929C9.16534 8.93081 9.2226 8.8892 9.26946 8.83718C9.32241 8.77839 9.35663 8.70162 9.42508 8.54808L11.2691 4.41115Z"
-                                                        stroke="#000000" stroke-width="2" stroke-linecap="round"
+                                                        stroke="#fba707" stroke-width="2" stroke-linecap="round"
                                                         stroke-linejoin="round" />
                                                 </svg>
                                             </li>
                                             <li>
-                                                <!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
-                                                <svg class="" width="16px" height="16px" viewBox="0 0 24 24" fill="none"
+                                                <?xml version="1.0" encoding="utf-8"?>
+                                                <svg class="fill-[none]" width="16px" height="16px" viewBox="0 0 24 24" 
                                                     xmlns="http://www.w3.org/2000/svg">
                                                     <path
                                                         d="M11.2691 4.41115C11.5006 3.89177 11.6164 3.63208 11.7776 3.55211C11.9176 3.48263 12.082 3.48263 12.222 3.55211C12.3832 3.63208 12.499 3.89177 12.7305 4.41115L14.5745 8.54808C14.643 8.70162 14.6772 8.77839 14.7302 8.83718C14.777 8.8892 14.8343 8.93081 14.8982 8.95929C14.9705 8.99149 15.0541 9.00031 15.2213 9.01795L19.7256 9.49336C20.2911 9.55304 20.5738 9.58288 20.6997 9.71147C20.809 9.82316 20.8598 9.97956 20.837 10.1342C20.8108 10.3122 20.5996 10.5025 20.1772 10.8832L16.8125 13.9154C16.6877 14.0279 16.6252 14.0842 16.5857 14.1527C16.5507 14.2134 16.5288 14.2807 16.5215 14.3503C16.5132 14.429 16.5306 14.5112 16.5655 14.6757L17.5053 19.1064C17.6233 19.6627 17.6823 19.9408 17.5989 20.1002C17.5264 20.2388 17.3934 20.3354 17.2393 20.3615C17.0619 20.3915 16.8156 20.2495 16.323 19.9654L12.3995 17.7024C12.2539 17.6184 12.1811 17.5765 12.1037 17.56C12.0352 17.5455 11.9644 17.5455 11.8959 17.56C11.8185 17.5765 11.7457 17.6184 11.6001 17.7024L7.67662 19.9654C7.18404 20.2495 6.93775 20.3915 6.76034 20.3615C6.60623 20.3354 6.47319 20.2388 6.40075 20.1002C6.31736 19.9408 6.37635 19.6627 6.49434 19.1064L7.4341 14.6757C7.46898 14.5112 7.48642 14.429 7.47814 14.3503C7.47081 14.2807 7.44894 14.2134 7.41394 14.1527C7.37439 14.0842 7.31195 14.0279 7.18708 13.9154L3.82246 10.8832C3.40005 10.5025 3.18884 10.3122 3.16258 10.1342C3.13978 9.97956 3.19059 9.82316 3.29993 9.71147C3.42581 9.58288 3.70856 9.55304 4.27406 9.49336L8.77835 9.01795C8.94553 9.00031 9.02911 8.99149 9.10139 8.95929C9.16534 8.93081 9.2226 8.8892 9.26946 8.83718C9.32241 8.77839 9.35663 8.70162 9.42508 8.54808L11.2691 4.41115Z"
-                                                        stroke="#000000" stroke-width="2" stroke-linecap="round"
+                                                        stroke="#fba707" stroke-width="2" stroke-linecap="round"
                                                         stroke-linejoin="round" />
                                                 </svg>
                                             </li>
                                         </ul>
                                         <div class="pt-2 flex gap-3">
-                                            <span class=" font-bold">$40.00</span>
+                                            <span class=" font-bold">1.000.000تومان</span>
                                         </div>
                                     </div>
                                     <div class="absolute bottom-0 right-1 ">
-                                        <svg class="w-12 h-8" fill="#000000" viewBox="0 0 32 32"
-                                            style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;"
-                                            version="1.1" xml:space="preserve" xmlns="http://www.w3.org/2000/svg"
-                                            xmlns:serif="http://www.serif.com/"
-                                            xmlns:xlink="http://www.w3.org/1999/xlink">
-                                            <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
-                                            <g id="SVGRepo_tracerCarrier" stroke-linecap="round"
-                                                stroke-linejoin="round">
-                                            </g>
-                                            <g id="SVGRepo_iconCarrier">
-                                                <g transform="matrix(1,0,0,1,-432,0)">
-                                                    <g transform="matrix(1.125,0,0,1,375.898,0)">
-                                                        <path
-                                                            d="M71.196,10.9C71.148,9.836 70.367,9 69.42,9C66.684,9 61.316,9 58.58,9C57.633,9 56.852,9.836 56.804,10.9C56.638,14.653 56.267,22.991 56.093,26.9C56.069,27.447 56.245,27.982 56.581,28.378C56.916,28.775 57.382,29 57.869,29C60.948,29 67.052,29 70.131,29C70.618,29 71.084,28.775 71.419,28.378C71.755,27.982 71.931,27.447 71.907,26.9C71.733,22.991 71.362,14.653 71.196,10.9Z"
-                                                            style="fill:#1fe564;"></path>
-                                                    </g>
+                                        <svg class="w-13 h-9" fill="#000000" viewBox="0 0 32 32"
+                                        style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;"
+                                        version="1.1" xml:space="preserve" xmlns="http://www.w3.org/2000/svg"
+                                        xmlns:serif="http://www.serif.com/" xmlns:xlink="http://www.w3.org/1999/xlink">
+                                        <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                                        <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round">
+                                        </g>
+                                        <g id="SVGRepo_iconCarrier">
+                                            <g transform="matrix(1,0,0,1,-432,0)">
+                                                <g transform="matrix(1.125,0,0,1,375.898,0)">
                                                     <path
-                                                        d="M442.898,8L441.8,8C440.201,8 438.884,9.254 438.804,10.85C438.616,14.603 438.199,22.941 438.004,26.85C437.963,27.671 438.26,28.472 438.826,29.068C439.393,29.663 440.178,30 441,30L454.795,30C455.617,30 456.402,29.663 456.969,29.068C457.535,28.472 457.832,27.671 457.791,26.85L456.991,10.85C456.911,9.254 455.594,8 453.995,8L452.898,8L452.898,6C452.898,3.24 450.657,1 447.898,1C445.138,1 442.898,3.24 442.898,6L442.898,8ZM455.746,26L455.794,26.95C455.807,27.224 455.708,27.491 455.52,27.689C455.331,27.888 455.069,28 454.795,28C454.795,28 441,28 441,28C440.726,28 440.464,27.888 440.275,27.689C440.087,27.491 439.988,27.224 440.001,26.95L440.049,26L455.746,26ZM452.898,10L452.898,13C452.898,13.552 452.449,14 451.898,14C451.346,14 450.898,13.552 450.898,13L450.898,10L444.898,10L444.898,13C444.898,13.552 444.449,14 443.898,14C443.346,14 442.898,13.552 442.898,13L442.898,10L441.8,10C441.267,10 440.828,10.418 440.801,10.95L440.149,24L455.646,24L454.994,10.95C454.967,10.418 454.528,10 453.995,10L452.898,10ZM450.898,8L450.898,6C450.898,4.344 449.553,3 447.898,3C446.242,3 444.898,4.344 444.898,6L444.898,8L450.898,8Z"
-                                                        style="fill:#92d398;"></path>
+                                                        d="M71.196,10.9C71.148,9.836 70.367,9 69.42,9C66.684,9 61.316,9 58.58,9C57.633,9 56.852,9.836 56.804,10.9C56.638,14.653 56.267,22.991 56.093,26.9C56.069,27.447 56.245,27.982 56.581,28.378C56.916,28.775 57.382,29 57.869,29C60.948,29 67.052,29 70.131,29C70.618,29 71.084,28.775 71.419,28.378C71.755,27.982 71.931,27.447 71.907,26.9C71.733,22.991 71.362,14.653 71.196,10.9Z"
+                                                        style="fill:#03a297;"></path>
                                                 </g>
+                                                <path
+                                                    d="M442.898,8L441.8,8C440.201,8 438.884,9.254 438.804,10.85C438.616,14.603 438.199,22.941 438.004,26.85C437.963,27.671 438.26,28.472 438.826,29.068C439.393,29.663 440.178,30 441,30L454.795,30C455.617,30 456.402,29.663 456.969,29.068C457.535,28.472 457.832,27.671 457.791,26.85L456.991,10.85C456.911,9.254 455.594,8 453.995,8L452.898,8L452.898,6C452.898,3.24 450.657,1 447.898,1C445.138,1 442.898,3.24 442.898,6L442.898,8ZM455.746,26L455.794,26.95C455.807,27.224 455.708,27.491 455.52,27.689C455.331,27.888 455.069,28 454.795,28C454.795,28 441,28 441,28C440.726,28 440.464,27.888 440.275,27.689C440.087,27.491 439.988,27.224 440.001,26.95L440.049,26L455.746,26ZM452.898,10L452.898,13C452.898,13.552 452.449,14 451.898,14C451.346,14 450.898,13.552 450.898,13L450.898,10L444.898,10L444.898,13C444.898,13.552 444.449,14 443.898,14C443.346,14 442.898,13.552 442.898,13L442.898,10L441.8,10C441.267,10 440.828,10.418 440.801,10.95L440.149,24L455.646,24L454.994,10.95C454.967,10.418 454.528,10 453.995,10L452.898,10ZM450.898,8L450.898,6C450.898,4.344 449.553,3 447.898,3C446.242,3 444.898,4.344 444.898,6L444.898,8L450.898,8Z"
+                                                    style="fill:#03a297;"></path>
                                             </g>
-                                        </svg>
-                                    </div>
-                                </div>
-                                <div class="w-4/10 h-25 flex justify-end">
-                                    <img src="{{asset('assets/img/silyder.producte/01.png')}}" alt=""
-                                        class="full h-full object-top rounded-lg">
-                                </div>
-                            </div>
-                            <div
-                                class="w-11/12 mx-auto h-auto flex gap-2 justify-between p-[10px] bg-[#ebf8f7] rounded-lg">
-                                <div class="w-6/10 flex items-center justify-end relative">
-                                    <div class="flex flex-col gap-2 items-end">
-                                        <h2 class="text-[16px] font-bold text-center">تجهیزات پزشکی</h2>
-                                        <ul class="flex">
-                                            <li>
-                                                <!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
-                                                <svg class="" width="16px" height="16px" viewBox="0 0 24 24" fill="none"
-                                                    xmlns="http://www.w3.org/2000/svg">
-                                                    <path
-                                                        d="M11.2691 4.41115C11.5006 3.89177 11.6164 3.63208 11.7776 3.55211C11.9176 3.48263 12.082 3.48263 12.222 3.55211C12.3832 3.63208 12.499 3.89177 12.7305 4.41115L14.5745 8.54808C14.643 8.70162 14.6772 8.77839 14.7302 8.83718C14.777 8.8892 14.8343 8.93081 14.8982 8.95929C14.9705 8.99149 15.0541 9.00031 15.2213 9.01795L19.7256 9.49336C20.2911 9.55304 20.5738 9.58288 20.6997 9.71147C20.809 9.82316 20.8598 9.97956 20.837 10.1342C20.8108 10.3122 20.5996 10.5025 20.1772 10.8832L16.8125 13.9154C16.6877 14.0279 16.6252 14.0842 16.5857 14.1527C16.5507 14.2134 16.5288 14.2807 16.5215 14.3503C16.5132 14.429 16.5306 14.5112 16.5655 14.6757L17.5053 19.1064C17.6233 19.6627 17.6823 19.9408 17.5989 20.1002C17.5264 20.2388 17.3934 20.3354 17.2393 20.3615C17.0619 20.3915 16.8156 20.2495 16.323 19.9654L12.3995 17.7024C12.2539 17.6184 12.1811 17.5765 12.1037 17.56C12.0352 17.5455 11.9644 17.5455 11.8959 17.56C11.8185 17.5765 11.7457 17.6184 11.6001 17.7024L7.67662 19.9654C7.18404 20.2495 6.93775 20.3915 6.76034 20.3615C6.60623 20.3354 6.47319 20.2388 6.40075 20.1002C6.31736 19.9408 6.37635 19.6627 6.49434 19.1064L7.4341 14.6757C7.46898 14.5112 7.48642 14.429 7.47814 14.3503C7.47081 14.2807 7.44894 14.2134 7.41394 14.1527C7.37439 14.0842 7.31195 14.0279 7.18708 13.9154L3.82246 10.8832C3.40005 10.5025 3.18884 10.3122 3.16258 10.1342C3.13978 9.97956 3.19059 9.82316 3.29993 9.71147C3.42581 9.58288 3.70856 9.55304 4.27406 9.49336L8.77835 9.01795C8.94553 9.00031 9.02911 8.99149 9.10139 8.95929C9.16534 8.93081 9.2226 8.8892 9.26946 8.83718C9.32241 8.77839 9.35663 8.70162 9.42508 8.54808L11.2691 4.41115Z"
-                                                        stroke="#000000" stroke-width="2" stroke-linecap="round"
-                                                        stroke-linejoin="round" />
-                                                </svg>
-                                            </li>
-                                            <li>
-                                                <!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
-                                                <svg class="" width="16px" height="16px" viewBox="0 0 24 24" fill="none"
-                                                    xmlns="http://www.w3.org/2000/svg">
-                                                    <path
-                                                        d="M11.2691 4.41115C11.5006 3.89177 11.6164 3.63208 11.7776 3.55211C11.9176 3.48263 12.082 3.48263 12.222 3.55211C12.3832 3.63208 12.499 3.89177 12.7305 4.41115L14.5745 8.54808C14.643 8.70162 14.6772 8.77839 14.7302 8.83718C14.777 8.8892 14.8343 8.93081 14.8982 8.95929C14.9705 8.99149 15.0541 9.00031 15.2213 9.01795L19.7256 9.49336C20.2911 9.55304 20.5738 9.58288 20.6997 9.71147C20.809 9.82316 20.8598 9.97956 20.837 10.1342C20.8108 10.3122 20.5996 10.5025 20.1772 10.8832L16.8125 13.9154C16.6877 14.0279 16.6252 14.0842 16.5857 14.1527C16.5507 14.2134 16.5288 14.2807 16.5215 14.3503C16.5132 14.429 16.5306 14.5112 16.5655 14.6757L17.5053 19.1064C17.6233 19.6627 17.6823 19.9408 17.5989 20.1002C17.5264 20.2388 17.3934 20.3354 17.2393 20.3615C17.0619 20.3915 16.8156 20.2495 16.323 19.9654L12.3995 17.7024C12.2539 17.6184 12.1811 17.5765 12.1037 17.56C12.0352 17.5455 11.9644 17.5455 11.8959 17.56C11.8185 17.5765 11.7457 17.6184 11.6001 17.7024L7.67662 19.9654C7.18404 20.2495 6.93775 20.3915 6.76034 20.3615C6.60623 20.3354 6.47319 20.2388 6.40075 20.1002C6.31736 19.9408 6.37635 19.6627 6.49434 19.1064L7.4341 14.6757C7.46898 14.5112 7.48642 14.429 7.47814 14.3503C7.47081 14.2807 7.44894 14.2134 7.41394 14.1527C7.37439 14.0842 7.31195 14.0279 7.18708 13.9154L3.82246 10.8832C3.40005 10.5025 3.18884 10.3122 3.16258 10.1342C3.13978 9.97956 3.19059 9.82316 3.29993 9.71147C3.42581 9.58288 3.70856 9.55304 4.27406 9.49336L8.77835 9.01795C8.94553 9.00031 9.02911 8.99149 9.10139 8.95929C9.16534 8.93081 9.2226 8.8892 9.26946 8.83718C9.32241 8.77839 9.35663 8.70162 9.42508 8.54808L11.2691 4.41115Z"
-                                                        stroke="#000000" stroke-width="2" stroke-linecap="round"
-                                                        stroke-linejoin="round" />
-                                                </svg>
-                                            </li>
-                                            <li>
-                                                <!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
-                                                <svg class="" width="16px" height="16px" viewBox="0 0 24 24" fill="none"
-                                                    xmlns="http://www.w3.org/2000/svg">
-                                                    <path
-                                                        d="M11.2691 4.41115C11.5006 3.89177 11.6164 3.63208 11.7776 3.55211C11.9176 3.48263 12.082 3.48263 12.222 3.55211C12.3832 3.63208 12.499 3.89177 12.7305 4.41115L14.5745 8.54808C14.643 8.70162 14.6772 8.77839 14.7302 8.83718C14.777 8.8892 14.8343 8.93081 14.8982 8.95929C14.9705 8.99149 15.0541 9.00031 15.2213 9.01795L19.7256 9.49336C20.2911 9.55304 20.5738 9.58288 20.6997 9.71147C20.809 9.82316 20.8598 9.97956 20.837 10.1342C20.8108 10.3122 20.5996 10.5025 20.1772 10.8832L16.8125 13.9154C16.6877 14.0279 16.6252 14.0842 16.5857 14.1527C16.5507 14.2134 16.5288 14.2807 16.5215 14.3503C16.5132 14.429 16.5306 14.5112 16.5655 14.6757L17.5053 19.1064C17.6233 19.6627 17.6823 19.9408 17.5989 20.1002C17.5264 20.2388 17.3934 20.3354 17.2393 20.3615C17.0619 20.3915 16.8156 20.2495 16.323 19.9654L12.3995 17.7024C12.2539 17.6184 12.1811 17.5765 12.1037 17.56C12.0352 17.5455 11.9644 17.5455 11.8959 17.56C11.8185 17.5765 11.7457 17.6184 11.6001 17.7024L7.67662 19.9654C7.18404 20.2495 6.93775 20.3915 6.76034 20.3615C6.60623 20.3354 6.47319 20.2388 6.40075 20.1002C6.31736 19.9408 6.37635 19.6627 6.49434 19.1064L7.4341 14.6757C7.46898 14.5112 7.48642 14.429 7.47814 14.3503C7.47081 14.2807 7.44894 14.2134 7.41394 14.1527C7.37439 14.0842 7.31195 14.0279 7.18708 13.9154L3.82246 10.8832C3.40005 10.5025 3.18884 10.3122 3.16258 10.1342C3.13978 9.97956 3.19059 9.82316 3.29993 9.71147C3.42581 9.58288 3.70856 9.55304 4.27406 9.49336L8.77835 9.01795C8.94553 9.00031 9.02911 8.99149 9.10139 8.95929C9.16534 8.93081 9.2226 8.8892 9.26946 8.83718C9.32241 8.77839 9.35663 8.70162 9.42508 8.54808L11.2691 4.41115Z"
-                                                        stroke="#000000" stroke-width="2" stroke-linecap="round"
-                                                        stroke-linejoin="round" />
-                                                </svg>
-                                            </li>
-                                            <li>
-                                                <!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
-                                                <svg class="" width="16px" height="16px" viewBox="0 0 24 24" fill="none"
-                                                    xmlns="http://www.w3.org/2000/svg">
-                                                    <path
-                                                        d="M11.2691 4.41115C11.5006 3.89177 11.6164 3.63208 11.7776 3.55211C11.9176 3.48263 12.082 3.48263 12.222 3.55211C12.3832 3.63208 12.499 3.89177 12.7305 4.41115L14.5745 8.54808C14.643 8.70162 14.6772 8.77839 14.7302 8.83718C14.777 8.8892 14.8343 8.93081 14.8982 8.95929C14.9705 8.99149 15.0541 9.00031 15.2213 9.01795L19.7256 9.49336C20.2911 9.55304 20.5738 9.58288 20.6997 9.71147C20.809 9.82316 20.8598 9.97956 20.837 10.1342C20.8108 10.3122 20.5996 10.5025 20.1772 10.8832L16.8125 13.9154C16.6877 14.0279 16.6252 14.0842 16.5857 14.1527C16.5507 14.2134 16.5288 14.2807 16.5215 14.3503C16.5132 14.429 16.5306 14.5112 16.5655 14.6757L17.5053 19.1064C17.6233 19.6627 17.6823 19.9408 17.5989 20.1002C17.5264 20.2388 17.3934 20.3354 17.2393 20.3615C17.0619 20.3915 16.8156 20.2495 16.323 19.9654L12.3995 17.7024C12.2539 17.6184 12.1811 17.5765 12.1037 17.56C12.0352 17.5455 11.9644 17.5455 11.8959 17.56C11.8185 17.5765 11.7457 17.6184 11.6001 17.7024L7.67662 19.9654C7.18404 20.2495 6.93775 20.3915 6.76034 20.3615C6.60623 20.3354 6.47319 20.2388 6.40075 20.1002C6.31736 19.9408 6.37635 19.6627 6.49434 19.1064L7.4341 14.6757C7.46898 14.5112 7.48642 14.429 7.47814 14.3503C7.47081 14.2807 7.44894 14.2134 7.41394 14.1527C7.37439 14.0842 7.31195 14.0279 7.18708 13.9154L3.82246 10.8832C3.40005 10.5025 3.18884 10.3122 3.16258 10.1342C3.13978 9.97956 3.19059 9.82316 3.29993 9.71147C3.42581 9.58288 3.70856 9.55304 4.27406 9.49336L8.77835 9.01795C8.94553 9.00031 9.02911 8.99149 9.10139 8.95929C9.16534 8.93081 9.2226 8.8892 9.26946 8.83718C9.32241 8.77839 9.35663 8.70162 9.42508 8.54808L11.2691 4.41115Z"
-                                                        stroke="#000000" stroke-width="2" stroke-linecap="round"
-                                                        stroke-linejoin="round" />
-                                                </svg>
-                                            </li>
-                                            <li>
-                                                <!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
-                                                <svg class="" width="16px" height="16px" viewBox="0 0 24 24" fill="none"
-                                                    xmlns="http://www.w3.org/2000/svg">
-                                                    <path
-                                                        d="M11.2691 4.41115C11.5006 3.89177 11.6164 3.63208 11.7776 3.55211C11.9176 3.48263 12.082 3.48263 12.222 3.55211C12.3832 3.63208 12.499 3.89177 12.7305 4.41115L14.5745 8.54808C14.643 8.70162 14.6772 8.77839 14.7302 8.83718C14.777 8.8892 14.8343 8.93081 14.8982 8.95929C14.9705 8.99149 15.0541 9.00031 15.2213 9.01795L19.7256 9.49336C20.2911 9.55304 20.5738 9.58288 20.6997 9.71147C20.809 9.82316 20.8598 9.97956 20.837 10.1342C20.8108 10.3122 20.5996 10.5025 20.1772 10.8832L16.8125 13.9154C16.6877 14.0279 16.6252 14.0842 16.5857 14.1527C16.5507 14.2134 16.5288 14.2807 16.5215 14.3503C16.5132 14.429 16.5306 14.5112 16.5655 14.6757L17.5053 19.1064C17.6233 19.6627 17.6823 19.9408 17.5989 20.1002C17.5264 20.2388 17.3934 20.3354 17.2393 20.3615C17.0619 20.3915 16.8156 20.2495 16.323 19.9654L12.3995 17.7024C12.2539 17.6184 12.1811 17.5765 12.1037 17.56C12.0352 17.5455 11.9644 17.5455 11.8959 17.56C11.8185 17.5765 11.7457 17.6184 11.6001 17.7024L7.67662 19.9654C7.18404 20.2495 6.93775 20.3915 6.76034 20.3615C6.60623 20.3354 6.47319 20.2388 6.40075 20.1002C6.31736 19.9408 6.37635 19.6627 6.49434 19.1064L7.4341 14.6757C7.46898 14.5112 7.48642 14.429 7.47814 14.3503C7.47081 14.2807 7.44894 14.2134 7.41394 14.1527C7.37439 14.0842 7.31195 14.0279 7.18708 13.9154L3.82246 10.8832C3.40005 10.5025 3.18884 10.3122 3.16258 10.1342C3.13978 9.97956 3.19059 9.82316 3.29993 9.71147C3.42581 9.58288 3.70856 9.55304 4.27406 9.49336L8.77835 9.01795C8.94553 9.00031 9.02911 8.99149 9.10139 8.95929C9.16534 8.93081 9.2226 8.8892 9.26946 8.83718C9.32241 8.77839 9.35663 8.70162 9.42508 8.54808L11.2691 4.41115Z"
-                                                        stroke="#000000" stroke-width="2" stroke-linecap="round"
-                                                        stroke-linejoin="round" />
-                                                </svg>
-                                            </li>
-                                        </ul>
-                                        <div class="pt-2 flex gap-3">
-                                            <span class=" font-bold">$40.00</span>
-                                        </div>
-                                    </div>
-                                    <div class="absolute bottom-0 right-1 ">
-                                        <svg class="w-12 h-8" fill="#000000" viewBox="0 0 32 32"
-                                            style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;"
-                                            version="1.1" xml:space="preserve" xmlns="http://www.w3.org/2000/svg"
-                                            xmlns:serif="http://www.serif.com/"
-                                            xmlns:xlink="http://www.w3.org/1999/xlink">
-                                            <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
-                                            <g id="SVGRepo_tracerCarrier" stroke-linecap="round"
-                                                stroke-linejoin="round">
-                                            </g>
-                                            <g id="SVGRepo_iconCarrier">
-                                                <g transform="matrix(1,0,0,1,-432,0)">
-                                                    <g transform="matrix(1.125,0,0,1,375.898,0)">
-                                                        <path
-                                                            d="M71.196,10.9C71.148,9.836 70.367,9 69.42,9C66.684,9 61.316,9 58.58,9C57.633,9 56.852,9.836 56.804,10.9C56.638,14.653 56.267,22.991 56.093,26.9C56.069,27.447 56.245,27.982 56.581,28.378C56.916,28.775 57.382,29 57.869,29C60.948,29 67.052,29 70.131,29C70.618,29 71.084,28.775 71.419,28.378C71.755,27.982 71.931,27.447 71.907,26.9C71.733,22.991 71.362,14.653 71.196,10.9Z"
-                                                            style="fill:#1fe564;"></path>
-                                                    </g>
-                                                    <path
-                                                        d="M442.898,8L441.8,8C440.201,8 438.884,9.254 438.804,10.85C438.616,14.603 438.199,22.941 438.004,26.85C437.963,27.671 438.26,28.472 438.826,29.068C439.393,29.663 440.178,30 441,30L454.795,30C455.617,30 456.402,29.663 456.969,29.068C457.535,28.472 457.832,27.671 457.791,26.85L456.991,10.85C456.911,9.254 455.594,8 453.995,8L452.898,8L452.898,6C452.898,3.24 450.657,1 447.898,1C445.138,1 442.898,3.24 442.898,6L442.898,8ZM455.746,26L455.794,26.95C455.807,27.224 455.708,27.491 455.52,27.689C455.331,27.888 455.069,28 454.795,28C454.795,28 441,28 441,28C440.726,28 440.464,27.888 440.275,27.689C440.087,27.491 439.988,27.224 440.001,26.95L440.049,26L455.746,26ZM452.898,10L452.898,13C452.898,13.552 452.449,14 451.898,14C451.346,14 450.898,13.552 450.898,13L450.898,10L444.898,10L444.898,13C444.898,13.552 444.449,14 443.898,14C443.346,14 442.898,13.552 442.898,13L442.898,10L441.8,10C441.267,10 440.828,10.418 440.801,10.95L440.149,24L455.646,24L454.994,10.95C454.967,10.418 454.528,10 453.995,10L452.898,10ZM450.898,8L450.898,6C450.898,4.344 449.553,3 447.898,3C446.242,3 444.898,4.344 444.898,6L444.898,8L450.898,8Z"
-                                                        style="fill:#92d398;"></path>
-                                                </g>
-                                            </g>
-                                        </svg>
+                                        </g>
+                                    </svg>
                                     </div>
                                 </div>
                                 <div class="w-4/10 h-25 flex justify-end">
@@ -2707,9 +2678,9 @@
                     <div class="w-10/11 sm:w-2/3 md:w-5/11 xl:w-5/16 h-130 flex flex-col gap-5 bg-white rounded-2xl">
                         <div class="w-11/12 mx-auto">
                             <div class="w-full py-3">
-                                <span class="text-[30px] pb-3 border-b-3 items-end">تجهیزات</span>
+                                <span class="text-[28px] pb-3 border-b-3 items-end font-bold">تجهیزات</span>
                             </div>
-                            <div class="w-full border-b-1"></div>
+                            <div class="w-full"></div>
                         </div>
                         <div class="flex flex-col gap-5">
                             <div
@@ -2719,83 +2690,81 @@
                                         <h2 class="text-[16px] font-bold text-center">تجهیزات پزشکی</h2>
                                         <ul class="flex">
                                             <li>
-                                                <!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
-                                                <svg class="" width="16px" height="16px" viewBox="0 0 24 24" fill="none"
+                                                <?xml version="1.0" encoding="utf-8"?>
+                                                <svg class="fill-[#fba707]" width="16px" height="16px" viewBox="0 0 24 24" 
                                                     xmlns="http://www.w3.org/2000/svg">
                                                     <path
                                                         d="M11.2691 4.41115C11.5006 3.89177 11.6164 3.63208 11.7776 3.55211C11.9176 3.48263 12.082 3.48263 12.222 3.55211C12.3832 3.63208 12.499 3.89177 12.7305 4.41115L14.5745 8.54808C14.643 8.70162 14.6772 8.77839 14.7302 8.83718C14.777 8.8892 14.8343 8.93081 14.8982 8.95929C14.9705 8.99149 15.0541 9.00031 15.2213 9.01795L19.7256 9.49336C20.2911 9.55304 20.5738 9.58288 20.6997 9.71147C20.809 9.82316 20.8598 9.97956 20.837 10.1342C20.8108 10.3122 20.5996 10.5025 20.1772 10.8832L16.8125 13.9154C16.6877 14.0279 16.6252 14.0842 16.5857 14.1527C16.5507 14.2134 16.5288 14.2807 16.5215 14.3503C16.5132 14.429 16.5306 14.5112 16.5655 14.6757L17.5053 19.1064C17.6233 19.6627 17.6823 19.9408 17.5989 20.1002C17.5264 20.2388 17.3934 20.3354 17.2393 20.3615C17.0619 20.3915 16.8156 20.2495 16.323 19.9654L12.3995 17.7024C12.2539 17.6184 12.1811 17.5765 12.1037 17.56C12.0352 17.5455 11.9644 17.5455 11.8959 17.56C11.8185 17.5765 11.7457 17.6184 11.6001 17.7024L7.67662 19.9654C7.18404 20.2495 6.93775 20.3915 6.76034 20.3615C6.60623 20.3354 6.47319 20.2388 6.40075 20.1002C6.31736 19.9408 6.37635 19.6627 6.49434 19.1064L7.4341 14.6757C7.46898 14.5112 7.48642 14.429 7.47814 14.3503C7.47081 14.2807 7.44894 14.2134 7.41394 14.1527C7.37439 14.0842 7.31195 14.0279 7.18708 13.9154L3.82246 10.8832C3.40005 10.5025 3.18884 10.3122 3.16258 10.1342C3.13978 9.97956 3.19059 9.82316 3.29993 9.71147C3.42581 9.58288 3.70856 9.55304 4.27406 9.49336L8.77835 9.01795C8.94553 9.00031 9.02911 8.99149 9.10139 8.95929C9.16534 8.93081 9.2226 8.8892 9.26946 8.83718C9.32241 8.77839 9.35663 8.70162 9.42508 8.54808L11.2691 4.41115Z"
-                                                        stroke="#000000" stroke-width="2" stroke-linecap="round"
+                                                        stroke="#fba707" stroke-width="2" stroke-linecap="round"
                                                         stroke-linejoin="round" />
                                                 </svg>
                                             </li>
                                             <li>
-                                                <!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
-                                                <svg class="" width="16px" height="16px" viewBox="0 0 24 24" fill="none"
+                                                <?xml version="1.0" encoding="utf-8"?>
+                                                <svg class="fill-[#fba707]" width="16px" height="16px" viewBox="0 0 24 24" 
                                                     xmlns="http://www.w3.org/2000/svg">
                                                     <path
                                                         d="M11.2691 4.41115C11.5006 3.89177 11.6164 3.63208 11.7776 3.55211C11.9176 3.48263 12.082 3.48263 12.222 3.55211C12.3832 3.63208 12.499 3.89177 12.7305 4.41115L14.5745 8.54808C14.643 8.70162 14.6772 8.77839 14.7302 8.83718C14.777 8.8892 14.8343 8.93081 14.8982 8.95929C14.9705 8.99149 15.0541 9.00031 15.2213 9.01795L19.7256 9.49336C20.2911 9.55304 20.5738 9.58288 20.6997 9.71147C20.809 9.82316 20.8598 9.97956 20.837 10.1342C20.8108 10.3122 20.5996 10.5025 20.1772 10.8832L16.8125 13.9154C16.6877 14.0279 16.6252 14.0842 16.5857 14.1527C16.5507 14.2134 16.5288 14.2807 16.5215 14.3503C16.5132 14.429 16.5306 14.5112 16.5655 14.6757L17.5053 19.1064C17.6233 19.6627 17.6823 19.9408 17.5989 20.1002C17.5264 20.2388 17.3934 20.3354 17.2393 20.3615C17.0619 20.3915 16.8156 20.2495 16.323 19.9654L12.3995 17.7024C12.2539 17.6184 12.1811 17.5765 12.1037 17.56C12.0352 17.5455 11.9644 17.5455 11.8959 17.56C11.8185 17.5765 11.7457 17.6184 11.6001 17.7024L7.67662 19.9654C7.18404 20.2495 6.93775 20.3915 6.76034 20.3615C6.60623 20.3354 6.47319 20.2388 6.40075 20.1002C6.31736 19.9408 6.37635 19.6627 6.49434 19.1064L7.4341 14.6757C7.46898 14.5112 7.48642 14.429 7.47814 14.3503C7.47081 14.2807 7.44894 14.2134 7.41394 14.1527C7.37439 14.0842 7.31195 14.0279 7.18708 13.9154L3.82246 10.8832C3.40005 10.5025 3.18884 10.3122 3.16258 10.1342C3.13978 9.97956 3.19059 9.82316 3.29993 9.71147C3.42581 9.58288 3.70856 9.55304 4.27406 9.49336L8.77835 9.01795C8.94553 9.00031 9.02911 8.99149 9.10139 8.95929C9.16534 8.93081 9.2226 8.8892 9.26946 8.83718C9.32241 8.77839 9.35663 8.70162 9.42508 8.54808L11.2691 4.41115Z"
-                                                        stroke="#000000" stroke-width="2" stroke-linecap="round"
+                                                        stroke="#fba707" stroke-width="2" stroke-linecap="round"
                                                         stroke-linejoin="round" />
                                                 </svg>
                                             </li>
                                             <li>
-                                                <!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
-                                                <svg class="" width="16px" height="16px" viewBox="0 0 24 24" fill="none"
+                                                <?xml version="1.0" encoding="utf-8"?>
+                                                <svg class="fill-[#fba707]" width="16px" height="16px" viewBox="0 0 24 24" 
                                                     xmlns="http://www.w3.org/2000/svg">
                                                     <path
                                                         d="M11.2691 4.41115C11.5006 3.89177 11.6164 3.63208 11.7776 3.55211C11.9176 3.48263 12.082 3.48263 12.222 3.55211C12.3832 3.63208 12.499 3.89177 12.7305 4.41115L14.5745 8.54808C14.643 8.70162 14.6772 8.77839 14.7302 8.83718C14.777 8.8892 14.8343 8.93081 14.8982 8.95929C14.9705 8.99149 15.0541 9.00031 15.2213 9.01795L19.7256 9.49336C20.2911 9.55304 20.5738 9.58288 20.6997 9.71147C20.809 9.82316 20.8598 9.97956 20.837 10.1342C20.8108 10.3122 20.5996 10.5025 20.1772 10.8832L16.8125 13.9154C16.6877 14.0279 16.6252 14.0842 16.5857 14.1527C16.5507 14.2134 16.5288 14.2807 16.5215 14.3503C16.5132 14.429 16.5306 14.5112 16.5655 14.6757L17.5053 19.1064C17.6233 19.6627 17.6823 19.9408 17.5989 20.1002C17.5264 20.2388 17.3934 20.3354 17.2393 20.3615C17.0619 20.3915 16.8156 20.2495 16.323 19.9654L12.3995 17.7024C12.2539 17.6184 12.1811 17.5765 12.1037 17.56C12.0352 17.5455 11.9644 17.5455 11.8959 17.56C11.8185 17.5765 11.7457 17.6184 11.6001 17.7024L7.67662 19.9654C7.18404 20.2495 6.93775 20.3915 6.76034 20.3615C6.60623 20.3354 6.47319 20.2388 6.40075 20.1002C6.31736 19.9408 6.37635 19.6627 6.49434 19.1064L7.4341 14.6757C7.46898 14.5112 7.48642 14.429 7.47814 14.3503C7.47081 14.2807 7.44894 14.2134 7.41394 14.1527C7.37439 14.0842 7.31195 14.0279 7.18708 13.9154L3.82246 10.8832C3.40005 10.5025 3.18884 10.3122 3.16258 10.1342C3.13978 9.97956 3.19059 9.82316 3.29993 9.71147C3.42581 9.58288 3.70856 9.55304 4.27406 9.49336L8.77835 9.01795C8.94553 9.00031 9.02911 8.99149 9.10139 8.95929C9.16534 8.93081 9.2226 8.8892 9.26946 8.83718C9.32241 8.77839 9.35663 8.70162 9.42508 8.54808L11.2691 4.41115Z"
-                                                        stroke="#000000" stroke-width="2" stroke-linecap="round"
+                                                        stroke="#fba707" stroke-width="2" stroke-linecap="round"
                                                         stroke-linejoin="round" />
                                                 </svg>
                                             </li>
                                             <li>
-                                                <!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
-                                                <svg class="" width="16px" height="16px" viewBox="0 0 24 24" fill="none"
+                                                <?xml version="1.0" encoding="utf-8"?>
+                                                <svg class="fill-[#fba707]" width="16px" height="16px" viewBox="0 0 24 24" 
                                                     xmlns="http://www.w3.org/2000/svg">
                                                     <path
                                                         d="M11.2691 4.41115C11.5006 3.89177 11.6164 3.63208 11.7776 3.55211C11.9176 3.48263 12.082 3.48263 12.222 3.55211C12.3832 3.63208 12.499 3.89177 12.7305 4.41115L14.5745 8.54808C14.643 8.70162 14.6772 8.77839 14.7302 8.83718C14.777 8.8892 14.8343 8.93081 14.8982 8.95929C14.9705 8.99149 15.0541 9.00031 15.2213 9.01795L19.7256 9.49336C20.2911 9.55304 20.5738 9.58288 20.6997 9.71147C20.809 9.82316 20.8598 9.97956 20.837 10.1342C20.8108 10.3122 20.5996 10.5025 20.1772 10.8832L16.8125 13.9154C16.6877 14.0279 16.6252 14.0842 16.5857 14.1527C16.5507 14.2134 16.5288 14.2807 16.5215 14.3503C16.5132 14.429 16.5306 14.5112 16.5655 14.6757L17.5053 19.1064C17.6233 19.6627 17.6823 19.9408 17.5989 20.1002C17.5264 20.2388 17.3934 20.3354 17.2393 20.3615C17.0619 20.3915 16.8156 20.2495 16.323 19.9654L12.3995 17.7024C12.2539 17.6184 12.1811 17.5765 12.1037 17.56C12.0352 17.5455 11.9644 17.5455 11.8959 17.56C11.8185 17.5765 11.7457 17.6184 11.6001 17.7024L7.67662 19.9654C7.18404 20.2495 6.93775 20.3915 6.76034 20.3615C6.60623 20.3354 6.47319 20.2388 6.40075 20.1002C6.31736 19.9408 6.37635 19.6627 6.49434 19.1064L7.4341 14.6757C7.46898 14.5112 7.48642 14.429 7.47814 14.3503C7.47081 14.2807 7.44894 14.2134 7.41394 14.1527C7.37439 14.0842 7.31195 14.0279 7.18708 13.9154L3.82246 10.8832C3.40005 10.5025 3.18884 10.3122 3.16258 10.1342C3.13978 9.97956 3.19059 9.82316 3.29993 9.71147C3.42581 9.58288 3.70856 9.55304 4.27406 9.49336L8.77835 9.01795C8.94553 9.00031 9.02911 8.99149 9.10139 8.95929C9.16534 8.93081 9.2226 8.8892 9.26946 8.83718C9.32241 8.77839 9.35663 8.70162 9.42508 8.54808L11.2691 4.41115Z"
-                                                        stroke="#000000" stroke-width="2" stroke-linecap="round"
+                                                        stroke="#fba707" stroke-width="2" stroke-linecap="round"
                                                         stroke-linejoin="round" />
                                                 </svg>
                                             </li>
                                             <li>
-                                                <!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
-                                                <svg class="" width="16px" height="16px" viewBox="0 0 24 24" fill="none"
+                                                <?xml version="1.0" encoding="utf-8"?>
+                                                <svg class="fill-[none]" width="16px" height="16px" viewBox="0 0 24 24" 
                                                     xmlns="http://www.w3.org/2000/svg">
                                                     <path
                                                         d="M11.2691 4.41115C11.5006 3.89177 11.6164 3.63208 11.7776 3.55211C11.9176 3.48263 12.082 3.48263 12.222 3.55211C12.3832 3.63208 12.499 3.89177 12.7305 4.41115L14.5745 8.54808C14.643 8.70162 14.6772 8.77839 14.7302 8.83718C14.777 8.8892 14.8343 8.93081 14.8982 8.95929C14.9705 8.99149 15.0541 9.00031 15.2213 9.01795L19.7256 9.49336C20.2911 9.55304 20.5738 9.58288 20.6997 9.71147C20.809 9.82316 20.8598 9.97956 20.837 10.1342C20.8108 10.3122 20.5996 10.5025 20.1772 10.8832L16.8125 13.9154C16.6877 14.0279 16.6252 14.0842 16.5857 14.1527C16.5507 14.2134 16.5288 14.2807 16.5215 14.3503C16.5132 14.429 16.5306 14.5112 16.5655 14.6757L17.5053 19.1064C17.6233 19.6627 17.6823 19.9408 17.5989 20.1002C17.5264 20.2388 17.3934 20.3354 17.2393 20.3615C17.0619 20.3915 16.8156 20.2495 16.323 19.9654L12.3995 17.7024C12.2539 17.6184 12.1811 17.5765 12.1037 17.56C12.0352 17.5455 11.9644 17.5455 11.8959 17.56C11.8185 17.5765 11.7457 17.6184 11.6001 17.7024L7.67662 19.9654C7.18404 20.2495 6.93775 20.3915 6.76034 20.3615C6.60623 20.3354 6.47319 20.2388 6.40075 20.1002C6.31736 19.9408 6.37635 19.6627 6.49434 19.1064L7.4341 14.6757C7.46898 14.5112 7.48642 14.429 7.47814 14.3503C7.47081 14.2807 7.44894 14.2134 7.41394 14.1527C7.37439 14.0842 7.31195 14.0279 7.18708 13.9154L3.82246 10.8832C3.40005 10.5025 3.18884 10.3122 3.16258 10.1342C3.13978 9.97956 3.19059 9.82316 3.29993 9.71147C3.42581 9.58288 3.70856 9.55304 4.27406 9.49336L8.77835 9.01795C8.94553 9.00031 9.02911 8.99149 9.10139 8.95929C9.16534 8.93081 9.2226 8.8892 9.26946 8.83718C9.32241 8.77839 9.35663 8.70162 9.42508 8.54808L11.2691 4.41115Z"
-                                                        stroke="#000000" stroke-width="2" stroke-linecap="round"
+                                                        stroke="#fba707" stroke-width="2" stroke-linecap="round"
                                                         stroke-linejoin="round" />
                                                 </svg>
                                             </li>
                                         </ul>
                                         <div class="pt-2 flex gap-3">
-                                            <span class=" font-bold">$40.00</span>
+                                            <span class=" font-bold">1.000.000تومان</span>
                                         </div>
                                     </div>
                                     <div class="absolute bottom-0 right-1 ">
-                                        <svg class="w-12 h-8" fill="#000000" viewBox="0 0 32 32"
-                                            style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;"
-                                            version="1.1" xml:space="preserve" xmlns="http://www.w3.org/2000/svg"
-                                            xmlns:serif="http://www.serif.com/"
-                                            xmlns:xlink="http://www.w3.org/1999/xlink">
-                                            <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
-                                            <g id="SVGRepo_tracerCarrier" stroke-linecap="round"
-                                                stroke-linejoin="round">
-                                            </g>
-                                            <g id="SVGRepo_iconCarrier">
-                                                <g transform="matrix(1,0,0,1,-432,0)">
-                                                    <g transform="matrix(1.125,0,0,1,375.898,0)">
-                                                        <path
-                                                            d="M71.196,10.9C71.148,9.836 70.367,9 69.42,9C66.684,9 61.316,9 58.58,9C57.633,9 56.852,9.836 56.804,10.9C56.638,14.653 56.267,22.991 56.093,26.9C56.069,27.447 56.245,27.982 56.581,28.378C56.916,28.775 57.382,29 57.869,29C60.948,29 67.052,29 70.131,29C70.618,29 71.084,28.775 71.419,28.378C71.755,27.982 71.931,27.447 71.907,26.9C71.733,22.991 71.362,14.653 71.196,10.9Z"
-                                                            style="fill:#1fe564;"></path>
-                                                    </g>
+                                        <svg class="w-13 h-9" fill="#000000" viewBox="0 0 32 32"
+                                        style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;"
+                                        version="1.1" xml:space="preserve" xmlns="http://www.w3.org/2000/svg"
+                                        xmlns:serif="http://www.serif.com/" xmlns:xlink="http://www.w3.org/1999/xlink">
+                                        <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                                        <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round">
+                                        </g>
+                                        <g id="SVGRepo_iconCarrier">
+                                            <g transform="matrix(1,0,0,1,-432,0)">
+                                                <g transform="matrix(1.125,0,0,1,375.898,0)">
                                                     <path
-                                                        d="M442.898,8L441.8,8C440.201,8 438.884,9.254 438.804,10.85C438.616,14.603 438.199,22.941 438.004,26.85C437.963,27.671 438.26,28.472 438.826,29.068C439.393,29.663 440.178,30 441,30L454.795,30C455.617,30 456.402,29.663 456.969,29.068C457.535,28.472 457.832,27.671 457.791,26.85L456.991,10.85C456.911,9.254 455.594,8 453.995,8L452.898,8L452.898,6C452.898,3.24 450.657,1 447.898,1C445.138,1 442.898,3.24 442.898,6L442.898,8ZM455.746,26L455.794,26.95C455.807,27.224 455.708,27.491 455.52,27.689C455.331,27.888 455.069,28 454.795,28C454.795,28 441,28 441,28C440.726,28 440.464,27.888 440.275,27.689C440.087,27.491 439.988,27.224 440.001,26.95L440.049,26L455.746,26ZM452.898,10L452.898,13C452.898,13.552 452.449,14 451.898,14C451.346,14 450.898,13.552 450.898,13L450.898,10L444.898,10L444.898,13C444.898,13.552 444.449,14 443.898,14C443.346,14 442.898,13.552 442.898,13L442.898,10L441.8,10C441.267,10 440.828,10.418 440.801,10.95L440.149,24L455.646,24L454.994,10.95C454.967,10.418 454.528,10 453.995,10L452.898,10ZM450.898,8L450.898,6C450.898,4.344 449.553,3 447.898,3C446.242,3 444.898,4.344 444.898,6L444.898,8L450.898,8Z"
-                                                        style="fill:#92d398;"></path>
+                                                        d="M71.196,10.9C71.148,9.836 70.367,9 69.42,9C66.684,9 61.316,9 58.58,9C57.633,9 56.852,9.836 56.804,10.9C56.638,14.653 56.267,22.991 56.093,26.9C56.069,27.447 56.245,27.982 56.581,28.378C56.916,28.775 57.382,29 57.869,29C60.948,29 67.052,29 70.131,29C70.618,29 71.084,28.775 71.419,28.378C71.755,27.982 71.931,27.447 71.907,26.9C71.733,22.991 71.362,14.653 71.196,10.9Z"
+                                                        style="fill:#03a297;"></path>
                                                 </g>
+                                                <path
+                                                    d="M442.898,8L441.8,8C440.201,8 438.884,9.254 438.804,10.85C438.616,14.603 438.199,22.941 438.004,26.85C437.963,27.671 438.26,28.472 438.826,29.068C439.393,29.663 440.178,30 441,30L454.795,30C455.617,30 456.402,29.663 456.969,29.068C457.535,28.472 457.832,27.671 457.791,26.85L456.991,10.85C456.911,9.254 455.594,8 453.995,8L452.898,8L452.898,6C452.898,3.24 450.657,1 447.898,1C445.138,1 442.898,3.24 442.898,6L442.898,8ZM455.746,26L455.794,26.95C455.807,27.224 455.708,27.491 455.52,27.689C455.331,27.888 455.069,28 454.795,28C454.795,28 441,28 441,28C440.726,28 440.464,27.888 440.275,27.689C440.087,27.491 439.988,27.224 440.001,26.95L440.049,26L455.746,26ZM452.898,10L452.898,13C452.898,13.552 452.449,14 451.898,14C451.346,14 450.898,13.552 450.898,13L450.898,10L444.898,10L444.898,13C444.898,13.552 444.449,14 443.898,14C443.346,14 442.898,13.552 442.898,13L442.898,10L441.8,10C441.267,10 440.828,10.418 440.801,10.95L440.149,24L455.646,24L454.994,10.95C454.967,10.418 454.528,10 453.995,10L452.898,10ZM450.898,8L450.898,6C450.898,4.344 449.553,3 447.898,3C446.242,3 444.898,4.344 444.898,6L444.898,8L450.898,8Z"
+                                                    style="fill:#03a297;"></path>
                                             </g>
-                                        </svg>
+                                        </g>
+                                    </svg>
                                     </div>
                                 </div>
                                 <div class="w-4/10 h-25 flex justify-end">
@@ -2810,83 +2779,81 @@
                                         <h2 class="text-[16px] font-bold text-center">تجهیزات پزشکی</h2>
                                         <ul class="flex">
                                             <li>
-                                                <!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
-                                                <svg class="" width="16px" height="16px" viewBox="0 0 24 24" fill="none"
+                                                <?xml version="1.0" encoding="utf-8"?>
+                                                <svg class="fill-[#fba707]" width="16px" height="16px" viewBox="0 0 24 24" 
                                                     xmlns="http://www.w3.org/2000/svg">
                                                     <path
                                                         d="M11.2691 4.41115C11.5006 3.89177 11.6164 3.63208 11.7776 3.55211C11.9176 3.48263 12.082 3.48263 12.222 3.55211C12.3832 3.63208 12.499 3.89177 12.7305 4.41115L14.5745 8.54808C14.643 8.70162 14.6772 8.77839 14.7302 8.83718C14.777 8.8892 14.8343 8.93081 14.8982 8.95929C14.9705 8.99149 15.0541 9.00031 15.2213 9.01795L19.7256 9.49336C20.2911 9.55304 20.5738 9.58288 20.6997 9.71147C20.809 9.82316 20.8598 9.97956 20.837 10.1342C20.8108 10.3122 20.5996 10.5025 20.1772 10.8832L16.8125 13.9154C16.6877 14.0279 16.6252 14.0842 16.5857 14.1527C16.5507 14.2134 16.5288 14.2807 16.5215 14.3503C16.5132 14.429 16.5306 14.5112 16.5655 14.6757L17.5053 19.1064C17.6233 19.6627 17.6823 19.9408 17.5989 20.1002C17.5264 20.2388 17.3934 20.3354 17.2393 20.3615C17.0619 20.3915 16.8156 20.2495 16.323 19.9654L12.3995 17.7024C12.2539 17.6184 12.1811 17.5765 12.1037 17.56C12.0352 17.5455 11.9644 17.5455 11.8959 17.56C11.8185 17.5765 11.7457 17.6184 11.6001 17.7024L7.67662 19.9654C7.18404 20.2495 6.93775 20.3915 6.76034 20.3615C6.60623 20.3354 6.47319 20.2388 6.40075 20.1002C6.31736 19.9408 6.37635 19.6627 6.49434 19.1064L7.4341 14.6757C7.46898 14.5112 7.48642 14.429 7.47814 14.3503C7.47081 14.2807 7.44894 14.2134 7.41394 14.1527C7.37439 14.0842 7.31195 14.0279 7.18708 13.9154L3.82246 10.8832C3.40005 10.5025 3.18884 10.3122 3.16258 10.1342C3.13978 9.97956 3.19059 9.82316 3.29993 9.71147C3.42581 9.58288 3.70856 9.55304 4.27406 9.49336L8.77835 9.01795C8.94553 9.00031 9.02911 8.99149 9.10139 8.95929C9.16534 8.93081 9.2226 8.8892 9.26946 8.83718C9.32241 8.77839 9.35663 8.70162 9.42508 8.54808L11.2691 4.41115Z"
-                                                        stroke="#000000" stroke-width="2" stroke-linecap="round"
+                                                        stroke="#fba707" stroke-width="2" stroke-linecap="round"
                                                         stroke-linejoin="round" />
                                                 </svg>
                                             </li>
                                             <li>
-                                                <!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
-                                                <svg class="" width="16px" height="16px" viewBox="0 0 24 24" fill="none"
+                                                <?xml version="1.0" encoding="utf-8"?>
+                                                <svg class="fill-[#fba707]" width="16px" height="16px" viewBox="0 0 24 24" 
                                                     xmlns="http://www.w3.org/2000/svg">
                                                     <path
                                                         d="M11.2691 4.41115C11.5006 3.89177 11.6164 3.63208 11.7776 3.55211C11.9176 3.48263 12.082 3.48263 12.222 3.55211C12.3832 3.63208 12.499 3.89177 12.7305 4.41115L14.5745 8.54808C14.643 8.70162 14.6772 8.77839 14.7302 8.83718C14.777 8.8892 14.8343 8.93081 14.8982 8.95929C14.9705 8.99149 15.0541 9.00031 15.2213 9.01795L19.7256 9.49336C20.2911 9.55304 20.5738 9.58288 20.6997 9.71147C20.809 9.82316 20.8598 9.97956 20.837 10.1342C20.8108 10.3122 20.5996 10.5025 20.1772 10.8832L16.8125 13.9154C16.6877 14.0279 16.6252 14.0842 16.5857 14.1527C16.5507 14.2134 16.5288 14.2807 16.5215 14.3503C16.5132 14.429 16.5306 14.5112 16.5655 14.6757L17.5053 19.1064C17.6233 19.6627 17.6823 19.9408 17.5989 20.1002C17.5264 20.2388 17.3934 20.3354 17.2393 20.3615C17.0619 20.3915 16.8156 20.2495 16.323 19.9654L12.3995 17.7024C12.2539 17.6184 12.1811 17.5765 12.1037 17.56C12.0352 17.5455 11.9644 17.5455 11.8959 17.56C11.8185 17.5765 11.7457 17.6184 11.6001 17.7024L7.67662 19.9654C7.18404 20.2495 6.93775 20.3915 6.76034 20.3615C6.60623 20.3354 6.47319 20.2388 6.40075 20.1002C6.31736 19.9408 6.37635 19.6627 6.49434 19.1064L7.4341 14.6757C7.46898 14.5112 7.48642 14.429 7.47814 14.3503C7.47081 14.2807 7.44894 14.2134 7.41394 14.1527C7.37439 14.0842 7.31195 14.0279 7.18708 13.9154L3.82246 10.8832C3.40005 10.5025 3.18884 10.3122 3.16258 10.1342C3.13978 9.97956 3.19059 9.82316 3.29993 9.71147C3.42581 9.58288 3.70856 9.55304 4.27406 9.49336L8.77835 9.01795C8.94553 9.00031 9.02911 8.99149 9.10139 8.95929C9.16534 8.93081 9.2226 8.8892 9.26946 8.83718C9.32241 8.77839 9.35663 8.70162 9.42508 8.54808L11.2691 4.41115Z"
-                                                        stroke="#000000" stroke-width="2" stroke-linecap="round"
+                                                        stroke="#fba707" stroke-width="2" stroke-linecap="round"
                                                         stroke-linejoin="round" />
                                                 </svg>
                                             </li>
                                             <li>
-                                                <!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
-                                                <svg class="" width="16px" height="16px" viewBox="0 0 24 24" fill="none"
+                                                <?xml version="1.0" encoding="utf-8"?>
+                                                <svg class="fill-[#fba707]" width="16px" height="16px" viewBox="0 0 24 24" 
                                                     xmlns="http://www.w3.org/2000/svg">
                                                     <path
                                                         d="M11.2691 4.41115C11.5006 3.89177 11.6164 3.63208 11.7776 3.55211C11.9176 3.48263 12.082 3.48263 12.222 3.55211C12.3832 3.63208 12.499 3.89177 12.7305 4.41115L14.5745 8.54808C14.643 8.70162 14.6772 8.77839 14.7302 8.83718C14.777 8.8892 14.8343 8.93081 14.8982 8.95929C14.9705 8.99149 15.0541 9.00031 15.2213 9.01795L19.7256 9.49336C20.2911 9.55304 20.5738 9.58288 20.6997 9.71147C20.809 9.82316 20.8598 9.97956 20.837 10.1342C20.8108 10.3122 20.5996 10.5025 20.1772 10.8832L16.8125 13.9154C16.6877 14.0279 16.6252 14.0842 16.5857 14.1527C16.5507 14.2134 16.5288 14.2807 16.5215 14.3503C16.5132 14.429 16.5306 14.5112 16.5655 14.6757L17.5053 19.1064C17.6233 19.6627 17.6823 19.9408 17.5989 20.1002C17.5264 20.2388 17.3934 20.3354 17.2393 20.3615C17.0619 20.3915 16.8156 20.2495 16.323 19.9654L12.3995 17.7024C12.2539 17.6184 12.1811 17.5765 12.1037 17.56C12.0352 17.5455 11.9644 17.5455 11.8959 17.56C11.8185 17.5765 11.7457 17.6184 11.6001 17.7024L7.67662 19.9654C7.18404 20.2495 6.93775 20.3915 6.76034 20.3615C6.60623 20.3354 6.47319 20.2388 6.40075 20.1002C6.31736 19.9408 6.37635 19.6627 6.49434 19.1064L7.4341 14.6757C7.46898 14.5112 7.48642 14.429 7.47814 14.3503C7.47081 14.2807 7.44894 14.2134 7.41394 14.1527C7.37439 14.0842 7.31195 14.0279 7.18708 13.9154L3.82246 10.8832C3.40005 10.5025 3.18884 10.3122 3.16258 10.1342C3.13978 9.97956 3.19059 9.82316 3.29993 9.71147C3.42581 9.58288 3.70856 9.55304 4.27406 9.49336L8.77835 9.01795C8.94553 9.00031 9.02911 8.99149 9.10139 8.95929C9.16534 8.93081 9.2226 8.8892 9.26946 8.83718C9.32241 8.77839 9.35663 8.70162 9.42508 8.54808L11.2691 4.41115Z"
-                                                        stroke="#000000" stroke-width="2" stroke-linecap="round"
+                                                        stroke="#fba707" stroke-width="2" stroke-linecap="round"
                                                         stroke-linejoin="round" />
                                                 </svg>
                                             </li>
                                             <li>
-                                                <!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
-                                                <svg class="" width="16px" height="16px" viewBox="0 0 24 24" fill="none"
+                                                <?xml version="1.0" encoding="utf-8"?>
+                                                <svg class="fill-[#fba707]" width="16px" height="16px" viewBox="0 0 24 24" 
                                                     xmlns="http://www.w3.org/2000/svg">
                                                     <path
                                                         d="M11.2691 4.41115C11.5006 3.89177 11.6164 3.63208 11.7776 3.55211C11.9176 3.48263 12.082 3.48263 12.222 3.55211C12.3832 3.63208 12.499 3.89177 12.7305 4.41115L14.5745 8.54808C14.643 8.70162 14.6772 8.77839 14.7302 8.83718C14.777 8.8892 14.8343 8.93081 14.8982 8.95929C14.9705 8.99149 15.0541 9.00031 15.2213 9.01795L19.7256 9.49336C20.2911 9.55304 20.5738 9.58288 20.6997 9.71147C20.809 9.82316 20.8598 9.97956 20.837 10.1342C20.8108 10.3122 20.5996 10.5025 20.1772 10.8832L16.8125 13.9154C16.6877 14.0279 16.6252 14.0842 16.5857 14.1527C16.5507 14.2134 16.5288 14.2807 16.5215 14.3503C16.5132 14.429 16.5306 14.5112 16.5655 14.6757L17.5053 19.1064C17.6233 19.6627 17.6823 19.9408 17.5989 20.1002C17.5264 20.2388 17.3934 20.3354 17.2393 20.3615C17.0619 20.3915 16.8156 20.2495 16.323 19.9654L12.3995 17.7024C12.2539 17.6184 12.1811 17.5765 12.1037 17.56C12.0352 17.5455 11.9644 17.5455 11.8959 17.56C11.8185 17.5765 11.7457 17.6184 11.6001 17.7024L7.67662 19.9654C7.18404 20.2495 6.93775 20.3915 6.76034 20.3615C6.60623 20.3354 6.47319 20.2388 6.40075 20.1002C6.31736 19.9408 6.37635 19.6627 6.49434 19.1064L7.4341 14.6757C7.46898 14.5112 7.48642 14.429 7.47814 14.3503C7.47081 14.2807 7.44894 14.2134 7.41394 14.1527C7.37439 14.0842 7.31195 14.0279 7.18708 13.9154L3.82246 10.8832C3.40005 10.5025 3.18884 10.3122 3.16258 10.1342C3.13978 9.97956 3.19059 9.82316 3.29993 9.71147C3.42581 9.58288 3.70856 9.55304 4.27406 9.49336L8.77835 9.01795C8.94553 9.00031 9.02911 8.99149 9.10139 8.95929C9.16534 8.93081 9.2226 8.8892 9.26946 8.83718C9.32241 8.77839 9.35663 8.70162 9.42508 8.54808L11.2691 4.41115Z"
-                                                        stroke="#000000" stroke-width="2" stroke-linecap="round"
+                                                        stroke="#fba707" stroke-width="2" stroke-linecap="round"
                                                         stroke-linejoin="round" />
                                                 </svg>
                                             </li>
                                             <li>
-                                                <!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
-                                                <svg class="" width="16px" height="16px" viewBox="0 0 24 24" fill="none"
+                                                <?xml version="1.0" encoding="utf-8"?>
+                                                <svg class="fill-[none]" width="16px" height="16px" viewBox="0 0 24 24" 
                                                     xmlns="http://www.w3.org/2000/svg">
                                                     <path
                                                         d="M11.2691 4.41115C11.5006 3.89177 11.6164 3.63208 11.7776 3.55211C11.9176 3.48263 12.082 3.48263 12.222 3.55211C12.3832 3.63208 12.499 3.89177 12.7305 4.41115L14.5745 8.54808C14.643 8.70162 14.6772 8.77839 14.7302 8.83718C14.777 8.8892 14.8343 8.93081 14.8982 8.95929C14.9705 8.99149 15.0541 9.00031 15.2213 9.01795L19.7256 9.49336C20.2911 9.55304 20.5738 9.58288 20.6997 9.71147C20.809 9.82316 20.8598 9.97956 20.837 10.1342C20.8108 10.3122 20.5996 10.5025 20.1772 10.8832L16.8125 13.9154C16.6877 14.0279 16.6252 14.0842 16.5857 14.1527C16.5507 14.2134 16.5288 14.2807 16.5215 14.3503C16.5132 14.429 16.5306 14.5112 16.5655 14.6757L17.5053 19.1064C17.6233 19.6627 17.6823 19.9408 17.5989 20.1002C17.5264 20.2388 17.3934 20.3354 17.2393 20.3615C17.0619 20.3915 16.8156 20.2495 16.323 19.9654L12.3995 17.7024C12.2539 17.6184 12.1811 17.5765 12.1037 17.56C12.0352 17.5455 11.9644 17.5455 11.8959 17.56C11.8185 17.5765 11.7457 17.6184 11.6001 17.7024L7.67662 19.9654C7.18404 20.2495 6.93775 20.3915 6.76034 20.3615C6.60623 20.3354 6.47319 20.2388 6.40075 20.1002C6.31736 19.9408 6.37635 19.6627 6.49434 19.1064L7.4341 14.6757C7.46898 14.5112 7.48642 14.429 7.47814 14.3503C7.47081 14.2807 7.44894 14.2134 7.41394 14.1527C7.37439 14.0842 7.31195 14.0279 7.18708 13.9154L3.82246 10.8832C3.40005 10.5025 3.18884 10.3122 3.16258 10.1342C3.13978 9.97956 3.19059 9.82316 3.29993 9.71147C3.42581 9.58288 3.70856 9.55304 4.27406 9.49336L8.77835 9.01795C8.94553 9.00031 9.02911 8.99149 9.10139 8.95929C9.16534 8.93081 9.2226 8.8892 9.26946 8.83718C9.32241 8.77839 9.35663 8.70162 9.42508 8.54808L11.2691 4.41115Z"
-                                                        stroke="#000000" stroke-width="2" stroke-linecap="round"
+                                                        stroke="#fba707" stroke-width="2" stroke-linecap="round"
                                                         stroke-linejoin="round" />
                                                 </svg>
                                             </li>
                                         </ul>
                                         <div class="pt-2 flex gap-3">
-                                            <span class=" font-bold">$40.00</span>
+                                            <span class=" font-bold">1.000.000تومان</span>
                                         </div>
                                     </div>
                                     <div class="absolute bottom-0 right-1 ">
-                                        <svg class="w-12 h-8" fill="#000000" viewBox="0 0 32 32"
-                                            style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;"
-                                            version="1.1" xml:space="preserve" xmlns="http://www.w3.org/2000/svg"
-                                            xmlns:serif="http://www.serif.com/"
-                                            xmlns:xlink="http://www.w3.org/1999/xlink">
-                                            <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
-                                            <g id="SVGRepo_tracerCarrier" stroke-linecap="round"
-                                                stroke-linejoin="round">
-                                            </g>
-                                            <g id="SVGRepo_iconCarrier">
-                                                <g transform="matrix(1,0,0,1,-432,0)">
-                                                    <g transform="matrix(1.125,0,0,1,375.898,0)">
-                                                        <path
-                                                            d="M71.196,10.9C71.148,9.836 70.367,9 69.42,9C66.684,9 61.316,9 58.58,9C57.633,9 56.852,9.836 56.804,10.9C56.638,14.653 56.267,22.991 56.093,26.9C56.069,27.447 56.245,27.982 56.581,28.378C56.916,28.775 57.382,29 57.869,29C60.948,29 67.052,29 70.131,29C70.618,29 71.084,28.775 71.419,28.378C71.755,27.982 71.931,27.447 71.907,26.9C71.733,22.991 71.362,14.653 71.196,10.9Z"
-                                                            style="fill:#1fe564;"></path>
-                                                    </g>
+                                        <svg class="w-13 h-9" fill="#000000" viewBox="0 0 32 32"
+                                        style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;"
+                                        version="1.1" xml:space="preserve" xmlns="http://www.w3.org/2000/svg"
+                                        xmlns:serif="http://www.serif.com/" xmlns:xlink="http://www.w3.org/1999/xlink">
+                                        <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                                        <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round">
+                                        </g>
+                                        <g id="SVGRepo_iconCarrier">
+                                            <g transform="matrix(1,0,0,1,-432,0)">
+                                                <g transform="matrix(1.125,0,0,1,375.898,0)">
                                                     <path
-                                                        d="M442.898,8L441.8,8C440.201,8 438.884,9.254 438.804,10.85C438.616,14.603 438.199,22.941 438.004,26.85C437.963,27.671 438.26,28.472 438.826,29.068C439.393,29.663 440.178,30 441,30L454.795,30C455.617,30 456.402,29.663 456.969,29.068C457.535,28.472 457.832,27.671 457.791,26.85L456.991,10.85C456.911,9.254 455.594,8 453.995,8L452.898,8L452.898,6C452.898,3.24 450.657,1 447.898,1C445.138,1 442.898,3.24 442.898,6L442.898,8ZM455.746,26L455.794,26.95C455.807,27.224 455.708,27.491 455.52,27.689C455.331,27.888 455.069,28 454.795,28C454.795,28 441,28 441,28C440.726,28 440.464,27.888 440.275,27.689C440.087,27.491 439.988,27.224 440.001,26.95L440.049,26L455.746,26ZM452.898,10L452.898,13C452.898,13.552 452.449,14 451.898,14C451.346,14 450.898,13.552 450.898,13L450.898,10L444.898,10L444.898,13C444.898,13.552 444.449,14 443.898,14C443.346,14 442.898,13.552 442.898,13L442.898,10L441.8,10C441.267,10 440.828,10.418 440.801,10.95L440.149,24L455.646,24L454.994,10.95C454.967,10.418 454.528,10 453.995,10L452.898,10ZM450.898,8L450.898,6C450.898,4.344 449.553,3 447.898,3C446.242,3 444.898,4.344 444.898,6L444.898,8L450.898,8Z"
-                                                        style="fill:#92d398;"></path>
+                                                        d="M71.196,10.9C71.148,9.836 70.367,9 69.42,9C66.684,9 61.316,9 58.58,9C57.633,9 56.852,9.836 56.804,10.9C56.638,14.653 56.267,22.991 56.093,26.9C56.069,27.447 56.245,27.982 56.581,28.378C56.916,28.775 57.382,29 57.869,29C60.948,29 67.052,29 70.131,29C70.618,29 71.084,28.775 71.419,28.378C71.755,27.982 71.931,27.447 71.907,26.9C71.733,22.991 71.362,14.653 71.196,10.9Z"
+                                                        style="fill:#03a297;"></path>
                                                 </g>
+                                                <path
+                                                    d="M442.898,8L441.8,8C440.201,8 438.884,9.254 438.804,10.85C438.616,14.603 438.199,22.941 438.004,26.85C437.963,27.671 438.26,28.472 438.826,29.068C439.393,29.663 440.178,30 441,30L454.795,30C455.617,30 456.402,29.663 456.969,29.068C457.535,28.472 457.832,27.671 457.791,26.85L456.991,10.85C456.911,9.254 455.594,8 453.995,8L452.898,8L452.898,6C452.898,3.24 450.657,1 447.898,1C445.138,1 442.898,3.24 442.898,6L442.898,8ZM455.746,26L455.794,26.95C455.807,27.224 455.708,27.491 455.52,27.689C455.331,27.888 455.069,28 454.795,28C454.795,28 441,28 441,28C440.726,28 440.464,27.888 440.275,27.689C440.087,27.491 439.988,27.224 440.001,26.95L440.049,26L455.746,26ZM452.898,10L452.898,13C452.898,13.552 452.449,14 451.898,14C451.346,14 450.898,13.552 450.898,13L450.898,10L444.898,10L444.898,13C444.898,13.552 444.449,14 443.898,14C443.346,14 442.898,13.552 442.898,13L442.898,10L441.8,10C441.267,10 440.828,10.418 440.801,10.95L440.149,24L455.646,24L454.994,10.95C454.967,10.418 454.528,10 453.995,10L452.898,10ZM450.898,8L450.898,6C450.898,4.344 449.553,3 447.898,3C446.242,3 444.898,4.344 444.898,6L444.898,8L450.898,8Z"
+                                                    style="fill:#03a297;"></path>
                                             </g>
-                                        </svg>
+                                        </g>
+                                    </svg>
                                     </div>
                                 </div>
                                 <div class="w-4/10 h-25 flex justify-end">
@@ -2901,83 +2868,81 @@
                                         <h2 class="text-[16px] font-bold text-center">تجهیزات پزشکی</h2>
                                         <ul class="flex">
                                             <li>
-                                                <!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
-                                                <svg class="" width="16px" height="16px" viewBox="0 0 24 24" fill="none"
+                                                <?xml version="1.0" encoding="utf-8"?>
+                                                <svg class="fill-[#fba707]" width="16px" height="16px" viewBox="0 0 24 24" 
                                                     xmlns="http://www.w3.org/2000/svg">
                                                     <path
                                                         d="M11.2691 4.41115C11.5006 3.89177 11.6164 3.63208 11.7776 3.55211C11.9176 3.48263 12.082 3.48263 12.222 3.55211C12.3832 3.63208 12.499 3.89177 12.7305 4.41115L14.5745 8.54808C14.643 8.70162 14.6772 8.77839 14.7302 8.83718C14.777 8.8892 14.8343 8.93081 14.8982 8.95929C14.9705 8.99149 15.0541 9.00031 15.2213 9.01795L19.7256 9.49336C20.2911 9.55304 20.5738 9.58288 20.6997 9.71147C20.809 9.82316 20.8598 9.97956 20.837 10.1342C20.8108 10.3122 20.5996 10.5025 20.1772 10.8832L16.8125 13.9154C16.6877 14.0279 16.6252 14.0842 16.5857 14.1527C16.5507 14.2134 16.5288 14.2807 16.5215 14.3503C16.5132 14.429 16.5306 14.5112 16.5655 14.6757L17.5053 19.1064C17.6233 19.6627 17.6823 19.9408 17.5989 20.1002C17.5264 20.2388 17.3934 20.3354 17.2393 20.3615C17.0619 20.3915 16.8156 20.2495 16.323 19.9654L12.3995 17.7024C12.2539 17.6184 12.1811 17.5765 12.1037 17.56C12.0352 17.5455 11.9644 17.5455 11.8959 17.56C11.8185 17.5765 11.7457 17.6184 11.6001 17.7024L7.67662 19.9654C7.18404 20.2495 6.93775 20.3915 6.76034 20.3615C6.60623 20.3354 6.47319 20.2388 6.40075 20.1002C6.31736 19.9408 6.37635 19.6627 6.49434 19.1064L7.4341 14.6757C7.46898 14.5112 7.48642 14.429 7.47814 14.3503C7.47081 14.2807 7.44894 14.2134 7.41394 14.1527C7.37439 14.0842 7.31195 14.0279 7.18708 13.9154L3.82246 10.8832C3.40005 10.5025 3.18884 10.3122 3.16258 10.1342C3.13978 9.97956 3.19059 9.82316 3.29993 9.71147C3.42581 9.58288 3.70856 9.55304 4.27406 9.49336L8.77835 9.01795C8.94553 9.00031 9.02911 8.99149 9.10139 8.95929C9.16534 8.93081 9.2226 8.8892 9.26946 8.83718C9.32241 8.77839 9.35663 8.70162 9.42508 8.54808L11.2691 4.41115Z"
-                                                        stroke="#000000" stroke-width="2" stroke-linecap="round"
+                                                        stroke="#fba707" stroke-width="2" stroke-linecap="round"
                                                         stroke-linejoin="round" />
                                                 </svg>
                                             </li>
                                             <li>
-                                                <!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
-                                                <svg class="" width="16px" height="16px" viewBox="0 0 24 24" fill="none"
+                                                <?xml version="1.0" encoding="utf-8"?>
+                                                <svg class="fill-[#fba707]" width="16px" height="16px" viewBox="0 0 24 24" 
                                                     xmlns="http://www.w3.org/2000/svg">
                                                     <path
                                                         d="M11.2691 4.41115C11.5006 3.89177 11.6164 3.63208 11.7776 3.55211C11.9176 3.48263 12.082 3.48263 12.222 3.55211C12.3832 3.63208 12.499 3.89177 12.7305 4.41115L14.5745 8.54808C14.643 8.70162 14.6772 8.77839 14.7302 8.83718C14.777 8.8892 14.8343 8.93081 14.8982 8.95929C14.9705 8.99149 15.0541 9.00031 15.2213 9.01795L19.7256 9.49336C20.2911 9.55304 20.5738 9.58288 20.6997 9.71147C20.809 9.82316 20.8598 9.97956 20.837 10.1342C20.8108 10.3122 20.5996 10.5025 20.1772 10.8832L16.8125 13.9154C16.6877 14.0279 16.6252 14.0842 16.5857 14.1527C16.5507 14.2134 16.5288 14.2807 16.5215 14.3503C16.5132 14.429 16.5306 14.5112 16.5655 14.6757L17.5053 19.1064C17.6233 19.6627 17.6823 19.9408 17.5989 20.1002C17.5264 20.2388 17.3934 20.3354 17.2393 20.3615C17.0619 20.3915 16.8156 20.2495 16.323 19.9654L12.3995 17.7024C12.2539 17.6184 12.1811 17.5765 12.1037 17.56C12.0352 17.5455 11.9644 17.5455 11.8959 17.56C11.8185 17.5765 11.7457 17.6184 11.6001 17.7024L7.67662 19.9654C7.18404 20.2495 6.93775 20.3915 6.76034 20.3615C6.60623 20.3354 6.47319 20.2388 6.40075 20.1002C6.31736 19.9408 6.37635 19.6627 6.49434 19.1064L7.4341 14.6757C7.46898 14.5112 7.48642 14.429 7.47814 14.3503C7.47081 14.2807 7.44894 14.2134 7.41394 14.1527C7.37439 14.0842 7.31195 14.0279 7.18708 13.9154L3.82246 10.8832C3.40005 10.5025 3.18884 10.3122 3.16258 10.1342C3.13978 9.97956 3.19059 9.82316 3.29993 9.71147C3.42581 9.58288 3.70856 9.55304 4.27406 9.49336L8.77835 9.01795C8.94553 9.00031 9.02911 8.99149 9.10139 8.95929C9.16534 8.93081 9.2226 8.8892 9.26946 8.83718C9.32241 8.77839 9.35663 8.70162 9.42508 8.54808L11.2691 4.41115Z"
-                                                        stroke="#000000" stroke-width="2" stroke-linecap="round"
+                                                        stroke="#fba707" stroke-width="2" stroke-linecap="round"
                                                         stroke-linejoin="round" />
                                                 </svg>
                                             </li>
                                             <li>
-                                                <!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
-                                                <svg class="" width="16px" height="16px" viewBox="0 0 24 24" fill="none"
+                                                <?xml version="1.0" encoding="utf-8"?>
+                                                <svg class="fill-[#fba707]" width="16px" height="16px" viewBox="0 0 24 24" 
                                                     xmlns="http://www.w3.org/2000/svg">
                                                     <path
                                                         d="M11.2691 4.41115C11.5006 3.89177 11.6164 3.63208 11.7776 3.55211C11.9176 3.48263 12.082 3.48263 12.222 3.55211C12.3832 3.63208 12.499 3.89177 12.7305 4.41115L14.5745 8.54808C14.643 8.70162 14.6772 8.77839 14.7302 8.83718C14.777 8.8892 14.8343 8.93081 14.8982 8.95929C14.9705 8.99149 15.0541 9.00031 15.2213 9.01795L19.7256 9.49336C20.2911 9.55304 20.5738 9.58288 20.6997 9.71147C20.809 9.82316 20.8598 9.97956 20.837 10.1342C20.8108 10.3122 20.5996 10.5025 20.1772 10.8832L16.8125 13.9154C16.6877 14.0279 16.6252 14.0842 16.5857 14.1527C16.5507 14.2134 16.5288 14.2807 16.5215 14.3503C16.5132 14.429 16.5306 14.5112 16.5655 14.6757L17.5053 19.1064C17.6233 19.6627 17.6823 19.9408 17.5989 20.1002C17.5264 20.2388 17.3934 20.3354 17.2393 20.3615C17.0619 20.3915 16.8156 20.2495 16.323 19.9654L12.3995 17.7024C12.2539 17.6184 12.1811 17.5765 12.1037 17.56C12.0352 17.5455 11.9644 17.5455 11.8959 17.56C11.8185 17.5765 11.7457 17.6184 11.6001 17.7024L7.67662 19.9654C7.18404 20.2495 6.93775 20.3915 6.76034 20.3615C6.60623 20.3354 6.47319 20.2388 6.40075 20.1002C6.31736 19.9408 6.37635 19.6627 6.49434 19.1064L7.4341 14.6757C7.46898 14.5112 7.48642 14.429 7.47814 14.3503C7.47081 14.2807 7.44894 14.2134 7.41394 14.1527C7.37439 14.0842 7.31195 14.0279 7.18708 13.9154L3.82246 10.8832C3.40005 10.5025 3.18884 10.3122 3.16258 10.1342C3.13978 9.97956 3.19059 9.82316 3.29993 9.71147C3.42581 9.58288 3.70856 9.55304 4.27406 9.49336L8.77835 9.01795C8.94553 9.00031 9.02911 8.99149 9.10139 8.95929C9.16534 8.93081 9.2226 8.8892 9.26946 8.83718C9.32241 8.77839 9.35663 8.70162 9.42508 8.54808L11.2691 4.41115Z"
-                                                        stroke="#000000" stroke-width="2" stroke-linecap="round"
+                                                        stroke="#fba707" stroke-width="2" stroke-linecap="round"
                                                         stroke-linejoin="round" />
                                                 </svg>
                                             </li>
                                             <li>
-                                                <!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
-                                                <svg class="" width="16px" height="16px" viewBox="0 0 24 24" fill="none"
+                                                <?xml version="1.0" encoding="utf-8"?>
+                                                <svg class="fill-[#fba707]" width="16px" height="16px" viewBox="0 0 24 24" 
                                                     xmlns="http://www.w3.org/2000/svg">
                                                     <path
                                                         d="M11.2691 4.41115C11.5006 3.89177 11.6164 3.63208 11.7776 3.55211C11.9176 3.48263 12.082 3.48263 12.222 3.55211C12.3832 3.63208 12.499 3.89177 12.7305 4.41115L14.5745 8.54808C14.643 8.70162 14.6772 8.77839 14.7302 8.83718C14.777 8.8892 14.8343 8.93081 14.8982 8.95929C14.9705 8.99149 15.0541 9.00031 15.2213 9.01795L19.7256 9.49336C20.2911 9.55304 20.5738 9.58288 20.6997 9.71147C20.809 9.82316 20.8598 9.97956 20.837 10.1342C20.8108 10.3122 20.5996 10.5025 20.1772 10.8832L16.8125 13.9154C16.6877 14.0279 16.6252 14.0842 16.5857 14.1527C16.5507 14.2134 16.5288 14.2807 16.5215 14.3503C16.5132 14.429 16.5306 14.5112 16.5655 14.6757L17.5053 19.1064C17.6233 19.6627 17.6823 19.9408 17.5989 20.1002C17.5264 20.2388 17.3934 20.3354 17.2393 20.3615C17.0619 20.3915 16.8156 20.2495 16.323 19.9654L12.3995 17.7024C12.2539 17.6184 12.1811 17.5765 12.1037 17.56C12.0352 17.5455 11.9644 17.5455 11.8959 17.56C11.8185 17.5765 11.7457 17.6184 11.6001 17.7024L7.67662 19.9654C7.18404 20.2495 6.93775 20.3915 6.76034 20.3615C6.60623 20.3354 6.47319 20.2388 6.40075 20.1002C6.31736 19.9408 6.37635 19.6627 6.49434 19.1064L7.4341 14.6757C7.46898 14.5112 7.48642 14.429 7.47814 14.3503C7.47081 14.2807 7.44894 14.2134 7.41394 14.1527C7.37439 14.0842 7.31195 14.0279 7.18708 13.9154L3.82246 10.8832C3.40005 10.5025 3.18884 10.3122 3.16258 10.1342C3.13978 9.97956 3.19059 9.82316 3.29993 9.71147C3.42581 9.58288 3.70856 9.55304 4.27406 9.49336L8.77835 9.01795C8.94553 9.00031 9.02911 8.99149 9.10139 8.95929C9.16534 8.93081 9.2226 8.8892 9.26946 8.83718C9.32241 8.77839 9.35663 8.70162 9.42508 8.54808L11.2691 4.41115Z"
-                                                        stroke="#000000" stroke-width="2" stroke-linecap="round"
+                                                        stroke="#fba707" stroke-width="2" stroke-linecap="round"
                                                         stroke-linejoin="round" />
                                                 </svg>
                                             </li>
                                             <li>
-                                                <!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
-                                                <svg class="" width="16px" height="16px" viewBox="0 0 24 24" fill="none"
+                                                <?xml version="1.0" encoding="utf-8"?>
+                                                <svg class="fill-[none]" width="16px" height="16px" viewBox="0 0 24 24" 
                                                     xmlns="http://www.w3.org/2000/svg">
                                                     <path
                                                         d="M11.2691 4.41115C11.5006 3.89177 11.6164 3.63208 11.7776 3.55211C11.9176 3.48263 12.082 3.48263 12.222 3.55211C12.3832 3.63208 12.499 3.89177 12.7305 4.41115L14.5745 8.54808C14.643 8.70162 14.6772 8.77839 14.7302 8.83718C14.777 8.8892 14.8343 8.93081 14.8982 8.95929C14.9705 8.99149 15.0541 9.00031 15.2213 9.01795L19.7256 9.49336C20.2911 9.55304 20.5738 9.58288 20.6997 9.71147C20.809 9.82316 20.8598 9.97956 20.837 10.1342C20.8108 10.3122 20.5996 10.5025 20.1772 10.8832L16.8125 13.9154C16.6877 14.0279 16.6252 14.0842 16.5857 14.1527C16.5507 14.2134 16.5288 14.2807 16.5215 14.3503C16.5132 14.429 16.5306 14.5112 16.5655 14.6757L17.5053 19.1064C17.6233 19.6627 17.6823 19.9408 17.5989 20.1002C17.5264 20.2388 17.3934 20.3354 17.2393 20.3615C17.0619 20.3915 16.8156 20.2495 16.323 19.9654L12.3995 17.7024C12.2539 17.6184 12.1811 17.5765 12.1037 17.56C12.0352 17.5455 11.9644 17.5455 11.8959 17.56C11.8185 17.5765 11.7457 17.6184 11.6001 17.7024L7.67662 19.9654C7.18404 20.2495 6.93775 20.3915 6.76034 20.3615C6.60623 20.3354 6.47319 20.2388 6.40075 20.1002C6.31736 19.9408 6.37635 19.6627 6.49434 19.1064L7.4341 14.6757C7.46898 14.5112 7.48642 14.429 7.47814 14.3503C7.47081 14.2807 7.44894 14.2134 7.41394 14.1527C7.37439 14.0842 7.31195 14.0279 7.18708 13.9154L3.82246 10.8832C3.40005 10.5025 3.18884 10.3122 3.16258 10.1342C3.13978 9.97956 3.19059 9.82316 3.29993 9.71147C3.42581 9.58288 3.70856 9.55304 4.27406 9.49336L8.77835 9.01795C8.94553 9.00031 9.02911 8.99149 9.10139 8.95929C9.16534 8.93081 9.2226 8.8892 9.26946 8.83718C9.32241 8.77839 9.35663 8.70162 9.42508 8.54808L11.2691 4.41115Z"
-                                                        stroke="#000000" stroke-width="2" stroke-linecap="round"
+                                                        stroke="#fba707" stroke-width="2" stroke-linecap="round"
                                                         stroke-linejoin="round" />
                                                 </svg>
                                             </li>
                                         </ul>
                                         <div class="pt-2 flex gap-3">
-                                            <span class=" font-bold">$40.00</span>
+                                            <span class=" font-bold">1.000.000تومان</span>
                                         </div>
                                     </div>
                                     <div class="absolute bottom-0 right-1 ">
-                                        <svg class="w-12 h-8" fill="#000000" viewBox="0 0 32 32"
-                                            style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;"
-                                            version="1.1" xml:space="preserve" xmlns="http://www.w3.org/2000/svg"
-                                            xmlns:serif="http://www.serif.com/"
-                                            xmlns:xlink="http://www.w3.org/1999/xlink">
-                                            <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
-                                            <g id="SVGRepo_tracerCarrier" stroke-linecap="round"
-                                                stroke-linejoin="round">
-                                            </g>
-                                            <g id="SVGRepo_iconCarrier">
-                                                <g transform="matrix(1,0,0,1,-432,0)">
-                                                    <g transform="matrix(1.125,0,0,1,375.898,0)">
-                                                        <path
-                                                            d="M71.196,10.9C71.148,9.836 70.367,9 69.42,9C66.684,9 61.316,9 58.58,9C57.633,9 56.852,9.836 56.804,10.9C56.638,14.653 56.267,22.991 56.093,26.9C56.069,27.447 56.245,27.982 56.581,28.378C56.916,28.775 57.382,29 57.869,29C60.948,29 67.052,29 70.131,29C70.618,29 71.084,28.775 71.419,28.378C71.755,27.982 71.931,27.447 71.907,26.9C71.733,22.991 71.362,14.653 71.196,10.9Z"
-                                                            style="fill:#1fe564;"></path>
-                                                    </g>
+                                        <svg class="w-13 h-9" fill="#000000" viewBox="0 0 32 32"
+                                        style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;"
+                                        version="1.1" xml:space="preserve" xmlns="http://www.w3.org/2000/svg"
+                                        xmlns:serif="http://www.serif.com/" xmlns:xlink="http://www.w3.org/1999/xlink">
+                                        <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                                        <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round">
+                                        </g>
+                                        <g id="SVGRepo_iconCarrier">
+                                            <g transform="matrix(1,0,0,1,-432,0)">
+                                                <g transform="matrix(1.125,0,0,1,375.898,0)">
                                                     <path
-                                                        d="M442.898,8L441.8,8C440.201,8 438.884,9.254 438.804,10.85C438.616,14.603 438.199,22.941 438.004,26.85C437.963,27.671 438.26,28.472 438.826,29.068C439.393,29.663 440.178,30 441,30L454.795,30C455.617,30 456.402,29.663 456.969,29.068C457.535,28.472 457.832,27.671 457.791,26.85L456.991,10.85C456.911,9.254 455.594,8 453.995,8L452.898,8L452.898,6C452.898,3.24 450.657,1 447.898,1C445.138,1 442.898,3.24 442.898,6L442.898,8ZM455.746,26L455.794,26.95C455.807,27.224 455.708,27.491 455.52,27.689C455.331,27.888 455.069,28 454.795,28C454.795,28 441,28 441,28C440.726,28 440.464,27.888 440.275,27.689C440.087,27.491 439.988,27.224 440.001,26.95L440.049,26L455.746,26ZM452.898,10L452.898,13C452.898,13.552 452.449,14 451.898,14C451.346,14 450.898,13.552 450.898,13L450.898,10L444.898,10L444.898,13C444.898,13.552 444.449,14 443.898,14C443.346,14 442.898,13.552 442.898,13L442.898,10L441.8,10C441.267,10 440.828,10.418 440.801,10.95L440.149,24L455.646,24L454.994,10.95C454.967,10.418 454.528,10 453.995,10L452.898,10ZM450.898,8L450.898,6C450.898,4.344 449.553,3 447.898,3C446.242,3 444.898,4.344 444.898,6L444.898,8L450.898,8Z"
-                                                        style="fill:#92d398;"></path>
+                                                        d="M71.196,10.9C71.148,9.836 70.367,9 69.42,9C66.684,9 61.316,9 58.58,9C57.633,9 56.852,9.836 56.804,10.9C56.638,14.653 56.267,22.991 56.093,26.9C56.069,27.447 56.245,27.982 56.581,28.378C56.916,28.775 57.382,29 57.869,29C60.948,29 67.052,29 70.131,29C70.618,29 71.084,28.775 71.419,28.378C71.755,27.982 71.931,27.447 71.907,26.9C71.733,22.991 71.362,14.653 71.196,10.9Z"
+                                                        style="fill:#03a297;"></path>
                                                 </g>
+                                                <path
+                                                    d="M442.898,8L441.8,8C440.201,8 438.884,9.254 438.804,10.85C438.616,14.603 438.199,22.941 438.004,26.85C437.963,27.671 438.26,28.472 438.826,29.068C439.393,29.663 440.178,30 441,30L454.795,30C455.617,30 456.402,29.663 456.969,29.068C457.535,28.472 457.832,27.671 457.791,26.85L456.991,10.85C456.911,9.254 455.594,8 453.995,8L452.898,8L452.898,6C452.898,3.24 450.657,1 447.898,1C445.138,1 442.898,3.24 442.898,6L442.898,8ZM455.746,26L455.794,26.95C455.807,27.224 455.708,27.491 455.52,27.689C455.331,27.888 455.069,28 454.795,28C454.795,28 441,28 441,28C440.726,28 440.464,27.888 440.275,27.689C440.087,27.491 439.988,27.224 440.001,26.95L440.049,26L455.746,26ZM452.898,10L452.898,13C452.898,13.552 452.449,14 451.898,14C451.346,14 450.898,13.552 450.898,13L450.898,10L444.898,10L444.898,13C444.898,13.552 444.449,14 443.898,14C443.346,14 442.898,13.552 442.898,13L442.898,10L441.8,10C441.267,10 440.828,10.418 440.801,10.95L440.149,24L455.646,24L454.994,10.95C454.967,10.418 454.528,10 453.995,10L452.898,10ZM450.898,8L450.898,6C450.898,4.344 449.553,3 447.898,3C446.242,3 444.898,4.344 444.898,6L444.898,8L450.898,8Z"
+                                                    style="fill:#03a297;"></path>
                                             </g>
-                                        </svg>
+                                        </g>
+                                    </svg>
                                     </div>
                                 </div>
                                 <div class="w-4/10 h-25 flex justify-end">
@@ -2990,9 +2955,9 @@
                     <div class="w-10/11 sm:w-2/3 md:w-5/11 xl:w-5/16 h-130 flex flex-col gap-5 bg-white rounded-2xl">
                         <div class="w-11/12 mx-auto">
                             <div class="w-full py-3">
-                                <span class="text-[30px] pb-3 border-b-3 items-end">تجهیزات</span>
+                                <span class="text-[28px] pb-3 border-b-3 items-end font-bold">تجهیزات</span>
                             </div>
-                            <div class="w-full border-b-1"></div>
+                            <div class="w-full"></div>
                         </div>
                         <div class="flex flex-col gap-5">
                             <div
@@ -3002,83 +2967,81 @@
                                         <h2 class="text-[16px] font-bold text-center">تجهیزات پزشکی</h2>
                                         <ul class="flex">
                                             <li>
-                                                <!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
-                                                <svg class="" width="16px" height="16px" viewBox="0 0 24 24" fill="none"
+                                                <?xml version="1.0" encoding="utf-8"?>
+                                                <svg class="fill-[#fba707]" width="16px" height="16px" viewBox="0 0 24 24" 
                                                     xmlns="http://www.w3.org/2000/svg">
                                                     <path
                                                         d="M11.2691 4.41115C11.5006 3.89177 11.6164 3.63208 11.7776 3.55211C11.9176 3.48263 12.082 3.48263 12.222 3.55211C12.3832 3.63208 12.499 3.89177 12.7305 4.41115L14.5745 8.54808C14.643 8.70162 14.6772 8.77839 14.7302 8.83718C14.777 8.8892 14.8343 8.93081 14.8982 8.95929C14.9705 8.99149 15.0541 9.00031 15.2213 9.01795L19.7256 9.49336C20.2911 9.55304 20.5738 9.58288 20.6997 9.71147C20.809 9.82316 20.8598 9.97956 20.837 10.1342C20.8108 10.3122 20.5996 10.5025 20.1772 10.8832L16.8125 13.9154C16.6877 14.0279 16.6252 14.0842 16.5857 14.1527C16.5507 14.2134 16.5288 14.2807 16.5215 14.3503C16.5132 14.429 16.5306 14.5112 16.5655 14.6757L17.5053 19.1064C17.6233 19.6627 17.6823 19.9408 17.5989 20.1002C17.5264 20.2388 17.3934 20.3354 17.2393 20.3615C17.0619 20.3915 16.8156 20.2495 16.323 19.9654L12.3995 17.7024C12.2539 17.6184 12.1811 17.5765 12.1037 17.56C12.0352 17.5455 11.9644 17.5455 11.8959 17.56C11.8185 17.5765 11.7457 17.6184 11.6001 17.7024L7.67662 19.9654C7.18404 20.2495 6.93775 20.3915 6.76034 20.3615C6.60623 20.3354 6.47319 20.2388 6.40075 20.1002C6.31736 19.9408 6.37635 19.6627 6.49434 19.1064L7.4341 14.6757C7.46898 14.5112 7.48642 14.429 7.47814 14.3503C7.47081 14.2807 7.44894 14.2134 7.41394 14.1527C7.37439 14.0842 7.31195 14.0279 7.18708 13.9154L3.82246 10.8832C3.40005 10.5025 3.18884 10.3122 3.16258 10.1342C3.13978 9.97956 3.19059 9.82316 3.29993 9.71147C3.42581 9.58288 3.70856 9.55304 4.27406 9.49336L8.77835 9.01795C8.94553 9.00031 9.02911 8.99149 9.10139 8.95929C9.16534 8.93081 9.2226 8.8892 9.26946 8.83718C9.32241 8.77839 9.35663 8.70162 9.42508 8.54808L11.2691 4.41115Z"
-                                                        stroke="#000000" stroke-width="2" stroke-linecap="round"
+                                                        stroke="#fba707" stroke-width="2" stroke-linecap="round"
                                                         stroke-linejoin="round" />
                                                 </svg>
                                             </li>
                                             <li>
-                                                <!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
-                                                <svg class="" width="16px" height="16px" viewBox="0 0 24 24" fill="none"
+                                                <?xml version="1.0" encoding="utf-8"?>
+                                                <svg class="fill-[#fba707]" width="16px" height="16px" viewBox="0 0 24 24" 
                                                     xmlns="http://www.w3.org/2000/svg">
                                                     <path
                                                         d="M11.2691 4.41115C11.5006 3.89177 11.6164 3.63208 11.7776 3.55211C11.9176 3.48263 12.082 3.48263 12.222 3.55211C12.3832 3.63208 12.499 3.89177 12.7305 4.41115L14.5745 8.54808C14.643 8.70162 14.6772 8.77839 14.7302 8.83718C14.777 8.8892 14.8343 8.93081 14.8982 8.95929C14.9705 8.99149 15.0541 9.00031 15.2213 9.01795L19.7256 9.49336C20.2911 9.55304 20.5738 9.58288 20.6997 9.71147C20.809 9.82316 20.8598 9.97956 20.837 10.1342C20.8108 10.3122 20.5996 10.5025 20.1772 10.8832L16.8125 13.9154C16.6877 14.0279 16.6252 14.0842 16.5857 14.1527C16.5507 14.2134 16.5288 14.2807 16.5215 14.3503C16.5132 14.429 16.5306 14.5112 16.5655 14.6757L17.5053 19.1064C17.6233 19.6627 17.6823 19.9408 17.5989 20.1002C17.5264 20.2388 17.3934 20.3354 17.2393 20.3615C17.0619 20.3915 16.8156 20.2495 16.323 19.9654L12.3995 17.7024C12.2539 17.6184 12.1811 17.5765 12.1037 17.56C12.0352 17.5455 11.9644 17.5455 11.8959 17.56C11.8185 17.5765 11.7457 17.6184 11.6001 17.7024L7.67662 19.9654C7.18404 20.2495 6.93775 20.3915 6.76034 20.3615C6.60623 20.3354 6.47319 20.2388 6.40075 20.1002C6.31736 19.9408 6.37635 19.6627 6.49434 19.1064L7.4341 14.6757C7.46898 14.5112 7.48642 14.429 7.47814 14.3503C7.47081 14.2807 7.44894 14.2134 7.41394 14.1527C7.37439 14.0842 7.31195 14.0279 7.18708 13.9154L3.82246 10.8832C3.40005 10.5025 3.18884 10.3122 3.16258 10.1342C3.13978 9.97956 3.19059 9.82316 3.29993 9.71147C3.42581 9.58288 3.70856 9.55304 4.27406 9.49336L8.77835 9.01795C8.94553 9.00031 9.02911 8.99149 9.10139 8.95929C9.16534 8.93081 9.2226 8.8892 9.26946 8.83718C9.32241 8.77839 9.35663 8.70162 9.42508 8.54808L11.2691 4.41115Z"
-                                                        stroke="#000000" stroke-width="2" stroke-linecap="round"
+                                                        stroke="#fba707" stroke-width="2" stroke-linecap="round"
                                                         stroke-linejoin="round" />
                                                 </svg>
                                             </li>
                                             <li>
-                                                <!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
-                                                <svg class="" width="16px" height="16px" viewBox="0 0 24 24" fill="none"
+                                                <?xml version="1.0" encoding="utf-8"?>
+                                                <svg class="fill-[#fba707]" width="16px" height="16px" viewBox="0 0 24 24" 
                                                     xmlns="http://www.w3.org/2000/svg">
                                                     <path
                                                         d="M11.2691 4.41115C11.5006 3.89177 11.6164 3.63208 11.7776 3.55211C11.9176 3.48263 12.082 3.48263 12.222 3.55211C12.3832 3.63208 12.499 3.89177 12.7305 4.41115L14.5745 8.54808C14.643 8.70162 14.6772 8.77839 14.7302 8.83718C14.777 8.8892 14.8343 8.93081 14.8982 8.95929C14.9705 8.99149 15.0541 9.00031 15.2213 9.01795L19.7256 9.49336C20.2911 9.55304 20.5738 9.58288 20.6997 9.71147C20.809 9.82316 20.8598 9.97956 20.837 10.1342C20.8108 10.3122 20.5996 10.5025 20.1772 10.8832L16.8125 13.9154C16.6877 14.0279 16.6252 14.0842 16.5857 14.1527C16.5507 14.2134 16.5288 14.2807 16.5215 14.3503C16.5132 14.429 16.5306 14.5112 16.5655 14.6757L17.5053 19.1064C17.6233 19.6627 17.6823 19.9408 17.5989 20.1002C17.5264 20.2388 17.3934 20.3354 17.2393 20.3615C17.0619 20.3915 16.8156 20.2495 16.323 19.9654L12.3995 17.7024C12.2539 17.6184 12.1811 17.5765 12.1037 17.56C12.0352 17.5455 11.9644 17.5455 11.8959 17.56C11.8185 17.5765 11.7457 17.6184 11.6001 17.7024L7.67662 19.9654C7.18404 20.2495 6.93775 20.3915 6.76034 20.3615C6.60623 20.3354 6.47319 20.2388 6.40075 20.1002C6.31736 19.9408 6.37635 19.6627 6.49434 19.1064L7.4341 14.6757C7.46898 14.5112 7.48642 14.429 7.47814 14.3503C7.47081 14.2807 7.44894 14.2134 7.41394 14.1527C7.37439 14.0842 7.31195 14.0279 7.18708 13.9154L3.82246 10.8832C3.40005 10.5025 3.18884 10.3122 3.16258 10.1342C3.13978 9.97956 3.19059 9.82316 3.29993 9.71147C3.42581 9.58288 3.70856 9.55304 4.27406 9.49336L8.77835 9.01795C8.94553 9.00031 9.02911 8.99149 9.10139 8.95929C9.16534 8.93081 9.2226 8.8892 9.26946 8.83718C9.32241 8.77839 9.35663 8.70162 9.42508 8.54808L11.2691 4.41115Z"
-                                                        stroke="#000000" stroke-width="2" stroke-linecap="round"
+                                                        stroke="#fba707" stroke-width="2" stroke-linecap="round"
                                                         stroke-linejoin="round" />
                                                 </svg>
                                             </li>
                                             <li>
-                                                <!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
-                                                <svg class="" width="16px" height="16px" viewBox="0 0 24 24" fill="none"
+                                                <?xml version="1.0" encoding="utf-8"?>
+                                                <svg class="fill-[#fba707]" width="16px" height="16px" viewBox="0 0 24 24" 
                                                     xmlns="http://www.w3.org/2000/svg">
                                                     <path
                                                         d="M11.2691 4.41115C11.5006 3.89177 11.6164 3.63208 11.7776 3.55211C11.9176 3.48263 12.082 3.48263 12.222 3.55211C12.3832 3.63208 12.499 3.89177 12.7305 4.41115L14.5745 8.54808C14.643 8.70162 14.6772 8.77839 14.7302 8.83718C14.777 8.8892 14.8343 8.93081 14.8982 8.95929C14.9705 8.99149 15.0541 9.00031 15.2213 9.01795L19.7256 9.49336C20.2911 9.55304 20.5738 9.58288 20.6997 9.71147C20.809 9.82316 20.8598 9.97956 20.837 10.1342C20.8108 10.3122 20.5996 10.5025 20.1772 10.8832L16.8125 13.9154C16.6877 14.0279 16.6252 14.0842 16.5857 14.1527C16.5507 14.2134 16.5288 14.2807 16.5215 14.3503C16.5132 14.429 16.5306 14.5112 16.5655 14.6757L17.5053 19.1064C17.6233 19.6627 17.6823 19.9408 17.5989 20.1002C17.5264 20.2388 17.3934 20.3354 17.2393 20.3615C17.0619 20.3915 16.8156 20.2495 16.323 19.9654L12.3995 17.7024C12.2539 17.6184 12.1811 17.5765 12.1037 17.56C12.0352 17.5455 11.9644 17.5455 11.8959 17.56C11.8185 17.5765 11.7457 17.6184 11.6001 17.7024L7.67662 19.9654C7.18404 20.2495 6.93775 20.3915 6.76034 20.3615C6.60623 20.3354 6.47319 20.2388 6.40075 20.1002C6.31736 19.9408 6.37635 19.6627 6.49434 19.1064L7.4341 14.6757C7.46898 14.5112 7.48642 14.429 7.47814 14.3503C7.47081 14.2807 7.44894 14.2134 7.41394 14.1527C7.37439 14.0842 7.31195 14.0279 7.18708 13.9154L3.82246 10.8832C3.40005 10.5025 3.18884 10.3122 3.16258 10.1342C3.13978 9.97956 3.19059 9.82316 3.29993 9.71147C3.42581 9.58288 3.70856 9.55304 4.27406 9.49336L8.77835 9.01795C8.94553 9.00031 9.02911 8.99149 9.10139 8.95929C9.16534 8.93081 9.2226 8.8892 9.26946 8.83718C9.32241 8.77839 9.35663 8.70162 9.42508 8.54808L11.2691 4.41115Z"
-                                                        stroke="#000000" stroke-width="2" stroke-linecap="round"
+                                                        stroke="#fba707" stroke-width="2" stroke-linecap="round"
                                                         stroke-linejoin="round" />
                                                 </svg>
                                             </li>
                                             <li>
-                                                <!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
-                                                <svg class="" width="16px" height="16px" viewBox="0 0 24 24" fill="none"
+                                                <?xml version="1.0" encoding="utf-8"?>
+                                                <svg class="fill-[none]" width="16px" height="16px" viewBox="0 0 24 24" 
                                                     xmlns="http://www.w3.org/2000/svg">
                                                     <path
                                                         d="M11.2691 4.41115C11.5006 3.89177 11.6164 3.63208 11.7776 3.55211C11.9176 3.48263 12.082 3.48263 12.222 3.55211C12.3832 3.63208 12.499 3.89177 12.7305 4.41115L14.5745 8.54808C14.643 8.70162 14.6772 8.77839 14.7302 8.83718C14.777 8.8892 14.8343 8.93081 14.8982 8.95929C14.9705 8.99149 15.0541 9.00031 15.2213 9.01795L19.7256 9.49336C20.2911 9.55304 20.5738 9.58288 20.6997 9.71147C20.809 9.82316 20.8598 9.97956 20.837 10.1342C20.8108 10.3122 20.5996 10.5025 20.1772 10.8832L16.8125 13.9154C16.6877 14.0279 16.6252 14.0842 16.5857 14.1527C16.5507 14.2134 16.5288 14.2807 16.5215 14.3503C16.5132 14.429 16.5306 14.5112 16.5655 14.6757L17.5053 19.1064C17.6233 19.6627 17.6823 19.9408 17.5989 20.1002C17.5264 20.2388 17.3934 20.3354 17.2393 20.3615C17.0619 20.3915 16.8156 20.2495 16.323 19.9654L12.3995 17.7024C12.2539 17.6184 12.1811 17.5765 12.1037 17.56C12.0352 17.5455 11.9644 17.5455 11.8959 17.56C11.8185 17.5765 11.7457 17.6184 11.6001 17.7024L7.67662 19.9654C7.18404 20.2495 6.93775 20.3915 6.76034 20.3615C6.60623 20.3354 6.47319 20.2388 6.40075 20.1002C6.31736 19.9408 6.37635 19.6627 6.49434 19.1064L7.4341 14.6757C7.46898 14.5112 7.48642 14.429 7.47814 14.3503C7.47081 14.2807 7.44894 14.2134 7.41394 14.1527C7.37439 14.0842 7.31195 14.0279 7.18708 13.9154L3.82246 10.8832C3.40005 10.5025 3.18884 10.3122 3.16258 10.1342C3.13978 9.97956 3.19059 9.82316 3.29993 9.71147C3.42581 9.58288 3.70856 9.55304 4.27406 9.49336L8.77835 9.01795C8.94553 9.00031 9.02911 8.99149 9.10139 8.95929C9.16534 8.93081 9.2226 8.8892 9.26946 8.83718C9.32241 8.77839 9.35663 8.70162 9.42508 8.54808L11.2691 4.41115Z"
-                                                        stroke="#000000" stroke-width="2" stroke-linecap="round"
+                                                        stroke="#fba707" stroke-width="2" stroke-linecap="round"
                                                         stroke-linejoin="round" />
                                                 </svg>
                                             </li>
                                         </ul>
                                         <div class="pt-2 flex gap-3">
-                                            <span class=" font-bold">$40.00</span>
+                                            <span class=" font-bold">1.000.000تومان</span>
                                         </div>
                                     </div>
                                     <div class="absolute bottom-0 right-1 ">
-                                        <svg class="w-12 h-8" fill="#000000" viewBox="0 0 32 32"
-                                            style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;"
-                                            version="1.1" xml:space="preserve" xmlns="http://www.w3.org/2000/svg"
-                                            xmlns:serif="http://www.serif.com/"
-                                            xmlns:xlink="http://www.w3.org/1999/xlink">
-                                            <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
-                                            <g id="SVGRepo_tracerCarrier" stroke-linecap="round"
-                                                stroke-linejoin="round">
-                                            </g>
-                                            <g id="SVGRepo_iconCarrier">
-                                                <g transform="matrix(1,0,0,1,-432,0)">
-                                                    <g transform="matrix(1.125,0,0,1,375.898,0)">
-                                                        <path
-                                                            d="M71.196,10.9C71.148,9.836 70.367,9 69.42,9C66.684,9 61.316,9 58.58,9C57.633,9 56.852,9.836 56.804,10.9C56.638,14.653 56.267,22.991 56.093,26.9C56.069,27.447 56.245,27.982 56.581,28.378C56.916,28.775 57.382,29 57.869,29C60.948,29 67.052,29 70.131,29C70.618,29 71.084,28.775 71.419,28.378C71.755,27.982 71.931,27.447 71.907,26.9C71.733,22.991 71.362,14.653 71.196,10.9Z"
-                                                            style="fill:#1fe564;"></path>
-                                                    </g>
+                                        <svg class="w-13 h-9" fill="#000000" viewBox="0 0 32 32"
+                                        style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;"
+                                        version="1.1" xml:space="preserve" xmlns="http://www.w3.org/2000/svg"
+                                        xmlns:serif="http://www.serif.com/" xmlns:xlink="http://www.w3.org/1999/xlink">
+                                        <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                                        <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round">
+                                        </g>
+                                        <g id="SVGRepo_iconCarrier">
+                                            <g transform="matrix(1,0,0,1,-432,0)">
+                                                <g transform="matrix(1.125,0,0,1,375.898,0)">
                                                     <path
-                                                        d="M442.898,8L441.8,8C440.201,8 438.884,9.254 438.804,10.85C438.616,14.603 438.199,22.941 438.004,26.85C437.963,27.671 438.26,28.472 438.826,29.068C439.393,29.663 440.178,30 441,30L454.795,30C455.617,30 456.402,29.663 456.969,29.068C457.535,28.472 457.832,27.671 457.791,26.85L456.991,10.85C456.911,9.254 455.594,8 453.995,8L452.898,8L452.898,6C452.898,3.24 450.657,1 447.898,1C445.138,1 442.898,3.24 442.898,6L442.898,8ZM455.746,26L455.794,26.95C455.807,27.224 455.708,27.491 455.52,27.689C455.331,27.888 455.069,28 454.795,28C454.795,28 441,28 441,28C440.726,28 440.464,27.888 440.275,27.689C440.087,27.491 439.988,27.224 440.001,26.95L440.049,26L455.746,26ZM452.898,10L452.898,13C452.898,13.552 452.449,14 451.898,14C451.346,14 450.898,13.552 450.898,13L450.898,10L444.898,10L444.898,13C444.898,13.552 444.449,14 443.898,14C443.346,14 442.898,13.552 442.898,13L442.898,10L441.8,10C441.267,10 440.828,10.418 440.801,10.95L440.149,24L455.646,24L454.994,10.95C454.967,10.418 454.528,10 453.995,10L452.898,10ZM450.898,8L450.898,6C450.898,4.344 449.553,3 447.898,3C446.242,3 444.898,4.344 444.898,6L444.898,8L450.898,8Z"
-                                                        style="fill:#92d398;"></path>
+                                                        d="M71.196,10.9C71.148,9.836 70.367,9 69.42,9C66.684,9 61.316,9 58.58,9C57.633,9 56.852,9.836 56.804,10.9C56.638,14.653 56.267,22.991 56.093,26.9C56.069,27.447 56.245,27.982 56.581,28.378C56.916,28.775 57.382,29 57.869,29C60.948,29 67.052,29 70.131,29C70.618,29 71.084,28.775 71.419,28.378C71.755,27.982 71.931,27.447 71.907,26.9C71.733,22.991 71.362,14.653 71.196,10.9Z"
+                                                        style="fill:#03a297;"></path>
                                                 </g>
+                                                <path
+                                                    d="M442.898,8L441.8,8C440.201,8 438.884,9.254 438.804,10.85C438.616,14.603 438.199,22.941 438.004,26.85C437.963,27.671 438.26,28.472 438.826,29.068C439.393,29.663 440.178,30 441,30L454.795,30C455.617,30 456.402,29.663 456.969,29.068C457.535,28.472 457.832,27.671 457.791,26.85L456.991,10.85C456.911,9.254 455.594,8 453.995,8L452.898,8L452.898,6C452.898,3.24 450.657,1 447.898,1C445.138,1 442.898,3.24 442.898,6L442.898,8ZM455.746,26L455.794,26.95C455.807,27.224 455.708,27.491 455.52,27.689C455.331,27.888 455.069,28 454.795,28C454.795,28 441,28 441,28C440.726,28 440.464,27.888 440.275,27.689C440.087,27.491 439.988,27.224 440.001,26.95L440.049,26L455.746,26ZM452.898,10L452.898,13C452.898,13.552 452.449,14 451.898,14C451.346,14 450.898,13.552 450.898,13L450.898,10L444.898,10L444.898,13C444.898,13.552 444.449,14 443.898,14C443.346,14 442.898,13.552 442.898,13L442.898,10L441.8,10C441.267,10 440.828,10.418 440.801,10.95L440.149,24L455.646,24L454.994,10.95C454.967,10.418 454.528,10 453.995,10L452.898,10ZM450.898,8L450.898,6C450.898,4.344 449.553,3 447.898,3C446.242,3 444.898,4.344 444.898,6L444.898,8L450.898,8Z"
+                                                    style="fill:#03a297;"></path>
                                             </g>
-                                        </svg>
+                                        </g>
+                                    </svg>
                                     </div>
                                 </div>
                                 <div class="w-4/10 h-25 flex justify-end">
@@ -3093,83 +3056,81 @@
                                         <h2 class="text-[16px] font-bold text-center">تجهیزات پزشکی</h2>
                                         <ul class="flex">
                                             <li>
-                                                <!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
-                                                <svg class="" width="16px" height="16px" viewBox="0 0 24 24" fill="none"
+                                                <?xml version="1.0" encoding="utf-8"?>
+                                                <svg class="fill-[#fba707]" width="16px" height="16px" viewBox="0 0 24 24" 
                                                     xmlns="http://www.w3.org/2000/svg">
                                                     <path
                                                         d="M11.2691 4.41115C11.5006 3.89177 11.6164 3.63208 11.7776 3.55211C11.9176 3.48263 12.082 3.48263 12.222 3.55211C12.3832 3.63208 12.499 3.89177 12.7305 4.41115L14.5745 8.54808C14.643 8.70162 14.6772 8.77839 14.7302 8.83718C14.777 8.8892 14.8343 8.93081 14.8982 8.95929C14.9705 8.99149 15.0541 9.00031 15.2213 9.01795L19.7256 9.49336C20.2911 9.55304 20.5738 9.58288 20.6997 9.71147C20.809 9.82316 20.8598 9.97956 20.837 10.1342C20.8108 10.3122 20.5996 10.5025 20.1772 10.8832L16.8125 13.9154C16.6877 14.0279 16.6252 14.0842 16.5857 14.1527C16.5507 14.2134 16.5288 14.2807 16.5215 14.3503C16.5132 14.429 16.5306 14.5112 16.5655 14.6757L17.5053 19.1064C17.6233 19.6627 17.6823 19.9408 17.5989 20.1002C17.5264 20.2388 17.3934 20.3354 17.2393 20.3615C17.0619 20.3915 16.8156 20.2495 16.323 19.9654L12.3995 17.7024C12.2539 17.6184 12.1811 17.5765 12.1037 17.56C12.0352 17.5455 11.9644 17.5455 11.8959 17.56C11.8185 17.5765 11.7457 17.6184 11.6001 17.7024L7.67662 19.9654C7.18404 20.2495 6.93775 20.3915 6.76034 20.3615C6.60623 20.3354 6.47319 20.2388 6.40075 20.1002C6.31736 19.9408 6.37635 19.6627 6.49434 19.1064L7.4341 14.6757C7.46898 14.5112 7.48642 14.429 7.47814 14.3503C7.47081 14.2807 7.44894 14.2134 7.41394 14.1527C7.37439 14.0842 7.31195 14.0279 7.18708 13.9154L3.82246 10.8832C3.40005 10.5025 3.18884 10.3122 3.16258 10.1342C3.13978 9.97956 3.19059 9.82316 3.29993 9.71147C3.42581 9.58288 3.70856 9.55304 4.27406 9.49336L8.77835 9.01795C8.94553 9.00031 9.02911 8.99149 9.10139 8.95929C9.16534 8.93081 9.2226 8.8892 9.26946 8.83718C9.32241 8.77839 9.35663 8.70162 9.42508 8.54808L11.2691 4.41115Z"
-                                                        stroke="#000000" stroke-width="2" stroke-linecap="round"
+                                                        stroke="#fba707" stroke-width="2" stroke-linecap="round"
                                                         stroke-linejoin="round" />
                                                 </svg>
                                             </li>
                                             <li>
-                                                <!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
-                                                <svg class="" width="16px" height="16px" viewBox="0 0 24 24" fill="none"
+                                                <?xml version="1.0" encoding="utf-8"?>
+                                                <svg class="fill-[#fba707]" width="16px" height="16px" viewBox="0 0 24 24" 
                                                     xmlns="http://www.w3.org/2000/svg">
                                                     <path
                                                         d="M11.2691 4.41115C11.5006 3.89177 11.6164 3.63208 11.7776 3.55211C11.9176 3.48263 12.082 3.48263 12.222 3.55211C12.3832 3.63208 12.499 3.89177 12.7305 4.41115L14.5745 8.54808C14.643 8.70162 14.6772 8.77839 14.7302 8.83718C14.777 8.8892 14.8343 8.93081 14.8982 8.95929C14.9705 8.99149 15.0541 9.00031 15.2213 9.01795L19.7256 9.49336C20.2911 9.55304 20.5738 9.58288 20.6997 9.71147C20.809 9.82316 20.8598 9.97956 20.837 10.1342C20.8108 10.3122 20.5996 10.5025 20.1772 10.8832L16.8125 13.9154C16.6877 14.0279 16.6252 14.0842 16.5857 14.1527C16.5507 14.2134 16.5288 14.2807 16.5215 14.3503C16.5132 14.429 16.5306 14.5112 16.5655 14.6757L17.5053 19.1064C17.6233 19.6627 17.6823 19.9408 17.5989 20.1002C17.5264 20.2388 17.3934 20.3354 17.2393 20.3615C17.0619 20.3915 16.8156 20.2495 16.323 19.9654L12.3995 17.7024C12.2539 17.6184 12.1811 17.5765 12.1037 17.56C12.0352 17.5455 11.9644 17.5455 11.8959 17.56C11.8185 17.5765 11.7457 17.6184 11.6001 17.7024L7.67662 19.9654C7.18404 20.2495 6.93775 20.3915 6.76034 20.3615C6.60623 20.3354 6.47319 20.2388 6.40075 20.1002C6.31736 19.9408 6.37635 19.6627 6.49434 19.1064L7.4341 14.6757C7.46898 14.5112 7.48642 14.429 7.47814 14.3503C7.47081 14.2807 7.44894 14.2134 7.41394 14.1527C7.37439 14.0842 7.31195 14.0279 7.18708 13.9154L3.82246 10.8832C3.40005 10.5025 3.18884 10.3122 3.16258 10.1342C3.13978 9.97956 3.19059 9.82316 3.29993 9.71147C3.42581 9.58288 3.70856 9.55304 4.27406 9.49336L8.77835 9.01795C8.94553 9.00031 9.02911 8.99149 9.10139 8.95929C9.16534 8.93081 9.2226 8.8892 9.26946 8.83718C9.32241 8.77839 9.35663 8.70162 9.42508 8.54808L11.2691 4.41115Z"
-                                                        stroke="#000000" stroke-width="2" stroke-linecap="round"
+                                                        stroke="#fba707" stroke-width="2" stroke-linecap="round"
                                                         stroke-linejoin="round" />
                                                 </svg>
                                             </li>
                                             <li>
-                                                <!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
-                                                <svg class="" width="16px" height="16px" viewBox="0 0 24 24" fill="none"
+                                                <?xml version="1.0" encoding="utf-8"?>
+                                                <svg class="fill-[#fba707]" width="16px" height="16px" viewBox="0 0 24 24" 
                                                     xmlns="http://www.w3.org/2000/svg">
                                                     <path
                                                         d="M11.2691 4.41115C11.5006 3.89177 11.6164 3.63208 11.7776 3.55211C11.9176 3.48263 12.082 3.48263 12.222 3.55211C12.3832 3.63208 12.499 3.89177 12.7305 4.41115L14.5745 8.54808C14.643 8.70162 14.6772 8.77839 14.7302 8.83718C14.777 8.8892 14.8343 8.93081 14.8982 8.95929C14.9705 8.99149 15.0541 9.00031 15.2213 9.01795L19.7256 9.49336C20.2911 9.55304 20.5738 9.58288 20.6997 9.71147C20.809 9.82316 20.8598 9.97956 20.837 10.1342C20.8108 10.3122 20.5996 10.5025 20.1772 10.8832L16.8125 13.9154C16.6877 14.0279 16.6252 14.0842 16.5857 14.1527C16.5507 14.2134 16.5288 14.2807 16.5215 14.3503C16.5132 14.429 16.5306 14.5112 16.5655 14.6757L17.5053 19.1064C17.6233 19.6627 17.6823 19.9408 17.5989 20.1002C17.5264 20.2388 17.3934 20.3354 17.2393 20.3615C17.0619 20.3915 16.8156 20.2495 16.323 19.9654L12.3995 17.7024C12.2539 17.6184 12.1811 17.5765 12.1037 17.56C12.0352 17.5455 11.9644 17.5455 11.8959 17.56C11.8185 17.5765 11.7457 17.6184 11.6001 17.7024L7.67662 19.9654C7.18404 20.2495 6.93775 20.3915 6.76034 20.3615C6.60623 20.3354 6.47319 20.2388 6.40075 20.1002C6.31736 19.9408 6.37635 19.6627 6.49434 19.1064L7.4341 14.6757C7.46898 14.5112 7.48642 14.429 7.47814 14.3503C7.47081 14.2807 7.44894 14.2134 7.41394 14.1527C7.37439 14.0842 7.31195 14.0279 7.18708 13.9154L3.82246 10.8832C3.40005 10.5025 3.18884 10.3122 3.16258 10.1342C3.13978 9.97956 3.19059 9.82316 3.29993 9.71147C3.42581 9.58288 3.70856 9.55304 4.27406 9.49336L8.77835 9.01795C8.94553 9.00031 9.02911 8.99149 9.10139 8.95929C9.16534 8.93081 9.2226 8.8892 9.26946 8.83718C9.32241 8.77839 9.35663 8.70162 9.42508 8.54808L11.2691 4.41115Z"
-                                                        stroke="#000000" stroke-width="2" stroke-linecap="round"
+                                                        stroke="#fba707" stroke-width="2" stroke-linecap="round"
                                                         stroke-linejoin="round" />
                                                 </svg>
                                             </li>
                                             <li>
-                                                <!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
-                                                <svg class="" width="16px" height="16px" viewBox="0 0 24 24" fill="none"
+                                                <?xml version="1.0" encoding="utf-8"?>
+                                                <svg class="fill-[#fba707]" width="16px" height="16px" viewBox="0 0 24 24" 
                                                     xmlns="http://www.w3.org/2000/svg">
                                                     <path
                                                         d="M11.2691 4.41115C11.5006 3.89177 11.6164 3.63208 11.7776 3.55211C11.9176 3.48263 12.082 3.48263 12.222 3.55211C12.3832 3.63208 12.499 3.89177 12.7305 4.41115L14.5745 8.54808C14.643 8.70162 14.6772 8.77839 14.7302 8.83718C14.777 8.8892 14.8343 8.93081 14.8982 8.95929C14.9705 8.99149 15.0541 9.00031 15.2213 9.01795L19.7256 9.49336C20.2911 9.55304 20.5738 9.58288 20.6997 9.71147C20.809 9.82316 20.8598 9.97956 20.837 10.1342C20.8108 10.3122 20.5996 10.5025 20.1772 10.8832L16.8125 13.9154C16.6877 14.0279 16.6252 14.0842 16.5857 14.1527C16.5507 14.2134 16.5288 14.2807 16.5215 14.3503C16.5132 14.429 16.5306 14.5112 16.5655 14.6757L17.5053 19.1064C17.6233 19.6627 17.6823 19.9408 17.5989 20.1002C17.5264 20.2388 17.3934 20.3354 17.2393 20.3615C17.0619 20.3915 16.8156 20.2495 16.323 19.9654L12.3995 17.7024C12.2539 17.6184 12.1811 17.5765 12.1037 17.56C12.0352 17.5455 11.9644 17.5455 11.8959 17.56C11.8185 17.5765 11.7457 17.6184 11.6001 17.7024L7.67662 19.9654C7.18404 20.2495 6.93775 20.3915 6.76034 20.3615C6.60623 20.3354 6.47319 20.2388 6.40075 20.1002C6.31736 19.9408 6.37635 19.6627 6.49434 19.1064L7.4341 14.6757C7.46898 14.5112 7.48642 14.429 7.47814 14.3503C7.47081 14.2807 7.44894 14.2134 7.41394 14.1527C7.37439 14.0842 7.31195 14.0279 7.18708 13.9154L3.82246 10.8832C3.40005 10.5025 3.18884 10.3122 3.16258 10.1342C3.13978 9.97956 3.19059 9.82316 3.29993 9.71147C3.42581 9.58288 3.70856 9.55304 4.27406 9.49336L8.77835 9.01795C8.94553 9.00031 9.02911 8.99149 9.10139 8.95929C9.16534 8.93081 9.2226 8.8892 9.26946 8.83718C9.32241 8.77839 9.35663 8.70162 9.42508 8.54808L11.2691 4.41115Z"
-                                                        stroke="#000000" stroke-width="2" stroke-linecap="round"
+                                                        stroke="#fba707" stroke-width="2" stroke-linecap="round"
                                                         stroke-linejoin="round" />
                                                 </svg>
                                             </li>
                                             <li>
-                                                <!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
-                                                <svg class="" width="16px" height="16px" viewBox="0 0 24 24" fill="none"
+                                                <?xml version="1.0" encoding="utf-8"?>
+                                                <svg class="fill-[none]" width="16px" height="16px" viewBox="0 0 24 24" 
                                                     xmlns="http://www.w3.org/2000/svg">
                                                     <path
                                                         d="M11.2691 4.41115C11.5006 3.89177 11.6164 3.63208 11.7776 3.55211C11.9176 3.48263 12.082 3.48263 12.222 3.55211C12.3832 3.63208 12.499 3.89177 12.7305 4.41115L14.5745 8.54808C14.643 8.70162 14.6772 8.77839 14.7302 8.83718C14.777 8.8892 14.8343 8.93081 14.8982 8.95929C14.9705 8.99149 15.0541 9.00031 15.2213 9.01795L19.7256 9.49336C20.2911 9.55304 20.5738 9.58288 20.6997 9.71147C20.809 9.82316 20.8598 9.97956 20.837 10.1342C20.8108 10.3122 20.5996 10.5025 20.1772 10.8832L16.8125 13.9154C16.6877 14.0279 16.6252 14.0842 16.5857 14.1527C16.5507 14.2134 16.5288 14.2807 16.5215 14.3503C16.5132 14.429 16.5306 14.5112 16.5655 14.6757L17.5053 19.1064C17.6233 19.6627 17.6823 19.9408 17.5989 20.1002C17.5264 20.2388 17.3934 20.3354 17.2393 20.3615C17.0619 20.3915 16.8156 20.2495 16.323 19.9654L12.3995 17.7024C12.2539 17.6184 12.1811 17.5765 12.1037 17.56C12.0352 17.5455 11.9644 17.5455 11.8959 17.56C11.8185 17.5765 11.7457 17.6184 11.6001 17.7024L7.67662 19.9654C7.18404 20.2495 6.93775 20.3915 6.76034 20.3615C6.60623 20.3354 6.47319 20.2388 6.40075 20.1002C6.31736 19.9408 6.37635 19.6627 6.49434 19.1064L7.4341 14.6757C7.46898 14.5112 7.48642 14.429 7.47814 14.3503C7.47081 14.2807 7.44894 14.2134 7.41394 14.1527C7.37439 14.0842 7.31195 14.0279 7.18708 13.9154L3.82246 10.8832C3.40005 10.5025 3.18884 10.3122 3.16258 10.1342C3.13978 9.97956 3.19059 9.82316 3.29993 9.71147C3.42581 9.58288 3.70856 9.55304 4.27406 9.49336L8.77835 9.01795C8.94553 9.00031 9.02911 8.99149 9.10139 8.95929C9.16534 8.93081 9.2226 8.8892 9.26946 8.83718C9.32241 8.77839 9.35663 8.70162 9.42508 8.54808L11.2691 4.41115Z"
-                                                        stroke="#000000" stroke-width="2" stroke-linecap="round"
+                                                        stroke="#fba707" stroke-width="2" stroke-linecap="round"
                                                         stroke-linejoin="round" />
                                                 </svg>
                                             </li>
                                         </ul>
                                         <div class="pt-2 flex gap-3">
-                                            <span class=" font-bold">$40.00</span>
+                                            <span class=" font-bold">1.000.000تومان</span>
                                         </div>
                                     </div>
                                     <div class="absolute bottom-0 right-1 ">
-                                        <svg class="w-12 h-8" fill="#000000" viewBox="0 0 32 32"
-                                            style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;"
-                                            version="1.1" xml:space="preserve" xmlns="http://www.w3.org/2000/svg"
-                                            xmlns:serif="http://www.serif.com/"
-                                            xmlns:xlink="http://www.w3.org/1999/xlink">
-                                            <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
-                                            <g id="SVGRepo_tracerCarrier" stroke-linecap="round"
-                                                stroke-linejoin="round">
-                                            </g>
-                                            <g id="SVGRepo_iconCarrier">
-                                                <g transform="matrix(1,0,0,1,-432,0)">
-                                                    <g transform="matrix(1.125,0,0,1,375.898,0)">
-                                                        <path
-                                                            d="M71.196,10.9C71.148,9.836 70.367,9 69.42,9C66.684,9 61.316,9 58.58,9C57.633,9 56.852,9.836 56.804,10.9C56.638,14.653 56.267,22.991 56.093,26.9C56.069,27.447 56.245,27.982 56.581,28.378C56.916,28.775 57.382,29 57.869,29C60.948,29 67.052,29 70.131,29C70.618,29 71.084,28.775 71.419,28.378C71.755,27.982 71.931,27.447 71.907,26.9C71.733,22.991 71.362,14.653 71.196,10.9Z"
-                                                            style="fill:#1fe564;"></path>
-                                                    </g>
+                                        <svg class="w-13 h-9" fill="#000000" viewBox="0 0 32 32"
+                                        style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;"
+                                        version="1.1" xml:space="preserve" xmlns="http://www.w3.org/2000/svg"
+                                        xmlns:serif="http://www.serif.com/" xmlns:xlink="http://www.w3.org/1999/xlink">
+                                        <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                                        <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round">
+                                        </g>
+                                        <g id="SVGRepo_iconCarrier">
+                                            <g transform="matrix(1,0,0,1,-432,0)">
+                                                <g transform="matrix(1.125,0,0,1,375.898,0)">
                                                     <path
-                                                        d="M442.898,8L441.8,8C440.201,8 438.884,9.254 438.804,10.85C438.616,14.603 438.199,22.941 438.004,26.85C437.963,27.671 438.26,28.472 438.826,29.068C439.393,29.663 440.178,30 441,30L454.795,30C455.617,30 456.402,29.663 456.969,29.068C457.535,28.472 457.832,27.671 457.791,26.85L456.991,10.85C456.911,9.254 455.594,8 453.995,8L452.898,8L452.898,6C452.898,3.24 450.657,1 447.898,1C445.138,1 442.898,3.24 442.898,6L442.898,8ZM455.746,26L455.794,26.95C455.807,27.224 455.708,27.491 455.52,27.689C455.331,27.888 455.069,28 454.795,28C454.795,28 441,28 441,28C440.726,28 440.464,27.888 440.275,27.689C440.087,27.491 439.988,27.224 440.001,26.95L440.049,26L455.746,26ZM452.898,10L452.898,13C452.898,13.552 452.449,14 451.898,14C451.346,14 450.898,13.552 450.898,13L450.898,10L444.898,10L444.898,13C444.898,13.552 444.449,14 443.898,14C443.346,14 442.898,13.552 442.898,13L442.898,10L441.8,10C441.267,10 440.828,10.418 440.801,10.95L440.149,24L455.646,24L454.994,10.95C454.967,10.418 454.528,10 453.995,10L452.898,10ZM450.898,8L450.898,6C450.898,4.344 449.553,3 447.898,3C446.242,3 444.898,4.344 444.898,6L444.898,8L450.898,8Z"
-                                                        style="fill:#92d398;"></path>
+                                                        d="M71.196,10.9C71.148,9.836 70.367,9 69.42,9C66.684,9 61.316,9 58.58,9C57.633,9 56.852,9.836 56.804,10.9C56.638,14.653 56.267,22.991 56.093,26.9C56.069,27.447 56.245,27.982 56.581,28.378C56.916,28.775 57.382,29 57.869,29C60.948,29 67.052,29 70.131,29C70.618,29 71.084,28.775 71.419,28.378C71.755,27.982 71.931,27.447 71.907,26.9C71.733,22.991 71.362,14.653 71.196,10.9Z"
+                                                        style="fill:#03a297;"></path>
                                                 </g>
+                                                <path
+                                                    d="M442.898,8L441.8,8C440.201,8 438.884,9.254 438.804,10.85C438.616,14.603 438.199,22.941 438.004,26.85C437.963,27.671 438.26,28.472 438.826,29.068C439.393,29.663 440.178,30 441,30L454.795,30C455.617,30 456.402,29.663 456.969,29.068C457.535,28.472 457.832,27.671 457.791,26.85L456.991,10.85C456.911,9.254 455.594,8 453.995,8L452.898,8L452.898,6C452.898,3.24 450.657,1 447.898,1C445.138,1 442.898,3.24 442.898,6L442.898,8ZM455.746,26L455.794,26.95C455.807,27.224 455.708,27.491 455.52,27.689C455.331,27.888 455.069,28 454.795,28C454.795,28 441,28 441,28C440.726,28 440.464,27.888 440.275,27.689C440.087,27.491 439.988,27.224 440.001,26.95L440.049,26L455.746,26ZM452.898,10L452.898,13C452.898,13.552 452.449,14 451.898,14C451.346,14 450.898,13.552 450.898,13L450.898,10L444.898,10L444.898,13C444.898,13.552 444.449,14 443.898,14C443.346,14 442.898,13.552 442.898,13L442.898,10L441.8,10C441.267,10 440.828,10.418 440.801,10.95L440.149,24L455.646,24L454.994,10.95C454.967,10.418 454.528,10 453.995,10L452.898,10ZM450.898,8L450.898,6C450.898,4.344 449.553,3 447.898,3C446.242,3 444.898,4.344 444.898,6L444.898,8L450.898,8Z"
+                                                    style="fill:#03a297;"></path>
                                             </g>
-                                        </svg>
+                                        </g>
+                                    </svg>
                                     </div>
                                 </div>
                                 <div class="w-4/10 h-25 flex justify-end">
@@ -3184,83 +3145,81 @@
                                         <h2 class="text-[16px] font-bold text-center">تجهیزات پزشکی</h2>
                                         <ul class="flex">
                                             <li>
-                                                <!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
-                                                <svg class="" width="16px" height="16px" viewBox="0 0 24 24" fill="none"
+                                                <?xml version="1.0" encoding="utf-8"?>
+                                                <svg class="fill-[#fba707]" width="16px" height="16px" viewBox="0 0 24 24" 
                                                     xmlns="http://www.w3.org/2000/svg">
                                                     <path
                                                         d="M11.2691 4.41115C11.5006 3.89177 11.6164 3.63208 11.7776 3.55211C11.9176 3.48263 12.082 3.48263 12.222 3.55211C12.3832 3.63208 12.499 3.89177 12.7305 4.41115L14.5745 8.54808C14.643 8.70162 14.6772 8.77839 14.7302 8.83718C14.777 8.8892 14.8343 8.93081 14.8982 8.95929C14.9705 8.99149 15.0541 9.00031 15.2213 9.01795L19.7256 9.49336C20.2911 9.55304 20.5738 9.58288 20.6997 9.71147C20.809 9.82316 20.8598 9.97956 20.837 10.1342C20.8108 10.3122 20.5996 10.5025 20.1772 10.8832L16.8125 13.9154C16.6877 14.0279 16.6252 14.0842 16.5857 14.1527C16.5507 14.2134 16.5288 14.2807 16.5215 14.3503C16.5132 14.429 16.5306 14.5112 16.5655 14.6757L17.5053 19.1064C17.6233 19.6627 17.6823 19.9408 17.5989 20.1002C17.5264 20.2388 17.3934 20.3354 17.2393 20.3615C17.0619 20.3915 16.8156 20.2495 16.323 19.9654L12.3995 17.7024C12.2539 17.6184 12.1811 17.5765 12.1037 17.56C12.0352 17.5455 11.9644 17.5455 11.8959 17.56C11.8185 17.5765 11.7457 17.6184 11.6001 17.7024L7.67662 19.9654C7.18404 20.2495 6.93775 20.3915 6.76034 20.3615C6.60623 20.3354 6.47319 20.2388 6.40075 20.1002C6.31736 19.9408 6.37635 19.6627 6.49434 19.1064L7.4341 14.6757C7.46898 14.5112 7.48642 14.429 7.47814 14.3503C7.47081 14.2807 7.44894 14.2134 7.41394 14.1527C7.37439 14.0842 7.31195 14.0279 7.18708 13.9154L3.82246 10.8832C3.40005 10.5025 3.18884 10.3122 3.16258 10.1342C3.13978 9.97956 3.19059 9.82316 3.29993 9.71147C3.42581 9.58288 3.70856 9.55304 4.27406 9.49336L8.77835 9.01795C8.94553 9.00031 9.02911 8.99149 9.10139 8.95929C9.16534 8.93081 9.2226 8.8892 9.26946 8.83718C9.32241 8.77839 9.35663 8.70162 9.42508 8.54808L11.2691 4.41115Z"
-                                                        stroke="#000000" stroke-width="2" stroke-linecap="round"
+                                                        stroke="#fba707" stroke-width="2" stroke-linecap="round"
                                                         stroke-linejoin="round" />
                                                 </svg>
                                             </li>
                                             <li>
-                                                <!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
-                                                <svg class="" width="16px" height="16px" viewBox="0 0 24 24" fill="none"
+                                                <?xml version="1.0" encoding="utf-8"?>
+                                                <svg class="fill-[#fba707]" width="16px" height="16px" viewBox="0 0 24 24" 
                                                     xmlns="http://www.w3.org/2000/svg">
                                                     <path
                                                         d="M11.2691 4.41115C11.5006 3.89177 11.6164 3.63208 11.7776 3.55211C11.9176 3.48263 12.082 3.48263 12.222 3.55211C12.3832 3.63208 12.499 3.89177 12.7305 4.41115L14.5745 8.54808C14.643 8.70162 14.6772 8.77839 14.7302 8.83718C14.777 8.8892 14.8343 8.93081 14.8982 8.95929C14.9705 8.99149 15.0541 9.00031 15.2213 9.01795L19.7256 9.49336C20.2911 9.55304 20.5738 9.58288 20.6997 9.71147C20.809 9.82316 20.8598 9.97956 20.837 10.1342C20.8108 10.3122 20.5996 10.5025 20.1772 10.8832L16.8125 13.9154C16.6877 14.0279 16.6252 14.0842 16.5857 14.1527C16.5507 14.2134 16.5288 14.2807 16.5215 14.3503C16.5132 14.429 16.5306 14.5112 16.5655 14.6757L17.5053 19.1064C17.6233 19.6627 17.6823 19.9408 17.5989 20.1002C17.5264 20.2388 17.3934 20.3354 17.2393 20.3615C17.0619 20.3915 16.8156 20.2495 16.323 19.9654L12.3995 17.7024C12.2539 17.6184 12.1811 17.5765 12.1037 17.56C12.0352 17.5455 11.9644 17.5455 11.8959 17.56C11.8185 17.5765 11.7457 17.6184 11.6001 17.7024L7.67662 19.9654C7.18404 20.2495 6.93775 20.3915 6.76034 20.3615C6.60623 20.3354 6.47319 20.2388 6.40075 20.1002C6.31736 19.9408 6.37635 19.6627 6.49434 19.1064L7.4341 14.6757C7.46898 14.5112 7.48642 14.429 7.47814 14.3503C7.47081 14.2807 7.44894 14.2134 7.41394 14.1527C7.37439 14.0842 7.31195 14.0279 7.18708 13.9154L3.82246 10.8832C3.40005 10.5025 3.18884 10.3122 3.16258 10.1342C3.13978 9.97956 3.19059 9.82316 3.29993 9.71147C3.42581 9.58288 3.70856 9.55304 4.27406 9.49336L8.77835 9.01795C8.94553 9.00031 9.02911 8.99149 9.10139 8.95929C9.16534 8.93081 9.2226 8.8892 9.26946 8.83718C9.32241 8.77839 9.35663 8.70162 9.42508 8.54808L11.2691 4.41115Z"
-                                                        stroke="#000000" stroke-width="2" stroke-linecap="round"
+                                                        stroke="#fba707" stroke-width="2" stroke-linecap="round"
                                                         stroke-linejoin="round" />
                                                 </svg>
                                             </li>
                                             <li>
-                                                <!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
-                                                <svg class="" width="16px" height="16px" viewBox="0 0 24 24" fill="none"
+                                                <?xml version="1.0" encoding="utf-8"?>
+                                                <svg class="fill-[#fba707]" width="16px" height="16px" viewBox="0 0 24 24" 
                                                     xmlns="http://www.w3.org/2000/svg">
                                                     <path
                                                         d="M11.2691 4.41115C11.5006 3.89177 11.6164 3.63208 11.7776 3.55211C11.9176 3.48263 12.082 3.48263 12.222 3.55211C12.3832 3.63208 12.499 3.89177 12.7305 4.41115L14.5745 8.54808C14.643 8.70162 14.6772 8.77839 14.7302 8.83718C14.777 8.8892 14.8343 8.93081 14.8982 8.95929C14.9705 8.99149 15.0541 9.00031 15.2213 9.01795L19.7256 9.49336C20.2911 9.55304 20.5738 9.58288 20.6997 9.71147C20.809 9.82316 20.8598 9.97956 20.837 10.1342C20.8108 10.3122 20.5996 10.5025 20.1772 10.8832L16.8125 13.9154C16.6877 14.0279 16.6252 14.0842 16.5857 14.1527C16.5507 14.2134 16.5288 14.2807 16.5215 14.3503C16.5132 14.429 16.5306 14.5112 16.5655 14.6757L17.5053 19.1064C17.6233 19.6627 17.6823 19.9408 17.5989 20.1002C17.5264 20.2388 17.3934 20.3354 17.2393 20.3615C17.0619 20.3915 16.8156 20.2495 16.323 19.9654L12.3995 17.7024C12.2539 17.6184 12.1811 17.5765 12.1037 17.56C12.0352 17.5455 11.9644 17.5455 11.8959 17.56C11.8185 17.5765 11.7457 17.6184 11.6001 17.7024L7.67662 19.9654C7.18404 20.2495 6.93775 20.3915 6.76034 20.3615C6.60623 20.3354 6.47319 20.2388 6.40075 20.1002C6.31736 19.9408 6.37635 19.6627 6.49434 19.1064L7.4341 14.6757C7.46898 14.5112 7.48642 14.429 7.47814 14.3503C7.47081 14.2807 7.44894 14.2134 7.41394 14.1527C7.37439 14.0842 7.31195 14.0279 7.18708 13.9154L3.82246 10.8832C3.40005 10.5025 3.18884 10.3122 3.16258 10.1342C3.13978 9.97956 3.19059 9.82316 3.29993 9.71147C3.42581 9.58288 3.70856 9.55304 4.27406 9.49336L8.77835 9.01795C8.94553 9.00031 9.02911 8.99149 9.10139 8.95929C9.16534 8.93081 9.2226 8.8892 9.26946 8.83718C9.32241 8.77839 9.35663 8.70162 9.42508 8.54808L11.2691 4.41115Z"
-                                                        stroke="#000000" stroke-width="2" stroke-linecap="round"
+                                                        stroke="#fba707" stroke-width="2" stroke-linecap="round"
                                                         stroke-linejoin="round" />
                                                 </svg>
                                             </li>
                                             <li>
-                                                <!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
-                                                <svg class="" width="16px" height="16px" viewBox="0 0 24 24" fill="none"
+                                                <?xml version="1.0" encoding="utf-8"?>
+                                                <svg class="fill-[#fba707]" width="16px" height="16px" viewBox="0 0 24 24" 
                                                     xmlns="http://www.w3.org/2000/svg">
                                                     <path
                                                         d="M11.2691 4.41115C11.5006 3.89177 11.6164 3.63208 11.7776 3.55211C11.9176 3.48263 12.082 3.48263 12.222 3.55211C12.3832 3.63208 12.499 3.89177 12.7305 4.41115L14.5745 8.54808C14.643 8.70162 14.6772 8.77839 14.7302 8.83718C14.777 8.8892 14.8343 8.93081 14.8982 8.95929C14.9705 8.99149 15.0541 9.00031 15.2213 9.01795L19.7256 9.49336C20.2911 9.55304 20.5738 9.58288 20.6997 9.71147C20.809 9.82316 20.8598 9.97956 20.837 10.1342C20.8108 10.3122 20.5996 10.5025 20.1772 10.8832L16.8125 13.9154C16.6877 14.0279 16.6252 14.0842 16.5857 14.1527C16.5507 14.2134 16.5288 14.2807 16.5215 14.3503C16.5132 14.429 16.5306 14.5112 16.5655 14.6757L17.5053 19.1064C17.6233 19.6627 17.6823 19.9408 17.5989 20.1002C17.5264 20.2388 17.3934 20.3354 17.2393 20.3615C17.0619 20.3915 16.8156 20.2495 16.323 19.9654L12.3995 17.7024C12.2539 17.6184 12.1811 17.5765 12.1037 17.56C12.0352 17.5455 11.9644 17.5455 11.8959 17.56C11.8185 17.5765 11.7457 17.6184 11.6001 17.7024L7.67662 19.9654C7.18404 20.2495 6.93775 20.3915 6.76034 20.3615C6.60623 20.3354 6.47319 20.2388 6.40075 20.1002C6.31736 19.9408 6.37635 19.6627 6.49434 19.1064L7.4341 14.6757C7.46898 14.5112 7.48642 14.429 7.47814 14.3503C7.47081 14.2807 7.44894 14.2134 7.41394 14.1527C7.37439 14.0842 7.31195 14.0279 7.18708 13.9154L3.82246 10.8832C3.40005 10.5025 3.18884 10.3122 3.16258 10.1342C3.13978 9.97956 3.19059 9.82316 3.29993 9.71147C3.42581 9.58288 3.70856 9.55304 4.27406 9.49336L8.77835 9.01795C8.94553 9.00031 9.02911 8.99149 9.10139 8.95929C9.16534 8.93081 9.2226 8.8892 9.26946 8.83718C9.32241 8.77839 9.35663 8.70162 9.42508 8.54808L11.2691 4.41115Z"
-                                                        stroke="#000000" stroke-width="2" stroke-linecap="round"
+                                                        stroke="#fba707" stroke-width="2" stroke-linecap="round"
                                                         stroke-linejoin="round" />
                                                 </svg>
                                             </li>
                                             <li>
-                                                <!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
-                                                <svg class="" width="16px" height="16px" viewBox="0 0 24 24" fill="none"
+                                                <?xml version="1.0" encoding="utf-8"?>
+                                                <svg class="fill-[none]" width="16px" height="16px" viewBox="0 0 24 24" 
                                                     xmlns="http://www.w3.org/2000/svg">
                                                     <path
                                                         d="M11.2691 4.41115C11.5006 3.89177 11.6164 3.63208 11.7776 3.55211C11.9176 3.48263 12.082 3.48263 12.222 3.55211C12.3832 3.63208 12.499 3.89177 12.7305 4.41115L14.5745 8.54808C14.643 8.70162 14.6772 8.77839 14.7302 8.83718C14.777 8.8892 14.8343 8.93081 14.8982 8.95929C14.9705 8.99149 15.0541 9.00031 15.2213 9.01795L19.7256 9.49336C20.2911 9.55304 20.5738 9.58288 20.6997 9.71147C20.809 9.82316 20.8598 9.97956 20.837 10.1342C20.8108 10.3122 20.5996 10.5025 20.1772 10.8832L16.8125 13.9154C16.6877 14.0279 16.6252 14.0842 16.5857 14.1527C16.5507 14.2134 16.5288 14.2807 16.5215 14.3503C16.5132 14.429 16.5306 14.5112 16.5655 14.6757L17.5053 19.1064C17.6233 19.6627 17.6823 19.9408 17.5989 20.1002C17.5264 20.2388 17.3934 20.3354 17.2393 20.3615C17.0619 20.3915 16.8156 20.2495 16.323 19.9654L12.3995 17.7024C12.2539 17.6184 12.1811 17.5765 12.1037 17.56C12.0352 17.5455 11.9644 17.5455 11.8959 17.56C11.8185 17.5765 11.7457 17.6184 11.6001 17.7024L7.67662 19.9654C7.18404 20.2495 6.93775 20.3915 6.76034 20.3615C6.60623 20.3354 6.47319 20.2388 6.40075 20.1002C6.31736 19.9408 6.37635 19.6627 6.49434 19.1064L7.4341 14.6757C7.46898 14.5112 7.48642 14.429 7.47814 14.3503C7.47081 14.2807 7.44894 14.2134 7.41394 14.1527C7.37439 14.0842 7.31195 14.0279 7.18708 13.9154L3.82246 10.8832C3.40005 10.5025 3.18884 10.3122 3.16258 10.1342C3.13978 9.97956 3.19059 9.82316 3.29993 9.71147C3.42581 9.58288 3.70856 9.55304 4.27406 9.49336L8.77835 9.01795C8.94553 9.00031 9.02911 8.99149 9.10139 8.95929C9.16534 8.93081 9.2226 8.8892 9.26946 8.83718C9.32241 8.77839 9.35663 8.70162 9.42508 8.54808L11.2691 4.41115Z"
-                                                        stroke="#000000" stroke-width="2" stroke-linecap="round"
+                                                        stroke="#fba707" stroke-width="2" stroke-linecap="round"
                                                         stroke-linejoin="round" />
                                                 </svg>
                                             </li>
                                         </ul>
                                         <div class="pt-2 flex gap-3">
-                                            <span class=" font-bold">$40.00</span>
+                                            <span class=" font-bold">1.000.000تومان</span>
                                         </div>
                                     </div>
                                     <div class="absolute bottom-0 right-1 ">
-                                        <svg class="w-12 h-8" fill="#000000" viewBox="0 0 32 32"
-                                            style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;"
-                                            version="1.1" xml:space="preserve" xmlns="http://www.w3.org/2000/svg"
-                                            xmlns:serif="http://www.serif.com/"
-                                            xmlns:xlink="http://www.w3.org/1999/xlink">
-                                            <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
-                                            <g id="SVGRepo_tracerCarrier" stroke-linecap="round"
-                                                stroke-linejoin="round">
-                                            </g>
-                                            <g id="SVGRepo_iconCarrier">
-                                                <g transform="matrix(1,0,0,1,-432,0)">
-                                                    <g transform="matrix(1.125,0,0,1,375.898,0)">
-                                                        <path
-                                                            d="M71.196,10.9C71.148,9.836 70.367,9 69.42,9C66.684,9 61.316,9 58.58,9C57.633,9 56.852,9.836 56.804,10.9C56.638,14.653 56.267,22.991 56.093,26.9C56.069,27.447 56.245,27.982 56.581,28.378C56.916,28.775 57.382,29 57.869,29C60.948,29 67.052,29 70.131,29C70.618,29 71.084,28.775 71.419,28.378C71.755,27.982 71.931,27.447 71.907,26.9C71.733,22.991 71.362,14.653 71.196,10.9Z"
-                                                            style="fill:#1fe564;"></path>
-                                                    </g>
+                                        <svg class="w-13 h-9" fill="#000000" viewBox="0 0 32 32"
+                                        style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;"
+                                        version="1.1" xml:space="preserve" xmlns="http://www.w3.org/2000/svg"
+                                        xmlns:serif="http://www.serif.com/" xmlns:xlink="http://www.w3.org/1999/xlink">
+                                        <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                                        <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round">
+                                        </g>
+                                        <g id="SVGRepo_iconCarrier">
+                                            <g transform="matrix(1,0,0,1,-432,0)">
+                                                <g transform="matrix(1.125,0,0,1,375.898,0)">
                                                     <path
-                                                        d="M442.898,8L441.8,8C440.201,8 438.884,9.254 438.804,10.85C438.616,14.603 438.199,22.941 438.004,26.85C437.963,27.671 438.26,28.472 438.826,29.068C439.393,29.663 440.178,30 441,30L454.795,30C455.617,30 456.402,29.663 456.969,29.068C457.535,28.472 457.832,27.671 457.791,26.85L456.991,10.85C456.911,9.254 455.594,8 453.995,8L452.898,8L452.898,6C452.898,3.24 450.657,1 447.898,1C445.138,1 442.898,3.24 442.898,6L442.898,8ZM455.746,26L455.794,26.95C455.807,27.224 455.708,27.491 455.52,27.689C455.331,27.888 455.069,28 454.795,28C454.795,28 441,28 441,28C440.726,28 440.464,27.888 440.275,27.689C440.087,27.491 439.988,27.224 440.001,26.95L440.049,26L455.746,26ZM452.898,10L452.898,13C452.898,13.552 452.449,14 451.898,14C451.346,14 450.898,13.552 450.898,13L450.898,10L444.898,10L444.898,13C444.898,13.552 444.449,14 443.898,14C443.346,14 442.898,13.552 442.898,13L442.898,10L441.8,10C441.267,10 440.828,10.418 440.801,10.95L440.149,24L455.646,24L454.994,10.95C454.967,10.418 454.528,10 453.995,10L452.898,10ZM450.898,8L450.898,6C450.898,4.344 449.553,3 447.898,3C446.242,3 444.898,4.344 444.898,6L444.898,8L450.898,8Z"
-                                                        style="fill:#92d398;"></path>
+                                                        d="M71.196,10.9C71.148,9.836 70.367,9 69.42,9C66.684,9 61.316,9 58.58,9C57.633,9 56.852,9.836 56.804,10.9C56.638,14.653 56.267,22.991 56.093,26.9C56.069,27.447 56.245,27.982 56.581,28.378C56.916,28.775 57.382,29 57.869,29C60.948,29 67.052,29 70.131,29C70.618,29 71.084,28.775 71.419,28.378C71.755,27.982 71.931,27.447 71.907,26.9C71.733,22.991 71.362,14.653 71.196,10.9Z"
+                                                        style="fill:#03a297;"></path>
                                                 </g>
+                                                <path
+                                                    d="M442.898,8L441.8,8C440.201,8 438.884,9.254 438.804,10.85C438.616,14.603 438.199,22.941 438.004,26.85C437.963,27.671 438.26,28.472 438.826,29.068C439.393,29.663 440.178,30 441,30L454.795,30C455.617,30 456.402,29.663 456.969,29.068C457.535,28.472 457.832,27.671 457.791,26.85L456.991,10.85C456.911,9.254 455.594,8 453.995,8L452.898,8L452.898,6C452.898,3.24 450.657,1 447.898,1C445.138,1 442.898,3.24 442.898,6L442.898,8ZM455.746,26L455.794,26.95C455.807,27.224 455.708,27.491 455.52,27.689C455.331,27.888 455.069,28 454.795,28C454.795,28 441,28 441,28C440.726,28 440.464,27.888 440.275,27.689C440.087,27.491 439.988,27.224 440.001,26.95L440.049,26L455.746,26ZM452.898,10L452.898,13C452.898,13.552 452.449,14 451.898,14C451.346,14 450.898,13.552 450.898,13L450.898,10L444.898,10L444.898,13C444.898,13.552 444.449,14 443.898,14C443.346,14 442.898,13.552 442.898,13L442.898,10L441.8,10C441.267,10 440.828,10.418 440.801,10.95L440.149,24L455.646,24L454.994,10.95C454.967,10.418 454.528,10 453.995,10L452.898,10ZM450.898,8L450.898,6C450.898,4.344 449.553,3 447.898,3C446.242,3 444.898,4.344 444.898,6L444.898,8L450.898,8Z"
+                                                    style="fill:#03a297;"></path>
                                             </g>
-                                        </svg>
+                                        </g>
+                                    </svg>
                                     </div>
                                 </div>
                                 <div class="w-4/10 h-25 flex justify-end">
@@ -3323,7 +3282,7 @@
                     <span class="text-emerald-500">مشتریان</span>
                 </h2>
             </div>
-            <div class="w-full bg-[#023350] flex gap-4 justify-center items-center overflow-x-auto">
+            <div class="w-full bg-[#023350] flex gap-4 justify-start items-center overflow-x-auto">
                 <div class="py-20">
                     <div class="min-w-80 px-3">
                         <div class="flex">
@@ -3477,5 +3436,4 @@
         }
     </script>
 </body>
-
 </html>
