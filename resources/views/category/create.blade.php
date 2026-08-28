@@ -418,7 +418,7 @@
     }
 </style>
 
-<div class="w-10/12 mx-auto flex justify-center py-4 px-4">
+<div class="w-full lg:w-10/12 mx-auto flex justify-center py-4 px-4">
     <div class="vafadar-form-card">
 
         <!-- ===== هدر ===== -->
@@ -448,7 +448,7 @@
                     <!-- عنوان -->
                     <div class="full">
                         <label class="vafadar-label"> عنوان</label>
-                        <input type="text" name="title" value="{{old('title')}}" placeholder="عنوان دسته‌بندی" class="vafadar-input">
+                        <input type="text" name="title" value="{{old('title')}}" placeholder="عنوان دسته‌بندی" class="vafadar-input" required>
                         @error('title') <span class="vafadar-error">{{$message}}</span> @enderror
                     </div>
 
@@ -456,14 +456,12 @@
                     <div>
                         <label class="vafadar-label"> خلاصه</label>
                         <input type="text" name="summary" value="{{old('summary')}}" placeholder="خلاصه دسته‌بندی" class="vafadar-input">
-                        @error('summary') <span class="vafadar-error">{{$message}}</span> @enderror
                     </div>
 
                     <!-- توضیحات -->
                     <div>
                         <label class="vafadar-label"> توضیحات</label>
                         <input type="text" name="description" value="{{old('description')}}" placeholder="توضیحات دسته‌بندی" class="vafadar-input">
-                        @error('description') <span class="vafadar-error">{{$message}}</span> @enderror
                     </div>
 
                     <!-- اسلاگ -->
@@ -509,8 +507,8 @@
 
                 <div class="vafadar-categories-box">
                     <div class="vafadar-category-item">
-                        <input type="radio" name="parent_id" value="0" class="vafadar-checkbox" id="parent_0">
-                        <label for="parent_0">والد</label>
+                        <!-- <input type="radio" name="parent_id" value="0" class="vafadar-checkbox" id="parent_0"> -->
+                        <!-- <label for="parent_0">والد</label> -->
                     </div>
                     {!! $categories !!}
                 </div>
