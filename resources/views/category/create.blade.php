@@ -476,7 +476,7 @@
                     </div>
                 </div>
 
-                <div class="vafadar-section-title mt-5">
+                <div class="vafadar-section-title my-5">
                     <h3>تنظیمات نمایش</h3>
                 </div>
 
@@ -498,7 +498,7 @@
                     </div>
                 </div>
 
-                <div class="vafadar-section-title mt-5">
+                <div class="vafadar-section-title my-5">
                     <h3>دسته‌بندی والد</h3>
                 </div>
 
