@@ -195,15 +195,15 @@ class CategoryController extends Controller
         // dd($request->all());
         $validation=$request->validate([
             'title'=>['required','max:255'],
-            'description'=>['required','max:255'],
-            'summary'=>['required','max:255'],
+            // 'description'=>['required','max:255'],
+            // 'summary'=>['required','max:255'],
         ],[
             'title.required'=>" فیلد مورد نظر خالی است ",
             'title.max'=>" حداکثر کاراکتر 255 میباشد ",
-            'description.required'=>" فیلد مورد نظر خالی است ",
-            'description.max'=>" حداکثر کاراکتر 255 میباشد ",
-            'summary.required'=>" فیلد مورد نظر خالی است ",
-            'summary.max'=>" حداکثر کاراکتر 255 میباشد ",
+            // 'description.required'=>" فیلد مورد نظر خالی است ",
+            // 'description.max'=>" حداکثر کاراکتر 255 میباشد ",
+            // 'summary.required'=>" فیلد مورد نظر خالی است ",
+            // 'summary.max'=>" حداکثر کاراکتر 255 میباشد ",
         ]);
         if(isset($request->image_path)){
             storage::disk('public')->delete("category_medias/".$category->image_path);
@@ -249,14 +249,22 @@ class CategoryController extends Controller
                 //         $subCategoryFullName=Str::uuid().$subCategory['image']->getClientOriginalName();
                 //         $subCategory['image']->storeAs("category_images","$subCategoryFullName","public");
                     // }
+                    if(isset($subCategory['show_in_home'])){
+                        $show_in_home=$subCategory->show_in_home;
+                    }else{
+                        $show_in_home=0;
+                    }
+                    if(isset($subCategory['is_active'])){
+                        $is_active=$subCategory->is_active;
+                    }else{
+                        $is_active=0;
+                    }
                     Category::create([
                         "title"=>$subCategory["title"],
                         "description"=>$subCategory["description"],
                         "summary"=>$subCategory["summary"],
-                        "show_in_home"=>$subCategory["show_in_home"],
-                        "is_active"=>$subCategory["is_active"],
-                        'image_path'=>1,
-                        'slug'=>1,
+                        "show_in_home"=>$show_in_home,
+                        "is_active"=>$is_active,
                         "parent_id"=>$category->id,
                     ]);
                 // }
