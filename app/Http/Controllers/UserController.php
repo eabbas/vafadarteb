@@ -29,7 +29,10 @@ class UserController extends Controller
         return view('admin.user.create',['roles'=>$roles]);
     }
     public function store(Request $request){
-
+        $code=phone_code::where('phoneNumber',$request->phoneNumber)->first();
+        if($code!=$request->code){
+            return to_route("user.loginPage");
+        }
         $validation=$request->validate(
             [
                 'name'=>['required','max:255'],
@@ -125,6 +128,10 @@ class UserController extends Controller
         return to_route('user.list');
     }
     public function login(Request $request){
+        $code=phone_code::where('phoneNumber',$request->phoneNumber)->first();
+        if($code!=$request->code){
+            return to_route("user.loginPage");
+        }
         $user=User::where('phoneNumber',$request->phoneNumber)->first();
         Auth::login($user);
         return to_route('user.profile');
@@ -284,6 +291,7 @@ class UserController extends Controller
     
     public function send_code(Request $request)
     {
+ 
         $flag = false;
         $user = User::where('phoneNumber', $request->phoneNumber)->first();
         if ($user) {
@@ -304,6 +312,8 @@ class UserController extends Controller
                 $patternValues,  // pattern values
             );
         }
+    
+
         return response()->json(["flag" => $flag, "user" => $user]);
     }
     public function removeActivationCode(Request $request){

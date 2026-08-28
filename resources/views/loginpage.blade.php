@@ -253,7 +253,7 @@
                     </div>
 
                     <!-- فیلد شماره تلفن -->
-                    <div class="relative group">
+                    <div class="relative group" id="tell_signin">
                         <div class="absolute right-3 top-1/2 -translate-y-1/2 text-blue-400/40 group-focus-within:text-blue-400 transition-colors duration-300">
                             <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                 <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
@@ -264,17 +264,21 @@
                     </div>
 
                     <!-- فیلد رمز عبور -->
-                    <div class="relative group">
-                        <div class="absolute right-3 top-1/2 -translate-y-1/2 text-blue-400/40 group-focus-within:text-blue-400 transition-colors duration-300">
-                            <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
-                                <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
-                            </svg>
-                        </div>
-                        <input type="password" name="password" placeholder="رمز عبور" 
-                            class="input-medical w-full rounded-2xl py-3.5 pr-12 pl-4 text-white placeholder:text-white/35 outline-none transition-all duration-300">
-                    </div>
+                     <div class='w-full'>
+                         <div class="relative group" id='pass_input'>
+                             <div class="absolute right-3 top-1/2 -translate-y-1/2 text-blue-400/40 group-focus-within:text-blue-400 transition-colors duration-300">
+                                 <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                     <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
+                                     <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+                                 </svg>
+                             </div>
+                             <input type="password" name="password" placeholder="رمز عبور" 
+                                 class="input-medical w-full rounded-2xl py-3.5 pr-12 pl-4 text-white placeholder:text-white/35 outline-none transition-all duration-300">
+                         </div>
+                     </div>
 
+                    <div onclick="change_login_state(this,'code')" class='text-cyan-600 font-bold text-sm cursor-pointer' id='login_state' > ورود با رمز یکبار مصرف </div>
+                    
                     <!-- دکمه ورود -->
                     <button type="submit" class="btn-medical w-full rounded-2xl py-4 text-white font-bold text-lg tracking-wide mt-2 flex items-center justify-center gap-3 group">
                         <span>ورود به حساب</span>
@@ -381,7 +385,7 @@
                                     <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
                                 </svg>
                             </div>
-                            <input type="number" name="number" oninput="limitDigits(this)" placeholder="کد ورود " class="input-medical w-full rounded-2xl py-3.5 pr-12 pl-4 text-white placeholder:text-white/35 outline-none transition-all duration-300">
+                            <input type="number" name="code" oninput="limitDigits(this)" placeholder="کد ورود " class="input-medical w-full rounded-2xl py-3.5 pr-12 pl-4 text-white placeholder:text-white/35 outline-none transition-all duration-300">
                         </div>
 
                     </div>
@@ -568,8 +572,61 @@
         });
 
         let phoneNumber_signup=document.getElementById('tell_signup');
-        let phoneNumber_sigin=document.getElementById('tell_signin');
+        let phoneNumber_signin=document.getElementById('tell_signin');
+        let countDown=document.getElementById('countDown');
+        let pass_input=document.getElementById('pass_input');
+        let login_state=document.getElementById('login_state');
         let phoneNumber='';
+
+        function change_login_state(el,string){
+            if(string=='code'){
+                el.previousElementSibling.classList.add('flex');
+                el.previousElementSibling.classList.add('justify-between');
+                el.previousElementSibling.classList.add('gap-2');
+                el.previousElementSibling.innerHTML=
+                `
+                    <div class="relative group w-4/12 ">
+                        <div onclick='sendCode("signin")' id="countDown" class='btn-medical btn-medical-success cursor-pointer w-full flex bg-emerald-400/40 h-full rounded-2xl  text-white text-center items-center justify-center font-bold'>
+                                <span> دریافت کد  </span>
+                        </div>
+                    </div>
+                    <!-- کد ورود -->
+                    <div class="relative group w-8/12">
+                        <div class="absolute right-3 top-1/2 -translate-y-1/2 text-emerald-400/40 group-focus-within:text-emerald-400 transition-colors duration-300">
+                            <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
+                                <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+                            </svg>
+                        </div>
+                        <input type="number" name="code" oninput="limitDigits(this)" placeholder="کد ورود " class="input-medical w-full rounded-2xl py-3.5 pr-12 pl-4 text-white placeholder:text-white/35 outline-none transition-all duration-300">
+                    </div>
+                `
+                el.innerHTML='ورورد با رمز عبور'
+                el.setAttribute('onclick',"change_login_state(this,'password')")
+
+            }else{
+                el.previousElementSibling.classList.remove('flex');
+                el.previousElementSibling.classList.remove('justify-between');
+                el.previousElementSibling.classList.remove('gap-2');
+                el.previousElementSibling.innerHTML=
+                `
+                    <div class="relative group" id='pass_input'>
+                        <div class="absolute right-3 top-1/2 -translate-y-1/2 text-blue-400/40 group-focus-within:text-blue-400 transition-colors duration-300">
+                            <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
+                                <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+                            </svg>
+                        </div>
+                        <input type="password" name="password" placeholder="رمز عبور" 
+                            class="input-medical w-full rounded-2xl py-3.5 pr-12 pl-4 text-white placeholder:text-white/35 outline-none transition-all duration-300">
+                    </div>
+                `
+                el.innerHTML='ورورد با رمز یکبار مصرف '
+                el.setAttribute('onclick',"change_login_state(this,'code')")
+
+            }
+        }
+
         function sendCode(state){
             if(state == 'signup'){
                 phoneNumber = phoneNumber_signup.children[1].value
@@ -578,6 +635,7 @@
                 phoneNumber = phoneNumber_signin.children[1].value
             }
             if(phoneNumber!=""){
+                counter();
                 $.ajaxSetup({
                     headers: {
                         'X-CSRF-TOKEN': "{{ csrf_token() }}"
@@ -589,13 +647,18 @@
                     dataType:"json",
                     data:{
                         'phoneNumber':phoneNumber,
+                        'state':state,
 
                     },
                     success:function(data){
-                        if(!data.flag){
-                            counter(phoneNumber)
+                        if(state=='signup'){
+                            if(data.flag){
+                                alert("شما از قبل ثبت نام کرده اید");
+                            }
                         }else{
-                            alert("شما از قبل ثبت نام کرده اید");
+                            if(!data.flag){
+                                alert("شما از قبل ثبت نام نکرده اید");
+                            }
                         }
                         console.log()
                     },
@@ -670,6 +733,8 @@
                     "0");
             }, 1000)
         }
+
+
 
     </script>
 
