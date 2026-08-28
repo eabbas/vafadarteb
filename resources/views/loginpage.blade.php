@@ -344,7 +344,7 @@
                     </div>
 
                     <!-- ایمیل -->
-                    <div class="relative group">
+                    <!-- <div class="relative group">
                         <div class="absolute right-3 top-1/2 -translate-y-1/2 text-emerald-400/40 group-focus-within:text-emerald-400 transition-colors duration-300">
                             <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                 <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
@@ -353,7 +353,7 @@
                         </div>
                         <input type="text" name="email" placeholder="ایمیل" 
                             class="input-medical w-full rounded-2xl py-3.5 pr-12 pl-4 text-white placeholder:text-white/35 outline-none transition-all duration-300">
-                    </div>
+                    </div> -->
 
                     <!-- رمز عبور -->
                     <div class="relative group">
