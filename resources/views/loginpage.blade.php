@@ -283,10 +283,6 @@
                         </svg>
                     </button>
 
-                    <!-- لینک فراموشی رمز -->
-                    <div class="text-center mt-1">
-                        <a href="#" class="text-sm text-blue-400/50 hover:text-blue-300 transition-colors duration-300">رمز عبور را فراموش کرده‌اید؟</a>
-                    </div>
                 </form>
             </div>
 
@@ -367,7 +363,7 @@
                                 <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
                             </svg>
                         </div>
-                        <input type="password" name="password" placeholder="رمز عبور (حداقل ۴ رقم)" 
+                        <input type="password" name="password" placeholder="رمز عبور (حداقل 9 کاراکتر)" 
                             class="input-medical w-full rounded-2xl py-3.5 pr-12 pl-4 text-white placeholder:text-white/35 outline-none transition-all duration-300">
                     </div>
 
