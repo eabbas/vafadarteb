@@ -29,7 +29,7 @@ class UserController extends Controller
         return view('admin.user.create',['roles'=>$roles]);
     }
     public function store(Request $request){
-        $code=phone_code::where('phoneNumber',$request->phoneNumber)->first();
+        $phone_code=phone_code::where('phoneNumber',$request->phoneNumber)->first();
         if($phone_code->code!=$request->code){
             return to_route("user.loginPage");
         }
