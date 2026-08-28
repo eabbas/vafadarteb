@@ -12,6 +12,7 @@ use App\Models\headerSetting;
 use App\Models\hero;
 use App\Models\advertisement;
 use App\Models\product_labels;
+use App\Models\phone_code;
 use App\Models\support_information;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -280,4 +281,29 @@ class UserController extends Controller
             'product_label'=>$product_label
         ]);
     }
+    
+    public function send_code(Request $request){
+        $flag = false;
+        $user = User::where('phoneNumber', $request->phoneNumber)->first();
+        if ($user) {
+            $flag = true;
+        }
+        if (!$flag) {
+            $code = rand(1000, 10000);
+            phone_code::upsert(['phoneNumber' => $request->phoneNumber, 'code' => $code], ['phoneNumber'], ['code']);
+            $apiKey = 'YTBhZjhlNDAtZGI1Zi00ZWQ1LTkwNmYtZWU2MWFhYTkzY2M0NTcxZGQ3ZjY2Yzk1MmNjZmFiM2M2ZjVmNjBhMDg2MTQ=';
+            $client = new \IPPanel\Client($apiKey);
+            $patternValues = [
+                'activation_code' => $code,
+            ];
+            $bulkID = $client->sendPattern(
+                '7fvdx77gveizxqn',  // pattern code
+                '+983000505',  // originator
+                $request->phoneNumber,  // recipient
+                $patternValues,  // pattern values
+            );
+        }
+        return response()->json(["flag" => $flag, "user" => $user]);
+    }
+
 }
