@@ -7,13 +7,7 @@
     <script src="{{asset('assets/js/tailwind.js')}}"></script>
     <script src="{{asset('assets/js/jquery.js')}}"></script>
     <link rel="stylesheet" href="{{asset('assets/css/index.css')}}">
-       
-    <!-- Font Awesome -->
-    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"> -->
-    
-    <!-- Google Font -->
-    <!-- <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"> -->
-    
+    <link rel="stylesheet" href="{{asset('assets/css/fontawesome.css')}}">
     <style>
         /* ===== پالت رنگی مترونیک ===== */
         :root {
