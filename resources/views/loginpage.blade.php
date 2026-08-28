@@ -333,13 +333,13 @@
                     </div>
 
                     <!-- شماره تلفن -->
-                    <div class="relative group">
+                    <div class="relative group" id='tell_signup'>
                         <div class="absolute right-3 top-1/2 -translate-y-1/2 text-emerald-400/40 group-focus-within:text-emerald-400 transition-colors duration-300">
                             <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                 <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
                             </svg>
                         </div>
-                        <input id='tell_signup' type="tell" name="phoneNumber" placeholder="شماره تلفن" 
+                        <input type="tell" name="phoneNumber" placeholder="شماره تلفن" 
                             class="input-medical w-full rounded-2xl py-3.5 pr-12 pl-4 text-white placeholder:text-white/35 outline-none transition-all duration-300">
                     </div>
 
@@ -369,7 +369,7 @@
                     <div class='w-full flex gap-2 justify-between'>
                         
                         <div class="relative group w-4/12 ">
-                            <div onclick='sendCode("signup")' class='btn-medical btn-medical-success cursor-pointer w-full flex bg-emerald-400/40 h-full rounded-2xl  text-white text-center items-center justify-center font-bold'>
+                            <div onclick='sendCode("signup")' id="countDown" class='btn-medical btn-medical-success cursor-pointer w-full flex bg-emerald-400/40 h-full rounded-2xl  text-white text-center items-center justify-center font-bold'>
                                  <span> دریافت کد  </span>
                             </div>
                         </div>
@@ -381,7 +381,7 @@
                                     <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
                                 </svg>
                             </div>
-                            <input type="password" name="password" placeholder="کد ورود " class="input-medical w-full rounded-2xl py-3.5 pr-12 pl-4 text-white placeholder:text-white/35 outline-none transition-all duration-300">
+                            <input type="number" name="number" oninput="limitDigits(this)" placeholder="کد ورود " class="input-medical w-full rounded-2xl py-3.5 pr-12 pl-4 text-white placeholder:text-white/35 outline-none transition-all duration-300">
                         </div>
 
                     </div>
@@ -402,18 +402,17 @@
             </div>
         </div>
 
-        <!-- فوتر -->
-        <div class="text-center mt-8 text-white/10 text-xs">
-            <span>سامانه تخصصی تجهیزات پزشکی</span>
-            <span class="mx-2">•</span>
-            <span>v2.0</span>
-        </div>
+
     </div>
 
     <!-- ==================== جاوااسکریپت ==================== -->
     <script>
 
-
+        function limitDigits(input) {
+            if (input.value.length > 4) {
+                input.value = input.value.slice(0, 4);
+            }
+        }
         document.addEventListener('DOMContentLoaded', function() {
 
             // المان‌ها
@@ -573,33 +572,103 @@
         let phoneNumber='';
         function sendCode(state){
             if(state == 'signup'){
-                phoneNumber = phoneNumber_signup.value
+                phoneNumber = phoneNumber_signup.children[1].value
             }
             if(state == 'signin'){
-                phoneNumber = phoneNumber_signin.value
+                phoneNumber = phoneNumber_signin.children[1].value
             }
-            $.ajaxSetup({
-                headers: {
-                    'X-CSRF-TOKEN': "{{ csrf_token() }}"
-                }
-            })
-            $.ajax({
-                url:"{{url('user/send/code')}}",
-                type:"post",
-                dataType:"json",
-                data:{
-                    'phoneNumber':phoneNumber,
+            if(phoneNumber!=""){
+                $.ajaxSetup({
+                    headers: {
+                        'X-CSRF-TOKEN': "{{ csrf_token() }}"
+                    }
+                })
+                $.ajax({
+                    url:"{{url('user/send/code')}}",
+                    type:"post",
+                    dataType:"json",
+                    data:{
+                        'phoneNumber':phoneNumber,
 
-                },
-                success:function(data){
-                    console.log(data.user.name)
-                    console.log(data.flag)
-                },
-                error:function(){
-                    alert('کد ارسال نشد بعدا امتحان کنید');
+                    },
+                    success:function(data){
+                        if(!data.flag){
+                            counter(phoneNumber)
+                        }else{
+                            alert("شما از قبل ثبت نام کرده اید");
+                        }
+                        console.log()
+                    },
+                    error:function(){
+                        alert('کد ارسال نشد بعدا امتحان کنید');
+                    }
+                })
+            }else{
+                if(state == 'signup'){
+                    phoneNumber_signup.classList.add('border-3')
+                    phoneNumber_signup.classList.add('border-red-600')
+                    phoneNumber_signup.classList.add('rounded-2xl')
+                    alert('شماره تلفن خود را وارد کنید');
                 }
-            })
+                if(state == 'signin'){
+                    phoneNumber_signin.classList.add('border-3')
+                    phoneNumber_signin.classList.add('border-red-600')
+                    phoneNumber_signin.classList.add('rounded-2xl')
+                    alert('شماره تلفن خود را وارد کنید');
+                }
+            }
+        }
 
+
+        function counter(phoneNumber) {
+            countDown.classList.add('cursor-no-drop')
+            countDown.classList.remove('cursor-pointer')
+            countDown.classList.remove('hover:bg-[#d52b4a]')
+            countDown.classList.add('hover:bg-[#d52b4a]/50')
+            countDown.classList.remove('bg-[#eb3254]')
+            countDown.classList.add('bg-[#eb3254]/50')
+            countDown.setAttribute('disabled', true)
+            countDown.setAttribute('dir', 'ltr')
+            let count = 120
+            let result = setInterval(() => {
+                let minute = Math.floor(count / 60)
+                let seconds = count % 60
+                count -= 1
+                if (count < 0) {
+
+                    $.ajaxSetup({
+                        headers: {
+                            'X-CSRF-TOKEN': "{{ csrf_token() }}"
+                        }
+                    })
+                    $.ajax({
+                        url: "{{ route('user.removeActivationCode') }}",
+                        type: "POST",
+                        dataType: "json",
+                        data: {
+                            'phoneNumber': phoneNumber
+                        },
+                        success: function(data) {
+                            console.log(data)
+                            countDown.classList.remove('cursor-no-drop')
+                            countDown.classList.add('bg-[#eb3254]')
+                            countDown.classList.remove('bg-[#eb3254]/50')
+                            countDown.classList.add('cursor-pointer')
+                            countDown.classList.add('hover:bg-[#d52b4a]')
+                            countDown.classList.remove('hover:bg-[#d52b4a]/50')
+                            countDown.removeAttribute('disabled')
+                            countDown.removeAttribute('dir')
+                            countDown.innerText = "ارسال مجدد"
+                        },
+                        error: function() {
+                            alert('خطا در دریافت اطلاعات');
+                        }
+                    })
+                    clearInterval(result)
+                }
+                countDown.innerText = minute.toString().padStart(2, "0") + " : " + seconds.toString().padStart(2,
+                    "0");
+            }, 1000)
         }
 
     </script>
