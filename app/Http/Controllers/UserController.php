@@ -29,13 +29,16 @@ class UserController extends Controller
         return view('admin.user.create',['roles'=>$roles]);
     }
     public function store(Request $request){
-
+        $code=phone_code::where('phoneNumber',$request->phoneNumber)->first();
+        if($code!=$request->code){
+            return to_route("user.loginPage");
+        }
         $validation=$request->validate(
             [
                 'name'=>['required','max:255'],
                 'family'=>['required','max:255'],
                 'phoneNumber'=>['required','max:11'],
-                'email'=>['required','max:255'],
+                // 'email'=>['required','max:255'],
                 'password'=>['required','max:255'],
             ],[
                 'name.required'=>'لطفا فیلد مورد نظر را پر فرمایید',
@@ -44,8 +47,8 @@ class UserController extends Controller
                 'family.max'=>'تعداد کاراکتر های مجاز 255 تا میباشد',
                 'phoneNumber.required'=>'لطفا فیلد مورد نظر را پر فرمایید',
                 'phoneNumber.max'=>'تعداد کاراکتر های مجاز 11 تا میباشد',
-                'email.required'=>'لطفا فیلد مورد نظر را پر فرمایید',
-                'email.max'=>'تعداد کاراکتر های مجاز 255 تا میباشد',
+                // 'email.required'=>'لطفا فیلد مورد نظر را پر فرمایید',
+                // 'email.max'=>'تعداد کاراکتر های مجاز 255 تا میباشد',
                 'password.required'=>'لطفا فیلد مورد نظر را پر فرمایید',
                 'password.max'=>'تعداد کاراکتر های مجاز 255 تا میباشد',
             ]
@@ -60,7 +63,7 @@ class UserController extends Controller
             "name"=>$validation['name'],
             "family"=>$validation['family'],
             "phoneNumber"=>$validation['phoneNumber'],
-            "email"=>$validation['email'],
+            "email"=>$request['email'],
             "password"=>$validation['password'],
         ]);
         $role=role::where('ea_title','user')->first();
@@ -80,7 +83,7 @@ class UserController extends Controller
                 'name'=>['required','max:255'],
                 'family'=>['required','max:255'],
                 'phoneNumber'=>['required','max:11'],
-                'email'=>['required','max:255'],
+                // 'email'=>['required','max:255'],
                 'password'=>['required','max:255'],
             ],[
                 'name.required'=>'لطفا فیلد مورد نظر را پر فرمایید',
@@ -89,8 +92,8 @@ class UserController extends Controller
                 'family.max'=>'تعداد کاراکتر های مجاز 255 تا میباشد',
                 'phoneNumber.required'=>'لطفا فیلد مورد نظر را پر فرمایید',
                 'phoneNumber.max'=>'تعداد کاراکتر های مجاز 11 تا میباشد',
-                'email.required'=>'لطفا فیلد مورد نظر را پر فرمایید',
-                'email.max'=>'تعداد کاراکتر های مجاز 255 تا میباشد',
+                // 'email.required'=>'لطفا فیلد مورد نظر را پر فرمایید',
+                // 'email.max'=>'تعداد کاراکتر های مجاز 255 تا میباشد',
                 'password.requi$'=>'لطفا فیلد مورد نظر را پر فرمایید',
                 'password.max'=>'تعداد کاراکتر های مجاز 255 تا میباشد',
             ]
@@ -104,7 +107,7 @@ class UserController extends Controller
             "name"=>$validation['name'],
             "family"=>$validation['family'],
             "phoneNumber"=>$validation['phoneNumber'],
-            "email"=>$validation['email'],
+            "email"=>$request['email'],
             "password"=>$validation['password'],
         ]);
         if(isset($request->roles)){
@@ -125,6 +128,10 @@ class UserController extends Controller
         return to_route('user.list');
     }
     public function login(Request $request){
+        $code=phone_code::where('phoneNumber',$request->phoneNumber)->first();
+        if($code!=$request->code){
+            return to_route("user.loginPage");
+        }
         $user=User::where('phoneNumber',$request->phoneNumber)->first();
         Auth::login($user);
         return to_route('user.profile');
@@ -282,7 +289,9 @@ class UserController extends Controller
         ]);
     }
     
-    public function send_code(Request $request){
+    public function send_code(Request $request)
+    {
+ 
         $flag = false;
         $user = User::where('phoneNumber', $request->phoneNumber)->first();
         if ($user) {
@@ -303,7 +312,16 @@ class UserController extends Controller
                 $patternValues,  // pattern values
             );
         }
+    
+
         return response()->json(["flag" => $flag, "user" => $user]);
+    }
+    public function removeActivationCode(Request $request){
+        $row = phone_code::where('phoneNumber', $request->phoneNumber)->first();
+        if ($row) {
+            $row->delete();
+        }
+        return response()->json($row);
     }
 
 }
