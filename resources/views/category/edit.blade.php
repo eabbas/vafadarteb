@@ -583,7 +583,8 @@ $count=1;
             @csrf
             
             <!-- ===== گرید فیلدها ===== -->
-            <div class="vafadar-grid grid grid-cols-2 gap-6">
+             <h3> اطلاعات اصلی </h3>
+            <div class="vafadar-grid grid grid-cols-2 gap-6 mr-4">
 
                 <!-- تصویر -->
                 <div>
@@ -635,10 +636,10 @@ $count=1;
                 @endif
                 <!-- ===== توگل‌ها ===== -->
                 <div class="vafadar-toggle-group col-span-2 flex gap-8 justify-start items-center flex-wrap">
-
+                    <h3> تنظیمات نمایش </h3>
                     <!-- نمایش در خانه -->
-                    <div class="vafadar-toggle-label">
-                        <span>🏠 نمایش در خانه</span>
+                    <div class="vafadar-toggle-label mr-4">
+                        <span> نمایش در خانه</span>
                         @if($category->show_in_home==0)
                             <div class="vafadar-toggle" onclick="toggleState(this)">
                                 <div class="vafadar-toggle-dot"></div>

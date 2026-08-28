@@ -441,10 +441,9 @@
 
                 <div class="vafadar-section-title mt-5">
                     <h3>اطلاعات اصلی</h3>
-                    <div class="line"></div>
                 </div>
 
-                <div class="vafadar-grid-2">
+                <div class="vafadar-grid-2 mr-4">
                     <!-- عنوان -->
                     <div class="full">
                         <label class="vafadar-label"> عنوان</label>
@@ -479,10 +478,9 @@
 
                 <div class="vafadar-section-title mt-5">
                     <h3>تنظیمات نمایش</h3>
-                    <div class="line"></div>
                 </div>
 
-                <div class="vafadar-grid-2">
+                <div class="vafadar-grid-2 mr-4">
                     <!-- نمایش در خانه -->
                     <div>
                         <div class="vafadar-checkbox-group">
@@ -502,10 +500,9 @@
 
                 <div class="vafadar-section-title mt-5">
                     <h3>دسته‌بندی والد</h3>
-                    <div class="line"></div>
                 </div>
 
-                <div class="vafadar-categories-box">
+                <div class="vafadar-categories-box mr-4">
                     <div class="vafadar-category-item">
                         <!-- <input type="radio" name="parent_id" value="0" class="vafadar-checkbox" id="parent_0"> -->
                         <!-- <label for="parent_0">والد</label> -->
@@ -517,7 +514,6 @@
             <div class="vafadar-section mt-5">
                 <div class="vafadar-section-title">
                     <h3>ویژگی‌ها</h3>
-                    <div class="line"></div>
                 </div>
 
                 <div class="flex flex-col gap-3" id="attributes"></div>
