@@ -214,8 +214,8 @@ class CategoryController extends Controller
             $category->save();
         }
         $category->title=$validation['title'];
-        $category->description=$validation['description'];
-        $category->summary=$validation['summary'];
+        $category->description=$request['description'];
+        $category->summary=$request['summary'];
         if(isset($request['show_in_home'])){
             $category->show_in_home=$request->show_in_home;
             }else{
