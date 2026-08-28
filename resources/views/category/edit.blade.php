@@ -584,7 +584,7 @@ $count=1;
             
             <!-- ===== گرید فیلدها ===== -->
              <h3> اطلاعات اصلی </h3>
-            <div class="vafadar-grid grid grid-cols-2 gap-6 mr-4">
+            <div class="vafadar-grid grid grid-cols-2 gap-6 mr-4 mt-5">
 
                 <!-- تصویر -->
                 <div>
@@ -635,8 +635,8 @@ $count=1;
                     </div>
                 @endif
                 <!-- ===== توگل‌ها ===== -->
+                <h3> تنظیمات نمایش </h3>
                 <div class="vafadar-toggle-group col-span-2 flex gap-8 justify-start items-center flex-wrap">
-                    <h3> تنظیمات نمایش </h3>
                     <!-- نمایش در خانه -->
                     <div class="vafadar-toggle-label mr-4">
                         <span> نمایش در خانه</span>
