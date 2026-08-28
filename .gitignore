@@ -1,7 +1,7 @@
 *.log
 .DS_Store
 .env
-composer.lock
+/composer.lock
 .env.backup
 .env.production
 .phpactor.json
