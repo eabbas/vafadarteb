@@ -30,7 +30,7 @@ class UserController extends Controller
     }
     public function store(Request $request){
         $code=phone_code::where('phoneNumber',$request->phoneNumber)->first();
-        if($code!=$request->code){
+        if($phone_code->code!=$request->code){
             return to_route("user.loginPage");
         }
         $validation=$request->validate(
@@ -128,8 +128,8 @@ class UserController extends Controller
         return to_route('user.list');
     }
     public function login(Request $request){
-        $code=phone_code::where('phoneNumber',$request->phoneNumber)->first();
-        if($code!=$request->code){
+        $phone_code=phone_code::where('phoneNumber',$request->phoneNumber)->first();
+        if($phone_code->code!=$request->code){
             return to_route("user.loginPage");
         }
         $user=User::where('phoneNumber',$request->phoneNumber)->first();
