@@ -54,8 +54,8 @@ class CategoryController extends Controller
         }
         $created_category=category::create([
             'title'=>$validation['title'],
-            'description'=>$validation['description'],
-            'summary'=>$validation['summary'],
+            'description'=>$request['description'],
+            'summary'=>$request['summary'],
             'show_in_home'=>$show_in_home,
             'is_active'=>$is_active,
             'image_path'=>$request['image_path'],
