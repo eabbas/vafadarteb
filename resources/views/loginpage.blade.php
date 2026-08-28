@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ورود / ثبت نام - تجهیزات پزشکی</title>
     <script src="{{asset('assets/js/tailwind.js')}}"></script>
-    <script src="{{asset('assets/js/jquary.js')}}"></script>
+    <script src="{{asset('assets/js/jquery.js')}}"></script>
     <style>
         /* انیمیشن‌های سفارشی */
         @keyframes float {
@@ -339,7 +339,7 @@
                                 <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
                             </svg>
                         </div>
-                        <input type="tell" name="phoneNumber" placeholder="شماره تلفن" 
+                        <input id='tell_signup' type="tell" name="phoneNumber" placeholder="شماره تلفن" 
                             class="input-medical w-full rounded-2xl py-3.5 pr-12 pl-4 text-white placeholder:text-white/35 outline-none transition-all duration-300">
                     </div>
 
@@ -366,9 +366,28 @@
                         <input type="password" name="password" placeholder="رمز عبور (حداقل 9 کاراکتر)" 
                             class="input-medical w-full rounded-2xl py-3.5 pr-12 pl-4 text-white placeholder:text-white/35 outline-none transition-all duration-300">
                     </div>
+                    <div class='w-full flex gap-2 justify-between'>
+                        
+                        <div class="relative group w-4/12 ">
+                            <div onclick='sendCode("signup")' class='btn-medical btn-medical-success cursor-pointer w-full flex bg-emerald-400/40 h-full rounded-2xl  text-white text-center items-center justify-center font-bold'>
+                                 <span> دریافت کد  </span>
+                            </div>
+                        </div>
+                        <!-- کد ورود -->
+                        <div class="relative group w-8/12">
+                            <div class="absolute right-3 top-1/2 -translate-y-1/2 text-emerald-400/40 group-focus-within:text-emerald-400 transition-colors duration-300">
+                                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
+                                    <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+                                </svg>
+                            </div>
+                            <input type="password" name="password" placeholder="کد ورود " class="input-medical w-full rounded-2xl py-3.5 pr-12 pl-4 text-white placeholder:text-white/35 outline-none transition-all duration-300">
+                        </div>
+
+                    </div>
 
                     <!-- دکمه ثبت نام -->
-                    <button type="submit" class="btn-medical btn-medical-success w-full rounded-2xl py-4 text-white font-bold text-lg tracking-wide mt-1 flex items-center justify-center gap-3 group">
+                    <button type="submit" class="btn-medical btn-medical-success cursor-pointer w-full rounded-2xl py-4 text-white font-bold text-lg tracking-wide mt-1 flex items-center justify-center gap-3 group">
                         <span>ثبت نام</span>
                         <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
                             <path d="M5 12h14"/><path d="M12 5l7 7-7 7"/>
@@ -393,6 +412,8 @@
 
     <!-- ==================== جاوااسکریپت ==================== -->
     <script>
+
+
         document.addEventListener('DOMContentLoaded', function() {
 
             // المان‌ها
@@ -546,6 +567,41 @@
             // =============================================
             console.log('🚀 سامانه پزشکی آماده است!');
         });
+
+        let phoneNumber_signup=document.getElementById('tell_signup');
+        let phoneNumber_sigin=document.getElementById('tell_signin');
+        let phoneNumber='';
+        function sendCode(state){
+            if(state == 'signup'){
+                phoneNumber = phoneNumber_signup.value
+            }
+            if(state == 'signin'){
+                phoneNumber = phoneNumber_signin.value
+            }
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': "{{ csrf_token() }}"
+                }
+            })
+            $.ajax({
+                url:"{{url('user/send/code')}}",
+                type:"post",
+                dataType:"json",
+                data:{
+                    'phoneNumber':phoneNumber,
+
+                },
+                success:function(data){
+                    console.log(data.user.name)
+                    console.log(data.flag)
+                },
+                error:function(){
+                    alert('کد ارسال نشد بعدا امتحان کنید');
+                }
+            })
+
+        }
+
     </script>
 
 </body>
