@@ -773,7 +773,7 @@
             </header>
 
             <!-- ===== محتوای داشبورد ===== -->
-            <div class="p-3 sm:p-5 lg:p-8">
+            <div class="">
                 @yield('content')
             </div>
             

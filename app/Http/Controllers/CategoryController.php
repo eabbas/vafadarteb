@@ -28,15 +28,15 @@ class CategoryController extends Controller
         // dd($request->all());
         $validation=$request->validate([
             'title'=>['required','max:255'],
-            'description'=>['required','max:255'],
-            'summary'=>['required','max:255'],
+            // 'description'=>['required','max:255'],
+            // 'summary'=>['required','max:255'],
         ],[
             'title.required'=>" فیلد مورد نظر خالی است ",
             'title.max'=>" حداکثر کاراکتر 255 میباشد ",
-            'description.required'=>" فیلد مورد نظر خالی است ",
-            'description.max'=>" حداکثر کاراکتر 255 میباشد ",
-            'summary.required'=>" فیلد مورد نظر خالی است ",
-            'summary.max'=>" حداکثر کاراکتر 255 میباشد ",
+            // 'description.required'=>" فیلد مورد نظر خالی است ",
+            // 'description.max'=>" حداکثر کاراکتر 255 میباشد ",
+            // 'summary.required'=>" فیلد مورد نظر خالی است ",
+            // 'summary.max'=>" حداکثر کاراکتر 255 میباشد ",
         ]);
         if(isset($request['show_in_home'])){
             $show_in_home=$request['show_in_home'];
