@@ -128,10 +128,7 @@ class UserController extends Controller
         return to_route('user.list');
     }
     public function login(Request $request){
-        $phone_code=phone_code::where('phoneNumber',$request->phoneNumber)->first();
-        if($phone_code->code!=$request->code){
-            return to_route("user.loginPage");
-        }
+ 
         $user=User::where('phoneNumber',$request->phoneNumber)->first();
         Auth::login($user);
         return to_route('user.profile');
