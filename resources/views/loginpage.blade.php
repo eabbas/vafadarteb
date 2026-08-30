@@ -373,7 +373,7 @@
                     <div class='w-full flex gap-2 justify-between'>
                         
                         <div class="relative group w-4/12 ">
-                            <div onclick='sendCode("signup")' id="countDown" class='btn-medical btn-medical-success cursor-pointer w-full flex bg-emerald-400/40 h-full rounded-2xl  text-white text-center items-center justify-center font-bold'>
+                            <div onclick='sendCodeSignup("signup")' id="countDownSignup" class='btn-medical btn-medical-success cursor-pointer w-full flex bg-emerald-400/40 h-full rounded-2xl  text-white text-center items-center justify-center font-bold'>
                                  <span> دریافت کد  </span>
                             </div>
                         </div>
@@ -568,12 +568,13 @@
             // =============================================
             // دکمه‌های toggle با افکت hover صدا (اختیاری)
             // =============================================
-            console.log('🚀 سامانه پزشکی آماده است!');
+           
         });
 
         let phoneNumber_signup=document.getElementById('tell_signup');
         let phoneNumber_signin=document.getElementById('tell_signin');
-        let countDown=document.getElementById('countDown');
+        // let countDownLogin=document.getElementById('countDownLogin');
+        let countDownSignup=document.getElementById('countDownSignup');
         let pass_input=document.getElementById('pass_input');
         let login_state=document.getElementById('login_state');
         let phoneNumber='';
@@ -586,7 +587,7 @@
                 el.previousElementSibling.innerHTML=
                 `
                     <div class="relative group w-4/12 ">
-                        <div onclick='sendCode("signin")' id="countDown" class='btn-medical btn-medical-success cursor-pointer w-full flex bg-emerald-400/40 h-full rounded-2xl  text-white text-center items-center justify-center font-bold'>
+                        <div onclick='sendCodeLogin("signin")' id="countDownLogin" class='btn-medical btn-medical-success cursor-pointer w-full flex bg-emerald-400/40 h-full rounded-2xl  text-white text-center items-center justify-center font-bold'>
                                 <span> دریافت کد  </span>
                         </div>
                     </div>
@@ -627,15 +628,9 @@
             }
         }
 
-        function sendCode(state){
-            if(state == 'signup'){
-                phoneNumber = phoneNumber_signup.children[1].value
-            }
-            if(state == 'signin'){
-                phoneNumber = phoneNumber_signin.children[1].value
-            }
+        function sendCodeSignup(state){
+            phoneNumber = phoneNumber_signup.children[1].value
             if(phoneNumber!=""){
-                counter();
                 $.ajaxSetup({
                     headers: {
                         'X-CSRF-TOKEN': "{{ csrf_token() }}"
@@ -651,14 +646,10 @@
 
                     },
                     success:function(data){
-                        if(state=='signup'){
-                            if(data.flag){
-                                alert("شما از قبل ثبت نام کرده اید");
-                            }
+                        if(data.flag){
+                            alert("شما از قبل ثبت نام کرده اید");
                         }else{
-                            if(!data.flag){
-                                alert("شما از قبل ثبت نام نکرده اید");
-                            }
+                            counterSignupButton(phoneNumber);
                         }
                         console.log()
                     },
@@ -667,31 +658,66 @@
                     }
                 })
             }else{
-                if(state == 'signup'){
-                    phoneNumber_signup.classList.add('border-3')
-                    phoneNumber_signup.classList.add('border-red-600')
-                    phoneNumber_signup.classList.add('rounded-2xl')
-                    alert('شماره تلفن خود را وارد کنید');
-                }
-                if(state == 'signin'){
-                    phoneNumber_signin.classList.add('border-3')
-                    phoneNumber_signin.classList.add('border-red-600')
-                    phoneNumber_signin.classList.add('rounded-2xl')
-                    alert('شماره تلفن خود را وارد کنید');
-                }
+                phoneNumber_signup.classList.add('border-3')
+                phoneNumber_signup.classList.add('border-red-600')
+                phoneNumber_signup.classList.add('rounded-2xl')
+                alert('شماره تلفن خود را وارد کنید');
+            }
+        }
+        function sendCodeLogin(state){
+            let countDownLogin=document.getElementById('countDownLogin');
+
+            phoneNumber = phoneNumber_signin.children[1].value
+            
+            if(phoneNumber!=""){
+                $.ajaxSetup({
+                    headers: {
+                        'X-CSRF-TOKEN': "{{ csrf_token() }}"
+                    }
+                })
+                $.ajax({
+                    url:"{{url('user/send/code')}}",
+                    type:"post",
+                    dataType:"json",
+                    data:{
+                        'phoneNumber':phoneNumber,
+                        'state':state,
+
+                    },
+                    success:function(data){
+
+                        if(!data.flag){
+                            alert("شما از قبل ثبت نام نکرده اید");
+                        }else{
+                            counterLoginButton(phoneNumber);
+                        }
+                        
+                        console.log()
+                    },
+                    error:function(){
+                        alert('کد ارسال نشد بعدا امتحان کنید');
+                    }
+                })
+            }else{
+
+                phoneNumber_signin.classList.add('border-3')
+                phoneNumber_signin.classList.add('border-red-600')
+                phoneNumber_signin.classList.add('rounded-2xl')
+                alert('شماره تلفن خود را وارد کنید');
+
             }
         }
 
 
-        function counter(phoneNumber) {
-            countDown.classList.add('cursor-no-drop')
-            countDown.classList.remove('cursor-pointer')
-            countDown.classList.remove('hover:bg-[#d52b4a]')
-            countDown.classList.add('hover:bg-[#d52b4a]/50')
-            countDown.classList.remove('bg-[#eb3254]')
-            countDown.classList.add('bg-[#eb3254]/50')
-            countDown.setAttribute('disabled', true)
-            countDown.setAttribute('dir', 'ltr')
+        function counterSignupButton(phoneNumber) {
+            countDownSignup.classList.add('cursor-no-drop')
+            countDownSignup.classList.remove('cursor-pointer')
+            countDownSignup.classList.remove('hover:bg-[#d52b4a]')
+            countDownSignup.classList.add('hover:bg-[#d52b4a]/50')
+            countDownSignup.classList.remove('bg-[#eb3254]')
+            countDownSignup.classList.add('bg-[#eb3254]/50')
+            countDownSignup.setAttribute('disabled', true)
+            countDownSignup.setAttribute('dir', 'ltr')
             let count = 120
             let result = setInterval(() => {
                 let minute = Math.floor(count / 60)
@@ -713,15 +739,15 @@
                         },
                         success: function(data) {
                             console.log(data)
-                            countDown.classList.remove('cursor-no-drop')
-                            countDown.classList.add('bg-[#eb3254]')
-                            countDown.classList.remove('bg-[#eb3254]/50')
-                            countDown.classList.add('cursor-pointer')
-                            countDown.classList.add('hover:bg-[#d52b4a]')
-                            countDown.classList.remove('hover:bg-[#d52b4a]/50')
-                            countDown.removeAttribute('disabled')
-                            countDown.removeAttribute('dir')
-                            countDown.innerText = "ارسال مجدد"
+                            countDownSignup.classList.remove('cursor-no-drop')
+                            countDownSignup.classList.add('bg-[#eb3254]')
+                            countDownSignup.classList.remove('bg-[#eb3254]/50')
+                            countDownSignup.classList.add('cursor-pointer')
+                            countDownSignup.classList.add('hover:bg-[#d52b4a]')
+                            countDownSignup.classList.remove('hover:bg-[#d52b4a]/50')
+                            countDownSignup.removeAttribute('disabled')
+                            countDownSignup.removeAttribute('dir')
+                            countDownSignup.innerText = "ارسال مجدد"
                         },
                         error: function() {
                             alert('خطا در دریافت اطلاعات');
@@ -729,7 +755,57 @@
                     })
                     clearInterval(result)
                 }
-                countDown.innerText = minute.toString().padStart(2, "0") + " : " + seconds.toString().padStart(2,
+                countDownSignup.innerText = minute.toString().padStart(2, "0") + " : " + seconds.toString().padStart(2,
+                    "0");
+            }, 1000)
+        }
+        function counterLoginButton(phoneNumber) {
+            countDownLogin.classList.add('cursor-no-drop')
+            countDownLogin.classList.remove('cursor-pointer')
+            countDownLogin.classList.remove('hover:bg-[#d52b4a]')
+            countDownLogin.classList.add('hover:bg-[#d52b4a]/50')
+            countDownLogin.classList.remove('bg-[#eb3254]')
+            countDownLogin.classList.add('bg-[#eb3254]/50')
+            countDownLogin.setAttribute('disabled', true)
+            countDownLogin.setAttribute('dir', 'ltr')
+            let count = 120
+            let result = setInterval(() => {
+                let minute = Math.floor(count / 60)
+                let seconds = count % 60
+                count -= 1
+                if (count < 0) {
+
+                    $.ajaxSetup({
+                        headers: {
+                            'X-CSRF-TOKEN': "{{ csrf_token() }}"
+                        }
+                    })
+                    $.ajax({
+                        url: "{{ route('user.removeActivationCode') }}",
+                        type: "POST",
+                        dataType: "json",
+                        data: {
+                            'phoneNumber': phoneNumber
+                        },
+                        success: function(data) {
+                            console.log(data)
+                            countDownLogin.classList.remove('cursor-no-drop')
+                            countDownLogin.classList.add('bg-[#eb3254]')
+                            countDownLogin.classList.remove('bg-[#eb3254]/50')
+                            countDownLogin.classList.add('cursor-pointer')
+                            countDownLogin.classList.add('hover:bg-[#d52b4a]')
+                            countDownLogin.classList.remove('hover:bg-[#d52b4a]/50')
+                            countDownLogin.removeAttribute('disabled')
+                            countDownLogin.removeAttribute('dir')
+                            countDownLogin.innerText = "ارسال مجدد"
+                        },
+                        error: function() {
+                            alert('خطا در دریافت اطلاعات');
+                        }
+                    })
+                    clearInterval(result)
+                }
+                countDownLogin.innerText = minute.toString().padStart(2, "0") + " : " + seconds.toString().padStart(2,
                     "0");
             }, 1000)
         }
