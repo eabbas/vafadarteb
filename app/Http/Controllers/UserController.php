@@ -294,7 +294,7 @@ class UserController extends Controller
         if ($user) {
             $flag = true;
         }
-        if (!$flag) {
+        if($request->state=='login'){
             $code = rand(1000, 10000);
             phone_code::upsert(['phoneNumber' => $request->phoneNumber, 'code' => $code], ['phoneNumber'], ['code']);
             $apiKey = 'YTBhZjhlNDAtZGI1Zi00ZWQ1LTkwNmYtZWU2MWFhYTkzY2M0NTcxZGQ3ZjY2Yzk1MmNjZmFiM2M2ZjVmNjBhMDg2MTQ=';
@@ -308,6 +308,22 @@ class UserController extends Controller
                 $request->phoneNumber,  // recipient
                 $patternValues,  // pattern values
             );
+        }else{
+            if (!$flag) {
+                $code = rand(1000, 10000);
+                phone_code::upsert(['phoneNumber' => $request->phoneNumber, 'code' => $code], ['phoneNumber'], ['code']);
+                $apiKey = 'YTBhZjhlNDAtZGI1Zi00ZWQ1LTkwNmYtZWU2MWFhYTkzY2M0NTcxZGQ3ZjY2Yzk1MmNjZmFiM2M2ZjVmNjBhMDg2MTQ=';
+                $client = new \IPPanel\Client($apiKey);
+                $patternValues = [
+                    'activation_code' => $code,
+                ];
+                $bulkID = $client->sendPattern(
+                    '7fvdx77gveizxqn',  // pattern code
+                    '+983000505',  // originator
+                    $request->phoneNumber,  // recipient
+                    $patternValues,  // pattern values
+                );
+            }
         }
     
 
