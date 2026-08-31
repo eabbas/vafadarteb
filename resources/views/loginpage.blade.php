@@ -627,36 +627,64 @@
 
             }
         }
-
+        
+        let check='';
+        function checkUser(phoneNumber){
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': "{{ csrf_token() }}"
+                }
+            })
+            $.ajax({
+                url: "{{ route('user.checkUserExist') }}",
+                type: "POST",
+                dataType: "json",
+                data: {
+                    'phoneNumber': phoneNumber,
+                },
+                success: function(data) {
+                    check = data;
+                },
+                error: function() {
+                    alert('خطا در دریافت اطلاعات');
+                }
+            })
+            return check;
+        }
         function sendCodeSignup(state){
             phoneNumber = phoneNumber_signup.children[1].value
             if(phoneNumber!=""){
-                $.ajaxSetup({
-                    headers: {
-                        'X-CSRF-TOKEN': "{{ csrf_token() }}"
-                    }
-                })
-                $.ajax({
-                    url:"{{url('user/send/code')}}",
-                    type:"post",
-                    dataType:"json",
-                    data:{
-                        'phoneNumber':phoneNumber,
-                        'state':state,
-
-                    },
-                    success:function(data){
-                        if(data.flag){
-                            alert("شما از قبل ثبت نام کرده اید");
-                        }else{
-                            counterSignupButton(phoneNumber);
+                let checkUserResult=checkUser(phoneNumber)
+                console.log(checkUserResult);
+                if(!checkUserResult){
+                    counterSignupButton(phoneNumber);
+                    $.ajaxSetup({
+                        headers: {
+                            'X-CSRF-TOKEN': "{{ csrf_token() }}"
                         }
-                        console.log()
-                    },
-                    error:function(){
-                        alert('کد ارسال نشد بعدا امتحان کنید');
-                    }
-                })
+                    })
+                    $.ajax({
+                        url:"{{url('user/send/code')}}",
+                        type:"post",
+                        dataType:"json",
+                        data:{
+                            'phoneNumber':phoneNumber,
+                            'state':state,
+    
+                        },
+                        success:function(data){
+                            // console.log(data.result)
+                            // if(data.flag){
+                            //     alert("شما از قبل ثبت نام کرده اید");
+                            // }
+                        },
+                        error:function(){
+                            alert('کد ارسال نشد بعدا امتحان کنید');
+                        }
+                    })
+                }else{
+                    alert('این شماره از قبل ثبت نام شده است')
+                }
             }else{
                 phoneNumber_signup.classList.add('border-3')
                 phoneNumber_signup.classList.add('border-red-600')
@@ -664,6 +692,8 @@
                 alert('شماره تلفن خود را وارد کنید');
             }
         }
+
+
         function sendCodeLogin(state){
             let countDownLogin=document.getElementById('countDownLogin');
 
@@ -707,8 +737,7 @@
 
             }
         }
-
-
+ 
         function counterSignupButton(phoneNumber) {
             countDownSignup.classList.add('cursor-no-drop')
             countDownSignup.classList.remove('cursor-pointer')
@@ -717,27 +746,29 @@
             countDownSignup.classList.remove('bg-[#eb3254]')
             countDownSignup.classList.add('bg-[#eb3254]/50')
             countDownSignup.setAttribute('disabled', true)
+            countDownSignup.disabled = true
+            countDownSignup.setAttribute('readonly', true)
             countDownSignup.setAttribute('dir', 'ltr')
-            let count = 120
-            let result = setInterval(() => {
-                let minute = Math.floor(count / 60)
-                let seconds = count % 60
-                count -= 1
-                if (count < 0) {
-
-                    $.ajaxSetup({
-                        headers: {
-                            'X-CSRF-TOKEN': "{{ csrf_token() }}"
-                        }
-                    })
-                    $.ajax({
-                        url: "{{ route('user.removeActivationCode') }}",
-                        type: "POST",
-                        dataType: "json",
-                        data: {
-                            'phoneNumber': phoneNumber
-                        },
-                        success: function(data) {
+            countDownSignup.removeAttribute('onclick')
+            let count = 80
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': "{{ csrf_token() }}"
+                }
+            })
+            $.ajax({
+                url: "{{ route('user.removeActivationCode') }}",
+                type: "POST",
+                dataType: "json",
+                data: {
+                    'phoneNumber': phoneNumber,
+                },
+                success: function(data) {
+                    let result = setInterval(() => {
+                        let minute = Math.floor(count / 60)
+                        let seconds = count % 60
+                        count -= 1
+                        if(count<0){
                             console.log(data)
                             countDownSignup.classList.remove('cursor-no-drop')
                             countDownSignup.classList.add('bg-[#eb3254]')
@@ -746,18 +777,24 @@
                             countDownSignup.classList.add('hover:bg-[#d52b4a]')
                             countDownSignup.classList.remove('hover:bg-[#d52b4a]/50')
                             countDownSignup.removeAttribute('disabled')
+                            countDownSignup.disabled = false
                             countDownSignup.removeAttribute('dir')
-                            countDownSignup.innerText = "ارسال مجدد"
-                        },
-                        error: function() {
-                            alert('خطا در دریافت اطلاعات');
+                            countDownSignup.setAttribute('onclick','sendCodeSignup("signup")')
+
+                            clearInterval(result)
                         }
-                    })
-                    clearInterval(result)
+                        countDownSignup.innerText = minute.toString().padStart(2, "0") + " : " + seconds.toString().padStart(2,"0");
+
+                        if(count < 0){
+                            countDownSignup.innerText = "ارسال مجدد"
+                        }
+                    }, 1000)                                
+                },
+                error: function() {
+                    alert('خطا در دریافت اطلاعات');
                 }
-                countDownSignup.innerText = minute.toString().padStart(2, "0") + " : " + seconds.toString().padStart(2,
-                    "0");
-            }, 1000)
+            })
+
         }
         function counterLoginButton(phoneNumber) {
             countDownLogin.classList.add('cursor-no-drop')
