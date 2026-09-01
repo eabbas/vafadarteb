@@ -10,7 +10,74 @@
 </head>
 
 <body class="bg-[#f3f4f6]">
+<style>
+    @import url(./fontiran.css);
+    *{  
+            font-family: IRANSansXFaNum;
+    }
+    :root{
+    --background:#07070B;
+    --background-2:#1B1C1E;
+    --card:#2F272C;
+    --card-2:#443F43;
 
+    --gold:#f18e15;
+    --gold-dark:#6A3922;
+
+    --purple:#26275F;
+    --magenta:#A02164;
+
+    --text:#E3E1E1;
+    --text-secondary:#B8AFAC;
+    --text-muted:#8D8786;
+    --border:#666162;
+    --star:#D7B437;
+}
+.gradient_box1{
+    background: linear-gradient(275deg,rgba(170, 117, 44, 1) 27%, rgba(224, 180, 73, 1) 90%);
+}
+.transition_root {
+      transition: all 300ms ease-in;
+    }
+
+.gradient_comment_box{
+   /* transition: all 500ms ease-in 50ms; */
+   /* transform: scale(1.03); */
+    background: linear-gradient(305deg,rgba(19, 15, 53, 1) 0%, rgba(7, 7, 11, 1) 16%, rgba(9, 8, 13, 1) 89%, rgba(32, 22, 33, 1) 100%);
+}
+
+.animation_play_vidio{
+ 
+    border: 1px dashed red;
+    animation:animation_play_vidio infinite 1.3s linear;
+    
+}
+@keyframes animation_play_vidio{
+0%{
+   box-shadow:0px 0px 1px 1px #ff8c00;
+    /* box-shadow; */
+}
+25%{
+    box-shadow:0px 0px 2px 2px #f18a0c;
+    
+}
+50%{
+    box-shadow:0px 0px 3px 3px #ed8c17;
+   
+}
+75%{
+    box-shadow:0px 0px 4px 4px #f4992a;
+    
+}
+100%{
+    box-shadow:0px 0px 5px 5px #ed9a35;
+    
+}
+
+
+}
+
+</style>
 
     <header class="relative h-120 lg:min-h-screen">
         <!-- عکس پس زمینه -->
@@ -52,13 +119,1428 @@
                                 <a href="">
                                     <span class="text-[#023350] text-[16px] font-bold">محصولات</span>
                                 </a>
-                                <div class="lable-1-1 w-56 h-40 bg-white absolute mt-4">
-                                    <div class="w-full h-2 bg-green-400"></div>
-                                    <ul class="w-full h-38 flex flex-col items-center justify-center">
-                                        <li>محصولات</li>
-                                        <li>محصولات</li>
-                                        <li>محصولات</li>
-                                    </ul>
+                                <!-- <div class="lable-1-1 w-56 h-40 bg-white absolute mt-4"> -->
+                                 <div class="w-full h-dvh bg-blue-500 fixed top-22 right-0 flex justify-center items-start absolute lable-1-1">
+                                    <div class="w-full h-full bg-black/50 absolute -z-1"></div>
+                                    <div class="w-11/12 h-9/12 bg-[var(--background-2)] border border-[var(--gold)] flex justify-start items-start py-5">
+                                        <div class="h-full border-l border-[var(--gold)] flex flex-col gap-2 justify-start items-start overflow-auto [&::-webkit-scrollbar]:w-2  [&::-webkit-scrollbar-thumb]:bg-[var(--gold)]  [&::-webkit-scrollbar-thumb]:rounded-full pl-2">
+                                            <div class="min-w-11/12 w-11/12 py-3 bg-[var(--background)] border-y-1 border-l-1 border-[var(--gold)] flex justify-between items-center xl:px-4 px-2 rounded-y-xl rounded-l-xl transition_root">
+                                                <div class="flex justify-start items-center xl:gap-3 gap-2 px-2">
+                                                    <div>
+                                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="xl:size-8 lg:size-6">
+                                                            <g fill="none" stroke="var(--gold)" stroke-width="10" stroke-linecap="round" stroke-linejoin="round">
+                                                                <!-- Outer Card -->
+                                                                <rect x="90" y="110" width="332" height="220" rx="10"></rect>
+                                                                <!-- Inner Border -->
+                                                                <rect x="120" y="140" width="272" height="160" rx="2"></rect>
+                                                                <!-- Top Right Circle -->
+                                                                <circle cx="340" cy="175" r="18"></circle>
+                                                                <!-- Logo -->
+                                                                <path d="
+                                                                M165 235
+                                                                L165 205
+                                                                Q165 180 188 180
+                                                                L205 180
+                                                                Q225 180 225 198
+                                                                Q225 214 208 214
+                                                                L188 214
+                                                                L188 225
+                                                                L215 225
+                                                                Q235 225 235 245
+                                                                L165 245
+                                                                Z"></path> 
+                                                                <!-- Text Line -->
+                                                                <line x1="220" y1="225" x2="305" y2="225"></line>
+                                                                <!-- Corner Accent -->
+                                                                <path d="M375 270 L375 295 L350 295"></path>
+                                                            </g>
+                                                        </svg>
+                                                    </div>
+                                                    <span class="max-xl:text-sm font-bold text-[var(--gold)]">لوا</span>
+                                                </div>
+                                                <div>
+                                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="size-4 fill-[var(--gold)] rotate-90">
+                                                        <path d="M241 337c-9.4 9.4-24.6 9.4-33.9 0L47 177c-9.4-9.4-9.4-24.6 0-33.9s24.6-9.4 33.9 0l143 143L367 143c9.4-9.4 24.6-9.4 33.9 0s9.4 24.6 0 33.9L241 337z"></path>
+                                                    </svg>
+                                                </div>
+                                            </div>
+                                            <div class="min-w-11/12 w-11/12 group py-3 hover:bg-[var(--background)]  border-y-1 border-l-1 border-[var(--background-2)] hover:border-[var(--gold)] flex justify-between items-center xl:px-4 px-2 rounded-y-xl rounded-l-xl transition_root">
+                                                <div class="flex justify-start items-center xl:gap-3 gap-2 px-2">
+                                                    <div>
+                                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="xl:size-8 lg:size-6">
+                                                            <g fill="none"  class="stroke-[var(--text)] group-hover:stroke-[var(--gold)] transition_root" stroke-width="10" stroke-linecap="round" stroke-linejoin="round">
+                                                                <!-- Outer Card -->
+                                                                <rect x="90" y="110" width="332" height="220" rx="10"></rect>
+                                                                <!-- Inner Border -->
+                                                                <rect x="120" y="140" width="272" height="160" rx="2"></rect>
+                                                                <!-- Top Right Circle -->
+                                                                <circle cx="340" cy="175" r="18"></circle>
+                                                                <!-- Logo -->
+                                                                <path d="
+                                                                M165 235
+                                                                L165 205
+                                                                Q165 180 188 180
+                                                                L205 180
+                                                                Q225 180 225 198
+                                                                Q225 214 208 214
+                                                                L188 214
+                                                                L188 225
+                                                                L215 225
+                                                                Q235 225 235 245
+                                                                L165 245
+                                                                Z"></path> 
+                                                                <!-- Text Line -->
+                                                                <line x1="220" y1="225" x2="305" y2="225"></line>
+                                                                <!-- Corner Accent -->
+                                                                <path d="M375 270 L375 295 L350 295"></path>
+                                                            </g>
+                                                        </svg>
+                                                    </div>
+                                                    <span class="max-xl:text-sm font-bold text-[var(--text)] group-hover:text-[var(--gold)] transition_root group-hover:pr-2">چاپ  کارت ویزیت</span>
+                                                </div>
+                                                <div>
+                                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="size-4 fill-[var(--text)] group-hover:fill-[var(--gold)] rotate-90 transition_root">
+                                                        <path d="M241 337c-9.4 9.4-24.6 9.4-33.9 0L47 177c-9.4-9.4-9.4-24.6 0-33.9s24.6-9.4 33.9 0l143 143L367 143c9.4-9.4 24.6-9.4 33.9 0s9.4 24.6 0 33.9L241 337z"></path>
+                                                    </svg>
+                                                </div>
+                                            </div>
+                                            <div class="min-w-11/12 w-11/12 group py-3 hover:bg-[var(--background)]  border-y-1 border-l-1 border-[var(--background-2)] hover:border-[var(--gold)] flex justify-between items-center xl:px-4 px-2 rounded-y-xl rounded-l-xl transition_root">
+                                                <div class="flex justify-start items-center xl:gap-3 gap-2 px-2">
+                                                    <div>
+                                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="xl:size-8 lg:size-6">
+                                                            <g fill="none"  class="stroke-[var(--text)] group-hover:stroke-[var(--gold)] transition_root" stroke-width="10" stroke-linecap="round" stroke-linejoin="round">
+                                                                <!-- Outer Card -->
+                                                                <rect x="90" y="110" width="332" height="220" rx="10"></rect>
+                                                                <!-- Inner Border -->
+                                                                <rect x="120" y="140" width="272" height="160" rx="2"></rect>
+                                                                <!-- Top Right Circle -->
+                                                                <circle cx="340" cy="175" r="18"></circle>
+                                                                <!-- Logo -->
+                                                                <path d="
+                                                                M165 235
+                                                                L165 205
+                                                                Q165 180 188 180
+                                                                L205 180
+                                                                Q225 180 225 198
+                                                                Q225 214 208 214
+                                                                L188 214
+                                                                L188 225
+                                                                L215 225
+                                                                Q235 225 235 245
+                                                                L165 245
+                                                                Z"></path> 
+                                                                <!-- Text Line -->
+                                                                <line x1="220" y1="225" x2="305" y2="225"></line>
+                                                                <!-- Corner Accent -->
+                                                                <path d="M375 270 L375 295 L350 295"></path>
+                                                            </g>
+                                                        </svg>
+                                                    </div>
+                                                    <span class="max-xl:text-sm font-bold text-[var(--text)] group-hover:text-[var(--gold)] transition_root group-hover:pr-2">چاپ  کارت ویزیت</span>
+                                                </div>
+                                                <div>
+                                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="size-4 fill-[var(--text)] group-hover:fill-[var(--gold)] rotate-90 transition_root">
+                                                        <path d="M241 337c-9.4 9.4-24.6 9.4-33.9 0L47 177c-9.4-9.4-9.4-24.6 0-33.9s24.6-9.4 33.9 0l143 143L367 143c9.4-9.4 24.6-9.4 33.9 0s9.4 24.6 0 33.9L241 337z"></path>
+                                                    </svg>
+                                                </div>
+                                            </div>
+                                            <div class="min-w-11/12 w-11/12 group py-3 hover:bg-[var(--background)]  border-y-1 border-l-1 border-[var(--background-2)] hover:border-[var(--gold)] flex justify-between items-center xl:px-4 px-2 rounded-y-xl rounded-l-xl transition_root">
+                                                <div class="flex justify-start items-center xl:gap-3 gap-2 px-2">
+                                                    <div>
+                                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="xl:size-8 lg:size-6">
+                                                            <g fill="none"  class="stroke-[var(--text)] group-hover:stroke-[var(--gold)] transition_root" stroke-width="10" stroke-linecap="round" stroke-linejoin="round">
+                                                                <!-- Outer Card -->
+                                                                <rect x="90" y="110" width="332" height="220" rx="10"></rect>
+                                                                <!-- Inner Border -->
+                                                                <rect x="120" y="140" width="272" height="160" rx="2"></rect>
+                                                                <!-- Top Right Circle -->
+                                                                <circle cx="340" cy="175" r="18"></circle>
+                                                                <!-- Logo -->
+                                                                <path d="
+                                                                M165 235
+                                                                L165 205
+                                                                Q165 180 188 180
+                                                                L205 180
+                                                                Q225 180 225 198
+                                                                Q225 214 208 214
+                                                                L188 214
+                                                                L188 225
+                                                                L215 225
+                                                                Q235 225 235 245
+                                                                L165 245
+                                                                Z"></path> 
+                                                                <!-- Text Line -->
+                                                                <line x1="220" y1="225" x2="305" y2="225"></line>
+                                                                <!-- Corner Accent -->
+                                                                <path d="M375 270 L375 295 L350 295"></path>
+                                                            </g>
+                                                        </svg>
+                                                    </div>
+                                                    <span class="max-xl:text-sm font-bold text-[var(--text)] group-hover:text-[var(--gold)] transition_root group-hover:pr-2">چاپ  کارت ویزیت</span>
+                                                </div>
+                                                <div>
+                                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="size-4 fill-[var(--text)] group-hover:fill-[var(--gold)] rotate-90 transition_root">
+                                                        <path d="M241 337c-9.4 9.4-24.6 9.4-33.9 0L47 177c-9.4-9.4-9.4-24.6 0-33.9s24.6-9.4 33.9 0l143 143L367 143c9.4-9.4 24.6-9.4 33.9 0s9.4 24.6 0 33.9L241 337z"></path>
+                                                    </svg>
+                                                </div>
+                                            </div>
+                                            <div class="min-w-11/12 w-11/12 group py-3 hover:bg-[var(--background)]  border-y-1 border-l-1 border-[var(--background-2)] hover:border-[var(--gold)] flex justify-between items-center xl:px-4 px-2 rounded-y-xl rounded-l-xl transition_root">
+                                                <div class="flex justify-start items-center xl:gap-3 gap-2 px-2">
+                                                    <div>
+                                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="xl:size-8 lg:size-6">
+                                                            <g fill="none"  class="stroke-[var(--text)] group-hover:stroke-[var(--gold)] transition_root" stroke-width="10" stroke-linecap="round" stroke-linejoin="round">
+                                                                <!-- Outer Card -->
+                                                                <rect x="90" y="110" width="332" height="220" rx="10"></rect>
+                                                                <!-- Inner Border -->
+                                                                <rect x="120" y="140" width="272" height="160" rx="2"></rect>
+                                                                <!-- Top Right Circle -->
+                                                                <circle cx="340" cy="175" r="18"></circle>
+                                                                <!-- Logo -->
+                                                                <path d="
+                                                                M165 235
+                                                                L165 205
+                                                                Q165 180 188 180
+                                                                L205 180
+                                                                Q225 180 225 198
+                                                                Q225 214 208 214
+                                                                L188 214
+                                                                L188 225
+                                                                L215 225
+                                                                Q235 225 235 245
+                                                                L165 245
+                                                                Z"></path> 
+                                                                <!-- Text Line -->
+                                                                <line x1="220" y1="225" x2="305" y2="225"></line>
+                                                                <!-- Corner Accent -->
+                                                                <path d="M375 270 L375 295 L350 295"></path>
+                                                            </g>
+                                                        </svg>
+                                                    </div>
+                                                    <span class="max-xl:text-sm font-bold text-[var(--text)] group-hover:text-[var(--gold)] transition_root group-hover:pr-2">چاپ  کارت ویزیت</span>
+                                                </div>
+                                                <div>
+                                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="size-4 fill-[var(--text)] group-hover:fill-[var(--gold)] rotate-90 transition_root">
+                                                        <path d="M241 337c-9.4 9.4-24.6 9.4-33.9 0L47 177c-9.4-9.4-9.4-24.6 0-33.9s24.6-9.4 33.9 0l143 143L367 143c9.4-9.4 24.6-9.4 33.9 0s9.4 24.6 0 33.9L241 337z"></path>
+                                                    </svg>
+                                                </div>
+                                            </div>
+                                            <div class="min-w-11/12 w-11/12 group py-3 hover:bg-[var(--background)]  border-y-1 border-l-1 border-[var(--background-2)] hover:border-[var(--gold)] flex justify-between items-center xl:px-4 px-2 rounded-y-xl rounded-l-xl transition_root">
+                                                <div class="flex justify-start items-center xl:gap-3 gap-2 px-2">
+                                                    <div>
+                                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="xl:size-8 lg:size-6">
+                                                            <g fill="none"  class="stroke-[var(--text)] group-hover:stroke-[var(--gold)] transition_root" stroke-width="10" stroke-linecap="round" stroke-linejoin="round">
+                                                                <!-- Outer Card -->
+                                                                <rect x="90" y="110" width="332" height="220" rx="10"></rect>
+                                                                <!-- Inner Border -->
+                                                                <rect x="120" y="140" width="272" height="160" rx="2"></rect>
+                                                                <!-- Top Right Circle -->
+                                                                <circle cx="340" cy="175" r="18"></circle>
+                                                                <!-- Logo -->
+                                                                <path d="
+                                                                M165 235
+                                                                L165 205
+                                                                Q165 180 188 180
+                                                                L205 180
+                                                                Q225 180 225 198
+                                                                Q225 214 208 214
+                                                                L188 214
+                                                                L188 225
+                                                                L215 225
+                                                                Q235 225 235 245
+                                                                L165 245
+                                                                Z"></path> 
+                                                                <!-- Text Line -->
+                                                                <line x1="220" y1="225" x2="305" y2="225"></line>
+                                                                <!-- Corner Accent -->
+                                                                <path d="M375 270 L375 295 L350 295"></path>
+                                                            </g>
+                                                        </svg>
+                                                    </div>
+                                                    <span class="max-xl:text-sm font-bold text-[var(--text)] group-hover:text-[var(--gold)] transition_root group-hover:pr-2">چاپ  کارت ویزیت</span>
+                                                </div>
+                                                <div>
+                                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="size-4 fill-[var(--text)] group-hover:fill-[var(--gold)] rotate-90 transition_root">
+                                                        <path d="M241 337c-9.4 9.4-24.6 9.4-33.9 0L47 177c-9.4-9.4-9.4-24.6 0-33.9s24.6-9.4 33.9 0l143 143L367 143c9.4-9.4 24.6-9.4 33.9 0s9.4 24.6 0 33.9L241 337z"></path>
+                                                    </svg>
+                                                </div>
+                                            </div>
+                                            <div class="min-w-11/12 w-11/12 group py-3 hover:bg-[var(--background)]  border-y-1 border-l-1 border-[var(--background-2)] hover:border-[var(--gold)] flex justify-between items-center xl:px-4 px-2 rounded-y-xl rounded-l-xl transition_root">
+                                                <div class="flex justify-start items-center xl:gap-3 gap-2 px-2">
+                                                    <div>
+                                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="xl:size-8 lg:size-6">
+                                                            <g fill="none"  class="stroke-[var(--text)] group-hover:stroke-[var(--gold)] transition_root" stroke-width="10" stroke-linecap="round" stroke-linejoin="round">
+                                                                <!-- Outer Card -->
+                                                                <rect x="90" y="110" width="332" height="220" rx="10"></rect>
+                                                                <!-- Inner Border -->
+                                                                <rect x="120" y="140" width="272" height="160" rx="2"></rect>
+                                                                <!-- Top Right Circle -->
+                                                                <circle cx="340" cy="175" r="18"></circle>
+                                                                <!-- Logo -->
+                                                                <path d="
+                                                                M165 235
+                                                                L165 205
+                                                                Q165 180 188 180
+                                                                L205 180
+                                                                Q225 180 225 198
+                                                                Q225 214 208 214
+                                                                L188 214
+                                                                L188 225
+                                                                L215 225
+                                                                Q235 225 235 245
+                                                                L165 245
+                                                                Z"></path> 
+                                                                <!-- Text Line -->
+                                                                <line x1="220" y1="225" x2="305" y2="225"></line>
+                                                                <!-- Corner Accent -->
+                                                                <path d="M375 270 L375 295 L350 295"></path>
+                                                            </g>
+                                                        </svg>
+                                                    </div>
+                                                    <span class="max-xl:text-sm font-bold text-[var(--text)] group-hover:text-[var(--gold)] transition_root group-hover:pr-2">چاپ  کارت ویزیت</span>
+                                                </div>
+                                                <div>
+                                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="size-4 fill-[var(--text)] group-hover:fill-[var(--gold)] rotate-90 transition_root">
+                                                        <path d="M241 337c-9.4 9.4-24.6 9.4-33.9 0L47 177c-9.4-9.4-9.4-24.6 0-33.9s24.6-9.4 33.9 0l143 143L367 143c9.4-9.4 24.6-9.4 33.9 0s9.4 24.6 0 33.9L241 337z"></path>
+                                                    </svg>
+                                                </div>
+                                            </div>
+                                            <div class="min-w-11/12 w-11/12 group py-3 hover:bg-[var(--background)]  border-y-1 border-l-1 border-[var(--background-2)] hover:border-[var(--gold)] flex justify-between items-center xl:px-4 px-2 rounded-y-xl rounded-l-xl transition_root">
+                                                <div class="flex justify-start items-center xl:gap-3 gap-2 px-2">
+                                                    <div>
+                                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="xl:size-8 lg:size-6">
+                                                            <g fill="none"  class="stroke-[var(--text)] group-hover:stroke-[var(--gold)] transition_root" stroke-width="10" stroke-linecap="round" stroke-linejoin="round">
+                                                                <!-- Outer Card -->
+                                                                <rect x="90" y="110" width="332" height="220" rx="10"></rect>
+                                                                <!-- Inner Border -->
+                                                                <rect x="120" y="140" width="272" height="160" rx="2"></rect>
+                                                                <!-- Top Right Circle -->
+                                                                <circle cx="340" cy="175" r="18"></circle>
+                                                                <!-- Logo -->
+                                                                <path d="
+                                                                M165 235
+                                                                L165 205
+                                                                Q165 180 188 180
+                                                                L205 180
+                                                                Q225 180 225 198
+                                                                Q225 214 208 214
+                                                                L188 214
+                                                                L188 225
+                                                                L215 225
+                                                                Q235 225 235 245
+                                                                L165 245
+                                                                Z"></path> 
+                                                                <!-- Text Line -->
+                                                                <line x1="220" y1="225" x2="305" y2="225"></line>
+                                                                <!-- Corner Accent -->
+                                                                <path d="M375 270 L375 295 L350 295"></path>
+                                                            </g>
+                                                        </svg>
+                                                    </div>
+                                                    <span class="max-xl:text-sm font-bold text-[var(--text)] group-hover:text-[var(--gold)] transition_root group-hover:pr-2">چاپ  کارت ویزیت</span>
+                                                </div>
+                                                <div>
+                                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="size-4 fill-[var(--text)] group-hover:fill-[var(--gold)] rotate-90 transition_root">
+                                                        <path d="M241 337c-9.4 9.4-24.6 9.4-33.9 0L47 177c-9.4-9.4-9.4-24.6 0-33.9s24.6-9.4 33.9 0l143 143L367 143c9.4-9.4 24.6-9.4 33.9 0s9.4 24.6 0 33.9L241 337z"></path>
+                                                    </svg>
+                                                </div>
+                                            </div>
+                                            <div class="min-w-11/12 w-11/12 group py-3 hover:bg-[var(--background)]  border-y-1 border-l-1 border-[var(--background-2)] hover:border-[var(--gold)] flex justify-between items-center xl:px-4 px-2 rounded-y-xl rounded-l-xl transition_root">
+                                                <div class="flex justify-start items-center xl:gap-3 gap-2 px-2">
+                                                    <div>
+                                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="xl:size-8 lg:size-6">
+                                                            <g fill="none"  class="stroke-[var(--text)] group-hover:stroke-[var(--gold)] transition_root" stroke-width="10" stroke-linecap="round" stroke-linejoin="round">
+                                                                <!-- Outer Card -->
+                                                                <rect x="90" y="110" width="332" height="220" rx="10"></rect>
+                                                                <!-- Inner Border -->
+                                                                <rect x="120" y="140" width="272" height="160" rx="2"></rect>
+                                                                <!-- Top Right Circle -->
+                                                                <circle cx="340" cy="175" r="18"></circle>
+                                                                <!-- Logo -->
+                                                                <path d="
+                                                                M165 235
+                                                                L165 205
+                                                                Q165 180 188 180
+                                                                L205 180
+                                                                Q225 180 225 198
+                                                                Q225 214 208 214
+                                                                L188 214
+                                                                L188 225
+                                                                L215 225
+                                                                Q235 225 235 245
+                                                                L165 245
+                                                                Z"></path> 
+                                                                <!-- Text Line -->
+                                                                <line x1="220" y1="225" x2="305" y2="225"></line>
+                                                                <!-- Corner Accent -->
+                                                                <path d="M375 270 L375 295 L350 295"></path>
+                                                            </g>
+                                                        </svg>
+                                                    </div>
+                                                    <span class="max-xl:text-sm font-bold text-[var(--text)] group-hover:text-[var(--gold)] transition_root group-hover:pr-2">چاپ  کارت ویزیت</span>
+                                                </div>
+                                                <div>
+                                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="size-4 fill-[var(--text)] group-hover:fill-[var(--gold)] rotate-90 transition_root">
+                                                        <path d="M241 337c-9.4 9.4-24.6 9.4-33.9 0L47 177c-9.4-9.4-9.4-24.6 0-33.9s24.6-9.4 33.9 0l143 143L367 143c9.4-9.4 24.6-9.4 33.9 0s9.4 24.6 0 33.9L241 337z"></path>
+                                                    </svg>
+                                                </div>
+                                            </div>
+                                            <div class="min-w-11/12 w-11/12 group py-3 hover:bg-[var(--background)]  border-y-1 border-l-1 border-[var(--background-2)] hover:border-[var(--gold)] flex justify-between items-center xl:px-4 px-2 rounded-y-xl rounded-l-xl transition_root">
+                                                <div class="flex justify-start items-center xl:gap-3 gap-2 px-2">
+                                                    <div>
+                                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="xl:size-8 lg:size-6">
+                                                            <g fill="none"  class="stroke-[var(--text)] group-hover:stroke-[var(--gold)] transition_root" stroke-width="10" stroke-linecap="round" stroke-linejoin="round">
+                                                                <!-- Outer Card -->
+                                                                <rect x="90" y="110" width="332" height="220" rx="10"></rect>
+                                                                <!-- Inner Border -->
+                                                                <rect x="120" y="140" width="272" height="160" rx="2"></rect>
+                                                                <!-- Top Right Circle -->
+                                                                <circle cx="340" cy="175" r="18"></circle>
+                                                                <!-- Logo -->
+                                                                <path d="
+                                                                M165 235
+                                                                L165 205
+                                                                Q165 180 188 180
+                                                                L205 180
+                                                                Q225 180 225 198
+                                                                Q225 214 208 214
+                                                                L188 214
+                                                                L188 225
+                                                                L215 225
+                                                                Q235 225 235 245
+                                                                L165 245
+                                                                Z"></path> 
+                                                                <!-- Text Line -->
+                                                                <line x1="220" y1="225" x2="305" y2="225"></line>
+                                                                <!-- Corner Accent -->
+                                                                <path d="M375 270 L375 295 L350 295"></path>
+                                                            </g>
+                                                        </svg>
+                                                    </div>
+                                                    <span class="max-xl:text-sm font-bold text-[var(--text)] group-hover:text-[var(--gold)] transition_root group-hover:pr-2">چاپ  کارت ویزیت</span>
+                                                </div>
+                                                <div>
+                                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="size-4 fill-[var(--text)] group-hover:fill-[var(--gold)] rotate-90 transition_root">
+                                                        <path d="M241 337c-9.4 9.4-24.6 9.4-33.9 0L47 177c-9.4-9.4-9.4-24.6 0-33.9s24.6-9.4 33.9 0l143 143L367 143c9.4-9.4 24.6-9.4 33.9 0s9.4 24.6 0 33.9L241 337z"></path>
+                                                    </svg>
+                                                </div>
+                                            </div>
+                                            <div class="min-w-11/12 w-11/12 group py-3 hover:bg-[var(--background)]  border-y-1 border-l-1 border-[var(--background-2)] hover:border-[var(--gold)] flex justify-between items-center xl:px-4 px-2 rounded-y-xl rounded-l-xl transition_root">
+                                                <div class="flex justify-start items-center xl:gap-3 gap-2 px-2">
+                                                    <div>
+                                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="xl:size-8 lg:size-6">
+                                                            <g fill="none"  class="stroke-[var(--text)] group-hover:stroke-[var(--gold)] transition_root" stroke-width="10" stroke-linecap="round" stroke-linejoin="round">
+                                                                <!-- Outer Card -->
+                                                                <rect x="90" y="110" width="332" height="220" rx="10"></rect>
+                                                                <!-- Inner Border -->
+                                                                <rect x="120" y="140" width="272" height="160" rx="2"></rect>
+                                                                <!-- Top Right Circle -->
+                                                                <circle cx="340" cy="175" r="18"></circle>
+                                                                <!-- Logo -->
+                                                                <path d="
+                                                                M165 235
+                                                                L165 205
+                                                                Q165 180 188 180
+                                                                L205 180
+                                                                Q225 180 225 198
+                                                                Q225 214 208 214
+                                                                L188 214
+                                                                L188 225
+                                                                L215 225
+                                                                Q235 225 235 245
+                                                                L165 245
+                                                                Z"></path> 
+                                                                <!-- Text Line -->
+                                                                <line x1="220" y1="225" x2="305" y2="225"></line>
+                                                                <!-- Corner Accent -->
+                                                                <path d="M375 270 L375 295 L350 295"></path>
+                                                            </g>
+                                                        </svg>
+                                                    </div>
+                                                    <span class="max-xl:text-sm font-bold text-[var(--text)] group-hover:text-[var(--gold)] transition_root group-hover:pr-2">چاپ  کارت ویزیت</span>
+                                                </div>
+                                                <div>
+                                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="size-4 fill-[var(--text)] group-hover:fill-[var(--gold)] rotate-90 transition_root">
+                                                        <path d="M241 337c-9.4 9.4-24.6 9.4-33.9 0L47 177c-9.4-9.4-9.4-24.6 0-33.9s24.6-9.4 33.9 0l143 143L367 143c9.4-9.4 24.6-9.4 33.9 0s9.4 24.6 0 33.9L241 337z"></path>
+                                                    </svg>
+                                                </div>
+                                            </div>
+                                            <div class="min-w-11/12 w-11/12 group py-3 hover:bg-[var(--background)]  border-y-1 border-l-1 border-[var(--background-2)] hover:border-[var(--gold)] flex justify-between items-center xl:px-4 px-2 rounded-y-xl rounded-l-xl transition_root">
+                                                <div class="flex justify-start items-center xl:gap-3 gap-2 px-2">
+                                                    <div>
+                                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="xl:size-8 lg:size-6">
+                                                            <g fill="none"  class="stroke-[var(--text)] group-hover:stroke-[var(--gold)] transition_root" stroke-width="10" stroke-linecap="round" stroke-linejoin="round">
+                                                                <!-- Outer Card -->
+                                                                <rect x="90" y="110" width="332" height="220" rx="10"></rect>
+                                                                <!-- Inner Border -->
+                                                                <rect x="120" y="140" width="272" height="160" rx="2"></rect>
+                                                                <!-- Top Right Circle -->
+                                                                <circle cx="340" cy="175" r="18"></circle>
+                                                                <!-- Logo -->
+                                                                <path d="
+                                                                M165 235
+                                                                L165 205
+                                                                Q165 180 188 180
+                                                                L205 180
+                                                                Q225 180 225 198
+                                                                Q225 214 208 214
+                                                                L188 214
+                                                                L188 225
+                                                                L215 225
+                                                                Q235 225 235 245
+                                                                L165 245
+                                                                Z"></path> 
+                                                                <!-- Text Line -->
+                                                                <line x1="220" y1="225" x2="305" y2="225"></line>
+                                                                <!-- Corner Accent -->
+                                                                <path d="M375 270 L375 295 L350 295"></path>
+                                                            </g>
+                                                        </svg>
+                                                    </div>
+                                                    <span class="max-xl:text-sm font-bold text-[var(--text)] group-hover:text-[var(--gold)] transition_root group-hover:pr-2">چاپ  کارت ویزیت</span>
+                                                </div>
+                                                <div>
+                                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="size-4 fill-[var(--text)] group-hover:fill-[var(--gold)] rotate-90 transition_root">
+                                                        <path d="M241 337c-9.4 9.4-24.6 9.4-33.9 0L47 177c-9.4-9.4-9.4-24.6 0-33.9s24.6-9.4 33.9 0l143 143L367 143c9.4-9.4 24.6-9.4 33.9 0s9.4 24.6 0 33.9L241 337z"></path>
+                                                    </svg>
+                                                </div>
+                                            </div>
+                                            
+                                            
+                                        </div>
+                                        <div class="w-19/24 h-full flex flex-wrap gap-y-5 justify-start items-start overflow-auto [&::-webkit-scrollbar]:w-2  [&::-webkit-scrollbar-thumb]:bg-[var(--gold)]  [&::-webkit-scrollbar-thumb]:rounded-full pl-2">
+                                            <div class="px-3 h-9/12 border-l border-y py-4 border-[var(--gold)] flex flex-col gap-5 justify-start items-start overflow-auto [&::-webkit-scrollbar]:w-2  [&::-webkit-scrollbar-thumb]:bg-[var(--gold)]  [&::-webkit-scrollbar-thumb]:rounded-full">
+                                                <div class="flex justify-start items-center xl:gap-3 gap-2">
+                                                    <div>
+                                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="xl:size-8 lg:size-6 size-11">
+                                                            <g fill="none" stroke="var(--gold)" stroke-width="10" stroke-linecap="round" stroke-linejoin="round">
+                                                                <!-- Outer Card -->
+                                                                <rect x="90" y="110" width="332" height="220" rx="10"></rect>
+                                                                <!-- Inner Border -->
+                                                                <rect x="120" y="140" width="272" height="160" rx="2"></rect>
+                                                                <!-- Top Right Circle -->
+                                                                <circle cx="340" cy="175" r="18"></circle>
+                                                                <!-- Logo -->
+                                                                <path d="
+                                                                M165 235
+                                                                L165 205
+                                                                Q165 180 188 180
+                                                                L205 180
+                                                                Q225 180 225 198
+                                                                Q225 214 208 214
+                                                                L188 214
+                                                                L188 225
+                                                                L215 225
+                                                                Q235 225 235 245
+                                                                L165 245
+                                                                Z"></path> 
+                                                                <!-- Text Line -->
+                                                                <line x1="220" y1="225" x2="305" y2="225"></line>
+                                                                <!-- Corner Accent -->
+                                                                <path d="M375 270 L375 295 L350 295"></path>
+                                                            </g>
+                                                        </svg>
+                                                    </div>
+                                                    <span class="max-xl:text-sm font-bold text-[var(--text)]">چاپ  کارت ویزیت</span>
+                                                </div>
+                                                <div class="w-full max-h-full flex flex-col gap-3 justify-start items-start pr-3 px-4 overflow-auto [&::-webkit-scrollbar]:w-1  [&::-webkit-scrollbar-thumb]:bg-[var(--gold)]  [&::-webkit-scrollbar-thumb]:rounded-full">
+                                                    <div class="flex justify-start items-center gap-2">
+                                                        <span class="size-2 rounded-full bg-[var(--gold)]"></span>
+                                                        <span class="xl:text-sm text-xs text-[var(--text)] hover:text-[var(--gold)] transition_root">کارت مات ویزیت</span>
+                                                    </div>
+                                                    <div class="flex justify-start items-center gap-2">
+                                                        <span class="size-2 rounded-full bg-[var(--gold)]"></span>
+                                                        <span class="xl:text-sm text-xs text-[var(--text)] hover:text-[var(--gold)] transition_root">کارت  ویزیت</span>
+                                                    </div>
+                                                    <div class="flex justify-start items-center gap-2">
+                                                        <span class="size-2 rounded-full bg-[var(--gold)]"></span>
+                                                        <span class="xl:text-sm text-xs text-[var(--text)] hover:text-[var(--gold)] transition_root">کارت مات ویزیت</span>
+                                                    </div>
+                                                    <div class="flex justify-start items-center gap-2">
+                                                        <span class="size-2 rounded-full bg-[var(--gold)]"></span>
+                                                        <span class="xl:text-sm text-xs text-[var(--text)] hover:text-[var(--gold)] transition_root">کارت  ویزیت</span>
+                                                    </div>
+                                                    <div class="flex justify-start items-center gap-2">
+                                                        <span class="size-2 rounded-full bg-[var(--gold)]"></span>
+                                                        <span class="xl:text-sm text-xs text-[var(--text)] hover:text-[var(--gold)] transition_root">کارت مات ویزیت</span>
+                                                    </div>
+                                                    <div class="flex justify-start items-center gap-2">
+                                                        <span class="size-2 rounded-full bg-[var(--gold)]"></span>
+                                                        <span class="xl:text-sm text-xs text-[var(--text)] hover:text-[var(--gold)] transition_root">کارت  ویزیت</span>
+                                                    </div>
+                                                    <div class="flex justify-start items-center gap-2">
+                                                        <span class="size-2 rounded-full bg-[var(--gold)]"></span>
+                                                        <span class="xl:text-sm text-xs text-[var(--text)] hover:text-[var(--gold)] transition_root">کارت مات ویزیت</span>
+                                                    </div>
+                                                    <div class="flex justify-start items-center gap-2">
+                                                        <span class="size-2 rounded-full bg-[var(--gold)]"></span>
+                                                        <span class="xl:text-sm text-xs text-[var(--text)] hover:text-[var(--gold)] transition_root">کارت  ویزیت</span>
+                                                    </div>
+                                                    <div class="flex justify-start items-center gap-2">
+                                                        <span class="size-2 rounded-full bg-[var(--gold)]"></span>
+                                                        <span class="xl:text-sm text-xs text-[var(--text)] hover:text-[var(--gold)] transition_root">کارت مات ویزیت</span>
+                                                    </div>
+                                                    <div class="flex justify-start items-center gap-2">
+                                                        <span class="size-2 rounded-full bg-[var(--gold)]"></span>
+                                                        <span class="xl:text-sm text-xs text-[var(--text)] hover:text-[var(--gold)] transition_root">کارت  ویزیت</span>
+                                                    </div>
+                                                    <div class="flex justify-start items-center gap-2">
+                                                        <span class="size-2 rounded-full bg-[var(--gold)]"></span>
+                                                        <span class="xl:text-sm text-xs text-[var(--text)] hover:text-[var(--gold)] transition_root">کارت مات ویزیت</span>
+                                                    </div>
+                                                    <div class="flex justify-start items-center gap-2">
+                                                        <span class="size-2 rounded-full bg-[var(--gold)]"></span>
+                                                        <span class="xl:text-sm text-xs text-[var(--text)] hover:text-[var(--gold)] transition_root">کارت  ویزیت</span>
+                                                    </div>
+                                                    <div class="flex justify-start items-center gap-2">
+                                                        <span class="size-2 rounded-full bg-[var(--gold)]"></span>
+                                                        <span class="xl:text-sm text-xs text-[var(--text)] hover:text-[var(--gold)] transition_root">کارت مات ویزیت</span>
+                                                    </div>
+                                                    <div class="flex justify-start items-center gap-2">
+                                                        <span class="size-2 rounded-full bg-[var(--gold)]"></span>
+                                                        <span class="xl:text-sm text-xs text-[var(--text)] hover:text-[var(--gold)] transition_root">کارت  ویزیت</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="px-3 h-9/12 border-l border-y py-4 border-[var(--gold)] flex flex-col gap-5 justify-start items-start overflow-auto [&::-webkit-scrollbar]:w-2  [&::-webkit-scrollbar-thumb]:bg-[var(--gold)]  [&::-webkit-scrollbar-thumb]:rounded-full">
+                                                <div class="flex justify-start items-center xl:gap-3 gap-2">
+                                                    <div>
+                                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="xl:size-8 lg:size-6 size-11">
+                                                            <g fill="none" stroke="var(--gold)" stroke-width="10" stroke-linecap="round" stroke-linejoin="round">
+                                                                <!-- Outer Card -->
+                                                                <rect x="90" y="110" width="332" height="220" rx="10"></rect>
+                                                                <!-- Inner Border -->
+                                                                <rect x="120" y="140" width="272" height="160" rx="2"></rect>
+                                                                <!-- Top Right Circle -->
+                                                                <circle cx="340" cy="175" r="18"></circle>
+                                                                <!-- Logo -->
+                                                                <path d="
+                                                                M165 235
+                                                                L165 205
+                                                                Q165 180 188 180
+                                                                L205 180
+                                                                Q225 180 225 198
+                                                                Q225 214 208 214
+                                                                L188 214
+                                                                L188 225
+                                                                L215 225
+                                                                Q235 225 235 245
+                                                                L165 245
+                                                                Z"></path> 
+                                                                <!-- Text Line -->
+                                                                <line x1="220" y1="225" x2="305" y2="225"></line>
+                                                                <!-- Corner Accent -->
+                                                                <path d="M375 270 L375 295 L350 295"></path>
+                                                            </g>
+                                                        </svg>
+                                                    </div>
+                                                    <span class="max-xl:text-sm font-bold text-[var(--text)]">چاپ  کارت   کارت ویزی ویزیت</span>
+                                                </div>
+                                                <div class="w-full max-h-full flex flex-col gap-3 justify-start items-start pr-3 px-4 overflow-auto [&::-webkit-scrollbar]:w-1  [&::-webkit-scrollbar-thumb]:bg-[var(--gold)]  [&::-webkit-scrollbar-thumb]:rounded-full">
+                                                    <div class="flex justify-start items-center gap-2">
+                                                        <span class="size-2 rounded-full bg-[var(--gold)]"></span>
+                                                        <span class="xl:text-sm text-xs text-[var(--text)] hover:text-[var(--gold)] transition_root">کارت مات  کارت   کارت ویزی  کارت ویزی  کارت ویزی  کارت ویزی  کارت ویزی  کارت ویزی  کارت ویزی  کارت ویزی کارت   کارت ویزی  کارت ویزی  کارت ویزی  کارت ویزی  کارت ویزی  کارت ویزی  کارت ویزی  کارت ویزی ویزیت</span>
+                                                    </div>
+                                                    <div class="flex justify-start items-center gap-2">
+                                                        <span class="size-2 rounded-full bg-[var(--gold)]"></span>
+                                                        <span class="xl:text-sm text-xs text-[var(--text)] hover:text-[var(--gold)] transition_root">کارت  ویزیت</span>
+                                                    </div>
+                                                    <div class="flex justify-start items-center gap-2">
+                                                        <span class="size-2 rounded-full bg-[var(--gold)]"></span>
+                                                        <span class="xl:text-sm text-xs text-[var(--text)] hover:text-[var(--gold)] transition_root">کارت مات ویزیت</span>
+                                                    </div>
+                                                    <div class="flex justify-start items-center gap-2">
+                                                        <span class="size-2 rounded-full bg-[var(--gold)]"></span>
+                                                        <span class="xl:text-sm text-xs text-[var(--text)] hover:text-[var(--gold)] transition_root">کارت  ویزیت</span>
+                                                    </div>
+                                                    <div class="flex justify-start items-center gap-2">
+                                                        <span class="size-2 rounded-full bg-[var(--gold)]"></span>
+                                                        <span class="xl:text-sm text-xs text-[var(--text)] hover:text-[var(--gold)] transition_root">کارت مات ویزیت</span>
+                                                    </div>
+                                                    <div class="flex justify-start items-center gap-2">
+                                                        <span class="size-2 rounded-full bg-[var(--gold)]"></span>
+                                                        <span class="xl:text-sm text-xs text-[var(--text)] hover:text-[var(--gold)] transition_root">کارت  ویزیت</span>
+                                                    </div>
+                                                    <div class="flex justify-start items-center gap-2">
+                                                        <span class="size-2 rounded-full bg-[var(--gold)]"></span>
+                                                        <span class="xl:text-sm text-xs text-[var(--text)] hover:text-[var(--gold)] transition_root">کارت مات ویزیت</span>
+                                                    </div>
+                                                    <div class="flex justify-start items-center gap-2">
+                                                        <span class="size-2 rounded-full bg-[var(--gold)]"></span>
+                                                        <span class="xl:text-sm text-xs text-[var(--text)] hover:text-[var(--gold)] transition_root">کارت  ویزیت</span>
+                                                    </div>
+                                                    <div class="flex justify-start items-center gap-2">
+                                                        <span class="size-2 rounded-full bg-[var(--gold)]"></span>
+                                                        <span class="xl:text-sm text-xs text-[var(--text)] hover:text-[var(--gold)] transition_root">کارت مات ویزیت</span>
+                                                    </div>
+                                                    <div class="flex justify-start items-center gap-2">
+                                                        <span class="size-2 rounded-full bg-[var(--gold)]"></span>
+                                                        <span class="xl:text-sm text-xs text-[var(--text)] hover:text-[var(--gold)] transition_root">کارت  ویزیت</span>
+                                                    </div>
+                                                    <div class="flex justify-start items-center gap-2">
+                                                        <span class="size-2 rounded-full bg-[var(--gold)]"></span>
+                                                        <span class="xl:text-sm text-xs text-[var(--text)] hover:text-[var(--gold)] transition_root">کارت مات ویزیت</span>
+                                                    </div>
+                                                    <div class="flex justify-start items-center gap-2">
+                                                        <span class="size-2 rounded-full bg-[var(--gold)]"></span>
+                                                        <span class="xl:text-sm text-xs text-[var(--text)] hover:text-[var(--gold)] transition_root">کارت  ویزیت</span>
+                                                    </div>
+                                                    <div class="flex justify-start items-center gap-2">
+                                                        <span class="size-2 rounded-full bg-[var(--gold)]"></span>
+                                                        <span class="xl:text-sm text-xs text-[var(--text)] hover:text-[var(--gold)] transition_root">کارت مات ویزیت</span>
+                                                    </div>
+                                                    <div class="flex justify-start items-center gap-2">
+                                                        <span class="size-2 rounded-full bg-[var(--gold)]"></span>
+                                                        <span class="xl:text-sm text-xs text-[var(--text)] hover:text-[var(--gold)] transition_root">کارت  ویزیت</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="px-3 h-9/12 border-l border-y py-4 border-[var(--gold)] flex flex-col gap-5 justify-start items-start overflow-auto [&::-webkit-scrollbar]:w-2  [&::-webkit-scrollbar-thumb]:bg-[var(--gold)]  [&::-webkit-scrollbar-thumb]:rounded-full">
+                                                <div class="flex justify-start items-center xl:gap-3 gap-2">
+                                                    <div>
+                                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="xl:size-8 lg:size-6 size-11">
+                                                            <g fill="none" stroke="var(--gold)" stroke-width="10" stroke-linecap="round" stroke-linejoin="round">
+                                                                <!-- Outer Card -->
+                                                                <rect x="90" y="110" width="332" height="220" rx="10"></rect>
+                                                                <!-- Inner Border -->
+                                                                <rect x="120" y="140" width="272" height="160" rx="2"></rect>
+                                                                <!-- Top Right Circle -->
+                                                                <circle cx="340" cy="175" r="18"></circle>
+                                                                <!-- Logo -->
+                                                                <path d="
+                                                                M165 235
+                                                                L165 205
+                                                                Q165 180 188 180
+                                                                L205 180
+                                                                Q225 180 225 198
+                                                                Q225 214 208 214
+                                                                L188 214
+                                                                L188 225
+                                                                L215 225
+                                                                Q235 225 235 245
+                                                                L165 245
+                                                                Z"></path> 
+                                                                <!-- Text Line -->
+                                                                <line x1="220" y1="225" x2="305" y2="225"></line>
+                                                                <!-- Corner Accent -->
+                                                                <path d="M375 270 L375 295 L350 295"></path>
+                                                            </g>
+                                                        </svg>
+                                                    </div>
+                                                    <span class="max-xl:text-sm font-bold text-[var(--text)]">چاپ  کارت ویزیت</span>
+                                                </div>
+                                                <div class="w-full max-h-full flex flex-col gap-3 justify-start items-start pr-3 px-4 overflow-auto [&::-webkit-scrollbar]:w-1  [&::-webkit-scrollbar-thumb]:bg-[var(--gold)]  [&::-webkit-scrollbar-thumb]:rounded-full">
+                                                    <div class="flex justify-start items-center gap-2">
+                                                        <span class="size-2 rounded-full bg-[var(--gold)]"></span>
+                                                        <span class="xl:text-sm text-xs text-[var(--text)] hover:text-[var(--gold)] transition_root">کارت مات ویزیت</span>
+                                                    </div>
+                                                    <div class="flex justify-start items-center gap-2">
+                                                        <span class="size-2 rounded-full bg-[var(--gold)]"></span>
+                                                        <span class="xl:text-sm text-xs text-[var(--text)] hover:text-[var(--gold)] transition_root">کارت  ویزیت</span>
+                                                    </div>
+                                                    <div class="flex justify-start items-center gap-2">
+                                                        <span class="size-2 rounded-full bg-[var(--gold)]"></span>
+                                                        <span class="xl:text-sm text-xs text-[var(--text)] hover:text-[var(--gold)] transition_root">کارت مات ویزیت</span>
+                                                    </div>
+                                                    <div class="flex justify-start items-center gap-2">
+                                                        <span class="size-2 rounded-full bg-[var(--gold)]"></span>
+                                                        <span class="xl:text-sm text-xs text-[var(--text)] hover:text-[var(--gold)] transition_root">کارت  ویزیت</span>
+                                                    </div>
+                                                    <div class="flex justify-start items-center gap-2">
+                                                        <span class="size-2 rounded-full bg-[var(--gold)]"></span>
+                                                        <span class="xl:text-sm text-xs text-[var(--text)] hover:text-[var(--gold)] transition_root">کارت مات ویزیت</span>
+                                                    </div>
+                                                    <div class="flex justify-start items-center gap-2">
+                                                        <span class="size-2 rounded-full bg-[var(--gold)]"></span>
+                                                        <span class="xl:text-sm text-xs text-[var(--text)] hover:text-[var(--gold)] transition_root">کارت  ویزیت</span>
+                                                    </div>
+                                                    <div class="flex justify-start items-center gap-2">
+                                                        <span class="size-2 rounded-full bg-[var(--gold)]"></span>
+                                                        <span class="xl:text-sm text-xs text-[var(--text)] hover:text-[var(--gold)] transition_root">کارت مات ویزیت</span>
+                                                    </div>
+                                                    <div class="flex justify-start items-center gap-2">
+                                                        <span class="size-2 rounded-full bg-[var(--gold)]"></span>
+                                                        <span class="xl:text-sm text-xs text-[var(--text)] hover:text-[var(--gold)] transition_root">کارت  ویزیت</span>
+                                                    </div>
+                                                    <div class="flex justify-start items-center gap-2">
+                                                        <span class="size-2 rounded-full bg-[var(--gold)]"></span>
+                                                        <span class="xl:text-sm text-xs text-[var(--text)] hover:text-[var(--gold)] transition_root">کارت مات ویزیت</span>
+                                                    </div>
+                                                    <div class="flex justify-start items-center gap-2">
+                                                        <span class="size-2 rounded-full bg-[var(--gold)]"></span>
+                                                        <span class="xl:text-sm text-xs text-[var(--text)] hover:text-[var(--gold)] transition_root">کارت  ویزیت</span>
+                                                    </div>
+                                                    <div class="flex justify-start items-center gap-2">
+                                                        <span class="size-2 rounded-full bg-[var(--gold)]"></span>
+                                                        <span class="xl:text-sm text-xs text-[var(--text)] hover:text-[var(--gold)] transition_root">کارت مات ویزیت</span>
+                                                    </div>
+                                                    <div class="flex justify-start items-center gap-2">
+                                                        <span class="size-2 rounded-full bg-[var(--gold)]"></span>
+                                                        <span class="xl:text-sm text-xs text-[var(--text)] hover:text-[var(--gold)] transition_root">کارت  ویزیت</span>
+                                                    </div>
+                                                    <div class="flex justify-start items-center gap-2">
+                                                        <span class="size-2 rounded-full bg-[var(--gold)]"></span>
+                                                        <span class="xl:text-sm text-xs text-[var(--text)] hover:text-[var(--gold)] transition_root">کارت مات ویزیت</span>
+                                                    </div>
+                                                    <div class="flex justify-start items-center gap-2">
+                                                        <span class="size-2 rounded-full bg-[var(--gold)]"></span>
+                                                        <span class="xl:text-sm text-xs text-[var(--text)] hover:text-[var(--gold)] transition_root">کارت  ویزیت</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="px-3 h-9/12 border-l border-y py-4 border-[var(--gold)] flex flex-col gap-5 justify-start items-start overflow-auto [&::-webkit-scrollbar]:w-2  [&::-webkit-scrollbar-thumb]:bg-[var(--gold)]  [&::-webkit-scrollbar-thumb]:rounded-full">
+                                                <div class="flex justify-start items-center xl:gap-3 gap-2">
+                                                    <div>
+                                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="xl:size-8 lg:size-6 size-11">
+                                                            <g fill="none" stroke="var(--gold)" stroke-width="10" stroke-linecap="round" stroke-linejoin="round">
+                                                                <!-- Outer Card -->
+                                                                <rect x="90" y="110" width="332" height="220" rx="10"></rect>
+                                                                <!-- Inner Border -->
+                                                                <rect x="120" y="140" width="272" height="160" rx="2"></rect>
+                                                                <!-- Top Right Circle -->
+                                                                <circle cx="340" cy="175" r="18"></circle>
+                                                                <!-- Logo -->
+                                                                <path d="
+                                                                M165 235
+                                                                L165 205
+                                                                Q165 180 188 180
+                                                                L205 180
+                                                                Q225 180 225 198
+                                                                Q225 214 208 214
+                                                                L188 214
+                                                                L188 225
+                                                                L215 225
+                                                                Q235 225 235 245
+                                                                L165 245
+                                                                Z"></path> 
+                                                                <!-- Text Line -->
+                                                                <line x1="220" y1="225" x2="305" y2="225"></line>
+                                                                <!-- Corner Accent -->
+                                                                <path d="M375 270 L375 295 L350 295"></path>
+                                                            </g>
+                                                        </svg>
+                                                    </div>
+                                                    <span class="max-xl:text-sm font-bold text-[var(--text)]">چاپ  کارت ویزیت</span>
+                                                </div>
+                                                <div class="w-full max-h-full flex flex-col gap-3 justify-start items-start pr-3 px-4 overflow-auto [&::-webkit-scrollbar]:w-1  [&::-webkit-scrollbar-thumb]:bg-[var(--gold)]  [&::-webkit-scrollbar-thumb]:rounded-full">
+                                                    <div class="flex justify-start items-center gap-2">
+                                                        <span class="size-2 rounded-full bg-[var(--gold)]"></span>
+                                                        <span class="xl:text-sm text-xs text-[var(--text)] hover:text-[var(--gold)] transition_root">کارت مات ویزیت</span>
+                                                    </div>
+                                                    <div class="flex justify-start items-center gap-2">
+                                                        <span class="size-2 rounded-full bg-[var(--gold)]"></span>
+                                                        <span class="xl:text-sm text-xs text-[var(--text)] hover:text-[var(--gold)] transition_root">کارت  ویزیت</span>
+                                                    </div>
+                                                    <div class="flex justify-start items-center gap-2">
+                                                        <span class="size-2 rounded-full bg-[var(--gold)]"></span>
+                                                        <span class="xl:text-sm text-xs text-[var(--text)] hover:text-[var(--gold)] transition_root">کارت مات ویزیت</span>
+                                                    </div>
+                                                    <div class="flex justify-start items-center gap-2">
+                                                        <span class="size-2 rounded-full bg-[var(--gold)]"></span>
+                                                        <span class="xl:text-sm text-xs text-[var(--text)] hover:text-[var(--gold)] transition_root">کارت  ویزیت</span>
+                                                    </div>
+                                                    <div class="flex justify-start items-center gap-2">
+                                                        <span class="size-2 rounded-full bg-[var(--gold)]"></span>
+                                                        <span class="xl:text-sm text-xs text-[var(--text)] hover:text-[var(--gold)] transition_root">کارت مات ویزیت</span>
+                                                    </div>
+                                                    <div class="flex justify-start items-center gap-2">
+                                                        <span class="size-2 rounded-full bg-[var(--gold)]"></span>
+                                                        <span class="xl:text-sm text-xs text-[var(--text)] hover:text-[var(--gold)] transition_root">کارت  ویزیت</span>
+                                                    </div>
+                                                    <div class="flex justify-start items-center gap-2">
+                                                        <span class="size-2 rounded-full bg-[var(--gold)]"></span>
+                                                        <span class="xl:text-sm text-xs text-[var(--text)] hover:text-[var(--gold)] transition_root">کارت مات ویزیت</span>
+                                                    </div>
+                                                    <div class="flex justify-start items-center gap-2">
+                                                        <span class="size-2 rounded-full bg-[var(--gold)]"></span>
+                                                        <span class="xl:text-sm text-xs text-[var(--text)] hover:text-[var(--gold)] transition_root">کارت  ویزیت</span>
+                                                    </div>
+                                                    <div class="flex justify-start items-center gap-2">
+                                                        <span class="size-2 rounded-full bg-[var(--gold)]"></span>
+                                                        <span class="xl:text-sm text-xs text-[var(--text)] hover:text-[var(--gold)] transition_root">کارت مات ویزیت</span>
+                                                    </div>
+                                                    <div class="flex justify-start items-center gap-2">
+                                                        <span class="size-2 rounded-full bg-[var(--gold)]"></span>
+                                                        <span class="xl:text-sm text-xs text-[var(--text)] hover:text-[var(--gold)] transition_root">کارت  ویزیت</span>
+                                                    </div>
+                                                    <div class="flex justify-start items-center gap-2">
+                                                        <span class="size-2 rounded-full bg-[var(--gold)]"></span>
+                                                        <span class="xl:text-sm text-xs text-[var(--text)] hover:text-[var(--gold)] transition_root">کارت مات ویزیت</span>
+                                                    </div>
+                                                    <div class="flex justify-start items-center gap-2">
+                                                        <span class="size-2 rounded-full bg-[var(--gold)]"></span>
+                                                        <span class="xl:text-sm text-xs text-[var(--text)] hover:text-[var(--gold)] transition_root">کارت  ویزیت</span>
+                                                    </div>
+                                                    <div class="flex justify-start items-center gap-2">
+                                                        <span class="size-2 rounded-full bg-[var(--gold)]"></span>
+                                                        <span class="xl:text-sm text-xs text-[var(--text)] hover:text-[var(--gold)] transition_root">کارت مات ویزیت</span>
+                                                    </div>
+                                                    <div class="flex justify-start items-center gap-2">
+                                                        <span class="size-2 rounded-full bg-[var(--gold)]"></span>
+                                                        <span class="xl:text-sm text-xs text-[var(--text)] hover:text-[var(--gold)] transition_root">کارت  ویزیت</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="px-3 h-9/12 border-l border-y py-4 border-[var(--gold)] flex flex-col gap-5 justify-start items-start overflow-auto [&::-webkit-scrollbar]:w-2  [&::-webkit-scrollbar-thumb]:bg-[var(--gold)]  [&::-webkit-scrollbar-thumb]:rounded-full">
+                                                <div class="flex justify-start items-center xl:gap-3 gap-2">
+                                                    <div>
+                                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="xl:size-8 lg:size-6 size-11">
+                                                            <g fill="none" stroke="var(--gold)" stroke-width="10" stroke-linecap="round" stroke-linejoin="round">
+                                                                <!-- Outer Card -->
+                                                                <rect x="90" y="110" width="332" height="220" rx="10"></rect>
+                                                                <!-- Inner Border -->
+                                                                <rect x="120" y="140" width="272" height="160" rx="2"></rect>
+                                                                <!-- Top Right Circle -->
+                                                                <circle cx="340" cy="175" r="18"></circle>
+                                                                <!-- Logo -->
+                                                                <path d="
+                                                                M165 235
+                                                                L165 205
+                                                                Q165 180 188 180
+                                                                L205 180
+                                                                Q225 180 225 198
+                                                                Q225 214 208 214
+                                                                L188 214
+                                                                L188 225
+                                                                L215 225
+                                                                Q235 225 235 245
+                                                                L165 245
+                                                                Z"></path> 
+                                                                <!-- Text Line -->
+                                                                <line x1="220" y1="225" x2="305" y2="225"></line>
+                                                                <!-- Corner Accent -->
+                                                                <path d="M375 270 L375 295 L350 295"></path>
+                                                            </g>
+                                                        </svg>
+                                                    </div>
+                                                    <span class="max-xl:text-sm font-bold text-[var(--text)]">چاپ  کارت ویزیت</span>
+                                                </div>
+                                                <div class="w-full max-h-full flex flex-col gap-3 justify-start items-start pr-3 px-4 overflow-auto [&::-webkit-scrollbar]:w-1  [&::-webkit-scrollbar-thumb]:bg-[var(--gold)]  [&::-webkit-scrollbar-thumb]:rounded-full">
+                                                    <div class="flex justify-start items-center gap-2">
+                                                        <span class="size-2 rounded-full bg-[var(--gold)]"></span>
+                                                        <span class="xl:text-sm text-xs text-[var(--text)] hover:text-[var(--gold)] transition_root">کارت مات ویزیت</span>
+                                                    </div>
+                                                    <div class="flex justify-start items-center gap-2">
+                                                        <span class="size-2 rounded-full bg-[var(--gold)]"></span>
+                                                        <span class="xl:text-sm text-xs text-[var(--text)] hover:text-[var(--gold)] transition_root">کارت  ویزیت</span>
+                                                    </div>
+                                                    <div class="flex justify-start items-center gap-2">
+                                                        <span class="size-2 rounded-full bg-[var(--gold)]"></span>
+                                                        <span class="xl:text-sm text-xs text-[var(--text)] hover:text-[var(--gold)] transition_root">کارت مات ویزیت</span>
+                                                    </div>
+                                                    <div class="flex justify-start items-center gap-2">
+                                                        <span class="size-2 rounded-full bg-[var(--gold)]"></span>
+                                                        <span class="xl:text-sm text-xs text-[var(--text)] hover:text-[var(--gold)] transition_root">کارت  ویزیت</span>
+                                                    </div>
+                                                    <div class="flex justify-start items-center gap-2">
+                                                        <span class="size-2 rounded-full bg-[var(--gold)]"></span>
+                                                        <span class="xl:text-sm text-xs text-[var(--text)] hover:text-[var(--gold)] transition_root">کارت مات ویزیت</span>
+                                                    </div>
+                                                    <div class="flex justify-start items-center gap-2">
+                                                        <span class="size-2 rounded-full bg-[var(--gold)]"></span>
+                                                        <span class="xl:text-sm text-xs text-[var(--text)] hover:text-[var(--gold)] transition_root">کارت  ویزیت</span>
+                                                    </div>
+                                                    <div class="flex justify-start items-center gap-2">
+                                                        <span class="size-2 rounded-full bg-[var(--gold)]"></span>
+                                                        <span class="xl:text-sm text-xs text-[var(--text)] hover:text-[var(--gold)] transition_root">کارت مات ویزیت</span>
+                                                    </div>
+                                                    <div class="flex justify-start items-center gap-2">
+                                                        <span class="size-2 rounded-full bg-[var(--gold)]"></span>
+                                                        <span class="xl:text-sm text-xs text-[var(--text)] hover:text-[var(--gold)] transition_root">کارت  ویزیت</span>
+                                                    </div>
+                                                    <div class="flex justify-start items-center gap-2">
+                                                        <span class="size-2 rounded-full bg-[var(--gold)]"></span>
+                                                        <span class="xl:text-sm text-xs text-[var(--text)] hover:text-[var(--gold)] transition_root">کارت مات ویزیت</span>
+                                                    </div>
+                                                    <div class="flex justify-start items-center gap-2">
+                                                        <span class="size-2 rounded-full bg-[var(--gold)]"></span>
+                                                        <span class="xl:text-sm text-xs text-[var(--text)] hover:text-[var(--gold)] transition_root">کارت  ویزیت</span>
+                                                    </div>
+                                                    <div class="flex justify-start items-center gap-2">
+                                                        <span class="size-2 rounded-full bg-[var(--gold)]"></span>
+                                                        <span class="xl:text-sm text-xs text-[var(--text)] hover:text-[var(--gold)] transition_root">کارت مات ویزیت</span>
+                                                    </div>
+                                                    <div class="flex justify-start items-center gap-2">
+                                                        <span class="size-2 rounded-full bg-[var(--gold)]"></span>
+                                                        <span class="xl:text-sm text-xs text-[var(--text)] hover:text-[var(--gold)] transition_root">کارت  ویزیت</span>
+                                                    </div>
+                                                    <div class="flex justify-start items-center gap-2">
+                                                        <span class="size-2 rounded-full bg-[var(--gold)]"></span>
+                                                        <span class="xl:text-sm text-xs text-[var(--text)] hover:text-[var(--gold)] transition_root">کارت مات ویزیت</span>
+                                                    </div>
+                                                    <div class="flex justify-start items-center gap-2">
+                                                        <span class="size-2 rounded-full bg-[var(--gold)]"></span>
+                                                        <span class="xl:text-sm text-xs text-[var(--text)] hover:text-[var(--gold)] transition_root">کارت  ویزیت</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="px-3 h-9/12 border-l border-y py-4 border-[var(--gold)] flex flex-col gap-5 justify-start items-start overflow-auto [&::-webkit-scrollbar]:w-2  [&::-webkit-scrollbar-thumb]:bg-[var(--gold)]  [&::-webkit-scrollbar-thumb]:rounded-full">
+                                                <div class="flex justify-start items-center xl:gap-3 gap-2">
+                                                    <div>
+                                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="xl:size-8 lg:size-6 size-11">
+                                                            <g fill="none" stroke="var(--gold)" stroke-width="10" stroke-linecap="round" stroke-linejoin="round">
+                                                                <!-- Outer Card -->
+                                                                <rect x="90" y="110" width="332" height="220" rx="10"></rect>
+                                                                <!-- Inner Border -->
+                                                                <rect x="120" y="140" width="272" height="160" rx="2"></rect>
+                                                                <!-- Top Right Circle -->
+                                                                <circle cx="340" cy="175" r="18"></circle>
+                                                                <!-- Logo -->
+                                                                <path d="
+                                                                M165 235
+                                                                L165 205
+                                                                Q165 180 188 180
+                                                                L205 180
+                                                                Q225 180 225 198
+                                                                Q225 214 208 214
+                                                                L188 214
+                                                                L188 225
+                                                                L215 225
+                                                                Q235 225 235 245
+                                                                L165 245
+                                                                Z"></path> 
+                                                                <!-- Text Line -->
+                                                                <line x1="220" y1="225" x2="305" y2="225"></line>
+                                                                <!-- Corner Accent -->
+                                                                <path d="M375 270 L375 295 L350 295"></path>
+                                                            </g>
+                                                        </svg>
+                                                    </div>
+                                                    <span class="max-xl:text-sm font-bold text-[var(--text)]">چاپ  کارت ویزیت</span>
+                                                </div>
+                                                <div class="w-full max-h-full flex flex-col gap-3 justify-start items-start pr-3 px-4 overflow-auto [&::-webkit-scrollbar]:w-1  [&::-webkit-scrollbar-thumb]:bg-[var(--gold)]  [&::-webkit-scrollbar-thumb]:rounded-full">
+                                                    <div class="flex justify-start items-center gap-2">
+                                                        <span class="size-2 rounded-full bg-[var(--gold)]"></span>
+                                                        <span class="xl:text-sm text-xs text-[var(--text)] hover:text-[var(--gold)] transition_root">کارت مات ویزیت</span>
+                                                    </div>
+                                                    <div class="flex justify-start items-center gap-2">
+                                                        <span class="size-2 rounded-full bg-[var(--gold)]"></span>
+                                                        <span class="xl:text-sm text-xs text-[var(--text)] hover:text-[var(--gold)] transition_root">کارت  ویزیت</span>
+                                                    </div>
+                                                    <div class="flex justify-start items-center gap-2">
+                                                        <span class="size-2 rounded-full bg-[var(--gold)]"></span>
+                                                        <span class="xl:text-sm text-xs text-[var(--text)] hover:text-[var(--gold)] transition_root">کارت مات ویزیت</span>
+                                                    </div>
+                                                    <div class="flex justify-start items-center gap-2">
+                                                        <span class="size-2 rounded-full bg-[var(--gold)]"></span>
+                                                        <span class="xl:text-sm text-xs text-[var(--text)] hover:text-[var(--gold)] transition_root">کارت  ویزیت</span>
+                                                    </div>
+                                                    <div class="flex justify-start items-center gap-2">
+                                                        <span class="size-2 rounded-full bg-[var(--gold)]"></span>
+                                                        <span class="xl:text-sm text-xs text-[var(--text)] hover:text-[var(--gold)] transition_root">کارت مات ویزیت</span>
+                                                    </div>
+                                                    <div class="flex justify-start items-center gap-2">
+                                                        <span class="size-2 rounded-full bg-[var(--gold)]"></span>
+                                                        <span class="xl:text-sm text-xs text-[var(--text)] hover:text-[var(--gold)] transition_root">کارت  ویزیت</span>
+                                                    </div>
+                                                    <div class="flex justify-start items-center gap-2">
+                                                        <span class="size-2 rounded-full bg-[var(--gold)]"></span>
+                                                        <span class="xl:text-sm text-xs text-[var(--text)] hover:text-[var(--gold)] transition_root">کارت مات ویزیت</span>
+                                                    </div>
+                                                    <div class="flex justify-start items-center gap-2">
+                                                        <span class="size-2 rounded-full bg-[var(--gold)]"></span>
+                                                        <span class="xl:text-sm text-xs text-[var(--text)] hover:text-[var(--gold)] transition_root">کارت  ویزیت</span>
+                                                    </div>
+                                                    <div class="flex justify-start items-center gap-2">
+                                                        <span class="size-2 rounded-full bg-[var(--gold)]"></span>
+                                                        <span class="xl:text-sm text-xs text-[var(--text)] hover:text-[var(--gold)] transition_root">کارت مات ویزیت</span>
+                                                    </div>
+                                                    <div class="flex justify-start items-center gap-2">
+                                                        <span class="size-2 rounded-full bg-[var(--gold)]"></span>
+                                                        <span class="xl:text-sm text-xs text-[var(--text)] hover:text-[var(--gold)] transition_root">کارت  ویزیت</span>
+                                                    </div>
+                                                    <div class="flex justify-start items-center gap-2">
+                                                        <span class="size-2 rounded-full bg-[var(--gold)]"></span>
+                                                        <span class="xl:text-sm text-xs text-[var(--text)] hover:text-[var(--gold)] transition_root">کارت مات ویزیت</span>
+                                                    </div>
+                                                    <div class="flex justify-start items-center gap-2">
+                                                        <span class="size-2 rounded-full bg-[var(--gold)]"></span>
+                                                        <span class="xl:text-sm text-xs text-[var(--text)] hover:text-[var(--gold)] transition_root">کارت  ویزیت</span>
+                                                    </div>
+                                                    <div class="flex justify-start items-center gap-2">
+                                                        <span class="size-2 rounded-full bg-[var(--gold)]"></span>
+                                                        <span class="xl:text-sm text-xs text-[var(--text)] hover:text-[var(--gold)] transition_root">کارت مات ویزیت</span>
+                                                    </div>
+                                                    <div class="flex justify-start items-center gap-2">
+                                                        <span class="size-2 rounded-full bg-[var(--gold)]"></span>
+                                                        <span class="xl:text-sm text-xs text-[var(--text)] hover:text-[var(--gold)] transition_root">کارت  ویزیت</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="px-3 h-9/12 border-l border-y py-4 border-[var(--gold)] flex flex-col gap-5 justify-start items-start overflow-auto [&::-webkit-scrollbar]:w-2  [&::-webkit-scrollbar-thumb]:bg-[var(--gold)]  [&::-webkit-scrollbar-thumb]:rounded-full">
+                                                <div class="flex justify-start items-center xl:gap-3 gap-2">
+                                                    <div>
+                                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="xl:size-8 lg:size-6 size-11">
+                                                            <g fill="none" stroke="var(--gold)" stroke-width="10" stroke-linecap="round" stroke-linejoin="round">
+                                                                <!-- Outer Card -->
+                                                                <rect x="90" y="110" width="332" height="220" rx="10"></rect>
+                                                                <!-- Inner Border -->
+                                                                <rect x="120" y="140" width="272" height="160" rx="2"></rect>
+                                                                <!-- Top Right Circle -->
+                                                                <circle cx="340" cy="175" r="18"></circle>
+                                                                <!-- Logo -->
+                                                                <path d="
+                                                                M165 235
+                                                                L165 205
+                                                                Q165 180 188 180
+                                                                L205 180
+                                                                Q225 180 225 198
+                                                                Q225 214 208 214
+                                                                L188 214
+                                                                L188 225
+                                                                L215 225
+                                                                Q235 225 235 245
+                                                                L165 245
+                                                                Z"></path> 
+                                                                <!-- Text Line -->
+                                                                <line x1="220" y1="225" x2="305" y2="225"></line>
+                                                                <!-- Corner Accent -->
+                                                                <path d="M375 270 L375 295 L350 295"></path>
+                                                            </g>
+                                                        </svg>
+                                                    </div>
+                                                    <span class="max-xl:text-sm font-bold text-[var(--text)]">چاپ  کارت ویزیت</span>
+                                                </div>
+                                                <div class="w-full max-h-full flex flex-col gap-3 justify-start items-start pr-3 px-4 overflow-auto [&::-webkit-scrollbar]:w-1  [&::-webkit-scrollbar-thumb]:bg-[var(--gold)]  [&::-webkit-scrollbar-thumb]:rounded-full">
+                                                    <div class="flex justify-start items-center gap-2">
+                                                        <span class="size-2 rounded-full bg-[var(--gold)]"></span>
+                                                        <span class="xl:text-sm text-xs text-[var(--text)] hover:text-[var(--gold)] transition_root">کارت مات ویزیت</span>
+                                                    </div>
+                                                    <div class="flex justify-start items-center gap-2">
+                                                        <span class="size-2 rounded-full bg-[var(--gold)]"></span>
+                                                        <span class="xl:text-sm text-xs text-[var(--text)] hover:text-[var(--gold)] transition_root">کارت  ویزیت</span>
+                                                    </div>
+                                                    <div class="flex justify-start items-center gap-2">
+                                                        <span class="size-2 rounded-full bg-[var(--gold)]"></span>
+                                                        <span class="xl:text-sm text-xs text-[var(--text)] hover:text-[var(--gold)] transition_root">کارت مات ویزیت</span>
+                                                    </div>
+                                                    <div class="flex justify-start items-center gap-2">
+                                                        <span class="size-2 rounded-full bg-[var(--gold)]"></span>
+                                                        <span class="xl:text-sm text-xs text-[var(--text)] hover:text-[var(--gold)] transition_root">کارت  ویزیت</span>
+                                                    </div>
+                                                    <div class="flex justify-start items-center gap-2">
+                                                        <span class="size-2 rounded-full bg-[var(--gold)]"></span>
+                                                        <span class="xl:text-sm text-xs text-[var(--text)] hover:text-[var(--gold)] transition_root">کارت مات ویزیت</span>
+                                                    </div>
+                                                    <div class="flex justify-start items-center gap-2">
+                                                        <span class="size-2 rounded-full bg-[var(--gold)]"></span>
+                                                        <span class="xl:text-sm text-xs text-[var(--text)] hover:text-[var(--gold)] transition_root">کارت  ویزیت</span>
+                                                    </div>
+                                                    <div class="flex justify-start items-center gap-2">
+                                                        <span class="size-2 rounded-full bg-[var(--gold)]"></span>
+                                                        <span class="xl:text-sm text-xs text-[var(--text)] hover:text-[var(--gold)] transition_root">کارت مات ویزیت</span>
+                                                    </div>
+                                                    <div class="flex justify-start items-center gap-2">
+                                                        <span class="size-2 rounded-full bg-[var(--gold)]"></span>
+                                                        <span class="xl:text-sm text-xs text-[var(--text)] hover:text-[var(--gold)] transition_root">کارت  ویزیت</span>
+                                                    </div>
+                                                    <div class="flex justify-start items-center gap-2">
+                                                        <span class="size-2 rounded-full bg-[var(--gold)]"></span>
+                                                        <span class="xl:text-sm text-xs text-[var(--text)] hover:text-[var(--gold)] transition_root">کارت مات ویزیت</span>
+                                                    </div>
+                                                    <div class="flex justify-start items-center gap-2">
+                                                        <span class="size-2 rounded-full bg-[var(--gold)]"></span>
+                                                        <span class="xl:text-sm text-xs text-[var(--text)] hover:text-[var(--gold)] transition_root">کارت  ویزیت</span>
+                                                    </div>
+                                                    <div class="flex justify-start items-center gap-2">
+                                                        <span class="size-2 rounded-full bg-[var(--gold)]"></span>
+                                                        <span class="xl:text-sm text-xs text-[var(--text)] hover:text-[var(--gold)] transition_root">کارت مات ویزیت</span>
+                                                    </div>
+                                                    <div class="flex justify-start items-center gap-2">
+                                                        <span class="size-2 rounded-full bg-[var(--gold)]"></span>
+                                                        <span class="xl:text-sm text-xs text-[var(--text)] hover:text-[var(--gold)] transition_root">کارت  ویزیت</span>
+                                                    </div>
+                                                    <div class="flex justify-start items-center gap-2">
+                                                        <span class="size-2 rounded-full bg-[var(--gold)]"></span>
+                                                        <span class="xl:text-sm text-xs text-[var(--text)] hover:text-[var(--gold)] transition_root">کارت مات ویزیت</span>
+                                                    </div>
+                                                    <div class="flex justify-start items-center gap-2">
+                                                        <span class="size-2 rounded-full bg-[var(--gold)]"></span>
+                                                        <span class="xl:text-sm text-xs text-[var(--text)] hover:text-[var(--gold)] transition_root">کارت  ویزیت</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="px-3 h-9/12 border-l border-y py-4 border-[var(--gold)] flex flex-col gap-5 justify-start items-start overflow-auto [&::-webkit-scrollbar]:w-2  [&::-webkit-scrollbar-thumb]:bg-[var(--gold)]  [&::-webkit-scrollbar-thumb]:rounded-full">
+                                                <div class="flex justify-start items-center xl:gap-3 gap-2">
+                                                    <div>
+                                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="xl:size-8 lg:size-6 size-11">
+                                                            <g fill="none" stroke="var(--gold)" stroke-width="10" stroke-linecap="round" stroke-linejoin="round">
+                                                                <!-- Outer Card -->
+                                                                <rect x="90" y="110" width="332" height="220" rx="10"></rect>
+                                                                <!-- Inner Border -->
+                                                                <rect x="120" y="140" width="272" height="160" rx="2"></rect>
+                                                                <!-- Top Right Circle -->
+                                                                <circle cx="340" cy="175" r="18"></circle>
+                                                                <!-- Logo -->
+                                                                <path d="
+                                                                M165 235
+                                                                L165 205
+                                                                Q165 180 188 180
+                                                                L205 180
+                                                                Q225 180 225 198
+                                                                Q225 214 208 214
+                                                                L188 214
+                                                                L188 225
+                                                                L215 225
+                                                                Q235 225 235 245
+                                                                L165 245
+                                                                Z"></path> 
+                                                                <!-- Text Line -->
+                                                                <line x1="220" y1="225" x2="305" y2="225"></line>
+                                                                <!-- Corner Accent -->
+                                                                <path d="M375 270 L375 295 L350 295"></path>
+                                                            </g>
+                                                        </svg>
+                                                    </div>
+                                                    <span class="max-xl:text-sm font-bold text-[var(--text)]">چاپ  کارت ویزیت</span>
+                                                </div>
+                                                <div class="w-full max-h-full flex flex-col gap-3 justify-start items-start pr-3 px-4 overflow-auto [&::-webkit-scrollbar]:w-1  [&::-webkit-scrollbar-thumb]:bg-[var(--gold)]  [&::-webkit-scrollbar-thumb]:rounded-full">
+                                                    <div class="flex justify-start items-center gap-2">
+                                                        <span class="size-2 rounded-full bg-[var(--gold)]"></span>
+                                                        <span class="xl:text-sm text-xs text-[var(--text)] hover:text-[var(--gold)] transition_root">کارت مات ویزیت</span>
+                                                    </div>
+                                                    <div class="flex justify-start items-center gap-2">
+                                                        <span class="size-2 rounded-full bg-[var(--gold)]"></span>
+                                                        <span class="xl:text-sm text-xs text-[var(--text)] hover:text-[var(--gold)] transition_root">کارت  ویزیت</span>
+                                                    </div>
+                                                    <div class="flex justify-start items-center gap-2">
+                                                        <span class="size-2 rounded-full bg-[var(--gold)]"></span>
+                                                        <span class="xl:text-sm text-xs text-[var(--text)] hover:text-[var(--gold)] transition_root">کارت مات ویزیت</span>
+                                                    </div>
+                                                    <div class="flex justify-start items-center gap-2">
+                                                        <span class="size-2 rounded-full bg-[var(--gold)]"></span>
+                                                        <span class="xl:text-sm text-xs text-[var(--text)] hover:text-[var(--gold)] transition_root">کارت  ویزیت</span>
+                                                    </div>
+                                                    <div class="flex justify-start items-center gap-2">
+                                                        <span class="size-2 rounded-full bg-[var(--gold)]"></span>
+                                                        <span class="xl:text-sm text-xs text-[var(--text)] hover:text-[var(--gold)] transition_root">کارت مات ویزیت</span>
+                                                    </div>
+                                                    <div class="flex justify-start items-center gap-2">
+                                                        <span class="size-2 rounded-full bg-[var(--gold)]"></span>
+                                                        <span class="xl:text-sm text-xs text-[var(--text)] hover:text-[var(--gold)] transition_root">کارت  ویزیت</span>
+                                                    </div>
+                                                    <div class="flex justify-start items-center gap-2">
+                                                        <span class="size-2 rounded-full bg-[var(--gold)]"></span>
+                                                        <span class="xl:text-sm text-xs text-[var(--text)] hover:text-[var(--gold)] transition_root">کارت مات ویزیت</span>
+                                                    </div>
+                                                    <div class="flex justify-start items-center gap-2">
+                                                        <span class="size-2 rounded-full bg-[var(--gold)]"></span>
+                                                        <span class="xl:text-sm text-xs text-[var(--text)] hover:text-[var(--gold)] transition_root">کارت  ویزیت</span>
+                                                    </div>
+                                                    <div class="flex justify-start items-center gap-2">
+                                                        <span class="size-2 rounded-full bg-[var(--gold)]"></span>
+                                                        <span class="xl:text-sm text-xs text-[var(--text)] hover:text-[var(--gold)] transition_root">کارت مات ویزیت</span>
+                                                    </div>
+                                                    <div class="flex justify-start items-center gap-2">
+                                                        <span class="size-2 rounded-full bg-[var(--gold)]"></span>
+                                                        <span class="xl:text-sm text-xs text-[var(--text)] hover:text-[var(--gold)] transition_root">کارت  ویزیت</span>
+                                                    </div>
+                                                    <div class="flex justify-start items-center gap-2">
+                                                        <span class="size-2 rounded-full bg-[var(--gold)]"></span>
+                                                        <span class="xl:text-sm text-xs text-[var(--text)] hover:text-[var(--gold)] transition_root">کارت مات ویزیت</span>
+                                                    </div>
+                                                    <div class="flex justify-start items-center gap-2">
+                                                        <span class="size-2 rounded-full bg-[var(--gold)]"></span>
+                                                        <span class="xl:text-sm text-xs text-[var(--text)] hover:text-[var(--gold)] transition_root">کارت  ویزیت</span>
+                                                    </div>
+                                                    <div class="flex justify-start items-center gap-2">
+                                                        <span class="size-2 rounded-full bg-[var(--gold)]"></span>
+                                                        <span class="xl:text-sm text-xs text-[var(--text)] hover:text-[var(--gold)] transition_root">کارت مات ویزیت</span>
+                                                    </div>
+                                                    <div class="flex justify-start items-center gap-2">
+                                                        <span class="size-2 rounded-full bg-[var(--gold)]"></span>
+                                                        <span class="xl:text-sm text-xs text-[var(--text)] hover:text-[var(--gold)] transition_root">کارت  ویزیت</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="px-3 h-9/12 border-l border-y py-4 border-[var(--gold)] flex flex-col gap-5 justify-start items-start overflow-auto [&::-webkit-scrollbar]:w-2  [&::-webkit-scrollbar-thumb]:bg-[var(--gold)]  [&::-webkit-scrollbar-thumb]:rounded-full">
+                                                <div class="flex justify-start items-center xl:gap-3 gap-2">
+                                                    <div>
+                                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="xl:size-8 lg:size-6 size-11">
+                                                            <g fill="none" stroke="var(--gold)" stroke-width="10" stroke-linecap="round" stroke-linejoin="round">
+                                                                <!-- Outer Card -->
+                                                                <rect x="90" y="110" width="332" height="220" rx="10"></rect>
+                                                                <!-- Inner Border -->
+                                                                <rect x="120" y="140" width="272" height="160" rx="2"></rect>
+                                                                <!-- Top Right Circle -->
+                                                                <circle cx="340" cy="175" r="18"></circle>
+                                                                <!-- Logo -->
+                                                                <path d="
+                                                                M165 235
+                                                                L165 205
+                                                                Q165 180 188 180
+                                                                L205 180
+                                                                Q225 180 225 198
+                                                                Q225 214 208 214
+                                                                L188 214
+                                                                L188 225
+                                                                L215 225
+                                                                Q235 225 235 245
+                                                                L165 245
+                                                                Z"></path> 
+                                                                <!-- Text Line -->
+                                                                <line x1="220" y1="225" x2="305" y2="225"></line>
+                                                                <!-- Corner Accent -->
+                                                                <path d="M375 270 L375 295 L350 295"></path>
+                                                            </g>
+                                                        </svg>
+                                                    </div>
+                                                    <span class="max-xl:text-sm font-bold text-[var(--text)]">چاپ  کارت ویزیت</span>
+                                                </div>
+                                                <div class="w-full max-h-full flex flex-col gap-3 justify-start items-start pr-3 px-4 overflow-auto [&::-webkit-scrollbar]:w-1  [&::-webkit-scrollbar-thumb]:bg-[var(--gold)]  [&::-webkit-scrollbar-thumb]:rounded-full">
+                                                    <div class="flex justify-start items-center gap-2">
+                                                        <span class="size-2 rounded-full bg-[var(--gold)]"></span>
+                                                        <span class="xl:text-sm text-xs text-[var(--text)] hover:text-[var(--gold)] transition_root">کارت مات ویزیت</span>
+                                                    </div>
+                                                    <div class="flex justify-start items-center gap-2">
+                                                        <span class="size-2 rounded-full bg-[var(--gold)]"></span>
+                                                        <span class="xl:text-sm text-xs text-[var(--text)] hover:text-[var(--gold)] transition_root">کارت  ویزیت</span>
+                                                    </div>
+                                                    <div class="flex justify-start items-center gap-2">
+                                                        <span class="size-2 rounded-full bg-[var(--gold)]"></span>
+                                                        <span class="xl:text-sm text-xs text-[var(--text)] hover:text-[var(--gold)] transition_root">کارت مات ویزیت</span>
+                                                    </div>
+                                                    <div class="flex justify-start items-center gap-2">
+                                                        <span class="size-2 rounded-full bg-[var(--gold)]"></span>
+                                                        <span class="xl:text-sm text-xs text-[var(--text)] hover:text-[var(--gold)] transition_root">کارت  ویزیت</span>
+                                                    </div>
+                                                    <div class="flex justify-start items-center gap-2">
+                                                        <span class="size-2 rounded-full bg-[var(--gold)]"></span>
+                                                        <span class="xl:text-sm text-xs text-[var(--text)] hover:text-[var(--gold)] transition_root">کارت مات ویزیت</span>
+                                                    </div>
+                                                    <div class="flex justify-start items-center gap-2">
+                                                        <span class="size-2 rounded-full bg-[var(--gold)]"></span>
+                                                        <span class="xl:text-sm text-xs text-[var(--text)] hover:text-[var(--gold)] transition_root">کارت  ویزیت</span>
+                                                    </div>
+                                                    <div class="flex justify-start items-center gap-2">
+                                                        <span class="size-2 rounded-full bg-[var(--gold)]"></span>
+                                                        <span class="xl:text-sm text-xs text-[var(--text)] hover:text-[var(--gold)] transition_root">کارت مات ویزیت</span>
+                                                    </div>
+                                                    <div class="flex justify-start items-center gap-2">
+                                                        <span class="size-2 rounded-full bg-[var(--gold)]"></span>
+                                                        <span class="xl:text-sm text-xs text-[var(--text)] hover:text-[var(--gold)] transition_root">کارت  ویزیت</span>
+                                                    </div>
+                                                    <div class="flex justify-start items-center gap-2">
+                                                        <span class="size-2 rounded-full bg-[var(--gold)]"></span>
+                                                        <span class="xl:text-sm text-xs text-[var(--text)] hover:text-[var(--gold)] transition_root">کارت مات ویزیت</span>
+                                                    </div>
+                                                    <div class="flex justify-start items-center gap-2">
+                                                        <span class="size-2 rounded-full bg-[var(--gold)]"></span>
+                                                        <span class="xl:text-sm text-xs text-[var(--text)] hover:text-[var(--gold)] transition_root">کارت  ویزیت</span>
+                                                    </div>
+                                                    <div class="flex justify-start items-center gap-2">
+                                                        <span class="size-2 rounded-full bg-[var(--gold)]"></span>
+                                                        <span class="xl:text-sm text-xs text-[var(--text)] hover:text-[var(--gold)] transition_root">کارت مات ویزیت</span>
+                                                    </div>
+                                                    <div class="flex justify-start items-center gap-2">
+                                                        <span class="size-2 rounded-full bg-[var(--gold)]"></span>
+                                                        <span class="xl:text-sm text-xs text-[var(--text)] hover:text-[var(--gold)] transition_root">کارت  ویزیت</span>
+                                                    </div>
+                                                    <div class="flex justify-start items-center gap-2">
+                                                        <span class="size-2 rounded-full bg-[var(--gold)]"></span>
+                                                        <span class="xl:text-sm text-xs text-[var(--text)] hover:text-[var(--gold)] transition_root">کارت مات ویزیت</span>
+                                                    </div>
+                                                    <div class="flex justify-start items-center gap-2">
+                                                        <span class="size-2 rounded-full bg-[var(--gold)]"></span>
+                                                        <span class="xl:text-sm text-xs text-[var(--text)] hover:text-[var(--gold)] transition_root">کارت  ویزیت</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="px-3 h-9/12 border-l border-y py-4 border-[var(--gold)] flex flex-col gap-5 justify-start items-start overflow-auto [&::-webkit-scrollbar]:w-2  [&::-webkit-scrollbar-thumb]:bg-[var(--gold)]  [&::-webkit-scrollbar-thumb]:rounded-full">
+                                                <div class="flex justify-start items-center xl:gap-3 gap-2">
+                                                    <div>
+                                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="xl:size-8 lg:size-6 size-11">
+                                                            <g fill="none" stroke="var(--gold)" stroke-width="10" stroke-linecap="round" stroke-linejoin="round">
+                                                                <!-- Outer Card -->
+                                                                <rect x="90" y="110" width="332" height="220" rx="10"></rect>
+                                                                <!-- Inner Border -->
+                                                                <rect x="120" y="140" width="272" height="160" rx="2"></rect>
+                                                                <!-- Top Right Circle -->
+                                                                <circle cx="340" cy="175" r="18"></circle>
+                                                                <!-- Logo -->
+                                                                <path d="
+                                                                M165 235
+                                                                L165 205
+                                                                Q165 180 188 180
+                                                                L205 180
+                                                                Q225 180 225 198
+                                                                Q225 214 208 214
+                                                                L188 214
+                                                                L188 225
+                                                                L215 225
+                                                                Q235 225 235 245
+                                                                L165 245
+                                                                Z"></path> 
+                                                                <!-- Text Line -->
+                                                                <line x1="220" y1="225" x2="305" y2="225"></line>
+                                                                <!-- Corner Accent -->
+                                                                <path d="M375 270 L375 295 L350 295"></path>
+                                                            </g>
+                                                        </svg>
+                                                    </div>
+                                                    <span class="max-xl:text-sm font-bold text-[var(--text)]">چاپ  کارت ویزیت</span>
+                                                </div>
+                                                <div class="w-full max-h-full flex flex-col gap-3 justify-start items-start pr-3 px-4 overflow-auto [&::-webkit-scrollbar]:w-1  [&::-webkit-scrollbar-thumb]:bg-[var(--gold)]  [&::-webkit-scrollbar-thumb]:rounded-full">
+                                                    <div class="flex justify-start items-center gap-2">
+                                                        <span class="size-2 rounded-full bg-[var(--gold)]"></span>
+                                                        <span class="xl:text-sm text-xs text-[var(--text)] hover:text-[var(--gold)] transition_root">کارت مات ویزیت</span>
+                                                    </div>
+                                                    <div class="flex justify-start items-center gap-2">
+                                                        <span class="size-2 rounded-full bg-[var(--gold)]"></span>
+                                                        <span class="xl:text-sm text-xs text-[var(--text)] hover:text-[var(--gold)] transition_root">کارت  ویزیت</span>
+                                                    </div>
+                                                    <div class="flex justify-start items-center gap-2">
+                                                        <span class="size-2 rounded-full bg-[var(--gold)]"></span>
+                                                        <span class="xl:text-sm text-xs text-[var(--text)] hover:text-[var(--gold)] transition_root">کارت مات ویزیت</span>
+                                                    </div>
+                                                    <div class="flex justify-start items-center gap-2">
+                                                        <span class="size-2 rounded-full bg-[var(--gold)]"></span>
+                                                        <span class="xl:text-sm text-xs text-[var(--text)] hover:text-[var(--gold)] transition_root">کارت  ویزیت</span>
+                                                    </div>
+                                                    <div class="flex justify-start items-center gap-2">
+                                                        <span class="size-2 rounded-full bg-[var(--gold)]"></span>
+                                                        <span class="xl:text-sm text-xs text-[var(--text)] hover:text-[var(--gold)] transition_root">کارت مات ویزیت</span>
+                                                    </div>
+                                                    <div class="flex justify-start items-center gap-2">
+                                                        <span class="size-2 rounded-full bg-[var(--gold)]"></span>
+                                                        <span class="xl:text-sm text-xs text-[var(--text)] hover:text-[var(--gold)] transition_root">کارت  ویزیت</span>
+                                                    </div>
+                                                    <div class="flex justify-start items-center gap-2">
+                                                        <span class="size-2 rounded-full bg-[var(--gold)]"></span>
+                                                        <span class="xl:text-sm text-xs text-[var(--text)] hover:text-[var(--gold)] transition_root">کارت مات ویزیت</span>
+                                                    </div>
+                                                    <div class="flex justify-start items-center gap-2">
+                                                        <span class="size-2 rounded-full bg-[var(--gold)]"></span>
+                                                        <span class="xl:text-sm text-xs text-[var(--text)] hover:text-[var(--gold)] transition_root">کارت  ویزیت</span>
+                                                    </div>
+                                                    <div class="flex justify-start items-center gap-2">
+                                                        <span class="size-2 rounded-full bg-[var(--gold)]"></span>
+                                                        <span class="xl:text-sm text-xs text-[var(--text)] hover:text-[var(--gold)] transition_root">کارت مات ویزیت</span>
+                                                    </div>
+                                                    <div class="flex justify-start items-center gap-2">
+                                                        <span class="size-2 rounded-full bg-[var(--gold)]"></span>
+                                                        <span class="xl:text-sm text-xs text-[var(--text)] hover:text-[var(--gold)] transition_root">کارت  ویزیت</span>
+                                                    </div>
+                                                    <div class="flex justify-start items-center gap-2">
+                                                        <span class="size-2 rounded-full bg-[var(--gold)]"></span>
+                                                        <span class="xl:text-sm text-xs text-[var(--text)] hover:text-[var(--gold)] transition_root">کارت مات ویزیت</span>
+                                                    </div>
+                                                    <div class="flex justify-start items-center gap-2">
+                                                        <span class="size-2 rounded-full bg-[var(--gold)]"></span>
+                                                        <span class="xl:text-sm text-xs text-[var(--text)] hover:text-[var(--gold)] transition_root">کارت  ویزیت</span>
+                                                    </div>
+                                                    <div class="flex justify-start items-center gap-2">
+                                                        <span class="size-2 rounded-full bg-[var(--gold)]"></span>
+                                                        <span class="xl:text-sm text-xs text-[var(--text)] hover:text-[var(--gold)] transition_root">کارت مات ویزیت</span>
+                                                    </div>
+                                                    <div class="flex justify-start items-center gap-2">
+                                                        <span class="size-2 rounded-full bg-[var(--gold)]"></span>
+                                                        <span class="xl:text-sm text-xs text-[var(--text)] hover:text-[var(--gold)] transition_root">کارت  ویزیت</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        
+                                        </div>
+                                    </div>
                                 </div>
                             </li>
                             <li class="lable-1">
@@ -489,7 +1971,7 @@
             <div class="w-full h-full" onclick="hambarger_menue('close')"></div>
         </div>
     </section>
-    <!-- سلایدر -->
+    <!-- سلایدر
     <section>
         <div class="w-11/12 h-30 mx-auto flex overflow-x-auto mt-20">
             <a href="" class="px-8 h-auto flex flex-col gap-5 items-center">
@@ -769,52 +2251,58 @@
                 </div>
             </a>
         </div>
-    </section>
+    </section> -->
     <!-- بنر-->
-    <section>
+     <section>
         <div class="w-11/12 mx-auto flex justify-center mt-20">
-            <h1 class="font-bold text-[6vw] sm:text-[5vw] md:text-[4vw] lg:text-[3vw]">محصولات ویژه</h1>
+            <h1 class="font-bold text-[6vw] sm:text-[5vw] md:text-[4vw] lg:text-[3vw]">دسته‌ها</h1>
         </div>
-        <div class="w-19/20 h-auto mx-auto flex flex-wrap gap-5 justify-center items-center mt-8 md:mt-12 lg:mt-10">
-            <div class="w-full sm:w-15/32 lg:w-10/32 h-full flex justify-end relative">
+        <div
+            class="w-19/20 h-auto mx-auto grid sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-5 justify-center items-center mt-8 md:mt-12 lg:mt-10">
+            <div class="h-full flex justify-end relative">
                 <img src="{{asset('assets/img/baner/img3.webp')}}" alt="" class="rounded-lg">
-                <div class="absolute w-1/2 h-full flex gap-3 flex-col justify-center items-center">
-                    <p class="py-1 px-3 md:px-5 bg-green-400 rounded-2xl">Sanitizer</p>
-                    <h3 class="text-center font-bold text-[1.2rem] sm:text-[2vw] md:text-[1.9vw] lg:text-[1.8vw]">
-                        Hand Sanitizer
-                        <br>
-                        Collectons
-                    </h3>
-                    <a href="" class="border-b-1 border-red-500">
-                        <span class="text-[1rem] md:text-[1.2rem]">shop new</span>
+                <div class="absolute w-1/2 h-full flex gap-2 flex-col justify-center items-center">
+                    <h3 class="font-bold text-[1.3rem]">لوازم تشخیصی</h3>
+                    <a href="" class="hover:border-b-1  border-red-500 transition_root">
+                        <span class="text-[0.8rem] md:text-[1rem]">مشاهده بیشتر</span>
                     </a>
                 </div>
             </div>
-            <div class="w-full sm:w-15/32 lg:w-10/32 h-full flex justify-end relative">
+            <div class="h-full flex justify-end relative">
                 <img src="{{asset('assets/img/baner/img1.webp')}}" alt="" class="rounded-lg">
-                <div class="absolute w-1/2 h-full flex gap-3 flex-col justify-center items-center">
-                    <p class="py-1 px-3 md:px-5 bg-green-400 rounded-2xl">Sanitizer</p>
-                    <h3 class="text-center font-bold text-[1.2rem] sm:text-[2vw] md:text-[1.9vw] lg:text-[1.8vw]">
-                        Hand Sanitizer
-                        <br>
-                        Collectons
-                    </h3>
-                    <a href="" class="border-b-1 border-red-500">
-                        <span class="text-[1rem] md:text-[1.2rem]">shop new</span>
+                <div class="absolute w-1/2 h-full flex gap-2 flex-col justify-center items-center">
+                    <h3 class="font-bold text-[1.3rem]">لوازم تشخیصی</h3>
+                    <a href="" class="hover:border-b-1  border-red-500 transition_root">
+                        <span class="text-[0.8rem] md:text-[1rem]">مشاهده بیشتر</span>
                     </a>
                 </div>
             </div>
-            <div class="w-full sm:w-15/32 lg:w-10/32 h-full flex justify-end relative">
+            <div class="h-full flex justify-end relative">
                 <img src="{{asset('assets/img/baner/img2.webp')}}" alt="" class="rounded-lg">
+                <div class="absolute w-1/2 h-full flex gap-2 flex-col justify-center items-center">
+                    <h3 class="font-bold text-[1.3rem]">لوازم تشخیصی</h3>
+                    <a href="" class="hover:border-b-1  border-red-500 transition_root">
+                        <span class="text-[0.8rem] md:text-[1rem]">مشاهده بیشتر</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="w-19/20 h-auto mx-auto flex gap-5 justify-center items-center mt-8 md:mt-12 lg:mt-10">
+            <div class="w-10/11 h-80 flex justify-end relative">
+                <img src="{{asset('assets/img/baner/img1.webp')}}" alt="" class="rounded-lg w-full">
                 <div class="absolute w-1/2 h-full flex gap-3 flex-col justify-center items-center">
-                    <p class="py-1 px-3 md:px-5 bg-green-400 rounded-2xl">Sanitizer</p>
-                    <h3 class="text-center font-bold text-[1.2rem] sm:text-[2vw] md:text-[1.9vw] lg:text-[1.8vw]">
-                        Hand Sanitizer
-                        <br>
-                        Collectons
-                    </h3>
-                    <a href="" class="border-b-1 border-red-500">
-                        <span class="text-[1rem] md:text-[1.2rem]">shop new</span>
+                    <h3 class="font-bold text-[1.3rem]">لوازم تشخیصی</h3>
+                    <a href="" class="hover:border-b-1  border-red-500 transition_root">
+                        <span class="text-[0.8rem] md:text-[1rem]">مشاهده بیشتر</span>
+                    </a>
+                </div>
+            </div>
+            <div class="w-10/11 h-80 flex justify-end relative">
+                <img src="{{asset('assets/img/baner/img2.webp')}}" alt="" class="rounded-lg w-full">
+                <div class="absolute w-1/2 h-full flex gap-3 flex-col justify-center items-center">
+                    <h3 class="font-bold text-[1.3rem]">لوازم تشخیصی</h3>
+                    <a href="" class="hover:border-b-1  border-red-500 transition_root">
+                        <span class="text-[0.8rem] md:text-[1rem]">مشاهده بیشتر</span>
                     </a>
                 </div>
             </div>
