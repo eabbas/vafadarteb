@@ -15,7 +15,7 @@ use App\Models\attribute_package;
 use App\Models\package_media;
 use App\Models\brand;
 use Illuminate\Support\Str;
-use Illuminate\Support\Facades\storage;
+use Illuminate\Support\Facades\Storage;
 
 class ProductController extends Controller
 {
@@ -339,7 +339,7 @@ class ProductController extends Controller
             foreach ($request['deletedProductMedias'] as $media_id) {
                 $medias=product_media::where('id',$media_id)->get();
                 foreach ($medias as $media) {
-                    storage::disk('public')->delete("product_medias/".$media->path);
+                    Storage::disk('public')->delete("product_medias/".$media->path);
                     $media->delete();
                 }
             }
@@ -481,7 +481,7 @@ class ProductController extends Controller
             foreach ($request['deletedPackageMedias'] as $media_id) {
                 $medias=package_media::where('id',$media_id)->get();
                 foreach ($medias as $media) {
-                    storage::disk('public')->delete("package_medias/".$media->path);
+                    Storage::disk('public')->delete("package_medias/".$media->path);
                     $media->delete();
                 }
             }
@@ -501,7 +501,7 @@ class ProductController extends Controller
                 $package=package::find($package_id); 
                 $medias=package_media::where('package_id',$package_id)->get();
                 foreach ($medias as $media) {
-                    storage::disk('public')->delete("package_medias/".$media->path);
+                    Storage::disk('public')->delete("package_medias/".$media->path);
                     $media->delete();
                 }
                 attribute_package::where('package_id',$package->id)->delete();
@@ -604,7 +604,7 @@ class ProductController extends Controller
         $product->medias;
         $product->packages;
         foreach ($product['medias'] as $media) {
-            storage::disk('public')->delete("product_medias/".$media->path);
+            Storage::disk('public')->delete("product_medias/".$media->path);
             $media->delete();
         }
         product_attribute::where('product_id',$product->id)->delete();
@@ -612,7 +612,7 @@ class ProductController extends Controller
             $package->medias;
 
             foreach ($package['medias'] as $media) {
-                storage::disk('public')->delete("package_medias/".$media->path);
+                Storage::disk('public')->delete("package_medias/".$media->path);
                 $media->delete();
             }
             attribute_package::where('package_id',$package->id)->delete();
