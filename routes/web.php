@@ -46,10 +46,9 @@ Route::group([
     Route::get('/logOut','logOut')->name('logOut');
     Route::get('/dashboard','dashboard')->name('dashboard');
     Route::get('/profile','profile')->name('profile');
-    Route::post('/send/code','send_code')->name('send_code');
+    Route::post('/send/code','send_code_login')->name('send_code_login');
+    Route::post('/send/code','send_code_signup')->name('send_code_signup');
     Route::post('/remove/activation/code','removeActivationCode')->name('removeActivationCode');
-    Route::post('/check/user/exist','checkUserExist')->name('checkUserExist');
-
 });
 
 Route::group([

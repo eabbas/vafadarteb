@@ -628,63 +628,36 @@
             }
         }
         
-        let check='';
-        function checkUser(phoneNumber){
-            $.ajaxSetup({
-                headers: {
-                    'X-CSRF-TOKEN': "{{ csrf_token() }}"
-                }
-            })
-            $.ajax({
-                url: "{{ route('user.checkUserExist') }}",
-                type: "POST",
-                dataType: "json",
-                data: {
-                    'phoneNumber': phoneNumber,
-                },
-                success: function(data) {
-                    check = data;
-                },
-                error: function() {
-                    alert('خطا در دریافت اطلاعات');
-                }
-            })
-            return check;
-        }
+
         function sendCodeSignup(state){
             phoneNumber = phoneNumber_signup.children[1].value
             if(phoneNumber!=""){
-                let checkUserResult=checkUser(phoneNumber)
-                console.log(checkUserResult);
-                if(!checkUserResult){
-                    counterSignupButton(phoneNumber);
-                    $.ajaxSetup({
-                        headers: {
-                            'X-CSRF-TOKEN': "{{ csrf_token() }}"
+                $.ajaxSetup({
+                    headers: {
+                        'X-CSRF-TOKEN': "{{ csrf_token() }}"
+                    }
+                })
+                $.ajax({
+                    url:"{{route('user.send_code_signup')}}",
+                    type:"post",
+                    dataType:"json",
+                    data:{
+                        'phoneNumber':phoneNumber,
+                        'state':state,
+
+                    },
+                    success:function(data){
+                        if(data){
+                            counterSignupButton(phoneNumber);
+                            alert('کد ارسال شد🥼');
+                        }else{
+                            alert('این شماره قبلا ثبت نام شده است')
                         }
-                    })
-                    $.ajax({
-                        url:"{{url('user/send/code')}}",
-                        type:"post",
-                        dataType:"json",
-                        data:{
-                            'phoneNumber':phoneNumber,
-                            'state':state,
-    
-                        },
-                        success:function(data){
-                            // console.log(data.result)
-                            // if(data.flag){
-                            //     alert("شما از قبل ثبت نام کرده اید");
-                            // }
-                        },
-                        error:function(){
-                            alert('کد ارسال نشد بعدا امتحان کنید');
-                        }
-                    })
-                }else{
-                    alert('این شماره از قبل ثبت نام شده است')
-                }
+                    },
+                    error:function(){
+                        alert('کد ارسال نشد بعدا امتحان کنید');
+                    }
+                })
             }else{
                 phoneNumber_signup.classList.add('border-3')
                 phoneNumber_signup.classList.add('border-red-600')
@@ -696,9 +669,7 @@
 
         function sendCodeLogin(state){
             let countDownLogin=document.getElementById('countDownLogin');
-
             phoneNumber = phoneNumber_signin.children[1].value
-            
             if(phoneNumber!=""){
                 $.ajaxSetup({
                     headers: {
@@ -706,7 +677,7 @@
                     }
                 })
                 $.ajax({
-                    url:"{{url('user/send/code')}}",
+                    url:"{{route('user.send_code_login')}}",
                     type:"post",
                     dataType:"json",
                     data:{
@@ -716,16 +687,15 @@
                     },
                     success:function(data){
 
-                        if(!data.flag){
-                            alert("شما از قبل ثبت نام نکرده اید");
-                        }else{
+                        if(data){
                             counterLoginButton(phoneNumber);
+                            alert('کد ارسال شد');
+                        }else{
+                            alert("شما از قبل ثبت نام نکرده اید");
                         }
-                        
-                        console.log()
                     },
                     error:function(){
-                        alert('کد ارسال نشد بعدا امتحان کنید');
+                        alert("'کد ارسال نشد بعدا امتحان کنید'");
                     }
                 })
             }else{

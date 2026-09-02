@@ -286,17 +286,15 @@ class UserController extends Controller
         ]);
     }
     
-    public function send_code(Request $request)
-    {
- 
-        $flag = false;
+    public function send_code_signup(Request $request){
+        $flag = true;
         $user = User::where('phoneNumber', $request->phoneNumber)->first();
         if ($user) {
-            $flag = true;
+            $flag = false;
         }
-        // if($request->state=='login'){
+        if (!$flag) {
             $code = rand(1000, 10000);
-            $result=phone_code::upsert(['phoneNumber' => $request->phoneNumber, 'code' => $code], ['phoneNumber'], ['code']);
+            phone_code::upsert(['phoneNumber' => $request->phoneNumber, 'code' => $code], ['phoneNumber'], ['code']);
             $apiKey = 'YTBhZjhlNDAtZGI1Zi00ZWQ1LTkwNmYtZWU2MWFhYTkzY2M0NTcxZGQ3ZjY2Yzk1MmNjZmFiM2M2ZjVmNjBhMDg2MTQ=';
             $client = new \IPPanel\Client($apiKey);
             $patternValues = [
@@ -308,26 +306,31 @@ class UserController extends Controller
                 $request->phoneNumber,  // recipient
                 $patternValues,  // pattern values
             );
-        // }else{
-        //     if (!$flag) {
-        //         $code = rand(1000, 10000);
-        //         $result=phone_code::upsert(['phoneNumber' => $request->phoneNumber, 'code' => $code], ['phoneNumber'], ['code']);
-        //         $apiKey = 'YTBhZjhlNDAtZGI1Zi00ZWQ1LTkwNmYtZWU2MWFhYTkzY2M0NTcxZGQ3ZjY2Yzk1MmNjZmFiM2M2ZjVmNjBhMDg2MTQ=';
-        //         $client = new \IPPanel\Client($apiKey);
-        //         $patternValues = [
-        //             'activation_code' => $code,
-        //         ];
-        //         $bulkID = $client->sendPattern(
-        //             '7fvdx77gveizxqn',  // pattern code
-        //             '+983000505',  // originator
-        //             $request->phoneNumber,  // recipient
-        //             $patternValues,  // pattern values
-        //         );
-        //     }
-        // }
-    
-
-        return response()->json(["flag" => $flag, "user" => $user ,'result'=>$result]);
+        }
+        return response()->json($flag);
+    }
+    public function send_code_login(Request $request){
+        $flag = false;
+        $user = User::where('phoneNumber', $request->phoneNumber)->first();
+        if ($user) {
+            $flag = true;
+        }
+        if (!$flag) {
+            $code = rand(1000, 10000);
+            phone_code::upsert(['phoneNumber' => $request->phoneNumber, 'code' => $code], ['phoneNumber'], ['code']);
+            $apiKey = 'YTBhZjhlNDAtZGI1Zi00ZWQ1LTkwNmYtZWU2MWFhYTkzY2M0NTcxZGQ3ZjY2Yzk1MmNjZmFiM2M2ZjVmNjBhMDg2MTQ=';
+            $client = new \IPPanel\Client($apiKey);
+            $patternValues = [
+                'activation_code' => $code,
+            ];
+            $bulkID = $client->sendPattern(
+                '7fvdx77gveizxqn',  // pattern code
+                '+983000505',  // originator
+                $request->phoneNumber,  // recipient
+                $patternValues,  // pattern values
+            );
+        }
+        return response()->json($flag);
     }
     public function removeActivationCode(Request $request){
         $row = phone_code::where('phoneNumber', $request->phoneNumber)->first();
@@ -335,15 +338,6 @@ class UserController extends Controller
             $row->delete();
         }
         return response()->json($row);
-    }
-    public function checkUserExist(Request $request){
-        $flag=false;
-        $user = User::where('phoneNumber', $request->phoneNumber)->first();
-        if($user){
-            $flag=true;
-        }
-        // dd($flag);
-        return response()->json($flag);
     }
 
 }

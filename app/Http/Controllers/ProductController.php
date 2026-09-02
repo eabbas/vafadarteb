@@ -15,7 +15,7 @@ use App\Models\attribute_package;
 use App\Models\package_media;
 use App\Models\brand;
 use Illuminate\Support\Str;
-use Illuminate\Support\Facades\storage;
+use Illuminate\Support\Facades\Storage;
 
 class ProductController extends Controller
 {
@@ -92,15 +92,15 @@ class ProductController extends Controller
         if(isset($request['gallery'])){
 
             foreach ($request->gallery as $image) {
-                $fullName=Str::uuid().$image->getClientOriginalName();
-                $extension=$image->getClientOriginalExtension();
-                $request->is_main->storeAs('product_medias',"$fullName","public");
+                $fullNameGallery=Str::uuid().$image->getClientOriginalName();
+                $extensionGallery=$image->getClientOriginalExtension();
+                $request->is_main->storeAs('product_medias',"$fullNameGallery","public");
                 product_media::create([
-                    'path'=>$fullName,
+                    'path'=>$fullNameGallery,
                     'product_id'=>$createdProduct->id,
                     'is_main'=>0,
                     'is_active'=>1,
-                    'type'=>$extension,
+                    'type'=>$extensionGallery,
                 ]);
             }
         }
@@ -166,15 +166,15 @@ class ProductController extends Controller
                 
                 //ذخیره عکس پکیچ ها
                 if(isset($package['is_main'])){
-                    $fullName=Str::uuid().$package['is_main']->getClientOriginalName();
-                    $extension=$package['is_main']->getClientOriginalExtension();
-                    $package['is_main']->storeAs('package_medias',"$fullName","public");
+                    $fullName_ismain=Str::uuid().$package['is_main']->getClientOriginalName();
+                    $extension_ismain=$package['is_main']->getClientOriginalExtension();
+                    $package['is_main']->storeAs('package_medias',"$fullName_ismain","public");
                     package_media::create([
-                        'path'=>$fullName,
+                        'path'=>$fullName_ismain,
                         'package_id'=>$creratedPackage->id,
                         'is_main'=>1,
                         'is_active'=>1,
-                        'type'=>$extension,
+                        'type'=>$extension_ismain,
                     ]);
                 }
 
@@ -182,15 +182,15 @@ class ProductController extends Controller
                 if(isset($package['gallery'])){
 
                     foreach ($package['gallery'] as $image) {
-                        $fullName=Str::uuid().$image->getClientOriginalName();
-                        $extension=$image->getClientOriginalExtension();
-                        $image->storeAs('package_medias',"$fullName","public");
+                        $fullName_package_gallery=Str::uuid().$image->getClientOriginalName();
+                        $extension_package_gallery=$image->getClientOriginalExtension();
+                        $image->storeAs('package_medias',"$fullName_package_gallery","public");
                         package_media::create([
-                            'path'=>$fullName,
+                            'path'=>$fullName_package_gallery,
                             'package_id'=>$creratedPackage->id,
                             'is_main'=>0,
                             'is_active'=>1,
-                            'type'=>$extension,
+                            'type'=>$extension_package_gallery,
                         ]);
                     }
                 }
@@ -339,7 +339,7 @@ class ProductController extends Controller
             foreach ($request['deletedProductMedias'] as $media_id) {
                 $medias=product_media::where('id',$media_id)->get();
                 foreach ($medias as $media) {
-                    storage::disk('public')->delete("product_medias/".$media->path);
+                    Storage::disk('public')->delete("product_medias/".$media->path);
                     $media->delete();
                 }
             }
@@ -481,7 +481,7 @@ class ProductController extends Controller
             foreach ($request['deletedPackageMedias'] as $media_id) {
                 $medias=package_media::where('id',$media_id)->get();
                 foreach ($medias as $media) {
-                    storage::disk('public')->delete("package_medias/".$media->path);
+                    Storage::disk('public')->delete("package_medias/".$media->path);
                     $media->delete();
                 }
             }
@@ -501,7 +501,7 @@ class ProductController extends Controller
                 $package=package::find($package_id); 
                 $medias=package_media::where('package_id',$package_id)->get();
                 foreach ($medias as $media) {
-                    storage::disk('public')->delete("package_medias/".$media->path);
+                    Storage::disk('public')->delete("package_medias/".$media->path);
                     $media->delete();
                 }
                 attribute_package::where('package_id',$package->id)->delete();
@@ -604,7 +604,7 @@ class ProductController extends Controller
         $product->medias;
         $product->packages;
         foreach ($product['medias'] as $media) {
-            storage::disk('public')->delete("product_medias/".$media->path);
+            Storage::disk('public')->delete("product_medias/".$media->path);
             $media->delete();
         }
         product_attribute::where('product_id',$product->id)->delete();
@@ -612,7 +612,7 @@ class ProductController extends Controller
             $package->medias;
 
             foreach ($package['medias'] as $media) {
-                storage::disk('public')->delete("package_medias/".$media->path);
+                Storage::disk('public')->delete("package_medias/".$media->path);
                 $media->delete();
             }
             attribute_package::where('package_id',$package->id)->delete();
