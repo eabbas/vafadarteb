@@ -92,15 +92,15 @@ class ProductController extends Controller
         if(isset($request['gallery'])){
 
             foreach ($request->gallery as $image) {
-                $fullName=Str::uuid().$image->getClientOriginalName();
-                $extension=$image->getClientOriginalExtension();
-                $request->is_main->storeAs('product_medias',"$fullName","public");
+                $fullNameGallery=Str::uuid().$image->getClientOriginalName();
+                $extensionGallery=$image->getClientOriginalExtension();
+                $request->is_main->storeAs('product_medias',"$fullNameGallery","public");
                 product_media::create([
-                    'path'=>$fullName,
+                    'path'=>$fullNameGallery,
                     'product_id'=>$createdProduct->id,
                     'is_main'=>0,
                     'is_active'=>1,
-                    'type'=>$extension,
+                    'type'=>$extensionGallery,
                 ]);
             }
         }
@@ -166,15 +166,15 @@ class ProductController extends Controller
                 
                 //ذخیره عکس پکیچ ها
                 if(isset($package['is_main'])){
-                    $fullName=Str::uuid().$package['is_main']->getClientOriginalName();
-                    $extension=$package['is_main']->getClientOriginalExtension();
-                    $package['is_main']->storeAs('package_medias',"$fullName","public");
+                    $fullName_ismain=Str::uuid().$package['is_main']->getClientOriginalName();
+                    $extension_ismain=$package['is_main']->getClientOriginalExtension();
+                    $package['is_main']->storeAs('package_medias',"$fullName_ismain","public");
                     package_media::create([
-                        'path'=>$fullName,
+                        'path'=>$fullName_ismain,
                         'package_id'=>$creratedPackage->id,
                         'is_main'=>1,
                         'is_active'=>1,
-                        'type'=>$extension,
+                        'type'=>$extension_ismain,
                     ]);
                 }
 
@@ -182,15 +182,15 @@ class ProductController extends Controller
                 if(isset($package['gallery'])){
 
                     foreach ($package['gallery'] as $image) {
-                        $fullName=Str::uuid().$image->getClientOriginalName();
-                        $extension=$image->getClientOriginalExtension();
-                        $image->storeAs('package_medias',"$fullName","public");
+                        $fullName_package_gallery=Str::uuid().$image->getClientOriginalName();
+                        $extension_package_gallery=$image->getClientOriginalExtension();
+                        $image->storeAs('package_medias',"$fullName_package_gallery","public");
                         package_media::create([
-                            'path'=>$fullName,
+                            'path'=>$fullName_package_gallery,
                             'package_id'=>$creratedPackage->id,
                             'is_main'=>0,
                             'is_active'=>1,
-                            'type'=>$extension,
+                            'type'=>$extension_package_gallery,
                         ]);
                     }
                 }
