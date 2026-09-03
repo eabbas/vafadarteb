@@ -75,7 +75,7 @@
                                     <span class="text-[#023350] text-[16px] font-bold">محصولات</span>
                                 </a>
                                 <div
-                                    class="w-full h-dvh fixed top-22 right-0 flex justify-center items-start lable-1-1 absolute">
+                                    class="w-full h-dvh fixed top-26 right-0 flex justify-center items-start lable-1-1 absolute">
                                     <div class="w-full h-full bg-black/50 absolute -z-1"></div>
                                     <div
                                         class="w-11/12 h-9/12 bg-[var(--background-2)] border border-text-[var(--green)] flex justify-start items-start py-5">
@@ -1480,42 +1480,21 @@
         </div>
     </section> -->
     <!-- بنر-->
-     <section>
+    <section>
         <div class="w-11/12 mx-auto flex justify-center mt-20">
             <h1 class="font-bold text-[6vw] sm:text-[5vw] md:text-[4vw] lg:text-[3vw]">دسته‌ها</h1>
         </div>
-        <div
-            class="w-19/20 h-auto mx-auto grid sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-5 justify-center items-center mt-8 md:mt-12 lg:mt-10">
-            <div class="h-80 flex justify-end relative">
-                <img src="{{asset('assets/img/baner/img3.webp')}}" alt="" class="rounded-lg">
-                <div class="absolute w-1/2 h-full flex gap-2 flex-col justify-center items-center">
+       <div class="w-19/20 h-auto mx-auto flex max-lg:flex-wrap gap-5 justify-center items-center mt-8 md:mt-12 lg:mt-10">
+            <div class="w-10/11 h-50 flex justify-end relative">
+                <img src="{{asset('assets/img/baner/img3.webp')}}" alt="" class="rounded-lg w-full">
+                <div class="absolute w-1/2 h-full flex gap-3 flex-col justify-center items-center">
                     <h3 class="font-bold text-[1.3rem]">لوازم تشخیصی</h3>
                     <a href="" class="hover:border-b-1  border-red-500 transition_root">
                         <span class="text-[0.8rem] md:text-[1rem]">مشاهده بیشتر</span>
                     </a>
                 </div>
             </div>
-            <div class="h-80 flex justify-end relative">
-                <img src="{{asset('assets/img/baner/img1.webp')}}" alt="" class="rounded-lg">
-                <div class="absolute w-1/2 h-full flex gap-2 flex-col justify-center items-center">
-                    <h3 class="font-bold text-[1.3rem]">لوازم تشخیصی</h3>
-                    <a href="" class="hover:border-b-1  border-red-500 transition_root">
-                        <span class="text-[0.8rem] md:text-[1rem]">مشاهده بیشتر</span>
-                    </a>
-                </div>
-            </div>
-            <div class="h-80 flex justify-end relative">
-                <img src="{{asset('assets/img/baner/img2.webp')}}" alt="" class="rounded-lg">
-                <div class="absolute w-1/2 h-full flex gap-2 flex-col justify-center items-center">
-                    <h3 class="font-bold text-[1.3rem]">لوازم تشخیصی</h3>
-                    <a href="" class="hover:border-b-1  border-red-500 transition_root">
-                        <span class="text-[0.8rem] md:text-[1rem]">مشاهده بیشتر</span>
-                    </a>
-                </div>
-            </div>
-        </div>
-        <div class="w-19/20 h-auto mx-auto flex gap-5 justify-center items-center mt-8 md:mt-12 lg:mt-10">
-            <div class="w-10/11 h-80 flex justify-end relative">
+            <div class="w-10/11 h-50 flex justify-end relative">
                 <img src="{{asset('assets/img/baner/img1.webp')}}" alt="" class="rounded-lg w-full">
                 <div class="absolute w-1/2 h-full flex gap-3 flex-col justify-center items-center">
                     <h3 class="font-bold text-[1.3rem]">لوازم تشخیصی</h3>
@@ -1524,8 +1503,28 @@
                     </a>
                 </div>
             </div>
-            <div class="w-10/11 h-80 flex justify-end relative">
+            <div class="w-10/11 h-50 flex justify-end relative">
                 <img src="{{asset('assets/img/baner/img2.webp')}}" alt="" class="rounded-lg w-full">
+                <div class="absolute w-1/2 h-full flex gap-3 flex-col justify-center items-center">
+                    <h3 class="font-bold text-[1.3rem]">لوازم تشخیصی</h3>
+                    <a href="" class="hover:border-b-1  border-red-500 transition_root">
+                        <span class="text-[0.8rem] md:text-[1rem]">مشاهده بیشتر</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="w-19/20 h-auto mx-auto flex max-lg:flex-wrap gap-5 justify-center items-center mt-6 md:mt-8 lg:mt-6">
+            <div class="w-10/11 h-50 flex justify-end relative">
+                <img src="{{asset('assets/img/baner/img1.webp')}}" alt="" class="rounded-lg w-full h-auto object-top">
+                <div class="absolute w-1/2 h-full flex gap-3 flex-col justify-center items-center">
+                    <h3 class="font-bold text-[1.3rem]">لوازم تشخیصی</h3>
+                    <a href="" class="hover:border-b-1  border-red-500 transition_root">
+                        <span class="text-[0.8rem] md:text-[1rem]">مشاهده بیشتر</span>
+                    </a>
+                </div>
+            </div>
+            <div class="w-10/11 h-50 flex justify-end relative">
+                <img src="{{asset('assets/img/baner/img2.webp')}}" alt="" class="rounded-lg w-full h-auto object-top">
                 <div class="absolute w-1/2 h-full flex gap-3 flex-col justify-center items-center">
                     <h3 class="font-bold text-[1.3rem]">لوازم تشخیصی</h3>
                     <a href="" class="hover:border-b-1  border-red-500 transition_root">
