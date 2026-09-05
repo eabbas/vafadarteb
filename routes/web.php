@@ -9,6 +9,7 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\HeroController;
 use App\Http\Controllers\BrandController;
 use App\Http\Controllers\ProductLabelsController;
+use App\Http\Controllers\BannerController;
 use App\Http\Controllers\StaticUserController;
 use App\Http\Controllers\AdvertisementController;
 use App\Http\Controllers\SupportInformationController;
@@ -198,6 +199,14 @@ route::group([
     Route::get('/edit/{staticUser}','edit')->name('edit');
     Route::post('/update/{staticUser}','update')->name('update');
     Route::get('/delete/{staticUser}','delete')->name('delete');
+});
+route::group([
+    'prefix'=>'banner',
+    'as'=>'banner.',
+    'controller'=>BannerController::class,
+],function(){
+    Route::get('/create','create')->name('create');
+    Route::post('/store','store')->name('store');
 });
 
 
