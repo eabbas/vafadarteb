@@ -1488,7 +1488,7 @@
     <section>
         <div class="w-11/12 mx-auto h-auto flex gap-2 mt-20">
             <div class="w-5/20 max-xl:hidden flex items-end">
-                <img src="{{asset('storage/.$banner->image')}}" alt="" class="h-140 overflow-hidden rounded-2xl object-cover">
+                <img src="{{asset('storage/'.$banner->image)}}" alt="" class="h-140 overflow-hidden rounded-2xl object-cover">
             </div>
             <div class="w-full flex flex-col">
                 <div class="w-11/12 mx-auto flex justify-between py-5">
