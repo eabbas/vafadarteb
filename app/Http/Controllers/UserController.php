@@ -292,20 +292,21 @@ class UserController extends Controller
         if ($user) {
             $flag = false;
         }
-        if (!$flag) {
+        Log::info($flag);
+        if ($flag) {
             $code = rand(1000, 10000);
             phone_code::upsert(['phoneNumber' => $request->phoneNumber, 'code' => $code], ['phoneNumber'], ['code']);
-            $apiKey = 'YTBhZjhlNDAtZGI1Zi00ZWQ1LTkwNmYtZWU2MWFhYTkzY2M0NTcxZGQ3ZjY2Yzk1MmNjZmFiM2M2ZjVmNjBhMDg2MTQ=';
-            $client = new \IPPanel\Client($apiKey);
-            $patternValues = [
-                'activation_code' => $code,
-            ];
-            $bulkID = $client->sendPattern(
-                '7fvdx77gveizxqn',  // pattern code
-                '+983000505',  // originator
-                $request->phoneNumber,  // recipient
-                $patternValues,  // pattern values
-            );
+            // $apiKey = 'YTBhZjhlNDAtZGI1Zi00ZWQ1LTkwNmYtZWU2MWFhYTkzY2M0NTcxZGQ3ZjY2Yzk1MmNjZmFiM2M2ZjVmNjBhMDg2MTQ=';
+            // $client = new \IPPanel\Client($apiKey);
+            // $patternValues = [
+            //     'activation_code' => $code,
+            // ];
+            // $bulkID = $client->sendPattern(
+            //     '7fvdx77gveizxqn',  // pattern code
+            //     '+983000505',  // originator
+            //     $request->phoneNumber,  // recipient
+            //     $patternValues,  // pattern values
+            // );
         }
         return response()->json($flag);
     }
@@ -315,20 +316,21 @@ class UserController extends Controller
         if ($user) {
             $flag = true;
         }
-        if (!$flag) {
+        Log::info($user);
+        if ($flag) {
             $code = rand(1000, 10000);
             phone_code::upsert(['phoneNumber' => $request->phoneNumber, 'code' => $code], ['phoneNumber'], ['code']);
-            $apiKey = 'YTBhZjhlNDAtZGI1Zi00ZWQ1LTkwNmYtZWU2MWFhYTkzY2M0NTcxZGQ3ZjY2Yzk1MmNjZmFiM2M2ZjVmNjBhMDg2MTQ=';
-            $client = new \IPPanel\Client($apiKey);
-            $patternValues = [
-                'activation_code' => $code,
-            ];
-            $bulkID = $client->sendPattern(
-                '7fvdx77gveizxqn',  // pattern code
-                '+983000505',  // originator
-                $request->phoneNumber,  // recipient
-                $patternValues,  // pattern values
-            );
+            // $apiKey = 'YTBhZjhlNDAtZGI1Zi00ZWQ1LTkwNmYtZWU2MWFhYTkzY2M0NTcxZGQ3ZjY2Yzk1MmNjZmFiM2M2ZjVmNjBhMDg2MTQ=';
+            // $client = new \IPPanel\Client($apiKey);
+            // $patternValues = [
+            //     'activation_code' => $code,
+            // ];
+            // $bulkID = $client->sendPattern(
+            //     '7fvdx77gveizxqn',  // pattern code
+            //     '+983000505',  // originator
+            //     $request->phoneNumber,  // recipient
+            //     $patternValues,  // pattern values
+            // );
         }
         return response()->json($flag);
     }

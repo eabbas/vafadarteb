@@ -385,7 +385,7 @@
                                     <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
                                 </svg>
                             </div>
-                            <input type="number" name="code" oninput="limitDigits(this)" placeholder="کد ورود " class="input-medical w-full rounded-2xl py-3.5 pr-12 pl-4 text-white placeholder:text-white/35 outline-none transition-all duration-300">
+                            <input type="number" name="code" oninput="limitDigits(this)" required placeholder="کد ورود " class="input-medical w-full rounded-2xl py-3.5 pr-12 pl-4 text-white placeholder:text-white/35 outline-none transition-all duration-300">
                         </div>
 
                     </div>
@@ -417,6 +417,7 @@
                 input.value = input.value.slice(0, 4);
             }
         }
+        
         document.addEventListener('DOMContentLoaded', function() {
 
             // المان‌ها
@@ -425,11 +426,15 @@
             const toggleLogin = document.getElementById('toggleToLogin');
             const toggleSignup = document.getElementById('toggleToSignup');
             let currentMode = 'login'; // 'login' یا 'signup'
+            function reset_time(){
+                let stateSignup = document.getElementById('countDownSignup')
+                let stateLogin = document.getElementById('countDownLogin')
 
+                clearInterval()
+            }
             // تابع تغییر حالت با انیمیشن
             function switchMode(mode) {
                 if (mode === currentMode) return;
-
                 // تشخیص فرم فعلی و فرم هدف
                 const currentForm = mode === 'login' ? signupForm : loginForm;
                 const targetForm = mode === 'login' ? loginForm : signupForm;
@@ -468,6 +473,7 @@
                 }
 
                 currentMode = mode;
+                reset_time()
             }
 
             // رویدادهای کلیک روی دکمه‌ها
@@ -599,7 +605,7 @@
                                 <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
                             </svg>
                         </div>
-                        <input type="number" name="code" oninput="limitDigits(this)" placeholder="کد ورود " class="input-medical w-full rounded-2xl py-3.5 pr-12 pl-4 text-white placeholder:text-white/35 outline-none transition-all duration-300">
+                        <input type="number" name="code" oninput="limitDigits(this)" required placeholder="کد ورود " class="input-medical w-full rounded-2xl py-3.5 pr-12 pl-4 text-white placeholder:text-white/35 outline-none transition-all duration-300">
                     </div>
                 `
                 el.innerHTML='ورورد با رمز عبور'
@@ -648,8 +654,8 @@
                     },
                     success:function(data){
                         if(data){
-                            counterSignupButton(phoneNumber);
                             alert('کد ارسال شد🥼');
+                            counterSignupButton(phoneNumber);
                         }else{
                             alert('این شماره قبلا ثبت نام شده است')
                         }
@@ -670,6 +676,7 @@
         function sendCodeLogin(state){
             let countDownLogin=document.getElementById('countDownLogin');
             phoneNumber = phoneNumber_signin.children[1].value
+            console.log(phoneNumber)
             if(phoneNumber!=""){
                 $.ajaxSetup({
                     headers: {
@@ -688,8 +695,8 @@
                     success:function(data){
 
                         if(data){
-                            counterLoginButton(phoneNumber);
                             alert('کد ارسال شد');
+                            counterLoginButton(phoneNumber);
                         }else{
                             alert("شما از قبل ثبت نام نکرده اید");
                         }
@@ -707,7 +714,7 @@
 
             }
         }
- 
+
         function counterSignupButton(phoneNumber) {
             countDownSignup.classList.add('cursor-no-drop')
             countDownSignup.classList.remove('cursor-pointer')
@@ -716,29 +723,28 @@
             countDownSignup.classList.remove('bg-[#eb3254]')
             countDownSignup.classList.add('bg-[#eb3254]/50')
             countDownSignup.setAttribute('disabled', true)
-            countDownSignup.disabled = true
-            countDownSignup.setAttribute('readonly', true)
-            countDownSignup.setAttribute('dir', 'ltr')
             countDownSignup.removeAttribute('onclick')
-            let count = 80
-            $.ajaxSetup({
-                headers: {
-                    'X-CSRF-TOKEN': "{{ csrf_token() }}"
-                }
-            })
-            $.ajax({
-                url: "{{ route('user.removeActivationCode') }}",
-                type: "POST",
-                dataType: "json",
-                data: {
-                    'phoneNumber': phoneNumber,
-                },
-                success: function(data) {
-                    let result = setInterval(() => {
-                        let minute = Math.floor(count / 60)
-                        let seconds = count % 60
-                        count -= 1
-                        if(count<0){
+            countDownSignup.setAttribute('dir', 'ltr')
+            let count = 120
+            let result = setInterval(() => {
+                let minute = Math.floor(count / 60)
+                let seconds = count % 60
+                count -= 1
+                if (count < 0) {
+
+                    $.ajaxSetup({
+                        headers: {
+                            'X-CSRF-TOKEN': "{{ csrf_token() }}"
+                        }
+                    })
+                    $.ajax({
+                        url: "{{ route('user.removeActivationCode') }}",
+                        type: "POST",
+                        dataType: "json",
+                        data: {
+                            'phoneNumber': phoneNumber
+                        },
+                        success: function(data) {
                             console.log(data)
                             countDownSignup.classList.remove('cursor-no-drop')
                             countDownSignup.classList.add('bg-[#eb3254]')
@@ -747,24 +753,27 @@
                             countDownSignup.classList.add('hover:bg-[#d52b4a]')
                             countDownSignup.classList.remove('hover:bg-[#d52b4a]/50')
                             countDownSignup.removeAttribute('disabled')
-                            countDownSignup.disabled = false
-                            countDownSignup.removeAttribute('dir')
                             countDownSignup.setAttribute('onclick','sendCodeSignup("signup")')
-
-                            clearInterval(result)
-                        }
-                        countDownSignup.innerText = minute.toString().padStart(2, "0") + " : " + seconds.toString().padStart(2,"0");
-
-                        if(count < 0){
+                            countDownSignup.removeAttribute('dir')
                             countDownSignup.innerText = "ارسال مجدد"
+                        },
+                        error: function() {
+                            showMessage('open')
+                            element.innerHTML = `
+                                <span>❌</span>
+                                <span class="text-shadw-lg">خطا در دریافت اطلاعات!</span>
+                            `
+                            message.children[0].appendChild(element)
+                            setTimeout(() => {
+                                showMessage('close')
+                            }, 2500)
                         }
-                    }, 1000)                                
-                },
-                error: function() {
-                    alert('خطا در دریافت اطلاعات');
+                    })
+                    clearInterval(result)
                 }
-            })
-
+                countDownSignup.innerText = minute.toString().padStart(2, "0") + " : " + seconds.toString().padStart(2,
+                    "0");
+            }, 1000)
         }
         function counterLoginButton(phoneNumber) {
             countDownLogin.classList.add('cursor-no-drop')
@@ -774,6 +783,7 @@
             countDownLogin.classList.remove('bg-[#eb3254]')
             countDownLogin.classList.add('bg-[#eb3254]/50')
             countDownLogin.setAttribute('disabled', true)
+            countDownLogin.removeAttribute('onclick')
             countDownLogin.setAttribute('dir', 'ltr')
             let count = 120
             let result = setInterval(() => {
@@ -803,11 +813,20 @@
                             countDownLogin.classList.add('hover:bg-[#d52b4a]')
                             countDownLogin.classList.remove('hover:bg-[#d52b4a]/50')
                             countDownLogin.removeAttribute('disabled')
+                            countDownLogin.setAttribute('onclick','sendCodeLogin("login")')
                             countDownLogin.removeAttribute('dir')
                             countDownLogin.innerText = "ارسال مجدد"
                         },
                         error: function() {
-                            alert('خطا در دریافت اطلاعات');
+                            showMessage('open')
+                            element.innerHTML = `
+                                <span>❌</span>
+                                <span class="text-shadw-lg">خطا در دریافت اطلاعات!</span>
+                            `
+                            message.children[0].appendChild(element)
+                            setTimeout(() => {
+                                showMessage('close')
+                            }, 2500)
                         }
                     })
                     clearInterval(result)
