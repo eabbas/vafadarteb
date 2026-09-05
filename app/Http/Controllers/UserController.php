@@ -15,6 +15,7 @@ use App\Models\product_labels;
 use App\Models\phone_code;
 use App\Models\staticUser;
 use App\Models\support_information;
+use App\Models\banner;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use App\Http\Middleware\checkUserExist;
@@ -276,6 +277,7 @@ class UserController extends Controller
         $comments=staticUser::all();
         $support_informations=support_information::all();
         $logo = headerSetting::first();
+        $banner = banner::first();
         $hero = hero::first();
         $product_label = product_labels::first();
         $advertisement = advertisement::first();
@@ -285,7 +287,8 @@ class UserController extends Controller
             'SI'=>$support_informations ,
             'advertisement'=>$advertisement,
             'product_label'=>$product_label,
-            'comments'=>$comments
+            'comments'=>$comments,
+            'banner'=>$banner
         ]);
     }
     
