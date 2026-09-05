@@ -13,6 +13,7 @@ use App\Models\hero;
 use App\Models\advertisement;
 use App\Models\product_labels;
 use App\Models\phone_code;
+use App\Models\staticUser;
 use App\Models\support_information;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -272,6 +273,7 @@ class UserController extends Controller
         return view('firstPage',['logo'=>$logo ,'hero'=>$hero]);
     }
     public function setting(){
+        $comments=staticUser::all();
         $support_informations=support_information::all();
         $logo = headerSetting::first();
         $hero = hero::first();
@@ -282,7 +284,8 @@ class UserController extends Controller
             'hero'=>$hero ,
             'SI'=>$support_informations ,
             'advertisement'=>$advertisement,
-            'product_label'=>$product_label
+            'product_label'=>$product_label,
+            'comments'=>$comments
         ]);
     }
     

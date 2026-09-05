@@ -9,6 +9,7 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\HeroController;
 use App\Http\Controllers\BrandController;
 use App\Http\Controllers\ProductLabelsController;
+use App\Http\Controllers\StaticUserController;
 use App\Http\Controllers\AdvertisementController;
 use App\Http\Controllers\SupportInformationController;
 use App\Http\Controllers\HeaderSettingController;
@@ -186,9 +187,25 @@ route::group([
 });
 
 
+route::group([
+    'prefix'=>'staticUser',
+    'as'=>'staticUser.',
+    'controller'=>StaticUserController::class,
+],function(){
+    Route::get('/create','create')->name('create');
+    Route::post('/store','store')->name('store');
+    Route::get('/list','list')->name('list');
+    Route::get('/edit/{staticUser}','edit')->name('edit');
+    Route::post('/update/{staticUser}','update')->name('update');
+    Route::get('/delete/{staticUser}','delete')->name('delete');
+});
+
+
 Route::get('check',function(){
     $result['check']=Auth::check();
-    $result['user']=Auth::user();
-    $result['user']->roles;
+    if(Auth::check()){
+        $result['user']=Auth::user();
+        $result['user']->roles;
+    }
     dd($result);
 });

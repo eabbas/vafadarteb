@@ -2951,130 +2951,37 @@
                 </h2>
             </div>
             <div class="w-full bg-[#023350] flex gap-4 justify-center items-center overflow-x-auto">
-                <div class="py-20">
-                    <div class="min-w-80 px-3">
-                        <div class="flex">
-                            <!-- Card -->
-                            <div class="">
-                                <div class="bg-[#FFF8F1] rounded-[40px] p-6 relative h-[430px]">
-                                    <div class="bg-[#172230] rounded-full flex items-center gap-4 p-3">
-                                        <img src="{{asset('assets/img/baner/gallery/01 (1).webp')}}"
-                                            class="w-16 h-16 rounded-full object-cover">
-                                        <div>
-                                            <h3 class="text-white font-bold text-xl">
-                                                محمد احمدی
-                                            </h3>
-                                            <p class="text-emerald-500">
-                                                مشتری
-                                            </p>
+                @foreach($comments as $comment)
+                    <div class="py-20">
+                        <div class="min-w-80 px-3">
+                            <div class="flex">
+                                <!-- Card -->
+                                <div class="">
+                                    <div class="bg-[#FFF8F1] rounded-[40px] p-6 relative h-[430px]">
+                                        <div class="bg-[#172230] rounded-full flex items-center gap-4 p-3">
+                                            <img src="{{asset('assets/img/baner/gallery/01 (1).webp')}}"
+                                                class="w-16 h-16 rounded-full object-cover">
+                                            <div>
+                                                <h3 class="text-white font-bold text-xl">
+                                                   {{$comment->name}}
+                                                </h3>
+                                                <p class="text-emerald-500">
+                                                   {{$comment->role}}
+                                                </p>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <p class="text-gray-600 leading-9 mt-8">
-                                        از کیفیت محصولات و سرعت ارسال کاملاً راضی بودم.
-                                        پشتیبانی سایت نیز بسیار حرفه‌ای و پاسخگو بود.
-                                        قطعاً خرید بعدی خود را نیز از این مجموعه انجام می‌دهم.
-                                    </p>
-                                    <div class="flex gap-1 text-emerald-500 mt-8 text-2xl">
-                                        ★★★★★
+                                        <p class="text-gray-600 leading-9 mt-8">
+                                            {{$comment->message}}
+                                        </p>
+                                        <div class="flex gap-1 text-emerald-500 mt-8 text-2xl">
+                                            ★★★★★
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="py-20">
-                    <div class="min-w-80 px-3">
-                        <div class="flex">
-                            <!-- Card -->
-                            <div class="">
-                                <div class="bg-[#FFF8F1] rounded-[40px] p-6 relative h-[430px]">
-                                    <div class="bg-[#172230] rounded-full flex items-center gap-4 p-3">
-                                        <img src="{{asset('assets/img/baner/gallery/02.webp')}}"
-                                            class="w-16 h-16 rounded-full object-cover">
-                                        <div>
-                                            <h3 class="text-white font-bold text-xl">
-                                                محمد احمدی
-                                            </h3>
-                                            <p class="text-emerald-500">
-                                                مشتری
-                                            </p>
-                                        </div>
-                                    </div>
-                                    <p class="text-gray-600 leading-9 mt-8">
-                                        از کیفیت محصولات و سرعت ارسال کاملاً راضی بودم.
-                                        پشتیبانی سایت نیز بسیار حرفه‌ای و پاسخگو بود.
-                                        قطعاً خرید بعدی خود را نیز از این مجموعه انجام می‌دهم.
-                                    </p>
-                                    <div class="flex gap-1 text-emerald-500 mt-8 text-2xl">
-                                        ★★★★★
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="py-20">
-                    <div class="min-w-80 px-3">
-                        <div class="flex">
-                            <!-- Card -->
-                            <div class="">
-                                <div class="bg-[#FFF8F1] rounded-[40px] p-6 relative h-[430px]">
-                                    <div class="bg-[#172230] rounded-full flex items-center gap-4 p-3">
-                                        <img src="{{asset('assets/img/baner/gallery/03.webp')}}"
-                                            class="w-16 h-16 rounded-full object-cover">
-                                        <div>
-                                            <h3 class="text-white font-bold text-xl">
-                                                محمد احمدی
-                                            </h3>
-                                            <p class="text-emerald-500">
-                                                مشتری
-                                            </p>
-                                        </div>
-                                    </div>
-                                    <p class="text-gray-600 leading-9 mt-8">
-                                        از کیفیت محصولات و سرعت ارسال کاملاً راضی بودم.
-                                        پشتیبانی سایت نیز بسیار حرفه‌ای و پاسخگو بود.
-                                        قطعاً خرید بعدی خود را نیز از این مجموعه انجام می‌دهم.
-                                    </p>
-                                    <div class="flex gap-1 text-emerald-500 mt-8 text-2xl">
-                                        ★★★★★
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="py-20">
-                    <div class="min-w-80 px-3">
-                        <div class="flex">
-                            <!-- Card -->
-                            <div class="">
-                                <div class="bg-[#FFF8F1] rounded-[40px] p-6 relative h-[430px]">
-                                    <div class="bg-[#172230] rounded-full flex items-center gap-4 p-3">
-                                        <img src="{{asset('assets/img/baner/gallery/04.webp')}}"
-                                            class="w-16 h-16 rounded-full object-cover">
-                                        <div>
-                                            <h3 class="text-white font-bold text-xl">
-                                                محمد احمدی
-                                            </h3>
-                                            <p class="text-emerald-500">
-                                                مشتری
-                                            </p>
-                                        </div>
-                                    </div>
-                                    <p class="text-gray-600 leading-9 mt-8">
-                                        از کیفیت محصولات و سرعت ارسال کاملاً راضی بودم.
-                                        پشتیبانی سایت نیز بسیار حرفه‌ای و پاسخگو بود.
-                                        قطعاً خرید بعدی خود را نیز از این مجموعه انجام می‌دهم.
-                                    </p>
-                                    <div class="flex gap-1 text-emerald-500 mt-8 text-2xl">
-                                        ★★★★★
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                @endforeach
             </div>
         </div>
     </section>
