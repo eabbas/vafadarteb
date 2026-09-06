@@ -8,10 +8,6 @@
     <script src="{{asset('assets/js/jquery.js')}}"></script>
 </head>
 <body>
-    <?php
-    $summary = 'دریل پیچ‌گوشتی مدل «BS12G3LI» محصولی از شرکت مطرح «آاگ» (AEG) است. این دریل پیچ‌گوشتی، شارژی است و انرژی موردنیاز خود را از طریق یک باتری تامین می‌کند.';
-    $count = 0;
-    ?>
 
     <style>
         html {
@@ -102,6 +98,12 @@
             transition: all 0.5s ease;
         }
     </style>
+
+    <?php
+        $summary = $product->description;
+        $count = 0;
+    ?>
+
     <main id='main' class='w-full mb-10'>
 
         <div class='w-full py-10 bg-(--background)'>
@@ -109,7 +111,7 @@
 
                 <div class='w-4/12 bg-(--background) rounded-xl p-1 py-5 flex flex-col gap-2 border border-(--border) cart_shadow'>
                     <div id="main_image_div" class=' flex w-full min-h-10/12 max-h-10/12 bg-white rounded-xl items-center justify-center p-4 overflow-hidden'>
-                        <img class='gallery_product_primary size-60 object-cover object-center' src="{{asset('assets/img/product-image4.png')}}" alt="">
+                        <img class='gallery_product_primary size-60 object-cover object-center' src="{{asset('storage/product_medias/'.$product->is_main)}}" alt="">
                     </div>
                     <div class='gallery_images w-full h-2/12 flex gap-2 items-center'>
 
@@ -117,11 +119,11 @@
                                 <path d="M440.6 273.4c4.7-4.5 7.4-10.8 7.4-17.4s-2.7-12.8-7.4-17.4l-176-168c-9.6-9.2-24.8-8.8-33.9 .8s-8.8 24.8 .8 33.9L364.1 232 24 232c-13.3 0-24 10.7-24 24s10.7 24 24 24l340.1 0L231.4 406.6c-9.6 9.2-9.9 24.3-.8 33.9s24.3 9.9 33.9 .8l176-168z" />
                             </svg></div>
                         <div id="image_bar" class='w-10/12 bg-white rounded-xl flex overflow-x-auto gap-2 p-2' style="scrollbar-width:none;">
-                            <img class='gallery_product_item size-13 rounded-lg border border-(--border) object-cover' src="{{asset('assets/img/product-gallery-image1-300x300.jpg')}}" alt="">
-                            <img class='gallery_product_item size-13 rounded-lg border border-(--border) object-cover' src="{{asset('assets/img/product-gallery-image4-300x300.jpg')}}" alt="">
-                            <img class='gallery_product_item size-13 rounded-lg border border-(--border) object-cover' src="{{asset('assets/img/product-image4.png')}}" alt="">
-                            <img class='gallery_product_item size-13 rounded-lg border border-(--border) object-cover' src="{{asset('assets/img/product-gallery-image5-300x300.jpg')}}" alt="">
-                            <img class='gallery_product_item size-13 rounded-lg border border-(--border) object-cover' src="{{asset('assets/img/product-image4.png')}}" alt="">
+                            <img class='gallery_product_item size-13 rounded-lg border border-(--border) object-cover' src="{{asset('storage/product_medias/'.$product->is_main)}}" alt="">
+                            @foreach($product->gallery as $gallery)
+                                <img class='gallery_product_item size-13 rounded-lg border border-(--border) object-cover' src="{{asset('storage/product_medias/'.$gallery)}}" alt="">
+                            @endforeach
+
                         </div>
                         <div class=' p-1 rounded-full bg-[#11416f] flex items-center justify-center '><svg class='size-3 fill-(--primary_color)' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Pro 6.5.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
                                 <path d="M7.4 273.4C2.7 268.8 0 262.6 0 256s2.7-12.8 7.4-17.4l176-168c9.6-9.2 24.8-8.8 33.9 .8s8.8 24.8-.8 33.9L83.9 232 424 232c13.3 0 24 10.7 24 24s-10.7 24-24 24L83.9 280 216.6 406.6c9.6 9.2 9.9 24.3 .8 33.9s-24.3 9.9-33.9 .8l-176-168z" />
@@ -134,7 +136,7 @@
 
                     <div class='w-full border-b-2 border-(--border) flex flex-col gap-3'>
                         <div class='w-full p-2 flex text-start items-center'>
-                            <span class='truncate text-(--title) font-bold ...'> دریل پیچ گوشتی چکشی شارژی آاگ مدل BSB 12C2 </span>
+                            <span class='truncate text-(--title) font-bold ...'> {{$product->title}} </span>
                         </div>
                         <div class='w-full p-2 flex justify-between items-center'>
                             <div class='flex gap-1'>
@@ -1010,8 +1012,8 @@
                 <div class='w-full mt-5 sticky top-5 flex flex-col gap-4 border border-(--border) cart_shadow p-2 bg-white rounded-xl '>
 
                     <div class='flex flex-col text-center justify-center border-b-2 border-(--border) p-2 gap-1 text-sm items-center'>
-                        <div class=''>
-                            <img class='w-30 rounded-lg object-cover' src="{{asset('assets/img/product-image4.png')}}" alt="">
+                        <div class='h-30'>
+                            <img class='w-30 h-ful rounded-lg object-cover' src="{{asset('storage/product_medias/'.$product->is_main)}}" alt="">
                         </div>
                         <span class='text-xs font-bold'> دریل پیچ گوشتی چکشی شارژی آاگ مدل BSB 12C2 </span>
                     </div>

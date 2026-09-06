@@ -643,7 +643,17 @@ class ProductController extends Controller
     }
     public function client_pro_single(product $product){
         // dd($product);
-        $product->medias;
+        $is_mainpicture='';
+        $galleryPicture=[];
+        foreach ($product->medias as $media) {
+            if($media->is_main==1){
+                $product->is_main=$media->path;
+            }else{
+                $galleryPicture[]=$media->path;
+            }
+        }
+        $product->gallery=$galleryPicture;
+        // dd($product);
         return view('client.product.single',['product'=>$product]);
     }
 }
