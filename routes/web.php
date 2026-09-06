@@ -53,6 +53,7 @@ Route::group([
     Route::post('/remove/activation/code','removeActivationCode')->name('removeActivationCode');
 });
 
+
 Route::group([
     'prefix'=>'role',
     'as'=>'role.',
@@ -104,6 +105,7 @@ route::group([
     Route::get('category/attributes/{category}','categoryAttributes')->name('categoryAttributes');
     Route::get('/packages/{product}','packages')->name('packages');
     Route::get('/attributes/{product}','attributes')->name('attributes');
+    Route::get('/client/product/{product}','client_pro_single')->name('client_pro_single');
 });
 
 route::group([
