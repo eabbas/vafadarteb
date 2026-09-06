@@ -10,6 +10,8 @@ use App\Models\permision;
 use App\Models\role_permision;
 use App\Models\headerSetting;
 use App\Models\hero;
+use App\Models\category;
+use App\Models\product;
 use App\Models\advertisement;
 use App\Models\product_labels;
 use App\Models\phone_code;
@@ -76,8 +78,6 @@ class UserController extends Controller
         Auth::login($createdUser);
         return to_route('user.profile');
     }
-
-
     public function createUser(Request $request){
 
         $validation=$request->validate(
@@ -275,6 +275,7 @@ class UserController extends Controller
     }
     public function setting(){
         $comments=staticUser::all();
+        $products=product::all();
         $support_informations=support_information::all();
         $logo = headerSetting::first();
         $banner = banner::first();
@@ -288,7 +289,8 @@ class UserController extends Controller
             'advertisement'=>$advertisement,
             'product_label'=>$product_label,
             'comments'=>$comments,
-            'banner'=>$banner
+            'banner'=>$banner,
+            'products'=>$products,
         ]);
     }
     
@@ -347,5 +349,4 @@ class UserController extends Controller
         }
         return response()->json($row);
     }
-
 }

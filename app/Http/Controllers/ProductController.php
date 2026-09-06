@@ -135,9 +135,9 @@ class ProductController extends Controller
         }
         
 
-//////////////////////////////   قسمت پروداکت  🔼
+            //////////////////////////////   قسمت پروداکت  🔼
 
-/////////////////////////////////   قسمت پکیج  🔽
+            /////////////////////////////////   قسمت پکیج  🔽
         if(isset($request['packages'])){
 
             foreach ($request->packages as $package) {
@@ -277,7 +277,6 @@ class ProductController extends Controller
         return view("product.single",['product'=>$product]);
         // dd('single');
     }
-
     public function singlePackage(Package $package){
         $package->product;
         $result= brand::where('id',$package->product->brand_id)->first();
@@ -628,9 +627,6 @@ class ProductController extends Controller
         return response()->json($attributes);
         // return response()->json($category);
     }
-
-
-
     public function packages(product $product){
         $packages=$product->packages;
         return view('product.packages',['packages'=>$packages]);
@@ -645,5 +641,19 @@ class ProductController extends Controller
         }
         return view('product.attributes',['attributes'=>$attributes]);
     }
-    
+    public function client_pro_single(product $product){
+        // dd($product);
+        $is_mainpicture='';
+        $galleryPicture=[];
+        foreach ($product->medias as $media) {
+            if($media->is_main==1){
+                $product->is_main=$media->path;
+            }else{
+                $galleryPicture[]=$media->path;
+            }
+        }
+        $product->gallery=$galleryPicture;
+        // dd($product);
+        return view('client.product.single',['product'=>$product]);
+    }
 }
