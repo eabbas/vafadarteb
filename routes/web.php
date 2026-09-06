@@ -10,6 +10,7 @@ use App\Http\Controllers\HeroController;
 use App\Http\Controllers\BrandController;
 use App\Http\Controllers\ProductLabelsController;
 use App\Http\Controllers\BannerController;
+use App\Http\Controllers\CartController;
 use App\Http\Controllers\StaticUserController;
 use App\Http\Controllers\AdvertisementController;
 use App\Http\Controllers\SupportInformationController;
@@ -105,7 +106,17 @@ route::group([
     Route::get('category/attributes/{category}','categoryAttributes')->name('categoryAttributes');
     Route::get('/packages/{product}','packages')->name('packages');
     Route::get('/attributes/{product}','attributes')->name('attributes');
+
+    
     Route::get('/client/product/{product}','client_pro_single')->name('client_pro_single');
+});
+
+route::group([
+    'prefix'=>'cart',
+    'as'=>'cart.',
+    'controller'=>CartController::class,
+],function(){    
+    Route::get('/set/quantity/cart/{cart}','create')->name('create');
 });
 
 route::group([
