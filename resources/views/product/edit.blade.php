@@ -588,7 +588,7 @@ $count = 1;
                 <!-- توضیحات -->
                 <div>
                     <label class="vafadar-label"> توضیحات</label>
-                    <input type="text" placeholder="توضیحات محصول" value="{{$product->description}}" required name='description' class="vafadar-input">
+                    <input type="text" placeholder="توضیحات محصول" value="{{$product->description}}"    name='description' class="vafadar-input">
                     <span class="vafadar-error">@error('description') {{$message}} @enderror</span>
                 </div>
 
@@ -629,20 +629,20 @@ $count = 1;
                 <!-- تخفیف -->
                 <div>
                     <label class="vafadar-label"> تخفیف</label>
-                    <input type="text" placeholder="مقدار تخفیف" value="{{$product->discunt}}" name='discunt' class="vafadar-input">
+                    <input type="number" placeholder="مقدار تخفیف" value="{{$product->discunt}}" name='discunt' class="vafadar-input">
                 </div>
 
                 <!-- قیمت -->
                 <div>
                     <label class="vafadar-label"> قیمت</label>
-                    <input type="text" placeholder="قیمت محصول" value="{{$product->price}}" required name='price' class="vafadar-input">
+                    <input type="number" placeholder="قیمت محصول" value="{{$product->price}}"    name='price' class="vafadar-input">
                     <span class="vafadar-error">@error('price') {{$message}} @enderror</span>
                 </div>
 
                 <!-- موجودی -->
                 <div>
                     <label class="vafadar-label"> موجودی</label>
-                    <input type="text" placeholder="تعداد موجودی" value="{{$product->stock}}" required name='stock' class="vafadar-input">
+                    <input type="number" placeholder="تعداد موجودی" value="{{$product->stock}}"    name='stock' class="vafadar-input">
                     <span class="vafadar-error">@error('stock') {{$message}} @enderror</span>
                 </div>
 
@@ -748,7 +748,7 @@ $count = 1;
                                 </div>
                                 <div>
                                     <label class="vafadar-label"> توضیحات</label>
-                                    <input type="text" required name="createdPackages[{{$package->id}}][description]" value="{{$package->description}}" class="vafadar-input" placeholder="توضیحات">
+                                    <input type="text"    name="createdPackages[{{$package->id}}][description]" value="{{$package->description}}" class="vafadar-input" placeholder="توضیحات">
                                 </div>
                                 <div>
                                     <label class="vafadar-label"> خلاصه</label>
@@ -756,15 +756,15 @@ $count = 1;
                                 </div>
                                 <div>
                                     <label class="vafadar-label"> موجودی</label>
-                                    <input type="text" required name="createdPackages[{{$package->id}}][stock]" value="{{$package->stock}}" class="vafadar-input" placeholder="موجودی">
+                                    <input type="number"    name="createdPackages[{{$package->id}}][stock]" value="{{$package->stock}}" class="vafadar-input" placeholder="موجودی">
                                 </div>
                                 <div>
                                     <label class="vafadar-label"> قیمت</label>
-                                    <input type="text" required name="createdPackages[{{$package->id}}][price]" value="{{$package->price}}" class="vafadar-input" placeholder="قیمت">
+                                    <input type="number"    name="createdPackages[{{$package->id}}][price]" value="{{$package->price}}" class="vafadar-input" placeholder="قیمت">
                                 </div>
                                 <div>
                                     <label class="vafadar-label"> تخفیف</label>
-                                    <input type="text" name="createdPackages[{{$package->id}}][discunt]" value="{{$package->discunt}}" class="vafadar-input" placeholder="تخفیف">
+                                    <input type="number" name="createdPackages[{{$package->id}}][discunt]" value="{{$package->discunt}}" class="vafadar-input" placeholder="تخفیف">
                                 </div>
 
                                 <!-- توگل‌های پکیج -->
@@ -1123,7 +1123,7 @@ $count = 1;
                 </div>
                 <div>
                     <label class="vafadar-label"> توضیحات</label>
-                    <input type="text" required name="packages[${randomNumber}][description]" class="vafadar-input" placeholder="توضیحات پکیج">
+                    <input type="text"    name="packages[${randomNumber}][description]" class="vafadar-input" placeholder="توضیحات پکیج">
                 </div>
                 <div>
                     <label class="vafadar-label"> خلاصه</label>
@@ -1131,15 +1131,15 @@ $count = 1;
                 </div>
                 <div>
                     <label class="vafadar-label"> موجودی</label>
-                    <input type="text" required name="packages[${randomNumber}][stock]" class="vafadar-input" placeholder="تعداد موجودی">
+                    <input type="number"    name="packages[${randomNumber}][stock]" class="vafadar-input" placeholder="تعداد موجودی">
                 </div>
                 <div>
                     <label class="vafadar-label"> قیمت</label>
-                    <input type="text" required name="packages[${randomNumber}][price]" class="vafadar-input" placeholder="قیمت پکیج">
+                    <input type="number"    name="packages[${randomNumber}][price]" class="vafadar-input" placeholder="قیمت پکیج">
                 </div>
                 <div>
                     <label class="vafadar-label"> تخفیف</label>
-                    <input type="text" name="packages[${randomNumber}][discunt]" class="vafadar-input" placeholder="تخفیف پکیج">
+                    <input type="number" name="packages[${randomNumber}][discunt]" class="vafadar-input" placeholder="تخفیف پکیج">
                 </div>
                 <div class="flex items-center gap-6 flex-wrap">
                     <div class="vafadar-toggle-label">

@@ -767,15 +767,15 @@ $count=0
                 </div>
                 <div>
                     <label class='vafadar-label'> موجودی</label>
-                    <input type="text"    name="packages[${randomNumber}][stock]" class="vafadar-input" placeholder="تعداد موجودی">
+                    <input type="number"    name="packages[${randomNumber}][stock]" class="vafadar-input" placeholder="تعداد موجودی">
                 </div>
                 <div>
                     <label class='vafadar-label'> قیمت</label>
-                    <input type="text"    name="packages[${randomNumber}][price]" class="vafadar-input" placeholder="قیمت پکیج">
+                    <input type="number"    name="packages[${randomNumber}][price]" class="vafadar-input" placeholder="قیمت پکیج">
                 </div>
                 <div>
                     <label class='vafadar-label'> تخفیف</label>
-                    <input type="text" name="packages[${randomNumber}][discunt]" class="vafadar-input" placeholder="تخفیف پکیج">
+                    <input type="number" name="packages[${randomNumber}][discunt]" class="vafadar-input" placeholder="تخفیف پکیج">
                 </div>
                 <div class='flex items-center gap-6'>
                     <label class="vafadar-toggle-label">
