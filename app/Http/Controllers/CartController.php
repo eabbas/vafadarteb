@@ -20,13 +20,24 @@ use Illuminate\Support\Facades\Storage;
 
 class CartController extends Controller
 {
-    public function store($cart){
-        return response()->json($cart);
+    public function store(Request $request){
+        $cart=cart::create([
+            'user_id'=>$request->user_id,
+            'product_id'=>$request->product_id,
+            'order_id'=>null,
+            'quantity'=>1,
+        ]);
+        return response()->json($cart->id);
     }
-    public function update(){
+    public function update(Request $request , cart $cart){
+        $cart->quantity=$request->quantity;
+        $cart->save();
+        return response()->json(['id'=>$cart->id , 'quantity'=>$cart->quantity]);
         dd('update');
     }
-    public function delete(){
+    public function delete(cart $cart){
+        $cart->delete();
+        return response()->json(true);
         dd('delete');
     }
     public function list(){

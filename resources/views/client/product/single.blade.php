@@ -251,13 +251,13 @@
                         </div>
                         <div class='w-full flex'>
                             <div class='quantity_selectors hidden justify-between '>
-                                <div onclick="quantity_selector('plus')" class='plus_quantities min-w-10 min-h-10 max-w-10 max-h-10  flex items-center border border-(--border) rounded-xl justify-center hover:bg-(--metod-text) hover:scale-95 transition-all duration-200'> <svg class='size-3 fill-black' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
-                                        <path d="M488 232c13.3 0 24 10.7 24 24s-10.7 24-24 24l-208 0 0 208c0 13.3-10.7 24-24 24s-24-10.7-24-24l0-208L24 280c-13.3 0-24-10.7-24-24s10.7-24 24-24H232l0-208c0-13.3 10.7-24 24-24s24 10.7 24 24l0 208 208 0z" />
-                                    </svg> </div>
+                                <div onclick="quantity_selector(this,'plus')" class='plus_quantities min-w-10 min-h-10 max-w-10 max-h-10  flex items-center border border-(--border) rounded-xl justify-center hover:bg-(--metod-text) hover:scale-95 transition-all duration-200'> <svg class='size-3 fill-black' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                                    <path d="M488 232c13.3 0 24 10.7 24 24s-10.7 24-24 24l-208 0 0 208c0 13.3-10.7 24-24 24s-24-10.7-24-24l0-208L24 280c-13.3 0-24-10.7-24-24s10.7-24 24-24H232l0-208c0-13.3 10.7-24 24-24s24 10.7 24 24l0 208 208 0z" /></svg>
+                                </div>
                                 <input id="test" class='quantity_selector_inputs min-w-1/3 font-bold flex text-center items-center justify-center text-2xl outline-ntype="number"one' readonly name='quantiti_cart' value='1' min='1' max='30'>
                                 <div onclick="trash()" class='trash_quantities min-w-10 min-h-10 max-w-10 max-h-10  flex items-center border border-(--border) rounded-xl justify-center hover:bg-(--metod-text) hover:scale-95 transition-all duration-200'> <svg class='size-5 fill-rose-600' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
-                                        <path d="M170.5 51.6L151.5 80h145l-19-28.4c-1.5-2.2-4-3.6-6.7-3.6H177.1c-2.7 0-5.2 1.3-6.7 3.6zm147-26.6L354.2 80H368h48 8c13.3 0 24 10.7 24 24s-10.7 24-24 24h-8V432c0 44.2-35.8 80-80 80H112c-44.2 0-80-35.8-80-80V128H24c-13.3 0-24-10.7-24-24S10.7 80 24 80h8H80 93.8l36.7-55.1C140.9 9.4 158.4 0 177.1 0h93.7c18.7 0 36.2 9.4 46.6 24.9zM80 128V432c0 17.7 14.3 32 32 32H336c17.7 0 32-14.3 32-32V128H80zm80 64V400c0 8.8-7.2 16-16 16s-16-7.2-16-16V192c0-8.8 7.2-16 16-16s16 7.2 16 16zm80 0V400c0 8.8-7.2 16-16 16s-16-7.2-16-16V192c0-8.8 7.2-16 16-16s16 7.2 16 16zm80 0V400c0 8.8-7.2 16-16 16s-16-7.2-16-16V192c0-8.8 7.2-16 16-16s16 7.2 16 16z" />
-                                    </svg> </div>
+                                    <path d="M170.5 51.6L151.5 80h145l-19-28.4c-1.5-2.2-4-3.6-6.7-3.6H177.1c-2.7 0-5.2 1.3-6.7 3.6zm147-26.6L354.2 80H368h48 8c13.3 0 24 10.7 24 24s-10.7 24-24 24h-8V432c0 44.2-35.8 80-80 80H112c-44.2 0-80-35.8-80-80V128H24c-13.3 0-24-10.7-24-24S10.7 80 24 80h8H80 93.8l36.7-55.1C140.9 9.4 158.4 0 177.1 0h93.7c18.7 0 36.2 9.4 46.6 24.9zM80 128V432c0 17.7 14.3 32 32 32H336c17.7 0 32-14.3 32-32V128H80zm80 64V400c0 8.8-7.2 16-16 16s-16-7.2-16-16V192c0-8.8 7.2-16 16-16s16 7.2 16 16zm80 0V400c0 8.8-7.2 16-16 16s-16-7.2-16-16V192c0-8.8 7.2-16 16-16s16 7.2 16 16zm80 0V400c0 8.8-7.2 16-16 16s-16-7.2-16-16V192c0-8.8 7.2-16 16-16s16 7.2 16 16z" /></svg>
+                                </div>
                             </div>
                             <div onclick='entry_cart(this)' class='entry_cart_submit cursor-pointer w-full h-10 bg-(--primary_color) flex text-center items-center justify-center rounded-lg text-white text-[10px] px-2 py-3  hover:bg-(--buttom) hover:font-bold transition-all duration-200'>افزودن به سبد خرید</div>
                         </div>
@@ -455,7 +455,7 @@
                         </div>
                         <div class='w-full flex gap-2 '>
                             <div class='quantity_selectors hidden justify-between '>
-                                <div onclick="quantity_selector('plus')" class='plus_quantities min-w-10 min-h-10 max-w-10 max-h-10  flex items-center border border-(--border) rounded-xl justify-center hover:bg-(--metod-text) hover:scale-95 transition-all duration-200'> <svg class='size-3 fill-black' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!-- -->
+                                <div onclick="quantity_selector(this,'plus')" class='plus_quantities min-w-10 min-h-10 max-w-10 max-h-10  flex items-center border border-(--border) rounded-xl justify-center hover:bg-(--metod-text) hover:scale-95 transition-all duration-200'> <svg class='size-3 fill-black' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!-- -->
                                         <path d="M488 232c13.3 0 24 10.7 24 24s-10.7 24-24 24l-208 0 0 208c0 13.3-10.7 24-24 24s-24-10.7-24-24l0-208L24 280c-13.3 0-24-10.7-24-24s10.7-24 24-24H232l0-208c0-13.3 10.7-24 24-24s24 10.7 24 24l0 208 208 0z" />
                                     </svg> </div>
                                 <input class='quantity_selector_inputs min-w-1/3 font-bold flex text-center items-center justify-center text-2xl outline-ntype="number"one' type='number' readonly name='quantiti_cart' value='1' min="1" max="30">
@@ -1047,7 +1047,7 @@
                         </div>
                         <div class='w-full flex gap-2 '>
                             <div class='quantity_selectors hidden justify-between'>
-                                <div onclick="quantity_selector('plus')" class='plus_quantities w-1/3 min-h-10 flex items-center border border-(--border) rounded-xl justify-center hover:bg-(--metod-text) hover:scale-95 transition-all duration-200'> <svg class='size-3 fill-black' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                                <div onclick="quantity_selector(this,'plus')" class='plus_quantities w-1/3 min-h-10 flex items-center border border-(--border) rounded-xl justify-center hover:bg-(--metod-text) hover:scale-95 transition-all duration-200'> <svg class='size-3 fill-black' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
                                         <path d="M488 232c13.3 0 24 10.7 24 24s-10.7 24-24 24l-208 0 0 208c0 13.3-10.7 24-24 24s-24-10.7-24-24l0-208L24 280c-13.3 0-24-10.7-24-24s10.7-24 24-24H232l0-208c0-13.3 10.7-24 24-24s24 10.7 24 24l0 208 208 0z" />
                                     </svg> </div>
                                 <input class='quantity_selector_inputs w-1/3 font-bold flex text-center items-center justify-center text-2xl outline-none' type="number" readonly name='quantiti_cart' value='1' min='1' max='30'>
@@ -1300,7 +1300,7 @@
 
         <div class='md:hidden flex fixed bottom-0 right-0 w-full sm:h-18 h-15 p-3 bg-white justify-between text-center items-center rounded-t-xl border-t-3 border-[#11416f]'>
                 <div class='quantity_selectors hidden justify-between '>
-                    <div onclick="quantity_selector('plus')" class='plus_quantities min-w-10 min-h-10 max-w-10 max-h-10  flex items-center border border-(--border) rounded-xl justify-center hover:bg-(--metod-text) hover:scale-95 transition-all duration-200'> <svg class='size-3 fill-black' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                    <div onclick="quantity_selector(this,'plus')" class='plus_quantities min-w-10 min-h-10 max-w-10 max-h-10  flex items-center border border-(--border) rounded-xl justify-center hover:bg-(--metod-text) hover:scale-95 transition-all duration-200'> <svg class='size-3 fill-black' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
                         <path d="M488 232c13.3 0 24 10.7 24 24s-10.7 24-24 24l-208 0 0 208c0 13.3-10.7 24-24 24s-24-10.7-24-24l0-208L24 280c-13.3 0-24-10.7-24-24s10.7-24 24-24H232l0-208c0-13.3 10.7-24 24-24s24 10.7 24 24l0 208 208 0z" /></svg>
                     </div>
                     <input id="test" class='quantity_selector_inputs min-w-1/3 font-bold flex text-center items-center justify-center text-2xl outline-ntype="number"one' readonly name='quantiti_cart' value='1' min='1' max='30'>
@@ -1413,46 +1413,143 @@
         })
 
 
-        // let flag="{{Auth::check()}}";
-        // let user_id="{{Auth::id()}}";
-        // let product_id="{{$product->id}}";
-        // let link="{{route('user.loginPage')}}";
-
-
-
-
+        let user_id="{{Auth::id()}}";
+        let product_id="{{$product->id}}";
+        let link="{{route('user.loginPage')}}";
+        let check="{{Auth::check()}}";
 
         function entry_cart(el) {
             entry_cart_submit.forEach(entry => {
                 entry.innerHTML =
-                    `
-                    <div class="size-7 border-4 border-(--border) border-t-(--primary_color) rounded-full animate-spin"></div>
-
                 `
-                $.ajax({
-                    url: "{{route('cart.store')}}",
-                    type: "post",
-                    dataType: "json",
-                    data:{
+                    <div class="size-7 border-4 border-(--border) border-t-(--primary_color) rounded-full animate-spin"></div>
+                `
+            })
+                if(check){
+                    $.ajaxSetup({
+                        headers: {
+                            'X-CSRF-TOKEN': "{{ csrf_token() }}"
+                        }
+                    })
+                    $.ajax({
+                        url: "{{route('cart.store')}}",
+                        type: "post",
+                        dataType: "json",
+                        data:{
+                            'product_id':product_id,
+                            'user_id':user_id,
+                        },
+                        success: function(data) {
+                            console.log(data);
+                            entry_cart_submit.forEach(entry => {
+                                entry.classList.add('hidden');
+                                quantity_selectors.forEach(quantity_selector => {
+                                    quantity_selector.classList.remove('hidden')
+                                    quantity_selector.classList.add('flex')
+                                    quantity_selector.classList.add('w-full')
+                                });
+                            })
+                        },
+                        error: function() {
+                            console.log('☢')
+                        }
+                    })
+                }else{
+                    location.assign(link)
+                } 
 
+
+
+            // });
+
+        }
+
+
+        let flag = true
+        // let count = 0
+        let test = document.getElementById('test')
+        let value
+        let valuemmmmmm
+        let quantity=0;
+        let plus_icon='';
+        function quantity_selector(el,state) {
+            // let value=0;
+            // count++
+            quantity_selectors.forEach(quantity_selector => {
+                plus_icon=quantity_selector.children[0].innerHTML;
+                quantity_selector.children[0].innerHTML =
+                `
+                <div class="size-7 border-4 border-(--border) border-t-(--primary_color) rounded-full animate-spin"></div>
+                
+                `;
+                quantity_selector.children[0].setAttribute('disabled', true);
+
+                quantity_selector.children[2].innerHTML =
+                `
+                <div class="size-7 border-4 border-(--border) border-t-(--primary_color) rounded-full animate-spin"></div>
+                
+                `;
+                quantity_selector.children[2].setAttribute('disabled', true);
+                quantity = quantity_selector.children[1].value;
+            })
+            if (quantity < 30) {
+                if(state=='plus'){
+                    quantity++;
+                }else{
+                    quantity--;
+                }
+                $.ajaxSetup({
+                    headers: {
+                        'X-CSRF-TOKEN': "{{ csrf_token() }}"
+                    }
+                })
+                $.ajax({
+                    url: "{{route('cart.update',['cart'=>1])}}",
+                    type: "post",
+                    dataType:"json",
+                    data:{
+                        'quantity':quantity,
                     },
                     success: function(data) {
-                        entry.classList.add('hidden');
                         quantity_selectors.forEach(quantity_selector => {
-                            quantity_selector.classList.remove('hidden')
-                            quantity_selector.classList.add('flex')
-                            quantity_selector.classList.add('w-full')
-                        });
+                            quantity_selector.children[1].value = data.quantity
+                            quantity_selector.children[0].innerHTML=plus_icon;
+                            if(data.quantity==1){
+                                quantity_selector.children[0].removeAttribute('disabled');
+                                quantity_selector.children[2].innerHTML=
+                                `
+                                    <div class="size-7 border-4 border-(--border) border-t-(--primary_color) rounded-full animate-spin"></div>
+                                
+                                `;
+                                quantity_selector.children[2].innerHTML =
+                                `
+                                <div onclick="trash(${data.id})" class='trash_quantities min-w-10 min-h-10 max-w-10 max-h-10  flex items-center border border-(--border) rounded-xl justify-center hover:bg-(--metod-text) hover:scale-95 transition-all duration-200'> <svg class='size-5 fill-rose-600' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M170.5 51.6L151.5 80h145l-19-28.4c-1.5-2.2-4-3.6-6.7-3.6H177.1c-2.7 0-5.2 1.3-6.7 3.6zm147-26.6L354.2 80H368h48 8c13.3 0 24 10.7 24 24s-10.7 24-24 24h-8V432c0 44.2-35.8 80-80 80H112c-44.2 0-80-35.8-80-80V128H24c-13.3 0-24-10.7-24-24S10.7 80 24 80h8H80 93.8l36.7-55.1C140.9 9.4 158.4 0 177.1 0h93.7c18.7 0 36.2 9.4 46.6 24.9zM80 128V432c0 17.7 14.3 32 32 32H336c17.7 0 32-14.3 32-32V128H80zm80 64V400c0 8.8-7.2 16-16 16s-16-7.2-16-16V192c0-8.8 7.2-16 16-16s16 7.2 16 16zm80 0V400c0 8.8-7.2 16-16 16s-16-7.2-16-16V192c0-8.8 7.2-16 16-16s16 7.2 16 16zm80 0V400c0 8.8-7.2 16-16 16s-16-7.2-16-16V192c0-8.8 7.2-16 16-16s16 7.2 16 16z"/></svg> </div>
+                                `
+                            }
+                            if(data.quantity>1){
+                                quantity_selector.children[2].removeAttribute('disabled');
+                                quantity_selector.children[2].innerHTML=
+                                `
+                                    <div class="size-7 border-4 border-(--border) border-t-(--primary_color) rounded-full animate-spin"></div>
+                                
+                                `;
+                                quantity_selector.children[2].innerHTML =
+                                `
+                                <div onclick="quantity_selector(this,'minus')" class='minus_quantities min-w-10 min-h-10 max-w-10 max-h-10  flex items-center border border-(--border) rounded-xl justify-center hover:bg-(--metod-text) hover:scale-95 transition-all duration-200'> <svg class='size-3 fill-black' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M432 256c0 13.3-10.7 24-24 24L40 280c-13.3 0-24-10.7-24-24s10.7-24 24-24l368 0c13.3 0 24 10.7 24 24z"/></svg> </div>
+                                `
+    
+                            }
+                        })
                     },
                     error: function() {
                         console.log('☢')
                     }
                 })
-            });
+            }
 
         }
 
-        function trash() {
+        function trash(id) {
             entry_cart_submit.forEach(entry => {
                 // console.log(entry)
                 entry.innerHTML =
@@ -1488,138 +1585,6 @@
                 })
             });
         }
-
-        let flag = true
-        // let count = 0
-        let test = document.getElementById('test')
-        let value
-        let valuemmmmmm
-
-        function quantity_selector(state) {
-            // let value=0;
-            // count++
-            quantity_selectors.forEach(quantity_selector => {
-                // if(flag){
-                //  flag = false
-                // }
-                if (state == 'plus') {
-
-                    // if(!quantity_selector.children[2].children[0].innerText == '-'){
-                    if (quantity_selector.children[2].children[0].classList.contains('fill-rose-600')) {
-                        quantity_selector.children[2].remove()
-                        quantity_selector.innerHTML +=
-                            `
-                        <div onclick="quantity_selector('minus')" class='minus_quantities min-w-10 min-h-10 max-w-10 max-h-10  flex items-center border border-(--border) rounded-xl justify-center hover:bg-(--metod-text) hover:scale-95 transition-all duration-200'> <svg class='size-3 fill-black' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M432 256c0 13.3-10.7 24-24 24L40 280c-13.3 0-24-10.7-24-24s10.7-24 24-24l368 0c13.3 0 24 10.7 24 24z"/></svg> </div>
-                        `
-                    }
-
-                    // console.log(quantity_selector.children[1].value)
-                    if (quantity_selector.children[1].value < 30) {
-                        value = quantity_selector.children[1].value
-                        console.log(value)
-                        $.ajax({
-                            url: "{{url('cart/set/quantity/cart')}}/" + 1,
-                            type: "get",
-                            success: function(quantity) {
-
-                                // quantity_selector_inputs.forEach(quantity_selector_input => {
-                                // quantity_selector_input.value=value+1
-                                // console.log(value)
-                                // value=+value+1
-                                let resss = +value + 1
-                                quantity_selector.children[1].value = resss
-                                // console.log(quantity_selector.children[1].value)
-                                // value =quantity_selector_input.value+1
-                                // quantity_selector_input.value=value
-                                // console.log(quantity_selector_input)
-                                // value=quantity_selector_input.getAttribute('value')
-                                // value++
-                                // quantity_selector_input.setAttribute('value',value)
-                                // value = quantity_selector_input.value++
-                                // console.log(value)
-                                // });
-                            },
-                            error: function() {
-                                console.log('☢')
-                            }
-                        })
-
-                        ////////////////////////////////
-                        // $.ajax({
-                        //     url:"{{url('api/cart/set/quantity/cart')}}",
-                        //     type:"POST",
-                        //     dataType:"json",
-                        //     data: {
-                        //         'quantity': count
-                        //     },
-                        //     success:function(quantity){
-                        //         console.log(quantity)
-                        //         quantity_selector_inputs.forEach(quantity_selector_input => {
-                        //             // value =quantity_selector_input.value+quantity
-                        //             // quantity_selector_input.value=count
-                        //             test.value = 5
-                        //              console.log(test)
-                        //             //  console.log(count)
-
-                        //             // console.log(quantity_selector_input)
-                        //             // value=quantity_selector_input.getAttribute('value')
-                        //             // value++
-                        //             // quantity_selector_input.setAttribute('value',value)
-                        //             // value = quantity_selector_input.value++
-                        //             // console.log(value)
-                        //         });
-                        //     },
-                        //     error:function(){
-                        //         console.log('☢')
-                        //     }
-                        // })
-
-
-
-                    }
-                }
-                if (state == 'minus') {
-                    // count--
-                    // console.log('lsdhf.saklhf.slhfks')
-                    if (quantity_selector.children[1].value > 1) {
-                        valuemmmmmm = quantity_selector.children[1].value
-                        $.ajax({
-                            url: "{{url('cart/set/quantity/cart')}}/" + 1,
-                            type: "get",
-                            // dataType:"json",
-                            success: function(quantity) {
-                                console.log(valuemmmmmm)
-                                valuemmmmmm--
-                                console.log(valuemmmmmm)
-                                // quantity_selector.children[1].value = valuemmmmmm
-                                // quantity_selector_inputs.forEach(quantity_selector_input => {
-                                // console.log(quantity_selector_input)
-                                // value=quantity_selector_input.getAttribute('value')
-                                // value--
-                                // quantity_selector_input.setAttribute('value',value)
-                                // });
-
-                            },
-                            error: function() {
-                                console.log('☢')
-                            }
-                        })
-
-                        if (quantity_selector.children[1].value = 1) {
-                            quantity_selector.children[2].remove()
-                            quantity_selector.innerHTML +=
-                                `
-                            <div onclick="trash()" class='trash_quantities min-w-10 min-h-10 max-w-10 max-h-10  flex items-center border border-(--border) rounded-xl justify-center hover:bg-(--metod-text) hover:scale-95 transition-all duration-200'> <svg class='size-5 fill-rose-600' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M170.5 51.6L151.5 80h145l-19-28.4c-1.5-2.2-4-3.6-6.7-3.6H177.1c-2.7 0-5.2 1.3-6.7 3.6zm147-26.6L354.2 80H368h48 8c13.3 0 24 10.7 24 24s-10.7 24-24 24h-8V432c0 44.2-35.8 80-80 80H112c-44.2 0-80-35.8-80-80V128H24c-13.3 0-24-10.7-24-24S10.7 80 24 80h8H80 93.8l36.7-55.1C140.9 9.4 158.4 0 177.1 0h93.7c18.7 0 36.2 9.4 46.6 24.9zM80 128V432c0 17.7 14.3 32 32 32H336c17.7 0 32-14.3 32-32V128H80zm80 64V400c0 8.8-7.2 16-16 16s-16-7.2-16-16V192c0-8.8 7.2-16 16-16s16 7.2 16 16zm80 0V400c0 8.8-7.2 16-16 16s-16-7.2-16-16V192c0-8.8 7.2-16 16-16s16 7.2 16 16zm80 0V400c0 8.8-7.2 16-16 16s-16-7.2-16-16V192c0-8.8 7.2-16 16-16s16 7.2 16 16z"/></svg> </div>
-                            `
-                        }
-                    }
-
-                }
-            });
-            // console.log(state)
-            // console.log(el)
-        }
-
 
 
 
