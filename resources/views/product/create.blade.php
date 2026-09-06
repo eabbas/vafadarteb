@@ -495,7 +495,7 @@ $count=0
                 <!-- توضیحات -->
                 <div>
                     <label class="vafadar-label"> توضیحات</label>
-                    <input type="text" placeholder="توضیحات محصول" required name='description' class="vafadar-input">
+                    <input type="text" placeholder="توضیحات محصول"    name='description' class="vafadar-input">
                     @error('description') <span class="vafadar-error">{{$message}}</span> @enderror
                 </div>
 
@@ -538,20 +538,20 @@ $count=0
                 <!-- تخفیف -->
                 <div>
                     <label class="vafadar-label"> تخفیف</label>
-                    <input type="text" placeholder="مقدار تخفیف" name='discunt' class="vafadar-input">
+                    <input type="number" placeholder="مقدار تخفیف" name='discunt' class="vafadar-input">
                 </div>
 
                 <!-- قیمت -->
                 <div>
                     <label class="vafadar-label"> قیمت</label>
-                    <input type="text" placeholder="قیمت محصول" required name='price' class="vafadar-input">
+                    <input type="number" placeholder="قیمت محصول"    name='price' class="vafadar-input">
                     @error('price') <span class="vafadar-error">{{$message}}</span> @enderror
                 </div>
 
                 <!-- موجودی -->
                 <div>
                     <label class="vafadar-label"> موجودی</label>
-                    <input type="text" placeholder="تعداد موجودی" required name='stock' class="vafadar-input">
+                    <input type="number" placeholder="تعداد موجودی"    name='stock' class="vafadar-input">
                     @error('stock') <span class="vafadar-error">{{$message}}</span> @enderror
                 </div>
 
@@ -714,7 +714,7 @@ $count=0
         let select= document.createElement('select');
         div.classList=`relative w-full p-2 border-1 rounded-xl flex gap-2`;
         input.setAttribute('type', 'text');
-        input.setAttribute('required', true);
+        input.setAttribute('  ', true);
         input.setAttribute('name', 'attributes_value[]');
         input.classList = 'vafadar-input attributes_inputs max-w-9/12 min-w-9/12';
         select.setAttribute('name', 'attributes_id[]');
@@ -759,7 +759,7 @@ $count=0
                 </div>
                 <div>
                     <label class='vafadar-label'> توضیحات</label>
-                    <input type="text" required name="packages[${randomNumber}][description]" class="vafadar-input" placeholder="توضیحات پکیج">
+                    <input type="text"    name="packages[${randomNumber}][description]" class="vafadar-input" placeholder="توضیحات پکیج">
                 </div>
                 <div>
                     <label class='vafadar-label'> خلاصه</label>
@@ -767,11 +767,11 @@ $count=0
                 </div>
                 <div>
                     <label class='vafadar-label'> موجودی</label>
-                    <input type="text" required name="packages[${randomNumber}][stock]" class="vafadar-input" placeholder="تعداد موجودی">
+                    <input type="text"    name="packages[${randomNumber}][stock]" class="vafadar-input" placeholder="تعداد موجودی">
                 </div>
                 <div>
                     <label class='vafadar-label'> قیمت</label>
-                    <input type="text" required name="packages[${randomNumber}][price]" class="vafadar-input" placeholder="قیمت پکیج">
+                    <input type="text"    name="packages[${randomNumber}][price]" class="vafadar-input" placeholder="قیمت پکیج">
                 </div>
                 <div>
                     <label class='vafadar-label'> تخفیف</label>
