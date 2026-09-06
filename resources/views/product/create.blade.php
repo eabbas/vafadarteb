@@ -714,7 +714,7 @@ $count=0
         let select= document.createElement('select');
         div.classList=`relative w-full p-2 border-1 rounded-xl flex gap-2`;
         input.setAttribute('type', 'text');
-        input.setAttribute('  ', true);
+        input.setAttribute('required', true);
         input.setAttribute('name', 'attributes_value[]');
         input.classList = 'vafadar-input attributes_inputs max-w-9/12 min-w-9/12';
         select.setAttribute('name', 'attributes_id[]');
