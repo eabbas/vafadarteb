@@ -20,7 +20,16 @@ use Illuminate\Support\Facades\Storage;
 
 class CartController extends Controller
 {
-    public function create($cart){
+    public function store($cart){
         return response()->json($cart);
+    }
+    public function update(){
+        dd('update');
+    }
+    public function delete(){
+        dd('delete');
+    }
+    public function list(){
+        dd('list');
     }
 }

@@ -116,7 +116,21 @@ route::group([
     'as'=>'cart.',
     'controller'=>CartController::class,
 ],function(){    
-    Route::get('/set/quantity/cart/{cart}','create')->name('create');
+    Route::post('/store/cart','store')->name('store');
+    Route::post('/update/cart/{cart}','update')->name('update');
+    Route::get('/delete/cart/{cart}','delete')->name('delete');
+    Route::get('/list/cart','list')->name('list');
+});
+route::group([
+    'prefix'=>'order',
+    'as'=>'order.',
+    'controller'=>OrderController::class,
+],function(){    
+    Route::post('/store/order','store')->name('store');
+    Route::get('/list/order','list')->name('list');
+    Route::get('/edit/order','edit')->name('edit');
+    Route::post('/update/order','update')->name('update');
+    Route::get('/delete/order','delete')->name('delete');
 });
 
 route::group([
