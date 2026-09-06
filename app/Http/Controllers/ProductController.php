@@ -34,14 +34,14 @@ class ProductController extends Controller
         // dd($request->all());
         $validation=$request->validate([
             'title'=>['required'],
-            'description'=>['required'],
-            'price'=>['required'],
-            'stock'=>['required'],
+            // 'description'=>['required'],
+            // 'price'=>['required'],
+            // 'stock'=>['required'],
         ],[
             "title.required"=>"عنوان محصول را پرکنید",
-            "description.required"=>"توضیحات را پر کنید",
-            "price.required"=>"قیمت را صحیح وارد کنید",
-            "stock.required"=>"موجودی را مشخص کنید",
+            // "description.required"=>"توضیحات را پر کنید",
+            // "price.required"=>"قیمت را صحیح وارد کنید",
+            // "stock.required"=>"موجودی را مشخص کنید",
         ]);
 
         if(isset($request['is_active'])){
@@ -62,15 +62,15 @@ class ProductController extends Controller
         // ایجاد محصول
         $createdProduct=product::create([
             'title'=>$validation['title'],
-            'description'=>$validation['description'],
+            'description'=>$request['description'],
             'summary'=>$request->summary,
             'brand_id'=>$request->brand_id,
             'is_active'=>$is_active,
             'show_in_home'=>$show_in_home,
             'featured'=>$featured,
             'slug'=>$request->slug,
-            'stock'=>$validation['stock'],
-            'price'=>$validation['price'],
+            'stock'=>$request['stock'],
+            'price'=>$request['price'],
             'discunt'=>$request->discunt,
         ]);
 
@@ -94,7 +94,7 @@ class ProductController extends Controller
             foreach ($request->gallery as $image) {
                 $fullNameGallery=Str::uuid().$image->getClientOriginalName();
                 $extensionGallery=$image->getClientOriginalExtension();
-                $request->is_main->storeAs('product_medias',"$fullNameGallery","public");
+                $image->storeAs('product_medias',"$fullNameGallery","public");
                 product_media::create([
                     'path'=>$fullNameGallery,
                     'product_id'=>$createdProduct->id,
