@@ -77,10 +77,10 @@ class User extends Authenticatable
         //         return false;
         //     }
         // }
-        
-        
         return $this->roles()->whereIn('ea_title',$roles)->exists();
+    }
 
-
+    public function carts(){
+        return $this->hasMany(cart::class,'user_id');
     }
 }

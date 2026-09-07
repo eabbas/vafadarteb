@@ -16,6 +16,7 @@ use App\Models\package_media;
 use App\Models\brand;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Auth;
 
 class ProductController extends Controller
 {
@@ -642,6 +643,13 @@ class ProductController extends Controller
         return view('product.attributes',['attributes'=>$attributes]);
     }
     public function client_pro_single(product $product){
+        $user=Auth::user();
+        if(count($user->carts)>0){
+            foreach ($user->carts as $cart) {
+                $cart->products;
+            }
+        }
+        dd($user);
         // dd($product);
         $is_mainpicture='';
         $galleryPicture=[];

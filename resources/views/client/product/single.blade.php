@@ -1,14 +1,5 @@
-<!DOCTYPE html>
-<html lang="fa" dir="rtl">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <script src="{{asset('assets/js/tailwind.js')}}"></script>
-    <script src="{{asset('assets/js/jquery.js')}}"></script>
-</head>
-<body>
-
+@extends('client.product.headerProduct')
+@section('content')
     <style>
         html {
             scroll-behavior: smooth;
@@ -1954,3 +1945,6 @@
     <!-- <svg class='size-3 fill-black' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M488 232c13.3 0 24 10.7 24 24s-10.7 24-24 24l-208 0 0 208c0 13.3-10.7 24-24 24s-24-10.7-24-24l0-208L24 280c-13.3 0-24-10.7-24-24s10.7-24 24-24H232l0-208c0-13.3 10.7-24 24-24s24 10.7 24 24l0 208 208 0z"/></svg> -->
 </body>
 </html>
+
+
+@endsection
