@@ -17,6 +17,7 @@ use App\Models\product_media;
 use App\Models\role;
 use App\Models\role_permision;
 use App\Models\role_user;
+use App\Models\cart;
 use App\Models\User;
 class product extends Model
 {
@@ -47,6 +48,9 @@ class product extends Model
     }
     public function packages(){
         return $this->hasMany(package::class);    
+    }
+    public function cart(){
+        // return $this->hasMany(cart::class);    
     }
     
 }
