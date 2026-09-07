@@ -50,7 +50,7 @@ class product extends Model
         return $this->hasMany(package::class);    
     }
     public function cart(){
-        // return $this->hasMany(cart::class);    
+        return $this->hasMany(cart::class);    
     }
     
 }

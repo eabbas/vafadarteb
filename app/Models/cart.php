@@ -13,6 +13,6 @@ class cart extends Model
         'quantity',
     ];
     public function products(){
-        // return $this->hasMany(product::class );
+        return $this->belongsTo(product::class , 'product_id');
     }
 }
