@@ -644,11 +644,26 @@ class ProductController extends Controller
     }
     public function client_pro_single(product $product){
         $user=Auth::user();
-        if(count($user->carts)>0){
-            foreach ($user->carts as $cart) {
-                $cart->products;
-            }
-        }
+        // if(count($user->carts)>0){
+        //     foreach ($user->carts as $cart) {
+        //         foreach ($cart->product->medias as $media) {
+        //             if($media->is_main==1){
+        //                 $cart->product->path=$media->path;
+        //             }
+        //         }
+                
+        //     }
+        // }
+
+        $is_main = 1;
+        $user->load(['carts'=>function($query) use ($is_main){
+            $query->with(['product'=>function($q) use ($is_main){
+                $q->with(['medias'=>function($qr) use ($is_main){
+                    $qr->where('is_main', $is_main)->first();
+                }])->get();
+            }]);
+        }]);
+
         dd($user);
         // dd($product);
         $is_mainpicture='';
