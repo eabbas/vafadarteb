@@ -1439,14 +1439,16 @@
                             'product_id':product_id,
                             'user_id':user_id,
                         },
-                        success: function(data) {
-                            console.log(data);
+                        success: function(cartId) {
+                            console.log(cartId);
                             entry_cart_submit.forEach(entry => {
                                 entry.classList.add('hidden');
                                 quantity_selectors.forEach(quantity_selector => {
-                                    quantity_selector.classList.remove('hidden')
-                                    quantity_selector.classList.add('flex')
-                                    quantity_selector.classList.add('w-full')
+                                    quantity_selector.classList.remove('hidden');
+                                    quantity_selector.classList.add('flex');
+                                    quantity_selector.classList.add('w-full');
+                                    quantity_selector.children[0].setAttribute('onclick',`quantity_selector(this,${cartId},'plus')`);
+                                    quantity_selector.children[2].setAttribute('onclick',`trash(${cartId})`);
                                 });
                             })
                         },
@@ -1468,11 +1470,9 @@
         let flag = true
         // let count = 0
         let test = document.getElementById('test')
-        let value
-        let valuemmmmmm
         let quantity=0;
         let plus_icon='';
-        function quantity_selector(el,state) {
+        function quantity_selector(el,id,state) {
             // let value=0;
             // count++
             quantity_selectors.forEach(quantity_selector => {
@@ -1504,7 +1504,7 @@
                     }
                 })
                 $.ajax({
-                    url: "{{route('cart.update',['cart'=>1])}}",
+                    url: "{{url('cart/update/cart')}}"+"/"+id,
                     type: "post",
                     dataType:"json",
                     data:{
@@ -1523,8 +1523,11 @@
                                 `;
                                 quantity_selector.children[2].innerHTML =
                                 `
-                                <div onclick="trash(${data.id})" class='trash_quantities min-w-10 min-h-10 max-w-10 max-h-10  flex items-center border border-(--border) rounded-xl justify-center hover:bg-(--metod-text) hover:scale-95 transition-all duration-200'> <svg class='size-5 fill-rose-600' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M170.5 51.6L151.5 80h145l-19-28.4c-1.5-2.2-4-3.6-6.7-3.6H177.1c-2.7 0-5.2 1.3-6.7 3.6zm147-26.6L354.2 80H368h48 8c13.3 0 24 10.7 24 24s-10.7 24-24 24h-8V432c0 44.2-35.8 80-80 80H112c-44.2 0-80-35.8-80-80V128H24c-13.3 0-24-10.7-24-24S10.7 80 24 80h8H80 93.8l36.7-55.1C140.9 9.4 158.4 0 177.1 0h93.7c18.7 0 36.2 9.4 46.6 24.9zM80 128V432c0 17.7 14.3 32 32 32H336c17.7 0 32-14.3 32-32V128H80zm80 64V400c0 8.8-7.2 16-16 16s-16-7.2-16-16V192c0-8.8 7.2-16 16-16s16 7.2 16 16zm80 0V400c0 8.8-7.2 16-16 16s-16-7.2-16-16V192c0-8.8 7.2-16 16-16s16 7.2 16 16zm80 0V400c0 8.8-7.2 16-16 16s-16-7.2-16-16V192c0-8.8 7.2-16 16-16s16 7.2 16 16z"/></svg> </div>
+                                <svg class='size-5 fill-rose-600' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M170.5 51.6L151.5 80h145l-19-28.4c-1.5-2.2-4-3.6-6.7-3.6H177.1c-2.7 0-5.2 1.3-6.7 3.6zm147-26.6L354.2 80H368h48 8c13.3 0 24 10.7 24 24s-10.7 24-24 24h-8V432c0 44.2-35.8 80-80 80H112c-44.2 0-80-35.8-80-80V128H24c-13.3 0-24-10.7-24-24S10.7 80 24 80h8H80 93.8l36.7-55.1C140.9 9.4 158.4 0 177.1 0h93.7c18.7 0 36.2 9.4 46.6 24.9zM80 128V432c0 17.7 14.3 32 32 32H336c17.7 0 32-14.3 32-32V128H80zm80 64V400c0 8.8-7.2 16-16 16s-16-7.2-16-16V192c0-8.8 7.2-16 16-16s16 7.2 16 16zm80 0V400c0 8.8-7.2 16-16 16s-16-7.2-16-16V192c0-8.8 7.2-16 16-16s16 7.2 16 16zm80 0V400c0 8.8-7.2 16-16 16s-16-7.2-16-16V192c0-8.8 7.2-16 16-16s16 7.2 16 16z"/></svg>
                                 `
+                                // quantity_selector.children[2].removeAttribute('onclick');
+                                quantity_selector.children[2].setAttribute('onclick',`trash(${data.cartId})`);
+                                quantity_selector.children[2].removeAttribute('disabled');
                             }
                             if(data.quantity>1){
                                 quantity_selector.children[2].removeAttribute('disabled');
@@ -1533,9 +1536,10 @@
                                     <div class="size-7 border-4 border-(--border) border-t-(--primary_color) rounded-full animate-spin"></div>
                                 
                                 `;
+                                quantity_selector.children[2].setAttribute('onclick',`quantity_selector(this,${data.cartId},'minus')`)
                                 quantity_selector.children[2].innerHTML =
                                 `
-                                <div onclick="quantity_selector(this,'minus')" class='minus_quantities min-w-10 min-h-10 max-w-10 max-h-10  flex items-center border border-(--border) rounded-xl justify-center hover:bg-(--metod-text) hover:scale-95 transition-all duration-200'> <svg class='size-3 fill-black' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M432 256c0 13.3-10.7 24-24 24L40 280c-13.3 0-24-10.7-24-24s10.7-24 24-24l368 0c13.3 0 24 10.7 24 24z"/></svg> </div>
+                                 <svg class='size-3 fill-black' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M432 256c0 13.3-10.7 24-24 24L40 280c-13.3 0-24-10.7-24-24s10.7-24 24-24l368 0c13.3 0 24 10.7 24 24z"/></svg>
                                 `
     
                             }
@@ -1550,39 +1554,41 @@
         }
 
         function trash(id) {
-            entry_cart_submit.forEach(entry => {
+            let trash_icon='';
+            quantity_selectors.forEach(quantity_selector => {
                 // console.log(entry)
-                entry.innerHTML =
-                    `
+                trash_icon=quantity_selector.children[2].innerHTML;
+                quantity_selector.children[2].innerHTML =
+                `
                     <div class="size-7 border-4 border-(--border) border-t-(--primary_color) rounded-full animate-spin"></div>
 
                 `
-                $.ajax({
-                    url: "{{url('cart/set/quantity/cart')}}/" + 1,
-                    type: "get",
-                    dataType: "json",
-                    success: function(data) {
-                        quantity_selectors.forEach(quantity_selector => {
-                            quantity_selector.classList.add('hidden')
-                            quantity_selector.classList.remove('flex')
-                            quantity_selector.classList.remove('w-1/2')
-                        });
-                        entry.classList.remove('text-sm');
-                        entry.innerHTML = 'افزودن به سبد خرید'
-
-                        entry.classList.remove('w-33');
-                        entry.classList.remove('mr-4');
-                        entry.classList.add('w-full');
-                        entry.classList.add('text-[10px]');
+            });
+            $.ajax({
+                url: "{{url('cart/delete/cart')}}"+"/" + id,
+                type: "get",
+                dataType: "json",
+                success: function(data) {
+                    quantity_selectors.forEach(quantity_selector => {
+                        quantity_selector.classList.remove('flex')
+                        quantity_selector.classList.add('hidden')
+                    });
+                    entry_cart_submit.forEach(entry => {
+                        entry.classList.remove('hidden');
+                        entry.classList.add('flex');
                         entry.setAttribute('onclick', 'entry_cart(this)');
-                        entry.parentElement.classList.remove('gap-2');
-
-
-                    },
-                    error: function() {
-                        console.log('☢')
-                    }
-                })
+                        entry.innerHTML = 'افزودن به سبد خرید'
+                    });
+    
+    
+                },
+                error: function() {
+                    console.log('☢')
+                }
+            })
+            quantity_selectors.forEach(quantity_selector => {
+                // console.log(entry)
+                quantity_selector.children[2].innerHTML =trash_icon
             });
         }
 

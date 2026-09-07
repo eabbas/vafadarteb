@@ -32,7 +32,7 @@ class CartController extends Controller
     public function update(Request $request , cart $cart){
         $cart->quantity=$request->quantity;
         $cart->save();
-        return response()->json(['id'=>$cart->id , 'quantity'=>$cart->quantity]);
+        return response()->json(['cartId'=>$cart->id , 'quantity'=>$cart->quantity]);
         dd('update');
     }
     public function delete(cart $cart){
