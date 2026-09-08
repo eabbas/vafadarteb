@@ -82,7 +82,7 @@
                                         <div
                                             class="h-full border-l border-[var(--green)] flex flex-col gap-2 justify-start items-start overflow-auto [&::-webkit-scrollbar]:w-2  [&::-webkit-scrollbar-thumb]:bg-[var(--green)]  [&::-webkit-scrollbar-thumb]:rounded-full pl-2">
                                             <div
-                                                class="min-w-9/12 w-9/12 py-3 bg-[var(--background)] border-y-1 border-l-1 border-[var(--green)] flex justify-between items-center xl:px-4 px-2 rounded-y-xl rounded-l-xl transition_root">
+                                                class="min-w-11/12 w-11/12 py-3 bg-[var(--background)] border-y-1 border-l-1 border-[var(--green)] flex justify-between items-center xl:px-4 px-2 rounded-y-xl rounded-l-xl transition_root">
                                                 <div class="flex justify-start items-center xl:gap-3 gap-2 px-2">
                                                     <div>
                                                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"
@@ -707,63 +707,207 @@
                                         </div>
                                         <div
                                             class="w-19/24 h-full flex flex-col">
-                                            <div class="w-full flex justify-center border-b border-[var(--border)]"> 
-                                                <span class="text-[var(--text)] text-[1.3rem]">تمام محصولات مصرفی خانگی</span>
+                                            <div class="w-11/12 mx-auto flex  border-b-1 border-[var(--purple)]"> 
+                                                <span class="text-[var(--text)] text-[1.3rem] font-bold pb-2">تمام محصولات مصرفی خانگی</span>
                                             </div>
-                                            <div class="w-11/12 mx-auto h-full flex flex-wrap gap-3 justify-start pt-14  overflow-auto [&::-webkit-scrollbar]:w-2  [&::-webkit-scrollbar-thumb]:bg-[var(--gold)]  [&::-webkit-scrollbar-thumb]:rounded-full">
+                                            <div class="w-11/12 mx-auto h-full flex flex-wrap gap-3 justify-start pt-10  overflow-auto [&::-webkit-scrollbar]:w-2  [&::-webkit-scrollbar-thumb]:bg-[var(--gold)]  [&::-webkit-scrollbar-thumb]:rounded-full">
                                                 <div class="px-5 h-50">
-                                                    <span>askdfsakdfj</span>
+                                                    <div class="border-r-3 pr-2 border-[var(--green)]">
+                                                        <h1 class="text-[var(--text)]">لوازم تشخیصی</h1>
+                                                    </div>
+                                                    <div class="flex flex-col items-center gap-3 pt-3">
+                                                        <span class="text-[var(--text-muted)] hover:text-[var(--purple)]">کرم </span>
+                                                        <span class="text-[var(--text-muted)] hover:text-[var(--purple)]">کرم </span>
+                                                        <span class="text-[var(--text-muted)] hover:text-[var(--purple)]">کرم </span>
+                                                        <span class="text-[var(--text-muted)] hover:text-[var(--purple)]">کرم </span>
+                                                    </div>
                                                 </div>
                                                 <div class="px-5 h-50">
-                                                    <span>askdfsakdfj</span>
+                                                    <div class="border-r-3 pr-2 border-[var(--green)]">
+                                                        <h1 class="text-[var(--text)]">لوازم تشخیصی</h1>
+                                                    </div>
+                                                    <div class="flex flex-col items-center gap-3 pt-3">
+                                                        <span class="text-[var(--text-muted)] hover:text-[var(--purple)]">کرم </span>
+                                                        <span class="text-[var(--text-muted)] hover:text-[var(--purple)]">کرم </span>
+                                                        <span class="text-[var(--text-muted)] hover:text-[var(--purple)]">کرم </span>
+                                                        <span class="text-[var(--text-muted)] hover:text-[var(--purple)]">کرم </span>
+                                                    </div>
                                                 </div>
                                                 <div class="px-5 h-50">
-                                                    <span>askdfsakdfj</span>
+                                                    <div class="border-r-3 pr-2 border-[var(--green)]">
+                                                        <h1 class="text-[var(--text)]">لوازم تشخیصی</h1>
+                                                    </div>
+                                                    <div class="flex flex-col items-center gap-3 pt-3">
+                                                        <span class="text-[var(--text-muted)] hover:text-[var(--purple)]">کرم </span>
+                                                        <span class="text-[var(--text-muted)] hover:text-[var(--purple)]">کرم </span>
+                                                        <span class="text-[var(--text-muted)] hover:text-[var(--purple)]">کرم </span>
+                                                        <span class="text-[var(--text-muted)] hover:text-[var(--purple)]">کرم </span>
+                                                    </div>
                                                 </div>
                                                 <div class="px-5 h-50">
-                                                    <span>askdfsakdfj</span>
+                                                    <div class="border-r-3 pr-2 border-[var(--green)]">
+                                                        <h1 class="text-[var(--text)]">لوازم تشخیصی</h1>
+                                                    </div>
+                                                    <div class="flex flex-col items-center gap-3 pt-3">
+                                                        <span class="text-[var(--text-muted)] hover:text-[var(--purple)]">کرم </span>
+                                                        <span class="text-[var(--text-muted)] hover:text-[var(--purple)]">کرم </span>
+                                                        <span class="text-[var(--text-muted)] hover:text-[var(--purple)]">کرم </span>
+                                                        <span class="text-[var(--text-muted)] hover:text-[var(--purple)]">کرم </span>
+                                                    </div>
                                                 </div>
                                                 <div class="px-5 h-50">
-                                                    <span>askdfsakdfj</span>
+                                                    <div class="border-r-3 pr-2 border-[var(--green)]">
+                                                        <h1 class="text-[var(--text)]">لوازم تشخیصی</h1>
+                                                    </div>
+                                                    <div class="flex flex-col items-center gap-3 pt-3">
+                                                        <span class="text-[var(--text-muted)] hover:text-[var(--purple)]">کرم </span>
+                                                        <span class="text-[var(--text-muted)] hover:text-[var(--purple)]">کرم </span>
+                                                        <span class="text-[var(--text-muted)] hover:text-[var(--purple)]">کرم </span>
+                                                        <span class="text-[var(--text-muted)] hover:text-[var(--purple)]">کرم </span>
+                                                    </div>
                                                 </div>
                                                 <div class="px-5 h-50">
-                                                    <span>askdfsakdfj</span>
+                                                    <div class="border-r-3 pr-2 border-[var(--green)]">
+                                                        <h1 class="text-[var(--text)]">لوازم تشخیصی</h1>
+                                                    </div>
+                                                    <div class="flex flex-col items-center gap-3 pt-3">
+                                                        <span class="text-[var(--text-muted)] hover:text-[var(--purple)]">کرم </span>
+                                                        <span class="text-[var(--text-muted)] hover:text-[var(--purple)]">کرم </span>
+                                                        <span class="text-[var(--text-muted)] hover:text-[var(--purple)]">کرم </span>
+                                                        <span class="text-[var(--text-muted)] hover:text-[var(--purple)]">کرم </span>
+                                                    </div>
                                                 </div>
                                                 <div class="px-5 h-50">
-                                                    <span>askdfsakdfj</span>
+                                                    <div class="border-r-3 pr-2 border-[var(--green)]">
+                                                        <h1 class="text-[var(--text)]">لوازم تشخیصی</h1>
+                                                    </div>
+                                                    <div class="flex flex-col items-center gap-3 pt-3">
+                                                        <span class="text-[var(--text-muted)] hover:text-[var(--purple)]">کرم </span>
+                                                        <span class="text-[var(--text-muted)] hover:text-[var(--purple)]">کرم </span>
+                                                        <span class="text-[var(--text-muted)] hover:text-[var(--purple)]">کرم </span>
+                                                        <span class="text-[var(--text-muted)] hover:text-[var(--purple)]">کرم </span>
+                                                    </div>
                                                 </div>
                                                 <div class="px-5 h-50">
-                                                    <span>askdfsakdfj</span>
+                                                    <div class="border-r-3 pr-2 border-[var(--green)]">
+                                                        <h1 class="text-[var(--text)]">لوازم تشخیصی</h1>
+                                                    </div>
+                                                    <div class="flex flex-col items-center gap-3 pt-3">
+                                                        <span class="text-[var(--text-muted)] hover:text-[var(--purple)]">کرم </span>
+                                                        <span class="text-[var(--text-muted)] hover:text-[var(--purple)]">کرم </span>
+                                                        <span class="text-[var(--text-muted)] hover:text-[var(--purple)]">کرم </span>
+                                                        <span class="text-[var(--text-muted)] hover:text-[var(--purple)]">کرم </span>
+                                                    </div>
                                                 </div>
                                                 <div class="px-5 h-50">
-                                                    <span>askdfsakdfj</span>
+                                                    <div class="border-r-3 pr-2 border-[var(--green)]">
+                                                        <h1 class="text-[var(--text)]">لوازم تشخیصی</h1>
+                                                    </div>
+                                                    <div class="flex flex-col items-center gap-3 pt-3">
+                                                        <span class="text-[var(--text-muted)] hover:text-[var(--purple)]">کرم </span>
+                                                        <span class="text-[var(--text-muted)] hover:text-[var(--purple)]">کرم </span>
+                                                        <span class="text-[var(--text-muted)] hover:text-[var(--purple)]">کرم </span>
+                                                        <span class="text-[var(--text-muted)] hover:text-[var(--purple)]">کرم </span>
+                                                    </div>
                                                 </div>
                                                 <div class="px-5 h-50">
-                                                    <span>askdfsakdfj</span>
+                                                    <div class="border-r-3 pr-2 border-[var(--green)]">
+                                                        <h1 class="text-[var(--text)]">لوازم تشخیصی</h1>
+                                                    </div>
+                                                    <div class="flex flex-col items-center gap-3 pt-3">
+                                                        <span class="text-[var(--text-muted)] hover:text-[var(--purple)]">کرم </span>
+                                                        <span class="text-[var(--text-muted)] hover:text-[var(--purple)]">کرم </span>
+                                                        <span class="text-[var(--text-muted)] hover:text-[var(--purple)]">کرم </span>
+                                                        <span class="text-[var(--text-muted)] hover:text-[var(--purple)]">کرم </span>
+                                                    </div>
                                                 </div>
                                                 <div class="px-5 h-50">
-                                                    <span>askdfsakdfj</span>
+                                                    <div class="border-r-3 pr-2 border-[var(--green)]">
+                                                        <h1 class="text-[var(--text)]">لوازم تشخیصی</h1>
+                                                    </div>
+                                                    <div class="flex flex-col items-center gap-3 pt-3">
+                                                        <span class="text-[var(--text-muted)] hover:text-[var(--purple)]">کرم </span>
+                                                        <span class="text-[var(--text-muted)] hover:text-[var(--purple)]">کرم </span>
+                                                        <span class="text-[var(--text-muted)] hover:text-[var(--purple)]">کرم </span>
+                                                        <span class="text-[var(--text-muted)] hover:text-[var(--purple)]">کرم </span>
+                                                    </div>
                                                 </div>
                                                 <div class="px-5 h-50">
-                                                    <span>askdfsakdfj</span>
+                                                    <div class="border-r-3 pr-2 border-[var(--green)]">
+                                                        <h1 class="text-[var(--text)]">لوازم تشخیصی</h1>
+                                                    </div>
+                                                    <div class="flex flex-col items-center gap-3 pt-3">
+                                                        <span class="text-[var(--text-muted)] hover:text-[var(--purple)]">کرم </span>
+                                                        <span class="text-[var(--text-muted)] hover:text-[var(--purple)]">کرم </span>
+                                                        <span class="text-[var(--text-muted)] hover:text-[var(--purple)]">کرم </span>
+                                                        <span class="text-[var(--text-muted)] hover:text-[var(--purple)]">کرم </span>
+                                                    </div>
                                                 </div>
                                                 <div class="px-5 h-50">
-                                                    <span>askdfsakdfj</span>
+                                                    <div class="border-r-3 pr-2 border-[var(--green)]">
+                                                        <h1 class="text-[var(--text)]">لوازم تشخیصی</h1>
+                                                    </div>
+                                                    <div class="flex flex-col items-center gap-3 pt-3">
+                                                        <span class="text-[var(--text-muted)] hover:text-[var(--purple)]">کرم </span>
+                                                        <span class="text-[var(--text-muted)] hover:text-[var(--purple)]">کرم </span>
+                                                        <span class="text-[var(--text-muted)] hover:text-[var(--purple)]">کرم </span>
+                                                        <span class="text-[var(--text-muted)] hover:text-[var(--purple)]">کرم </span>
+                                                    </div>
                                                 </div>
                                                 <div class="px-5 h-50">
-                                                    <span>askdfsakdfj</span>
+                                                    <div class="border-r-3 pr-2 border-[var(--green)]">
+                                                        <h1 class="text-[var(--text)]">لوازم تشخیصی</h1>
+                                                    </div>
+                                                    <div class="flex flex-col items-center gap-3 pt-3">
+                                                        <span class="text-[var(--text-muted)] hover:text-[var(--purple)]">کرم </span>
+                                                        <span class="text-[var(--text-muted)] hover:text-[var(--purple)]">کرم </span>
+                                                        <span class="text-[var(--text-muted)] hover:text-[var(--purple)]">کرم </span>
+                                                        <span class="text-[var(--text-muted)] hover:text-[var(--purple)]">کرم </span>
+                                                    </div>
                                                 </div>
                                                 <div class="px-5 h-50">
-                                                    <span>askdfsakdfj</span>
+                                                    <div class="border-r-3 pr-2 border-[var(--green)]">
+                                                        <h1 class="text-[var(--text)]">لوازم تشخیصی</h1>
+                                                    </div>
+                                                    <div class="flex flex-col items-center gap-3 pt-3">
+                                                        <span class="text-[var(--text-muted)] hover:text-[var(--purple)]">کرم </span>
+                                                        <span class="text-[var(--text-muted)] hover:text-[var(--purple)]">کرم </span>
+                                                        <span class="text-[var(--text-muted)] hover:text-[var(--purple)]">کرم </span>
+                                                        <span class="text-[var(--text-muted)] hover:text-[var(--purple)]">کرم </span>
+                                                    </div>
                                                 </div>
                                                 <div class="px-5 h-50">
-                                                    <span>askdfsakdfj</span>
+                                                    <div class="border-r-3 pr-2 border-[var(--green)]">
+                                                        <h1 class="text-[var(--text)]">لوازم تشخیصی</h1>
+                                                    </div>
+                                                    <div class="flex flex-col items-center gap-3 pt-3">
+                                                        <span class="text-[var(--text-muted)] hover:text-[var(--purple)]">کرم </span>
+                                                        <span class="text-[var(--text-muted)] hover:text-[var(--purple)]">کرم </span>
+                                                        <span class="text-[var(--text-muted)] hover:text-[var(--purple)]">کرم </span>
+                                                        <span class="text-[var(--text-muted)] hover:text-[var(--purple)]">کرم </span>
+                                                    </div>
                                                 </div>
                                                 <div class="px-5 h-50">
-                                                    <span>askdfsakdfj</span>
+                                                    <div class="border-r-3 pr-2 border-[var(--green)]">
+                                                        <h1 class="text-[var(--text)]">لوازم تشخیصی</h1>
+                                                    </div>
+                                                    <div class="flex flex-col items-center gap-3 pt-3">
+                                                        <span class="text-[var(--text-muted)] hover:text-[var(--purple)]">کرم </span>
+                                                        <span class="text-[var(--text-muted)] hover:text-[var(--purple)]">کرم </span>
+                                                        <span class="text-[var(--text-muted)] hover:text-[var(--purple)]">کرم </span>
+                                                        <span class="text-[var(--text-muted)] hover:text-[var(--purple)]">کرم </span>
+                                                    </div>
                                                 </div>
-                                                <div class="px-5 h-50">
-                                                    <span>askdfsakdfj</span>
+                                               <div class="px-5 h-50">
+                                                    <div>
+                                                        <h class="text-[var(--text)]"1>لوازم تشخیصی</h>
+                                                    </div>
+                                                    <div class="flex flex-col items-center gap-3 pt-3">
+                                                        <span class="text-[var(--text-muted)] hover:text-[var(--purple)]">کرم </span>
+                                                        <span class="text-[var(--text-muted)] hover:text-[var(--purple)]">کرم </span>
+                                                        <span class="text-[var(--text-muted)] hover:text-[var(--purple)]">کرم </span>
+                                                        <span class="text-[var(--text-muted)] hover:text-[var(--purple)]">کرم </span>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
@@ -1480,33 +1624,38 @@
         </div>
     </section> -->
     <!-- بنر-->
-     <section>
-        <div class="w-11/12 mx-auto flex justify-center mt-20">
+    <section>
+        <div class="w-11/12 mx-auto flex justify-center mt-5">
             <h1 class="font-bold text-[6vw] sm:text-[5vw] md:text-[4vw] lg:text-[3vw]">دسته‌ها</h1>
         </div>
-        <div
-            class="w-19/20 h-auto mx-auto grid sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-5 justify-center items-center mt-8 md:mt-12 lg:mt-10">
-            <div class="h-80 flex justify-end relative">
-                <img src="{{asset('assets/img/baner/img3.webp')}}" alt="" class="rounded-lg">
-                <div class="absolute w-1/2 h-full flex gap-2 flex-col justify-center items-center">
+       <div class="w-19/20 h-auto mx-auto flex max-md:flex-wrap gap-3 justify-center items-center mt-8 md:mt-12 lg:mt-10">
+            <div class="w-full min-md:w-10/11 h-50 flex justify-end bg-[url('{{asset('assets/img/baner/asdf.jpg')}}')] bg-cover no-repeat rounded-lg relative">
+                <div class="w-1/2 h-full flex justify-center items-center">
+                    <img src="{{asset('assets/img/silyder.producte/01.png')}}" alt="" class="w-full h-11/12">
+                </div>
+                <div class="w-1/2 h-full flex gap-3 flex-col justify-center items-center">
                     <h3 class="font-bold text-[1.3rem]">لوازم تشخیصی</h3>
                     <a href="" class="hover:border-b-1  border-red-500 transition_root">
                         <span class="text-[0.8rem] md:text-[1rem]">مشاهده بیشتر</span>
                     </a>
                 </div>
             </div>
-            <div class="h-80 flex justify-end relative">
-                <img src="{{asset('assets/img/baner/img1.webp')}}" alt="" class="rounded-lg">
-                <div class="absolute w-1/2 h-full flex gap-2 flex-col justify-center items-center">
+            <div class ="w-full min-md:w-10/11 h-50 flex justify-end relative bg-[url('{{asset('assets/img/baner/asdf.jpg')}}')] bg-cover no-repeat flex justify-end rounded-lg relative">
+                <div class="w-1/2 h-full flex justify-center items-center">
+                    <img src="{{asset('assets/img/silyder.producte/01.png')}}" alt="" class="w-full h-11/12">
+                </div>
+                <div class="w-1/2 h-full flex gap-3 flex-col justify-center items-center">
                     <h3 class="font-bold text-[1.3rem]">لوازم تشخیصی</h3>
                     <a href="" class="hover:border-b-1  border-red-500 transition_root">
                         <span class="text-[0.8rem] md:text-[1rem]">مشاهده بیشتر</span>
                     </a>
                 </div>
             </div>
-            <div class="h-80 flex justify-end relative">
-                <img src="{{asset('assets/img/baner/img2.webp')}}" alt="" class="rounded-lg">
-                <div class="absolute w-1/2 h-full flex gap-2 flex-col justify-center items-center">
+            <div class="w-full min-md:w-10/11 h-50 flex justify-end bg-[url('{{asset('assets/img/baner/asdf2.jpg')}}')] bg-cover no-repeat flex justify-end rounded-lg relative">
+                <div class="w-1/2 h-full flex justify-center items-center">
+                    <img src="{{asset('assets/img/silyder.producte/01.png')}}" alt="" class="w-full h-11/12">
+                </div>
+                <div class="w-1/2 h-full flex gap-3 flex-col justify-center items-center">
                     <h3 class="font-bold text-[1.3rem]">لوازم تشخیصی</h3>
                     <a href="" class="hover:border-b-1  border-red-500 transition_root">
                         <span class="text-[0.8rem] md:text-[1rem]">مشاهده بیشتر</span>
@@ -1514,19 +1663,23 @@
                 </div>
             </div>
         </div>
-        <div class="w-19/20 h-auto mx-auto flex gap-5 justify-center items-center mt-8 md:mt-12 lg:mt-10">
-            <div class="w-10/11 h-80 flex justify-end relative">
-                <img src="{{asset('assets/img/baner/img1.webp')}}" alt="" class="rounded-lg w-full">
-                <div class="absolute w-1/2 h-full flex gap-3 flex-col justify-center items-center">
+        <div class="w-19/20 h-auto mx-auto flex max-md:flex-col gap-2 justify-center items-center mt-2">
+            <div class="w-full min-md:w-10/11 h-50 flex justify-end bg-[url('{{asset('assets/img/baner/asdf.jpg')}}')] bg-cover no-repeat flex justify-center rounded-lg relative">
+                <div class="w-1/2 min-lg:w-1/3 h-full flex justify-center items-center">
+                    <img src="{{asset('assets/img/silyder.producte/01.png')}}" alt="" class="w-full h-11/12">
+                </div>
+                <div class="w-1/2 min-lg:w-2/3 h-full flex gap-3 flex-col justify-center items-center">
                     <h3 class="font-bold text-[1.3rem]">لوازم تشخیصی</h3>
                     <a href="" class="hover:border-b-1  border-red-500 transition_root">
                         <span class="text-[0.8rem] md:text-[1rem]">مشاهده بیشتر</span>
                     </a>
                 </div>
             </div>
-            <div class="w-10/11 h-80 flex justify-end relative">
-                <img src="{{asset('assets/img/baner/img2.webp')}}" alt="" class="rounded-lg w-full">
-                <div class="absolute w-1/2 h-full flex gap-3 flex-col justify-center items-center">
+            <div class="w-full min-md:w-10/11 h-50 flex justify-end bg-[url('{{asset('assets/img/baner/asdf2.jpg')}}')] bg-cover no-repeat flex justify-center rounded-lg relative">
+                <div class="w-1/2 min-lg:w-1/3 h-full flex justify-center items-center">
+                    <img src="{{asset('assets/img/silyder.producte/01.png')}}" alt="" class="w-full h-11/12">
+                </div>
+                <div class="w-1/2 min-lg:w-2/3 h-full flex gap-3 flex-col justify-center items-center">
                     <h3 class="font-bold text-[1.3rem]">لوازم تشخیصی</h3>
                     <a href="" class="hover:border-b-1  border-red-500 transition_root">
                         <span class="text-[0.8rem] md:text-[1rem]">مشاهده بیشتر</span>
@@ -2284,23 +2437,20 @@
     <!-- خدمات -->
     <section>
         <div class="w-11/12 mx-auto bg-[#023350] py-10 flex justify-center gap-5 flex-wrap rounded-3xl mt-20">
-            <div
-                class="w-60 xl:w-80 h-auto flex flex-row-reverse justify-center items-center gap-5 items-center">
+            <div class="w-60 xl:w-80 h-auto flex flex-row-reverse justify-between items-center gap-5 items-center">
                 <div>
                     <svg xmlns="http://www.w3.org/2000/svg" width="90px" height="90px" viewBox="0 0 100 100">
-                        <circle cx="50" cy="50" r="48" fill="#EDE0D7"/>
-                        <path d="M25 55V42C25 22 38 12 50 12C62 12 75 22 75 42V55"
-                                fill="none"
-                                stroke="#0A131D"
-                                stroke-width="7"
-                                stroke-linecap="round"/>
-                        <rect x="20" y="50" width="13" height="28" rx="6" fill="#0A131D"/>
-                        <rect x="67" y="50" width="13" height="28" rx="6" fill="#0A131D"/>
-                        <path d="M36 37H64C69 37 73 41 73 46V55C73 60 69 64 64 64H54L46 70L48 63H44C39 63 35 59 35 54V46C35 41 39 37 44 37Z"
-                                fill="#EA8332"/>
-                        <circle cx="45" cy="51" r="2.5" fill="#FFFFFF"/>
-                        <circle cx="54" cy="51" r="2.5" fill="#FFFFFF"/>
-                        <circle cx="63" cy="51" r="2.5" fill="#FFFFFF"/>
+                        <circle cx="50" cy="50" r="48" fill="#EDE0D7" />
+                        <path d="M25 55V42C25 22 38 12 50 12C62 12 75 22 75 42V55" fill="none" stroke="#0A131D"
+                            stroke-width="7" stroke-linecap="round" />
+                        <rect x="20" y="50" width="13" height="28" rx="6" fill="#0A131D" />
+                        <rect x="67" y="50" width="13" height="28" rx="6" fill="#0A131D" />
+                        <path
+                            d="M36 37H64C69 37 73 41 73 46V55C73 60 69 64 64 64H54L46 70L48 63H44C39 63 35 59 35 54V46C35 41 39 37 44 37Z"
+                            fill="#EA8332" />
+                        <circle cx="45" cy="51" r="2.5" fill="#FFFFFF" />
+                        <circle cx="54" cy="51" r="2.5" fill="#FFFFFF" />
+                        <circle cx="63" cy="51" r="2.5" fill="#FFFFFF" />
                     </svg>
                 </div>
                 <div class="text-white flex flex-col gap-3">
@@ -2308,29 +2458,20 @@
                     <p class="text-md">پشتیبانی 24 ساعته</p>
                 </div>
             </div>
-            <div
-                class="w-60 xl:w-80 h-auto flex flex-row-reverse justify-center items-center gap-5 items-center">
+            <div class="w-60 xl:w-80 h-auto flex flex-row-reverse justify-between items-center gap-5 items-center">
                 <div>
                     <svg xmlns="http://www.w3.org/2000/svg" width="90" height="90" viewBox="0 0 100 100">
-                        <circle cx="50" cy="50" r="48" fill="#EDE0D7"/>
-                        <path d="M24 35C30 18 55 12 70 25"
-                                fill="none"
-                                stroke="#EA8332"
-                                stroke-width="6"
-                                stroke-linecap="round"/>
-                        <path d="M66 17L74 27L62 30Z" fill="#EA8332"/>
-                        <rect x="18" y="48" width="64" height="32" rx="6" fill="#0A131D"/>
-                        <path d="M18 53C18 47 24 43 31 44L82 55V80H18Z"
-                                fill="#0A131D"/>
-                        <rect x="68" y="59" width="18" height="12" rx="3" fill="#85512F"/>
-                        <circle cx="77" cy="65" r="3" fill="#C8AD9A"/>
-                        <path d="M32 28L66 37L60 56L26 47Z"
-                                fill="#C8AD9A"/>
-                        <circle cx="46" cy="42" r="7" fill="#EA8332"/>
-                        <path d="M43 42H49M46 39V45"
-                                stroke="#FFFFFF"
-                                stroke-width="2"
-                                stroke-linecap="round"/>
+                        <circle cx="50" cy="50" r="48" fill="#EDE0D7" />
+                        <path d="M24 35C30 18 55 12 70 25" fill="none" stroke="#EA8332" stroke-width="6"
+                            stroke-linecap="round" />
+                        <path d="M66 17L74 27L62 30Z" fill="#EA8332" />
+                        <rect x="18" y="48" width="64" height="32" rx="6" fill="#0A131D" />
+                        <path d="M18 53C18 47 24 43 31 44L82 55V80H18Z" fill="#0A131D" />
+                        <rect x="68" y="59" width="18" height="12" rx="3" fill="#85512F" />
+                        <circle cx="77" cy="65" r="3" fill="#C8AD9A" />
+                        <path d="M32 28L66 37L60 56L26 47Z" fill="#C8AD9A" />
+                        <circle cx="46" cy="42" r="7" fill="#EA8332" />
+                        <path d="M43 42H49M46 39V45" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" />
                     </svg>
                 </div>
                 <div class="text-white flex flex-col gap-3">
@@ -2338,28 +2479,19 @@
                     <p class="text-md">پرداخت %100 امن</p>
                 </div>
             </div>
-            <div
-                class="w-60 xl:w-80 h-auto flex flex-row-reverse justify-center items-center gap-5 items-center">
+            <div class="w-60 xl:w-80 h-auto flex flex-row-reverse justify-between items-center gap-5 items-center">
                 <div>
                     <svg xmlns="http://www.w3.org/2000/svg" width="90" height="90" viewBox="0 0 100 100">
-                    <circle cx="50" cy="50" r="48" fill="#EDE0D7"/>
-                    <rect x="15" y="35" width="48" height="32" rx="5" fill="#0A131D"/>
-                    <rect x="15" y="43" width="48" height="6" fill="#85512F"/>
-                    <rect x="22" y="55" width="18" height="5" rx="2" fill="#C8AD9A"/>
-                    <path d="M68 24L88 32V52C88 68 79 79 68 84C57 79 48 68 48 52V32Z"
-                            fill="#EA8332"/>
-                    <rect x="59" y="50" width="18" height="16" rx="3" fill="#FFFFFF"/>
-                    <path d="M62 50V44C62 36 74 36 74 44V50"
-                            fill="none"
-                            stroke="#FFFFFF"
-                            stroke-width="4"
-                            stroke-linecap="round"/>
-                    <path d="M63 58L67 62L74 54"
-                            fill="none"
-                            stroke="#EA8332"
-                            stroke-width="3"
-                            stroke-linecap="round"
-                            stroke-linejoin="round"/>
+                        <circle cx="50" cy="50" r="48" fill="#EDE0D7" />
+                        <rect x="15" y="35" width="48" height="32" rx="5" fill="#0A131D" />
+                        <rect x="15" y="43" width="48" height="6" fill="#85512F" />
+                        <rect x="22" y="55" width="18" height="5" rx="2" fill="#C8AD9A" />
+                        <path d="M68 24L88 32V52C88 68 79 79 68 84C57 79 48 68 48 52V32Z" fill="#EA8332" />
+                        <rect x="59" y="50" width="18" height="16" rx="3" fill="#FFFFFF" />
+                        <path d="M62 50V44C62 36 74 36 74 44V50" fill="none" stroke="#FFFFFF" stroke-width="4"
+                            stroke-linecap="round" />
+                        <path d="M63 58L67 62L74 54" fill="none" stroke="#EA8332" stroke-width="3"
+                            stroke-linecap="round" stroke-linejoin="round" />
                     </svg>
                 </div>
                 <div class="text-white flex flex-col gap-3">
@@ -2367,23 +2499,19 @@
                     <p class="text-md">بازگشت کالا ظرف یک هفته</p>
                 </div>
             </div>
-            <div
-                class="w-60 xl:w-80 h-auto flex flex-row-reverse justify-center items-center gap-5 items-center">
+            <div class="w-60 xl:w-80 h-auto flex flex-row-reverse justify-between items-center gap-5 items-center">
                 <div>
                     <svg xmlns="http://www.w3.org/2000/svg" width="90" height="90" viewBox="0 0 100 100">
-                        <circle cx="50" cy="50" r="48" fill="#EDE0D7"/>
-                        <path d="M15 38H58V68H15Z" fill="#0A131D"/>
-                        <path d="M58 45H72L84 57V68H58Z" fill="#EA8332"/>
-                        <path d="M62 48H70L77 57H62Z" fill="#FFFFFF"/>
-                        <circle cx="30" cy="70" r="9" fill="#3A2D26"/>
-                        <circle cx="30" cy="70" r="4" fill="#EDE0D7"/>
-                        <circle cx="70" cy="70" r="9" fill="#3A2D26"/>
-                        <circle cx="70" cy="70" r="4" fill="#EDE0D7"/>
-                        <path d="M18 30H35M12 36H32M20 42H35"
-                                fill="none"
-                                stroke="#EA8332"
-                                stroke-width="4"
-                                stroke-linecap="round"/>
+                        <circle cx="50" cy="50" r="48" fill="#EDE0D7" />
+                        <path d="M15 38H58V68H15Z" fill="#0A131D" />
+                        <path d="M58 45H72L84 57V68H58Z" fill="#EA8332" />
+                        <path d="M62 48H70L77 57H62Z" fill="#FFFFFF" />
+                        <circle cx="30" cy="70" r="9" fill="#3A2D26" />
+                        <circle cx="30" cy="70" r="4" fill="#EDE0D7" />
+                        <circle cx="70" cy="70" r="9" fill="#3A2D26" />
+                        <circle cx="70" cy="70" r="4" fill="#EDE0D7" />
+                        <path d="M18 30H35M12 36H32M20 42H35" fill="none" stroke="#EA8332" stroke-width="4"
+                            stroke-linecap="round" />
                     </svg>
                 </div>
                 <div class="text-white flex flex-col gap-3">
@@ -2420,7 +2548,7 @@
                     </a>
                     <span class="text-[17px] md:text-[25px] font-bold text-[#023350]">Popular Items</span>
                 </div>
-                <div class="flex max-w-full overflow-x-auto gap-4 justify-center mb-15">
+                <div class="flex max-w-full overflow-x-auto gap-4 justify-center mb-15 pb-3">
                     <button class="px-9 py-3 rounded-4xl bg-green-400 text-nowrap">Baby & Mom Care</button>
                     <button class="px-9 py-3 rounded-4xl bg-green-400 text-nowrap">Medical Equipments</button>
                     <button class="px-9 py-3 rounded-4xl bg-green-400 text-nowrap">Medicine</button>
