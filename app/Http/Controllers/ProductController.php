@@ -644,12 +644,26 @@ class ProductController extends Controller
     }
     public function client_pro_single(product $product){
         $user=Auth::user();
-        if(count($user->carts)>0){
-            foreach ($user->carts as $cart) {
-                $cart->products;
-            }
-        }
-        dd($user);
+        // if(count($user->carts)>0){
+        //     foreach ($user->carts as $cart) {
+        //         foreach ($cart->product->medias as $media) {
+        //             if($media->is_main==1){
+        //                 $cart->product->path=$media->path;
+        //             }
+        //         }
+                
+        //     }
+        // }
+        $user->load(['carts'=>function($query){
+            $query->with(['product'=>function($q){
+                $q->with(['medias'=>function($qr){
+                    $qr->where('is_main', 1)->first();
+                }])->get();
+            }]);
+        }]);
+
+        // dd($user);
+        // dd($user->carts[0]->product->medias[0]->path);
         // dd($product);
         $is_mainpicture='';
         $galleryPicture=[];
@@ -662,6 +676,6 @@ class ProductController extends Controller
         }
         $product->gallery=$galleryPicture;
         // dd($product);
-        return view('client.product.single',['product'=>$product]);
+        return view('client.product.single',['product'=>$product, 'user'=>$user]);
     }
 }
