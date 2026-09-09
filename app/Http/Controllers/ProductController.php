@@ -654,17 +654,16 @@ class ProductController extends Controller
                 
         //     }
         // }
-
-        $is_main = 1;
-        $user->load(['carts'=>function($query) use ($is_main){
-            $query->with(['product'=>function($q) use ($is_main){
-                $q->with(['medias'=>function($qr) use ($is_main){
-                    $qr->where('is_main', $is_main)->first();
+        $user->load(['carts'=>function($query){
+            $query->with(['product'=>function($q){
+                $q->with(['medias'=>function($qr){
+                    $qr->where('is_main', 1)->first();
                 }])->get();
             }]);
         }]);
 
-        dd($user);
+        // dd($user);
+        // dd($user->carts[0]->product->medias[0]->path);
         // dd($product);
         $is_mainpicture='';
         $galleryPicture=[];
@@ -677,6 +676,6 @@ class ProductController extends Controller
         }
         $product->gallery=$galleryPicture;
         // dd($product);
-        return view('client.product.single',['product'=>$product]);
+        return view('client.product.single',['product'=>$product, 'user'=>$user]);
     }
 }
