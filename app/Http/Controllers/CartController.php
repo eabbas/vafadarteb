@@ -27,7 +27,13 @@ class CartController extends Controller
             'order_id'=>null,
             'quantity'=>1,
         ]);
-        return response()->json($cart->id);
+        $cart->product;
+        foreach ($cart->product->medias as $media) {
+            if($media->is_main==1){
+                $cart->product->path=$media->path;
+            }
+        }
+        return response()->json(['cart'=>$cart , 'product'=>$cart->product]);
     }
     public function update(Request $request , cart $cart){
         $cart->quantity=$request->quantity;
