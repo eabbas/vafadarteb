@@ -241,16 +241,11 @@
                             <span class='w-2/12 text-xs'> سیاه </span>
                         </div>
                         <div class='w-full flex'>
-                            <div class='quantity_selectors hidden justify-between '>
-                                <div onclick="quantity_selector(this,'plus')" class='plus_quantities min-w-10 min-h-10 max-w-10 max-h-10  flex items-center border border-(--border) rounded-xl justify-center hover:bg-(--metod-text) hover:scale-95 transition-all duration-200'> <svg class='size-3 fill-black' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
-                                    <path d="M488 232c13.3 0 24 10.7 24 24s-10.7 24-24 24l-208 0 0 208c0 13.3-10.7 24-24 24s-24-10.7-24-24l0-208L24 280c-13.3 0-24-10.7-24-24s10.7-24 24-24H232l0-208c0-13.3 10.7-24 24-24s24 10.7 24 24l0 208 208 0z" /></svg>
-                                </div>
-                                <input id="test" class='quantity_selector_inputs min-w-1/3 font-bold flex text-center items-center justify-center text-2xl outline-ntype="number"one' readonly name='quantiti_cart' value='1' min='1' max='30'>
-                                <div onclick="trash()" class='trash_quantities min-w-10 min-h-10 max-w-10 max-h-10  flex items-center border border-(--border) rounded-xl justify-center hover:bg-(--metod-text) hover:scale-95 transition-all duration-200'> <svg class='size-5 fill-rose-600' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
-                                    <path d="M170.5 51.6L151.5 80h145l-19-28.4c-1.5-2.2-4-3.6-6.7-3.6H177.1c-2.7 0-5.2 1.3-6.7 3.6zm147-26.6L354.2 80H368h48 8c13.3 0 24 10.7 24 24s-10.7 24-24 24h-8V432c0 44.2-35.8 80-80 80H112c-44.2 0-80-35.8-80-80V128H24c-13.3 0-24-10.7-24-24S10.7 80 24 80h8H80 93.8l36.7-55.1C140.9 9.4 158.4 0 177.1 0h93.7c18.7 0 36.2 9.4 46.6 24.9zM80 128V432c0 17.7 14.3 32 32 32H336c17.7 0 32-14.3 32-32V128H80zm80 64V400c0 8.8-7.2 16-16 16s-16-7.2-16-16V192c0-8.8 7.2-16 16-16s16 7.2 16 16zm80 0V400c0 8.8-7.2 16-16 16s-16-7.2-16-16V192c0-8.8 7.2-16 16-16s16 7.2 16 16zm80 0V400c0 8.8-7.2 16-16 16s-16-7.2-16-16V192c0-8.8 7.2-16 16-16s16 7.2 16 16z" /></svg>
-                                </div>
-                            </div>
-                            <div onclick='entry_cart(this)' class='entry_cart_submit cursor-pointer w-full h-10 bg-(--primary_color) flex text-center items-center justify-center rounded-lg text-white text-[10px] px-2 py-3  hover:bg-(--buttom) hover:font-bold transition-all duration-200'>افزودن به سبد خرید</div>
+                            @if($flag)
+                                <div class='entry_cart_submit cursor-pointer w-full h-10 bg-yellow-200 hover:yellow-300 disable flex text-center items-center justify-center rounded-lg text-black text-[10px] px-2 py-3  hover:bg-(--buttom) hover:font-bold transition-all duration-200'> افزوده شده </div>
+                            @else
+                                <div onclick='entry_cart(this)' class='entry_cart_submit cursor-pointer w-full h-10 bg-(--primary_color) flex text-center items-center justify-center rounded-lg text-white text-[10px] px-2 py-3  hover:bg-(--buttom) hover:font-bold transition-all duration-200'>افزودن به سبد خرید</div>
+                            @endif
                         </div>
                         <div class='w-full flex gap-2 text-center items-center '>
                             <span class='w-2/5 line-through text-(--metod-text) font-bold text-lg'> 100.000 </span>
@@ -445,16 +440,11 @@
                             <span class='w-3/12 text-xs'> سیاه </span>
                         </div>
                         <div class='w-full flex gap-2 '>
-                            <div class='quantity_selectors hidden justify-between '>
-                                <div onclick="quantity_selector(this,'plus')" class='plus_quantities min-w-10 min-h-10 max-w-10 max-h-10  flex items-center border border-(--border) rounded-xl justify-center hover:bg-(--metod-text) hover:scale-95 transition-all duration-200'> <svg class='size-3 fill-black' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!-- -->
-                                        <path d="M488 232c13.3 0 24 10.7 24 24s-10.7 24-24 24l-208 0 0 208c0 13.3-10.7 24-24 24s-24-10.7-24-24l0-208L24 280c-13.3 0-24-10.7-24-24s10.7-24 24-24H232l0-208c0-13.3 10.7-24 24-24s24 10.7 24 24l0 208 208 0z" />
-                                    </svg> </div>
-                                <input class='quantity_selector_inputs min-w-1/3 font-bold flex text-center items-center justify-center text-2xl outline-ntype="number"one' type='number' readonly name='quantiti_cart' value='1' min="1" max="30">
-                                <div onclick="trash()" class='trash_quantities min-w-10 min-h-10 max-w-10 max-h-10  flex items-center border border-(--border) rounded-xl justify-center hover:bg-(--metod-text) hover:scale-95 transition-all duration-200'> <svg class='size-5 fill-rose-600' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
-                                        <path d="M170.5 51.6L151.5 80h145l-19-28.4c-1.5-2.2-4-3.6-6.7-3.6H177.1c-2.7 0-5.2 1.3-6.7 3.6zm147-26.6L354.2 80H368h48 8c13.3 0 24 10.7 24 24s-10.7 24-24 24h-8V432c0 44.2-35.8 80-80 80H112c-44.2 0-80-35.8-80-80V128H24c-13.3 0-24-10.7-24-24S10.7 80 24 80h8H80 93.8l36.7-55.1C140.9 9.4 158.4 0 177.1 0h93.7c18.7 0 36.2 9.4 46.6 24.9zM80 128V432c0 17.7 14.3 32 32 32H336c17.7 0 32-14.3 32-32V128H80zm80 64V400c0 8.8-7.2 16-16 16s-16-7.2-16-16V192c0-8.8 7.2-16 16-16s16 7.2 16 16zm80 0V400c0 8.8-7.2 16-16 16s-16-7.2-16-16V192c0-8.8 7.2-16 16-16s16 7.2 16 16zm80 0V400c0 8.8-7.2 16-16 16s-16-7.2-16-16V192c0-8.8 7.2-16 16-16s16 7.2 16 16z" />
-                                    </svg> </div>
-                            </div>
-                            <div onclick='entry_cart(this)' class='entry_cart_submit cursor-pointer w-full h-10 bg-(--primary_color) flex text-center items-center justify-center rounded-lg text-white text-[10px] px-2 py-3  hover:bg-(--buttom) hover:font-bold transition-all duration-200'>افزودن به سبد خرید</div>
+                            @if($flag)
+                                <div class='entry_cart_submit cursor-pointer w-full h-10 bg-yellow-200 hover:yellow-300 disable flex text-center items-center justify-center rounded-lg text-black text-[10px] px-2 py-3  hover:bg-(--buttom) hover:font-bold transition-all duration-200'> افزوده شده </div>
+                            @else
+                                <div onclick='entry_cart(this)' class='entry_cart_submit cursor-pointer w-full h-10 bg-(--primary_color) flex text-center items-center justify-center rounded-lg text-white text-[10px] px-2 py-3  hover:bg-(--buttom) hover:font-bold transition-all duration-200'>افزودن به سبد خرید</div>
+                            @endif
                         </div>
                         <div class='w-full flex gap-2 text-center items-center '>
                             <span class='w-2/5 line-through text-(--metod-text) font-bold text-lg'> 100.000 </span>
@@ -1060,7 +1050,11 @@
                     </div>
 
                     <div class='w-full flex flex-col justify-between p-2 gap-2 bg-green-100'>
-                        <div onclick='entry_cart(this)' class='entry_cart_submit cursor-pointer w-full h-10 bg-(--primary_color) flex text-center items-center justify-center rounded-lg text-white text-[10px] px-2 py-3 hover:bg-green-500 hover:font-bold transition-all duration-200'>افزودن به سبد خرید</div>
+                        @if($flag)
+                            <div class='entry_cart_submit cursor-pointer w-full h-10 bg-yellow-200 hover:yellow-300 disable flex text-center items-center justify-center rounded-lg text-black text-[10px] px-2 py-3  hover:bg-(--buttom) hover:font-bold transition-all duration-200'> افزوده شده </div>                        
+                        @else
+                            <div onclick='entry_cart(this)' class='entry_cart_submit cursor-pointer w-full h-10 bg-(--primary_color) flex text-center items-center justify-center rounded-lg text-white text-[10px] px-2 py-3 hover:bg-green-500 hover:font-bold transition-all duration-200'>افزودن به سبد خرید</div>
+                        @endif
                         <div class='w-full py-2 px-4 rounded-lg text-(--buttom) bg-[#74f7b5] flex text-[10px] items-center text-center justify-center'><span> آخرین بروزرسانی قیمت : ۰۱ بهمن ۱۴۰۴ </span></div>
                     </div>
                 </div>
@@ -1290,21 +1284,16 @@
 
 
         <div class='md:hidden flex fixed bottom-0 right-0 w-full sm:h-18 h-15 p-3 bg-white justify-between text-center items-center rounded-t-xl border-t-3 border-[#11416f]'>
-                <div class='quantity_selectors hidden justify-between '>
-                    <div onclick="quantity_selector(this,'plus')" class='plus_quantities min-w-10 min-h-10 max-w-10 max-h-10  flex items-center border border-(--border) rounded-xl justify-center hover:bg-(--metod-text) hover:scale-95 transition-all duration-200'> <svg class='size-3 fill-black' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
-                        <path d="M488 232c13.3 0 24 10.7 24 24s-10.7 24-24 24l-208 0 0 208c0 13.3-10.7 24-24 24s-24-10.7-24-24l0-208L24 280c-13.3 0-24-10.7-24-24s10.7-24 24-24H232l0-208c0-13.3 10.7-24 24-24s24 10.7 24 24l0 208 208 0z" /></svg>
-                    </div>
-                    <input id="test" class='quantity_selector_inputs min-w-1/3 font-bold flex text-center items-center justify-center text-2xl outline-ntype="number"one' readonly name='quantiti_cart' value='1' min='1' max='30'>
-                    <div onclick="trash()" class='trash_quantities min-w-10 min-h-10 max-w-10 max-h-10  flex items-center border border-(--border) rounded-xl justify-center hover:bg-(--metod-text) hover:scale-95 transition-all duration-200'> <svg class='size-5 fill-rose-600' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
-                        <path d="M170.5 51.6L151.5 80h145l-19-28.4c-1.5-2.2-4-3.6-6.7-3.6H177.1c-2.7 0-5.2 1.3-6.7 3.6zm147-26.6L354.2 80H368h48 8c13.3 0 24 10.7 24 24s-10.7 24-24 24h-8V432c0 44.2-35.8 80-80 80H112c-44.2 0-80-35.8-80-80V128H24c-13.3 0-24-10.7-24-24S10.7 80 24 80h8H80 93.8l36.7-55.1C140.9 9.4 158.4 0 177.1 0h93.7c18.7 0 36.2 9.4 46.6 24.9zM80 128V432c0 17.7 14.3 32 32 32H336c17.7 0 32-14.3 32-32V128H80zm80 64V400c0 8.8-7.2 16-16 16s-16-7.2-16-16V192c0-8.8 7.2-16 16-16s16 7.2 16 16zm80 0V400c0 8.8-7.2 16-16 16s-16-7.2-16-16V192c0-8.8 7.2-16 16-16s16 7.2 16 16zm80 0V400c0 8.8-7.2 16-16 16s-16-7.2-16-16V192c0-8.8 7.2-16 16-16s16 7.2 16 16z" /></svg>
-                    </div>
+            @if($flag)
+                <div class='entry_cart_submit cursor-pointer w-full h-10 bg-yellow-200 hover:yellow-300 disable flex text-center items-center justify-center rounded-lg text-black text-[10px] px-2 py-3  hover:bg-(--buttom) hover:font-bold transition-all duration-200'> افزوده شده </div>
+            @else
+                <div onclick="entry_cart(this)" class='entry_cart_submit w-8/12 h-full flex items-center text-center rounded-md justify-center bg-(--primary_color) cursor-pointer'>
+                    <span class='text-sm text-white font-bold'> افزودن به سبد خرید </span>
                 </div>
-            <div onclick="entry_cart(this)" class='entry_cart_submit w-8/12 h-full flex items-center text-center rounded-md justify-center bg-(--primary_color) cursor-pointer'>
-                <span class='text-sm text-white font-bold'> افزودن به سبد خرید </span>
-            </div>
+            @endif
             <div class='w-2/12 flex flex-col text-center items-end '>
                 <div class=' p-1 items-center text-center flex gap-1'>
-                    <div class='w-6 text-white bg-rose-500 flex items-center text-center justify-center rounded-full'>
+                    <div class='w-6 text-white bg-rose-500 flex items-center text-center justify-center rounded-full p-1'>
                         <span> 5 </span>
                         %
                     </div>
@@ -1409,6 +1398,8 @@
         let link="{{route('user.loginPage')}}";
         let check="{{Auth::check()}}";
 
+
+
         function entry_cart(el) {
             entry_cart_submit.forEach(entry => {
                 entry.innerHTML =
@@ -1430,18 +1421,53 @@
                             'product_id':product_id,
                             'user_id':user_id,
                         },
-                        success: function(cartId) {
-                            console.log(cartId);
+                        success: function(data) {
+                            console.log(data.product.path);
                             entry_cart_submit.forEach(entry => {
-                                entry.classList.add('hidden');
-                                quantity_selectors.forEach(quantity_selector => {
-                                    quantity_selector.classList.remove('hidden');
-                                    quantity_selector.classList.add('flex');
-                                    quantity_selector.classList.add('w-full');
-                                    quantity_selector.children[0].setAttribute('onclick',`quantity_selector(this,${cartId},'plus')`);
-                                    quantity_selector.children[2].setAttribute('onclick',`trash(${cartId})`);
-                                });
+                                entry.innerHTML='افزوده شد'
+                                entry.setAttribute('disable',true)
+                                entry.removeAttribute('onclick')
+                                entry.classList.remove('bg-(--primary_color)');
+                                entry.classList.remove('hover:bg-green-600');
+                                entry.classList.add('bg-yellow-200');
+                                entry.classList.add('hover:bg-yellow-300');
+                                entry.classList.remove('text-white');
+                                entry.classList.add('text-black');
+                                
+                                //  افزودن به سبد خرید  //
+                                
+                                
                             })
+
+                            let div_image=document.createElement('div');
+                            let div_text_and_counter=document.createElement('div');
+                            let parent_div=document.createElement('div');
+                            parent_div.classList=` w-full flex justify-between border-2 gap-4`
+                            div_image.classList=`w-1/5 p-2`
+                            if(data.product.path!=null){
+                                let storage_url = "{{ asset('storage/product_medias/') }}";
+                                div_image.innerHTML = `<img class="w-full h-20 rounded-xl" src="${storage_url}${data.product.path}" alt="">`;
+                            }else{
+                                div_image.innerHTML=`<div> 🖼 </div>`
+                            }
+                            div_text_and_counter.classList=`w-4/5 flex flex-col justify-evenly`;
+                            div_text_and_counter.innerHTML=
+                            `
+                                <div class='w-4/5 flex flex-col justify-evenly '>
+                                    <div class='text-xl text-center items-center'>
+                                        <span> ${data.product.title} </span>
+                                    </div>
+                                    <div class='flex gap-5 justify-between px-4'>
+                                        <div class='text-gray-600 text-sm'> ${data.cart.quantity} </div>
+                                        
+                                        <div class='text-black text-xl'> ${data.product.price} </div>
+                                    </div>
+                                </div>   
+                            ` 
+                            parent_div.appendChild(div_image)
+                            parent_div.appendChild(div_text_and_counter)
+                            cart_list.appendChild(parent_div);
+                            console.log(cart_list);
                         },
                         error: function() {
                             console.log('☢')
@@ -1458,130 +1484,180 @@
         }
 
 
-        let flag = true
-        // let count = 0
-        let test = document.getElementById('test')
-        let quantity=0;
-        let plus_icon='';
-        function quantity_selector(el,id,state) {
-            // let value=0;
-            // count++
-            quantity_selectors.forEach(quantity_selector => {
-                plus_icon=quantity_selector.children[0].innerHTML;
-                quantity_selector.children[0].innerHTML =
-                `
-                <div class="size-7 border-4 border-(--border) border-t-(--primary_color) rounded-full animate-spin"></div>
+
+        // function entry_cart(el) {
+        //     entry_cart_submit.forEach(entry => {
+        //         entry.innerHTML =
+        //         `
+        //             <div class="size-7 border-4 border-(--border) border-t-(--primary_color) rounded-full animate-spin"></div>
+        //         `
+        //     })
+        //         if(check){
+        //             $.ajaxSetup({
+        //                 headers: {
+        //                     'X-CSRF-TOKEN': "{{ csrf_token() }}"
+        //                 }
+        //             })
+        //             $.ajax({
+        //                 url: "{{route('cart.store')}}",
+        //                 type: "post",
+        //                 dataType: "json",
+        //                 data:{
+        //                     'product_id':product_id,
+        //                     'user_id':user_id,
+        //                 },
+        //                 success: function(cartId) {
+        //                     console.log(cartId);
+        //                     entry_cart_submit.forEach(entry => {
+        //                         entry.classList.add('hidden');
+        //                         quantity_selectors.forEach(quantity_selector => {
+        //                             quantity_selector.classList.remove('hidden');
+        //                             quantity_selector.classList.add('flex');
+        //                             quantity_selector.classList.add('w-full');
+        //                             quantity_selector.children[0].setAttribute('onclick',`quantity_selector(this,${cartId},'plus')`);
+        //                             quantity_selector.children[2].setAttribute('onclick',`trash(${cartId})`);
+        //                         });
+        //                     })
+        //                 },
+        //                 error: function() {
+        //                     console.log('☢')
+        //                 }
+        //             })
+        //         }else{
+        //             location.assign(link)
+        //         } 
+
+
+
+        //     // });
+
+        // }
+
+
+        // let flag = true
+        // // let count = 0
+        // let test = document.getElementById('test')
+        // let quantity=0;
+        // let plus_icon='';
+        // function quantity_selector(el,id,state) {
+        //     // let value=0;
+        //     // count++
+        //     quantity_selectors.forEach(quantity_selector => {
+        //         plus_icon=quantity_selector.children[0].innerHTML;
+        //         quantity_selector.children[0].innerHTML =
+        //         `
+        //         <div class="size-7 border-4 border-(--border) border-t-(--primary_color) rounded-full animate-spin"></div>
                 
-                `;
-                quantity_selector.children[0].setAttribute('disabled', true);
+        //         `;
+        //         quantity_selector.children[0].setAttribute('disabled', true);
 
-                quantity_selector.children[2].innerHTML =
-                `
-                <div class="size-7 border-4 border-(--border) border-t-(--primary_color) rounded-full animate-spin"></div>
+        //         quantity_selector.children[2].innerHTML =
+        //         `
+        //         <div class="size-7 border-4 border-(--border) border-t-(--primary_color) rounded-full animate-spin"></div>
                 
-                `;
-                quantity_selector.children[2].setAttribute('disabled', true);
-                quantity = quantity_selector.children[1].value;
-            })
-            if (quantity < 30) {
-                if(state=='plus'){
-                    quantity++;
-                }else{
-                    quantity--;
-                }
-                $.ajaxSetup({
-                    headers: {
-                        'X-CSRF-TOKEN': "{{ csrf_token() }}"
-                    }
-                })
-                $.ajax({
-                    url: "{{url('cart/update/cart')}}"+"/"+id,
-                    type: "post",
-                    dataType:"json",
-                    data:{
-                        'quantity':quantity,
-                    },
-                    success: function(data) {
-                        quantity_selectors.forEach(quantity_selector => {
-                            quantity_selector.children[1].value = data.quantity
-                            quantity_selector.children[0].innerHTML=plus_icon;
-                            if(data.quantity==1){
-                                quantity_selector.children[0].removeAttribute('disabled');
-                                quantity_selector.children[2].innerHTML=
-                                `
-                                    <div class="size-7 border-4 border-(--border) border-t-(--primary_color) rounded-full animate-spin"></div>
+        //         `;
+        //         quantity_selector.children[2].setAttribute('disabled', true);
+        //         quantity = quantity_selector.children[1].value;
+        //     })
+        //     if (quantity < 30) {
+        //         if(state=='plus'){
+        //             quantity++;
+        //         }else{
+        //             quantity--;
+        //         }
+        //         $.ajaxSetup({
+        //             headers: {
+        //                 'X-CSRF-TOKEN': "{{ csrf_token() }}"
+        //             }
+        //         })
+        //         $.ajax({
+        //             url: "{{url('cart/update/cart')}}"+"/"+id,
+        //             type: "post",
+        //             dataType:"json",
+        //             data:{
+        //                 'quantity':quantity,
+        //             },
+        //             success: function(data) {
+        //                 quantity_selectors.forEach(quantity_selector => {
+        //                     quantity_selector.children[1].value = data.quantity
+        //                     quantity_selector.children[0].innerHTML=plus_icon;
+        //                     if(data.quantity==1){
+        //                         quantity_selector.children[0].removeAttribute('disabled');
+        //                         quantity_selector.children[2].innerHTML=
+        //                         `
+        //                             <div class="size-7 border-4 border-(--border) border-t-(--primary_color) rounded-full animate-spin"></div>
                                 
-                                `;
-                                quantity_selector.children[2].innerHTML =
-                                `
-                                <svg class='size-5 fill-rose-600' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M170.5 51.6L151.5 80h145l-19-28.4c-1.5-2.2-4-3.6-6.7-3.6H177.1c-2.7 0-5.2 1.3-6.7 3.6zm147-26.6L354.2 80H368h48 8c13.3 0 24 10.7 24 24s-10.7 24-24 24h-8V432c0 44.2-35.8 80-80 80H112c-44.2 0-80-35.8-80-80V128H24c-13.3 0-24-10.7-24-24S10.7 80 24 80h8H80 93.8l36.7-55.1C140.9 9.4 158.4 0 177.1 0h93.7c18.7 0 36.2 9.4 46.6 24.9zM80 128V432c0 17.7 14.3 32 32 32H336c17.7 0 32-14.3 32-32V128H80zm80 64V400c0 8.8-7.2 16-16 16s-16-7.2-16-16V192c0-8.8 7.2-16 16-16s16 7.2 16 16zm80 0V400c0 8.8-7.2 16-16 16s-16-7.2-16-16V192c0-8.8 7.2-16 16-16s16 7.2 16 16zm80 0V400c0 8.8-7.2 16-16 16s-16-7.2-16-16V192c0-8.8 7.2-16 16-16s16 7.2 16 16z"/></svg>
-                                `
-                                // quantity_selector.children[2].removeAttribute('onclick');
-                                quantity_selector.children[2].setAttribute('onclick',`trash(${data.cartId})`);
-                                quantity_selector.children[2].removeAttribute('disabled');
-                            }
-                            if(data.quantity>1){
-                                quantity_selector.children[2].removeAttribute('disabled');
-                                quantity_selector.children[2].innerHTML=
-                                `
-                                    <div class="size-7 border-4 border-(--border) border-t-(--primary_color) rounded-full animate-spin"></div>
+        //                         `;
+        //                         quantity_selector.children[2].innerHTML =
+        //                         `
+        //                         <svg class='size-5 fill-rose-600' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M170.5 51.6L151.5 80h145l-19-28.4c-1.5-2.2-4-3.6-6.7-3.6H177.1c-2.7 0-5.2 1.3-6.7 3.6zm147-26.6L354.2 80H368h48 8c13.3 0 24 10.7 24 24s-10.7 24-24 24h-8V432c0 44.2-35.8 80-80 80H112c-44.2 0-80-35.8-80-80V128H24c-13.3 0-24-10.7-24-24S10.7 80 24 80h8H80 93.8l36.7-55.1C140.9 9.4 158.4 0 177.1 0h93.7c18.7 0 36.2 9.4 46.6 24.9zM80 128V432c0 17.7 14.3 32 32 32H336c17.7 0 32-14.3 32-32V128H80zm80 64V400c0 8.8-7.2 16-16 16s-16-7.2-16-16V192c0-8.8 7.2-16 16-16s16 7.2 16 16zm80 0V400c0 8.8-7.2 16-16 16s-16-7.2-16-16V192c0-8.8 7.2-16 16-16s16 7.2 16 16zm80 0V400c0 8.8-7.2 16-16 16s-16-7.2-16-16V192c0-8.8 7.2-16 16-16s16 7.2 16 16z"/></svg>
+        //                         `
+        //                         // quantity_selector.children[2].removeAttribute('onclick');
+        //                         quantity_selector.children[2].setAttribute('onclick',`trash(${data.cartId})`);
+        //                         quantity_selector.children[2].removeAttribute('disabled');
+        //                     }
+        //                     if(data.quantity>1){
+        //                         quantity_selector.children[2].removeAttribute('disabled');
+        //                         quantity_selector.children[2].innerHTML=
+        //                         `
+        //                             <div class="size-7 border-4 border-(--border) border-t-(--primary_color) rounded-full animate-spin"></div>
                                 
-                                `;
-                                quantity_selector.children[2].setAttribute('onclick',`quantity_selector(this,${data.cartId},'minus')`)
-                                quantity_selector.children[2].innerHTML =
-                                `
-                                 <svg class='size-3 fill-black' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M432 256c0 13.3-10.7 24-24 24L40 280c-13.3 0-24-10.7-24-24s10.7-24 24-24l368 0c13.3 0 24 10.7 24 24z"/></svg>
-                                `
+        //                         `;
+        //                         quantity_selector.children[2].setAttribute('onclick',`quantity_selector(this,${data.cartId},'minus')`)
+        //                         quantity_selector.children[2].innerHTML =
+        //                         `
+        //                          <svg class='size-3 fill-black' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M432 256c0 13.3-10.7 24-24 24L40 280c-13.3 0-24-10.7-24-24s10.7-24 24-24l368 0c13.3 0 24 10.7 24 24z"/></svg>
+        //                         `
     
-                            }
-                        })
-                    },
-                    error: function() {
-                        console.log('☢')
-                    }
-                })
-            }
+        //                     }
+        //                 })
+        //             },
+        //             error: function() {
+        //                 console.log('☢')
+        //             }
+        //         })
+        //     }
 
-        }
+        // }
 
-        function trash(id) {
-            let trash_icon='';
-            quantity_selectors.forEach(quantity_selector => {
-                // console.log(entry)
-                trash_icon=quantity_selector.children[2].innerHTML;
-                quantity_selector.children[2].innerHTML =
-                `
-                    <div class="size-7 border-4 border-(--border) border-t-(--primary_color) rounded-full animate-spin"></div>
+        // function trash(id) {
+        //     let trash_icon='';
+        //     quantity_selectors.forEach(quantity_selector => {
+        //         // console.log(entry)
+        //         trash_icon=quantity_selector.children[2].innerHTML;
+        //         quantity_selector.children[2].innerHTML =
+        //         `
+        //             <div class="size-7 border-4 border-(--border) border-t-(--primary_color) rounded-full animate-spin"></div>
 
-                `
-            });
-            $.ajax({
-                url: "{{url('cart/delete/cart')}}"+"/" + id,
-                type: "get",
-                dataType: "json",
-                success: function(data) {
-                    quantity_selectors.forEach(quantity_selector => {
-                        quantity_selector.classList.remove('flex')
-                        quantity_selector.classList.add('hidden')
-                    });
-                    entry_cart_submit.forEach(entry => {
-                        entry.classList.remove('hidden');
-                        entry.classList.add('flex');
-                        entry.setAttribute('onclick', 'entry_cart(this)');
-                        entry.innerHTML = 'افزودن به سبد خرید'
-                    });
+        //         `
+        //     });
+        //     $.ajax({
+        //         url: "{{url('cart/delete/cart')}}"+"/" + id,
+        //         type: "get",
+        //         dataType: "json",
+        //         success: function(data) {
+        //             quantity_selectors.forEach(quantity_selector => {
+        //                 quantity_selector.classList.remove('flex')
+        //                 quantity_selector.classList.add('hidden')
+        //             });
+        //             entry_cart_submit.forEach(entry => {
+        //                 entry.classList.remove('hidden');
+        //                 entry.classList.add('flex');
+        //                 entry.setAttribute('onclick', 'entry_cart(this)');
+        //                 entry.innerHTML = 'افزودن به سبد خرید'
+        //             });
     
     
-                },
-                error: function() {
-                    console.log('☢')
-                }
-            })
-            quantity_selectors.forEach(quantity_selector => {
-                // console.log(entry)
-                quantity_selector.children[2].innerHTML =trash_icon
-            });
-        }
+        //         },
+        //         error: function() {
+        //             console.log('☢')
+        //         }
+        //     })
+        //     quantity_selectors.forEach(quantity_selector => {
+        //         // console.log(entry)
+        //         quantity_selector.children[2].innerHTML =trash_icon
+        //     });
+        // }
 
 
 
@@ -1632,29 +1708,29 @@
 
         // }
 
-        function trash_mobile() {
-            entry_cart_mobile.innerHTML =
-                `
-                    <div class="size-7 border-4 border-(--border) border-t-(--primary_color) rounded-full animate-spin"></div>
-                `
-            $.ajax({
-                url: "{{url('cart/set/quantity/cart')}}/" + 1,
-                type: "get",
-                dataType: "json",
-                success: function(data) {
-                    quantity_selectors_mobile.classList.remove('flex')
-                    quantity_selectors_mobile.classList.add('hidden')
+        // function trash_mobile() {
+        //     entry_cart_mobile.innerHTML =
+        //         `
+        //             <div class="size-7 border-4 border-(--border) border-t-(--primary_color) rounded-full animate-spin"></div>
+        //         `
+        //     $.ajax({
+        //         url: "{{url('cart/set/quantity/cart')}}/" + 1,
+        //         type: "get",
+        //         dataType: "json",
+        //         success: function(data) {
+        //             quantity_selectors_mobile.classList.remove('flex')
+        //             quantity_selectors_mobile.classList.add('hidden')
 
-                    entry_cart_mobile.classList.remove('hidden')
-                    entry_cart_mobile.classList.add('flex')
-                    entry_cart_mobile.innerHTML = `<span class='text-sm text-white font-bold'> افزودن به سبد خرید </span>`
+        //             entry_cart_mobile.classList.remove('hidden')
+        //             entry_cart_mobile.classList.add('flex')
+        //             entry_cart_mobile.innerHTML = `<span class='text-sm text-white font-bold'> افزودن به سبد خرید </span>`
 
-                },
-                error: function() {
-                    console.log('☢')
-                }
-            })
-        }
+        //         },
+        //         error: function() {
+        //             console.log('☢')
+        //         }
+        //     })
+        // }
 
         // function quantity_selector_mobile(state) {
         //     let value = 0;
