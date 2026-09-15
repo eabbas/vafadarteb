@@ -120,6 +120,8 @@ route::group([
     Route::post('/update/cart/{cart}','update')->name('update');
     Route::get('/delete/cart/{cart}','delete')->name('delete');
     Route::get('/list/cart','list')->name('list');
+    Route::get('/user/cart/list','userCartList')->name('userCartList');
+
 });
 route::group([
     'prefix'=>'order',

@@ -17,6 +17,7 @@ use App\Models\brand;
 use App\Models\cart;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Auth;
 
 class CartController extends Controller
 {
@@ -50,5 +51,29 @@ class CartController extends Controller
     }
     public function list(){
         dd('list');
+    }
+    public function userCartList(){
+
+        $user=Auth::user();
+        // if(count($user->carts)>0){
+        //     foreach ($user->carts as $cart) {
+        //         foreach ($cart->product->medias as $media) {
+        //             if($media->is_main==1){
+        //                 $cart->product->path=$media->path;
+        //             }
+        //         }
+                
+        //     }
+        // }
+        $user->load(['carts'=>function($query){$query->where('order_id',null)->get();}]);
+        foreach ( $user->carts as $cart) {
+            foreach ($cart->product->medias as $media) {
+                if($media->is_main==1){
+                    $cart->product->path=$media->path;
+                }
+            }
+        };
+        // dd($user);
+        return view('client.cart.userCartList' ,['user'=>$user]);
     }
 }
