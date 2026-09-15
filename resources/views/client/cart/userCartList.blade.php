@@ -1,16 +1,17 @@
-<!DOCTYPE html>
-<html lang="fa" dir="rtl">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>cart list</title>
-    <script src="{{asset('assets/js/tailwind.js')}}"></script>
-    <script src="{{asset('assets/js/jquery.js')}}"></script>
-</head>
-<body>
+@extends('dashboard')
+@section('content')
     <div class='w-full py-20'>
         <div class='w-full min-h-100 mx-auto bg-green-300 flex flex-col p-2 gap-5'>
-            <div class='w-full h-40 bg-blue-600'></div>
+            <div class='w-full h-40 bg-blue-600 flex flex-col'>
+
+                @foreach($user->address as $address)
+                    <div class='flex gap-2'>
+                        <label for=""> {{$address->location}}  |  {{$address->city}} </label>
+                        <input name="address" type="radio" value="{{$address->id}}">
+                    </div>
+                @endforeach
+                <a href="{{route('address.create')}}" class='w-40 p-2 bg-yellow-300 text-black font-bold'> افزودن آدرس جدید </a>
+            </div>
             <div class='w-full min-h-60 bg-white flex flex-col gap-2 p-2'>
                 <?php
                     $total_price=0;
@@ -58,5 +59,4 @@
             console.log('OK');
         }
     </script>
-</body>
-</html>
+@endsection

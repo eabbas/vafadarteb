@@ -11,10 +11,12 @@ use App\Models\product_category;
 use App\Models\product_media;
 use App\Models\product_attribute;
 use App\Models\package;
+use App\Models\province_city;
 use App\Models\attribute_package;
 use App\Models\package_media;
 use App\Models\brand;
 use App\Models\cart;
+use App\Models\address;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Auth;
@@ -53,8 +55,11 @@ class CartController extends Controller
         dd('list');
     }
     public function userCartList(){
-
         $user=Auth::user();
+        $user->address;
+        foreach ($user->address as $address) {
+            $address->city=province_city::find($address->city_id)->title;
+        }
         // if(count($user->carts)>0){
         //     foreach ($user->carts as $cart) {
         //         foreach ($cart->product->medias as $media) {

@@ -21,6 +21,7 @@ use App\Models\product_media;
 use App\Models\product;
 use App\Models\role;
 use App\Models\role_permision;
+use App\Models\address;
 use App\Models\role_user;
 class User extends Authenticatable
 {
@@ -83,4 +84,8 @@ class User extends Authenticatable
     public function carts(){
         return $this->hasMany(cart::class,'user_id');
     }
+    public function address(){
+        return $this->hasMany(address::class);
+    }
+    
 }

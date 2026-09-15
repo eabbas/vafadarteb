@@ -10,4 +10,7 @@ class province_city extends Model
         'parent',
         'title'
     ];
+    public function cities(){
+        return $this->hasMany(province_city::class,'parent')->with('cities');
+    }
 }
