@@ -38,12 +38,14 @@ class CartController extends Controller
     public function update(Request $request , cart $cart){
         $cart->quantity=$request->quantity;
         $cart->save();
-        return response()->json(['cartId'=>$cart->id , 'quantity'=>$cart->quantity]);
+        $product=product::find($cart->product_id);
+        return response()->json(['cartId'=>$cart->id , 'quantity'=>$cart->quantity , 'product'=>$product]);
         dd('update');
     }
     public function delete(cart $cart){
+        $product=product::find($cart->product_id);
         $cart->delete();
-        return response()->json(true);
+        return response()->json($product);
         dd('delete');
     }
     public function list(){
