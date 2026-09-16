@@ -13,6 +13,7 @@ use App\Http\Controllers\BannerController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\StaticUserController;
 use App\Http\Controllers\AdvertisementController;
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\SupportInformationController;
 use App\Http\Controllers\HeaderSettingController;
 use App\Http\Controllers\AddressController;
