@@ -50,11 +50,12 @@ class AddressController extends Controller
         }
         return view('client.address.list',['addresses'=>$addresses]);
     }
-    public function edit(Address $address){
-        dd('edit');
-    }
-    public function update(Request $request ,Address $address){
-        dd('update');
+    public function update(Request $request ,address $address){
+        $address->location=$request->location;
+        $address->city_id=$request->city_id;
+        $address->save();
+        $cityName=province_city::find($address->city_id)->title;
+        return response()->json(['location'=>$address->location,'city'=>$cityName]);
     }
     public function delete(Address $address){
         $address->delete();
@@ -64,5 +65,21 @@ class AddressController extends Controller
     public function getCities(Request $request){
         $province=province_city::find($request->province_id);
         return response()->json($province->cities);
+    }
+    public function createAjax(Request $request){
+        $address=address::create([
+            'user_id'=>Auth::id(),
+            'city_id'=>$request->city_id,
+            'location'=>$request->location,
+        ]);
+        $address->city=province_city::find($request->city_id)->title;
+        return response()->json($address);
+    }
+    public function getAddress(address $address){
+        $city=province_city::find($address->city_id);
+        $address->cities=province_city::find($city->parent)->cities;
+        $address->province=$city->parent;
+        $address->provinces=province_city::where('parent',0)->get();
+        return response()->json($address);
     }
 }

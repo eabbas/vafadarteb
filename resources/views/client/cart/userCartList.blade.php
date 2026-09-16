@@ -1,18 +1,33 @@
 @extends('dashboard')
 @section('content')
 <div class='relative flex w-full gap-2'>
+    <div id='addressForm' class='absolute top-1/3 left-1/2 size-60 bg-white p-4 border-4 rounded-xl shadow-xl opacity-0 transition-all duration-300 invisible'>
+        <div onclick="hiddenAddressForm()" class='absolute bg-red-500 rounded-full py-2 px-3 cursor-pointer text-white text-center items-center justify-center flex -right-5 -top-5'>X</div>
+        @csrf
+        <textarea name="location" id="location" class='border-3 p-1' placeholder='location'></textarea>
+        <select class='border-1 p-1' name="province_id" id="provinces" onchange="getCities()">
+            @foreach($provinces as $province)
+                <option value="{{$province->id}}">{{$province->title}}</option>
+            @endforeach
+        </select>
+        <select class='border-1 p-1' name="city_id" id="cities">
+            @foreach($cities as $city)
+                <option value="{{$city->id}}">{{$city->title}}</option>
+            @endforeach
+        </select>
+        <div onclick="createAddress()" class='bg-red-300 p-1 rounded-xl cursor-pointer'> ثبت </div>
+    </div>
     <form action="{{route('order.store')}}" method="POST" class='w-9/12 py-20'>
         @csrf
         <div class='w-full min-h-100 mx-auto bg-green-300 flex flex-col p-2 gap-5'>
-            <div class='w-full h-40 bg-blue-600 flex flex-col'>
-
+            <div id="addresses_list" class='w-full min-h-40 bg-blue-600 flex flex-col'>
                 @foreach($user->address as $address)
                     <div class='flex gap-2'>
                         <label for=""> {{$address->location}}  |  {{$address->city}} </label>
                         <input name="address" type="radio" value="{{$address->id}}" required>
                     </div>
                 @endforeach
-                <a href="{{route('address.create')}}" class='w-40 p-2 bg-yellow-300 text-black font-bold'> افزودن آدرس جدید </a>
+                <div onclick='showAddressForm()' class='cursor-pointer w-40 p-2 bg-yellow-300 text-black font-bold'> افزودن آدرس جدید </div>
             </div>
             <div class='w-full min-h-60 bg-white flex flex-wrap gap-2 p-2'>
                 <?php
@@ -58,7 +73,8 @@
             <button id="formButton" class='w-40 p-4 bg-red-500 rounded-2xl text-center flex items-center justify-center text-white cursor-pointer'> ثبت نهایی </button>
         </div>
     </form>
-    <div class=' w-3/12 '>
+
+        <div class=' w-3/12 '>
         <div class='flex flex-col rounded-xl border-2 gap-2 p-1 sticky top-45'>
             <div class='w-full flex justify-between items-center text-center'>
                 <input type="number" value="{{$total_price}}" id="total_price">
@@ -89,9 +105,21 @@
         let total_price = document.getElementById('total_price');
         // let cart_buttons = document.getElementById('cart_buttons');
         let formButton = document.getElementById('formButton');
+        let addressForm = document.getElementById('addressForm');
 
 
 
+
+        function hiddenAddressForm(){
+            addressForm.classList.remove('opacity-100')
+            addressForm.classList.add('opacity-0')
+            addressForm.classList.add('invisible')
+        }
+        function showAddressForm(){
+            addressForm.classList.remove('opacity-0')
+            addressForm.classList.add('opacity-100')
+            addressForm.classList.remove('invisible')
+        }
 
 
         let quantity=0;
@@ -231,6 +259,76 @@
                 // console.log(entry)
             // el.parentElement.children[2].innerHTML =trash_icon
         }
-
+        function getCities(){
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': "{{ csrf_token() }}"
+                }
+            })
+            $.ajax({
+                url: "{{route('address.getCities')}}",
+                type: "post",
+                dataType: "json",
+                data:{
+                    'province_id':province.value,
+                },
+                success: function(data) {
+                    console.log('xxxxxxxxx');
+                    cities.innerHTML='';
+                    data.forEach(city => {
+                        cities.innerHTML+=
+                        `  <option value="${city.id}">${city.title}</option>  `;
+                    });
+                },
+                error: function() {
+                    console.log('☢')
+                }
+            })
+            console.log(province.value);
+        }
+        function createAddress(){
+            let location= document.getElementById('location');
+            let provinces= document.getElementById('provinces');
+            let cities= document.getElementById('cities');
+            if(location.value!=''){
+                
+                $.ajaxSetup({
+                    headers: {
+                        'X-CSRF-TOKEN': "{{ csrf_token() }}"
+                    }
+                })
+                $.ajax({
+                    url: "{{route('address.createAjax')}}",
+                    type: "post",
+                    dataType: "json",
+                    data:{
+                        'location':location.value,
+                        'province_id':provinces.value,
+                        'city_id':cities.value,
+                    },
+                    success: function(data) {
+                        console.log('xxxxxxxxx');
+                        addresses_list.innerHTML+=
+                        `
+                            <div class='flex gap-2'>
+                                <label for=""> ${data.location}  |  ${data.city} </label>
+                                <input name="address" type="radio" value="${data.id}" required>
+                            </div>
+                        `
+                        hiddenAddressForm()
+                        location.value=''
+                    },
+                    error: function() {
+                        console.log('☢')
+                    }
+                })   
+            }else{
+                alert('آدرس را وارد کنید');
+            }
+        }
     </script>
+
+
+
+
 @endsection
