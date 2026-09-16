@@ -644,6 +644,7 @@ class ProductController extends Controller
     }
     public function client_pro_single(product $product){
         $user=Auth::user();
+        $user->load(['carts'=>function($query){$query->where('order_id',null)->get();}]);
         if(count($user->carts)>0){
             foreach ($user->carts as $cart) {
                 foreach ($cart->product->medias as $media) {
