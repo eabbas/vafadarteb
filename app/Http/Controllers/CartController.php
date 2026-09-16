@@ -78,7 +78,8 @@ class CartController extends Controller
                 }
             }
         };
+        $provinces=province_city::where('parent',0)->get();
         // dd($user);
-        return view('client.cart.userCartList' ,['user'=>$user]);
+        return view('client.cart.userCartList' ,['user'=>$user , 'provinces'=>$provinces , 'cities'=>$provinces[0]->cities]);
     }
 }

@@ -469,7 +469,7 @@
     }
 </style>
 
-<div class="w-full">
+<div id='addresses_list' class="w-full">
     
     <!-- ===== هدر لیست ===== -->
     <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-6 ">
@@ -530,22 +530,20 @@
                         </td>
                         <td>
                             <div class="vafadar-action-group">
-                                <a href="{{route('address.edit',['address'=>$address->id])}}" class="vafadar-action-btn edit" title="ویرایش آدرس">
+                                <div onclick='showEditForm(this,{{$address->id}})' class="vafadar-action-btn edit" title="ویرایش آدرس">
                                     <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                         <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/>
                                         <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/>
                                     </svg>
                                     <span class="hidden sm:inline">ویرایش</span>
+                                </div>
+                                <a href="{{route('address.delete',['address'=>$address->id])}}" class="vafadar-action-btn delete" title="حذف آدرس" onclick="return confirm('آیا از حذف آدرس «{{$address->title}}» مطمئن هستید؟')">
+                                    <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M3 6h18"/>
+                                        <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/>
+                                    </svg>
+                                    <span class="hidden sm:inline">حذف</span>
                                 </a>
-                                @if($address->id!=1)
-                                    <a href="{{route('address.delete',['address'=>$address->id])}}" class="vafadar-action-btn delete" title="حذف آدرس" onclick="return confirm('آیا از حذف آدرس «{{$address->title}}» مطمئن هستید؟')">
-                                        <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                            <path d="M3 6h18"/>
-                                            <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/>
-                                        </svg>
-                                        <span class="hidden sm:inline">حذف</span>
-                                    </a>
-                                @endif        
                             </div>
                         </td>
                     </tr>
@@ -599,6 +597,124 @@
             });
         }
     });
+    function getCities(){
+        let province=document.getElementById('provinces');
+        let cities=document.getElementById('cities');
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': "{{ csrf_token() }}"
+            }
+        })
+        $.ajax({
+            url: "{{route('address.getCities')}}",
+            type: "post",
+            dataType: "json",
+            data:{
+                'province_id':province.value,
+            },
+            success: function(data) {
+                console.log('xxxxxxxxx');
+                cities.innerHTML='';
+                data.forEach(city => {
+                    cities.innerHTML+=
+                    `  <option value="${city.id}">${city.title}</option>  `;
+                });
+            },
+            error: function() {
+                console.log('☢')
+            }
+        })
+        console.log(province.value);
+    }
+
+
+    let addresses_list=document.getElementById('addresses_list');
+    function showEditForm(el,address_id){
+
+        $.ajax({
+            url: "{{url('address/get/address')}}/"+address_id,
+            type: "get",
+            dataType: "json",
+            success: function(data) {
+                let cities_div='';
+                let provinces_div='';
+                data.provinces.forEach(provincee => {
+                    if(data.province==provincee.id){
+                        provinces_div+=`<option value="${provincee.id}" selected>${provincee.title}</option>`
+                    }else{
+                        provinces_div+=`<option value="${provincee.id}">${provincee.title}</option>`
+                    }
+                });
+                data.cities.forEach(city => {
+                    if(data.city_id==city.id){
+                        cities_div+=`<option selected value="${city.id}">${city.title}</option>`
+                    }else{
+                        cities_div+=`<option value="${city.id}">${city.title}</option>`
+                    }
+                });
+
+                addresses_list.innerHTML+=
+                `
+                <div id='addressForm' class='absolute top-1/3 left-1/2 size-60 bg-white p-4 border-4 rounded-xl shadow-xl transition-all duration-300'>
+                    <div onclick="removeForm()" class='absolute bg-red-500 rounded-full py-2 px-3 cursor-pointer text-white text-center items-center justify-center flex -right-5 -top-5'>X</div>
+                    @csrf
+                    <textarea name="location" id="location" class='border-3 p-1' placeholder='location'>${data.location}</textarea>
+                    <select class='border-1 p-1' name="province_id" id="provinces" onchange="getCities()">
+                    `+
+                        provinces_div
+                    +`
+                    </select>
+                    <select class='border-1 p-1' name="city_id" id="cities">
+                    `+
+                        cities_div
+                    +`
+                    </select>
+                    <div onclick="editAddress(${data.id})" class='bg-red-300 p-1 rounded-xl cursor-pointer'> ثبت </div>
+                </div>
+                `
+            cities_div=''
+            provinces_div=''
+            },
+            error: function() {
+                console.log('☢')
+            }
+        })       
+    }
+    function removeForm(){
+        document.getElementById('addressForm').remove();
+    }
+    function editAddress(id){
+        let location= document.getElementById('location');
+        let provinces= document.getElementById('provinces');
+        let cities= document.getElementById('cities');
+        if(location.value!=''){
+            
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': "{{ csrf_token() }}"
+                }
+            })
+            $.ajax({
+                url: "{{url('address/update')}}/"+id,
+                type: "post",
+                dataType: "json",
+                data:{
+                    'location':location.value,
+                    'city_id':cities.value,
+                },
+                success: function(data) {
+                    removeForm()
+                    el.parentElement.parentElement.parentElement.parentElement.children[1].children[0].innerHTML=data.location
+                    el.parentElement.parentElement.parentElement.parentElement.children[2].children[0].innerHTML=data.city
+                },
+                error: function() {
+                    console.log('☢')
+                }
+            })   
+        }else{
+            alert('آدرس را وارد کنید');
+        }
+    }     
 </script>
 
 @endsection

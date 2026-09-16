@@ -260,10 +260,11 @@ Route::group([
     Route::get('/create','create')->name('create');
     Route::post('/store','store')->name('store');
     Route::get('/list','list')->name('list');
-    Route::get('/edit/{address}','edit')->name('edit');
+    Route::get('/get/address/{address}','getAddress')->name('getAddress');
     Route::post('/update/{address}','update')->name('update');
     Route::get('/delete/{address}','delete')->name('delete');
     Route::post('/get/cities','getCities')->name('getCities');
+    Route::post('/create/ajax','createAjax')->name('createAjax');
 });
 
 
