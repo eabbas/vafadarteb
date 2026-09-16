@@ -13,8 +13,10 @@ use App\Http\Controllers\BannerController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\StaticUserController;
 use App\Http\Controllers\AdvertisementController;
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\SupportInformationController;
 use App\Http\Controllers\HeaderSettingController;
+use App\Http\Controllers\AddressController;
 use App\Http\Middleware\checkUserExist;
 use App\Http\Middleware\checkAuthUser;
 
@@ -247,3 +249,22 @@ Route::get('check',function(){
     }
     dd($result);
 });
+
+
+
+Route::group([
+    'prefix'=>'address',
+    'as'=>'address.',
+    'controller'=>AddressController::class,
+],function(){
+    Route::get('/create','create')->name('create');
+    Route::post('/store','store')->name('store');
+    Route::get('/list','list')->name('list');
+    Route::get('/edit/{address}','edit')->name('edit');
+    Route::post('/update/{address}','update')->name('update');
+    Route::get('/delete/{address}','delete')->name('delete');
+    Route::post('/get/cities','getCities')->name('getCities');
+});
+
+
+
