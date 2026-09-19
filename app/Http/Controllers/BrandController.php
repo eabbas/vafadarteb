@@ -17,15 +17,15 @@ class BrandController extends Controller
         $validate=$request->validate(
         [
             'title'=>['required'],
-            'slug'=>['required'],
+            // 'slug'=>['required'],
         ],[
             'title.required'=>'فیلد مورد نظر را پر کنید',
-            'slug.required'=>'فیلد مورد نظر را پر کنید',
+            // 'slug.required'=>'فیلد مورد نظر را پر کنید',
         ]);
         $created_brand=brand::create([
             'title'=>$validate['title'],
             'logo_path'=>$request['logo_path'],
-            'slug'=>$validate['slug'],
+            'slug'=>$request['slug'],
             'description'=>$request['description'],
             'show_in_home'=>$request['show_in_home'],
             'is_active'=>$request['is_active'],

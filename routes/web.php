@@ -99,6 +99,7 @@ route::group([
 ],function(){
     Route::get('/create','create')->name('create');
     Route::post('/store','store')->name('store');
+    Route::post('/searchProduct','searchProduct')->name('searchProduct');
     Route::get('/list','list')->name('list');
     Route::get('/single/product/{product}','single')->name('single');
     Route::get('/single/package/{package}','singlePackage')->name('singlePackage');

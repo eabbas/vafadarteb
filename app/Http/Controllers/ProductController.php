@@ -684,5 +684,33 @@ class ProductController extends Controller
         $product->gallery=$galleryPicture;
         // dd($product);
         return view('client.product.single',['product'=>$product, 'user'=>$user,'flag'=>$flag]);
+    }   
+    public function searchProduct(Request $request){
+        $products=product::where('title','like','%'.$request['title'].'%')->with('medias')->get();
+        $bishtarin=0;
+        $kamtarin=0;
+        foreach ($products as $product) {
+            if($product->price > $bishtarin){
+                $bishtarin=$product->price;
+            }
+            foreach ($product->medias as $media) {
+                if($media->is_main==1){
+                    $product->image=$media->path;
+                }
+            }
+        }
+        $kamtarin=$bishtarin;
+        foreach ($products as $product) {
+            if($product->price < $bishtarin){
+                if($kamtarin>$product->price){
+                    $kamtarin=$product->price;
+                }
+            }
+        }
+        // dd(['bishtarin'=>$bishtarin,'kamtarin'=>$kamtarin]);
+        $categories=category::all();
+        $brands=brand::all();
+            // dd($products);
+        return view('search',['products'=>$products,'searchTitle'=>$request->title,'categories'=>$categories,'brands'=>$brands,'bishtarin'=>$bishtarin,'kamtarin'=>$kamtarin]);
     }
 }
