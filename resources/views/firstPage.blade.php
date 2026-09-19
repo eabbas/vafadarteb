@@ -958,19 +958,13 @@
                                 </svg>ّ
                                 <div class="w-11/12 lg:w-6/12 h-0 bg-white absolute left-1/19 lg:left-1/5 top-28 flex flex-col gap-2 rounded-xl overflow-y-hidden transition_fast"
                                     id="search">
-                                    <div class="flex gap-2 w-95/100 mx-auto mt-3 bg-[#f0f0f1] rounded-lg ">
-                                        <button class="w-1/10 md:w-10 h-10  flex justify-center items-center">
-                                             <svg class="size-7" viewBox="0 0 24 24" fill="none"
-                                                xmlns="http://www.w3.org/2000/svg">
-                                                <path
-                                                    d="M14.9536 14.9458L21 21M17 10C17 13.866 13.866 17 10 17C6.13401 17 3 13.866 3 10C3 6.13401 6.13401 3 10 3C13.866 3 17 6.13401 17 10Z"
-                                                    stroke="#000000" stroke-width="2" stroke-linecap="round"
-                                                    stroke-linejoin="round" />
-                                            </svg>
-                                         </button>
-                                        <input type="text" class="w-9/10 md:w-full h-10 outline-none text-(--title)"
-                                            placeholder="کالای خود را جستوجو کن">
-                                    </div>
+                                    <form action="{{route('product.searchProduct')}}" method="POST" class="flex gap-2 w-95/100 mx-auto mt-3 bg-[#f0f0f1] rounded-lg ">
+                                        @csrf
+                                        <button class="cursor-pointer w-1/10 md:w-10 h-10  flex justify-center items-center">
+                                            <svg class="size-7" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"> <path d="M14.9536 14.9458L21 21M17 10C17 13.866 13.866 17 10 17C6.13401 17 3 13.866 3 10C3 6.13401 6.13401 3 10 3C13.866 3 17 6.13401 17 10Z" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /> </svg>
+                                        </button>
+                                        <input type="text" name="title" class="w-9/10 md:w-full h-10 outline-none text-(--title)" placeholder="کالای خود را جستوجو کن">
+                                    </form>
                                     <div class="w-95/100 mx-auto h-auto flex flex-col overflow-y-auto">
                                         <div class="py-3 text-(--title) flex justify-between">
                                             <span>ARTANNNNNN</span>
