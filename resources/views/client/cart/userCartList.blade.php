@@ -1,32 +1,26 @@
 @extends('dashboard')
 @section('content')
+<?php
+    $flag=true;
+?>
 <div class='relative flex w-full gap-2'>
-    <div id='addressForm' class='absolute top-1/3 left-1/2 size-60 bg-white p-4 border-4 rounded-xl shadow-xl opacity-0 transition-all duration-300 invisible'>
-        <div onclick="hiddenAddressForm()" class='absolute bg-red-500 rounded-full py-2 px-3 cursor-pointer text-white text-center items-center justify-center flex -right-5 -top-5'>X</div>
-        @csrf
-        <textarea name="location" id="location" class='border-3 p-1' placeholder='location'></textarea>
-        <select class='border-1 p-1' name="province_id" id="provinces" onchange="getCities()">
-            @foreach($provinces as $province)
-                <option value="{{$province->id}}">{{$province->title}}</option>
-            @endforeach
-        </select>
-        <select class='border-1 p-1' name="city_id" id="cities">
-            @foreach($cities as $city)
-                <option value="{{$city->id}}">{{$city->title}}</option>
-            @endforeach
-        </select>
-        <div onclick="createAddress()" class='bg-red-300 p-1 rounded-xl cursor-pointer'> ثبت </div>
-    </div>
+
     <form action="{{route('order.store')}}" method="POST" class='w-9/12 py-20'>
         @csrf
         <div class='w-full min-h-100 mx-auto bg-green-300 flex flex-col p-2 gap-5'>
             <div id="addresses_list" class='w-full min-h-40 bg-blue-600 flex flex-col'>
-                @foreach($user->address as $address)
-                    <div class='flex gap-2'>
-                        <label for=""> {{$address->location}}  |  {{$address->city}} </label>
-                        <input name="address" type="radio" value="{{$address->id}}" required>
-                    </div>
-                @endforeach
+                @if(count($user->address)>0)
+                    @foreach($user->address as $address)
+                        <div class='flex gap-2'>
+                            <label for=""> {{$address->location}}  |  {{$address->city}} </label>
+                            <input name="address" type="radio" value="{{$address->id}}" required>
+                        </div>
+                    @endforeach
+                @else
+                    <?php
+                        $flag=false;
+                    ?>
+                @endif
                 <div onclick='showAddressForm()' class='cursor-pointer w-40 p-2 bg-yellow-300 text-black font-bold'> افزودن آدرس جدید </div>
             </div>
             <div class='w-full min-h-60 bg-white flex flex-wrap gap-2 p-2'>
@@ -70,11 +64,35 @@
                     </div>
                 @endforeach
             </div>
-            <button id="formButton" class='w-40 p-4 bg-red-500 rounded-2xl text-center flex items-center justify-center text-white cursor-pointer'> ثبت نهایی </button>
+            <div id="ButtonParent">
+                @if($flag)
+                    <button id="formButton" class='btn w-40 p-4 bg-red-500 rounded-2xl text-center flex items-center justify-center text-white cursor-pointer'> ثبت نهایی </button>
+                @else
+                    <div id="formButton" class='div w-40 p-4 bg-orange-500 rounded-2xl text-center flex items-center justify-center text-white cursor-not-allowed'> برای ثبت سفارش آدرس خود را وارد کنید  </div>
+                @endif
+            </div>
         </div>
     </form>
 
-        <div class=' w-3/12 '>
+    <div id='addressForm' class='absolute top-1/3 left-1/2 size-60 bg-white p-4 border-4 rounded-xl shadow-xl opacity-0 transition-all duration-300 invisible'>
+        <div onclick="hiddenAddressForm()" class='absolute bg-red-500 rounded-full py-2 px-3 cursor-pointer text-white text-center items-center justify-center flex -right-5 -top-5'>X</div>
+        @csrf
+        <textarea name="location" id="location" class='border-3 p-1' placeholder='location'></textarea>
+        <select class='border-1 p-1' name="province_id" id="provinces" onchange="getCities()">
+            @foreach($provinces as $province)
+                <option value="{{$province->id}}">{{$province->title}}</option>
+            @endforeach
+        </select>
+        <select class='border-1 p-1' name="city_id" id="cities">
+            @foreach($cities as $city)
+                <option value="{{$city->id}}">{{$city->title}}</option>
+            @endforeach
+        </select>
+        <div onclick="createAddress()" class='bg-red-300 p-1 rounded-xl cursor-pointer'> ثبت </div>
+    </div>
+
+
+    <div class=' w-3/12 '>
         <div class='flex flex-col rounded-xl border-2 gap-2 p-1 sticky top-45'>
             <div class='w-full flex justify-between items-center text-center'>
                 <input type="number" value="{{$total_price}}" id="total_price">
@@ -290,6 +308,7 @@
             let location= document.getElementById('location');
             let provinces= document.getElementById('provinces');
             let cities= document.getElementById('cities');
+            let ButtonParent= document.getElementById('ButtonParent');
             if(location.value!=''){
                 
                 $.ajaxSetup({
@@ -317,6 +336,14 @@
                         `
                         hiddenAddressForm()
                         location.value=''
+                        if(ButtonParent.children[0].classList.contains('div')){
+                            ButtonParent.innerHTML=''
+                            ButtonParent.innerHTML=
+                            `
+                                <button id="formButton" class='w-40 p-4 bg-red-500 rounded-2xl text-center flex items-center justify-center text-white cursor-pointer'> ثبت نهایی </button>
+                            `;
+
+                        }
                     },
                     error: function() {
                         console.log('☢')
