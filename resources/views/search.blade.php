@@ -181,6 +181,27 @@
                     </svg>
                     <span class="size-7 font-bold">فیلتر</span>
                 </div>
+                <div class='w-12/12 text-white flex text-base gap-2'>
+                    <input type="checkbox" class='specials[]'value="پرفروش ترین ها" >
+                    <span class="text-black transition-colors font-medium"> پرفروش ترین ها </span>
+                </div>
+                <div class='w-12/12 text-white flex text-base gap-2'>
+                    <input type="checkbox" class='specials[]'value="ارزان ترین ها" >
+                    <span class="text-black transition-colors font-medium"> ارزان ترین ها </span>
+                </div>
+                <div class='w-12/12 text-white flex text-base gap-2'>
+                    <input type="checkbox" class='specials[]'value="گران ترین ها" >
+                    <span class="text-black transition-colors font-medium"> گران ترین ها </span>
+                </div>
+                <div class='w-12/12 text-white flex text-base gap-2'>
+                    <input type="checkbox" class='specials[]'value="موجود" >
+                    <span class="text-black transition-colors font-medium"> فقط موجود </span>
+                </div>
+                <div class='w-12/12 text-white flex text-base gap-2'>
+                    <input type="checkbox" class='specials[]'value="ناموجود" >
+                    <span class="text-black transition-colors font-medium"> نمایش نا موجود ها </span>
+                </div>
+                
                 <div class='element flex flex-col items-center gap-2 px-4 py-3 rounded-xl bg-white shadow-sm hover:shadow-md transition-all mb-3 mt-4'>
                     <div class='flex w-full justify-between items-center text-center cursor-pointer'>
                         <div class='flex items-center gap-2 text-white text-base font-medium'>
@@ -195,7 +216,7 @@
                         @foreach($categories as $category)
                             @if($category->id!=1)
                                 <div class='w-12/12 text-white flex text-base gap-2'>
-                                    <input type="checkbox" class='categories' id="{{$category->id}}">
+                                    <input type="checkbox" class='categories[]' value="{{$category->id}}">
                                     <span class="text-black transition-colors font-medium"> {{$category->title}} </span>
                                 </div>
                             @endif
@@ -215,7 +236,7 @@
                     <div class='w-full flex flex-col gap-4 text-end max-h-0 overflow-hidden transition-all duration-500 overflow-y-auto mr-4'>
                         @foreach($brands as $brand)
                             <div class='w-12/12 text-white flex text-base gap-2'>
-                                <input type="checkbox" class='brands' id="{{$brand->id}}">
+                                <input type="checkbox" class='brands' value="{{$brand->id}}">
                                 <span class="text-black transition-colors font-medium"> {{$brand->title}} </span>
                             </div>
                         @endforeach
@@ -223,6 +244,16 @@
                 </div>
 
 
+                <div class='w-full flex justify-between items-center text-center gap-2'>
+                    <div class='w-1/2 text-center items-center flex flex-col'>
+                        <span>کم ترین قیمت</span>
+                        <input id="kamtarin_input" type="number" value="{{$kamtarin}}" class=' w-30 border-1 rounded-md text-center items-center flex'>
+                    </div>
+                    <div class='w-1/2 text-center items-center flex flex-col'>
+                        <span>بیش ترین قیمت</span>
+                        <input id="bishtarin_input" type="number" value="{{$bishtarin}}" class=' w-30 border-1 rounded-md text-center items-center flex'>
+                    </div>
+                </div>
                 <div class='flex justify-between text-center items-center mt-5'>
                     <span>کم ترین قیمت</span>
                     <span>بیش ترین قیمت</span>
