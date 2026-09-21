@@ -17,6 +17,7 @@ use App\Models\brand;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Auth;
+use Log;
 
 class ProductController extends Controller
 {
@@ -712,5 +713,15 @@ class ProductController extends Controller
         $brands=brand::all();
             // dd($products);
         return view('search',['products'=>$products,'searchTitle'=>$request->title,'categories'=>$categories,'brands'=>$brands,'bishtarin'=>$bishtarin,'kamtarin'=>$kamtarin]);
+    }
+
+
+
+    public function getFilteredProducts(Request $request){
+
+        // Log::info($filters);
+        dd($request['filters']);
+
+        return response()->json($filters);
     }
 }

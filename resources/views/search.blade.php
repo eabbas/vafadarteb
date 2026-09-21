@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <script src="{{asset('assets/js/tailwind.js')}}"></script>
+    <script src="{{asset('assets/js/jquery.js')}}"></script>
     <link rel="stylesheet" href="{{asset('assets/css/index.css')}}">
 </head>
 
@@ -182,23 +183,23 @@
                     <span class="size-7 font-bold">فیلتر</span>
                 </div>
                 <div class='w-12/12 text-white flex text-base gap-2'>
-                    <input type="checkbox" class='specials[]'value="پرفروش ترین ها" >
+                    <input type="checkbox" class='specials'value="پرفروش" data-key="top-sell">
                     <span class="text-black transition-colors font-medium"> پرفروش ترین ها </span>
                 </div>
                 <div class='w-12/12 text-white flex text-base gap-2'>
-                    <input type="checkbox" class='specials[]'value="ارزان ترین ها" >
+                    <input type="checkbox" class='specials'value="ارزان" data-key="cheap">
                     <span class="text-black transition-colors font-medium"> ارزان ترین ها </span>
                 </div>
                 <div class='w-12/12 text-white flex text-base gap-2'>
-                    <input type="checkbox" class='specials[]'value="گران ترین ها" >
+                    <input type="checkbox" class='specials'value="گران" data-key="expensive">
                     <span class="text-black transition-colors font-medium"> گران ترین ها </span>
                 </div>
                 <div class='w-12/12 text-white flex text-base gap-2'>
-                    <input type="checkbox" class='specials[]'value="موجود" >
+                    <input type="checkbox" class='specials'value="موجود" data-key="exists">
                     <span class="text-black transition-colors font-medium"> فقط موجود </span>
                 </div>
                 <div class='w-12/12 text-white flex text-base gap-2'>
-                    <input type="checkbox" class='specials[]'value="ناموجود" >
+                    <input type="checkbox" class='specials'value="ناموجود" data-key="not-exists">
                     <span class="text-black transition-colors font-medium"> نمایش نا موجود ها </span>
                 </div>
                 
@@ -216,7 +217,7 @@
                         @foreach($categories as $category)
                             @if($category->id!=1)
                                 <div class='w-12/12 text-white flex text-base gap-2'>
-                                    <input type="checkbox" class='categories[]' value="{{$category->id}}">
+                                    <input type="checkbox" class='specials' data-key="category" value="{{$category->id}}">
                                     <span class="text-black transition-colors font-medium"> {{$category->title}} </span>
                                 </div>
                             @endif
@@ -236,7 +237,7 @@
                     <div class='w-full flex flex-col gap-4 text-end max-h-0 overflow-hidden transition-all duration-500 overflow-y-auto mr-4'>
                         @foreach($brands as $brand)
                             <div class='w-12/12 text-white flex text-base gap-2'>
-                                <input type="checkbox" class='brands' value="{{$brand->id}}">
+                                <input type="checkbox" class='specials' data-key="brand" value="{{$brand->id}}">
                                 <span class="text-black transition-colors font-medium"> {{$brand->title}} </span>
                             </div>
                         @endforeach
@@ -541,6 +542,48 @@
                 }
             })
         })
+
+
+        let specials =document.querySelectorAll('.specials');
+ 
+        let filters = {}
+        specials.forEach(special=>{
+            special.addEventListener('change', ()=>{
+                filters = {}
+                specials.forEach((value, key)=>{
+                    if(value.checked){
+                        filters[key] = {
+                            'key': value.getAttribute('data-key'),
+                            'value': value.value
+                        }
+                    }
+                })
+                $.ajaxSetup({
+                    headers: {
+                        'X-CSRF-TOKEN': "{{ csrf_token() }}"
+                    }
+                })
+                $.ajax({
+                    url:"{{route('product.getFilteredProducts')}}",
+                    type: "POST",
+                    dataType: "json",
+                    data: {
+                        'filters': filters
+                    },
+                    success: function(response){
+                        console.log(response)
+                    },
+                    error: function(){
+                        console.error('failed to load data')
+                    }
+                })
+                console.log(filters)
+            })
+        })
+
+
+
+
     </script>
 </body>
 
