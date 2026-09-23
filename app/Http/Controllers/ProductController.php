@@ -717,18 +717,20 @@ class ProductController extends Controller
 
 
 
-    public function getFilteredProducts(Request $request){
+    // public function getFilteredProducts(Request $request){
 
-        // Log::info($filters);
-        dd($request['filters']);
+    //     // Log::info($filters);
+    //     dd($request['filters']);
 
-        return response()->json($filters);
-    }
+    //     return response()->json($filters);
+    // }
 
     public function getFilters(Request $request){
         $filters = $request->input('filters');
+        // Log::info($filters);
         //  در این شرط تک حطی اگر قسمت اول ترو باشه اون جایگذاری میشه اگه فالس باشه قسمت دوم
         $category = $filters['category'] ?? null;
+        $brand = $filters['brand'] ?? null;
         $exists = $filters['exists'] ?? 1;
         $hasDescount = $filters['hasDescount'] ?? 0;
         $fromPrice = $filters['fromPrice'] ?? 0;
@@ -736,7 +738,7 @@ class ProductController extends Controller
         $sortType = $filters['sortType'] ?? 'asc';
         $sortBy = $filters['sortBy'] ?? 'created_at';
         $keyword = $filters['keyword'] ?? null;
-        $products = Product::where(function ($query) use ($writer, $exists, $hasDescount, $fromPrice, $toPrice) {
+        $products = Product::where(function ($query) use ( $exists, $hasDescount, $fromPrice, $toPrice) {
             
             if ($fromPrice && !$toPrice) {
                 $query->where('products.price', '>=', $fromPrice);
@@ -748,12 +750,18 @@ class ProductController extends Controller
                 $query->whereBetween('products.price', [$fromPrice, $toPrice]);
             }
             if ($exists == 1) {
-                $query->where('products.quantity', '!=', 0);
+                $query->where('products.stock', '!=', 0);
             }
             if ($hasDescount == 1) {
                 $query->whereNotNull('products.discunt');
             }
         });
+        if ($brand && is_array($brand) && count($brand) > 0) {
+            $products = $products->whereHas('brand', function ($q) use ($brand) {
+                $q->whereIn('brands.id', $brand);
+            });
+        }
+        
         if ($category && is_array($category) && count($category) > 0) {
             $products = $products->whereHas('categories', function ($q) use ($category) {
                 $q->whereIn('categories.id', $category);
@@ -768,6 +776,7 @@ class ProductController extends Controller
             });
         }
         $products = $products->orderBy($sortBy, $sortType)->get();
+        Log::info($products);
         foreach ($products as $product) {
             if ($product->medias->isNotEmpty()) {
                 foreach ($product->medias as $media) {

@@ -20,7 +20,7 @@
     <header class="bg-white sticky top-0 z-20 shadow-[0_2px_10px_rgba(0,0,0,.04)]">
         <div
             class="max-w-[1280px] min-h-[78px] mx-auto flex flex-wrap items-center gap-2.5 md:gap-[22px] px-3.5 md:px-5 py-2.5">
-            <div class="text-[21px] md:text-[26px] font-extrabold text-[#ef394e] whitespace-nowrap">طبابوک</div>
+            <div class="text-[21px] md:text-[26px] font-extrabold text-[#00ff91] whitespace-nowrap">وفادار تب</div>
 
             <div
                 class="search flex-1 basis-full md:basis-auto order-3 md:order-none relative max-w-none md:max-w-[760px]">
@@ -76,12 +76,48 @@
                         فیلترها</button>
                 </div>
 
-                <section class="p-[18px] border-b border-[#e4e4e7]">
-                    <div class="font-semibold text-sm mb-[15px]">دسته‌بندی</div>
-                    @foreach ($categories as $category)
-                        <label class="flex items-center gap-2 my-3 text-[13px] text-[#52525b]"><input
-                            class="accent-[#ef394e] w-[17px] h-[17px] categories" type="checkbox" data-filter="{{ $category->id }}">{{ $category->title }}</label>
-                    @endforeach
+
+
+                <section class='element flex flex-col items-center gap-2 p-[18px] border-b border-[#e4e4e7] rounded-xl bg-white shadow-sm hover:shadow-md transition-all mb-3 mt-4'>
+                    <div class='flex w-full justify-between items-center text-center cursor-pointer'>
+                        <div class='flex items-center gap-2 text-white text-base font-medium'>
+                            <span class="text-black">دسته بندی ها</span>
+                        </div>
+                        <svg class='size-4 fill-black transition-all duration-400 rotate-0' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+                            <path d="M241 337c-9.4 9.4-24.6 9.4-33.9 0L47 177c-9.4-9.4-9.4-24.6 0-33.9s24.6-9.4 33.9 0l143 143L367 143c9.4-9.4 24.6-9.4 33.9 0s9.4 24.6 0 33.9L241 337z"/>
+                        </svg>
+                    </div>
+                
+                    <div class='w-full flex flex-col gap-4 text-end max-h-0 overflow-hidden transition-all duration-500 overflow-y-auto mr-4'>
+                        @foreach($categories as $category)
+                            @if($category->id!=1)
+                                <div class='w-12/12 text-white flex text-base gap-2'>
+                                    <label class="flex items-center gap-2 my-3 text-[13px] text-[#52525b]">
+                                    <input class="accent-[#ef394e] w-[17px] h-[17px] categories" type="checkbox" data-filter="{{ $category->id }}">{{ $category->title }}</label>
+                                </div>
+                            @endif
+                        @endforeach
+                    </div>
+                </section>
+
+                <section class='element flex flex-col items-center gap-2 p-[18px] border-b border-[#e4e4e7] rounded-xl bg-white shadow-sm hover:shadow-md transition-all mb-3 mt-4'>
+                    <div class='flex w-full justify-between items-center text-center cursor-pointer'>
+                        <div class='flex items-center gap-2 text-white text-base font-medium'>
+                            <span class="text-black"> بنر ها</span>
+                        </div>
+                        <svg class='size-4 fill-black transition-all duration-400 rotate-0' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+                            <path d="M241 337c-9.4 9.4-24.6 9.4-33.9 0L47 177c-9.4-9.4-9.4-24.6 0-33.9s24.6-9.4 33.9 0l143 143L367 143c9.4-9.4 24.6-9.4 33.9 0s9.4 24.6 0 33.9L241 337z"/>
+                        </svg>
+                    </div>
+                
+                    <div class='w-full flex flex-col gap-4 text-end max-h-0 overflow-hidden transition-all duration-500 overflow-y-auto mr-4'>
+                        @foreach($brands as $brand)
+                            <div class='w-12/12 text-white flex text-base gap-2'>
+                                <label class="flex items-center gap-2 my-3 text-[13px] text-[#52525b]">
+                                <input class="accent-[#ef394e] w-[17px] h-[17px] brands" type="checkbox" data-filter="{{ $brand->id }}">{{ $brand->title }}</label>
+                            </div>
+                        @endforeach
+                    </div>
                 </section>
 
                 <section class="p-[18px] border-b border-[#e4e4e7]">
@@ -137,10 +173,10 @@
                             data-sort-by="created_at" data-sort-type="desc">جدیدترین</button>
                         <button
                             class="sort-btn text-xs border-0 bg-transparent text-[#52525b] px-2.5 py-2 rounded-[7px] cursor-pointer"
-                            data-sort-by="primary_price" data-sort-type="asc">ارزان‌ترین</button>
+                            data-sort-by="price" data-sort-type="asc">ارزان‌ترین</button>
                         <button
                             class="sort-btn text-xs border-0 bg-transparent text-[#52525b] px-2.5 py-2 rounded-[7px] cursor-pointer"
-                            data-sort-by="primary_price" data-sort-type="desc">گران‌ترین</button>
+                            data-sort-by="price" data-sort-type="desc">گران‌ترین</button>
                     </div>
                     {{-- <button id="viewToggle"
                         class="border border-[#e4e4e7] bg-white rounded-[7px] w-9 h-[34px] self-end md:self-auto">▦</button> --}}
@@ -153,10 +189,9 @@
                     </button>
                 </div>
 
-                <div id="products"
-                    class="grid grid-cols-2 min-[431px]:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 bg-white border border-[#e4e4e7] rounded-xl overflow-hidden">
+                <div id="products" class="grid grid-cols-2 min-[431px]:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 bg-white border border-[#e4e4e7] rounded-xl overflow-hidden">
                     @foreach ($products as $product)
-                        <a href="{{ route('product.single', [$product->id]) }}"
+                        <a href="{{ route('product.client_pro_single', [$product->id]) }}"
                             class="group relative min-w-0 bg-white p-[17px] border-l border-b border-[#e4e4e7] transition duration-200 hover:-translate-y-0.5 hover:shadow-[0_6px_22px_rgba(0,0,0,.08)]">
                             @if ($product->percent)
                                 <span
@@ -164,7 +199,7 @@
                             @endif
                             <button
                                 class="absolute top-[22px] left-5 z-10 border-0 bg-white text-xl text-[#aaa]">♡</button>
-                            <img src="{{ asset('storage/'.$product->image) }}"
+                            <img src="{{ asset('storage/product_medias/'.$product->image) }}"
                                 alt="{{ $product->title }}" loading="lazy"
                                 class="w-full aspect-square object-contain rounded-lg bg-[#f8f8f8] block mb-3.5">
                             <h3 class="m-0 mb-2.5 text-[13px] leading-[1.9] h-[50px] overflow-hidden">{{ $product->title }}</h3>
@@ -187,7 +222,7 @@
                                     </span>
                                 </div>
                             @endif
-                            @if ($product->quantity > 0)
+                            @if ($product->stock > 0)
                                 <div class="mt-2.5 text-[10px] text-[#16a34a]">● موجود در انبار</div>
                             @else
                                 <div class="mt-2.5 text-[10px] text-[#a31616]">● ناموجود</div>
@@ -216,11 +251,33 @@
         </div>
     </main>
     <script>
-        let url = "{{ url('/') }}/"
-        let api = "{{ url('api/') }}/"
-        let imgPath = "{{ asset('storage/') }}/"
+        let imgPath = "{{ asset('storage/product_medias') }}/"
+
+
+        let element = document.querySelectorAll('.element');
+        element.forEach((el) => {
+            el.children[0].addEventListener('click', () => {
+                if (el.children[1].classList.contains('max-h-0')) {
+                    el.children[1].classList.remove('max-h-0')
+                    el.children[1].classList.add('h-[200px]')
+                    el.children[0].children[1].classList.remove('rotate-0')
+                    el.children[0].children[1].classList.add('rotate-180')
+                } else {
+                    el.children[1].classList.remove('h-[200px]')
+                    el.children[1].classList.add('max-h-0')
+                    el.children[0].children[1].classList.remove('rotate-180')
+                    el.children[0].children[1].classList.add('rotate-0')
+                }
+            })
+        })
+        let route="{{route('product.getFilters')}}";
+        
+        let header="{{ csrf_token() }}";
+
+        let url='product/client/product/';
+
     </script>
-    <script src="{{ asset('js/filterStore.js') }}"></script>
+    <script src="{{ asset('assets/js/filterStore.js') }}"></script>
 </body>
 
 </html>

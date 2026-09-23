@@ -1,4 +1,5 @@
 let categories = document.querySelectorAll('.categories')
+let brands = document.querySelectorAll('.brands')
 let minPrice = document.getElementById('minPrice')
 let maxPrice = document.getElementById('maxPrice')
 let searchInput = document.getElementById('searchInput')
@@ -14,12 +15,17 @@ let chips = document.getElementById('chips')
 let resetFilters = document.getElementById('resetFilters')
 
 function getFilters() {
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN':header
+        }
+    })
     $.ajax({
-        url: api + 'getFilters',
+        url:route,
         type: "POST",
         dataType: "json",
         data: {
-            'filters': filters
+            'filters': filters,
         },
         success: function (products) {
             productsElement.innerHTML = ''
@@ -27,7 +33,7 @@ function getFilters() {
                 empty.classList.add('hidden')
                 products.forEach(product=>{
                     let link = document.createElement('a')
-                    link.href = url+'product/show/'+product.id
+                    link.href = url+product.id
                     link.classList = 'group relative min-w-0 bg-white p-[17px] border-l border-b border-[#e4e4e7] transition duration-200 hover:-translate-y-0.5 hover:shadow-[0_6px_22px_rgba(0,0,0,.08)]'
                     let elements = ``
                     if (product.percent){
@@ -43,27 +49,27 @@ function getFilters() {
                         <div class="flex justify-between items-center mb-2.5 text-[11px]">
                             <span>۴٫۹ ⭐</span><span class="text-[#f59e0b]">★★★★★</span>
                         </div>`
-                    if (product.secondary_price){
+                    if (product.discunt){
     
                         elements+=`
                             <div class="flex items-center justify-between gap-2">
-                                <strong class="text-[15px] in-fa">${ product.secondary_price }</strong>
+                                <strong class="text-[15px] in-fa">${ product.discunt }</strong>
                                 <span
                                     class="text-[10px] text-[#71717a]">تومان
                                 </span>
                             </div>
-                            <div class="line-through text-[#a1a1aa] text-[10px] in-fa">${ product.primary_price } تومان</div>
+                            <div class="line-through text-[#a1a1aa] text-[10px] in-fa">${ product.price } تومان</div>
                         `
                     } else {
                         elements += `
                         <div class= "flex items-center justify-between gap-2" >
-                            <strong class="text-[15px] in-fa">${ product.primary_price }</strong>
+                            <strong class="text-[15px] in-fa">${ product.price }</strong>
                             <span
                                 class="text-[10px] text-[#71717a]">تومان
                             </span>
                         </div>`
                     }
-                    if (product.count > 0){
+                    if (product.stock > 0){
                         elements += `<div class="mt-2.5 text-[10px] text-[#16a34a]">● موجود در انبار</div>`
                     } else {
                         elements += `<div class= "mt-2.5 text-[10px] text-[#a31616]" >● ناموجود</div>`
@@ -95,6 +101,24 @@ categories.forEach(category => {
             filters.category = categoryObj
         } else {
             delete filters.category
+        }
+        getFilters()
+    })
+})
+brands.forEach(brand => {
+    brand.addEventListener('change', () => {
+        let brandObj = {}
+        let hasAny = false
+        brands.forEach((bran, index) => {
+            if (bran.checked) {
+                hasAny = true
+                brandObj[index] = bran.getAttribute('data-filter')
+            }
+        })
+        if (hasAny) {
+            filters.brand = brandObj
+        } else {
+            delete filters.brand
         }
         getFilters()
     })
@@ -151,7 +175,6 @@ document.addEventListener('click', (e)=>{
 resetFilters.addEventListener('click', ()=>{
     filters = {
         'keyword': null,
-        'writer': null,
         'exists': 1,
         'fromPrice': 0,
         'toPrice': null,
@@ -159,6 +182,7 @@ resetFilters.addEventListener('click', ()=>{
         'sortBy': 'created_at',
         'page': 1,
         'category': null,
+        'brand': null,
     }
     sortBtn.forEach((btn, index) => {
         if(index == 0){
@@ -173,6 +197,9 @@ resetFilters.addEventListener('click', ()=>{
     })
     categories.forEach(cat => {
         cat.checked = false
+    })
+    brands.forEach(brand => {
+        brand.checked = false
     })
     minPrice.value = 0
     maxPrice.value = ''
