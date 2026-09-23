@@ -109,6 +109,8 @@ route::group([
     Route::get('category/attributes/{category}','categoryAttributes')->name('categoryAttributes');
     Route::get('/packages/{product}','packages')->name('packages');
     Route::get('/attributes/{product}','attributes')->name('attributes');
+    // Route::post('/get/filtered/products','getFilteredProducts')->name('getFilteredProducts');
+    Route::post('/get/filtered/products','getFilters')->name('getFilters');
 
     
     Route::get('/client/product/{product}','client_pro_single')->name('client_pro_single');

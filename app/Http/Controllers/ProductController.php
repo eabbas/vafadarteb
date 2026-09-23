@@ -17,6 +17,7 @@ use App\Models\brand;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Auth;
+use Log;
 
 class ProductController extends Controller
 {
@@ -713,4 +714,90 @@ class ProductController extends Controller
             // dd($products);
         return view('search',['products'=>$products,'searchTitle'=>$request->title,'categories'=>$categories,'brands'=>$brands,'bishtarin'=>$bishtarin,'kamtarin'=>$kamtarin]);
     }
+
+
+
+    // public function getFilteredProducts(Request $request){
+
+    //     // Log::info($filters);
+    //     dd($request['filters']);
+
+    //     return response()->json($filters);
+    // }
+
+    public function getFilters(Request $request){
+        $filters = $request->input('filters');
+        // Log::info($filters);
+        //  در این شرط تک حطی اگر قسمت اول ترو باشه اون جایگذاری میشه اگه فالس باشه قسمت دوم
+        $category = $filters['category'] ?? null;
+        $brand = $filters['brand'] ?? null;
+        $exists = $filters['exists'] ?? 1;
+        $hasDescount = $filters['hasDescount'] ?? 0;
+        $fromPrice = $filters['fromPrice'] ?? 0;
+        $toPrice = $filters['toPrice'] ?? null;
+        $sortType = $filters['sortType'] ?? 'asc';
+        $sortBy = $filters['sortBy'] ?? 'created_at';
+        $keyword = $filters['keyword'] ?? null;
+        $products = Product::where(function ($query) use ( $exists, $hasDescount, $fromPrice, $toPrice) {
+            
+            if ($fromPrice && !$toPrice) {
+                $query->where('products.price', '>=', $fromPrice);
+            }
+            if ($toPrice && !$fromPrice) {
+                $query->where('products.price', '<=', $toPrice);
+            }
+            if ($fromPrice && $toPrice) {
+                $query->whereBetween('products.price', [$fromPrice, $toPrice]);
+            }
+            if ($exists == 1) {
+                $query->where('products.stock', '!=', 0);
+            }
+            if ($hasDescount == 1) {
+                $query->whereNotNull('products.discunt');
+            }
+        });
+        if ($brand && is_array($brand) && count($brand) > 0) {
+            $products = $products->whereHas('brand', function ($q) use ($brand) {
+                $q->whereIn('brands.id', $brand);
+            });
+        }
+        
+        if ($category && is_array($category) && count($category) > 0) {
+            $products = $products->whereHas('categories', function ($q) use ($category) {
+                $q->whereIn('categories.id', $category);
+            });
+        }
+        if ($keyword) {
+            $products = $products->where(function ($q) use ($keyword) {
+                $q
+                    ->where('products.title', 'like', '%' . $keyword . '%')
+                    ->orWhere('products.summary', 'like', '%' . $keyword . '%')
+                    ->orWhere('products.description', 'like', '%' . $keyword . '%');
+            });
+        }
+        $products = $products->orderBy($sortBy, $sortType)->get();
+        Log::info($products);
+        foreach ($products as $product) {
+            if ($product->medias->isNotEmpty()) {
+                foreach ($product->medias as $media) {
+                    if ($media->is_main) {
+                        $product->image  = $media->path;
+                        break;
+                    } else {
+                        $product->image = 'default.jpg';
+                    }
+                }
+            } else {
+                $product->image = 'default.jpg';
+            }
+
+            if ($product->discunt) {
+                $campare = $product->price - $product->discunt;
+                $x = $campare / $product->price;
+                $product->percent = intval($x * 100);
+            }
+        }
+        return response()->json($products);
+    }
+
 }
