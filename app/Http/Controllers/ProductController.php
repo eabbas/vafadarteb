@@ -724,4 +724,71 @@ class ProductController extends Controller
 
         return response()->json($filters);
     }
+
+    public function getFilters(Request $request){
+        $filters = $request->input('filters');
+        //  در این شرط تک حطی اگر قسمت اول ترو باشه اون جایگذاری میشه اگه فالس باشه قسمت دوم
+        $category = $filters['category'] ?? null;
+        $exists = $filters['exists'] ?? 1;
+        $hasDescount = $filters['hasDescount'] ?? 0;
+        $fromPrice = $filters['fromPrice'] ?? 0;
+        $toPrice = $filters['toPrice'] ?? null;
+        $sortType = $filters['sortType'] ?? 'asc';
+        $sortBy = $filters['sortBy'] ?? 'created_at';
+        $keyword = $filters['keyword'] ?? null;
+        $products = Product::where(function ($query) use ($writer, $exists, $hasDescount, $fromPrice, $toPrice) {
+            
+            if ($fromPrice && !$toPrice) {
+                $query->where('products.price', '>=', $fromPrice);
+            }
+            if ($toPrice && !$fromPrice) {
+                $query->where('products.price', '<=', $toPrice);
+            }
+            if ($fromPrice && $toPrice) {
+                $query->whereBetween('products.price', [$fromPrice, $toPrice]);
+            }
+            if ($exists == 1) {
+                $query->where('products.quantity', '!=', 0);
+            }
+            if ($hasDescount == 1) {
+                $query->whereNotNull('products.discunt');
+            }
+        });
+        if ($category && is_array($category) && count($category) > 0) {
+            $products = $products->whereHas('categories', function ($q) use ($category) {
+                $q->whereIn('categories.id', $category);
+            });
+        }
+        if ($keyword) {
+            $products = $products->where(function ($q) use ($keyword) {
+                $q
+                    ->where('products.title', 'like', '%' . $keyword . '%')
+                    ->orWhere('products.summary', 'like', '%' . $keyword . '%')
+                    ->orWhere('products.description', 'like', '%' . $keyword . '%');
+            });
+        }
+        $products = $products->orderBy($sortBy, $sortType)->get();
+        foreach ($products as $product) {
+            if ($product->medias->isNotEmpty()) {
+                foreach ($product->medias as $media) {
+                    if ($media->is_main) {
+                        $product->image  = $media->path;
+                        break;
+                    } else {
+                        $product->image = 'default.jpg';
+                    }
+                }
+            } else {
+                $product->image = 'default.jpg';
+            }
+
+            if ($product->discunt) {
+                $campare = $product->price - $product->discunt;
+                $x = $campare / $product->price;
+                $product->percent = intval($x * 100);
+            }
+        }
+        return response()->json($products);
+    }
+
 }
