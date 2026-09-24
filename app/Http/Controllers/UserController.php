@@ -113,7 +113,6 @@ class UserController extends Controller
             "password"=>$validation['password'],
         ]);
         if(isset($request->roles)){
-
             foreach ($request->roles as $role_id) {
                 role_user::create([
                     'user_id'=>$createdUser->id,
@@ -211,7 +210,6 @@ class UserController extends Controller
         $user->save();
         return response()->json($user);
     }
-
     public function changeAvatar(Request $request , User $user){
         Log::info($request->all());
         $file=$request->file('avatar');
@@ -234,14 +232,12 @@ class UserController extends Controller
         ]);
         // return response()->json('moz');
     }
-
     public function changePassword(Request $request , User $user){
         Log::info($request->password);
         $user->password=Hash::make($request->password);
         $user->save();
         return response()->json(true);
     }
-
     public function delete(User $user){
         
         foreach ($user->roles as $role) {
@@ -250,13 +246,10 @@ class UserController extends Controller
         $user->delete();
         return to_route('user.list');
     }
-
-
     public function loginPage(){
         // dd('loginPage');
         return view('loginpage');
     }
-
     public function logOut(){
         Auth::logout();
         return redirect('/');
@@ -293,7 +286,6 @@ class UserController extends Controller
             'products'=>$products,
         ]);
     }
-    
     public function send_code_signup(Request $request){
         $flag = true;
         $user = User::where('phoneNumber', $request->phoneNumber)->first();
@@ -348,5 +340,40 @@ class UserController extends Controller
             $row->delete();
         }
         return response()->json($row);
+    }
+    public function login_ajax(Request $request){
+        dd($request->all());
+
+        // کلا تغییر میکند 
+        if($request->type=='signup'){
+            $user=User::where('phoneNumber',$validation['phoneNumber'])->first();
+            if($user){
+                return 'کاربری با همین مشخصات از قبل ثبت شده';   
+            }
+            $createdUser=User::create([
+                "name"=>$validation['name'],
+                "family"=>$validation['family'],
+                "phoneNumber"=>$validation['phoneNumber'],
+                "email"=>$request['email'],
+                "password"=>$validation['password'],
+            ]);
+            if(isset($request->roles)){
+                foreach ($request->roles as $role_id) {
+                    role_user::create([
+                        'user_id'=>$createdUser->id,
+                        'role_id'=>$role_id,
+                    ]);
+                }
+            }else{
+                $role=role::where('ea_title','user')->first();
+                role_user::create([
+                    'user_id'=>$createdUser->id,
+                    'role_id'=>$role->id,
+                ]);
+            }
+        }else{
+            $user=User::where('phoneNumber',$request->phoneNumber)->first();
+            Auth::login($user);
+        }
     }
 }

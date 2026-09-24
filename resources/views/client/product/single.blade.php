@@ -90,6 +90,182 @@
         }
     </style>
 
+    <!--  -->
+    <style>
+        /* انیمیشن‌های سفارشی */
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-15px) rotate(2deg); }
+        }
+        @keyframes pulse-glow {
+            0%, 100% { box-shadow: 0 0 20px rgba(56, 189, 248, 0.2); }
+            50% { box-shadow: 0 0 50px rgba(56, 189, 248, 0.5); }
+        }
+        @keyframes slide-up {
+            from { opacity: 0; transform: translateY(40px) scale(0.95); }
+            to { opacity: 1; transform: translateY(0) scale(1); }
+        }
+        @keyframes slide-down {
+            from { opacity: 1; transform: translateY(0) scale(1); }
+            to { opacity: 0; transform: translateY(40px) scale(0.95); }
+        }
+        @keyframes heartbeat {
+            0%, 100% { transform: scale(1); }
+            14% { transform: scale(1.12); }
+            28% { transform: scale(1); }
+            42% { transform: scale(1.12); }
+            70% { transform: scale(1); }
+        }
+        @keyframes shimmer {
+            0% { background-position: -200% center; }
+            100% { background-position: 200% center; }
+        }
+        @keyframes rotate-slow {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        .animate-float { animation: float 4s ease-in-out infinite; }
+        .animate-slide-up { animation: slide-up 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) forwards; }
+        .animate-slide-down { animation: slide-down 0.3s ease-in forwards; }
+        .animate-heartbeat { animation: heartbeat 2s ease-in-out infinite; }
+        .animate-shimmer { background: linear-gradient(90deg, transparent, rgba(255,255,255,0.05), transparent); background-size: 200% auto; animation: shimmer 3s linear infinite; }
+        .animate-rotate-slow { animation: rotate-slow 20s linear infinite; }
+        .delay-1 { animation-delay: 0.1s; }
+        .delay-2 { animation-delay: 0.2s; }
+        .delay-3 { animation-delay: 0.3s; }
+        .delay-4 { animation-delay: 0.4s; }
+        .delay-5 { animation-delay: 0.5s; }
+        
+        /* افکت شیشه‌ای (Glassmorphism) */
+        .glass {
+            background: rgba(15, 23, 42, 0.6);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        .glass-light {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+        }
+        
+        /* اسکرول بار سفارشی */
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: rgba(15, 23, 42, 0.8); }
+        ::-webkit-scrollbar-thumb { background: #38bdf8; border-radius: 10px; }
+        
+        /* استایل ورودی‌ها */
+        .input-medical {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            background: rgba(255, 255, 255, 0.05);
+            border: 2px solid rgba(56, 189, 248, 0.1);
+            color: #e2e8f0;
+        }
+        .input-medical:focus {
+            border-color: #38bdf8;
+            box-shadow: 0 0 30px rgba(56, 189, 248, 0.15), inset 0 0 30px rgba(56, 189, 248, 0.03);
+            transform: scale(1.02);
+            background: rgba(255, 255, 255, 0.08);
+        }
+        .input-medical::placeholder {
+            color: rgba(255, 255, 255, 0.3);
+            font-weight: 300;
+        }
+        .input-medical-error {
+            border-color: #f87171 !important;
+            box-shadow: 0 0 25px rgba(248, 113, 113, 0.2) !important;
+        }
+        
+        /* دکمه پزشکی */
+        .btn-medical {
+            background: linear-gradient(135deg, #0ea5e9, #0284c7);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            border: none;
+            position: relative;
+            overflow: hidden;
+        }
+        .btn-medical::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 60%);
+            transform: scale(0);
+            transition: transform 0.6s ease;
+        }
+        .btn-medical:hover::after {
+            transform: scale(1);
+        }
+        .btn-medical:hover {
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 15px 40px rgba(14, 165, 233, 0.35);
+        }
+        .btn-medical:active {
+            transform: scale(0.95);
+        }
+        
+        .btn-medical-success {
+            background: linear-gradient(135deg, #22c55e, #16a34a);
+        }
+        .btn-medical-success:hover {
+            box-shadow: 0 15px 40px rgba(34, 197, 94, 0.35);
+        }
+        
+        /* کارت فرم */
+        .form-card {
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .form-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
+        }
+        
+        /* دکمه تغییر حالت */
+        .toggle-btn {
+            background: rgba(255, 255, 255, 0.05);
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+        .toggle-btn:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: rgba(56, 189, 248, 0.3);
+            transform: scale(1.05);
+            box-shadow: 0 0 30px rgba(56, 189, 248, 0.15);
+        }
+        .toggle-btn:active {
+            transform: scale(0.95);
+        }
+        .toggle-btn .icon-container {
+            transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+        .toggle-btn.active .icon-container {
+            transform: rotate(180deg);
+        }
+        
+        /* دایره‌های نورانی پس‌زمینه */
+        .bg-circle {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.15;
+        }
+        
+        /* المان‌های پزشکی شناور */
+        .medical-icon {
+            opacity: 0.08;
+            transition: all 0.5s ease;
+        }
+        .medical-icon:hover {
+            opacity: 0.15;
+            transform: scale(1.1);
+        }
+    </style>
     <?php
         $summary = $product->description;
         $count = 0;
@@ -240,11 +416,15 @@
                             </div>
                             <span class='w-2/12 text-xs'> سیاه </span>
                         </div>
-                        <div class='w-full flex'>
-                            @if($flag)
-                                <div class='entry_cart_submit cursor-pointer w-full h-10 bg-yellow-200 hover:yellow-300 disable flex text-center items-center justify-center rounded-lg text-black text-[10px] px-2 py-3  hover:bg-(--buttom) hover:font-bold transition-all duration-200'> افزوده شده </div>
+                        <div class='w-full flex' id="entry_cart_parent_div">
+                            @if($user)
+                                @if($flag)
+                                    <div class='entry_cart_submit cursor-pointer w-full h-10 bg-yellow-200 hover:yellow-300 disable flex text-center items-center justify-center rounded-lg text-black text-[10px] px-2 py-3  hover:bg-(--buttom) hover:font-bold transition-all duration-200'> افزوده شده </div>
+                                @else
+                                    <div onclick='entry_cart(this)' class='entry_cart_submit cursor-pointer w-full h-10 bg-(--primary_color) flex text-center items-center justify-center rounded-lg text-white text-[10px] px-2 py-3  hover:bg-(--buttom) hover:font-bold transition-all duration-200'>افزودن به سبد خرید</div>
+                                @endif
                             @else
-                                <div onclick='entry_cart(this)' class='entry_cart_submit cursor-pointer w-full h-10 bg-(--primary_color) flex text-center items-center justify-center rounded-lg text-white text-[10px] px-2 py-3  hover:bg-(--buttom) hover:font-bold transition-all duration-200'>افزودن به سبد خرید</div>
+                                <div onclick='showLoginForm()' class=' cursor-pointer w-full h-10 bg-(--primary_color) flex text-center items-center justify-center rounded-lg text-white text-[10px] px-2 py-3  hover:bg-(--buttom) hover:font-bold transition-all duration-200'>افزودن به سبد خرید</div>
                             @endif
                         </div>
                         <div class='w-full flex gap-2 text-center items-center '>
@@ -1391,6 +1571,516 @@
                 gallery_product_primary.setAttribute('src', src_img_gallery)
             })
         })
+
+
+
+
+
+        let phoneNumber_signup='';
+        let phoneNumber_signin='';
+        let countDownSignup='';
+        let pass_input='';
+        let login_state='';
+        let phoneNumber='';
+        let countDownLogin='';
+        let body=document.querySelector('.body');
+
+
+        
+        function showLoginForm(){
+            let div=document.createElement('div');
+            let blackBackground=document.createElement('div');
+
+            div.classList=`absolute top-40 left-20 bg-gray-400 text-white shadow-xl w-200 flex z-100`
+            div.id='ajax_form'
+            div.innerHTML=
+            `
+
+                <div class='size-5 bg-red-600 text-white flex items-center text-center justify-center' onclick="removeForm(this)">X</div>
+                <!-- ==================== فرم ورود ==================== -->
+                <div id="loginForm" class="form-card glass rounded-3xl p-6 md:p-8 w-full max-w-md mx-auto animate-slide-up visible transition-all duration-700">
+                    <form action="{{route('user.login_ajax')}}" method="post" class="flex flex-col gap-5">
+                        @csrf
+                        <input name="type" type='hidden' value="login">
+                        <!-- هدر فرم -->
+                        <div class="flex items-center gap-4 pb-4 border-b border-white/10">
+                            <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-blue-500/20 to-cyan-500/20 flex items-center justify-center animate-heartbeat">
+                                <svg class="w-8 h-8 text-blue-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M22 12h-4l-3 9-4-18-3 9H2"/>
+                                </svg>
+                            </div>
+                            <div class="text-right">
+                                <h3 class="text-2xl font-bold text-white">ورود به حساب</h3>
+                                <p class="text-sm text-blue-300/70">به سامانه تجهیزات پزشکی خوش آمدید</p>
+                            </div>
+                        </div>
+
+                        <!-- فیلد شماره تلفن -->
+                        <div class="relative group" id="tell_signin">
+                            <div class="absolute right-3 top-1/2 -translate-y-1/2 text-blue-400/40 group-focus-within:text-blue-400 transition-colors duration-300">
+                                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+                                </svg>
+                            </div>
+                            <input type="tell" name="phoneNumber" placeholder="شماره تلفن" 
+                                class="input-medical w-full rounded-2xl py-3.5 pr-12 pl-4 text-white placeholder:text-white/35 outline-none transition-all duration-300">
+                        </div>
+
+                        <!-- فیلد رمز عبور -->
+                        <div class='w-full'>
+                            <div class="relative group" id='pass_input'>
+                                <div class="absolute right-3 top-1/2 -translate-y-1/2 text-blue-400/40 group-focus-within:text-blue-400 transition-colors duration-300">
+                                    <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
+                                        <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+                                    </svg>
+                                </div>
+                                <input type="password" name="password" placeholder="رمز عبور" 
+                                    class="input-medical w-full rounded-2xl py-3.5 pr-12 pl-4 text-white placeholder:text-white/35 outline-none transition-all duration-300">
+                            </div>
+                        </div>
+
+                        <div onclick="change_login_state(this,'code')" class='text-cyan-600 font-bold text-sm cursor-pointer' id='login_state' > ورود با رمز یکبار مصرف </div>
+                        
+                        <!-- دکمه ورود -->
+                        <button type="submit" class="btn-medical w-full rounded-2xl py-4 text-white font-bold text-lg tracking-wide mt-2 flex items-center justify-center gap-3 group">
+                            <span>ورود به حساب</span>
+                            <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M5 12h14"/><path d="M12 5l7 7-7 7"/>
+                            </svg>
+                        </button>
+
+                        <div class='bg-white rounded-xl border-1 p-3 text-black text-center justify-center items-center cursor-pointer' onclick="changeForm('signup')"> change </div>
+                    </form>
+                </div>
+
+                <!-- ==================== فرم ثبت نام ==================== -->
+                <div id="signupForm" class="form-card glass rounded-3xl p-6 md:p-8 w-full max-w-md mx-auto hidden invisible transition-all duration-700">
+                    <form action="{{route('user.login_ajax')}}" method="post" class="flex flex-col gap-4">
+                        @csrf
+                        <input name="type" type='hidden' value="signup">
+                        <!-- هدر فرم -->
+                        <div class="flex items-center gap-4 pb-4 border-b border-white/10">
+                            <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-emerald-500/20 to-green-500/20 flex items-center justify-center animate-heartbeat">
+                                <svg class="w-8 h-8 text-emerald-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                                    <circle cx="8.5" cy="7" r="4"/>
+                                    <line x1="20" y1="8" x2="20" y2="14"/><line x1="23" y1="11" x2="17" y2="11"/>
+                                </svg>
+                            </div>
+                            <div class="text-right">
+                                <h3 class="text-2xl font-bold text-white">ثبت نام جدید</h3>
+                                <p class="text-sm text-emerald-300/70">ایجاد حساب کاربری پزشکی</p>
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                            <!-- نام -->
+                            <div class="relative group">
+                                <div class="absolute right-3 top-1/2 -translate-y-1/2 text-emerald-400/40 group-focus-within:text-emerald-400 transition-colors duration-300">
+                                    <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+                                        <circle cx="12" cy="7" r="4"/>
+                                    </svg>
+                                </div>
+                                <input type="text" name="name" placeholder="نام" 
+                                    class="input-medical w-full rounded-2xl py-3 pr-12 pl-3 text-white placeholder:text-white/35 outline-none transition-all duration-300 text-sm">
+                            </div>
+
+                            <!-- نام خانوادگی -->
+                            <div class="relative group">
+                                <div class="absolute right-3 top-1/2 -translate-y-1/2 text-emerald-400/40 group-focus-within:text-emerald-400 transition-colors duration-300">
+                                    <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+                                        <path d="M12 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8z"/>
+                                    </svg>
+                                </div>
+                                <input type="text" name="family" placeholder="نام خانوادگی" 
+                                    class="input-medical w-full rounded-2xl py-3 pr-12 pl-3 text-white placeholder:text-white/35 outline-none transition-all duration-300 text-sm">
+                            </div>
+                        </div>
+
+                        <!-- شماره تلفن -->
+                        <div class="relative group" id='tell_signup'>
+                            <div class="absolute right-3 top-1/2 -translate-y-1/2 text-emerald-400/40 group-focus-within:text-emerald-400 transition-colors duration-300">
+                                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+                                </svg>
+                            </div>
+                            <input type="tell" name="phoneNumber" placeholder="شماره تلفن" 
+                                class="input-medical w-full rounded-2xl py-3.5 pr-12 pl-4 text-white placeholder:text-white/35 outline-none transition-all duration-300">
+                        </div>
+
+                        <!-- ایمیل -->
+                        <!-- <div class="relative group">
+                            <div class="absolute right-3 top-1/2 -translate-y-1/2 text-emerald-400/40 group-focus-within:text-emerald-400 transition-colors duration-300">
+                                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                                    <polyline points="22,6 12,13 2,6"/>
+                                </svg>
+                            </div>
+                            <input type="text" name="email" placeholder="ایمیل" 
+                                class="input-medical w-full rounded-2xl py-3.5 pr-12 pl-4 text-white placeholder:text-white/35 outline-none transition-all duration-300">
+                        </div> -->
+
+                        <!-- رمز عبور -->
+                        <div class="relative group">
+                            <div class="absolute right-3 top-1/2 -translate-y-1/2 text-emerald-400/40 group-focus-within:text-emerald-400 transition-colors duration-300">
+                                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
+                                    <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+                                </svg>
+                            </div>
+                            <input type="password" name="password" placeholder="رمز عبور (حداقل 9 کاراکتر)" 
+                                class="input-medical w-full rounded-2xl py-3.5 pr-12 pl-4 text-white placeholder:text-white/35 outline-none transition-all duration-300">
+                        </div>
+                        <div class='w-full flex gap-2 justify-between'>
+                            
+                            <div class="relative group w-4/12 ">
+                                <div onclick='sendCodeSignup("signup")' id="countDownSignup" class='btn-medical btn-medical-success cursor-pointer w-full flex bg-emerald-400/40 h-full rounded-2xl  text-white text-center items-center justify-center font-bold'>
+                                    <span> دریافت کد  </span>
+                                </div>
+                            </div>
+                            <!-- کد ورود -->
+                            <div class="relative group w-8/12">
+                                <div class="absolute right-3 top-1/2 -translate-y-1/2 text-emerald-400/40 group-focus-within:text-emerald-400 transition-colors duration-300">
+                                    <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
+                                        <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+                                    </svg>
+                                </div>
+                                <input type="number" name="code" oninput="limitDigits(this)" required placeholder="کد ورود " class="input-medical w-full rounded-2xl py-3.5 pr-12 pl-4 text-white placeholder:text-white/35 outline-none transition-all duration-300">
+                            </div>
+
+                        </div>
+
+                        <!-- دکمه ثبت نام -->
+                        <button type="submit" class="btn-medical btn-medical-success cursor-pointer w-full rounded-2xl py-4 text-white font-bold text-lg tracking-wide mt-1 flex items-center justify-center gap-3 group">
+                            <span>ثبت نام</span>
+                            <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M5 12h14"/><path d="M12 5l7 7-7 7"/>
+                            </svg>
+                        </button>
+
+                        <div class='bg-white rounded-xl border-1 p-3 text-black text-center justify-center items-center cursor-pointer' onclick="changeForm('login')"> change </div>
+
+                        <!-- پیام تکمیلی -->
+                        <div class="text-center mt-1">
+                            <p class="text-xs text-white/20">با ثبت نام، شرایط و قوانین سامانه را می‌پذیرید</p>
+                        </div>
+                    </form>
+                </div>
+
+            `
+            body.appendChild(div)
+        }
+
+        function changeForm(state) {
+            const loginForm = document.getElementById('loginForm');
+            const signupForm = document.getElementById('signupForm');
+
+            if (state === 'login') {
+                loginForm.classList.add('visible');
+                loginForm.classList.remove('hidden');
+
+                signupForm.classList.remove('visible');
+                signupForm.classList.add('hidden');
+            } else {
+                signupForm.classList.add('visible');
+                signupForm.classList.remove('hidden');
+
+                loginForm.classList.remove('visible');
+                loginForm.classList.add('hidden');
+            }
+        }
+        function change_login_state(el,string){
+            phoneNumber_signup=document.getElementById('tell_signup');
+            phoneNumber_signin=document.getElementById('tell_signin');
+            countDownSignup=document.getElementById('countDownSignup');
+            pass_input=document.getElementById('pass_input');
+            login_state=document.getElementById('login_state');
+            countDownLogin=document.getElementById('countDownLogin');
+            if(string=='code'){
+                el.previousElementSibling.classList.add('flex');
+                el.previousElementSibling.classList.add('justify-between');
+                el.previousElementSibling.classList.add('gap-2');
+                el.previousElementSibling.innerHTML=
+                `
+                    <div class="relative group w-4/12 ">
+                        <div onclick='sendCodeLogin("signin")' id="countDownLogin" class='btn-medical btn-medical-success cursor-pointer w-full flex bg-emerald-400/40 h-full rounded-2xl  text-white text-center items-center justify-center font-bold'>
+                                <span> دریافت کد  </span>
+                        </div>
+                    </div>
+                    <!-- کد ورود -->
+                    <div class="relative group w-8/12">
+                        <div class="absolute right-3 top-1/2 -translate-y-1/2 text-emerald-400/40 group-focus-within:text-emerald-400 transition-colors duration-300">
+                            <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
+                                <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+                            </svg>
+                        </div>
+                        <input type="number" name="code" oninput="limitDigits(this)" required placeholder="کد ورود " class="input-medical w-full rounded-2xl py-3.5 pr-12 pl-4 text-white placeholder:text-white/35 outline-none transition-all duration-300">
+                    </div>
+                `
+                el.innerHTML='ورورد با رمز عبور'
+                el.setAttribute('onclick',"change_login_state(this,'password')")
+
+            }else{
+                el.previousElementSibling.classList.remove('flex');
+                el.previousElementSibling.classList.remove('justify-between');
+                el.previousElementSibling.classList.remove('gap-2');
+                el.previousElementSibling.innerHTML=
+                `
+                    <div class="relative group" id='pass_input'>
+                        <div class="absolute right-3 top-1/2 -translate-y-1/2 text-blue-400/40 group-focus-within:text-blue-400 transition-colors duration-300">
+                            <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
+                                <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+                            </svg>
+                        </div>
+                        <input type="password" name="password" placeholder="رمز عبور" 
+                            class="input-medical w-full rounded-2xl py-3.5 pr-12 pl-4 text-white placeholder:text-white/35 outline-none transition-all duration-300">
+                    </div>
+                `
+                el.innerHTML='ورورد با رمز یکبار مصرف '
+                el.setAttribute('onclick',"change_login_state(this,'code')")
+
+            }
+        }
+        
+
+        function sendCodeSignup(state){
+            phoneNumber_signup=document.getElementById('tell_signup');
+            phoneNumber_signin=document.getElementById('tell_signin');
+            countDownSignup=document.getElementById('countDownSignup');
+            pass_input=document.getElementById('pass_input');
+            login_state=document.getElementById('login_state');
+            countDownLogin=document.getElementById('countDownLogin');
+            phoneNumber = phoneNumber_signup.children[1].value
+            if(phoneNumber!=""){
+                $.ajaxSetup({
+                    headers: {
+                        'X-CSRF-TOKEN': "{{ csrf_token() }}"
+                    }
+                })
+                $.ajax({
+                    url:"{{route('user.send_code_signup')}}",
+                    type:"post",
+                    dataType:"json",
+                    data:{
+                        'phoneNumber':phoneNumber,
+                        'state':state,
+
+                    },
+                    success:function(data){
+                        if(data){
+                            alert('کد ارسال شد🥼');
+                            counterSignupButton(phoneNumber);
+                        }else{
+                            alert('این شماره قبلا ثبت نام شده است')
+                        }
+                    },
+                    error:function(){
+                        alert('کد ارسال نشد بعدا امتحان کنید');
+                    }
+                })
+            }else{
+                phoneNumber_signup.classList.add('border-3')
+                phoneNumber_signup.classList.add('border-red-600')
+                phoneNumber_signup.classList.add('rounded-2xl')
+                alert('شماره تلفن خود را وارد کنید');
+            }
+        }
+        function sendCodeLogin(state){
+            phoneNumber_signup=document.getElementById('tell_signup');
+            phoneNumber_signin=document.getElementById('tell_signin');
+            countDownSignup=document.getElementById('countDownSignup');
+            pass_input=document.getElementById('pass_input');
+            login_state=document.getElementById('login_state');
+            countDownLogin=document.getElementById('countDownLogin');
+            phoneNumber = phoneNumber_signin.children[1].value
+            console.log(phoneNumber)
+            if(phoneNumber!=""){
+                $.ajaxSetup({
+                    headers: {
+                        'X-CSRF-TOKEN': "{{ csrf_token() }}"
+                    }
+                })
+                $.ajax({
+                    url:"{{route('user.send_code_login')}}",
+                    type:"post",
+                    dataType:"json",
+                    data:{
+                        'phoneNumber':phoneNumber,
+                        'state':state,
+
+                    },
+                    success:function(data){
+
+                        if(data){
+                            alert('کد ارسال شد');
+                            counterLoginButton(phoneNumber);
+                        }else{
+                            alert("شما از قبل ثبت نام نکرده اید");
+                        }
+                    },
+                    error:function(){
+                        alert("'کد ارسال نشد بعدا امتحان کنید'");
+                    }
+                })
+            }else{
+
+                phoneNumber_signin.classList.add('border-3')
+                phoneNumber_signin.classList.add('border-red-600')
+                phoneNumber_signin.classList.add('rounded-2xl')
+                alert('شماره تلفن خود را وارد کنید');
+
+            }
+        }
+        function counterSignupButton(phoneNumber) {
+            phoneNumber_signup=document.getElementById('tell_signup');
+            phoneNumber_signin=document.getElementById('tell_signin');
+            countDownSignup=document.getElementById('countDownSignup');
+            pass_input=document.getElementById('pass_input');
+            login_state=document.getElementById('login_state');
+            countDownLogin=document.getElementById('countDownLogin');
+            countDownSignup.classList.add('cursor-no-drop')
+            countDownSignup.classList.remove('cursor-pointer')
+            countDownSignup.classList.remove('hover:bg-[#d52b4a]')
+            countDownSignup.classList.add('hover:bg-[#d52b4a]/50')
+            countDownSignup.classList.remove('bg-[#eb3254]')
+            countDownSignup.classList.add('bg-[#eb3254]/50')
+            countDownSignup.setAttribute('disabled', true)
+            countDownSignup.removeAttribute('onclick')
+            countDownSignup.setAttribute('dir', 'ltr')
+            let count = 120
+            let result = setInterval(() => {
+                let minute = Math.floor(count / 60)
+                let seconds = count % 60
+                count -= 1
+                if (count < 0) {
+
+                    $.ajaxSetup({
+                        headers: {
+                            'X-CSRF-TOKEN': "{{ csrf_token() }}"
+                        }
+                    })
+                    $.ajax({
+                        url: "{{ route('user.removeActivationCode') }}",
+                        type: "POST",
+                        dataType: "json",
+                        data: {
+                            'phoneNumber': phoneNumber
+                        },
+                        success: function(data) {
+                            console.log(data)
+                            countDownSignup.classList.remove('cursor-no-drop')
+                            countDownSignup.classList.add('bg-[#eb3254]')
+                            countDownSignup.classList.remove('bg-[#eb3254]/50')
+                            countDownSignup.classList.add('cursor-pointer')
+                            countDownSignup.classList.add('hover:bg-[#d52b4a]')
+                            countDownSignup.classList.remove('hover:bg-[#d52b4a]/50')
+                            countDownSignup.removeAttribute('disabled')
+                            countDownSignup.setAttribute('onclick','sendCodeSignup("signup")')
+                            countDownSignup.removeAttribute('dir')
+                            countDownSignup.innerText = "ارسال مجدد"
+                        },
+                        error: function() {
+                            showMessage('open')
+                            element.innerHTML = `
+                                <span>❌</span>
+                                <span class="text-shadw-lg">خطا در دریافت اطلاعات!</span>
+                            `
+                            message.children[0].appendChild(element)
+                            setTimeout(() => {
+                                showMessage('close')
+                            }, 2500)
+                        }
+                    })
+                    clearInterval(result)
+                }
+                countDownSignup.innerText = minute.toString().padStart(2, "0") + " : " + seconds.toString().padStart(2,
+                    "0");
+            }, 1000)
+        }
+        function counterLoginButton(phoneNumber) {
+            phoneNumber_signup=document.getElementById('tell_signup');
+            phoneNumber_signin=document.getElementById('tell_signin');
+            countDownSignup=document.getElementById('countDownSignup');
+            pass_input=document.getElementById('pass_input');
+            login_state=document.getElementById('login_state');
+            countDownLogin=document.getElementById('countDownLogin');
+            countDownLogin.classList.add('cursor-no-drop')
+            countDownLogin.classList.remove('cursor-pointer')
+            countDownLogin.classList.remove('hover:bg-[#d52b4a]')
+            countDownLogin.classList.add('hover:bg-[#d52b4a]/50')
+            countDownLogin.classList.remove('bg-[#eb3254]')
+            countDownLogin.classList.add('bg-[#eb3254]/50')
+            countDownLogin.setAttribute('disabled', true)
+            countDownLogin.removeAttribute('onclick')
+            countDownLogin.setAttribute('dir', 'ltr')
+            let count = 120
+            let result = setInterval(() => {
+                let minute = Math.floor(count / 60)
+                let seconds = count % 60
+                count -= 1
+                if (count < 0) {
+
+                    $.ajaxSetup({
+                        headers: {
+                            'X-CSRF-TOKEN': "{{ csrf_token() }}"
+                        }
+                    })
+                    $.ajax({
+                        url: "{{ route('user.removeActivationCode') }}",
+                        type: "POST",
+                        dataType: "json",
+                        data: {
+                            'phoneNumber': phoneNumber
+                        },
+                        success: function(data) {
+                            console.log(data)
+                            countDownLogin.classList.remove('cursor-no-drop')
+                            countDownLogin.classList.add('bg-[#eb3254]')
+                            countDownLogin.classList.remove('bg-[#eb3254]/50')
+                            countDownLogin.classList.add('cursor-pointer')
+                            countDownLogin.classList.add('hover:bg-[#d52b4a]')
+                            countDownLogin.classList.remove('hover:bg-[#d52b4a]/50')
+                            countDownLogin.removeAttribute('disabled')
+                            countDownLogin.setAttribute('onclick','sendCodeLogin("login")')
+                            countDownLogin.removeAttribute('dir')
+                            countDownLogin.innerText = "ارسال مجدد"
+                        },
+                        error: function() {
+                            showMessage('open')
+                            element.innerHTML = `
+                                <span>❌</span>
+                                <span class="text-shadw-lg">خطا در دریافت اطلاعات!</span>
+                            `
+                            message.children[0].appendChild(element)
+                            setTimeout(() => {
+                                showMessage('close')
+                            }, 2500)
+                        }
+                    })
+                    clearInterval(result)
+                }
+                countDownLogin.innerText = minute.toString().padStart(2, "0") + " : " + seconds.toString().padStart(2,
+                    "0");
+            }, 1000)
+        }
+        function removeForm(){
+            document.getElementById('ajax_form').remove();
+        }
+
+
+
+
+
+
+
+
+
 
 
         // let user_id="{{Auth::id()}}";
