@@ -7,6 +7,7 @@
     <title>تجهیزات پزشکی</title>
     <script src="{{asset('assets/js/tailwind.js')}}"></script>
     <link rel="stylesheet" href="{{asset('assets/css/index.css')}}">
+    <link rel="stylesheet" href="{{asset('assets/css/style.css')}}">
 </head>
 
 <body>

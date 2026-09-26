@@ -7,6 +7,7 @@
     <script src="{{asset('assets/js/tailwind.js')}}"></script>
     <script src="{{asset('assets/js/jquery.js')}}"></script>
     <link rel="stylesheet" href="{{asset('assets/css/index.css')}}">
+    <link rel="stylesheet" href="{{asset('assets/css/style.css')}}">
 
 </head>
 
