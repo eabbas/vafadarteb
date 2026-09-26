@@ -645,36 +645,28 @@ class ProductController extends Controller
     }
     public function client_pro_single(product $product){
         $user=Auth::user();
-        $user->load(['carts'=>function($query){$query->where('order_id',null)->get();}]);
-        if(count($user->carts)>0){
-            foreach ($user->carts as $cart) {
-                foreach ($cart->product->medias as $media) {
-                    if($media->is_main==1){
-                        $cart->product->path=$media->path;
-                    }
-                }
-                
-            }
-        }
-        // $user->load(['carts'=>function($query){
-        //     $query->with(['product'=>function($q){
-        //         $q->with(['medias'=>function($qr){
-        //             $qr->where('is_main', 1)->first();
-        //         }])->get();
-        //     }]);
-        // }]);
-
-        // dd($user);
-        // dd($user->carts[1]->product->medias[0]->path);
-        // dd($product);
         $flag=false;
-        foreach ($user->carts as $cart) {
-            if($cart->product->id==$product->id){
-                $flag=true;
+        if($user){
+            $user->load(['carts'=>function($query){$query->where('order_id',null)->get();}]);
+            if(count($user->carts)>0){
+                foreach ($user->carts as $cart) {
+                    foreach ($cart->product->medias as $media) {
+                        if($media->is_main==1){
+                            $cart->product->path=$media->path;
+                        }
+                    }
+                    
+                }
             }
+            foreach ($user->carts as $cart) {
+                if($cart->product->id==$product->id){
+                    $flag=true;
+                }
+            }
+            $is_mainpicture='';
+            $galleryPicture=[];
         }
-        $is_mainpicture='';
-        $galleryPicture=[];
+        
         foreach ($product->medias as $media) {
             if($media->is_main==1){
                 $product->is_main=$media->path;
