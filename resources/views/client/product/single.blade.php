@@ -1579,10 +1579,13 @@
         let phoneNumber_signup='';
         let phoneNumber_signin='';
         let countDownSignup='';
-        let pass_input='';
+        let signin_password='';
+        let signup_password='';
         let login_state='';
         let phoneNumber='';
         let countDownLogin='';
+        let loginForm='';
+        let signupForm='';
         let body=document.querySelector('.body');
 
 
@@ -1628,7 +1631,7 @@
 
                         <!-- فیلد رمز عبور -->
                         <div class='w-full'>
-                            <div class="relative group" id='pass_input'>
+                            <div class="relative group" id='signin_password'>
                                 <div class="absolute right-3 top-1/2 -translate-y-1/2 text-blue-400/40 group-focus-within:text-blue-400 transition-colors duration-300">
                                     <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                         <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
@@ -1643,12 +1646,12 @@
                         <div onclick="change_login_state(this,'code')" class='text-cyan-600 font-bold text-sm cursor-pointer' id='login_state' > ورود با رمز یکبار مصرف </div>
                         
                         <!-- دکمه ورود -->
-                        <button type="submit" class="btn-medical w-full rounded-2xl py-4 text-white font-bold text-lg tracking-wide mt-2 flex items-center justify-center gap-3 group">
+                        <div onclick='checkUser("signin")' class="btn-medical w-full rounded-2xl py-4 text-white font-bold text-lg tracking-wide mt-2 flex items-center justify-center gap-3 group">
                             <span>ورود به حساب</span>
                             <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
                                 <path d="M5 12h14"/><path d="M12 5l7 7-7 7"/>
                             </svg>
-                        </button>
+                        </div>
 
                         <div class='bg-white rounded-xl border-1 p-3 text-black text-center justify-center items-center cursor-pointer' onclick="changeForm('signup')"> change </div>
                     </form>
@@ -1724,7 +1727,7 @@
                         </div> -->
 
                         <!-- رمز عبور -->
-                        <div class="relative group">
+                        <div class="relative group" id="signup_password">
                             <div class="absolute right-3 top-1/2 -translate-y-1/2 text-emerald-400/40 group-focus-within:text-emerald-400 transition-colors duration-300">
                                 <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                     <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
@@ -1755,12 +1758,12 @@
                         </div>
 
                         <!-- دکمه ثبت نام -->
-                        <button type="submit" class="btn-medical btn-medical-success cursor-pointer w-full rounded-2xl py-4 text-white font-bold text-lg tracking-wide mt-1 flex items-center justify-center gap-3 group">
+                        <div onclick='checkUser("signup")' class="btn-medical btn-medical-success cursor-pointer w-full rounded-2xl py-4 text-white font-bold text-lg tracking-wide mt-1 flex items-center justify-center gap-3 group">
                             <span>ثبت نام</span>
                             <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
                                 <path d="M5 12h14"/><path d="M12 5l7 7-7 7"/>
                             </svg>
-                        </button>
+                        </div>
 
                         <div class='bg-white rounded-xl border-1 p-3 text-black text-center justify-center items-center cursor-pointer' onclick="changeForm('login')"> change </div>
 
@@ -1774,10 +1777,9 @@
             `
             body.appendChild(div)
         }
-
         function changeForm(state) {
-            const loginForm = document.getElementById('loginForm');
-            const signupForm = document.getElementById('signupForm');
+            loginForm = document.getElementById('loginForm');
+            signupForm = document.getElementById('signupForm');
 
             if (state === 'login') {
                 loginForm.classList.add('visible');
@@ -1797,7 +1799,8 @@
             phoneNumber_signup=document.getElementById('tell_signup');
             phoneNumber_signin=document.getElementById('tell_signin');
             countDownSignup=document.getElementById('countDownSignup');
-            pass_input=document.getElementById('pass_input');
+            signin_password=document.getElementById('signin_password');
+            signup_password=document.getElementById('signup_password');
             login_state=document.getElementById('login_state');
             countDownLogin=document.getElementById('countDownLogin');
             if(string=='code'){
@@ -1831,7 +1834,7 @@
                 el.previousElementSibling.classList.remove('gap-2');
                 el.previousElementSibling.innerHTML=
                 `
-                    <div class="relative group" id='pass_input'>
+                    <div class="relative group" id='signin_password'>
                         <div class="absolute right-3 top-1/2 -translate-y-1/2 text-blue-400/40 group-focus-within:text-blue-400 transition-colors duration-300">
                             <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                 <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
@@ -1847,13 +1850,66 @@
 
             }
         }
-        
+        function checkUser(state){
+            let currentPhoneNumber=document.getElementById('tell_'+state);
+            let currentPassword=document.getElementById(state+'_password');
 
+            if(currentPhoneNumber.children[1].value.length>=11){
+                $.ajaxSetup({
+                    headers: {
+                        'X-CSRF-TOKEN': "{{ csrf_token() }}"
+                    }
+                })
+                $.ajax({
+                    url:"{{route('user.checkUser')}}",
+                    type:"post",
+                    dataType:"json",
+                    data:{
+                        'phoneNumber':currentPhoneNumber.children[1].value,
+                        'password':currentPassword.children[1].value,
+                        'state':state,
+                    },
+                    success:function(data){
+                        let myForm='';
+                        console.log(data)
+                        if(data.state=='signin'){
+                            if(data.exists){
+                                if(data.confirmation){
+                                    myForm=document.getElementById('loginForm').children[0];
+                                    myForm.submit();
+                                    console.log(myForm);
+                                }else{
+                                    alert('رمز نادرست میباشد ');
+                                }
+                            }else{
+                                alert('کاربری با این شماره وجود ندارد نمیتوان ورود کرد');
+                            }
+                        }
+                        if(data.state=='signup'){
+                            if(!data.exists){
+                                myForm=document.getElementById('signupForm').children[0];
+                                myForm.submit();
+                                console.log(myForm);
+                            }else{
+                                alert('کاربری با این شماره وجود دارد نمیتوان ثبت نام کرد');
+                            }
+                        }
+                    },
+                    error:function(){
+                        alert('کد ارسال نشد بعدا امتحان کنید');
+                    }
+                })
+            }else{
+                alert("شماره تلفن خود را به درستی وارد کنید");
+            }
+            console.log(currentPhoneNumber);
+        }
         function sendCodeSignup(state){
             phoneNumber_signup=document.getElementById('tell_signup');
             phoneNumber_signin=document.getElementById('tell_signin');
             countDownSignup=document.getElementById('countDownSignup');
-            pass_input=document.getElementById('pass_input');
+            signin_password=document.getElementById('signin_password');
+            signup_password=document.getElementById('signup_password');
             login_state=document.getElementById('login_state');
             countDownLogin=document.getElementById('countDownLogin');
             phoneNumber = phoneNumber_signup.children[1].value
@@ -1895,7 +1951,8 @@
             phoneNumber_signup=document.getElementById('tell_signup');
             phoneNumber_signin=document.getElementById('tell_signin');
             countDownSignup=document.getElementById('countDownSignup');
-            pass_input=document.getElementById('pass_input');
+            signin_password=document.getElementById('signin_password');
+            signup_password=document.getElementById('signup_password');
             login_state=document.getElementById('login_state');
             countDownLogin=document.getElementById('countDownLogin');
             phoneNumber = phoneNumber_signin.children[1].value
@@ -1941,7 +1998,8 @@
             phoneNumber_signup=document.getElementById('tell_signup');
             phoneNumber_signin=document.getElementById('tell_signin');
             countDownSignup=document.getElementById('countDownSignup');
-            pass_input=document.getElementById('pass_input');
+            signin_password=document.getElementById('signin_password');
+            signup_password=document.getElementById('signup_password');
             login_state=document.getElementById('login_state');
             countDownLogin=document.getElementById('countDownLogin');
             countDownSignup.classList.add('cursor-no-drop')
@@ -2007,7 +2065,8 @@
             phoneNumber_signup=document.getElementById('tell_signup');
             phoneNumber_signin=document.getElementById('tell_signin');
             countDownSignup=document.getElementById('countDownSignup');
-            pass_input=document.getElementById('pass_input');
+            signin_password=document.getElementById('signin_password');
+            signup_password=document.getElementById('signup_password');
             login_state=document.getElementById('login_state');
             countDownLogin=document.getElementById('countDownLogin');
             countDownLogin.classList.add('cursor-no-drop')

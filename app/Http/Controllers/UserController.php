@@ -376,4 +376,27 @@ class UserController extends Controller
             Auth::login($user);
         }
     }
+    public function checkUser(Request $request){
+        $exists=false;
+        $confirmation=false;
+        $user= User::where('phoneNumber',$request['phoneNumber'])->first();
+
+        if($user){
+            $exists=true;
+        }
+        
+        if($request->state=='signin'){
+            if(Hash::check($request->password,$user->password)){
+                $confirmation=true;
+            }
+        }
+        return response()->json(
+            [
+                'exists'=>$exists,
+                'state'=>$request->state ,
+                'confirmation'=>$confirmation
+             ]
+            );
+    }
+
 }
