@@ -308,25 +308,25 @@ class UserController extends Controller
             //     $patternValues,  // pattern values
             // );
             ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-            $ch = curl_init('https://api.iranpayamak.com/ws/v1/sms/pattern');
-            curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-            curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'POST');
-            curl_setopt($ch, CURLOPT_HTTPHEADER, [
-                'Accept: application/json',
-                'Api-Key: M1MIQPQ9s85i6dxdzTeRGx9t87AtRQJlXNiu01e7awuQz94TkI',
-                'Content-Type: application/json'
-            ]);
-            $payload = [
-                'code' => '7fvdx77gveizxqn',
-                'attributes' => [
-                    'activation_code' => $code,
-                ],
-                'recipient' => $request->phoneNumber,
-                'line_number' => '50002178584000',
-                'number_format' => 'english'
-            ];
-            curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($payload));
-            $response = curl_exec($ch);
+            // $ch = curl_init('https://api.iranpayamak.com/ws/v1/sms/pattern');
+            // curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+            // curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'POST');
+            // curl_setopt($ch, CURLOPT_HTTPHEADER, [
+            //     'Accept: application/json',
+            //     'Api-Key: M1MIQPQ9s85i6dxdzTeRGx9t87AtRQJlXNiu01e7awuQz94TkI',
+            //     'Content-Type: application/json'
+            // ]);
+            // $payload = [
+            //     'code' => '7fvdx77gveizxqn',
+            //     'attributes' => [
+            //         'activation_code' => $code,
+            //     ],
+            //     'recipient' => $request->phoneNumber,
+            //     'line_number' => '50002178584000',
+            //     'number_format' => 'english'
+            // ];
+            // curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($payload));
+            // $response = curl_exec($ch);
 
         }
         return response()->json($flag);
@@ -353,25 +353,25 @@ class UserController extends Controller
             //     $patternValues,  // pattern values
             // );
             ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-            $ch = curl_init('https://api.iranpayamak.com/ws/v1/sms/pattern');
-            curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-            curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'POST');
-            curl_setopt($ch, CURLOPT_HTTPHEADER, [
-                'Accept: application/json',
-                'Api-Key: M1MIQPQ9s85i6dxdzTeRGx9t87AtRQJlXNiu01e7awuQz94TkI',
-                'Content-Type: application/json'
-            ]);
-            $payload = [
-                'code' => '7fvdx77gveizxqn',
-                'attributes' => [
-                    'activation_code' => $code,
-                ],
-                'recipient' =>  $request->phoneNumber,
-                'line_number' => '50002178584000',
-                'number_format' => 'english'
-            ];
-            curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($payload));
-            $response = curl_exec($ch);
+            // $ch = curl_init('https://api.iranpayamak.com/ws/v1/sms/pattern');
+            // curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+            // curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'POST');
+            // curl_setopt($ch, CURLOPT_HTTPHEADER, [
+            //     'Accept: application/json',
+            //     'Api-Key: M1MIQPQ9s85i6dxdzTeRGx9t87AtRQJlXNiu01e7awuQz94TkI',
+            //     'Content-Type: application/json'
+            // ]);
+            // $payload = [
+            //     'code' => '7fvdx77gveizxqn',
+            //     'attributes' => [
+            //         'activation_code' => $code,
+            //     ],
+            //     'recipient' =>  $request->phoneNumber,
+            //     'line_number' => '50002178584000',
+            //     'number_format' => 'english'
+            // ];
+            // curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($payload));
+            // $response = curl_exec($ch);
         }
         return response()->json($flag);
     }
@@ -382,43 +382,43 @@ class UserController extends Controller
         }
         return response()->json($row);
     }
-    public function login_ajax(Request $request){
-        dd($request->all());
+    // public function signup_signin(Request $request){
 
-        // کلا تغییر میکند 
-        if($request->type=='signup'){
-            $user=User::where('phoneNumber',$validation['phoneNumber'])->first();
-            if($user){
-                return 'کاربری با همین مشخصات از قبل ثبت شده';   
-            }
-            $createdUser=User::create([
-                "name"=>$validation['name'],
-                "family"=>$validation['family'],
-                "phoneNumber"=>$validation['phoneNumber'],
-                "email"=>$request['email'],
-                "password"=>$validation['password'],
-            ]);
-            if(isset($request->roles)){
-                foreach ($request->roles as $role_id) {
-                    role_user::create([
-                        'user_id'=>$createdUser->id,
-                        'role_id'=>$role_id,
-                    ]);
-                }
-            }else{
-                $role=role::where('ea_title','user')->first();
-                role_user::create([
-                    'user_id'=>$createdUser->id,
-                    'role_id'=>$role->id,
-                ]);
-            }
-        }else{
-            $user=User::where('phoneNumber',$request->phoneNumber)->first();
-            Auth::login($user);
-        }
+    //     if($request['state']=='signin'){
+    //         return $this->signup($request);
+    //     }
+    //     if($request['state']=='signup'){
+    //         return $this->signin($request);
+    //     }
+    //     // dd($request->all());
+    // }
+    public function signup_with_ajax(Request $request){
+        $createdUser=User::create([
+            "name"=>$request['name'],
+            "family"=>$request['family'],
+            "phoneNumber"=>$request['phoneNumber'],
+            "email"=>null,
+            "password"=>$request['password'],
+        ]);
+        $role=role::where('ea_title','user')->first();
+        role_user::create([
+            'user_id'=>$createdUser->id,
+            'role_id'=>$role->id,
+        ]);
+        Auth::login($createdUser);
+        return redirect()->back();
+        // dd($request->all());
+    }
+    public function signin_with_ajax(Request $request){
+        $user=User::where('phoneNumber',$request->phoneNumber)->first();
+        Auth::login($user);
+        return redirect()->back();
+        // dd($request->all());
+
     }
     public function checkUser(Request $request){
         $exists=false;
+        $confirmation=false;
         $confirmation=false;
         $user= User::where('phoneNumber',$request['phoneNumber'])->first();
 
@@ -427,16 +427,35 @@ class UserController extends Controller
         }
         
         if($request->state=='signin'){
-            if(Hash::check($request->password,$user->password)){
-                $confirmation=true;
+            if($request->password_format=='password'){
+                if(Hash::check($request->password_or_code,$user->password)){
+                    $confirmation=true;
+                }
+            }else{
+                $phone_code=phone_code::where('phoneNumber',$request->phoneNumber)->first();
+                if($phone_code){
+                    if($phone_code->code == $request->password_or_code && $request->phoneNumber == $phone_code->phoneNumber){
+                        $confirmation=true;
+                    }
+                }
+            }
+        }
+        if($request->state=='signup'){
+            $phone_code=phone_code::where('phoneNumber',$request->phoneNumber)->first();
+            if($phone_code){
+                if($phone_code->code == $request->password_or_code && $request->phoneNumber == $phone_code->phoneNumber){
+                    $confirmation=true;
+                }
             }
         }
         return response()->json(
             [
                 'exists'=>$exists,
                 'state'=>$request->state ,
-                'confirmation'=>$confirmation
+                'confirmation'=>$confirmation,
+                'format'=>$request->password_format,
              ]
+            // $request->all()
             );
     }
 

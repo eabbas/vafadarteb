@@ -1586,6 +1586,7 @@
         let countDownLogin='';
         let loginForm='';
         let signupForm='';
+        let currentPassword='';
         let body=document.querySelector('.body');
 
 
@@ -1602,7 +1603,7 @@
                 <div class='size-5 bg-red-600 text-white flex items-center text-center justify-center' onclick="removeForm(this)">X</div>
                 <!-- ==================== فرم ورود ==================== -->
                 <div id="loginForm" class="form-card glass rounded-3xl p-6 md:p-8 w-full max-w-md mx-auto animate-slide-up visible transition-all duration-700">
-                    <form action="{{route('user.login_ajax')}}" method="post" class="flex flex-col gap-5">
+                    <form action="{{route('user.signin_with_ajax')}}" method="post" class="flex flex-col gap-5">
                         @csrf
                         <input name="type" type='hidden' value="login">
                         <!-- هدر فرم -->
@@ -1631,14 +1632,14 @@
 
                         <!-- فیلد رمز عبور -->
                         <div class='w-full'>
-                            <div class="relative group" id='signin_password'>
+                            <div class="relative group">
                                 <div class="absolute right-3 top-1/2 -translate-y-1/2 text-blue-400/40 group-focus-within:text-blue-400 transition-colors duration-300">
                                     <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                         <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
                                         <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
                                     </svg>
                                 </div>
-                                <input type="password" name="password" placeholder="رمز عبور" 
+                                <input type="password" name="password" placeholder="رمز عبور" id="signin_password_or_code" data-format="password"
                                     class="input-medical w-full rounded-2xl py-3.5 pr-12 pl-4 text-white placeholder:text-white/35 outline-none transition-all duration-300">
                             </div>
                         </div>
@@ -1659,7 +1660,7 @@
 
                 <!-- ==================== فرم ثبت نام ==================== -->
                 <div id="signupForm" class="form-card glass rounded-3xl p-6 md:p-8 w-full max-w-md mx-auto hidden invisible transition-all duration-700">
-                    <form action="{{route('user.login_ajax')}}" method="post" class="flex flex-col gap-4">
+                    <form action="{{route('user.signup_with_ajax')}}" method="post" class="flex flex-col gap-4">
                         @csrf
                         <input name="type" type='hidden' value="signup">
                         <!-- هدر فرم -->
@@ -1752,7 +1753,7 @@
                                         <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
                                     </svg>
                                 </div>
-                                <input type="number" name="code" oninput="limitDigits(this)" required placeholder="کد ورود " class="input-medical w-full rounded-2xl py-3.5 pr-12 pl-4 text-white placeholder:text-white/35 outline-none transition-all duration-300">
+                                <input type="number" id="signup_code_input" data-format="code" name="code" oninput="limitDigits(this)" required placeholder="کد ورود " class="input-medical w-full rounded-2xl py-3.5 pr-12 pl-4 text-white placeholder:text-white/35 outline-none transition-all duration-300">
                             </div>
 
                         </div>
@@ -1822,7 +1823,7 @@
                                 <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
                             </svg>
                         </div>
-                        <input type="number" name="code" oninput="limitDigits(this)" required placeholder="کد ورود " class="input-medical w-full rounded-2xl py-3.5 pr-12 pl-4 text-white placeholder:text-white/35 outline-none transition-all duration-300">
+                        <input id="signin_password_or_code" data-format="code" type="number" name="code" oninput="limitDigits(this)" required placeholder="کد ورود " class="input-medical w-full rounded-2xl py-3.5 pr-12 pl-4 text-white placeholder:text-white/35 outline-none transition-all duration-300">
                     </div>
                 `
                 el.innerHTML='ورورد با رمز عبور'
@@ -1841,7 +1842,7 @@
                                 <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
                             </svg>
                         </div>
-                        <input type="password" name="password" placeholder="رمز عبور" 
+                        <input type="password" name="password" placeholder="رمز عبور" id="signin_password_or_code" data-format="password"
                             class="input-medical w-full rounded-2xl py-3.5 pr-12 pl-4 text-white placeholder:text-white/35 outline-none transition-all duration-300">
                     </div>
                 `
@@ -1851,8 +1852,14 @@
             }
         }
         function checkUser(state){
+            console.log(state);
             let currentPhoneNumber=document.getElementById('tell_'+state);
-            let currentPassword=document.getElementById(state+'_password');
+            if(state=='signin'){
+                currentPassword=document.getElementById('signin_password_or_code');
+            }
+            if(state=='signup'){
+                currentPassword=document.getElementById('signup_code_input');
+            }
 
             if(currentPhoneNumber.children[1].value.length>=11){
                 $.ajaxSetup({
@@ -1866,7 +1873,8 @@
                     dataType:"json",
                     data:{
                         'phoneNumber':currentPhoneNumber.children[1].value,
-                        'password':currentPassword.children[1].value,
+                        'password_or_code':currentPassword.value,
+                        'password_format':currentPassword.getAttribute('data-format'),
                         'state':state,
                     },
                     success:function(data){
@@ -1877,7 +1885,6 @@
                                 if(data.confirmation){
                                     myForm=document.getElementById('loginForm').children[0];
                                     myForm.submit();
-                                    console.log(myForm);
                                 }else{
                                     alert('رمز نادرست میباشد ');
                                 }
@@ -1887,9 +1894,12 @@
                         }
                         if(data.state=='signup'){
                             if(!data.exists){
-                                myForm=document.getElementById('signupForm').children[0];
-                                myForm.submit();
-                                console.log(myForm);
+                                if(data.confirmation){
+                                    myForm=document.getElementById('signupForm').children[0];
+                                    myForm.submit();
+                                }else{
+                                    alert('رمز نادرست میباشد ');
+                                }
                             }else{
                                 alert('کاربری با این شماره وجود دارد نمیتوان ثبت نام کرد');
                             }

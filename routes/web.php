@@ -54,7 +54,9 @@ Route::group([
     Route::post('/send/code/login','send_code_login')->name('send_code_login');
     Route::post('/send/code/signup','send_code_signup')->name('send_code_signup');
     Route::post('/remove/activation/code','removeActivationCode')->name('removeActivationCode');
-    Route::post('/login_ajax','login_ajax')->name('login_ajax');
+    // Route::post('/signup_signin','signup_signin')->name('signup_signin');
+    Route::post('/signup_with_ajax','signup_with_ajax')->name('signup_with_ajax');
+    Route::post('/signin_with_ajax','signin_with_ajax')->name('signin_with_ajax');
     Route::post('/checkUser','checkUser')->name('checkUser');
 });
 
