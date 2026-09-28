@@ -45,6 +45,23 @@ class OrderController extends Controller
         return view('waitingPage',['code'=>$code]);
     }
     public function list(){
+        $orders=Auth::user()->orders;
+        foreach ($orders as $order) {
+            $total_price=0;
+            $order->address;
+            foreach ($order->carts as $cart) {
+                $cart->product;
+                $total_price+=$cart->product->price*$cart->quantity;
+                foreach ($cart->product->medias as $media) {
+                    if($media->is_main==1){
+                        $cart->product->image=$media->path;
+                    }
+                }
+            }
+            $order->total_price=$total_price;
+        }
+        // dd($orders);
+        return view('client.order.list',['orders'=>$orders]);
         dd('list');
     }
     public function edit(){
