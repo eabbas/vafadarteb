@@ -619,11 +619,15 @@
                             </div>
                             <span class='w-3/12 text-xs'> سیاه </span>
                         </div>
-                        <div class='w-full flex gap-2 '>
-                            @if($flag)
-                                <div class='entry_cart_submit cursor-pointer w-full h-10 bg-yellow-200 hover:yellow-300 disable flex text-center items-center justify-center rounded-lg text-black text-[10px] px-2 py-3  hover:bg-(--buttom) hover:font-bold transition-all duration-200'> افزوده شده </div>
+                        <div class='w-full flex' id="entry_cart_parent_div">
+                            @if($user)
+                                @if($flag)
+                                    <div class='entry_cart_submit cursor-pointer w-full h-10 bg-yellow-200 hover:yellow-300 disable flex text-center items-center justify-center rounded-lg text-black text-[10px] px-2 py-3  hover:bg-(--buttom) hover:font-bold transition-all duration-200'> افزوده شده </div>
+                                @else
+                                    <div onclick='entry_cart(this)' class='entry_cart_submit cursor-pointer w-full h-10 bg-(--primary_color) flex text-center items-center justify-center rounded-lg text-white text-[10px] px-2 py-3  hover:bg-(--buttom) hover:font-bold transition-all duration-200'>افزودن به سبد خرید</div>
+                                @endif
                             @else
-                                <div onclick='entry_cart(this)' class='entry_cart_submit cursor-pointer w-full h-10 bg-(--primary_color) flex text-center items-center justify-center rounded-lg text-white text-[10px] px-2 py-3  hover:bg-(--buttom) hover:font-bold transition-all duration-200'>افزودن به سبد خرید</div>
+                                <div onclick='showLoginForm()' class=' cursor-pointer w-full h-10 bg-(--primary_color) flex text-center items-center justify-center rounded-lg text-white text-[10px] px-2 py-3  hover:bg-(--buttom) hover:font-bold transition-all duration-200'>افزودن به سبد خرید</div>
                             @endif
                         </div>
                         <div class='w-full flex gap-2 text-center items-center '>
@@ -1230,11 +1234,17 @@
                     </div>
 
                     <div class='w-full flex flex-col justify-between p-2 gap-2 bg-green-100'>
-                        @if($flag)
-                            <div class='entry_cart_submit cursor-pointer w-full h-10 bg-yellow-200 hover:yellow-300 disable flex text-center items-center justify-center rounded-lg text-black text-[10px] px-2 py-3  hover:bg-(--buttom) hover:font-bold transition-all duration-200'> افزوده شده </div>                        
-                        @else
-                            <div onclick='entry_cart(this)' class='entry_cart_submit cursor-pointer w-full h-10 bg-(--primary_color) flex text-center items-center justify-center rounded-lg text-white text-[10px] px-2 py-3 hover:bg-green-500 hover:font-bold transition-all duration-200'>افزودن به سبد خرید</div>
-                        @endif
+                        <div class='w-full flex' id="entry_cart_parent_div">
+                            @if($user)
+                                @if($flag)
+                                    <div class='entry_cart_submit cursor-pointer w-full h-10 bg-yellow-200 hover:yellow-300 disable flex text-center items-center justify-center rounded-lg text-black text-[10px] px-2 py-3  hover:bg-(--buttom) hover:font-bold transition-all duration-200'> افزوده شده </div>
+                                @else
+                                    <div onclick='entry_cart(this)' class='entry_cart_submit cursor-pointer w-full h-10 bg-(--primary_color) flex text-center items-center justify-center rounded-lg text-white text-[10px] px-2 py-3  hover:bg-(--buttom) hover:font-bold transition-all duration-200'>افزودن به سبد خرید</div>
+                                @endif
+                            @else
+                                <div onclick='showLoginForm()' class=' cursor-pointer w-full h-10 bg-(--primary_color) flex text-center items-center justify-center rounded-lg text-white text-[10px] px-2 py-3  hover:bg-(--buttom) hover:font-bold transition-all duration-200'>افزودن به سبد خرید</div>
+                            @endif
+                        </div>
                         <div class='w-full py-2 px-4 rounded-lg text-(--buttom) bg-[#74f7b5] flex text-[10px] items-center text-center justify-center'><span> آخرین بروزرسانی قیمت : ۰۱ بهمن ۱۴۰۴ </span></div>
                     </div>
                 </div>
@@ -1463,14 +1473,18 @@
         </div>
 
 
-        <div class='md:hidden flex fixed bottom-0 right-0 w-full sm:h-18 h-15 p-3 bg-white justify-between text-center items-center rounded-t-xl border-t-3 border-[#11416f]'>
-            @if($flag)
-                <div class='entry_cart_submit cursor-pointer w-full h-10 bg-yellow-200 hover:yellow-300 disable flex text-center items-center justify-center rounded-lg text-black text-[10px] px-2 py-3  hover:bg-(--buttom) hover:font-bold transition-all duration-200'> افزوده شده </div>
-            @else
-                <div onclick="entry_cart(this)" class='entry_cart_submit w-8/12 h-full flex items-center text-center rounded-md justify-center bg-(--primary_color) cursor-pointer'>
-                    <span class='text-sm text-white font-bold'> افزودن به سبد خرید </span>
-                </div>
-            @endif
+        <div id="entry_cart_parent_div" class='md:hidden flex fixed bottom-0 right-0 w-full sm:h-18 h-15 p-3 bg-white justify-between text-center items-center rounded-t-xl border-t-3 border-[#11416f]'>
+                @if($user)
+                    @if($flag)
+                        <div class='entry_cart_submit cursor-pointer w-8/12 h-10 bg-yellow-200 hover:yellow-300 disable flex text-center items-center justify-center rounded-lg text-black text-[10px] px-2 py-3  hover:bg-(--buttom) hover:font-bold transition-all duration-200'> افزوده شده </div>
+                    @else
+                        <div onclick="entry_cart(this)" class='entry_cart_submit w-8/12 h-full flex items-center text-center rounded-md justify-center bg-(--primary_color) cursor-pointer'><span class='text-sm text-white font-bold'> افزودن به سبد خرید </span></div>
+                    @endif
+                @else
+                    <div onclick='showLoginForm()' class=' cursor-pointer w-8/12 h-10 bg-(--primary_color) flex text-center items-center justify-center rounded-lg text-white text-[10px] px-2 py-3  hover:bg-(--buttom) hover:font-bold transition-all duration-200'>افزودن به سبد خرید</div>
+                @endif
+
+
             <div class='w-2/12 flex flex-col text-center items-end '>
                 <div class=' p-1 items-center text-center flex gap-1'>
                     <div class='w-6 text-white bg-rose-500 flex items-center text-center justify-center rounded-full p-1'>
