@@ -66,7 +66,11 @@
             </div>
             <div id="ButtonParent">
                 @if($flag)
-                    <button id="formButton" class='btn w-40 p-4 bg-red-500 rounded-2xl text-center flex items-center justify-center text-white cursor-pointer'> ثبت نهایی </button>
+                    @if($count>0)
+                        <button id="formButton" class='btn w-40 p-4 bg-red-500 rounded-2xl text-center flex items-center justify-center text-white cursor-pointer'> ثبت نهایی </button>
+                    @else
+                    <div id="formButton" class='div w-40 p-4 bg-orange-500 rounded-2xl text-center flex items-center justify-center text-white cursor-not-allowed'> برای ثبت سفارش محصولی وحود ندارد  </div>
+                    @endif
                 @else
                     <div id="formButton" class='div w-40 p-4 bg-orange-500 rounded-2xl text-center flex items-center justify-center text-white cursor-not-allowed'> برای ثبت سفارش آدرس خود را وارد کنید  </div>
                 @endif
