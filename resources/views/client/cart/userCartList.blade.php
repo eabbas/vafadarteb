@@ -278,6 +278,8 @@
             // el.parentElement.children[2].innerHTML =trash_icon
         }
         function getCities(){
+            let province=document.getElementById('provinces');
+            let cities=document.getElementById('cities');
             $.ajaxSetup({
                 headers: {
                     'X-CSRF-TOKEN': "{{ csrf_token() }}"
@@ -353,6 +355,7 @@
                 alert('آدرس را وارد کنید');
             }
         }
+
     </script>
 
 

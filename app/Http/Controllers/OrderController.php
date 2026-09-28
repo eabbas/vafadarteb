@@ -42,7 +42,7 @@ class OrderController extends Controller
             $cart->order_id=$order->id;
             $cart->save();
         }
-        return to_route('order.list');
+        return view('waitingPage',['code'=>$code]);
     }
     public function list(){
         dd('list');

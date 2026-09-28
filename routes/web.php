@@ -26,7 +26,6 @@ Route::get('/setting',[UserController::class,'setting']);
 Route::get('/search', function(){
     return view('search');
 });
-
 Route::group([
     'prefix'=>'user',
     'as'=>'user.',
@@ -59,8 +58,6 @@ Route::group([
     Route::post('/signin_with_ajax','signin_with_ajax')->name('signin_with_ajax');
     Route::post('/checkUser','checkUser')->name('checkUser');
 });
-
-
 Route::group([
     'prefix'=>'role',
     'as'=>'role.',
@@ -91,11 +88,6 @@ Route::group([
     Route::get('/get/permision/roles/{permision}','getroles')->name('getroles');
 
 });
-
-
-
-
-
 route::group([
     'prefix'=>'product',
     'as'=>'product.',
@@ -118,8 +110,8 @@ route::group([
 
     
     Route::get('/client/product/{product}','client_pro_single')->name('client_pro_single');
+    Route::get('/header/test','header_test')->name('header_test');
 });
-
 route::group([
     'prefix'=>'cart',
     'as'=>'cart.',
@@ -143,7 +135,6 @@ route::group([
     Route::post('/update/order','update')->name('update');
     Route::get('/delete/order','delete')->name('delete');
 });
-
 route::group([
     'prefix'=>'category',
     'as'=>'category.',
@@ -157,8 +148,6 @@ route::group([
     Route::post('/update/{category}','update')->name('update');
     Route::get('/delete/{category}','delete')->name('delete');
 });
-
-
 route::group([
     'prefix'=>'brand',
     'as'=>'brand.',
@@ -172,8 +161,6 @@ route::group([
     Route::post('/update/{brand}','update')->name('update');
     Route::get('/delete/{brand}','delete')->name('delete');
 });
-
-
 route::group([
     'prefix'=>'logo',
     'as'=>'logo.',
@@ -182,7 +169,6 @@ route::group([
     Route::get('/create','create')->name('create');
     Route::post('/store','store')->name('store');
 });
-
 route::group([
     'prefix'=>'hero',
     'as'=>'hero.',
@@ -195,7 +181,6 @@ route::group([
     Route::post('/update/{hero}','update')->name('update');
     Route::get('/delete/{hero}','/delete')->name('/delete');
 });
-
 route::group([
     'prefix'=>'support_information',
     'as'=>'support_information.',
@@ -224,8 +209,6 @@ route::group([
     Route::get('/create','create')->name('create');
     Route::post('/store','store')->name('store');
 });
-
-
 route::group([
     'prefix'=>'staticUser',
     'as'=>'staticUser.',
@@ -246,8 +229,6 @@ route::group([
     Route::get('/create','create')->name('create');
     Route::post('/store','store')->name('store');
 });
-
-
 Route::get('check',function(){
     $result['check']=Auth::check();
     if(Auth::check()){
@@ -256,9 +237,6 @@ Route::get('check',function(){
     }
     dd($result);
 });
-
-
-
 Route::group([
     'prefix'=>'address',
     'as'=>'address.',

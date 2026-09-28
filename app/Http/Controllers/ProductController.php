@@ -11,6 +11,7 @@ use App\Models\product_category;
 use App\Models\product_media;
 use App\Models\product_attribute;
 use App\Models\package;
+use App\Models\headerSetting;
 use App\Models\attribute_package;
 use App\Models\package_media;
 use App\Models\brand;
@@ -706,9 +707,6 @@ class ProductController extends Controller
             // dd($products);
         return view('search',['products'=>$products,'searchTitle'=>$request->title,'categories'=>$categories,'brands'=>$brands,'bishtarin'=>$bishtarin,'kamtarin'=>$kamtarin]);
     }
-
-
-
     // public function getFilteredProducts(Request $request){
 
     //     // Log::info($filters);
@@ -716,7 +714,6 @@ class ProductController extends Controller
 
     //     return response()->json($filters);
     // }
-
     public function getFilters(Request $request){
         $filters = $request->input('filters');
         // Log::info($filters);
@@ -791,5 +788,36 @@ class ProductController extends Controller
         }
         return response()->json($products);
     }
+
+    public function header_test(){
+        $logo = headerSetting::first();
+        $product=product::find(7);
+        $user=Auth::user();
+        $flag=false;
+        if($user){
+            $user->load(['carts'=>function($query){$query->where('order_id',null)->get();}]);
+            if(count($user->carts)>0){
+                foreach ($user->carts as $cart) {
+                    foreach ($cart->product->medias as $media) {
+                        if($media->is_main==1){
+                            $cart->product->path=$media->path;
+                        }
+                    }
+                    
+                }
+            }
+            foreach ($user->carts as $cart) {
+                if($cart->product->id==$product->id){
+                    $flag=true;
+                }
+            }
+            $is_mainpicture='';
+            $galleryPicture=[];
+            }
+            return view('header',['user'=>$user,'flag'=>$flag,'logo'=>$logo]);
+    }
+
+
+
 
 }
