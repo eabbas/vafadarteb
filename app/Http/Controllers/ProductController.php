@@ -245,6 +245,11 @@ class ProductController extends Controller
                     $product->is_main_media=$media->path;
                 }
             }
+            if ($product->discunt) {
+                $campare = $product->price - $product->discunt;
+                $x = $campare / $product->price;
+                $product->percent = intval($x * 100);
+            }
         }
 
         return view("product.list",['products'=>$products]);
@@ -676,9 +681,15 @@ class ProductController extends Controller
             }
         }
         $product->gallery=$galleryPicture;
-        // dd($product);
-        return view('client.product.single',['product'=>$product, 'user'=>$user,'flag'=>$flag]);
-    }   
+        if ($product->discunt) {
+            $campare = $product->price - $product->discunt;
+            $x = $campare / $product->price;
+            $product->percent = intval($x * 100);
+        }
+        $attributes=$this->arranged_attributes($product->attributes);
+        // dd($attributes);
+        return view('client.product.single',['product'=>$product, 'user'=>$user,'flag'=>$flag,'attributes'=>$attributes]);
+    }
     public function searchProduct(Request $request){
         $products=product::where('title','like','%'.$request['title'].'%')->with('medias')->get();
         $bishtarin=0;
@@ -699,6 +710,11 @@ class ProductController extends Controller
                 if($kamtarin>$product->price){
                     $kamtarin=$product->price;
                 }
+            }
+            if ($product->discunt) {
+                $campare = $product->price - $product->discunt;
+                $x = $campare / $product->price;
+                $product->percent = intval($x * 100);
             }
         }
         // dd(['bishtarin'=>$bishtarin,'kamtarin'=>$kamtarin]);
@@ -788,7 +804,6 @@ class ProductController extends Controller
         }
         return response()->json($products);
     }
-
     public function header_test(){
         $logo = headerSetting::first();
         $product=product::find(7);
@@ -817,7 +832,20 @@ class ProductController extends Controller
             return view('header',['user'=>$user,'flag'=>$flag,'logo'=>$logo]);
     }
 
-
+    public function arranged_attributes($attributes){
+        $array=[];
+        foreach ($attributes as $attribute) {
+            if (!array_key_exists($attribute->title, $array)) {
+                $array[$attribute->title]=[];
+            }
+        }
+        foreach ($attributes as $attribute) {
+            if (array_key_exists($attribute->title, $array)) {
+                $array[$attribute->title][]=$attribute->pivot->value;
+            }
+        }
+        return $array;
+    }
 
 
 }

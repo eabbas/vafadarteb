@@ -428,10 +428,13 @@
                             @endif
                         </div>
                         <div class='w-full flex gap-2 text-center items-center '>
-                            <span class='w-2/5 line-through text-(--metod-text) font-bold text-lg'> 100.000 </span>
-                            <span class='w-1/5 p-2 bg-(--primary_color) text-center rounded-xl text-white font-bold'> <span> 5% </span> </span>
+                            <div class='w-2/5 text-(--metod-text) flex justify-end'>
+                                <span class='line-through font-bold text-lg'> {{number_format($product->discunt)}} </span>
+                                <span class='-rotate-90 text-xs'> تومان </span>
+                            </div>
+                            <span class='w-1/5 p-2 bg-(--primary_color) text-center rounded-xl text-white font-bold'> <span> {{$product->percent}}% </span> </span>
                             <div class='w-2/5 text-(--primary_color) flex justify-end'>
-                                <span class='font-bold text-lg'> 950.000 </span>
+                                <span class='font-bold text-lg'> {{number_format($product->price)}} </span>
                                 <span class='-rotate-90 text-xs'> تومان </span>
                             </div>
                         </div>
@@ -631,10 +634,13 @@
                             @endif
                         </div>
                         <div class='w-full flex gap-2 text-center items-center '>
-                            <span class='w-2/5 line-through text-(--metod-text) font-bold text-lg'> 100.000 </span>
-                            <span class='w-1/5 p-2 bg-(--primary_color) text-center rounded-xl text-white font-bold'> <span> 5% </span> </span>
+                            <div class='w-2/5 flex text-(--metod-text) justify-end'>
+                                <span class='line-through font-bold text-lg'> {{number_format($product->discunt)}}  </span>
+                                <span class='-rotate-90 text-xs'> تومان </span>
+                            </div>
+                            <span class='w-1/5 p-2 bg-(--primary_color) text-center rounded-xl text-white font-bold'> <span> {{$product->percent}} </span> </span>
                             <div class='w-2/5 text-(--primary_color) flex justify-end'>
-                                <span class='font-bold text-lg'> 950.000 </span>
+                                <span class='font-bold text-lg'> {{number_format($product->price)}} </span>
                                 <span class='-rotate-90 text-xs'> تومان </span>
                             </div>
                         </div>
@@ -870,53 +876,61 @@
                             </div>
 
                             <div class='flex flex-col w-full gap-3 text-base mt-4'>
-                                @for($i=0;$i<3;$i++)
-                                    @if($i%2==0)
-                                    <div class='w-full  flex sm:flex-row flex-col  sm:gap-3 gap-2'>
-                                    <div class='flex'>
-                                        <div class=' md:py-4 py-2  md:px-6 px-4  bg-[#F7F7F7] rounded-xl sm:text-center text-nowrap lg:text-base md:text-sm text-[13px]'>
-                                            <!-- att_key -->
-                                            <span> سایر توضیحات </span>
-                                        </div>
-                                    </div>
-
-                                    <!-- <div class='sm:hidden flex'>    
-                                                <div class=' p-4 bg-[#f7f7f7] text-[#43454D80] rounded-xl text-nowrap lg:text-md text-xs sm:mr-0 mr-5'>
-                                                    att_value
-                                                    <span> ساخت کشور آلمان ساخت سری قدیم </span>
+                                <?php
+                                    $cunt=0;
+                                ?>
+                                @foreach($attributes as $key_att => $array_att)
+                                    <?php
+                                        $cunt++;
+                                    ?>
+                                    @if($cunt%2==0)
+                                        <div class='w-full  flex sm:flex-row flex-col  sm:gap-3 gap-2'>
+                                            <div class='flex'>
+                                                <div class=' md:py-4 py-2  md:px-6 px-4  bg-[#F7F7F7] rounded-xl sm:text-center text-nowrap lg:text-base md:text-sm text-[13px]'>
+                                                    <!-- att_key -->
+                                                    <span> {{$key_att}}</span>
                                                 </div>
-                                            </div> -->
-                                    <div class='w-full flex md:p-4 p-2  bg-[#f7f7f7] text-[#43454D80] rounded-xl text-nowrap items-center lg:text-md text-xs sm:mr-0 mr-5'>
-                                        <!-- att_value -->
-                                        <span> ساخت کشور آلمان ساخت سری قدیم </span>
-                                    </div>
-
-                            </div>
-                            @endif
-                            @if($i%2==1)
-                            <div class='flex sm:flex-row flex-col gap-3'>
-                                <div class='flex'>
-                                    <div class=' md:py-4 py-2  md:px-6 px-4  bg-[#d2d2d28a] rounded-xl sm:text-center text-nowrap lg:text-base md:text-sm text-[13px]'>
-                                        <!-- att_key -->
-                                        <span> سایر توضیحات </span>
-                                    </div>
-                                </div>
-
-                                <!-- <div class=' sm:hidden flex'>    
-                                            <div class=' p-4 bg-[#d2d2d28a] text-[#43454D80] rounded-xl text-nowrap lg:text-md text-xs sm:mr-0 mr-5'>
-                                                att_value
-                                                <span> ساخت کشور آلمان ساخت سری قدیم </span>
                                             </div>
-                                        </div> -->
-                                <div class='w-full flex md:p-4 p-2  bg-[#d2d2d28a] text-[#43454D80] rounded-xl text-nowrap itesm-center lg:text-md text-xs sm:mr-0 mr-5'>
-                                    <!-- att_value -->
-                                    <span> ساخت کشور آلمان ساخت سری قدیم </span>
-                                </div>
+                                            <!-- <div class='sm:hidden flex'>    
+                                                        <div class=' p-4 bg-[#f7f7f7] text-[#43454D80] rounded-xl text-nowrap lg:text-md text-xs sm:mr-0 mr-5'>
+                                                            att_value
+                                                            <span> ساخت کشور آلمان ساخت سری قدیم </span>
+                                                        </div>
+                                                    </div> -->
+                                            <div class='w-full flex md:p-4 p-2  bg-[#f7f7f7] text-[#43454D80] rounded-xl text-nowrap items-center lg:text-md text-xs sm:mr-0 mr-5'>
+                                                <!-- att_value -->
+                                                @foreach($array_att as $att)
+                                                    <span>  {{$att}} @if(count($array_att)>1)‌ ‌/‌ ‌@endif </span>
+                                                @endforeach
+                                            </div>
+                                        </div>
+                                    @endif
+                                    @if($cunt%2==1)
+                                        <div class='flex sm:flex-row flex-col gap-3'>
+                                            <div class='flex'>
+                                                <div class=' md:py-4 py-2  md:px-6 px-4  bg-[#d2d2d28a] rounded-xl sm:text-center text-nowrap lg:text-base md:text-sm text-[13px]'>
+                                                    <!-- att_key -->
+                                                    <span> {{$key_att}}</span>
+                                                </div>
+                                            </div>
 
+                                            <!-- <div class=' sm:hidden flex'>    
+                                                        <div class=' p-4 bg-[#d2d2d28a] text-[#43454D80] rounded-xl text-nowrap lg:text-md text-xs sm:mr-0 mr-5'>
+                                                            att_value
+                                                            <span> ساخت کشور آلمان ساخت سری قدیم </span>
+                                                        </div>
+                                                    </div> -->
+                                            <div class='w-full flex md:p-4 p-2  bg-[#d2d2d28a] text-[#43454D80] rounded-xl text-nowrap itesm-center lg:text-md text-xs sm:mr-0 mr-5'>
+                                                <!-- att_value -->
+                                                @foreach($array_att as $att)
+                                                    <span>  {{$att}} @if(count($array_att)>1)‌ ‌‌‌/‌ ‌@endif </span>
+                                                @endforeach
+                                            </div>
+
+                                        </div>
+                                    @endif
+                                @endforeach
                             </div>
-                            @endif
-                            @endfor
-                        </div>
 
 
                         <div class=' w-full lg:hidden flex items-center text-center justify-center mt-5'>
@@ -1223,10 +1237,13 @@
 
                         </div>
                         <div class='w-full flex gap-2 text-center items-center '>
-                            <span class='w-2/5 line-through text-(--metod-text) font-bold text-lg'> 100.000 </span>
-                            <span class='w-1/5 p-2 bg-(--primary_color) text-center rounded-xl text-white font-bold'> <span> 5% </span> </span>
+                            <div class='w-2/5 text-(--metod-text) flex justify-end'>
+                                <span class='line-through font-bold text-lg'> {{number_format($product->discunt)}}  </span>
+                                <span class='-rotate-90 text-xs'> تومان </span>
+                            </div>
+                            <span class='w-1/5 p-2 bg-(--primary_color) text-center rounded-xl text-white font-bold'> <span> {{$product->percent}} </span> </span>
                             <div class='w-2/5 text-(--primary_color) flex justify-end'>
-                                <span class='font-bold text-lg'> 950.000 </span>
+                                <span class='font-bold text-lg'> {{number_format($product->price)}} </span>
                                 <span class='-rotate-90 text-xs'> تومان </span>
                             </div>
                         </div>
@@ -1488,16 +1505,16 @@
             <div class='w-2/12 flex flex-col text-center items-end '>
                 <div class=' p-1 items-center text-center flex gap-1'>
                     <div class='w-6 text-white bg-rose-500 flex items-center text-center justify-center rounded-full p-1'>
-                        <span> 5 </span>
+                        <span> {{$product->percent}} </span>
                         %
                     </div>
-                    <div class='relative text-[#A3A1A8] flex items-center text-center'>
-                        <span class='text-xs'>900.000</span>
-                        <div class='absolute w-full h-[1px] bg-[#A3A1A8]'></div>
+                    <div class='relative text-(--metod-text) flex items-center text-center'>
+                        <span class='text-xs'>{{number_format($product->discunt)}}</span>
+                        <div class='absolute w-full h-[1px]'></div>
                     </div>
                 </div>
                 <div class='flex gap-1 '>
-                    <span class='text-black font-bold'> 850.000 </span>
+                    <span class='text-black font-bold'>{{number_format($product->price)}} </span>
                     <span class='text-[7px]'> تومان </span>
                 </div>
             </div>
