@@ -194,10 +194,9 @@
                         <a href="{{ route('product.client_pro_single', [$product->id]) }}"
                             class="group relative min-w-0 bg-white p-[17px] border-l border-b border-[#e4e4e7] transition duration-200 hover:-translate-y-0.5 hover:shadow-[0_6px_22px_rgba(0,0,0,.08)]">
                             @if ($product->percent)
-                                <span
-                                    class="absolute top-[25px] right-[25px] z-10 bg-[#ef394e] text-white rounded-[5px] text-[10px] px-[7px] py-1 in-fa">{{ $product->percent }} %</span>
+                                <span class="absolute top-[25px] right-[25px] z-10 bg-[#ef394e] text-white rounded-[5px] text-[10px] px-[7px] py-1 in-fa">{{ $product->percent }} %</span>
                             @endif
-                            <button
+                            <button 
                                 class="absolute top-[22px] left-5 z-10 border-0 bg-white text-xl text-[#aaa]">♡</button>
                             <img src="{{ asset('storage/product_medias/'.$product->image) }}"
                                 alt="{{ $product->title }}" loading="lazy"
@@ -208,15 +207,15 @@
                             </div>
                             @if ($product->discunt)
                                 <div class="flex items-center justify-between gap-2">
-                                    <strong class="text-[15px] in-fa">{{ $product->discunt }}</strong>
+                                    <strong class="text-[15px] in-fa">{{number_format($product->discunt)}}</strong>
                                     <span
                                         class="text-[10px] text-[#71717a]">تومان
                                     </span>
                                 </div>
-                                <div class="line-through text-[#a1a1aa] text-[10px] in-fa">{{ $product->price }} تومان</div>                                
+                                <div class="line-through text-[#a1a1aa] text-[10px] in-fa">{{number_format($product->price)}} تومان</div>                                
                             @else
                                 <div class="flex items-center justify-between gap-2">
-                                    <strong class="text-[15px] in-fa">{{ $product->price }}</strong>
+                                    <strong class="text-[15px] in-fa">{{number_format($product->price)}}</strong>
                                     <span
                                         class="text-[10px] text-[#71717a]">تومان
                                     </span>

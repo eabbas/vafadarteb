@@ -480,6 +480,8 @@
                         <th>عنوان</th>
                         <th class="hidden md:table-cell">دسته‌بندی</th>
                         <th class="hidden lg:table-cell">قیمت</th>
+                        <th class="hidden lg:table-cell"> تخفیف</th>
+                        <th class="hidden lg:table-cell">درصد تخفیف</th>
                         <th class="hidden sm:table-cell">موجودی</th>
                         <th class="hidden lg:table-cell">وضعیت</th>
                         <th class="text-center" style="min-width:140px;">عملیات</th>
@@ -513,13 +515,24 @@
                         </td>
                         <td class="hidden lg:table-cell">
                             <span class="vafadar-price">{{number_format($product->price)}}</span>
-                            @if($product->discunt > 0)
-                                <span class="vafadar-discount">-{{$product->discunt}}%</span>
+                        </td>
+                        <td class="hidden lg:table-cell">
+                            <span class="vafadar-discount">{{number_format($product->discunt)}}</span>
+                        </td>
+                        <td  class="hidden lg:table-cell">
+                            @if($product->percent)
+                                <span class="vafadar-discount">-{{$product->percent}}%</span>
+                            @else
+                                <span> ندارد </span>
                             @endif
                         </td>
                         <td class="hidden sm:table-cell">
-                            <span class="px-3 py-1 rounded-full text-sm border" style="background: var(--metronic-shadow); border-color: var(--metronic-border);">
-                                {{$product->stock}} عدد
+                            <span class="px-1 py-1 rounded-full text-sm border" style="background: var(--metronic-shadow); border-color: var(--metronic-border);">
+                                @if($product->stock>0)
+                                    {{$product->stock}} عدد
+                                @else
+                                    نا موجود
+                                @endif
                             </span>
                         </td>
                         <td class="hidden lg:table-cell">
