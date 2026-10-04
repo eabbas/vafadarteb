@@ -111,6 +111,8 @@ route::group([
     
     Route::get('/client/product/{product}','client_pro_single')->name('client_pro_single');
     Route::get('/header/test','header_test')->name('header_test');
+
+    Route::get('/get/noAuth/{product}','getNoAuthProduct')->name('getNoAuthProduct');
 });
 route::group([
     'prefix'=>'cart',

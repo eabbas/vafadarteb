@@ -831,7 +831,6 @@ class ProductController extends Controller
             }
             return view('header',['user'=>$user,'flag'=>$flag,'logo'=>$logo]);
     }
-
     public function arranged_attributes($attributes){
         $array=[];
         foreach ($attributes as $attribute) {
@@ -846,6 +845,8 @@ class ProductController extends Controller
         }
         return $array;
     }
-
+    public function getNoAuthProduct(product $product){
+        return response()->json($product);
+    }
 
 }
