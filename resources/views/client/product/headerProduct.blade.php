@@ -1508,7 +1508,7 @@
             console.log(currentUpdateProduct);
             quantity = el.parentElement.children[1].children[0].value;
 
-            if (quantity < 30) {
+            // if (quantity < 30) {
                 
                 el.parentElement.children[0].innerHTML =
                 `
@@ -1576,7 +1576,7 @@
                         <svg class='size-3 fill-black' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M432 256c0 13.3-10.7 24-24 24L40 280c-13.3 0-24-10.7-24-24s10.7-24 24-24l368 0c13.3 0 24 10.7 24 24z"/></svg>
                     `
                 }
-                product_price=parseInt(data.product.price)
+                product_price=parseInt(currentUpdateProduct.price)
                 price=parseInt(total_price.value)
                 // total_price.value=price+data.product.price
                 // console.log(price+product_price)
@@ -1593,10 +1593,66 @@
                 textProducts=JSON.stringify(jsonProArray)
                 localStorage.removeItem('products')
                 localStorage.setItem('products',textProducts)
-            },
+            // }
 
         }
         function NoAuthtrash(el,product_id){
-            console.log(el);
+            let trash_icon='';
+            console.log(el.closest('.parent_cart'))
+            trash_icon=el.parentElement.children[2].innerHTML;
+            el.parentElement.children[2].innerHTML =
+            `
+                <div class="size-7 border-4 border-(--border) border-t-(--primary_color) rounded-full animate-spin"></div>
+            `
+            jsonProArray=JSON.parse(localStorage.getItem('products'));
+            jsonProArray.find(function(pro){
+                if(pro.id == product_id){
+                    currentUpdateProduct=pro
+                } 
+            })
+
+            current_product="{{$product}}"
+            current_product_id="{{$product->id}}"
+            console.log(current_product_id)
+            console.log(product_id)
+            cart_counter.innerHTML--
+            if(cart_counter.innerHTML==0){
+                hiddenCart();
+            }
+            el.parentElement.classList.remove('flex')
+            el.parentElement.classList.add('hidden')
+            el.closest('.parent_cart').remove()
+            if(current_product){
+                if(product_id==current_product_id){
+                    console.log("🥎")
+                    entry_cart_submit.forEach(entry => {
+                        entry.setAttribute('onclick', 'entry_cart(this)');
+                        entry.innerHTML = 'افزودن به سبد خرید'
+                        entry.removeAttribute('disable')
+                        entry.setAttribute('onclick','entry_cart(this)')
+                        entry.classList.remove('bg-yellow-200');
+                        entry.classList.remove('hover:bg-yellow-300');
+                        entry.classList.remove('text-black');
+
+                        entry.classList.add('bg-(--primary_color)');
+                        entry.classList.add('hover:bg-green-600');
+                        entry.classList.add('text-white');
+                    });
+                }
+            }
+            product_price=parseInt(currentUpdateProduct.price)
+            price=parseInt(total_price.value)
+            total_price.value=price-product_price;
+
+            jsonProArray = jsonProArray.filter(function(pro) {
+                if(pro.id != product_id){
+                    return pro;
+                }
+            });
+
+            textProducts=JSON.stringify(jsonProArray)
+            localStorage.removeItem('products')
+            localStorage.setItem('products',textProducts)
+
         }
     </script>
