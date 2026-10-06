@@ -20,7 +20,7 @@
     <header class="bg-white sticky top-0 z-20 shadow-[0_2px_10px_rgba(0,0,0,.04)]">
         <div
             class="max-w-[1280px] min-h-[78px] mx-auto flex flex-wrap items-center gap-2.5 md:gap-[22px] px-3.5 md:px-5 py-2.5">
-            <div class="text-[21px] md:text-[26px] font-extrabold text-[#00ff91] whitespace-nowrap">وفادار تب</div>
+            <div class="text-[21px] md:text-[26px] font-extrabold text-[#00ff91] whitespace-nowrap">وفادار طب</div>
 
             <div
                 class="search flex-1 basis-full md:basis-auto order-3 md:order-none relative max-w-none md:max-w-[760px]">
