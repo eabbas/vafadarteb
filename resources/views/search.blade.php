@@ -273,7 +273,7 @@
         
         let header="{{ csrf_token() }}";
 
-        let url='product/client/product/';
+        let url='client/product/';
 
     </script>
     <script src="{{ asset('assets/js/filterStore.js') }}"></script>
