@@ -13,6 +13,7 @@ use App\Http\Controllers\BannerController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\StaticUserController;
 use App\Http\Controllers\AdvertisementController;
+use App\Http\Controllers\DiscuntCodeController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\SupportInformationController;
 use App\Http\Controllers\HeaderSettingController;
@@ -162,6 +163,17 @@ route::group([
     Route::get('/edit/{brand}','edit')->name('edit');
     Route::post('/update/{brand}','update')->name('update');
     Route::get('/delete/{brand}','delete')->name('delete');
+});
+route::group([
+    'prefix'=>'discuntCode',
+    'as'=>'discuntCode.',
+    'controller'=>DiscuntCodeController::class,
+],function(){
+    Route::get('/create','create')->name('create');
+    Route::post('/store','store')->name('store');
+    Route::get('/list','list')->name('list');
+    Route::post('/update/{discuntCode}','update')->name('update');
+    Route::get('/delete/{discuntCode}','delete')->name('delete');
 });
 route::group([
     'prefix'=>'logo',
