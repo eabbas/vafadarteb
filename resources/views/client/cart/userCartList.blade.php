@@ -1,122 +1,185 @@
-@extends('dashboard')
-@section('content')
-<?php
-    $flag=true;
-?>
-<div class='relative flex w-full gap-2'>
+<!DOCTYPE html>
+<html lang="fa" dir='rtl'>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>لیست سبد خرید</title>
+    <script src="{{asset('assets/js/tailwind.js')}}"></script>
+    <script src="{{asset('assets/js/jquery.js')}}"></script>
+    <link rel="stylesheet" href="{{asset('assets/css/index.css')}}">
+    <link rel="stylesheet" href="{{asset('assets/css/style.css')}}">
+</head>
+<body>
 
-    <form action="{{route('order.store')}}" method="POST" class='w-9/12 py-20'>
-        @csrf
-        <div class='w-full min-h-100 mx-auto bg-green-300 flex flex-col p-2 gap-5'>
-            <div id="addresses_list" class='w-full min-h-40 bg-blue-600 flex flex-col'>
-                @if(count($user->address)>0)
-                    @foreach($user->address as $address)
-                        <div class='flex gap-2'>
-                            <label for=""> {{$address->location}}  |  {{$address->city}} </label>
-                            <input name="address" type="radio" value="{{$address->id}}" required>
+    <?php
+        $flag=true;
+    ?>
+    <div class='relative flex w-full gap-2 px-3'>
+
+        <div class='w-full py-20'>
+            @csrf
+            <div class='w-full min-h-100 mx-auto bg-green-300 flex flex-col p-2 gap-5'>
+
+                <!-- <div class='w-full min-h-60 bg-white flex flex-wrap gap-2 p-2'>
+                    <?php
+                        // $total_price=0;
+                        // $count=0;
+
+                    ?>
+                    @foreach($user->carts as $cart)
+                        <?php
+                            // $total_price+=$cart->product->price * $cart->quantity;
+                            // $count++;
+
+                        ?>
+                        <div class='parent_cart w-full h-30 flex justify-between border-2 gap-4'>
+                            <div class='w-1/5 p-2'>
+                                @if(count($cart->product->medias)>0)
+                                    <img class='w-full h-20 rounded-xl' src="{{asset('storage/product_medias/'.$cart->product->path)}}" alt="">
+                                @else
+                                    <div> 🖼 </div>
+                                @endif
+                            </div>
+                            <div class='w-4/5 flex flex-col justify-evenly '>
+                                <div class='text-xl text-center items-center'>
+                                    <span> {{$cart->product->title}} </span>
+                                </div>
+                                <div class='flex justify-between px-4'>
+                                    <div class='grid grid-cols-3 w-20 border-1 overflow-hidden rounded-full items-center text-center'>
+                                        <div onclick="updateCart(this,{{$cart->id}},'plus')" class='p-2 text-center items-center flex justify-center cursor-pointer bg-gray-300 h-full'><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z"/></svg></div>
+                                        <div class='p-2 text-center items-center flex justify-center '><input type="number" class='w-10 font-bold outline-none text-center items-center text-black' readonly value="{{$cart->quantity}}"></div>
+                                        @if($cart->quantity==1)
+                                            <div onclick="trash(this,{{$cart->id}} , {{$cart->product->id}})" class='p-2 text-center items-center flex justify-center cursor-pointer bg-gray-300 h-full'><svg class='fill-rose-600' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M170.5 51.6L151.5 80h145l-19-28.4c-1.5-2.2-4-3.6-6.7-3.6H177.1c-2.7 0-5.2 1.3-6.7 3.6zm147-26.6L354.2 80H368h48 8c13.3 0 24 10.7 24 24s-10.7 24-24 24h-8V432c0 44.2-35.8 80-80 80H112c-44.2 0-80-35.8-80-80V128H24c-13.3 0-24-10.7-24-24S10.7 80 24 80h8H80 93.8l36.7-55.1C140.9 9.4 158.4 0 177.1 0h93.7c18.7 0 36.2 9.4 46.6 24.9zM80 128V432c0 17.7 14.3 32 32 32H336c17.7 0 32-14.3 32-32V128H80zm80 64V400c0 8.8-7.2 16-16 16s-16-7.2-16-16V192c0-8.8 7.2-16 16-16s16 7.2 16 16zm80 0V400c0 8.8-7.2 16-16 16s-16-7.2-16-16V192c0-8.8 7.2-16 16-16s16 7.2 16 16zm80 0V400c0 8.8-7.2 16-16 16s-16-7.2-16-16V192c0-8.8 7.2-16 16-16s16 7.2 16 16z"/></svg></div>
+                                        @else
+                                            <div onclick="updateCart(this,{{$cart->id}},'minus')" class='p-2 text-center items-center flex justify-center cursor-pointer bg-gray-300 h-full'><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M432 256c0 17.7-14.3 32-32 32L48 288c-17.7 0-32-14.3-32-32s14.3-32 32-32l352 0c17.7 0 32 14.3 32 32z"/></svg></div>
+                                        @endif
+                                    </div>
+                                    
+                                    <div class='text-black text-xl'> {{$cart->product->price}} </div>
+                                </div>
+                            </div>
                         </div>
                     @endforeach
-                @else
-                    <?php
-                        $flag=false;
-                    ?>
-                @endif
-                <div onclick='showAddressForm()' class='cursor-pointer w-40 p-2 bg-yellow-300 text-black font-bold'> افزودن آدرس جدید </div>
-            </div>
-            <div class='w-full min-h-60 bg-white flex flex-wrap gap-2 p-2'>
-                <?php
-                    $total_price=0;
-                    $count=0;
+                </div> -->
 
-                ?>
-                @foreach($user->carts as $cart)
-                    <?php
-                        $total_price+=$cart->product->price * $cart->quantity;
-                        $count++;
+                <div class=" border-2 p-2 items-center text-center">
+                    <table class="w-full" id="productTable">
+                        <thead class="">
+                            <tr>
+                                <th style="width:50px;">#</th>
+                                <th>تصویر</th>
+                                <th>عنوان</th>
+                                <th> قیمت اصلی</th>
+                                <th> قیمت تخفیف خورده</th>
+                            </tr>
+                        </thead>
+                        <tbody id="p-2">
+                            <?php
+                                $total_price=0;
+                                $count=0;
+                                $realsum=0;
+                            ?>
+                            @foreach($user->carts as $cart)
+                                <?php
+                                    $count++;
+                                    $realsum+=$cart->product->price * $cart->quantity;
+                                    if(isset($cart->product->discunt)){
+                                        $total_price+=$cart->product->discunt * $cart->quantity;
+                                    }else{
+                                        $total_price+=$cart->product->price * $cart->quantity;
+                                    }
+                                ?>
+                                <tr class="parent_cart border-2 p-2" data-id="{{$cart->product->id}}" data-title="{{$cart->product->title}}" data-slug="{{$cart->product->slug}}">
+                                    <td class='border-2'>
+                                        <span class="">#{{$count}}</span>
+                                    </td>
+                                    <td class='border-2'>
+                                        @if(isset($cart->product->path))
+                                        <img class="size-15" 
+                                        src="{{asset('storage/product_medias/'.$cart->product->path)}}" 
+                                        alt="{{$cart->product->title}}">
+                                        @else
+                                        <div class="-placeholder"></div>
+                                        @endif
+                                    </td>
+                                    <td class='border-2'>
+                                        <span class="">{{$cart->product->title}}</span>
+                                    </td>
+                                    <td>
+                                        
+                                        <span class="">{{number_format($cart->product->price)}}</span>
+                                    </td>
 
-                    ?>
-                    <div class='parent_cart w-1/3 h-30 flex justify-between border-2 gap-4'>
-                        <div class='w-1/5 p-2'>
-                            @if(count($cart->product->medias)>0)
-                                <img class='w-full h-20 rounded-xl' src="{{asset('storage/product_medias/'.$cart->product->path)}}" alt="">
-                            @else
-                                <div> 🖼 </div>
-                            @endif
-                        </div>
-                        <div class='w-4/5 flex flex-col justify-evenly '>
-                            <div class='text-xl text-center items-center'>
-                                <span> {{$cart->product->title}} </span>
-                            </div>
-                            <div class='flex justify-between px-4'>
-                                <div class='grid grid-cols-3 w-20 border-1 overflow-hidden rounded-full items-center text-center'>
-                                    <div onclick="updateCart(this,{{$cart->id}},'plus')" class='p-2 text-center items-center flex justify-center cursor-pointer bg-gray-300 h-full'><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z"/></svg></div>
-                                    <div class='p-2 text-center items-center flex justify-center '><input type="number" class='w-10 font-bold outline-none text-center items-center text-black' readonly value="{{$cart->quantity}}"></div>
-                                    @if($cart->quantity==1)
-                                        <div onclick="trash(this,{{$cart->id}} , {{$cart->product->id}})" class='p-2 text-center items-center flex justify-center cursor-pointer bg-gray-300 h-full'><svg class='fill-rose-600' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M170.5 51.6L151.5 80h145l-19-28.4c-1.5-2.2-4-3.6-6.7-3.6H177.1c-2.7 0-5.2 1.3-6.7 3.6zm147-26.6L354.2 80H368h48 8c13.3 0 24 10.7 24 24s-10.7 24-24 24h-8V432c0 44.2-35.8 80-80 80H112c-44.2 0-80-35.8-80-80V128H24c-13.3 0-24-10.7-24-24S10.7 80 24 80h8H80 93.8l36.7-55.1C140.9 9.4 158.4 0 177.1 0h93.7c18.7 0 36.2 9.4 46.6 24.9zM80 128V432c0 17.7 14.3 32 32 32H336c17.7 0 32-14.3 32-32V128H80zm80 64V400c0 8.8-7.2 16-16 16s-16-7.2-16-16V192c0-8.8 7.2-16 16-16s16 7.2 16 16zm80 0V400c0 8.8-7.2 16-16 16s-16-7.2-16-16V192c0-8.8 7.2-16 16-16s16 7.2 16 16zm80 0V400c0 8.8-7.2 16-16 16s-16-7.2-16-16V192c0-8.8 7.2-16 16-16s16 7.2 16 16z"/></svg></div>
-                                    @else
-                                        <div onclick="updateCart(this,{{$cart->id}},'minus')" class='p-2 text-center items-center flex justify-center cursor-pointer bg-gray-300 h-full'><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M432 256c0 17.7-14.3 32-32 32L48 288c-17.7 0-32-14.3-32-32s14.3-32 32-32l352 0c17.7 0 32 14.3 32 32z"/></svg></div>
-                                    @endif
-                                </div>
-                                
-                                <div class='text-black text-xl'> {{$cart->product->price}} </div>
-                            </div>
-                        </div>
-                    </div>
-                @endforeach
-            </div>
-            <div id="ButtonParent">
-                @if($flag)
-                    @if($count>0)
-                        <button id="formButton" class='btn w-40 p-4 bg-red-500 rounded-2xl text-center flex items-center justify-center text-white cursor-pointer'> ثبت نهایی </button>
-                    @else
-                    <div id="formButton" class='div w-40 p-4 bg-orange-500 rounded-2xl text-center flex items-center justify-center text-white cursor-not-allowed'> برای ثبت سفارش محصولی وحود ندارد  </div>
-                    @endif
-                @else
-                    <div id="formButton" class='div w-40 p-4 bg-orange-500 rounded-2xl text-center flex items-center justify-center text-white cursor-not-allowed'> برای ثبت سفارش آدرس خود را وارد کنید  </div>
-                @endif
+                                    <td class='border-2' >
+                                        @if(isset($cart->product->discunt))
+                                            <span class="">{{number_format($cart->product->discunt)}}</span>
+                                        @else
+                                            <span> تخفیف ندارد </span>
+                                        @endif
+                                    </td> 
+
+                                    <td class='grid grid-cols-3 w-20 border-1 overflow-hidden rounded-full items-center text-center'>
+                                        <div onclick="updateCart(this,{{$cart->id}},'plus')" class='p-2 text-center items-center flex justify-center cursor-pointer bg-gray-300 h-full'><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z"/></svg></div>
+                                        <div class='p-2 text-center items-center flex justify-center '><input type="number" class='w-10 font-bold outline-none text-center items-center text-black' readonly value="{{$cart->quantity}}"></div>
+                                        @if($cart->quantity==1)
+                                            <div onclick="trash(this,{{$cart->id}} , {{$cart->product->id}})" class='p-2 text-center items-center flex justify-center cursor-pointer bg-gray-300 h-full'><svg class='fill-rose-600' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M170.5 51.6L151.5 80h145l-19-28.4c-1.5-2.2-4-3.6-6.7-3.6H177.1c-2.7 0-5.2 1.3-6.7 3.6zm147-26.6L354.2 80H368h48 8c13.3 0 24 10.7 24 24s-10.7 24-24 24h-8V432c0 44.2-35.8 80-80 80H112c-44.2 0-80-35.8-80-80V128H24c-13.3 0-24-10.7-24-24S10.7 80 24 80h8H80 93.8l36.7-55.1C140.9 9.4 158.4 0 177.1 0h93.7c18.7 0 36.2 9.4 46.6 24.9zM80 128V432c0 17.7 14.3 32 32 32H336c17.7 0 32-14.3 32-32V128H80zm80 64V400c0 8.8-7.2 16-16 16s-16-7.2-16-16V192c0-8.8 7.2-16 16-16s16 7.2 16 16zm80 0V400c0 8.8-7.2 16-16 16s-16-7.2-16-16V192c0-8.8 7.2-16 16-16s16 7.2 16 16zm80 0V400c0 8.8-7.2 16-16 16s-16-7.2-16-16V192c0-8.8 7.2-16 16-16s16 7.2 16 16z"/></svg></div>
+                                        @else
+                                            <div onclick="updateCart(this,{{$cart->id}},'minus')" class='p-2 text-center items-center flex justify-center cursor-pointer bg-gray-300 h-full'><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M432 256c0 17.7-14.3 32-32 32L48 288c-17.7 0-32-14.3-32-32s14.3-32 32-32l352 0c17.7 0 32 14.3 32 32z"/></svg></div>
+                                        @endif
+                                    </td>
+                                </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
-    </form>
 
-    <div id='addressForm' class='absolute top-1/3 left-1/2 size-60 bg-white p-4 border-4 rounded-xl shadow-xl opacity-0 transition-all duration-300 invisible'>
-        <div onclick="hiddenAddressForm()" class='absolute bg-red-500 rounded-full py-2 px-3 cursor-pointer text-white text-center items-center justify-center flex -right-5 -top-5'>X</div>
-        @csrf
-        <textarea name="location" id="location" class='border-3 p-1' placeholder='location'></textarea>
-        <select class='border-1 p-1' name="province_id" id="provinces" onchange="getCities()">
-            @foreach($provinces as $province)
-                <option value="{{$province->id}}">{{$province->title}}</option>
-            @endforeach
-        </select>
-        <select class='border-1 p-1' name="city_id" id="cities">
-            @foreach($cities as $city)
-                <option value="{{$city->id}}">{{$city->title}}</option>
-            @endforeach
-        </select>
-        <div onclick="createAddress()" class='bg-red-300 p-1 rounded-xl cursor-pointer'> ثبت </div>
+        <!-- <div id='addressForm' class='absolute top-1/3 left-1/2 size-60 bg-white p-4 border-4 rounded-xl shadow-xl opacity-0 transition-all duration-300 invisible'>
+            <div onclick="hiddenAddressForm()" class='absolute bg-red-500 rounded-full py-2 px-3 cursor-pointer text-white text-center items-center justify-center flex -right-5 -top-5'>X</div>
+            @csrf
+            <textarea name="location" id="location" class='border-3 p-1' placeholder='location'></textarea>
+            <select class='border-1 p-1' name="province_id" id="provinces" onchange="getCities()">
+                @foreach($provinces as $province)
+                    <option value="{{$province->id}}">{{$province->title}}</option>
+                @endforeach
+            </select>
+            <select class='border-1 p-1' name="city_id" id="cities">
+                @foreach($cities as $city)
+                    <option value="{{$city->id}}">{{$city->title}}</option>
+                @endforeach
+            </select>
+            <div onclick="createAddress()" class='bg-red-300 p-1 rounded-xl cursor-pointer'> ثبت </div>
+        </div> -->
+
+
+        <div class=' w-4/12 flex flex-col'>
+            <div class='flex flex-col rounded-xl border-2 p-1 sticky top-45 gap-5'>
+                <span class='font-bold text-2xl'> جمع کل سبد خرید </span>
+                <div class='w-full flex justify-between items-center text-center border-t-2'>
+                    <span id="realsum" class='font-bold'>{{$realsum}}</span>
+                    <span>قیمت کل</span>
+                </div>
+                <div class='w-full flex justify-between items-center text-center border-t-2'>
+                    <span id="total_price" class='font-bold'>{{$total_price}}</span>
+                    <span>قیمت بعد از تخفیف</span>
+                </div>
+                <div class='w-full flex justify-between items-center text-center border-t-2'>
+                    <span class='text-green-400 font-bold' id="benefit"> {{$realsum -$total_price }} </span>
+                    <span class='text-green-400'> سود شما از خرید </span>
+                </div>
+                <div class='w-full flex justify-between items-center text-center border-t-2'>
+                    <span class=' font-bold' id="cart_counter"> {{$count}} </span>
+                    <span> تعداد محصول </span>
+                </div>
+                <div class='w-full border-2 flex'>
+                    <input type="text" class='w-7/12 outline-none active:bg-yellow-100 p-2 border-3'>
+                    <div class='w-5/12 cursor-pointer bg-green-300 p-2'> اعمال کد تخفیف </div>
+                </div>
+                <a href="#" id="formButton" class='btn w-full p-2 bg-red-500 rounded-2xl text-center flex items-center justify-center text-white cursor-pointer'> ادامه جهت تسویه حساب </a>
+            </div>                
+        </div>
     </div>
-
-
-    <div class=' w-3/12 '>
-        <div class='flex flex-col rounded-xl border-2 gap-2 p-1 sticky top-45'>
-            <div class='w-full flex justify-between items-center text-center'>
-                <input type="number" value="{{$total_price}}" id="total_price">
-                <span>قیمت کل</span>
-            </div>
-            <div class='w-full flex justify-between items-center text-center border-y-2'>
-                <span class='text-gray-300'> 1.000.000 </span>
-                <span class='text-green-400'>  سود شما از خرید </span>
-            </div>
-            <div class='w-full flex justify-between items-center text-center'>
-                <span class='text-gray-300'> 1.000.000 </span>
-                <span> مبلغ قابل پرداخت </span>
-            </div>
-            <div class='w-full flex justify-between items-center text-center border-t-2'>
-                <span class='text-gray-300' id="cart_counter"> {{$count}} </span>
-                <span> تعداد محصول </span>
-            </div>
-        </div>                
-    </div>
-</div>
 
 
     <script>
@@ -125,6 +188,8 @@
         let cart_counter = document.getElementById('cart_counter');
         // let pro_cart_parent_div = document.getElementById('pro_cart_parent_div');
         let total_price = document.getElementById('total_price');
+        let benefit = document.getElementById('benefit');
+        let realsum = document.getElementById('realsum');
         // let cart_buttons = document.getElementById('cart_buttons');
         let formButton = document.getElementById('formButton');
         let addressForm = document.getElementById('addressForm');
@@ -143,10 +208,9 @@
             addressForm.classList.remove('invisible')
         }
 
-
+        let product_price=0;
         let quantity=0;
         function updateCart(el,id,state) {
-            console.log(el)
             quantity = el.parentElement.children[1].children[0].value;
 
             if (quantity < 30) {
@@ -186,6 +250,7 @@
                         'quantity':quantity,
                     },
                     success: function(data) {
+                        console.log(data);
                         el.parentElement.children[1].children[0].value = data.quantity
                         if(data.quantity==1){
 
@@ -229,14 +294,25 @@
                                 <svg class='size-3 fill-black' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M432 256c0 13.3-10.7 24-24 24L40 280c-13.3 0-24-10.7-24-24s10.7-24 24-24l368 0c13.3 0 24 10.7 24 24z"/></svg>
                             `
                         }
-                        let product_price=parseInt(data.product.price)
-                        let price=parseInt(total_price.value)
-                        // total_price.value=price+data.product.price
-                        // console.log(price+product_price)
-                        if(state=='plus'){
-                            total_price.value=price+product_price;
+                        SumResult=parseInt(realsum.innerHTML)
+                        if(data.product.discunt!=null){
+
+                           product_price = parseInt(data.product.discunt)
                         }else{
-                            total_price.value=price-product_price;
+                            product_price = parseInt(data.product.price)
+                        }
+                        let price=parseInt(total_price.innerHTML)
+                        console.log(price);
+
+                        if(state=='plus'){
+                            total_price.innerHTML=price+product_price;
+                            realsum.innerHTML=SumResult+parseInt(data.product.price);
+                            benefit.innerHTML=parseInt( realsum.innerHTML ) - parseInt( total_price.innerHTML)
+
+                        }else{
+                            total_price.innerHTML=price-product_price;
+                            realsum.innerHTML=SumResult-parseInt(data.product.price);
+                            benefit.innerHTML=parseInt( realsum.innerHTML ) - parseInt( total_price.innerHTML)
                         }
                     },
                     error: function() {
@@ -269,9 +345,12 @@
                     el.parentElement.classList.add('hidden')
                     el.closest('.parent_cart').remove()
 
-                    product_price=parseInt(productData.price)
-                    price=parseInt(total_price.value)
-                    total_price.value=price-product_price;
+                    if(productData.discunt!=null){
+                        product_price = parseInt(productData.discunt)
+                    }else{
+                        product_price = parseInt(productData.price)
+                    }
+                    total_price.value=total_price.value-product_price;
 
                 },
                 error: function() {
@@ -363,6 +442,7 @@
     </script>
 
 
+    
+</body>
+</html>
 
-
-@endsection
