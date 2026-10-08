@@ -1,12 +1,13 @@
-@import url(.css/fontiran.css);
-*{
-    font-family: "IRANSansX";
+@font-face {
+    font-family: 'myFont';
+    src: url(../fonts/woff/IRANSansX-Bold.woff);
+    font-weight: normal;
+    font-style: normal;
+    font-display: normal;
 }
- 
-/* font */
-@import url(./fontiran.css);
+
 *{
-    font-family: IRANSansXFaNum;
+    font-family: 'myFont';
 }
 /* root */
 :root{

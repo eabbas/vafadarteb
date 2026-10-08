@@ -1122,7 +1122,7 @@
         let div_text_and_counter='';
         let parent_div='';
         function showCart(){
-            if(cart_counter.innerHTML!=0){
+            if(parseInt(cart_counter.innerHTML)!=0){
                 cart.classList.remove('hidden');
                 cart.classList.add('flex');
             }
@@ -1674,8 +1674,9 @@
                         div_image.innerHTML=`<div class="w-full h-20 rounded-xl"> 🖼 </div>`
                     }
                     div_text_and_counter.classList=`w-4/5 flex flex-col justify-evenly`;
-                    let html=`
-                   
+                    let html=
+                    
+                    `
                         <div class='w-4/5 flex flex-col justify-evenly '>
                             <div class='text-xl text-center items-center'>
                                 <span> ${pro.title} </span>
@@ -1691,15 +1692,7 @@
                                     }else{
                                         html+=`<div onclick="updateNoAuthCart(this,${pro.id},'minus')" class='p-2 text-center items-center flex justify-center cursor-pointer bg-gray-300 h-full'><svg class='size-3 fill-black' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M432 256c0 13.3-10.7 24-24 24L40 280c-13.3 0-24-10.7-24-24s10.7-24 24-24l368 0c13.3 0 24 10.7 24 24z"/></svg></div>`
                                     }
-
-                                            
                                     html+=`
-
-                                            
-                                    
-                                       
-                                    
-
                                 </div>
                                 
                                 <div class='text-black text-xl'> ${pro.price} </div>
@@ -1717,8 +1710,8 @@
                     total_price_noAuth+=parseInt(pro.price) * pro.quantity;
                     
                 })
-                total_price.value=total_price_noAuth;
-                cart_counter.innerHTML=count_noAuth;
+                total_price.value+total_price_noAuth;
+                cart_counter.innerHTML=parseInt(cart_counter.innerHTML)+count_noAuth;
             }
         }
         addProducsToCart();
