@@ -172,6 +172,7 @@ route::group([
     Route::get('/create','create')->name('create');
     Route::post('/store','store')->name('store');
     Route::get('/list','list')->name('list');
+    Route::get('/edit/{discuntCode}','edit')->name('edit');
     Route::post('/update/{discuntCode}','update')->name('update');
     Route::get('/delete/{discuntCode}','delete')->name('delete');
 });
