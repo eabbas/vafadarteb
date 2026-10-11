@@ -1,6 +1,6 @@
 @extends('dashboard')
 
-@section('title','لیست برندها')
+@section('title','لیست کد تخفیف ها')
 @section('content')
 
 <style>
@@ -89,7 +89,7 @@
         color: var(--metronic-content-bg);
     }
 
-    /* ===== بج برند ===== */
+    /* ===== بج کد تخفیف ===== */
     .vafadar-code-badge {
         display: inline-flex;
         align-items: center;
@@ -439,21 +439,21 @@
     <!-- ===== هدر لیست ===== -->
     <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-6">
         <div>
-            <h2 class="text-xl font-bold" style="color: var(--metronic-dark);"> لیست برندها</h2>
-            <p class="text-sm mt-1" style="color: var(--metronic-text-dark);">مدیریت برندهای محصولات</p>
+            <h2 class="text-xl font-bold" style="color: var(--metronic-dark);"> لیست کد تخفیف ها</h2>
+            <p class="text-sm mt-1" style="color: var(--metronic-text-dark);">مدیریت کد تخفیف ها </p>
         </div>
         <div class="flex items-center gap-3 flex-wrap">
             <span class="vafadar-counter">
                 <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
                     <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
                 </svg>
-                {{ count($codes) }} برند
+                {{ count($codes) }} کد تخفیف
             </span>
             <a href="{{route('discuntCode.create')}}" class="vafadar-add-btn">
                 <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
                     <path d="M12 5v14M5 12h14"/>
                 </svg>
-                برند جدید
+                کد تخفیف جدید
             </a>
         </div>
     </div>
@@ -468,7 +468,7 @@
                     <circle cx="11" cy="11" r="8"/>
                     <path d="M21 21l-4.35-4.35"/>
                 </svg>
-                <input type="text" id="searchBrand" placeholder="جستجوی برندها..." class="vafadar-search">
+                <input type="text" id="searchBrand" placeholder="جستجوی کد تخفیف ها..." class="vafadar-search">
             </div>
         </div>
 
@@ -479,8 +479,8 @@
                     <tr>
                         <th style="width: 50px;">#</th>
                         <th>عنوان</th>
-                        <th>مقدار تخفیف</th>
                         <th>کد تخفیف</th>
+                        <th>مقدار تخفیف</th>
                         <th class="table-cell">وضعیت</th>
                         <th class="text-center">عملیات</th>
                     </tr>
@@ -513,14 +513,14 @@
                         </td>
                         <td>
                             <div class="vafadar-action-group justify-center">
-                                <a href="{{route('discuntCode.edit',['discuntCode'=>$code->id])}}" class="vafadar-action-btn edit" title="ویرایش برند">
+                                <a href="{{route('discuntCode.edit',['discuntCode'=>$code->id])}}" class="vafadar-action-btn edit" title="ویرایش کد تخفیف">
                                     <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                         <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/>
                                         <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/>
                                     </svg>
                                     <span class="hidden sm:inline">ویرایش</span>
                                 </a>
-                                <a href="{{route('discuntCode.delete',['discuntCode'=>$code->id])}}" class="vafadar-action-btn delete" title="حذف برند" onclick="return confirm('آیا از حذف برند «{{$code->title}}» مطمئن هستید؟')">
+                                <a href="{{route('discuntCode.delete',['discuntCode'=>$code->id])}}" class="vafadar-action-btn delete" title="حذف کد تخفیف" onclick="return confirm('آیا از حذف کد تخفیف «{{$code->title}}» مطمئن هستید؟')">
                                     <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                         <path d="M3 6h18"/>
                                         <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/>
@@ -551,7 +551,7 @@
         <!-- ===== فوتر جدول ===== -->
         <div class="vafadar-table-header px-4 py-3 border-t" style="border-color: var(--metronic-border);">
             <div class="flex flex-col sm:flex-row items-center justify-between gap-2 text-xs" style="color: var(--metronic-text-dark);">
-                <span>تعداد کل: <strong style="color: var(--metronic-dark);">{{ count($codes) }}</strong> برند</span>
+                <span>تعداد کل: <strong style="color: var(--metronic-dark);">{{ count($codes) }}</strong> کد تخفیف</span>
                 <span>آخرین بروزرسانی: <strong style="color: var(--metronic-dark);">{{ now()->format('Y/m/d H:i') }}</strong></span>
             </div>
         </div>

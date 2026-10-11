@@ -65,6 +65,8 @@ class DiscuntCodeController extends Controller
         return to_route('discuntCode.list');
     }
     public function delete(discunt_code $discuntCode){
+        $discuntCode->delete();
+        return to_route('discuntCode.list');
         dd('delete');
     }
 }
