@@ -175,6 +175,7 @@ route::group([
     Route::get('/edit/{discuntCode}','edit')->name('edit');
     Route::post('/update/{discuntCode}','update')->name('update');
     Route::get('/delete/{discuntCode}','delete')->name('delete');
+    Route::post('/checkCode','checkCode')->name('checkCode');
 });
 route::group([
     'prefix'=>'logo',

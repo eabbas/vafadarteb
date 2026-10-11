@@ -69,4 +69,17 @@ class DiscuntCodeController extends Controller
         return to_route('discuntCode.list');
         dd('delete');
     }
+    public function checkCode(Request $request){
+        $code=discunt_code::where('code',$request->code)->first();
+        if($code){
+            if($code->is_active==1){
+                $access=true;
+            }else{
+                $access=false;
+            }
+        }else{
+            $access='Unavailable';
+        }
+        return response()->json($access);
+    }
 }
