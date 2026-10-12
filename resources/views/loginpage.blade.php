@@ -837,7 +837,27 @@
         }
 
 
+        function addlocalProducts(){
+            let jsonProArray = JSON.parse(localStorage.getItem('products'));
 
+            console.log(jsonProArray);
+
+            let productsString = JSON.stringify(jsonProArray);
+
+            let inputlogin = document.createElement('input');
+            let inputsignup = document.createElement('input');
+            inputlogin.setAttribute('name', 'products[]');
+            inputlogin.setAttribute('type', 'hidden');
+            inputlogin.setAttribute('value', productsString); 
+            inputsignup.setAttribute('name', 'products');
+            inputsignup.setAttribute('type', 'hidden');
+            inputsignup.setAttribute('value', productsString); 
+
+            signupForm.children[0].appendChild(inputsignup); 
+
+            loginForm.children[0].appendChild(inputlogin); 
+        }
+        addlocalProducts();
     </script>
 
 </body>
