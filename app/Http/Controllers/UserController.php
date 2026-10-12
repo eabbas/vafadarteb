@@ -12,6 +12,7 @@ use App\Models\headerSetting;
 use App\Models\hero;
 use App\Models\category;
 use App\Models\product;
+use App\Models\cart;
 use App\Models\advertisement;
 use App\Models\product_labels;
 use App\Models\phone_code;
