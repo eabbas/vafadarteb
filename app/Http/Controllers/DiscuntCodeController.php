@@ -80,6 +80,6 @@ class DiscuntCodeController extends Controller
         }else{
             $access='Unavailable';
         }
-        return response()->json($access);
+        return response()->json(['access'=>$access , 'discuntCode'=>$code]);
     }
 }

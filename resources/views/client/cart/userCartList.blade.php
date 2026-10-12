@@ -174,11 +174,14 @@
                         <span> تعداد محصول </span>
                     </div>
                 </div>
-                <div class='w-full border-2 flex'>
-                    <input type="text" class='w-7/12 outline-none active:bg-yellow-100 p-2 border-3' id="codeInput">
-                    <div class='w-5/12 cursor-pointer bg-green-300 p-2'onclick="checkCode(this)"> اعمال کد تخفیف </div>
-                </div>
-                <a href="#" id="formButton" class='btn w-full p-2 bg-red-500 rounded-2xl text-center flex items-center justify-center text-white cursor-pointer'> ادامه جهت تسویه حساب </a>
+                <form method="POST" action="{{route('user.checkOutForm')}}" class='w-full flex flex-col gap-5'>
+                    @csrf
+                    <div class='w-full border-2 flex'>
+                        <input name="code" type="text" class='w-7/12 outline-none active:bg-yellow-100 p-2 border-3' id="codeInput">
+                        <div class='w-5/12 cursor-pointer bg-green-300 p-2'onclick="checkCode(this)"> اعمال کد تخفیف </div>
+                    </div>
+                    <button id="formButton" class='btn w-full p-2 bg-red-500 rounded-2xl text-center flex items-center justify-center text-white cursor-pointer'> ادامه جهت تسویه حساب </button>
+                </form>
             </div>                
         </div>
     </div>
@@ -462,18 +465,27 @@
                     data:{
                         'code':code,
                     },
-                    success: function(access) {
-                        console.log(access);
-                        if(access!='Unavailable'){
-                            if(access==true){
-                                alert('کد تخفیف اعمال شد');
+                    success: function(data) {
+                        console.log(data.access);
+                        if(data.access!='Unavailable'){
+                            if(data.access==true){
                                 el.innerHTML='کد تخفیف اعمال شد'
-                                el.classList.remove('bg-green-300');
+                                el.classList.remove('bg-green-100');
                                 el.classList.add('bg-yellow-300');
-//                                 div=document.createElement('div');
-//                                 div.className='size-20 bg-red-500'
-// ÷                                cartDatas.firstElementChild.after(div);
-                            }if(access==false){
+                                if(data.discuntCode.number!=null){
+                                    total_price.innerHTML=parseInt(total_price.innerHTML)-parseInt(data.discuntCode.number)
+                                    benefit.innerHTML=parseInt(benefit.innerHTML)+parseInt(data.discuntCode.number)
+                                }
+                                if(data.discuntCode.percent!=null){
+                                    let result=parseInt(total_price.innerHTML)*parseInt(data.discuntCode.percent)
+                                    result=result/100;
+                                    total_price.innerHTML=parseInt(total_price.innerHTML)-parseInt(result)
+                                    benefit.innerHTML=parseInt(benefit.innerHTML) + result
+                                    parseInt(total_price.innerHTML)
+                                    parseInt(benefit.innerHTML) 
+                                }
+                                codeInput.setAttribute('readonly',true)
+                            }if(data.access==false){
                                 alert('کد تخفیف منقصی شد');
                                 el.innerHTML="اعمال کد تخفیف"
                                 el.setAttribute('onclick','checkCode(this)');

@@ -61,7 +61,7 @@ class UserController extends Controller
         $user=User::where('phoneNumber',$validation['phoneNumber'])->first();
         if($user){
             Auth::login($user);
-            return to_route("user.profile");
+            return redirect('/');
         }
         $createdUser=User::create([
             "name"=>$validation['name'],
@@ -76,7 +76,7 @@ class UserController extends Controller
             'role_id'=>$role->id,
         ]);
         Auth::login($createdUser);
-        return to_route('user.profile');
+        return redirect('/');
     }
     public function createUser(Request $request){
 
@@ -132,7 +132,7 @@ class UserController extends Controller
  
         $user=User::where('phoneNumber',$request->phoneNumber)->first();
         Auth::login($user);
-        return to_route('user.profile');
+        return redirect('/');
     }
     public function list(){
         $users=User::all();
@@ -458,5 +458,7 @@ class UserController extends Controller
             // $request->all()
             );
     }
-
+    public function checkOutForm(Request $request){
+        dd($request->all());
+    }
 }
