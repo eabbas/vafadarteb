@@ -269,9 +269,9 @@
                         <rect x="2" y="3" width="20" height="18" rx="2"/>
                     </svg>
                 </span>
-                ایجاد برند جدید
+                ایجاد کد تخفیف جدید
             </h2>
-            <p class="text-sm text-[#9A9CAE] mt-1 mr-12">اطلاعات برند را وارد کنید</p>
+            <p class="text-sm text-[#9A9CAE] mt-1 mr-12">اطلاعات کد تخفیف را وارد کنید</p>
         </div>
 
         <!-- ===== فرم ===== -->
@@ -284,23 +284,18 @@
                 <!-- عنوان -->
                 <div>
                     <label class="vafadar-label" for="title"> عنوان</label>
-                    <input type="text" id="title" placeholder="عنوان برند را وارد کنید" name='title' value="{{old('title')}}" class="vafadar-input">
+                    <input type="text" id="title" placeholder="عنوان کد تخفیف را وارد کنید" name='title' value="{{old('title')}}" class="vafadar-input">
                     @error('title') <span class="vafadar-error">{{$message}}</span> @enderror
                 </div>
                 <div class='flex flex-col w-full'>
                     <label class="vafadar-label" for="percent"> حالت تخفیف</label>
                         <select name="percent" id="percent" class="vafadar-select">
-                            <option value="5">5%</option>
-                            <option value="10">10%</option>
-                            <option value="20">20%</option>
-                            <option value="30">30%</option>
-                            <option value="40">40%</option>
-                            <option value="50">50%</option>
-                            <option value="60">60%</option>
-                            <option value="70">70%</option>
-                            <option value="80">80%</option>
-                            <option value="90">90%</option>
-                            <option value="100">100%</option>
+                            <option value="">-- انتخاب کنید --</option>
+                            @for ($i = 1; $i <= 100; $i++)
+                                <option value="{{ $i }}" >
+                                    {{ $i }}%
+                                </option>
+                            @endfor
                         </select>
                         <input type="number" name="number" id="number" class="vafadar-input hidden" disabled placeholder="مقدار تخفیف را وارد کنید">
                 </div>

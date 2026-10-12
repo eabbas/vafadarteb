@@ -12,6 +12,7 @@ use App\Models\headerSetting;
 use App\Models\hero;
 use App\Models\category;
 use App\Models\product;
+use App\Models\cart;
 use App\Models\advertisement;
 use App\Models\product_labels;
 use App\Models\phone_code;
@@ -61,7 +62,42 @@ class UserController extends Controller
         $user=User::where('phoneNumber',$validation['phoneNumber'])->first();
         if($user){
             Auth::login($user);
-            return to_route("user.profile");
+            $user->load(['carts'=>function($query){$query->where('order_id',null)->get();}]);
+            // dd($products);
+            $cartProductsId=[];
+            foreach ($user->carts as $cart) {
+                $cartProductsId[]=$cart['product_id'];
+            }
+            if(count($user->carts)<1){
+                foreach ($products as $product) {
+                    cart::create([
+                        'user_id'=>$user->id,
+                        'product_id'=>$product['id'],
+                        'order_id'=>null,
+                        'quantity'=>$product['quantity'],
+                    ]);
+                }
+            }else{
+                foreach ($products as $product) {
+                    if(in_array($product['id'] , $cartProductsId)){
+                        foreach ($user->carts as $cart) {
+                            if($cart->product_id == $product['id']){
+                                $cart->quantity=$cart->quantity+$product['quantity'];
+                                $cart->save();
+                            }
+                        }
+                    }else{
+                        cart::create([
+                            'user_id'=>$user->id,
+                            'product_id'=>$product['id'],
+                            'order_id'=>null,
+                            'quantity'=>$product['quantity'],
+                        ]); 
+                    }
+                }
+            }
+
+            return redirect('/');
         }
         $createdUser=User::create([
             "name"=>$validation['name'],
@@ -76,7 +112,42 @@ class UserController extends Controller
             'role_id'=>$role->id,
         ]);
         Auth::login($createdUser);
-        return to_route('user.profile');
+        $user->load(['carts'=>function($query){$query->where('order_id',null)->get();}]);
+        // dd($products);
+        $cartProductsId=[];
+        foreach ($user->carts as $cart) {
+            $cartProductsId[]=$cart['product_id'];
+        }
+        if(count($user->carts)<1){
+            foreach ($products as $product) {
+                cart::create([
+                    'user_id'=>$user->id,
+                    'product_id'=>$product['id'],
+                    'order_id'=>null,
+                    'quantity'=>$product['quantity'],
+                ]);
+            }
+        }else{
+            foreach ($products as $product) {
+                if(in_array($product['id'] , $cartProductsId)){
+                    foreach ($user->carts as $cart) {
+                        if($cart->product_id == $product['id']){
+                            $cart->quantity=$cart->quantity+$product['quantity'];
+                            $cart->save();
+                        }
+                    }
+                }else{
+                    cart::create([
+                        'user_id'=>$user->id,
+                        'product_id'=>$product['id'],
+                        'order_id'=>null,
+                        'quantity'=>$product['quantity'],
+                    ]); 
+                }
+            }
+        }
+
+        return redirect('/');
     }
     public function createUser(Request $request){
 
@@ -129,10 +200,48 @@ class UserController extends Controller
         return to_route('user.list');
     }
     public function login(Request $request){
- 
+        $products=json_decode($request->products[0], true);
+        // dd($x);
+        // dd($request->all());
+
         $user=User::where('phoneNumber',$request->phoneNumber)->first();
         Auth::login($user);
-        return to_route('user.profile');
+        $user->load(['carts'=>function($query){$query->where('order_id',null)->get();}]);
+        // dd($products);
+        $cartProductsId=[];
+        foreach ($user->carts as $cart) {
+            $cartProductsId[]=$cart['product_id'];
+        }
+        if(count($user->carts)<1){
+            foreach ($products as $product) {
+                cart::create([
+                    'user_id'=>$user->id,
+                    'product_id'=>$product['id'],
+                    'order_id'=>null,
+                    'quantity'=>$product['quantity'],
+                ]);
+            }
+        }else{
+            foreach ($products as $product) {
+                if(in_array($product['id'] , $cartProductsId)){
+                    foreach ($user->carts as $cart) {
+                        if($cart->product_id == $product['id']){
+                            $cart->quantity=$cart->quantity+$product['quantity'];
+                            $cart->save();
+                        }
+                    }
+                }else{
+                    cart::create([
+                        'user_id'=>$user->id,
+                        'product_id'=>$product['id'],
+                        'order_id'=>null,
+                        'quantity'=>$product['quantity'],
+                    ]); 
+                }
+            }
+        }
+
+        return redirect('/');
     }
     public function list(){
         $users=User::all();
@@ -458,5 +567,7 @@ class UserController extends Controller
             // $request->all()
             );
     }
-
+    public function checkOutForm(Request $request){
+        dd($request->all());
+    }
 }

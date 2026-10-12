@@ -156,27 +156,32 @@
         <div class=' w-4/12 flex flex-col'>
             <div class='flex flex-col rounded-xl border-2 p-1 sticky top-45 gap-5'>
                 <span class='font-bold text-2xl'> جمع کل سبد خرید </span>
-                <div class='w-full flex justify-between items-center text-center border-t-2'>
-                    <span id="realsum" class='font-bold'>{{$realsum}}</span>
-                    <span>قیمت کل</span>
+                <div class='s-full flex flex-col gap-5' id="cartDatas">
+                    <div class='w-full flex justify-between items-center text-center border-t-2'>
+                        <span id="realsum" class='font-bold'>{{$realsum}}</span>
+                        <span>قیمت کل</span>
+                    </div>
+                    <div class='w-full flex justify-between items-center text-center border-t-2'>
+                        <span id="total_price" class='font-bold'>{{$total_price}}</span>
+                        <span>قیمت قابل پرداخت</span>
+                    </div>
+                    <div class='w-full flex justify-between items-center text-center border-t-2'>
+                        <span class='text-green-400 font-bold' id="benefit"> {{$realsum -$total_price }} </span>
+                        <span class='text-green-400'> سود شما از خرید </span>
+                    </div>
+                    <div class='w-full flex justify-between items-center text-center border-t-2'>
+                        <span class=' font-bold' id="cart_counter"> {{$count}} </span>
+                        <span> تعداد محصول </span>
+                    </div>
                 </div>
-                <div class='w-full flex justify-between items-center text-center border-t-2'>
-                    <span id="total_price" class='font-bold'>{{$total_price}}</span>
-                    <span>قیمت بعد از تخفیف</span>
-                </div>
-                <div class='w-full flex justify-between items-center text-center border-t-2'>
-                    <span class='text-green-400 font-bold' id="benefit"> {{$realsum -$total_price }} </span>
-                    <span class='text-green-400'> سود شما از خرید </span>
-                </div>
-                <div class='w-full flex justify-between items-center text-center border-t-2'>
-                    <span class=' font-bold' id="cart_counter"> {{$count}} </span>
-                    <span> تعداد محصول </span>
-                </div>
-                <div class='w-full border-2 flex'>
-                    <input type="text" class='w-7/12 outline-none active:bg-yellow-100 p-2 border-3'>
-                    <div class='w-5/12 cursor-pointer bg-green-300 p-2'> اعمال کد تخفیف </div>
-                </div>
-                <a href="#" id="formButton" class='btn w-full p-2 bg-red-500 rounded-2xl text-center flex items-center justify-center text-white cursor-pointer'> ادامه جهت تسویه حساب </a>
+                <form method="POST" action="{{route('user.checkOutForm')}}" class='w-full flex flex-col gap-5'>
+                    @csrf
+                    <div class='w-full border-2 flex'>
+                        <input name="code" type="text" class='w-7/12 outline-none active:bg-yellow-100 p-2 border-3' id="codeInput">
+                        <div class='w-5/12 cursor-pointer bg-green-300 p-2'onclick="checkCode(this)"> اعمال کد تخفیف </div>
+                    </div>
+                    <button id="formButton" class='btn w-full p-2 bg-red-500 rounded-2xl text-center flex items-center justify-center text-white cursor-pointer'> ادامه جهت تسویه حساب </button>
+                </form>
             </div>                
         </div>
     </div>
@@ -193,6 +198,8 @@
         // let cart_buttons = document.getElementById('cart_buttons');
         let formButton = document.getElementById('formButton');
         let addressForm = document.getElementById('addressForm');
+        let codeInput = document.getElementById('codeInput');
+        let cartDatas = document.getElementById('cartDatas');
 
 
 
@@ -438,7 +445,67 @@
                 alert('آدرس را وارد کنید');
             }
         }
-
+        let code=''
+        function checkCode(el){
+            code=document.getElementById('codeInput').value;
+            console.log(code);
+            if(code!=''){
+                el.innerHTML= `<div class="size-7 border-4 border-(--border) border-t-(--primary_color) rounded-full animate-spin"></div>`;
+                el.removeAttribute('onclick');
+                el.setAttribute('disable',true);
+                $.ajaxSetup({
+                    headers: {
+                        'X-CSRF-TOKEN': "{{ csrf_token() }}"
+                    }
+                })
+                $.ajax({
+                    url: "{{route('discuntCode.checkCode')}}",
+                    type: "post",
+                    dataType: "json",
+                    data:{
+                        'code':code,
+                    },
+                    success: function(data) {
+                        console.log(data.access);
+                        if(data.access!='Unavailable'){
+                            if(data.access==true){
+                                el.innerHTML='کد تخفیف اعمال شد'
+                                el.classList.remove('bg-green-100');
+                                el.classList.add('bg-yellow-300');
+                                if(data.discuntCode.number!=null){
+                                    total_price.innerHTML=parseInt(total_price.innerHTML)-parseInt(data.discuntCode.number)
+                                    benefit.innerHTML=parseInt(benefit.innerHTML)+parseInt(data.discuntCode.number)
+                                }
+                                if(data.discuntCode.percent!=null){
+                                    let result=parseInt(total_price.innerHTML)*parseInt(data.discuntCode.percent)
+                                    result=result/100;
+                                    total_price.innerHTML=parseInt(total_price.innerHTML)-parseInt(result)
+                                    benefit.innerHTML=parseInt(benefit.innerHTML) + result
+                                    parseInt(total_price.innerHTML)
+                                    parseInt(benefit.innerHTML) 
+                                }
+                                codeInput.setAttribute('readonly',true)
+                            }if(data.access==false){
+                                alert('کد تخفیف منقصی شد');
+                                el.innerHTML="اعمال کد تخفیف"
+                                el.setAttribute('onclick','checkCode(this)');
+                                el.removeAttribute('disable');
+                            }
+                        }else{
+                            alert('کد تخفیف درست نیست');
+                            el.innerHTML="اعمال کد تخفیف"
+                            el.setAttribute('onclick','checkCode(this)');
+                            el.removeAttribute('disable');
+                        }
+                    },
+                    error: function() {
+                        console.log('☢')
+                    }
+                })
+            }else{
+                alert('اول کد تخفیف را وارد کنید');
+            }
+        }
     </script>
 
 

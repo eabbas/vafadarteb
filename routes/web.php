@@ -58,6 +58,7 @@ Route::group([
     Route::post('/signup_with_ajax','signup_with_ajax')->name('signup_with_ajax');
     Route::post('/signin_with_ajax','signin_with_ajax')->name('signin_with_ajax');
     Route::post('/checkUser','checkUser')->name('checkUser');
+    Route::post('/checkOutForm','checkOutForm')->name('checkOutForm');
 });
 Route::group([
     'prefix'=>'role',
@@ -172,8 +173,10 @@ route::group([
     Route::get('/create','create')->name('create');
     Route::post('/store','store')->name('store');
     Route::get('/list','list')->name('list');
+    Route::get('/edit/{discuntCode}','edit')->name('edit');
     Route::post('/update/{discuntCode}','update')->name('update');
     Route::get('/delete/{discuntCode}','delete')->name('delete');
+    Route::post('/checkCode','checkCode')->name('checkCode');
 });
 route::group([
     'prefix'=>'logo',
