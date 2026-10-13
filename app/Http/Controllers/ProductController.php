@@ -806,7 +806,7 @@ class ProductController extends Controller
     }
     public function header_test(){
         $logo = headerSetting::first();
-        $product=product::find(7);
+        $product=product::find(1);
         $user=Auth::user();
         $flag=false;
         if($user){
@@ -822,6 +822,7 @@ class ProductController extends Controller
                 }
             }
             foreach ($user->carts as $cart) {
+                // dd($product);
                 if($cart->product->id==$product->id){
                     $flag=true;
                 }
