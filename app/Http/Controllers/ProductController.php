@@ -806,7 +806,7 @@ class ProductController extends Controller
     }
     public function header_test(){
         $logo = headerSetting::first();
-        $product=product::find(1);
+        $product=product::find(8);
         $user=Auth::user();
         $flag=false;
         if($user){
@@ -817,7 +817,13 @@ class ProductController extends Controller
                         if($media->is_main==1){
                             $cart->product->path=$media->path;
                         }
+                        if ($product->discunt) {
+                            $campare = $product->price - $product->discunt;
+                            $x = $campare / $product->price;
+                            $product->percent = intval($x * 100);
+                        }
                     }
+                    
                     
                 }
             }
@@ -829,7 +835,7 @@ class ProductController extends Controller
             }
             $is_mainpicture='';
             $galleryPicture=[];
-            }
+        }
             return view('header',['user'=>$user,'flag'=>$flag,'logo'=>$logo]);
     }
     public function arranged_attributes($attributes){
