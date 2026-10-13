@@ -1107,16 +1107,16 @@
                         <!-- cart new -->
                 
                         <div class='relative group'>
-                            <div class="flex h-full items-center cursor-pointer" onclick="showCart()">
+                            <a href="{{route('cart.userCartList')}}" class="flex h-full items-center cursor-pointer" >
                                 <svg class="sm:size-5 size-4" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
                                     <circle cx="9" cy="21" r="1" />
                                     <circle cx="20" cy="21" r="1" />
                                     <path d="M1 1h4l2.68 13.39A2 2 0 0 0 9.64 16H19a2 2 0 0 0 2-1.72L23 6H6" />
                                 </svg>
-                            </div>
+                            </a>
 
                             <!-- <div class="w-full h-dvh bg-black/50 fixed top-0 right-0 z-3"></div> -->
-                            <div id='cart' class='absolute z-4 rounded-xl w-[60vw] max-h-0 group-hover:max-h-[80vh] overflow-y-hidden top-5 left-0 bg-white flex flex-col gap-4 group-hover:p-5 transition_normal group-hover:shadow-[0px_0px_10px_5px] shadow-gray-300'>
+                            <div id='cart' class='absolute z-4 rounded-xl w-[60vw] max-h-0 hidden lg:group-hover:max-h-[80vh] overflow-y-hidden top-5 left-0 bg-white lg:flex flex-col gap-4 group-hover:p-5 transition_normal group-hover:shadow-[0px_0px_10px_5px] shadow-gray-300'>
                                     <div class=" w-full flex justify-between items-center">
                                         <div class="flex justify-start items-center gap-3">
                                             <div>
@@ -1158,21 +1158,32 @@
 
                                                             <div class="flex flex-col justify-center items-start">
                                                                 <h5 class="xl:text-xl text-lg font-bold text-(--title)">{{$cart->product->title}}</h5>
-                                                                <p class="xl:text-xs text-[10px] text-(--discription)">مناسب انواع پوست پوست پوست پوست پوست پوست</p>
+                                                                <p class="xl:text-xs text-[10px] text-(--discription)">{{$cart->product->summary}}</p>
                                                             </div>
-                                                            <div class="flex justify-start items-center gap-2">
-                                                                <div class="flex flex-col justify-start items-end gap-2">
-                                                                    <del class="xl:text-xs text-[10px] text-(--discription) flex justify-start items-center gap-1">
-                                                                        <span>54364</span>
-                                                                        <span>تومان</span>
-                                                                    </del>
-                                                                    <div class="text-[#316361] flex justify-start items-center gap-1">
-                                                                        <span class="xl:text-lg font-bold">{{$cart->product->price}}</span>
-                                                                        <span>تومان</span>
+                                                            @if($cart->product->discunt==null || $cart->product->discunt<1)
+                                                                <div class="flex justify-start items-center gap-2">
+                                                                    <div class="flex flex-col justify-start items-end gap-2">
+                                                                        <div class="text-[#316361] flex justify-start items-center gap-1">
+                                                                            <span class="xl:text-lg font-bold">{{$cart->product->price}}</span>
+                                                                            <span>تومان</span>
+                                                                        </div>
                                                                     </div>
                                                                 </div>
-                                                                <span class="xl:text-sm text-xs px-2 py-1 rounded-xl bg-red-200 text-red-900">20%</span>
-                                                            </div>
+                                                            @else
+                                                                <div class="flex justify-start items-center gap-2">
+                                                                    <div class="flex flex-col justify-start items-end gap-2">
+                                                                        <del class="xl:text-xs text-[10px] text-(--discription) flex justify-start items-center gap-1">
+                                                                            <span>{{$cart->product->price}}</span>
+                                                                            <span>تومان</span>
+                                                                        </del>
+                                                                        <div class="text-[#316361] flex justify-start items-center gap-1">
+                                                                            <span class="xl:text-lg font-bold">{{$cart->product->discunt}}</span>
+                                                                            <span>تومان</span>
+                                                                        </div>
+                                                                    </div>
+                                                                    <span class="xl:text-sm text-xs px-2 py-1 rounded-xl bg-red-200 text-red-900">{{$cart->product->percent}}%</span>
+                                                                </div>
+                                                            @endif
                                                             <span class="min-w-[1px] w-[1px] max-w-[1px] min-h-9/12 rounded-full bg-(--product)"></span>
 
                                                             <div class='flex justify-start gap-10 items-center px-4'>
@@ -1810,16 +1821,18 @@
                 } 
             })
             cart_counter.innerHTML--
-            if(cart_counter.innerHTML==0){
-                hiddenCart();
-            }
             el.parentElement.classList.remove('flex')
             el.parentElement.classList.add('hidden')
             el.closest('.parent_cart').remove()
             
-            product_price=parseInt(currentUpdateProduct.price)
-            price=parseInt(total_price.innerHTML)
-            total_price.innerHTML=price-product_price;
+            if(currentUpdateProduct.discunt==null || currentUpdateProduct.discunt<1){
+                product_price=parseInt(currentUpdateProduct.price)
+            }else{
+                product_price=parseInt(currentUpdateProduct.discunt)
+            }
+
+            total_price.innerHTML=parseInt(total_price.innerHTML)-product_price;
+
 
             jsonProArray = jsonProArray.filter(function(pro) {
                 if(pro.id != product_id){

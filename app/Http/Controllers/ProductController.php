@@ -661,6 +661,11 @@ class ProductController extends Controller
                             $cart->product->path=$media->path;
                         }
                     }
+                    if ($cart->product->discunt!=null ||$cart->product->discunt>0 ) {
+                        $campare = $cart->product->price - $cart->product->discunt;
+                        $x = $campare / $cart->product->price;
+                        $cart->product->percent = intval($x * 100);
+                    }
                     
                 }
             }
@@ -817,10 +822,10 @@ class ProductController extends Controller
                         if($media->is_main==1){
                             $cart->product->path=$media->path;
                         }
-                        if ($product->discunt) {
-                            $campare = $product->price - $product->discunt;
-                            $x = $campare / $product->price;
-                            $product->percent = intval($x * 100);
+                        if ($cart->product->discunt!=null ||$cart->product->discunt>0 ) {
+                            $campare = $cart->product->price - $cart->product->discunt;
+                            $x = $campare / $cart->product->price;
+                            $cart->product->percent = intval($x * 100);
                         }
                     }
                     
