@@ -1293,7 +1293,19 @@
 
 
         }
+        let user_id="{{Auth::id()}}";
 
+        let link="{{route('user.loginPage')}}";
+        let check="{{Auth::check()}}";
+        let products=[];
+        let jsonPro=""
+        let textProducts="";
+        let jsonProArray="";
+        let flag=true;
+        current_product_quantity="1";
+        let myProduct='';
+        let count_noAuth=0;
+        let total_price_noAuth=0;
         const route = "{{ request()->path() }}";
         let cart = document.getElementById('cart');
         let cart_list = document.getElementById('cart_list');

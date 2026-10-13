@@ -13,6 +13,7 @@ use App\Http\Controllers\BannerController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\StaticUserController;
 use App\Http\Controllers\AdvertisementController;
+use App\Http\Controllers\DiscuntCodeController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\SupportInformationController;
 use App\Http\Controllers\HeaderSettingController;
@@ -57,6 +58,7 @@ Route::group([
     Route::post('/signup_with_ajax','signup_with_ajax')->name('signup_with_ajax');
     Route::post('/signin_with_ajax','signin_with_ajax')->name('signin_with_ajax');
     Route::post('/checkUser','checkUser')->name('checkUser');
+    Route::post('/checkOutForm','checkOutForm')->name('checkOutForm');
 });
 Route::group([
     'prefix'=>'role',
@@ -111,6 +113,8 @@ route::group([
     
     Route::get('/client/product/{product}','client_pro_single')->name('client_pro_single');
     Route::get('/header/test','header_test')->name('header_test');
+
+    Route::get('/get/noAuth/{product}','getNoAuthProduct')->name('getNoAuthProduct');
 });
 route::group([
     'prefix'=>'cart',
@@ -160,6 +164,19 @@ route::group([
     Route::get('/edit/{brand}','edit')->name('edit');
     Route::post('/update/{brand}','update')->name('update');
     Route::get('/delete/{brand}','delete')->name('delete');
+});
+route::group([
+    'prefix'=>'discuntCode',
+    'as'=>'discuntCode.',
+    'controller'=>DiscuntCodeController::class,
+],function(){
+    Route::get('/create','create')->name('create');
+    Route::post('/store','store')->name('store');
+    Route::get('/list','list')->name('list');
+    Route::get('/edit/{discuntCode}','edit')->name('edit');
+    Route::post('/update/{discuntCode}','update')->name('update');
+    Route::get('/delete/{discuntCode}','delete')->name('delete');
+    Route::post('/checkCode','checkCode')->name('checkCode');
 });
 route::group([
     'prefix'=>'logo',
