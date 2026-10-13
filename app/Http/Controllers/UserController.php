@@ -58,13 +58,69 @@ class UserController extends Controller
                 'password.max'=>'تعداد کاراکتر های مجاز 255 تا میباشد',
             ]
         );
-
+        $products=json_decode($request->products[0], true);
         $user=User::where('phoneNumber',$validation['phoneNumber'])->first();
         if($user){
             Auth::login($user);
-            $user->load(['carts'=>function($query){$query->where('order_id',null)->get();}]);
-            // dd($products);
-            $cartProductsId=[];
+            if(count($products)>0){
+                $user->load(['carts'=>function($query){$query->where('order_id',null)->get();}]);
+                // dd($products);
+                $cartProductsId=[];
+                foreach ($user->carts as $cart) {
+                    $cartProductsId[]=$cart['product_id'];
+                }
+                if(count($user->carts)<1){
+                    foreach ($products as $product) {
+                        cart::create([
+                            'user_id'=>$user->id,
+                            'product_id'=>$product['id'],
+                            'order_id'=>null,
+                            'quantity'=>$product['quantity'],
+                        ]);
+                    }
+                }else{
+                    foreach ($products as $product) {
+                        if(in_array($product['id'] , $cartProductsId)){
+                            foreach ($user->carts as $cart) {
+                                if($cart->product_id == $product['id']){
+                                    $cart->quantity=$cart->quantity+$product['quantity'];
+                                    $cart->save();
+                                }
+                            }
+                        }else{
+                            cart::create([
+                                'user_id'=>$user->id,
+                                'product_id'=>$product['id'],
+                                'order_id'=>null,
+                                'quantity'=>$product['quantity'],
+                            ]); 
+                        }
+                    }
+                }
+                $localCash='cashClear';
+            }else{
+                $localCash='cashSave';
+            }
+
+            return view('firstPage',['localCash'=>$localCash]);
+        }
+        $createdUser=User::create([
+            "name"=>$validation['name'],
+            "family"=>$validation['family'],
+            "phoneNumber"=>$validation['phoneNumber'],
+            "email"=>$request['email'],
+            "password"=>$validation['password'],
+        ]);
+        $role=role::where('ea_title','user')->first();
+        role_user::create([
+            'user_id'=>$createdUser->id,
+            'role_id'=>$role->id,
+        ]);
+        Auth::login($createdUser);
+        $user->load(['carts'=>function($query){$query->where('order_id',null)->get();}]);
+        // dd($products);
+        $cartProductsId=[];
+        if(count($products)>0){
             foreach ($user->carts as $cart) {
                 $cartProductsId[]=$cart['product_id'];
             }
@@ -96,58 +152,11 @@ class UserController extends Controller
                     }
                 }
             }
-
-            return redirect('/');
-        }
-        $createdUser=User::create([
-            "name"=>$validation['name'],
-            "family"=>$validation['family'],
-            "phoneNumber"=>$validation['phoneNumber'],
-            "email"=>$request['email'],
-            "password"=>$validation['password'],
-        ]);
-        $role=role::where('ea_title','user')->first();
-        role_user::create([
-            'user_id'=>$createdUser->id,
-            'role_id'=>$role->id,
-        ]);
-        Auth::login($createdUser);
-        $user->load(['carts'=>function($query){$query->where('order_id',null)->get();}]);
-        // dd($products);
-        $cartProductsId=[];
-        foreach ($user->carts as $cart) {
-            $cartProductsId[]=$cart['product_id'];
-        }
-        if(count($user->carts)<1){
-            foreach ($products as $product) {
-                cart::create([
-                    'user_id'=>$user->id,
-                    'product_id'=>$product['id'],
-                    'order_id'=>null,
-                    'quantity'=>$product['quantity'],
-                ]);
-            }
+            $localCash='cashClear';
         }else{
-            foreach ($products as $product) {
-                if(in_array($product['id'] , $cartProductsId)){
-                    foreach ($user->carts as $cart) {
-                        if($cart->product_id == $product['id']){
-                            $cart->quantity=$cart->quantity+$product['quantity'];
-                            $cart->save();
-                        }
-                    }
-                }else{
-                    cart::create([
-                        'user_id'=>$user->id,
-                        'product_id'=>$product['id'],
-                        'order_id'=>null,
-                        'quantity'=>$product['quantity'],
-                    ]); 
-                }
-            }
+            $localCash='cashSave';
         }
-
-        return redirect('/');
+        return view('firstPage',['localCash'=>$localCash]);
     }
     public function createUser(Request $request){
 
@@ -208,40 +217,46 @@ class UserController extends Controller
         Auth::login($user);
         $user->load(['carts'=>function($query){$query->where('order_id',null)->get();}]);
         // dd($products);
-        $cartProductsId=[];
-        foreach ($user->carts as $cart) {
-            $cartProductsId[]=$cart['product_id'];
-        }
-        if(count($user->carts)<1){
-            foreach ($products as $product) {
-                cart::create([
-                    'user_id'=>$user->id,
-                    'product_id'=>$product['id'],
-                    'order_id'=>null,
-                    'quantity'=>$product['quantity'],
-                ]);
+        if(count($products)>0){
+
+            $cartProductsId=[];
+            foreach ($user->carts as $cart) {
+                $cartProductsId[]=$cart['product_id'];
             }
-        }else{
-            foreach ($products as $product) {
-                if(in_array($product['id'] , $cartProductsId)){
-                    foreach ($user->carts as $cart) {
-                        if($cart->product_id == $product['id']){
-                            $cart->quantity=$cart->quantity+$product['quantity'];
-                            $cart->save();
-                        }
-                    }
-                }else{
+            if(count($user->carts)<1){
+                foreach ($products as $product) {
                     cart::create([
                         'user_id'=>$user->id,
                         'product_id'=>$product['id'],
                         'order_id'=>null,
                         'quantity'=>$product['quantity'],
-                    ]); 
+                    ]);
+                }
+            }else{
+                foreach ($products as $product) {
+                    if(in_array($product['id'] , $cartProductsId)){
+                        foreach ($user->carts as $cart) {
+                            if($cart->product_id == $product['id']){
+                                $cart->quantity=$cart->quantity+$product['quantity'];
+                                $cart->save();
+                            }
+                        }
+                    }else{
+                        cart::create([
+                            'user_id'=>$user->id,
+                            'product_id'=>$product['id'],
+                            'order_id'=>null,
+                            'quantity'=>$product['quantity'],
+                        ]); 
+                    }
                 }
             }
+            $localCash='cashClear';
+        }else{
+            $localCash='cashSave';
         }
 
-        return redirect('/');
+        return view('firstPage',['localCash'=>$localCash]);
     }
     public function list(){
         $users=User::all();
@@ -373,7 +388,8 @@ class UserController extends Controller
     public function firstPage(){
         $logo = headerSetting::first();
         $hero = hero::first();
-        return view('firstPage',['logo'=>$logo ,'hero'=>$hero]);
+        $localCash='cashSave';
+        return view('firstPage',['logo'=>$logo ,'hero'=>$hero,'localCash'=>$localCash]);
     }
     public function setting(){
         $comments=staticUser::all();
@@ -399,7 +415,7 @@ class UserController extends Controller
         $flag = true;
         $user = User::where('phoneNumber', $request->phoneNumber)->first();
         if ($user) {
-            $flag = false;
+            $flag = 'cashSave';
         }
         Log::info($flag);
         if ($flag) {
