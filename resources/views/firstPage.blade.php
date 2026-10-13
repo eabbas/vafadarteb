@@ -4173,6 +4173,14 @@
     <!-- js -->
     <!-- js -->
     <script>
+        let localCash="{{$localCash}}";
+            console.log(localCash);
+        if(localCash=='cashClear'){
+            localStorage.getItem('products');
+            localStorage.removeItem('products');
+        }
+
+
         let hambarger_menuew = document.getElementById('naser')
         function hambarger_menue(satare) {
             if (satare == 'close') {
