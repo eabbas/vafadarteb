@@ -532,7 +532,7 @@
                 <div>
                     <!-- Uploaded to: SVG Repo, www.svgrepo.com, Transformed by: SVG Repo Mixer Tools -->
 
-                    <svg width="50px" height="50px" viewBox="0 0 1024 1024" class="icon" version="1.1"
+                    <svg width="50px" height="50px"  viewBox="0 0 1024 1024" class="icon" version="1.1"
                         xmlns="http://www.w3.org/2000/svg">
                         <path d="M404.1 666.5m-215.3 0a215.3 215.3 0 1 0 430.6 0 215.3 215.3 0 1 0-430.6 0Z"
                             fill="#F9C0C0" />
