@@ -542,84 +542,96 @@
           اتمام خرید
         </a>
       </section>
+    <?php
+        $total_price=0;
+        $count=0;
+        $realsum=0;
+    ?>
       <section class="flex flex-col lg:flex-row px-4 md:px-10 mt-10 gap-5 pb-20">
-        <div class="lg:w-9/12 border border-zinc-200 rounded-xl divide-y divide-zinc-200">
-            <?php
-                $total_price=0;
-                $count=0;
-                $realsum=0;
-            ?>
-            @foreach($user->carts as $cart)
-                <?php
+        <div id="cart_list" class=" lg:w-9/12 border border-zinc-200 rounded-xl divide-y divide-zinc-200 p-2">
+            @if(Auth::check() && count($user->carts))
+                @foreach($user->carts as $cart)
+                    <?php
                     $count++;
-                    $realsum+=$cart->product->price * $cart->quantity;
-                    if(isset($cart->product->discunt)){
-                        $total_price+=$cart->product->discunt * $cart->quantity;
-                    }else{
-                        $total_price+=$cart->product->price * $cart->quantity;
-                    }
-                ?>
-                <div class="mt-7 flex flex-col md:flex-row gap-y-5 p-4">
-                    <div class="w-10/12 max-w-52 md:max-w-36 mx-auto">
-                    <img class="size-25"  src="{{asset('storage/product_medias/'.$cart->product->path)}}"  alt="{{$cart->product->title}}">
-                    </div> 
-                    <div class="mr-2 md:mr-5 w-full flex flex-wrap justify-between gap-y-3">
-                    <div class="md:9/12 h-fit ">
-                        <a href="{{ route('product.client_pro_single', [$cart->product->id]) }}" class="w-full text-sm sm:text-base text-(--color-zinc-700) mb-5">
-                       {{$cart->product->title}}
-                        </a>
-                        <div class="flex mt-7 gap-1.5">
-                        <span class="w-5 h-5 rounded-full bg-(--color-green-500)"></span>
-                        <span class="w-5 h-5 rounded-full bg-(--color-blue-500)"></span>
-                        <span class="w-5 h-5 rounded-full bg-(--color-zinc-400)"></span>
+                    $total_price += $cart->product->price * $cart->quantity;
+                    ?>
+                    <div class='parent_cart w-full flex justify-start items-center border-2 border-(--product) gap-4 bg-white rounded-xl xl:p-2 p-1.5 relative'>
+                        <div class='xl:min-w-22 xl:min-h-22 xl:w-22 xl:h-22 min-w-18 min-h-18 w-18 h-18 bg-(--product) rounded-xl flex justify-center items-center'>
+                            @if(count($cart->product->medias)>0)
+                            <img class='max-w-full max-h-full rounded-xl' src="{{asset('storage/product_medias/'.$cart->product->path)}}" alt="">
+                            @else
+                            <div> 🖼 </div>
+                            @endif
                         </div>
-                    </div>
-                    <div class="w-full md:w-3/12 flex justify-end">
-                        <div class="text-(--color-zinc-700)">
-                            <div class='grid grid-cols-3 w-20 border-1 overflow-hidden rounded-md items-center text-center justify-between'>
-                                <div onclick="updateCart(this,{{$cart->id}},'plus')" class='p-2 text-center items-center flex justify-center cursor-pointer bg-gray-300 h-full'><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z"/></svg></div>
-                                <div class='p-2 text-center items-center flex justify-center '><input type="number" class='w-10 font-bold outline-none text-center items-center text-black' readonly value="{{$cart->quantity}}"></div>
-                                @if($cart->quantity==1)
-                                    <div onclick="trash(this,{{$cart->id}} , {{$cart->product->id}})" class='p-2 text-center items-center flex justify-center cursor-pointer bg-gray-300 h-full'><svg class='fill-rose-600' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M170.5 51.6L151.5 80h145l-19-28.4c-1.5-2.2-4-3.6-6.7-3.6H177.1c-2.7 0-5.2 1.3-6.7 3.6zm147-26.6L354.2 80H368h48 8c13.3 0 24 10.7 24 24s-10.7 24-24 24h-8V432c0 44.2-35.8 80-80 80H112c-44.2 0-80-35.8-80-80V128H24c-13.3 0-24-10.7-24-24S10.7 80 24 80h8H80 93.8l36.7-55.1C140.9 9.4 158.4 0 177.1 0h93.7c18.7 0 36.2 9.4 46.6 24.9zM80 128V432c0 17.7 14.3 32 32 32H336c17.7 0 32-14.3 32-32V128H80zm80 64V400c0 8.8-7.2 16-16 16s-16-7.2-16-16V192c0-8.8 7.2-16 16-16s16 7.2 16 16zm80 0V400c0 8.8-7.2 16-16 16s-16-7.2-16-16V192c0-8.8 7.2-16 16-16s16 7.2 16 16zm80 0V400c0 8.8-7.2 16-16 16s-16-7.2-16-16V192c0-8.8 7.2-16 16-16s16 7.2 16 16z"/></svg></div>
-                                @else
-                                    <div onclick="updateCart(this,{{$cart->id}},'minus')" class='p-2 text-center items-center flex justify-center cursor-pointer bg-gray-300 h-full'><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M432 256c0 17.7-14.3 32-32 32L48 288c-17.7 0-32-14.3-32-32s14.3-32 32-32l352 0c17.7 0 32 14.3 32 32z"/></svg></div>
-                                @endif
+                        <div class='xl:gap-7 gap-3 flex justify-between'>
+
+                            <div class="flex flex-col justify-center items-start">
+                                <h5 class="xl:text-xl text-lg font-bold text-(--title)">{{$cart->product->title}}</h5>
+                                <p class="xl:text-xs text-[10px] text-(--discription)">{{$cart->product->summary}}</p>
                             </div>
-
-                        
-                            @if(isset($cart->product->discunt))
-
-                                <div class='flex flex-col'>
-                                    <div class="flex mt-5">
-                                        <del class="text-md text-gray-300">{{number_format($cart->product->price)}}</del>
-                                        <div class="-rotate-90 text-xs text-(--color-zinc-400)">تومان</div>
-                                    </div>
-                                    <div class="flex ">
-                                        <div class="text-2xl md:text-3xl text-green-300">{{number_format($cart->product->discunt)}}</div>
-                                        <div class="-rotate-90 text-xs text-(--color-zinc-400)">تومان</div>
+                            @if($cart->product->discunt==null || $cart->product->discunt<1)
+                                <div class="flex justify-start items-center gap-2">
+                                    <div class="flex flex-col justify-start items-end gap-2">
+                                        <div class="text-[#316361] flex justify-start items-center gap-1">
+                                            <span class="xl:text-lg font-bold">{{$cart->product->price}}</span>
+                                            <span>تومان</span>
+                                        </div>
                                     </div>
                                 </div>
                             @else
-                                <div class='flex flex-col gap-2'>
-                                    <div class="flex mt-5">
-                                        <div class="text-2xl md:text-3xl text-green-300">{{number_format($cart->product->price)}}</div>
-                                        <div class="-rotate-90 text-xs text-(--color-zinc-400)">تومان</div>
+                                <div class="flex justify-start items-center gap-2">
+                                    <div class="flex flex-col justify-start items-end gap-2">
+                                        <del class="xl:text-xs text-[10px] text-(--discription) flex justify-start items-center gap-1">
+                                            <span>{{$cart->product->price}}</span>
+                                            <span>تومان</span>
+                                        </del>
+                                        <div class="text-[#316361] flex justify-start items-center gap-1">
+                                            <span class="xl:text-lg font-bold">{{$cart->product->discunt}}</span>
+                                            <span>تومان</span>
+                                        </div>
                                     </div>
+                                    <span class="xl:text-sm text-xs px-2 py-1 rounded-xl bg-red-200 text-red-900">{{$cart->product->percent}}%</span>
                                 </div>
-
                             @endif
+                            <span class="min-w-[1px] w-[1px] max-w-[1px] min-h-9/12 rounded-full bg-(--product)"></span>
+
+                            <div class='flex justify-start gap-10 items-center px-4'>
+                                <div class='flex xl:gap-5 gap-2 border-2 border-[#E5EBEB] rounded-full items-center text-center xl:px-4 px-3 xl:py-2 py-1.5'>
+                                    <div onclick="updateCart(this,{{$cart->id}},'plus')" class='xl:size-4 size-3  text-center items-center flex justify-center cursor-pointer'><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+                                            <path d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z" />
+                                        </svg>
+                                    </div>
+                                    <div class='text-center items-center flex justify-center cursor-pointer'>
+                                        <input type="number" class='w-10 font-bold outline-none text-center text-black flex max-xl:text-sm' readonly value="{{$cart->quantity}}">
+                                    </div>
+                                    @if($cart->quantity==1)
+                                    <div onclick="trash(this,{{$cart->id}} , {{$cart->product->id}})" class='xl:size-4 size-3 text-center items-center flex justify-center cursor-pointer'><svg class='fill-rose-600' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+                                            <path d="M170.5 51.6L151.5 80h145l-19-28.4c-1.5-2.2-4-3.6-6.7-3.6H177.1c-2.7 0-5.2 1.3-6.7 3.6zm147-26.6L354.2 80H368h48 8c13.3 0 24 10.7 24 24s-10.7 24-24 24h-8V432c0 44.2-35.8 80-80 80H112c-44.2 0-80-35.8-80-80V128H24c-13.3 0-24-10.7-24-24S10.7 80 24 80h8H80 93.8l36.7-55.1C140.9 9.4 158.4 0 177.1 0h93.7c18.7 0 36.2 9.4 46.6 24.9zM80 128V432c0 17.7 14.3 32 32 32H336c17.7 0 32-14.3 32-32V128H80zm80 64V400c0 8.8-7.2 16-16 16s-16-7.2-16-16V192c0-8.8 7.2-16 16-16s16 7.2 16 16zm80 0V400c0 8.8-7.2 16-16 16s-16-7.2-16-16V192c0-8.8 7.2-16 16-16s16 7.2 16 16zm80 0V400c0 8.8-7.2 16-16 16s-16-7.2-16-16V192c0-8.8 7.2-16 16-16s16 7.2 16 16z" />
+                                        </svg>
+                                    </div>
+                                    @else
+                                    <div onclick="updateCart(this,{{$cart->id}},'minus')" class='xl:size-4 size-3 text-center items-center flex justify-center cursor-pointer'><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+                                            <path d="M432 256c0 17.7-14.3 32-32 32L48 288c-17.7 0-32-14.3-32-32s14.3-32 32-32l352 0c17.7 0 32 14.3 32 32z" />
+                                        </svg>
+                                    </div>
+                                    @endif
+                                </div>
+                            </div>
+                            <div class='absolute top-2 left-2 size-4 text-center items-center flex justify-center cursor-pointer'><svg class='fill-rose-600' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+                                    <path d="M170.5 51.6L151.5 80h145l-19-28.4c-1.5-2.2-4-3.6-6.7-3.6H177.1c-2.7 0-5.2 1.3-6.7 3.6zm147-26.6L354.2 80H368h48 8c13.3 0 24 10.7 24 24s-10.7 24-24 24h-8V432c0 44.2-35.8 80-80 80H112c-44.2 0-80-35.8-80-80V128H24c-13.3 0-24-10.7-24-24S10.7 80 24 80h8H80 93.8l36.7-55.1C140.9 9.4 158.4 0 177.1 0h93.7c18.7 0 36.2 9.4 46.6 24.9zM80 128V432c0 17.7 14.3 32 32 32H336c17.7 0 32-14.3 32-32V128H80zm80 64V400c0 8.8-7.2 16-16 16s-16-7.2-16-16V192c0-8.8 7.2-16 16-16s16 7.2 16 16zm80 0V400c0 8.8-7.2 16-16 16s-16-7.2-16-16V192c0-8.8 7.2-16 16-16s16 7.2 16 16zm80 0V400c0 8.8-7.2 16-16 16s-16-7.2-16-16V192c0-8.8 7.2-16 16-16s16 7.2 16 16z" />
+                                </svg>
+                            </div>
+
                         </div>
                     </div>
-                    </div>
-                </div>
-            @endforeach
-
+                @endforeach
+            @endif
         </div>
         <div class="lg:w-3/12 lg:pt-5 my-10 lg:my-0">
           <div class="flex items-center justify-between">
-            <div class="text-(--color-primary-500)">جمع مبلغ کل</div>
+            <div class="">جمع مبلغ کل</div>
             <div class="flex">
-              <div class="text-2xl md:text-3xl text-(--color-primary-500) font-bold" id="realsum">{{$realsum}}</div>
+              <div class="text-2xl md:text-3xl  font-bold" id="realsum">{{$realsum}}</div>
               <div class="-rotate-90 text-sm text-(--color-primary-500)">تومان</div>
             </div>
           </div>
@@ -631,10 +643,17 @@
             </div>
           </div>
           <div class="flex items-center justify-between mt-6 text-(--color-zinc-600)">
-            <div class="text-sm"> سود شما از این خرید </div>
+            <div class="text-sm text-green-300"> سود شما از این خرید </div>
             <div class="flex">
               <div class="text-xl md:text-2xl font-bold" id="benefit">{{$realsum -$total_price }}</div>
               <div class="-rotate-90 text-xs">تومان</div>
+            </div>
+          </div>
+          <div class="flex items-center justify-between mt-6 text-(--color-zinc-600)">
+            <div class="text-sm"> مجموع تعداد خرید شما </div>
+            <div class="flex">
+              <div class="text-xl md:text-2xl font-bold" id="cart_counter">{{$count}}</div>
+              <div class=" text-xs">عدد</div>
             </div>
           </div>
             <form method="POST" action="{{route('user.checkOutForm')}}" class='w-full flex flex-col'>
@@ -991,9 +1010,14 @@
         let addressForm = document.getElementById('addressForm');
         let codeInput = document.getElementById('codeInput');
         let cartDatas = document.getElementById('cartDatas');
+        let cart_list = document.getElementById('cart_list');
 
-
-
+        let div_image='';
+        let div_text_and_counter='';
+        let parent_div='';
+        let count_noAuth=0;
+        let total_price_noAuth=0;
+        let product_price_noAuth=0;
 
         function hiddenAddressForm(){
             addressForm.classList.remove('opacity-100')
@@ -1143,18 +1167,22 @@
                     el.parentElement.classList.add('hidden')
                     el.closest('.parent_cart').remove()
 
+                    SumResult=parseInt(realsum.innerHTML)
                     if(productData.discunt!=null){
                         product_price = parseInt(productData.discunt)
                     }else{
                         product_price = parseInt(productData.price)
                     }
-                    total_price.value=total_price.value-product_price;
+                    total_price.innerHTML=parseInt(total_price.innerHTML)-product_price;
+                    realsum.innerHTML=SumResult-parseInt(productData.price);
+                    benefit.innerHTML=parseInt( realsum.innerHTML ) - parseInt( total_price.innerHTML)
 
                 },
                 error: function() {
                     console.log('☢')
                 }
             })
+            checkCart()
                 // console.log(entry)
             // el.parentElement.children[2].innerHTML =trash_icon
         }
@@ -1297,6 +1325,344 @@
                 alert('اول کد تخفیف را وارد کنید');
             }
         }
+
+        let currentUpdateProduct='';
+        function updateNoAuthCart(el,product_id,state){
+            jsonProArray=JSON.parse(localStorage.getItem('products'));
+            jsonProArray.find(function(pro){
+                if(pro.id == product_id){
+                    currentUpdateProduct=pro
+                } 
+            })
+            console.log(currentUpdateProduct);
+            quantity = el.parentElement.children[1].children[0].value;
+
+            // if (quantity < 30) {
+                
+                el.parentElement.children[0].innerHTML =
+                `
+                <div class="size-7 border-4 border-(--border) border-t-(--primary_color) rounded-full animate-spin"></div>
+
+                `;
+                // el.parentElement.children[0].setAttribute('disabled', true);
+                el.parentElement.children[0].disabled = true;
+                el.parentElement.children[0].removeAttribute('onclick');
+
+                el.parentElement.children[2].innerHTML =
+                `
+                <div class="size-7 border-4 border-(--border) border-t-(--primary_color) rounded-full animate-spin"></div>
+
+                `;
+                el.parentElement.children[2].disabled=true;
+                el.parentElement.children[2].removeAttribute('onclick');
+
+                if(state=='plus'){
+                    quantity++;
+                }else{
+                    quantity--;
+                }
+
+                el.parentElement.children[1].children[0].value = quantity
+                if(quantity==1){
+                    
+                    //  تغییر دادن  اس وی جی علامت پلاس  //
+                        
+                    el.parentElement.children[0].removeAttribute('disabled');
+                    el.parentElement.children[0].setAttribute('onclick',`updateNoAuthCart(this,${currentUpdateProduct.id},'plus')`)
+                    el.parentElement.children[0].innerHTML=
+                    `
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z"/></svg>
+                    `
+                    ;
+
+
+                    //  تغییر دادن  اس وی جی علامت سطل آشغال  //
+
+                    el.parentElement.children[2].innerHTML =
+                    `
+                    <svg class='size-5 fill-rose-600' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M170.5 51.6L151.5 80h145l-19-28.4c-1.5-2.2-4-3.6-6.7-3.6H177.1c-2.7 0-5.2 1.3-6.7 3.6zm147-26.6L354.2 80H368h48 8c13.3 0 24 10.7 24 24s-10.7 24-24 24h-8V432c0 44.2-35.8 80-80 80H112c-44.2 0-80-35.8-80-80V128H24c-13.3 0-24-10.7-24-24S10.7 80 24 80h8H80 93.8l36.7-55.1C140.9 9.4 158.4 0 177.1 0h93.7c18.7 0 36.2 9.4 46.6 24.9zM80 128V432c0 17.7 14.3 32 32 32H336c17.7 0 32-14.3 32-32V128H80zm80 64V400c0 8.8-7.2 16-16 16s-16-7.2-16-16V192c0-8.8 7.2-16 16-16s16 7.2 16 16zm80 0V400c0 8.8-7.2 16-16 16s-16-7.2-16-16V192c0-8.8 7.2-16 16-16s16 7.2 16 16zm80 0V400c0 8.8-7.2 16-16 16s-16-7.2-16-16V192c0-8.8 7.2-16 16-16s16 7.2 16 16z"/></svg>
+                    `
+                    el.parentElement.children[2].setAttribute('onclick',`NoAuthtrash(this,${currentUpdateProduct.id})`);
+                    el.parentElement.children[2].disabled=false;
+                }
+                if(quantity>1){
+
+                    //  تغییر دادن  اس وی جی علامت پلاس  //
+
+                    el.parentElement.children[0].removeAttribute('disabled');
+                    el.parentElement.children[0].setAttribute('onclick',`updateNoAuthCart(this,${currentUpdateProduct.id},'plus')`)
+                    el.parentElement.children[0].innerHTML=
+                    `
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z"/></svg>
+                    `
+                    ;
+                    //  تغییر دادن  اس وی جی علامت ماینس  //
+
+                    el.parentElement.children[2].disabled=false;
+                    el.parentElement.children[2].setAttribute('onclick',`updateNoAuthCart(this,${currentUpdateProduct.id},'minus')`)
+                    el.parentElement.children[2].innerHTML =
+                    `
+                        <svg class='size-3 fill-black' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M432 256c0 13.3-10.7 24-24 24L40 280c-13.3 0-24-10.7-24-24s10.7-24 24-24l368 0c13.3 0 24 10.7 24 24z"/></svg>
+                    `
+                }
+                if(currentUpdateProduct.discunt==null || currentUpdateProduct.discunt<1){
+                    product_price=parseInt(currentUpdateProduct.price)
+                }else{
+                    product_price=parseInt(currentUpdateProduct.discunt)
+                }
+                price=parseInt(total_price.innerHTML)
+                // total_price.innerHTML=price+data.product.price
+                // console.log(price+product_price)
+                if(state=='plus'){
+                    if( currentUpdateProduct.discunt !== "" || currentUpdateProduct.discunt>1){
+                        product_price_noAuth = parseInt(currentUpdateProduct.discunt)
+                    }else{
+                        product_price_noAuth = parseInt(currentUpdateProduct.price)
+                    }
+                    console.log(product_price_noAuth)
+                    total_price.innerHTML=parseInt(total_price.innerHTML)+product_price_noAuth;
+                    realsum.innerHTML=parseInt(realsum.innerHTML)+parseInt(currentUpdateProduct.price);
+                }else{
+                    if( currentUpdateProduct.discunt !== "" || currentUpdateProduct.discunt>1){
+                        product_price_noAuth = parseInt(currentUpdateProduct.discunt) 
+                    }else{
+                        product_price_noAuth = parseInt(currentUpdateProduct.price) 
+                    }
+                    console.log(product_price_noAuth)
+                    total_price.innerHTML=parseInt(total_price.innerHTML)-product_price_noAuth;
+                    realsum.innerHTML=parseInt(realsum.innerHTML)-parseInt(currentUpdateProduct.price);
+                } 
+                benefit.innerHTML=parseInt(realsum.innerHTML) - parseInt(total_price.innerHTML)
+                jsonProArray.find(function(pro){
+                    if(pro.id == product_id){
+                        pro.quantity=quantity
+                    } 
+                })
+                textProducts=JSON.stringify(jsonProArray)
+                localStorage.removeItem('products')
+                localStorage.setItem('products',textProducts)
+            // }
+
+        }
+        function NoAuthtrash(el,product_id){
+            let trash_icon='';
+            console.log(el.closest('.parent_cart'))
+            trash_icon=el.parentElement.children[2].innerHTML;
+            el.parentElement.children[2].innerHTML =
+            `
+                <div class="size-7 border-4 border-(--border) border-t-(--primary_color) rounded-full animate-spin"></div>
+            `
+            jsonProArray=JSON.parse(localStorage.getItem('products'));
+            jsonProArray.find(function(pro){
+                if(pro.id == product_id){
+                    currentUpdateProduct=pro
+                } 
+            })
+            cart_counter.innerHTML--
+            el.parentElement.classList.remove('flex')
+            el.parentElement.classList.add('hidden')
+            el.closest('.parent_cart').remove()
+            
+            if(currentUpdateProduct.discunt==null || currentUpdateProduct.discunt<1){
+                product_price=parseInt(currentUpdateProduct.price)
+            }else{
+                product_price=parseInt(currentUpdateProduct.discunt)
+            }
+
+            total_price.innerHTML=parseInt(total_price.innerHTML)-product_price;
+            realsum.innerHTML=parseInt(realsum.innerHTML)-parseInt(currentUpdateProduct.price)
+            benefit.innerHTML=parseInt(realsum.innerHTML) - parseInt(total_price.innerHTML)
+
+
+            jsonProArray = jsonProArray.filter(function(pro) {
+                if(pro.id != product_id){
+                    return pro;
+                }
+            });
+
+            textProducts=JSON.stringify(jsonProArray)
+            localStorage.removeItem('products')
+            localStorage.setItem('products',textProducts)
+            checkCart()
+        }
+        function addProducsToCart(){
+            
+            if(localStorage.getItem('products') != null){
+                jsonProArray=JSON.parse(localStorage.getItem('products'));
+
+                jsonProArray.forEach(pro => {
+                    console.log(pro);
+
+
+                    div_image=document.createElement('div');
+                    div_text_and_counter=document.createElement('div');
+                    parent_div=document.createElement('div');
+                    parent_div.classList=`parent_cart w-full flex justify-start items-center border-2 border-(--product) gap-4 bg-white rounded-xl xl:p-2 p-1.5 relative`;
+                    div_image.classList=`xl:min-w-22 xl:min-h-22 xl:w-22 xl:h-22 min-w-18 min-h-18 w-18 h-18 bg-(--product) rounded-xl flex justify-center items-center`;
+                    if(pro.path!=null){
+                        div_image.innerHTML = `<img class="max-w-full max-h-full rounded-xl" src="{{ asset('storage/product_medias/${pro.path}') }}" alt="">`;
+                    }else{
+                        div_image.innerHTML=`<div class="max-w-full max-h-full rounded-xl"> 🖼 </div>`
+                    }
+                    div_text_and_counter.classList=`xl:gap-7 gap-3 flex justify-between`;
+                    let html=
+                        `
+                        <div class="flex flex-col justify-center items-start">
+                            <h5 class="xl:text-xl text-lg font-bold text-(--title)"> ${pro.title} </h5>
+                            <p class="xl:text-xs text-[10px] text-(--discription)">${pro.summary}</p>
+                        </div>
+                                
+                        `
+                    if(pro.discunt==null || pro.discunt<1){
+                        html+=
+                            `
+                                <div class="flex justify-start items-center gap-2">
+                                    <div class="flex flex-col justify-start items-end gap-2">
+                                        <div class="text-[#316361] flex justify-start items-center gap-1">
+                                            <span class="xl:text-lg font-bold">${pro.price}</span>
+                                            <span>تومان</span>
+                                        </div>
+                                    </div>
+                                    <span class="xl:text-sm text-xs px-2 py-1 rounded-xl bg-red-200 text-red-900">20%</span>
+                                </div>
+                            `
+                    }else{
+                        html+=
+                            ` 
+                                <div class="flex justify-start items-center gap-2">
+                                    <div class="flex flex-col justify-start items-end gap-2">
+                                        <del class="xl:text-xs text-[10px] text-(--discription) flex justify-start items-center gap-1">
+                                            <span>${pro.price}</span>
+                                            <span>تومان</span>
+                                        </del>
+                                        <div class="text-[#316361] flex justify-start items-center gap-1">
+                                            <span class="xl:text-lg font-bold">${pro.discunt}</span>
+                                            <span>تومان</span>
+                                        </div>
+                                    </div>
+                                    <span class="xl:text-sm text-xs px-2 py-1 rounded-xl bg-red-200 text-red-900">20%</span>
+                                </div>
+                            `
+                    }
+                    html+=`<span class="min-w-[1px] w-[1px] max-w-[1px] min-h-9/12 rounded-full bg-(--product)"></span>`;
+                    html+=
+                    `
+                        <div class='flex justify-start gap-10 items-center px-4'>
+                            <div class='flex xl:gap-5 gap-2 border-2 border-[#E5EBEB] rounded-full items-center text-center xl:px-4 px-3 xl:py-2 py-1.5'>
+                                <div onclick="updateNoAuthCart(this,${pro.id},'plus')" class='xl:size-4 size-3  text-center items-center flex justify-center cursor-pointer'>
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"> <path d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z" /></svg>
+                                </div>
+                                <div class='p-2 text-center items-center flex justify-center '><input type="number" class='w-5 outline-none text-center items-center text-black' readonly value="${pro.quantity}"></div>
+                                `
+                                if(pro.quantity==1){
+                                    html+=
+                                    `
+                                        <div onclick="NoAuthtrash(this,${pro.id})" class='xl:size-4 size-3 text-center items-center flex justify-center cursor-pointer'>
+                                            <svg class='fill-rose-600' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"> <path d="M170.5 51.6L151.5 80h145l-19-28.4c-1.5-2.2-4-3.6-6.7-3.6H177.1c-2.7 0-5.2 1.3-6.7 3.6zm147-26.6L354.2 80H368h48 8c13.3 0 24 10.7 24 24s-10.7 24-24 24h-8V432c0 44.2-35.8 80-80 80H112c-44.2 0-80-35.8-80-80V128H24c-13.3 0-24-10.7-24-24S10.7 80 24 80h8H80 93.8l36.7-55.1C140.9 9.4 158.4 0 177.1 0h93.7c18.7 0 36.2 9.4 46.6 24.9zM80 128V432c0 17.7 14.3 32 32 32H336c17.7 0 32-14.3 32-32V128H80zm80 64V400c0 8.8-7.2 16-16 16s-16-7.2-16-16V192c0-8.8 7.2-16 16-16s16 7.2 16 16zm80 0V400c0 8.8-7.2 16-16 16s-16-7.2-16-16V192c0-8.8 7.2-16 16-16s16 7.2 16 16zm80 0V400c0 8.8-7.2 16-16 16s-16-7.2-16-16V192c0-8.8 7.2-16 16-16s16 7.2 16 16z" /> </svg>
+                                        </div>
+                                    `
+                                }else{
+                                    html+=
+                                    `
+                                        <div onclick="updateNoAuthCart(this,${pro.id},'minus')" class='xl:size-4 size-3 text-center items-center flex justify-center cursor-pointer'><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+                                                <path d="M432 256c0 17.7-14.3 32-32 32L48 288c-17.7 0-32-14.3-32-32s14.3-32 32-32l352 0c17.7 0 32 14.3 32 32z" />
+                                            </svg>
+                                        </div>
+                                    `
+                                }
+                                html+=`
+                                <div class='absolute top-2 left-2 size-4 text-center items-center flex justify-center cursor-pointer'><svg class='fill-rose-600' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+                                        <path d="M170.5 51.6L151.5 80h145l-19-28.4c-1.5-2.2-4-3.6-6.7-3.6H177.1c-2.7 0-5.2 1.3-6.7 3.6zm147-26.6L354.2 80H368h48 8c13.3 0 24 10.7 24 24s-10.7 24-24 24h-8V432c0 44.2-35.8 80-80 80H112c-44.2 0-80-35.8-80-80V128H24c-13.3 0-24-10.7-24-24S10.7 80 24 80h8H80 93.8l36.7-55.1C140.9 9.4 158.4 0 177.1 0h93.7c18.7 0 36.2 9.4 46.6 24.9zM80 128V432c0 17.7 14.3 32 32 32H336c17.7 0 32-14.3 32-32V128H80zm80 64V400c0 8.8-7.2 16-16 16s-16-7.2-16-16V192c0-8.8 7.2-16 16-16s16 7.2 16 16zm80 0V400c0 8.8-7.2 16-16 16s-16-7.2-16-16V192c0-8.8 7.2-16 16-16s16 7.2 16 16zm80 0V400c0 8.8-7.2 16-16 16s-16-7.2-16-16V192c0-8.8 7.2-16 16-16s16 7.2 16 16z" />
+                                    </svg>
+                                </div>
+                            </div>
+                        </div>
+                    ` 
+
+
+
+
+
+
+
+
+                    div_text_and_counter.innerHTML=html;
+                    parent_div.appendChild(div_image)
+                    parent_div.appendChild(div_text_and_counter)
+                    cart_list.appendChild(parent_div);
+                    console.log(cart_list);
+
+
+                    count_noAuth++;
+                    // if(pro.discunt==null || pro.discunt<1){
+                    //     total_price_noAuth+=parseInt(pro.price) * pro.quantity;
+                    // }else{
+                    //     total_price_noAuth+=parseInt(pro.discunt) * pro.quantity;
+
+                    // }
+                
+                    // total_price.innerHTML=parseInt(total_price.innerHTML)+total_price_noAuth;
+                    // realsum.innerHTML=parseInt(realsum.innerHTML)+parseInt(pro.price);
+
+                    console.log(pro)
+                    if( pro.discunt !== "" || pro.discunt>1){
+                        product_price_noAuth = parseInt(pro.discunt) * pro.quantity
+                    }else{
+                        product_price_noAuth = parseInt(pro.price) * pro.quantity
+                    }
+                        console.log(product_price_noAuth)
+                    total_price.innerHTML=parseInt(total_price.innerHTML)+product_price_noAuth;
+                    realsum.innerHTML=parseInt(realsum.innerHTML)+parseInt(pro.price)*pro.quantity;
+                })
+                cart_counter.innerHTML=parseInt(cart_counter.innerHTML)+count_noAuth;
+                benefit.innerHTML=parseInt(realsum.innerHTML) - parseInt(total_price.innerHTML)
+            }
+        }
+        addProducsToCart();
+        
+        function checkCart(){
+            
+            if(cart_list.children.length==0){
+                cart_list.innerHTML=
+                `
+                    <div class="relative min-h-[420px] grid place-items-center bg-gradient-to-br from-slate-50 to-cyan-50 p-8 rounded-2xl">
+
+                    <!-- کارت -->
+                    <div class="w-full bg-white rounded-3xl border border-slate-100 shadow-[0_10px_40px_-15px_rgba(13,148,136,0.25)] px-8 py-12 text-center">
+
+                        <!-- آیکون -->
+                        <div class="relative w-28 h-28 mx-auto mb-6 grid place-items-center rounded-full bg-gradient-to-br from-cyan-50 to-teal-50 border border-cyan-100">
+                        <!-- ضربان قلب کوچک بالا -->
+                        <div class="absolute -top-1 -right-1 w-6 h-6 rounded-full bg-teal-500/10 border border-teal-500/20 grid place-items-center">
+                            <div class="w-2 h-2 rounded-full bg-teal-500 animate-pulse"></div>
+                        </div>
+
+                        <svg viewBox="0 0 24 24" class="w-12 h-12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                            <g class="text-teal-500">
+                            <circle cx="9" cy="20" r="1.4" />
+                            <circle cx="18" cy="20" r="1.4" />
+                            <path d="M2 3h2.2l2.2 11.2a2 2 0 0 0 2 1.6h8.6a2 2 0 0 0 2-1.6L21 7H5.2" />
+                            </g>
+                        </svg>
+                        </div>
+
+                        <!-- متن -->
+                        <h2 class="text-xl font-bold text-slate-800 mb-2">سبد خرید خالی است</h2>
+                        <p class="text-sm leading-7 text-slate-500 mb-8">
+                        هنوز تجهیزاتی انتخاب نکردی.<br />
+                        از میان محصولات پزشکی ما انتخاب کن.
+                        </p>
+
+                    </div>
+                    </div>
+                `
+                formButton.disabled = true;
+                formButton.innerHTML=`سبد خرید خالی است`;
+                codeInput.disabled = true;
+
+            }
+        }
+        checkCart()
     </script>
 
 </body>

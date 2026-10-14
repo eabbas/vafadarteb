@@ -1223,7 +1223,8 @@
                                         </div> -->
                                         <div class="w-full bg-[#ECF6F8] rounded-xl flex justify-between  px-4 py-3">
                                             <div class="flex xl:gap-20 gap-10 justify-start items-center">
-                                                <a href="{{route('cart.userCartList')}}" class='bg-(--buttom) px-10 py-2 rounded-full cursor-pointer flex gap-5 justify-center items-center'>
+                                                <!-- <div onclick="goCartList()" class='bg-(--buttom) px-10 py-2 rounded-full cursor-pointer flex gap-5 justify-center items-center'> -->
+                                                <a href="{{url('cart/user/cart/list')}}" class='bg-(--buttom) px-10 py-2 rounded-full cursor-pointer flex gap-5 justify-center items-center'>
                                                     <div>
                                                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="xl:size-4 size-3.5 fill-white">
                                                             <path d="M440.6 273.4c4.7-4.5 7.4-10.8 7.4-17.4s-2.7-12.8-7.4-17.4l-176-168c-9.6-9.2-24.8-8.8-33.9 .8s-8.8 24.8 .8 33.9L364.1 232 24 232c-13.3 0-24 10.7-24 24s10.7 24 24 24l340.1 0L231.4 406.6c-9.6 9.2-9.9 24.3-.8 33.9s24.3 9.9 33.9 .8l176-168z" />
@@ -1262,6 +1263,10 @@
             </div>
         </div>
     </div>
+
+    <?php
+        $cartListUrl="{{url('cart/user/cart/list')}}";
+    ?>
     @yield('content')
 
 
@@ -1279,6 +1284,7 @@
         let div_image='';
         let div_text_and_counter='';
         let parent_div='';
+        let cartListUrl="{{$cartListUrl}}"
         function showCart(){
             if(parseInt(cart_counter.innerHTML)!=0){
                 cart.classList.remove('hidden');
@@ -1932,7 +1938,8 @@
             localStorage.setItem('products',textProducts)
 
         }
-        // function addProducsToCart(){
+        // fun+
+        // ction addProducsToCart(){
             
         //     if(localStorage.getItem('products') != null){
         //         jsonProArray=JSON.parse(localStorage.getItem('products'));
@@ -2152,4 +2159,22 @@
         }
 
         addProducsToCart();
+
+
+        // function goCartList(){
+        //     if(check){
+        //         if(cart_counter.innerHTML>0){
+        //             location.assign("cart/user/cart/list")
+        //         }else{
+        //             alert('سبد خرید خالی است');
+        //         }
+        //     }else{
+        //         if(cart_counter.innerHTML>0){
+        //             location.assign(cartListUrl)
+        //         }  else{
+        //             alert('سبد خرید خالی است');
+        //         } 
+        //     }
+        // } 
+        
     </script>
