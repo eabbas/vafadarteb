@@ -15,7 +15,7 @@
     <div class="w-full flex flex-col gap-6 justify-start items-center">
 
 
-        <header class="w-full md:h-dvh relative  flex justify-center items-end bg-red-200">
+        <header class="w-full md:h-dvh relative  flex justify-center items-end ">
             <!-- هدر -->
             <div class="absolute top-0 w-full flex justify-center z-3">
                 <div class="flex w-19/20 bg-[#ffffff]/70 justify-center mt-5 head">
@@ -153,7 +153,7 @@
             @endif
 
             <!-- محتوای اصلی -->
-            <div class="relative w-11/12  h-85/100 z-2 flex max-sm:flex-col max-md:gap-8 md:justify-center justify-start md:items-end items-center max-md:mt-23">
+            <div class="relative w-11/12  h-85/100 z-2 flex max-sm:flex-col max-md:gap-8 md:justify-center justify-start md:items-center items-center max-md:mt-23">
 
                 <!-- عکس hero (سمت راست) -->
                 @if($hero!=null)
@@ -163,21 +163,21 @@
                 </div>
 
                 @endif
-                <div class="md:w-7/12 w-full md:h-full  flex items-center justify-center ">
-                    <img class="lg:min-w-8/12 lg:min-h-8/12 min-w-9/12 min-h-9/12 lg:max-w-10/12 lg:max-h-10/12 max-w-11/12 md:max-h-11/12 max-h-80" src="{{ asset('assets/img/header/img_heder.webp') }}" alt="">
+                <div class="md:w-7/12 w-full md:h-full  flex items-center justify-center">
+                    <img class=" min-w-8/12 min-h-8/12 max-w-11/12 md:max-h-11/12 max-h-80" src="{{ asset('assets/img/header/img_heder.webp') }}" alt="">
                 </div>
 
                 <!-- بخش متن و دکمه (سمت چپ) -->
-                <div class="md:w-5/12 w-full h-full flex flex-col justify-center items-center text-center gap-3 ">
-                    <h3 class="xl:text-4xl lg:text-3xl text-2xl font-bold ">
+                <div class="md:w-5/12 w-full h-full flex flex-col justify-center items-center text-center gap-3 sm:pt-30">
+                    <h1 class="xl:text-[46px] lg:text-4xl md:text-3xl text-2xl font-bold flex flex-col">
                         @if($hero!=null)
                         {{ $hero->title }}
                         @else
 
-                        تجهیزات پزشکی
-                        با کیفیت برای مراکز درمانی
+                       تجهیزات پزشکی
+                       با کیفیت برای مراکز درمانی
                         @endif
-                    </h3>
+                    </h1>
                     <p class="xl:text-lg max-lg:text-sm text-(--discription) text-center font-bold ">
                         @if($hero!=null)
                         {{ $hero->summary }}
@@ -785,10 +785,10 @@
         <!-- categorys -->
         <!-- بنر محصولات ترند -->
 
-        <section class="w-11/12  flex flex-col gap-5 justify-start items-center">
+        <section class="w-11/12  flex flex-col gap-5 justify-start items-center ">
             <h2 class="font-bold text-[6vw] sm:text-[5vw] md:text-[4vw] lg:text-[3vw]">محصولات ترند</h2>
 
-            <div class="w-full h-70 grid lg:grid-cols-3 grid-cols-1 grid-rows-1 gap-4 ">
+            <div class="w-full lg:h-70 grid lg:grid-cols-3 grid-cols-1 grid-rows-1 gap-4 ">
                 <div class="w-full h-full flex justify-end relative">
                     <img src="{{asset('assets/img/baner/img3.webp')}}" alt="" class="">
                     <div class="absolute w-1/2 h-full flex gap-3 flex-col justify-center items-center">
@@ -988,7 +988,7 @@
         </section>
         <!-- خدمات -->
         <section class="w-11/12  flex flex-col gap-5 justify-start items-center">
-            <div class="w-full mx-auto bg-[#023350] py-7 px-3 xl:gap-4 gap-3 grid lg:grid-cols-4 sm:grid-cols-2 grid-cols-1 rounded-3xl">
+            <div class="w-full mx-auto bg-[#023350] py-7 px-3 xl:gap-4 gap-3 sm:gap-y-6 grid lg:grid-cols-4 sm:grid-cols-2 grid-cols-1 rounded-3xl">
                 @foreach($SI as $support)
                 <div class="w-full flex max-xl:flex-col max-lg:flex-row max-sm:flex-col justify-center items-center xl:gap-4 gap-3">
                     <div class='xl:min-w-21 min-w-17 xl:min-h-21 min-h-17 xl:max-w-21 max-w-17 xl:max-h-21 max-h-17 rounded-full h-full bg-[#EDE0D7] flex justify-center items-center p-1'>
@@ -1005,11 +1005,11 @@
         <!-- Popular Items -->
         <section class="w-11/12  flex flex-col gap-5 justify-start items-center">
             <div class="w-full flex gap-2 mt-20">
-                <div class="w-5/20 min-h-full max-xl:hidden flex justify-center items-center">
+                <div class="w-5/20 min-h-full max-xl:hidden flex justify-center items-center bg-red-500">
                     <img src="{{asset('storage/'.$banner->image)}}" alt="" class="min-w-1/2 min-h-1/3 max-w-full max-h-full rounded-xl">
                 </div>
-                <div class="w-full min-h-full flex flex-col">
-                    <div class="w-11/12 mx-auto flex justify-between py-5">
+                <div class="w-full min-h-full flex flex-col gap-4">
+                    <div class="w-11/12 mx-auto flex justify-between">
                         <a href=""
                             class="flex flex-row-reverse gap-2 fill-(--buttom) text-(--buttom) hover:text-[#fd6a6a] hover:fill-[#fd6a6a] transition-all duration-300">
                             <span class="">All Products </span>
@@ -1027,7 +1027,7 @@
                         </a>
                         <span class="text-[17px] md:text-[25px] font-bold text-(--title)">Popular Items</span>
                     </div>
-                    <div class="max-w-full flex gap-4 justify-start mb-15 text-white font-bold max-lg:text-sm max-sm:text-xs text-nowrap overflow-x-auto">
+                    <div class="max-w-full flex gap-4 justify-start text-white font-bold max-lg:text-sm max-sm:text-xs text-nowrap overflow-x-auto">
                         <button class="px-9 py-3 rounded-4xl bg-(--buttom)">Baby & Mom Care</button>
                         <button class="px-9 py-3 rounded-4xl bg-(--buttom)">Medical Equipments</button>
                         <button class="px-9 py-3 rounded-4xl bg-(--buttom)">Medicine</button>
@@ -1069,9 +1069,7 @@
                     </div>
                 </div>
             </div>
-            <div class="w-11/12 mx-auto h-30 md:h-50 hidden max-xl:block my-8">
-                <img src="{{asset('assets/img/logo/IMG_20260730_170917_821.jpg')}}" alt="" class="w-full h-30 md:h-50 rounded-2xl">
-            </div>
+          
         </section>
         <!-- بنر2 -->
         <section class="w-11/12  flex flex-col gap-5 justify-start items-center">
@@ -1231,7 +1229,7 @@
                                 </div>
                                 <div class="w-full min-h-[1px] max-h-[1px] bg-white rounded-full"></div>
                             </div>
-                            <div class="w-11/12 flex flex-col gap-5 items-center">
+                            <div class="w-11/12 flex flex-col gap-5 items-center ">
                                 <div class="w-full mx-auto flex gap-1 justify-between bg-(--primary_color) rounded-lg xl:h-35 lg:h-32 sm:h-27 h-23">
                                     <div class="w-5/12 h-full flex justify-center items-center p-2">
                                         <img src="{{asset('assets/img/silyder.producte/01.png')}}" alt=""
