@@ -553,7 +553,12 @@
                 @foreach($user->carts as $cart)
                     <?php
                     $count++;
-                    $total_price += $cart->product->price * $cart->quantity;
+                    if($cart->product->discunt!=null || $cart->product->discunt>0){
+                      $total_price += $cart->product->discunt * $cart->quantity;
+                    }else{
+                      $total_price += $cart->product->price * $cart->quantity;
+                    }
+                    $realsum+=$cart->product->price * $cart->quantity;
                     ?>
                     <div class='parent_cart w-full flex justify-start items-center border-2 border-(--product) gap-4 bg-white rounded-xl xl:p-2 p-1.5 relative'>
                         <div class='xl:min-w-22 xl:min-h-22 xl:w-22 xl:h-22 min-w-18 min-h-18 w-18 h-18 bg-(--product) rounded-xl flex justify-center items-center'>
@@ -985,12 +990,6 @@
           </div>
         </div>
       </section>
-      <!-- copyright -->
-       <div class="relative w-[99%] mt-7 m-b10 md:w-[90%] mx-auto border-t-1 border-(--color-zinc-400)">
-         <a href="" class="">
-           طراحی و توسعه توسط <span class="text-(--color-primary-500)">امیر محمد سزاوار</span>
-          </a>
-        </div>
     </footer>
   </div>
   <script src="./hamberger.js"></script>
