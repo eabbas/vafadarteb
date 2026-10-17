@@ -10,6 +10,10 @@ class address extends Model
         'user_id',
         'city_id',
         'location',
+        'province_id',
+        'phoneNumber',
+        'description',
+        'postalCode',
     ];
     public function user(){
         return $this->belongsTo(user::class);

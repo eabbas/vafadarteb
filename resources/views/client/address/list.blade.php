@@ -4,15 +4,14 @@
 @section('content')
 
 <style>
-    /* ===== پالت رنگی مترونیک (Metronic) ===== */
+    /* ===== پالت رنگی مترونیک (Metronic) - بدون رنگ سیاه ===== */
     :root {
-        --metronic-dark: #0D0E12;
         --metronic-content-bg: #FCFCFC;
         --metronic-form-bg: #FFFFFF;
         --metronic-shadow: #F5F5F5;
         --metronic-border: #DBDFE9;
         --metronic-text-dark: #9A9CAE;
-        --metronic-text-hover: #F5F5F5;
+        --metronic-text-value: #4A5568;
         --metronic-blue: #1B84FF;
     }
     
@@ -43,7 +42,7 @@
         border-bottom: 2px solid var(--metronic-border);
     }
     .dark .vafadar-table-header {
-        background: var(--metronic-dark);
+        background: var(--metronic-shadow);
         border-bottom-color: var(--metronic-border);
     }
 
@@ -82,7 +81,7 @@
 
     .vafadar-table-row td {
         padding: 12px 16px;
-        color: var(--metronic-dark);
+        color: var(--metronic-text-value);
         font-size: 13px;
         vertical-align: middle;
     }
@@ -208,14 +207,14 @@
     }
 
     .vafadar-action-btn.delete {
-        color: var(--metronic-dark);
+        color: var(--metronic-text-value);
         background: var(--metronic-shadow);
         border-color: var(--metronic-border);
     }
     .vafadar-action-btn.delete:hover {
-        background: var(--metronic-dark);
+        background: var(--metronic-text-value);
         color: #fff;
-        box-shadow: 0 4px 16px rgba(13, 14, 18, 0.25);
+        box-shadow: 0 4px 16px rgba(74, 85, 104, 0.25);
     }
 
     .dark .vafadar-action-btn.view {
@@ -244,7 +243,7 @@
         border-color: var(--metronic-border);
     }
     .dark .vafadar-action-btn.delete:hover {
-        background: var(--metronic-dark);
+        background: var(--metronic-text-value);
         color: #fff;
     }
 
@@ -273,7 +272,7 @@
         border: 1px solid var(--metronic-border);
         border-radius: 12px;
         padding: 10px 16px 10px 44px;
-        color: var(--metronic-dark);
+        color: var(--metronic-text-value);
         font-size: 14px;
         transition: all 0.3s ease;
         width: 100%;
@@ -349,7 +348,7 @@
         fill: var(--metronic-border);
     }
     .vafadar-empty h3 {
-        color: var(--metronic-dark);
+        color: var(--metronic-text-value);
         font-size: 18px;
         font-weight: 600;
     }
@@ -422,6 +421,59 @@
         border-color: var(--metronic-border);
     }
 
+    /* ===== فرم ویرایش (مودال) ===== */
+    #addressForm {
+        background: var(--metronic-form-bg) !important;
+        border: 2px solid var(--metronic-border) !important;
+        border-radius: 20px !important;
+        box-shadow: 0 20px 60px rgba(74, 85, 104, 0.15) !important;
+        padding: 24px !important;
+        width: 90% !important;
+        max-width: 420px !important;
+        height: auto !important;
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 12px !important;
+    }
+    #addressForm textarea {
+        width: 100% !important;
+        padding: 10px 14px !important;
+        background: var(--metronic-shadow) !important;
+        border: 1.5px solid var(--metronic-border) !important;
+        border-radius: 12px !important;
+        color: var(--metronic-text-value) !important;
+        font-size: 14px !important;
+        outline: none !important;
+        transition: all 0.3s ease !important;
+        min-height: 80px !important;
+    }
+    #addressForm textarea:focus {
+        border-color: var(--metronic-blue) !important;
+        box-shadow: 0 0 0 4px rgba(27, 132, 255, 0.06) !important;
+        background: var(--metronic-form-bg) !important;
+    }
+    #addressForm select {
+        width: 100% !important;
+        padding: 10px 14px !important;
+        background: var(--metronic-shadow) !important;
+        border: 1.5px solid var(--metronic-border) !important;
+        border-radius: 12px !important;
+        color: var(--metronic-text-value) !important;
+        font-size: 14px !important;
+        outline: none !important;
+        transition: all 0.3s ease !important;
+        appearance: none !important;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%239A9CAE' d='M6 8L1 3h10z'/%3E%3C/svg%3E") !important;
+        background-repeat: no-repeat !important;
+        background-position: left 14px center !important;
+        cursor: pointer !important;
+    }
+    #addressForm select:focus {
+        border-color: var(--metronic-blue) !important;
+        box-shadow: 0 0 0 4px rgba(27, 132, 255, 0.06) !important;
+        background: var(--metronic-form-bg) !important;
+    }
+
     /* ===== ریسپانسیو ===== */
     @media (max-width: 768px) {
         .vafadar-table-row td {
@@ -466,6 +518,87 @@
             padding: 4px 7px;
             font-size: 10px;
         }
+        #addressForm {
+            padding: 16px !important;
+        }
+    }
+
+
+    /* ===== فرم ویرایش آدرس ===== */
+    #addressForm {
+        background: var(--metronic-form-bg) !important;
+        border: 2px solid var(--metronic-border) !important;
+        border-radius: 20px !important;
+        box-shadow: 0 20px 60px rgba(74, 85, 104, 0.15) !important;
+        padding: 24px !important;
+        width: 90% !important;
+        max-width: 460px !important;
+        height: auto !important;
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 14px !important;
+        max-height: 90vh !important;
+    }
+
+    /* ===== گروه‌های فرم ===== */
+    #addressForm .address-form-group {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+    }
+
+    #addressForm .address-form-group label {
+        color: var(--metronic-text-value);
+        font-size: 13px;
+        font-weight: 600;
+        padding-right: 4px;
+    }
+
+    /* ===== همه فیلدها (تکست‌اریا، سلکت، اینپوت) ===== */
+    #addressForm textarea,
+    #addressForm select,
+    #addressForm input {
+        width: 100% !important;
+        padding: 10px 14px !important;
+        background: var(--metronic-shadow) !important;
+        border: 1.5px solid var(--metronic-border) !important;
+        border-radius: 12px !important;
+        color: var(--metronic-text-value) !important;
+        font-size: 14px !important;
+        outline: none !important;
+        transition: all 0.3s ease !important;
+        font-family: inherit !important;
+    }
+
+    /* ===== تکست‌اریا ===== */
+    #addressForm textarea {
+        min-height: 80px !important;
+        resize: vertical !important;
+    }
+
+    /* ===== سلکت ===== */
+    #addressForm select {
+        appearance: none !important;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%239A9CAE' d='M6 8L1 3h10z'/%3E%3C/svg%3E") !important;
+        background-repeat: no-repeat !important;
+        background-position: left 14px center !important;
+        cursor: pointer !important;
+    }
+
+    /* ===== فوکوس همه فیلدها ===== */
+    #addressForm textarea:focus,
+    #addressForm select:focus,
+    #addressForm input:focus {
+        border-color: var(--metronic-blue) !important;
+        box-shadow: 0 0 0 4px rgba(27, 132, 255, 0.06) !important;
+        background: var(--metronic-form-bg) !important;
+    }
+
+    /* ===== پلیس‌هولدرها ===== */
+    #addressForm input::placeholder,
+    #addressForm textarea::placeholder {
+        color: var(--metronic-text-dark) !important;
+        font-size: 13px !important;
     }
 </style>
 
@@ -474,7 +607,7 @@
     <!-- ===== هدر لیست ===== -->
     <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-6 ">
         <div>
-            <h2 class="text-xl font-bold" style="color: var(--metronic-dark);"> لیست آدرس ها</h2>
+            <h2 class="text-xl font-bold" style="color: var(--metronic-text-value);"> لیست آدرس ها</h2>
             <p class="text-sm mt-1" style="color: var(--metronic-text-dark);">مدیریت آدرس های محصولات</p>
         </div>
         <div class="flex items-center gap-3 flex-wrap">
@@ -507,12 +640,12 @@
                 <thead class="vafadar-table-header">
                     <tr>
                         <th style="width:50px;">#</th>
-                        <!-- <th>تصویر</th> -->
-                        <th>عنوان</th>
+                        <th>موقعیت</th>
+                        <th class="hidden lg:table-cell">شهر</th>
+                        <th class="hidden lg:table-cell">استان</th>
+                        <th class="hidden lg:table-cell">تلفن</th>
+                        <th class="hidden lg:table-cell">کد پستی</th>
                         <th class="hidden lg:table-cell">توضیحات</th>
-                        <th class="hidden md:table-cell">خلاصه</th>
-                        <th class="hidden sm:table-cell">نمایش در خانه</th>
-                        <th class="hidden sm:table-cell">وضعیت</th>
                         <th class="text-center" style="min-width:140px;">عملیات</th>
                     </tr>
                 </thead>
@@ -523,10 +656,22 @@
                             <span class="vafadar-address-badge">#{{$address->id}}</span>
                         </td>
                         <td>
-                            <div class="font-semibold" style="color: var(--metronic-dark);">{{$address->location}}</div>
+                            <div class="font-semibold" style="color: var(--metronic-text-value);">{{$address->location}}</div>
                         </td>
                         <td class="hidden lg:table-cell">
-                            <div class="font-semibold" style="color: var(--metronic-dark);">{{$address->city}}</div>
+                            <div class="font-semibold" style="color: var(--metronic-text-value);">{{$address->city}}</div>
+                        </td>
+                        <td class="hidden lg:table-cell">
+                            <div class="font-semibold" style="color: var(--metronic-text-value);">{{$address->province}}</div>
+                        </td>
+                        <td class="hidden lg:table-cell">
+                            <div class="font-semibold" style="color: var(--metronic-text-value);">{{$address->phoneNumber}}</div>
+                        </td>
+                        <td class="hidden lg:table-cell">
+                            <div class="font-semibold" style="color: var(--metronic-text-value);">{{$address->postalCode}}</div>
+                        </td>
+                        <td class="hidden lg:table-cell">
+                            <div class="font-semibold" style="color: var(--metronic-text-value);">{{$address->description}}</div>
                         </td>
                         <td>
                             <div class="vafadar-action-group">
@@ -556,7 +701,7 @@
                                     <rect x="2" y="3" width="20" height="18" rx="2"/>
                                 </svg>
                                 <h3>هیچ آدرسی یافت نشد</h3>
-                                <p>برای شروع، روی دکمه «دسته‌بندی جدید» کلیک کنید</p>
+                                <p>برای شروع، روی دکمه «آدرس جدید» کلیک کنید</p>
                             </div>
                         </td>
                     </tr>
@@ -568,8 +713,8 @@
         <!-- ===== فوتر جدول ===== -->
         <div class="vafadar-table-header px-4 py-3 border-t" style="border-color: var(--metronic-border);">
             <div class="flex flex-col sm:flex-row items-center justify-between gap-2 text-xs" style="color: var(--metronic-text-dark);">
-                <span>تعداد کل: <strong style="color: var(--metronic-dark);">{{ count($addresses) }}</strong> آدرس</span>
-                <span>آخرین بروزرسانی: <strong style="color: var(--metronic-dark);">{{ now()->format('Y/m/d H:i') }}</strong></span>
+                <span>تعداد کل: <strong style="color: var(--metronic-text-value);">{{ count($addresses) }}</strong> آدرس</span>
+                <span>آخرین بروزرسانی: <strong style="color: var(--metronic-text-value);">{{ now()->format('Y/m/d H:i') }}</strong></span>
             </div>
         </div>
 
@@ -598,7 +743,7 @@
         }
     });
     function getCities(){
-        let province=document.getElementById('provinces');
+        let province=document.getElementById('province');
         let cities=document.getElementById('cities');
         $.ajaxSetup({
             headers: {
@@ -630,7 +775,7 @@
 
     let addresses_list=document.getElementById('addresses_list');
     function showEditForm(el,address_id){
-
+        window._currentEditEl=el;
         $.ajax({
             url: "{{url('address/get/address')}}/"+address_id,
             type: "get",
@@ -639,7 +784,7 @@
                 let cities_div='';
                 let provinces_div='';
                 data.provinces.forEach(provincee => {
-                    if(data.province==provincee.id){
+                    if(data.province_id==provincee.id){
                         provinces_div+=`<option value="${provincee.id}" selected>${provincee.title}</option>`
                     }else{
                         provinces_div+=`<option value="${provincee.id}">${provincee.title}</option>`
@@ -655,21 +800,56 @@
 
                 addresses_list.innerHTML+=
                 `
-                <div id='addressForm' class='absolute top-1/3 left-1/2 size-60 bg-white p-4 border-4 rounded-xl shadow-xl transition-all duration-300'>
-                    <div onclick="removeForm()" class='absolute bg-red-500 rounded-full py-2 px-3 cursor-pointer text-white text-center items-center justify-center flex -right-5 -top-5'>X</div>
+               <div id='addressForm' class='absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-50'>
+                    <div onclick="removeForm()" class='absolute bg-[#1B84FF] rounded-full py-2 px-3 cursor-pointer text-white text-center items-center justify-center flex -right-3 -top-3 shadow-lg hover:scale-110 transition-all'>X</div>
                     @csrf
-                    <textarea name="location" id="location" class='border-3 p-1' placeholder='location'>${data.location}</textarea>
-                    <select class='border-1 p-1' name="province_id" id="provinces" onchange="getCities()">
-                    `+
-                        provinces_div
-                    +`
-                    </select>
-                    <select class='border-1 p-1' name="city_id" id="cities">
-                    `+
-                        cities_div
-                    +`
-                    </select>
-                    <div onclick="editAddress(${data.id})" class='bg-red-300 p-1 rounded-xl cursor-pointer'> ثبت </div>
+
+                    <!-- موقعیت مکانی -->
+                    <div class="address-form-group">
+                        <label for="location"> موقعیت مکانی</label>
+                        <textarea name="location" id="location" placeholder='موقعیت مکانی را وارد کنید...'>${data.location}</textarea>
+                    </div>
+
+                    <!-- استان -->
+                    <div class="address-form-group">
+                        <label for="province"> استان</label>
+                        <select name="province_id" id="province" onchange="getCities()">
+                        `+
+                            provinces_div
+                        +`
+                        </select>
+                    </div>
+
+                    <!-- شهر -->
+                    <div class="address-form-group">
+                        <label for="cities"> شهر</label>
+                        <select name="city_id" id="cities">
+                        `+
+                            cities_div
+                        +`
+                        </select>
+                    </div>
+
+                    <!-- کد پستی -->
+                    <div class="address-form-group">
+                        <label for="postalCode"> کد پستی</label>
+                        <input required type="text" id="postalCode" placeholder="کد پستی را وارد کنید" name='postalCode' value="${data.postalCode}" class="vafadar-input">
+                    </div>
+
+                    <!-- توضیحات -->
+                    <div class="address-form-group">
+                        <label for="description"> توضیحات</label>
+                        <input required type="text" id="description" placeholder="توضیحات را وارد کنید" name='description' value="${data.description}" class="vafadar-input">
+                    </div>
+
+                    <!-- شماره تلفن -->
+                    <div class="address-form-group">
+                        <label for="phoneNumber"> شماره تلفن</label>
+                        <input required type="text" id="phoneNumber" placeholder="شماره تلفن را وارد کنید" name='phoneNumber' value="${data.phoneNumber}" class="vafadar-input">
+                    </div>
+
+                    <!-- دکمه ثبت -->
+                    <div onclick="editAddress(${data.id})" class='bg-[#1B84FF] text-white p-2 rounded-xl cursor-pointer text-center font-semibold hover:shadow-lg hover:-translate-y-0.5 transition-all mt-2'>ثبت تغییرات</div>
                 </div>
                 `
             cities_div=''
@@ -684,9 +864,13 @@
         document.getElementById('addressForm').remove();
     }
     function editAddress(id){
+        let el = window._currentEditEl;
         let location= document.getElementById('location');
-        let provinces= document.getElementById('provinces');
+        let province= document.getElementById('province');
         let cities= document.getElementById('cities');
+        let postalCode= document.getElementById('postalCode');
+        let description= document.getElementById('description');
+        let phoneNumber= document.getElementById('phoneNumber');
         if(location.value!=''){
             
             $.ajaxSetup({
@@ -701,11 +885,20 @@
                 data:{
                     'location':location.value,
                     'city_id':cities.value,
+                    'province':province.value,
+                    'postalCode':postalCode.value,
+                    'description':description.value,
+                    'phoneNumber':phoneNumber.value,
                 },
                 success: function(data) {
                     removeForm()
-                    el.parentElement.parentElement.parentElement.parentElement.children[1].children[0].innerHTML=data.location
-                    el.parentElement.parentElement.parentElement.parentElement.children[2].children[0].innerHTML=data.city
+                    console.log('banana')
+                    el.parentElement.parentElement.parentElement.children[1].children[0].innerHTML=data.location;
+                    el.parentElement.parentElement.parentElement.children[2].children[0].innerHTML=data.city_id;
+                    el.parentElement.parentElement.parentElement.children[3].children[0].innerHTML=data.province_id;
+                    el.parentElement.parentElement.parentElement.children[4].children[0].innerHTML=data.phoneNumber;
+                    el.parentElement.parentElement.parentElement.children[5].children[0].innerHTML=data.postalCode;
+                    el.parentElement.parentElement.parentElement.children[6].children[0].innerHTML=data.description;
                 },
                 error: function() {
                     console.log('☢')

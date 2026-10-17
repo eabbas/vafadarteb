@@ -31,6 +31,41 @@
         box-shadow: 0 8px 40px rgba(13,14,18,0.06);
     }
 
+    .vafadar-label {
+        color: #64748b;
+        font-size: 12px;
+        font-weight: 600;
+        display: block;
+        margin-bottom: 5px;
+        padding-right: 4px;
+        transition: all 0.3s ease;
+    }
+
+    .vafadar-input {
+        width: 100%;
+        padding: 12px 16px;
+        background: #F5F5F5;
+        border: 1.5px solid var(--metronic-border);
+        border-radius: 12px;
+        color: #1e293b;
+        font-size: 13px;
+        transition: all 0.3s ease;
+        outline: none;
+    }
+    .vafadar-input::placeholder {
+        color: #9A9CAE;
+        font-size: 12px;
+    }
+    .vafadar-input:hover {
+        border-color: var(--metronic-primary-light);
+    }
+    .vafadar-input:focus {
+        border-color: var(--metronic-primary);
+        box-shadow: 0 0 0 4px rgba(27, 132, 255, 0.08);
+        background: var(--metronic-bg-form);
+    }
+
+
     /* ===== هدر کارت ===== */
     .metronic-form-header {
         display: flex;
@@ -227,15 +262,6 @@
         <!-- ===== فرم ===== -->
         <form action="{{route('address.store')}}" method="POST" class="metronic-form">
             @csrf
-            
-            <!-- موقعیت مکانی -->
-            <div class="form-group">
-                <label>
-                    <span> موقعیت مکانی</span>
-                    <span class="required">*</span>
-                </label>
-                <textarea name="location" class="metronic-input" placeholder="موقعیت مکانی را وارد کنید..."></textarea>
-            </div>
 
             <!-- استان -->
             <div class="form-group">
@@ -261,6 +287,28 @@
                         <option value="{{$city->id}}">{{$city->title}}</option>
                     @endforeach
                 </select>
+            </div>
+            
+            <!-- موقعیت مکانی -->
+            <div class="form-group">
+                <label>
+                    <span> موقعیت مکانی</span>
+                    <span class="required">*</span>
+                </label>
+                <textarea required name="location" class="metronic-input" placeholder="موقعیت مکانی را وارد کنید..."></textarea>
+            </div>
+            <div class="form-group">
+                <label>
+                    <span> توضیحات اضافی </span>
+                </label>
+                <textarea name="description" class="metronic-input" placeholder=" توضیحات خود را وارد کنید..."></textarea>
+            </div>
+            <div class="form-group">
+                <label>
+                    <span> کد پستی </span>
+                    <span class="required">*</span>
+                </label>
+                <input required type="text" id="postalCode" placeholder="کد پستی برند را وارد کنید" name='postalCode' value="{{old('postalCode')}}" class="vafadar-input">
             </div>
 
             <button type="submit" class="metronic-submit-btn">
