@@ -213,7 +213,7 @@
               </ul>
             </div>
             
-            <div id="garah" onclick="Hamberger('close',this)" class="w-full h-dvh absolute bg-black/50 top-0 right-full z-30">
+            <div id="burgermenu" onclick="Hamberger('close',this)" class="w-full h-dvh absolute bg-black/50 top-0 right-full z-30">
             </div>
           </div>
             <!-- logo -->
@@ -554,7 +554,7 @@
               انتخاب ادرس
             </button>
             <!-- modal address -->
-            <div id="modal2" class="fixed opacity-0 invisible inset-0 bg-black/20 flex items-center justify-center transition-all duration-300 z-5000000000">
+            <div id="addressForm" class="fixed opacity-0 invisible inset-0 bg-black/20 flex items-center justify-center transition-all duration-300 z-5000000000">
               <div class="modal-box bg-white p-2 rounded-xl shadow-lg w-10/12 md:w-6/12 scale-90 transition-transform duration-300">
                 <div class="flex items-center gap-3 p-4 border-b border-zinc-300">
                   <svg onclick="addressSection('close')" class="size-5 cursor-pointer" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><path d="M345 137c9.4-9.4 9.4-24.6 0-33.9s-24.6-9.4-33.9 0l-119 119L73 103c-9.4-9.4-24.6-9.4-33.9 0s-9.4 24.6 0 33.9l119 119L39 375c-9.4 9.4-9.4 24.6 0 33.9s24.6 9.4 33.9 0l119-119L311 409c9.4 9.4 24.6 9.4 33.9 0s9.4-24.6 0-33.9l-119-119L345 137z"/></svg>
@@ -634,14 +634,14 @@
                 نام
                 <svg class="fill-red-500" xmlns="http://www.w3.org/2000/svg" width="10" height="10" fill="#4d4d4d" viewBox="0 0 256 256"><path d="M210.23,101.57l-72.6,29,51.11,65.71a6,6,0,0,1-9.48,7.36L128,137.77,76.74,203.68a6,6,0,1,1-9.48-7.36l51.11-65.71-72.6-29a6,6,0,1,1,4.46-11.14L122,119.14V40a6,6,0,0,1,12,0v79.14l71.77-28.71a6,6,0,1,1,4.46,11.14Z"></path></svg>
               </label>
-              <input type="text" placeholder="نام" id="name" class="rounded-2xl text-sm text-(--color-zinc-600) w-full border border-(--color-zinc-200) px-5 py-3.5 placeholder:text-(--color-zinc-400) placeholder:text-xs focus:outline-1 focus:outline-(--color-primary-300) focus:border-(--color-primary-300)">
+              <input type="text" placeholder="نام" id="name"  @if($user!=null) value="{{$user->name}}" @endif class="rounded-2xl text-sm text-(--color-zinc-600) w-full border border-(--color-zinc-200) px-5 py-3.5 placeholder:text-(--color-zinc-400) placeholder:text-xs focus:outline-1 focus:outline-(--color-primary-300) focus:border-(--color-primary-300)">
             </div>
             <div class="sm:w-1/2 flex flex-col gap-y-1">
               <label for="family" class="text-zinc-700 flex">
                 نام خانوادگی
                 <svg class="fill-red-500" xmlns="http://www.w3.org/2000/svg" width="10" height="10" fill="#4d4d4d" viewBox="0 0 256 256"><path d="M210.23,101.57l-72.6,29,51.11,65.71a6,6,0,0,1-9.48,7.36L128,137.77,76.74,203.68a6,6,0,1,1-9.48-7.36l51.11-65.71-72.6-29a6,6,0,1,1,4.46-11.14L122,119.14V40a6,6,0,0,1,12,0v79.14l71.77-28.71a6,6,0,1,1,4.46,11.14Z"></path></svg>
               </label>
-              <input type="text" placeholder="نام خانوادگی" id="family" class="rounded-2xl text-sm text-(--color-zinc-600) w-full border border-(--color-zinc-200) px-5 py-3.5 placeholder:text-(--color-zinc-400) placeholder:text-xs focus:outline-1 focus:outline-(--color-primary-300) focus:border-(--color-primary-300)">
+              <input type="text" placeholder="نام خانوادگی" id="family" @if($user!=null) value="{{$user->family}}" @endif class="rounded-2xl text-sm text-(--color-zinc-600) w-full border border-(--color-zinc-200) px-5 py-3.5 placeholder:text-(--color-zinc-400) placeholder:text-xs focus:outline-1 focus:outline-(--color-primary-300) focus:border-(--color-primary-300)">
             </div>
           </div>
           <div class="sm:flex gap-x-5 mt-7">
@@ -679,7 +679,7 @@
                 خیابان و کوچه و شماره پلاک و واحد
                 <svg class="fill-red-500" xmlns="http://www.w3.org/2000/svg" width="10" height="10" fill="#4d4d4d" viewBox="0 0 256 256"><path d="M210.23,101.57l-72.6,29,51.11,65.71a6,6,0,0,1-9.48,7.36L128,137.77,76.74,203.68a6,6,0,1,1-9.48-7.36l51.11-65.71-72.6-29a6,6,0,1,1,4.46-11.14L122,119.14V40a6,6,0,0,1,12,0v79.14l71.77-28.71a6,6,0,1,1,4.46,11.14Z"></path></svg>
               </label>
-              <input type="text" name="" placeholder="اطلاعات دقیق محل تحویل" id="address" class="rounded-2xl text-sm text-(--color-zinc-600) w-full border border-(--color-zinc-200) px-5 py-3.5 placeholder:text-(--color-zinc-400) placeholder:text-xs focus:outline-1 focus:outline-(--color-primary-300) focus:border-(--color-primary-300)">
+              <input type="text" name="location" placeholder="اطلاعات دقیق محل تحویل" id="address" @if($user!=null) value="{{$user->location}}" @endif class="rounded-2xl text-sm text-(--color-zinc-600) w-full border border-(--color-zinc-200) px-5 py-3.5 placeholder:text-(--color-zinc-400) placeholder:text-xs focus:outline-1 focus:outline-(--color-primary-300) focus:border-(--color-primary-300)">
             </div>
           </div>
           <div class="sm:flex gap-x-5 mt-5">
@@ -707,44 +707,27 @@
               <textarea placeholder="نکات مهم درباره تحویل محصول" name="" cols="30" rows="7" id="describtion" class="rounded-2xl text-sm text-(--color-zinc-600) w-full border border-(--color-zinc-200) px-5 py-3.5 placeholder:text-(--color-zinc-400) placeholder:text-xs focus:outline-1 focus:outline-(--color-primary-300) focus:border-(--color-primary-300)"></textarea>
             </div>
           </div>
-          <div class="mb-5 mt-10">
-            <div class="flex gap-x-1 items-center text-(--color-zinc-700) border-b pb-2 mb-4">
-              نوع ارسال
-            </div>
-              <ul class="flex flex-col md:flex-row w-full gap-5">
-                <li class="w-full">
-                  <input type="radio" id="4" name="send" value="4" class="hidden peer" requiblue="" checked>
-                  <label for="4" class="flex items-center justify-center gap-x-2 w-full p-3 text-gray-600 bg-white border border-gray-200 rounded-lg cursor-pointer peer-checked:border-(--color-primary-400) peer-checked:text-(--color-primary-400) peer-checked:shadow-md hover:bg-(--color-zinc-100)">
-                    <div class="text-center">
-                      <span class="text-sm">پست معمولی :</span>
-                      <span class="text-sm">19,000 تومان</span>
-                    </div>
-                  </label>
-                </li>
-                <li class="w-full">
-                  <input type="radio" id="5" name="send" value="5" class="hidden peer" requiblue="">
-                  <label for="5" class="flex items-center justify-center gap-x-2 w-full p-3 text-gray-600 bg-white border border-gray-200 rounded-lg cursor-pointer peer-checked:border-(--color-primary-400) peer-checked:text-(--color-primary-400) peer-checked:shadow-md hover:bg-(--color-zinc-100)">
-                    <div class="text-center">
-                      <span class="text-sm">پست پیشتاز :</span>
-                      <span class="text-sm">32,000 تومان</span>
-                    </div>
-                  </label>
-                </li>
-              </ul>
-          </div>
+
           </div>
         <div class="lg:w-3/12 lg:pt-5 my-10 lg:my-0">
           <div class="flex items-center justify-between">
-            <div class="text-(--color-primary-500)">جمع مبلغ نهایی</div>
+            <div class="text-(--color-primary-500)">مبلغ نهایی</div>
             <div class="flex">
-              <div class="text-2xl md:text-3xl text-(--color-primary-500) font-bold">45.150.000</div>
+              <div class="text-2xl md:text-3xl text-(--color-primary-500) font-bold">{{$finalAmount}}</div>
               <div class="-rotate-90 text-sm text-(--color-primary-500)">تومان</div>
             </div>
           </div>
           <div class="flex items-center justify-between mt-6 text-(--color-zinc-600)">
             <div class="text-sm">جمع مبلغ کل</div>
             <div class="flex">
-              <div class="text-xl md:text-2xl font-bold">45.000.000</div>
+              <div class="text-xl md:text-2xl font-bold">{{$sum}}</div>
+              <div class="-rotate-90 text-xs">تومان</div>
+            </div>
+          </div>
+          <div class="flex items-center justify-between mt-6 text-green-300">
+            <div class="text-sm"> سود شما </div>
+            <div class="flex">
+              <div class="text-xl md:text-2xl font-bold">{{$benefit}}</div>
               <div class="-rotate-90 text-xs">تومان</div>
             </div>
           </div>
@@ -1087,6 +1070,34 @@
         </div>
     </footer>
   </div>
-  <script src="./hamberger.js"></script>
+  <script>
+      const burgermenu = document.getElementById('burgermenu')
+      function Hamberger(state,element){
+          if(state == "open"){
+              element.nextElementSibling.classList.remove('-right-full')
+              element.nextElementSibling.classList.add('right-0')
+              burgermenu.classList.remove('right-full');
+              burgermenu.classList.add('right-0');
+          }
+          if(state == "close"){
+              element.parentElement.children[1].classList.remove('right-0')
+              element.parentElement.children[1].classList.add('-right-full')
+              burgermenu.classList.remove('right-0');
+              burgermenu.classList.add('right-full');
+          }
+      }
+
+      let address=document.getElementById('addressForm')
+      function addressSection(state){
+          if(state=='open'){
+              address.classList.remove('opacity-0')
+              address.classList.remove('invisible')
+          }
+          if(state=='close'){
+              address.classList.add('opacity-0')
+              address.classList.add('invisible')
+          }
+      }
+  </script>
 </body>
 </html>

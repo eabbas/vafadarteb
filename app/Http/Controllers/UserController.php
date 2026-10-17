@@ -790,7 +790,5 @@ class UserController extends Controller
             // $request->all()
             );
     }
-    public function checkOutForm(Request $request){
-        return view('client.cart.checkoutForm');
-    }
+
 }
