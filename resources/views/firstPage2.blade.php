@@ -1,22 +1,10 @@
-<!DOCTYPE html>
-<html lang="fa" dir="rtl">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>تجهیزات پزشکی</title>
-    <script src="{{asset('assets/js/tailwind.js')}}"></script>
-    <link rel="stylesheet" href="{{asset('assets/css/index.css')}}">
-    <link rel="stylesheet" href="{{asset('assets/css/style.css')}}">
-</head>
-
-<body>
-
+@extends('header')
+@section('content')
     <div class="w-full flex flex-col gap-6 justify-start items-center">
 
 
-        <header class="w-full md:h-dvh relative  flex justify-center items-end ">
-            <!-- هدر -->
+        <div class="w-full md:h-dvh relative  flex justify-center items-end ">
+            <!-- هدر
             <div class="absolute top-0 w-full flex justify-center z-3">
                 <div class="flex w-19/20 bg-[#ffffff]/70 justify-center mt-5 head">
                     <div class="w-19/20 flex justify-between">
@@ -143,7 +131,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> -->
 
             <!-- عکس پس‌زمینه به صورت absolute -->
             @if($hero!=null)
@@ -157,15 +145,14 @@
 
                 <!-- عکس hero (سمت راست) -->
                 @if($hero!=null)
-
-                <div class="md:w-7/12 w-full md:h-full flex items-center justify-center ">
-                    <img class="lg:min-w-8/12 lg:min-h-8/12 min-w-9/12 min-h-9/12 lg:max-w-10/12 lg:max-h-10/12 max-w-11/12 md:max-h-11/12 " src="{{ asset('storage/' . $hero->hero_image_path) }}" alt="{{ $hero->title }}">
-                </div>
-
+                    <div class="md:w-7/12 w-full md:h-full flex items-center justify-center ">
+                        <img class="lg:min-w-8/12 lg:min-h-8/12 min-w-9/12 min-h-9/12 lg:max-w-10/12 lg:max-h-10/12 max-w-11/12 md:max-h-11/12 " src="{{ asset('storage/' . $hero->hero_image_path) }}" alt="{{ $hero->title }}">
+                    </div>
+                @else
+                    <div class="md:w-7/12 w-full md:h-full  flex items-center justify-center">
+                        <img class=" min-w-8/12 min-h-8/12 max-w-11/12 md:max-h-11/12 max-h-80" src="{{ asset('assets/img/header/img_heder.webp') }}" alt="">
+                    </div>
                 @endif
-                <div class="md:w-7/12 w-full md:h-full  flex items-center justify-center">
-                    <img class=" min-w-8/12 min-h-8/12 max-w-11/12 md:max-h-11/12 max-h-80" src="{{ asset('assets/img/header/img_heder.webp') }}" alt="">
-                </div>
 
                 <!-- بخش متن و دکمه (سمت چپ) -->
                 <div class="md:w-5/12 w-full h-full flex flex-col justify-center items-center text-center gap-3 sm:pt-30">
@@ -173,7 +160,6 @@
                         @if($hero!=null)
                         {{ $hero->title }}
                         @else
-
                        تجهیزات پزشکی
                        با کیفیت برای مراکز درمانی
                         @endif
@@ -182,7 +168,6 @@
                         @if($hero!=null)
                         {{ $hero->summary }}
                         @else
-
                         از فشارسنج. اکسیژن ساز . ویلچر . نیولایزر. دستگاه قندخون.
                         و صد‌ها محصولات دیگر با بهترین قیمت
                         @endif
@@ -198,7 +183,7 @@
                 </div>
             </div>
 
-        </header>
+        </div>
 
         <!-- منوهنبرگر -->
         <!-- <section>
@@ -729,7 +714,7 @@
                 </div>
             </a>
         </div>
-    </section> -->
+        </section> -->
 
         <!-- categorys -->
 
@@ -839,124 +824,14 @@
 
             <div class="max-w-full w-full lg:gap-4.5  gap-3 overflow-x-auto mt-10 flex justify-start items-ceter p-4">
                 @foreach($products as $product)
-                <!-- <div class="min-w-65 h-55 relative group">
-                    <div
-                        class="absolute bottom-0 w-full h-1/3 -z-50 group-hover:h-2/3 transition-all duration-300">
-                    </div>
-                    <div
-                        class="absolute w-2/3 h-10  rounded-b-2xl bottom-5 right-1/6 z-50 hidden group-hover:block transition-all duration-400">
-                        <div class="flex gap-4 justify-center items-center">
-                            <div class="p-2 bg-green-400 rounded-2xl">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="21" height="21" fill="none"
-                                    viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="M17 1l4 4-4 4" />
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="M21 5H9a5 5 0 0 0-5 5" />
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="M7 23l-4-4 4-4" />
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="M3 19h12a5 5 0 0 0 5-5" />
-                                </svg>
-                            </div>
-                            <div class="p-2 bg-green-400 rounded-2xl">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="21" height="21" fill="none"
-                                    viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="M17 1l4 4-4 4" />
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="M21 5H9a5 5 0 0 0-5 5" />
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="M7 23l-4-4 4-4" />
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="M3 19h12a5 5 0 0 0 5-5" />
-                                </svg>
-                            </div>
-                            <div class="p-2 bg-green-400 rounded-2xl">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="21" height="21" fill="none"
-                                    viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="M17 1l4 4-4 4" />
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="M21 5H9a5 5 0 0 0-5 5" />
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="M7 23l-4-4 4-4" />
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="M3 19h12a5 5 0 0 0 5-5" />
-                                </svg>
-                            </div>
-                        </div>
-                    </div>
-                    <a href="{{route('product.client_pro_single',['product'=>$product->id])}}" class="flex justify-center h-60">
-                        <img src="{{asset('assets/img/silyder.producte/01.webp')}}" alt="" class="w-50 h-full object-cover">
-                    </a>
-                    <div class="absolute w-full mx-autoh-auto bg-[#ebf8f7] rounded-b-2xl overflow-hidden">
-                        <div class="w-18/20 mx-auto py-6 bg-[#ebf8f7] flex justify-between gap-3 items-end">
-                            <div class="flex flex-col gap-2">
-                                <span class="font-bold text-lg text-[#023350] hover:text-[#03a297]">{{$product->title}}</span>
-                                <ul class="flex gap-1">
-                                    <li>
-                                        <svg class="fill-[#fba707]" width="16px" height="16px" viewBox="0 0 24 24"
-                                            xmlns="http://www.w3.org/2000/svg">
-                                            <path
-                                                d="M11.2691 4.41115C11.5006 3.89177 11.6164 3.63208 11.7776 3.55211C11.9176 3.48263 12.082 3.48263 12.222 3.55211C12.3832 3.63208 12.499 3.89177 12.7305 4.41115L14.5745 8.54808C14.643 8.70162 14.6772 8.77839 14.7302 8.83718C14.777 8.8892 14.8343 8.93081 14.8982 8.95929C14.9705 8.99149 15.0541 9.00031 15.2213 9.01795L19.7256 9.49336C20.2911 9.55304 20.5738 9.58288 20.6997 9.71147C20.809 9.82316 20.8598 9.97956 20.837 10.1342C20.8108 10.3122 20.5996 10.5025 20.1772 10.8832L16.8125 13.9154C16.6877 14.0279 16.6252 14.0842 16.5857 14.1527C16.5507 14.2134 16.5288 14.2807 16.5215 14.3503C16.5132 14.429 16.5306 14.5112 16.5655 14.6757L17.5053 19.1064C17.6233 19.6627 17.6823 19.9408 17.5989 20.1002C17.5264 20.2388 17.3934 20.3354 17.2393 20.3615C17.0619 20.3915 16.8156 20.2495 16.323 19.9654L12.3995 17.7024C12.2539 17.6184 12.1811 17.5765 12.1037 17.56C12.0352 17.5455 11.9644 17.5455 11.8959 17.56C11.8185 17.5765 11.7457 17.6184 11.6001 17.7024L7.67662 19.9654C7.18404 20.2495 6.93775 20.3915 6.76034 20.3615C6.60623 20.3354 6.47319 20.2388 6.40075 20.1002C6.31736 19.9408 6.37635 19.6627 6.49434 19.1064L7.4341 14.6757C7.46898 14.5112 7.48642 14.429 7.47814 14.3503C7.47081 14.2807 7.44894 14.2134 7.41394 14.1527C7.37439 14.0842 7.31195 14.0279 7.18708 13.9154L3.82246 10.8832C3.40005 10.5025 3.18884 10.3122 3.16258 10.1342C3.13978 9.97956 3.19059 9.82316 3.29993 9.71147C3.42581 9.58288 3.70856 9.55304 4.27406 9.49336L8.77835 9.01795C8.94553 9.00031 9.02911 8.99149 9.10139 8.95929C9.16534 8.93081 9.2226 8.8892 9.26946 8.83718C9.32241 8.77839 9.35663 8.70162 9.42508 8.54808L11.2691 4.41115Z"
-                                                stroke="#fba707" stroke-width="2" stroke-linecap="round"
-                                                stroke-linejoin="round" />
-                                        </svg>
-                                    </li>
-                                    <li>
-                                        <svg class="fill-[#fba707]" width="16px" height="16px" viewBox="0 0 24 24"
-                                            xmlns="http://www.w3.org/2000/svg">
-                                            <path
-                                                d="M11.2691 4.41115C11.5006 3.89177 11.6164 3.63208 11.7776 3.55211C11.9176 3.48263 12.082 3.48263 12.222 3.55211C12.3832 3.63208 12.499 3.89177 12.7305 4.41115L14.5745 8.54808C14.643 8.70162 14.6772 8.77839 14.7302 8.83718C14.777 8.8892 14.8343 8.93081 14.8982 8.95929C14.9705 8.99149 15.0541 9.00031 15.2213 9.01795L19.7256 9.49336C20.2911 9.55304 20.5738 9.58288 20.6997 9.71147C20.809 9.82316 20.8598 9.97956 20.837 10.1342C20.8108 10.3122 20.5996 10.5025 20.1772 10.8832L16.8125 13.9154C16.6877 14.0279 16.6252 14.0842 16.5857 14.1527C16.5507 14.2134 16.5288 14.2807 16.5215 14.3503C16.5132 14.429 16.5306 14.5112 16.5655 14.6757L17.5053 19.1064C17.6233 19.6627 17.6823 19.9408 17.5989 20.1002C17.5264 20.2388 17.3934 20.3354 17.2393 20.3615C17.0619 20.3915 16.8156 20.2495 16.323 19.9654L12.3995 17.7024C12.2539 17.6184 12.1811 17.5765 12.1037 17.56C12.0352 17.5455 11.9644 17.5455 11.8959 17.56C11.8185 17.5765 11.7457 17.6184 11.6001 17.7024L7.67662 19.9654C7.18404 20.2495 6.93775 20.3915 6.76034 20.3615C6.60623 20.3354 6.47319 20.2388 6.40075 20.1002C6.31736 19.9408 6.37635 19.6627 6.49434 19.1064L7.4341 14.6757C7.46898 14.5112 7.48642 14.429 7.47814 14.3503C7.47081 14.2807 7.44894 14.2134 7.41394 14.1527C7.37439 14.0842 7.31195 14.0279 7.18708 13.9154L3.82246 10.8832C3.40005 10.5025 3.18884 10.3122 3.16258 10.1342C3.13978 9.97956 3.19059 9.82316 3.29993 9.71147C3.42581 9.58288 3.70856 9.55304 4.27406 9.49336L8.77835 9.01795C8.94553 9.00031 9.02911 8.99149 9.10139 8.95929C9.16534 8.93081 9.2226 8.8892 9.26946 8.83718C9.32241 8.77839 9.35663 8.70162 9.42508 8.54808L11.2691 4.41115Z"
-                                                stroke="#fba707" stroke-width="2" stroke-linecap="round"
-                                                stroke-linejoin="round" />
-                                        </svg>
-                                    </li>
-                                    <li>
-                                        <svg class="fill-[#fba707]" width="16px" height="16px" viewBox="0 0 24 24"
-                                            xmlns="http://www.w3.org/2000/svg">
-                                            <path
-                                                d="M11.2691 4.41115C11.5006 3.89177 11.6164 3.63208 11.7776 3.55211C11.9176 3.48263 12.082 3.48263 12.222 3.55211C12.3832 3.63208 12.499 3.89177 12.7305 4.41115L14.5745 8.54808C14.643 8.70162 14.6772 8.77839 14.7302 8.83718C14.777 8.8892 14.8343 8.93081 14.8982 8.95929C14.9705 8.99149 15.0541 9.00031 15.2213 9.01795L19.7256 9.49336C20.2911 9.55304 20.5738 9.58288 20.6997 9.71147C20.809 9.82316 20.8598 9.97956 20.837 10.1342C20.8108 10.3122 20.5996 10.5025 20.1772 10.8832L16.8125 13.9154C16.6877 14.0279 16.6252 14.0842 16.5857 14.1527C16.5507 14.2134 16.5288 14.2807 16.5215 14.3503C16.5132 14.429 16.5306 14.5112 16.5655 14.6757L17.5053 19.1064C17.6233 19.6627 17.6823 19.9408 17.5989 20.1002C17.5264 20.2388 17.3934 20.3354 17.2393 20.3615C17.0619 20.3915 16.8156 20.2495 16.323 19.9654L12.3995 17.7024C12.2539 17.6184 12.1811 17.5765 12.1037 17.56C12.0352 17.5455 11.9644 17.5455 11.8959 17.56C11.8185 17.5765 11.7457 17.6184 11.6001 17.7024L7.67662 19.9654C7.18404 20.2495 6.93775 20.3915 6.76034 20.3615C6.60623 20.3354 6.47319 20.2388 6.40075 20.1002C6.31736 19.9408 6.37635 19.6627 6.49434 19.1064L7.4341 14.6757C7.46898 14.5112 7.48642 14.429 7.47814 14.3503C7.47081 14.2807 7.44894 14.2134 7.41394 14.1527C7.37439 14.0842 7.31195 14.0279 7.18708 13.9154L3.82246 10.8832C3.40005 10.5025 3.18884 10.3122 3.16258 10.1342C3.13978 9.97956 3.19059 9.82316 3.29993 9.71147C3.42581 9.58288 3.70856 9.55304 4.27406 9.49336L8.77835 9.01795C8.94553 9.00031 9.02911 8.99149 9.10139 8.95929C9.16534 8.93081 9.2226 8.8892 9.26946 8.83718C9.32241 8.77839 9.35663 8.70162 9.42508 8.54808L11.2691 4.41115Z"
-                                                stroke="#fba707" stroke-width="2" stroke-linecap="round"
-                                                stroke-linejoin="round" />
-                                        </svg>
-                                    </li>
-                                    <li>
-                                        <svg class="" width="16px" height="16px" viewBox="0 0 24 24" fill="none"
-                                            xmlns="http://www.w3.org/2000/svg">
-                                            <path
-                                                d="M11.2691 4.41115C11.5006 3.89177 11.6164 3.63208 11.7776 3.55211C11.9176 3.48263 12.082 3.48263 12.222 3.55211C12.3832 3.63208 12.499 3.89177 12.7305 4.41115L14.5745 8.54808C14.643 8.70162 14.6772 8.77839 14.7302 8.83718C14.777 8.8892 14.8343 8.93081 14.8982 8.95929C14.9705 8.99149 15.0541 9.00031 15.2213 9.01795L19.7256 9.49336C20.2911 9.55304 20.5738 9.58288 20.6997 9.71147C20.809 9.82316 20.8598 9.97956 20.837 10.1342C20.8108 10.3122 20.5996 10.5025 20.1772 10.8832L16.8125 13.9154C16.6877 14.0279 16.6252 14.0842 16.5857 14.1527C16.5507 14.2134 16.5288 14.2807 16.5215 14.3503C16.5132 14.429 16.5306 14.5112 16.5655 14.6757L17.5053 19.1064C17.6233 19.6627 17.6823 19.9408 17.5989 20.1002C17.5264 20.2388 17.3934 20.3354 17.2393 20.3615C17.0619 20.3915 16.8156 20.2495 16.323 19.9654L12.3995 17.7024C12.2539 17.6184 12.1811 17.5765 12.1037 17.56C12.0352 17.5455 11.9644 17.5455 11.8959 17.56C11.8185 17.5765 11.7457 17.6184 11.6001 17.7024L7.67662 19.9654C7.18404 20.2495 6.93775 20.3915 6.76034 20.3615C6.60623 20.3354 6.47319 20.2388 6.40075 20.1002C6.31736 19.9408 6.37635 19.6627 6.49434 19.1064L7.4341 14.6757C7.46898 14.5112 7.48642 14.429 7.47814 14.3503C7.47081 14.2807 7.44894 14.2134 7.41394 14.1527C7.37439 14.0842 7.31195 14.0279 7.18708 13.9154L3.82246 10.8832C3.40005 10.5025 3.18884 10.3122 3.16258 10.1342C3.13978 9.97956 3.19059 9.82316 3.29993 9.71147C3.42581 9.58288 3.70856 9.55304 4.27406 9.49336L8.77835 9.01795C8.94553 9.00031 9.02911 8.99149 9.10139 8.95929C9.16534 8.93081 9.2226 8.8892 9.26946 8.83718C9.32241 8.77839 9.35663 8.70162 9.42508 8.54808L11.2691 4.41115Z"
-                                                stroke="#fba707" stroke-width="2" stroke-linecap="round"
-                                                stroke-linejoin="round" />
-                                        </svg>
-                                    </li>
-                                    <li>
-                                        <svg class="" width="16px" height="16px" viewBox="0 0 24 24" fill="none"
-                                            xmlns="http://www.w3.org/2000/svg">
-                                            <path
-                                                d="M11.2691 4.41115C11.5006 3.89177 11.6164 3.63208 11.7776 3.55211C11.9176 3.48263 12.082 3.48263 12.222 3.55211C12.3832 3.63208 12.499 3.89177 12.7305 4.41115L14.5745 8.54808C14.643 8.70162 14.6772 8.77839 14.7302 8.83718C14.777 8.8892 14.8343 8.93081 14.8982 8.95929C14.9705 8.99149 15.0541 9.00031 15.2213 9.01795L19.7256 9.49336C20.2911 9.55304 20.5738 9.58288 20.6997 9.71147C20.809 9.82316 20.8598 9.97956 20.837 10.1342C20.8108 10.3122 20.5996 10.5025 20.1772 10.8832L16.8125 13.9154C16.6877 14.0279 16.6252 14.0842 16.5857 14.1527C16.5507 14.2134 16.5288 14.2807 16.5215 14.3503C16.5132 14.429 16.5306 14.5112 16.5655 14.6757L17.5053 19.1064C17.6233 19.6627 17.6823 19.9408 17.5989 20.1002C17.5264 20.2388 17.3934 20.3354 17.2393 20.3615C17.0619 20.3915 16.8156 20.2495 16.323 19.9654L12.3995 17.7024C12.2539 17.6184 12.1811 17.5765 12.1037 17.56C12.0352 17.5455 11.9644 17.5455 11.8959 17.56C11.8185 17.5765 11.7457 17.6184 11.6001 17.7024L7.67662 19.9654C7.18404 20.2495 6.93775 20.3915 6.76034 20.3615C6.60623 20.3354 6.47319 20.2388 6.40075 20.1002C6.31736 19.9408 6.37635 19.6627 6.49434 19.1064L7.4341 14.6757C7.46898 14.5112 7.48642 14.429 7.47814 14.3503C7.47081 14.2807 7.44894 14.2134 7.41394 14.1527C7.37439 14.0842 7.31195 14.0279 7.18708 13.9154L3.82246 10.8832C3.40005 10.5025 3.18884 10.3122 3.16258 10.1342C3.13978 9.97956 3.19059 9.82316 3.29993 9.71147C3.42581 9.58288 3.70856 9.55304 4.27406 9.49336L8.77835 9.01795C8.94553 9.00031 9.02911 8.99149 9.10139 8.95929C9.16534 8.93081 9.2226 8.8892 9.26946 8.83718C9.32241 8.77839 9.35663 8.70162 9.42508 8.54808L11.2691 4.41115Z"
-                                                stroke="#fba707" stroke-width="2" stroke-linecap="round"
-                                                stroke-linejoin="round" />
-                                        </svg>
-                                    </li>
-                                </ul>
-                                <span class="text-[#fd6a6a]">{{$product->price}} تومان</span>
-                            </div>
-                            <a href="{{route('product.client_pro_single',['product'=>$product->id])}}">
-                                <svg class="w-13 h-9" fill="#000000" viewBox="0 0 32 32" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;" version="1.1" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:serif="http://www.serif.com/" xmlns:xlink="http://www.w3.org/1999/xlink">
-                                    <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
-                                    <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"> </g>
-                                    <g id="SVGRepo_iconCarrier">
-                                        <g transform="matrix(1,0,0,1,-432,0)">
-                                            <g transform="matrix(1.125,0,0,1,375.898,0)">
-                                                <path d="M71.196,10.9C71.148,9.836 70.367,9 69.42,9C66.684,9 61.316,9 58.58,9C57.633,9 56.852,9.836 56.804,10.9C56.638,14.653 56.267,22.991 56.093,26.9C56.069,27.447 56.245,27.982 56.581,28.378C56.916,28.775 57.382,29 57.869,29C60.948,29 67.052,29 70.131,29C70.618,29 71.084,28.775 71.419,28.378C71.755,27.982 71.931,27.447 71.907,26.9C71.733,22.991 71.362,14.653 71.196,10.9Z" style="fill:#03a297;"></path>
-                                            </g>
-                                            <path d="M442.898,8L441.8,8C440.201,8 438.884,9.254 438.804,10.85C438.616,14.603 438.199,22.941 438.004,26.85C437.963,27.671 438.26,28.472 438.826,29.068C439.393,29.663 440.178,30 441,30L454.795,30C455.617,30 456.402,29.663 456.969,29.068C457.535,28.472 457.832,27.671 457.791,26.85L456.991,10.85C456.911,9.254 455.594,8 453.995,8L452.898,8L452.898,6C452.898,3.24 450.657,1 447.898,1C445.138,1 442.898,3.24 442.898,6L442.898,8ZM455.746,26L455.794,26.95C455.807,27.224 455.708,27.491 455.52,27.689C455.331,27.888 455.069,28 454.795,28C454.795,28 441,28 441,28C440.726,28 440.464,27.888 440.275,27.689C440.087,27.491 439.988,27.224 440.001,26.95L440.049,26L455.746,26ZM452.898,10L452.898,13C452.898,13.552 452.449,14 451.898,14C451.346,14 450.898,13.552 450.898,13L450.898,10L444.898,10L444.898,13C444.898,13.552 444.449,14 443.898,14C443.346,14 442.898,13.552 442.898,13L442.898,10L441.8,10C441.267,10 440.828,10.418 440.801,10.95L440.149,24L455.646,24L454.994,10.95C454.967,10.418 454.528,10 453.995,10L452.898,10ZM450.898,8L450.898,6C450.898,4.344 449.553,3 447.898,3C446.242,3 444.898,4.344 444.898,6L444.898,8L450.898,8Z" style="fill:#03a297;"></path>
-                                        </g>
-                                    </g>
-                                </svg>
-                            </a>
-                        </div>
-                    </div>
-                </div> -->
-
 
                 <div class="xl:min-w-19/100 xl:max-w-19/100 lg:min-w-24/100 lg:max-w-24/100 sm:min-w-33/100 sm:max-w-33/100 min-w-49/100 max-w-49/100 xl:h-95 lg:h-90 sm:h-80 h-70 relative group  flex flex-col shadow-[0_0_10px_3px] shadow-gray-200 rounded-xl" onclick="show_this_product(this)">
                     <div class="w-full h-8/12 relative overflow-hidden flex justify-center items-center">
-                        <span class="w-full h-1/3 group-hover:h-2/3 group-active:h-2/3 bg-[#00ffff]/50 absolute bottom-0 right-0 z-0 transition_normal rounded-t-xl"></span>
+                        <span class="w-full h-1/3 group-hover:h-2/3 group-active:h-2/3 bg-[#00ffff]/30 absolute bottom-0 right-0 z-0 transition_normal rounded-t-xl"></span>
                         <div class="w-full h-full relative">
                             <img src="{{asset('assets/img/header/img_heder.webp')}}" alt="" class="min-w-1/2 min-h-1/2 max-w-full max-h-full">
                         </div>
-                        <a href="" class="px-4 py-2 rounded-full bg-(--buttom)  absolute bottom-0 translate-y-full group-hover:-translate-y-5 transition_normal z-1 text-white font-bold">مشاهده محصول</a>
+                        <a href="{{route('product.client_pro_single',['product'=>$product->id])}}" class="px-4 py-2 rounded-full bg-(--buttom)  absolute bottom-0 translate-y-full group-hover:-translate-y-5 transition_normal z-1 text-white font-bold">مشاهده محصول</a>
                     </div>
                     <div class="w-full h-4/12 bg-[#00ffff] rounded-b-xl flex flex-col gap-1 justify-center p-3">
                         <div class="flex flex-col ">
@@ -1041,7 +916,7 @@
                                 <div class="w-full h-full relative">
                                     <img src="{{asset('assets/img/header/img_heder.webp')}}" alt="" class="min-w-1/2 min-h-1/2 max-w-full max-h-full">
                                 </div>
-                                <a href="" class="px-4 py-2 rounded-full bg-(--buttom)  absolute bottom-0 translate-y-full group-hover:-translate-y-5 transition_normal z-1 text-white font-bold">مشاهده محصول</a>
+                                <a href="{{route('product.client_pro_single',['product'=>$product->id])}}" class="px-4 py-2 rounded-full bg-(--buttom)  absolute bottom-0 translate-y-full group-hover:-translate-y-5 transition_normal z-1 text-white font-bold">مشاهده محصول</a>
                             </div>
                             <div class="w-full h-4/12 bg-[#00ffff] rounded-b-xl flex flex-col gap-1 justify-center p-3">
                                 <div class="flex flex-col ">
@@ -1104,10 +979,11 @@
             </div>
             <div class="w-full mx-auto py-2 bg-white flex lg:gap-2 gap-2.5 items-center overflow-x-auto">
 
-
-                <div class="lg:min-w-12/100 lg:max-w-12/100 sm:min-w-15/100 sm:max-w-15/100 min-w-22/100 max-w-22/100 lg:h-15 sm:h-13 h-10 flex justify-center items-center group">
-                    <img src="{{asset('assets/img/header/logo.png')}}" alt="" class="min-w-8/12 min-h-8/12 max-w-full max-h-full p-1 lg:opacity-40 lg:group-hover:opacity-100 transition_normal">
-                </div>
+                @for($i=0;$i<20;$i++)
+                    <div class="lg:min-w-12/100 lg:max-w-12/100 sm:min-w-15/100 sm:max-w-15/100 min-w-22/100 max-w-22/100 lg:h-15 sm:h-13 h-10 flex justify-center items-center group">
+                        <img src="{{asset('assets/img/header/logo.png')}}" alt="" class="min-w-8/12 min-h-8/12 max-w-full max-h-full p-1 lg:opacity-40 lg:group-hover:opacity-100 transition_normal">
+                    </div>
+                @endfor
 
 
             </div>
@@ -1442,166 +1318,33 @@
             <div class="max-w-full w-full bg-[#023350] flex gap-4 justify-start h-90 overflow-x-auto p-2">
 
                 <!-- Card -->
+                @foreach($comments as $comment)
+                    <div class="xl:min-w-24/100 xl:max-w-24/100 lg:min-w-32/100 lg:max-w-32/100 sm:min-w-49/100 sm:max-w-49/100 min-w-98/100 max-w-98/100 h-full bg-[#FFF8F1] relative p-4 rounded-xl flex flex-col gap-7">
+                        <div class="w-full bg-[#172230] rounded-full flex items-center gap-2 p-2">
+                            <div class="min-w-16 min-h-16 max-w-16 max-h-16 rounded-full  flex justify-center items-center">
+                                <img src="{{asset('assets/img/baner/gallery/05.webp')}}" class="min-w-8/12 min-h-8/12 max-w-10/12 max-h-10/12 rounded-full">
+                            </div>
+                            <div>
+                                <h3 class="text-white font-bold max-lg:text-sm">
+                                   {{$comment->name}}
+                                </h3>
+                                <p class="text-emerald-500 lg:text-sm text-xs">
+                                   {{$comment->role}}
+                                </p>
+                            </div>
+                        </div>
+                        <div class="max-h-50 overflow-y-auto">
+                            <p class="text-gray-600 leading-8 max-lg:text-sm">
+=                               {{$comment->message}}
+                            </p>
+                        </div>
+                        <div class="flex gap-1 text-emerald-500 text-2xl">
+                            ★★★★★
+                        </div>
+                    </div>
+                @endforeach
 
-                <div class="xl:min-w-24/100 xl:max-w-24/100 lg:min-w-32/100 lg:max-w-32/100 sm:min-w-49/100 sm:max-w-49/100 min-w-98/100 max-w-98/100 h-full bg-[#FFF8F1] relative p-4 rounded-xl flex flex-col gap-7">
-                    <div class="w-full bg-[#172230] rounded-full flex items-center gap-2 p-2">
-                        <div class="min-w-16 min-h-16 max-w-16 max-h-16 rounded-full  flex justify-center items-center">
-                            <img src="{{asset('assets/img/baner/gallery/05.webp')}}" class="min-w-8/12 min-h-8/12 max-w-10/12 max-h-10/12 rounded-full">
-                        </div>
-                        <div>
-                            <h3 class="text-white font-bold max-lg:text-sm">
-                                محمد احمدی
-                            </h3>
-                            <p class="text-emerald-500 lg:text-sm text-xs">
-                                مشتری
-                            </p>
-                        </div>
-                    </div>
-                    <div class="max-h-50 overflow-y-auto">
-                        <p class="text-gray-600 leading-8 max-lg:text-sm">
-                            از کیفیت محصولات و سرعت ارسال کاملاً راضی بودم.
-                            پشتیبانی سایت نیز بسیار حرفه‌ای و پاسخگو بود.
-                            قطعاً خرید بعدی خود را نیز از این مجموعه  کیفیت محصولات و سرعت ارسال کاملاً راضی بودم.
-                            پشتیبانی سایت نیز بسیار حرفه‌ای و پاسخگو بود.
-                            قطعاً خرید بعدی خود را نیز از این مجموعه کیفیت محصولات و سرعت ارسال کاملاً راضی بودم.
-                            پشتیبانی سایت نیز بسیار حرفه‌ای و پاسخگو بود.
-                            قطعاً خرید بعدی خود را نیز از این مجموعه کیفیت محصولات و سرعت ارسال کاملاً راضی بودم.
-                            پشتیبانی سایت نیز بسیار حرفه‌ای و پاسخگو بود.
-                            قطعاً خرید بعدی خود را نیز از این مجموعه انجام می‌دهم.
-                        </p>
-                    </div>
-                    <div class="flex gap-1 text-emerald-500 text-2xl">
-                        ★★★★★
-                    </div>
-                </div>
-                <div class="xl:min-w-24/100 xl:max-w-24/100 lg:min-w-32/100 lg:max-w-32/100 sm:min-w-49/100 sm:max-w-49/100 min-w-98/100 max-w-98/100 h-full bg-[#FFF8F1] relative p-4 rounded-xl flex flex-col gap-7">
-                    <div class="w-full bg-[#172230] rounded-full flex items-center gap-2 p-2">
-                        <div class="min-w-16 min-h-16 max-w-16 max-h-16 rounded-full  flex justify-center items-center">
-                            <img src="{{asset('assets/img/baner/gallery/05.webp')}}" class="min-w-8/12 min-h-8/12 max-w-10/12 max-h-10/12 rounded-full">
-                        </div>
-                        <div>
-                            <h3 class="text-white font-bold ">
-                                محمد احمدی
-                            </h3>
-                            <p class="text-emerald-500 text-sm">
-                                مشتری
-                            </p>
-                        </div>
-                    </div>
-                    <div class="max-h-50 overflow-y-auto">
-                        <p class="text-gray-600 leading-8">
-                            از کیفیت محصولات و سرعت ارسال کاملاً راضی بودم.
-                            پشتیبانی سایت نیز بسیار حرفه‌ای و پاسخگو بود.
-                            قطعاً خرید بعدی خود را نیز از این مجموعه  کیفیت محصولات و سرعت ارسال کاملاً راضی بودم.
-                            پشتیبانی سایت نیز بسیار حرفه‌ای و پاسخگو بود.
-                            قطعاً خرید بعدی خود را نیز از این مجموعه کیفیت محصولات و سرعت ارسال کاملاً راضی بودم.
-                            پشتیبانی سایت نیز بسیار حرفه‌ای و پاسخگو بود.
-                            قطعاً خرید بعدی خود را نیز از این مجموعه کیفیت محصولات و سرعت ارسال کاملاً راضی بودم.
-                            پشتیبانی سایت نیز بسیار حرفه‌ای و پاسخگو بود.
-                            قطعاً خرید بعدی خود را نیز از این مجموعه انجام می‌دهم.
-                        </p>
-                    </div>
-                    <div class="flex gap-1 text-emerald-500 text-2xl">
-                        ★★★★★
-                    </div>
-                </div>
-                <div class="xl:min-w-24/100 xl:max-w-24/100 lg:min-w-32/100 lg:max-w-32/100 sm:min-w-49/100 sm:max-w-49/100 min-w-98/100 max-w-98/100 h-full bg-[#FFF8F1] relative p-4 rounded-xl flex flex-col gap-7">
-                    <div class="w-full bg-[#172230] rounded-full flex items-center gap-2 p-2">
-                        <div class="min-w-16 min-h-16 max-w-16 max-h-16 rounded-full  flex justify-center items-center">
-                            <img src="{{asset('assets/img/baner/gallery/05.webp')}}" class="min-w-8/12 min-h-8/12 max-w-10/12 max-h-10/12 rounded-full">
-                        </div>
-                        <div>
-                            <h3 class="text-white font-bold ">
-                                محمد احمدی
-                            </h3>
-                            <p class="text-emerald-500 text-sm">
-                                مشتری
-                            </p>
-                        </div>
-                    </div>
-                    <div class="max-h-50 overflow-y-auto">
-                        <p class="text-gray-600 leading-8">
-                            از کیفیت محصولات و سرعت ارسال کاملاً راضی بودم.
-                            پشتیبانی سایت نیز بسیار حرفه‌ای و پاسخگو بود.
-                            قطعاً خرید بعدی خود را نیز از این مجموعه  کیفیت محصولات و سرعت ارسال کاملاً راضی بودم.
-                            پشتیبانی سایت نیز بسیار حرفه‌ای و پاسخگو بود.
-                            قطعاً خرید بعدی خود را نیز از این مجموعه کیفیت محصولات و سرعت ارسال کاملاً راضی بودم.
-                            پشتیبانی سایت نیز بسیار حرفه‌ای و پاسخگو بود.
-                            قطعاً خرید بعدی خود را نیز از این مجموعه کیفیت محصولات و سرعت ارسال کاملاً راضی بودم.
-                            پشتیبانی سایت نیز بسیار حرفه‌ای و پاسخگو بود.
-                            قطعاً خرید بعدی خود را نیز از این مجموعه انجام می‌دهم.
-                        </p>
-                    </div>
-                    <div class="flex gap-1 text-emerald-500 text-2xl">
-                        ★★★★★
-                    </div>
-                </div>
-                <div class="xl:min-w-24/100 xl:max-w-24/100 lg:min-w-32/100 lg:max-w-32/100 sm:min-w-49/100 sm:max-w-49/100 min-w-98/100 max-w-98/100 h-full bg-[#FFF8F1] relative p-4 rounded-xl flex flex-col gap-7">
-                    <div class="w-full bg-[#172230] rounded-full flex items-center gap-2 p-2">
-                        <div class="min-w-16 min-h-16 max-w-16 max-h-16 rounded-full  flex justify-center items-center">
-                            <img src="{{asset('assets/img/baner/gallery/05.webp')}}" class="min-w-8/12 min-h-8/12 max-w-10/12 max-h-10/12 rounded-full">
-                        </div>
-                        <div>
-                            <h3 class="text-white font-bold ">
-                                محمد احمدی
-                            </h3>
-                            <p class="text-emerald-500 text-sm">
-                                مشتری
-                            </p>
-                        </div>
-                    </div>
-                    <div class="max-h-50 overflow-y-auto">
-                        <p class="text-gray-600 leading-8">
-                            از کیفیت محصولات و سرعت ارسال کاملاً راضی بودم.
-                            پشتیبانی سایت نیز بسیار حرفه‌ای و پاسخگو بود.
-                            قطعاً خرید بعدی خود را نیز از این مجموعه  کیفیت محصولات و سرعت ارسال کاملاً راضی بودم.
-                            پشتیبانی سایت نیز بسیار حرفه‌ای و پاسخگو بود.
-                            قطعاً خرید بعدی خود را نیز از این مجموعه کیفیت محصولات و سرعت ارسال کاملاً راضی بودم.
-                            پشتیبانی سایت نیز بسیار حرفه‌ای و پاسخگو بود.
-                            قطعاً خرید بعدی خود را نیز از این مجموعه کیفیت محصولات و سرعت ارسال کاملاً راضی بودم.
-                            پشتیبانی سایت نیز بسیار حرفه‌ای و پاسخگو بود.
-                            قطعاً خرید بعدی خود را نیز از این مجموعه انجام می‌دهم.
-                        </p>
-                    </div>
-                    <div class="flex gap-1 text-emerald-500 text-2xl">
-                        ★★★★★
-                    </div>
-                </div>
-                <div class="xl:min-w-24/100 xl:max-w-24/100 lg:min-w-32/100 lg:max-w-32/100 sm:min-w-49/100 sm:max-w-49/100 min-w-98/100 max-w-98/100 h-full bg-[#FFF8F1] relative p-4 rounded-xl flex flex-col gap-7">
-                    <div class="w-full bg-[#172230] rounded-full flex items-center gap-2 p-2">
-                        <div class="min-w-16 min-h-16 max-w-16 max-h-16 rounded-full  flex justify-center items-center">
-                            <img src="{{asset('assets/img/baner/gallery/05.webp')}}" class="min-w-8/12 min-h-8/12 max-w-10/12 max-h-10/12 rounded-full">
-                        </div>
-                        <div>
-                            <h3 class="text-white font-bold ">
-                                محمد احمدی
-                            </h3>
-                            <p class="text-emerald-500 text-sm">
-                                مشتری
-                            </p>
-                        </div>
-                    </div>
-                    <div class="max-h-50 overflow-y-auto">
-                        <p class="text-gray-600 leading-8">
-                            از کیفیت محصولات و سرعت ارسال کاملاً راضی بودم.
-                            پشتیبانی سایت نیز بسیار حرفه‌ای و پاسخگو بود.
-                            قطعاً خرید بعدی خود را نیز از این مجموعه  کیفیت محصولات و سرعت ارسال کاملاً راضی بودم.
-                            پشتیبانی سایت نیز بسیار حرفه‌ای و پاسخگو بود.
-                            قطعاً خرید بعدی خود را نیز از این مجموعه کیفیت محصولات و سرعت ارسال کاملاً راضی بودم.
-                            پشتیبانی سایت نیز بسیار حرفه‌ای و پاسخگو بود.
-                            قطعاً خرید بعدی خود را نیز از این مجموعه کیفیت محصولات و سرعت ارسال کاملاً راضی بودم.
-                            پشتیبانی سایت نیز بسیار حرفه‌ای و پاسخگو بود.
-                            قطعاً خرید بعدی خود را نیز از این مجموعه انجام می‌دهم.
-                        </p>
-                    </div>
-                    <div class="flex gap-1 text-emerald-500 text-2xl">
-                        ★★★★★
-                    </div>
-                </div>
-              
-
-
-
+            
             </div>
         </div>
 
@@ -1692,20 +1435,11 @@
 
     </div>
     <script>
-        let hambarger_menuew = document.getElementById('naser')
-
-        function hambarger_menue(satare) {
-            if (satare == 'close') {
-                hambarger_menuew.classList.remove('black')
-                hambarger_menuew.classList.add('hidden')
-                hambarger_menuew.classList.remove('flex')
-            }
-            if (satare == 'open') {
-                hambarger_menuew.classList.remove('hidden')
-                hambarger_menuew.classList.remove('flex')
-                hambarger_menuew.classList.add('black')
-            }
-
+        let localCash="{{$localCash}}";
+            console.log(localCash);
+        if(localCash=='cashClear'){
+            localStorage.getItem('products');
+            localStorage.removeItem('products');
         }
 
         function show_this_product(item) {
@@ -1714,6 +1448,4 @@
             item.children[0].children[2].classList.toggle('-translate-y-5')
         }
     </script>
-</body>
-
-</html>
+@endsection
