@@ -34,6 +34,15 @@ class UserController extends Controller
         return view('admin.user.create',['roles'=>$roles]);
     }
     public function store(Request $request){
+
+        $comments=staticUser::all();
+        $support_informations=support_information::all();
+        $logo = headerSetting::first();
+        $banner = banner::first();
+        $hero = hero::first();
+        $product_label = product_labels::first();
+        $advertisement = advertisement::first();
+
         $phone_code=phone_code::where('phoneNumber',$request->phoneNumber)->first();
         if($phone_code->code!=$request->code){
             return to_route("user.loginPage");
@@ -62,48 +71,102 @@ class UserController extends Controller
         $user=User::where('phoneNumber',$validation['phoneNumber'])->first();
         if($user){
             Auth::login($user);
-            if(count($products)>0){
-                $user->load(['carts'=>function($query){$query->where('order_id',null)->get();}]);
-                // dd($products);
-                $cartProductsId=[];
-                foreach ($user->carts as $cart) {
-                    $cartProductsId[]=$cart['product_id'];
-                }
-                if(count($user->carts)<1){
-                    foreach ($products as $product) {
-                        cart::create([
-                            'user_id'=>$user->id,
-                            'product_id'=>$product['id'],
-                            'order_id'=>null,
-                            'quantity'=>$product['quantity'],
-                        ]);
-                    }
-                }else{
-                    foreach ($products as $product) {
-                        if(in_array($product['id'] , $cartProductsId)){
-                            foreach ($user->carts as $cart) {
-                                if($cart->product_id == $product['id']){
-                                    $cart->quantity=$cart->quantity+$product['quantity'];
-                                    $cart->save();
-                                }
+            $user=Auth::user();
+            if($products!=null){
+                if(count($products)>0){
+                    if((count(Auth::user()->carts))){
+                        $user->load(['carts'=>function($query){$query->where('order_id',null)->get();}]);
+                        // dd($products);
+                        $cartProductsId=[];
+                        foreach ($user->carts as $cart) {
+                            $cartProductsId[]=$cart['product_id'];
+                        }
+                        if(count($user->carts)<1){
+                            foreach ($products as $product) {
+                                cart::create([
+                                    'user_id'=>$user->id,
+                                    'product_id'=>$product['id'],
+                                    'order_id'=>null,
+                                    'quantity'=>$product['quantity'],
+                                ]);
                             }
                         }else{
+                            foreach ($products as $product) {
+                                if(in_array($product['id'] , $cartProductsId)){
+                                    foreach ($user->carts as $cart) {
+                                        if($cart->product_id == $product['id']){
+                                            $cart->quantity=$cart->quantity+$product['quantity'];
+                                            $cart->save();
+                                        }
+                                    }
+                                }else{
+                                    cart::create([
+                                        'user_id'=>$user->id,
+                                        'product_id'=>$product['id'],
+                                        'order_id'=>null,
+                                        'quantity'=>$product['quantity'],
+                                    ]); 
+                                }
+                            }
+                        }
+                    }else{
+                        foreach ($products as $product) {
                             cart::create([
                                 'user_id'=>$user->id,
                                 'product_id'=>$product['id'],
                                 'order_id'=>null,
                                 'quantity'=>$product['quantity'],
-                            ]); 
+                            ]);
                         }
                     }
+                    $localCash='cashClear';
+                }else{
+                    $localCash='cashSave';
                 }
-                $localCash='cashClear';
             }else{
                 $localCash='cashSave';
             }
 
-            return view('firstPage',['localCash'=>$localCash]);
+
+            // $product=product::find(8);
+
+            if((count(Auth::user()->carts))){
+                $user->load(['carts'=>function($query){$query->where('order_id',null)->get();}]);
+                if((count(Auth::user()->carts))){
+                    foreach ($user->carts as $cart) {
+                        foreach ($cart->product->medias as $media) {
+                            if($media->is_main==1){
+                                $cart->product->path=$media->path;
+                            }
+                            if ($cart->product->discunt!=null ||$cart->product->discunt>0 ) {
+                                $campare = $cart->product->price - $cart->product->discunt;
+                                $x = $campare / $cart->product->price;
+                                $cart->product->percent = intval($x * 100);
+                            }
+                        }
+                        
+                        
+                    }
+                }
+                $is_mainpicture='';
+                $galleryPicture=[];
+            }
+            $products=product::all();
+            return view('firstPage',[
+                'user'=>$user,
+                'logo'=>$logo ,
+                'hero'=>$hero ,
+                'SI'=>$support_informations ,
+                'advertisement'=>$advertisement,
+                'product_label'=>$product_label,
+                'comments'=>$comments,
+                'banner'=>$banner,
+                'products'=>$products,
+                'localCash'=>$localCash
+            ]);
         }
+
+
         $createdUser=User::create([
             "name"=>$validation['name'],
             "family"=>$validation['family'],
@@ -117,46 +180,58 @@ class UserController extends Controller
             'role_id'=>$role->id,
         ]);
         Auth::login($createdUser);
-        $user->load(['carts'=>function($query){$query->where('order_id',null)->get();}]);
-        // dd($products);
+        $user=Auth::user();
         $cartProductsId=[];
-        if(count($products)>0){
-            foreach ($user->carts as $cart) {
-                $cartProductsId[]=$cart['product_id'];
-            }
-            if(count($user->carts)<1){
+        if($products!=null){
+            if(count($products)>0){
+
                 foreach ($products as $product) {
                     cart::create([
                         'user_id'=>$user->id,
                         'product_id'=>$product['id'],
                         'order_id'=>null,
                         'quantity'=>$product['quantity'],
-                    ]);
+                    ]); 
                 }
+                $localCash='cashClear';
             }else{
-                foreach ($products as $product) {
-                    if(in_array($product['id'] , $cartProductsId)){
-                        foreach ($user->carts as $cart) {
-                            if($cart->product_id == $product['id']){
-                                $cart->quantity=$cart->quantity+$product['quantity'];
-                                $cart->save();
-                            }
-                        }
-                    }else{
-                        cart::create([
-                            'user_id'=>$user->id,
-                            'product_id'=>$product['id'],
-                            'order_id'=>null,
-                            'quantity'=>$product['quantity'],
-                        ]); 
-                    }
-                }
+                $localCash='cashSave';
             }
-            $localCash='cashClear';
         }else{
             $localCash='cashSave';
         }
-        return view('firstPage',['localCash'=>$localCash]);
+        if(count(Auth::user()->carts)){
+            $user->load(['carts'=>function($query){$query->where('order_id',null)->get();}]);
+            if(count(Auth::user()->carts)){
+                foreach ($user->carts as $cart) {
+                    foreach ($cart->product->medias as $media) {
+                        if($media->is_main==1){
+                            $cart->product->path=$media->path;
+                        }
+                        if ($cart->product->discunt!=null ||$cart->product->discunt>0 ) {
+                            $campare = $cart->product->price - $cart->product->discunt;
+                            $x = $campare / $cart->product->price;
+                            $cart->product->percent = intval($x * 100);
+                        }
+                    }
+                }
+            }
+            $is_mainpicture='';
+            $galleryPicture=[];
+        }
+        $products=product::all();
+        return view('firstPage',[
+            'user'=>$user,
+            'logo'=>$logo ,
+            'hero'=>$hero ,
+            'SI'=>$support_informations ,
+            'advertisement'=>$advertisement,
+            'product_label'=>$product_label,
+            'comments'=>$comments,
+            'banner'=>$banner,
+            'products'=>$products,
+            'localCash'=>$localCash
+        ]);
     }
     public function createUser(Request $request){
 
@@ -209,6 +284,14 @@ class UserController extends Controller
         return to_route('user.list');
     }
     public function login(Request $request){
+        $comments=staticUser::all();
+        $support_informations=support_information::all();
+        $logo = headerSetting::first();
+        $banner = banner::first();
+        $hero = hero::first();
+        $product_label = product_labels::first();
+        $advertisement = advertisement::first();
+        // dd($request->all());
         $products=json_decode($request->products[0], true);
         // dd($x);
         // dd($request->all());
@@ -217,31 +300,43 @@ class UserController extends Controller
         Auth::login($user);
         $user->load(['carts'=>function($query){$query->where('order_id',null)->get();}]);
         // dd($products);
-        if(count($products)>0){
-
-            $cartProductsId=[];
-            foreach ($user->carts as $cart) {
-                $cartProductsId[]=$cart['product_id'];
-            }
-            if(count($user->carts)<1){
-                foreach ($products as $product) {
-                    cart::create([
-                        'user_id'=>$user->id,
-                        'product_id'=>$product['id'],
-                        'order_id'=>null,
-                        'quantity'=>$product['quantity'],
-                    ]);
-                }
-            }else{
-                foreach ($products as $product) {
-                    if(in_array($product['id'] , $cartProductsId)){
-                        foreach ($user->carts as $cart) {
-                            if($cart->product_id == $product['id']){
-                                $cart->quantity=$cart->quantity+$product['quantity'];
-                                $cart->save();
-                            }
+        if($products!=null){
+            if(count($products)>0){
+                if(count($user->carts)>0){
+                    $cartProductsId=[];
+                    foreach ($user->carts as $cart) {
+                        $cartProductsId[]=$cart['product_id'];
+                    }
+                    if(count($user->carts)<1){
+                        foreach ($products as $product) {
+                            cart::create([
+                                'user_id'=>$user->id,
+                                'product_id'=>$product['id'],
+                                'order_id'=>null,
+                                'quantity'=>$product['quantity'],
+                            ]);
                         }
                     }else{
+                        foreach ($products as $product) {
+                            if(in_array($product['id'] , $cartProductsId)){
+                                foreach ($user->carts as $cart) {
+                                    if($cart->product_id == $product['id']){
+                                        $cart->quantity=$cart->quantity+$product['quantity'];
+                                        $cart->save();
+                                    }
+                                }
+                            }else{
+                                cart::create([
+                                    'user_id'=>$user->id,
+                                    'product_id'=>$product['id'],
+                                    'order_id'=>null,
+                                    'quantity'=>$product['quantity'],
+                                ]); 
+                            }
+                        }
+                    }
+                }else{
+                    foreach ($products as $product) {
                         cart::create([
                             'user_id'=>$user->id,
                             'product_id'=>$product['id'],
@@ -250,13 +345,47 @@ class UserController extends Controller
                         ]); 
                     }
                 }
+                $localCash='cashClear';
+            }else{
+                $localCash='cashSave';
             }
-            $localCash='cashClear';
         }else{
             $localCash='cashSave';
         }
+        $products=product::all();
 
-        return view('firstPage',['localCash'=>$localCash]);
+        $flag=false;
+        $user->load(['carts'=>function($query){$query->where('order_id',null)->get();}]);
+        if(count($user->carts)>0){
+            foreach ($user->carts as $cart) {
+                foreach ($cart->product->medias as $media) {
+                    if($media->is_main==1){
+                        $cart->product->path=$media->path;
+                    }
+                    if ($cart->product->discunt!=null ||$cart->product->discunt>0 ) {
+                        $campare = $cart->product->price - $cart->product->discunt;
+                        $x = $campare / $cart->product->price;
+                        $cart->product->percent = intval($x * 100);
+                    }
+                }
+                
+                
+            }
+        }
+        $is_mainpicture='';
+        $galleryPicture=[];
+        return view('firstPage',[
+            'user'=>$user,
+            'logo'=>$logo ,
+            'hero'=>$hero ,
+            'SI'=>$support_informations ,
+            'advertisement'=>$advertisement,
+            'product_label'=>$product_label,
+            'comments'=>$comments,
+            'banner'=>$banner,
+            'products'=>$products,
+            'localCash'=>$localCash
+        ]);
     }
     public function list(){
         $users=User::all();
@@ -386,10 +515,57 @@ class UserController extends Controller
         return view('profile');
     }
     public function firstPage(){
-        $logo = headerSetting::first();
-        $hero = hero::first();
         $localCash='cashSave';
-        return view('firstPage',['logo'=>$logo ,'hero'=>$hero,'localCash'=>$localCash]);
+        $comments=staticUser::all();
+        $products=product::all();
+        $support_informations=support_information::all();
+        $logo = headerSetting::first();
+        $banner = banner::first();
+        $hero = hero::first();
+        $product_label = product_labels::first();
+        $advertisement = advertisement::first();
+        // $product=product::find(8);
+        $user=Auth::user();
+        $flag=false;
+        if($user){
+            $user->load(['carts'=>function($query){$query->where('order_id',null)->get();}]);
+            if(count($user->carts)>0){
+                foreach ($user->carts as $cart) {
+                    foreach ($cart->product->medias as $media) {
+                        if($media->is_main==1){
+                            $cart->product->path=$media->path;
+                        }
+                        if ($cart->product->discunt!=null ||$cart->product->discunt>0 ) {
+                            $campare = $cart->product->price - $cart->product->discunt;
+                            $x = $campare / $cart->product->price;
+                            $cart->product->percent = intval($x * 100);
+                        }
+                    }
+                    
+                    
+                }
+            }
+            // foreach ($user->carts as $cart) {
+            //     // dd($product);
+            //     if($cart->product->id==$product->id){
+            //         $flag=true;
+            //     }
+            // }
+            $is_mainpicture='';
+            $galleryPicture=[];
+        }
+        return view('firstPage',[
+            'user'=>$user,
+            'logo'=>$logo ,
+            'hero'=>$hero ,
+            'SI'=>$support_informations ,
+            'advertisement'=>$advertisement,
+            'product_label'=>$product_label,
+            'comments'=>$comments,
+            'banner'=>$banner,
+            'products'=>$products,
+            'localCash'=>$localCash
+        ]);
     }
     public function setting(){
         $comments=staticUser::all();
@@ -464,25 +640,25 @@ class UserController extends Controller
             //     $patternValues,  // pattern values
             // );
             ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-            $ch = curl_init('https://api.iranpayamak.com/ws/v1/sms/pattern');
-            curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-            curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'POST');
-            curl_setopt($ch, CURLOPT_HTTPHEADER, [
-                'Accept: application/json',
-                'Api-Key: M1MIQPQ9s85i6dxdzTeRGx9t87AtRQJlXNiu01e7awuQz94TkI',
-                'Content-Type: application/json'
-            ]);
-            $payload = [
-                'code' => '7fvdx77gveizxqn',
-                'attributes' => [
-                    'activation_code' => $code,
-                ],
-                'recipient' => $request->phoneNumber,
-                'line_number' => '50002178584000',
-                'number_format' => 'english'
-            ];
-            curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($payload));
-            $response = curl_exec($ch);
+            // $ch = curl_init('https://api.iranpayamak.com/ws/v1/sms/pattern');
+            // curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+            // curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'POST');
+            // curl_setopt($ch, CURLOPT_HTTPHEADER, [
+            //     'Accept: application/json',
+            //     'Api-Key: M1MIQPQ9s85i6dxdzTeRGx9t87AtRQJlXNiu01e7awuQz94TkI',
+            //     'Content-Type: application/json'
+            // ]);
+            // $payload = [
+            //     'code' => '7fvdx77gveizxqn',
+            //     'attributes' => [
+            //         'activation_code' => $code,
+            //     ],
+            //     'recipient' => $request->phoneNumber,
+            //     'line_number' => '50002178584000',
+            //     'number_format' => 'english'
+            // ];
+            // curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($payload));
+            // $response = curl_exec($ch);
 
         }
         return response()->json($flag);

@@ -979,10 +979,11 @@
             </div>
             <div class="w-full mx-auto py-2 bg-white flex lg:gap-2 gap-2.5 items-center overflow-x-auto">
 
-
-                <div class="lg:min-w-12/100 lg:max-w-12/100 sm:min-w-15/100 sm:max-w-15/100 min-w-22/100 max-w-22/100 lg:h-15 sm:h-13 h-10 flex justify-center items-center group">
-                    <img src="{{asset('assets/img/header/logo.png')}}" alt="" class="min-w-8/12 min-h-8/12 max-w-full max-h-full p-1 lg:opacity-40 lg:group-hover:opacity-100 transition_normal">
-                </div>
+                @for($i=0;$i<20;$i++)
+                    <div class="lg:min-w-12/100 lg:max-w-12/100 sm:min-w-15/100 sm:max-w-15/100 min-w-22/100 max-w-22/100 lg:h-15 sm:h-13 h-10 flex justify-center items-center group">
+                        <img src="{{asset('assets/img/header/logo.png')}}" alt="" class="min-w-8/12 min-h-8/12 max-w-full max-h-full p-1 lg:opacity-40 lg:group-hover:opacity-100 transition_normal">
+                    </div>
+                @endfor
 
 
             </div>
@@ -1434,20 +1435,11 @@
 
     </div>
     <script>
-        let hambarger_menuew = document.getElementById('naser')
-
-        function hambarger_menue(satare) {
-            if (satare == 'close') {
-                hambarger_menuew.classList.remove('black')
-                hambarger_menuew.classList.add('hidden')
-                hambarger_menuew.classList.remove('flex')
-            }
-            if (satare == 'open') {
-                hambarger_menuew.classList.remove('hidden')
-                hambarger_menuew.classList.remove('flex')
-                hambarger_menuew.classList.add('black')
-            }
-
+        let localCash="{{$localCash}}";
+            console.log(localCash);
+        if(localCash=='cashClear'){
+            localStorage.getItem('products');
+            localStorage.removeItem('products');
         }
 
         function show_this_product(item) {
