@@ -584,6 +584,6 @@ class UserController extends Controller
             );
     }
     public function checkOutForm(Request $request){
-        dd($request->all());
+        return view('client.cart.checkoutForm');
     }
 }

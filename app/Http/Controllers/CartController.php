@@ -56,30 +56,16 @@ class CartController extends Controller
     }
     public function userCartList(){
         $user=Auth::user();
-        $user->address;
-        foreach ($user->address as $address) {
-            $address->city=province_city::find($address->city_id)->title;
-        }
-        // if(count($user->carts)>0){
-        //     foreach ($user->carts as $cart) {
-        //         foreach ($cart->product->medias as $media) {
-        //             if($media->is_main==1){
-        //                 $cart->product->path=$media->path;
-        //             }
-        //         }
-                
-        //     }
-        // }
-        $user->load(['carts'=>function($query){$query->where('order_id',null)->get();}]);
-        foreach ( $user->carts as $cart) {
-            foreach ($cart->product->medias as $media) {
-                if($media->is_main==1){
-                    $cart->product->path=$media->path;
+        if($user){
+            $user->load(['carts'=>function($query){$query->where('order_id',null)->get();}]);
+            foreach ( $user->carts as $cart) {
+                foreach ($cart->product->medias as $media) {
+                    if($media->is_main==1){
+                        $cart->product->path=$media->path;
+                    }
                 }
-            }
-        };
-        $provinces=province_city::where('parent',0)->get();
-        // dd($user);
-        return view('client.cart.userCartList' ,['user'=>$user , 'provinces'=>$provinces , 'cities'=>$provinces[0]->cities]);
+            };
+        }
+        return view('client.cart.userCartList' ,['user'=>$user]);
     }
 }
