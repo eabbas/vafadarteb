@@ -400,7 +400,38 @@ class UserController extends Controller
         $hero = hero::first();
         $product_label = product_labels::first();
         $advertisement = advertisement::first();
+        // $product=product::find(8);
+        $user=Auth::user();
+        $flag=false;
+        if($user){
+            $user->load(['carts'=>function($query){$query->where('order_id',null)->get();}]);
+            if(count($user->carts)>0){
+                foreach ($user->carts as $cart) {
+                    foreach ($cart->product->medias as $media) {
+                        if($media->is_main==1){
+                            $cart->product->path=$media->path;
+                        }
+                        if ($cart->product->discunt!=null ||$cart->product->discunt>0 ) {
+                            $campare = $cart->product->price - $cart->product->discunt;
+                            $x = $campare / $cart->product->price;
+                            $cart->product->percent = intval($x * 100);
+                        }
+                    }
+                    
+                    
+                }
+            }
+            // foreach ($user->carts as $cart) {
+            //     // dd($product);
+            //     if($cart->product->id==$product->id){
+            //         $flag=true;
+            //     }
+            // }
+            $is_mainpicture='';
+            $galleryPicture=[];
+        }
         return view('firstPage2',[
+            'user'=>$user,
             'logo'=>$logo ,
             'hero'=>$hero ,
             'SI'=>$support_informations ,
