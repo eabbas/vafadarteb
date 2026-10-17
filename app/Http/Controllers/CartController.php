@@ -91,7 +91,11 @@ class CartController extends Controller
             };
             $benefit = $sum - $finalAmount;
             $user->address;
-            dd($user);
+            foreach ($user->address as $address) {
+                $address->city_name=province_city::find($address->city_id)->title;
+                $address->province_name=province_city::find($address->province_id)->title;
+            }
+            // dd($user);
             return view('client.cart.checkoutForm',
             [
                 'provinces'=>$provinces ,
@@ -108,5 +112,13 @@ class CartController extends Controller
             'cities'=>$provinces[0]->cities ,
             'user'=>$user,
         ]);            
+        // return view('client.cart.checkoutForm',  [
+        //         'provinces'=>$provinces ,
+        //         'cities'=>$provinces[0]->cities ,
+        //         'user'=>$user,
+        //         'sum'=>1,
+        //         'finalAmount'=>1,
+        //         'benefit'=>1,
+        //     ]);
     }
 }

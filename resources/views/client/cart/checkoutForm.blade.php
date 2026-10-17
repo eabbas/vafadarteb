@@ -549,85 +549,69 @@
       </section>
       <section class="flex flex-col lg:flex-row px-4 md:px-10 mt-10 gap-5 pb-20">
         <div class="lg:w-9/12 border border-zinc-200 p-5 rounded-xl">
-          <div class="flex justify-end items-center">
-            <button onclick="addressSection('open')" class="cursor-pointer px-4 py-2 bg-(--color-zinc-400) rounded-lg text-sm text-white hover:opacity-90 hover:shadow-lg">
-              انتخاب ادرس
-            </button>
-            <!-- modal address -->
-            <div id="addressForm" class="fixed opacity-0 invisible inset-0 bg-black/20 flex items-center justify-center transition-all duration-300 z-5000000000">
-              <div class="modal-box bg-white p-2 rounded-xl shadow-lg w-10/12 md:w-6/12 scale-90 transition-transform duration-300">
-                <div class="flex items-center gap-3 p-4 border-b border-zinc-300">
-                  <svg onclick="addressSection('close')" class="size-5 cursor-pointer" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><path d="M345 137c9.4-9.4 9.4-24.6 0-33.9s-24.6-9.4-33.9 0l-119 119L73 103c-9.4-9.4-24.6-9.4-33.9 0s-9.4 24.6 0 33.9l119 119L39 375c-9.4 9.4-9.4 24.6 0 33.9s24.6 9.4 33.9 0l119-119L311 409c9.4 9.4 24.6 9.4 33.9 0s9.4-24.6 0-33.9l-119-119L345 137z"/></svg>
-                  <h3 class="text-gray-700">انتخاب آدرس</h3>
-                </div>
-                <form action="" method="post" class="space-y-6 px-6 lg:px-8 pb-4 sm:pb-6 pt-4">
-                  <div class="space-y-5">
-                    <ul class="w-full flex flex-col gap-3">
-                      <li>
-                        <input type="radio" id="15" name="pey" value="15" class="hidden peer" requiblue="">
-                        <label for="15" class="block w-full p-2 text-gray-600 bg-white border border-gray-200 rounded-lg cursor-pointer peer-checked:border-(--color-primary-500) peer-checked:border-2 peer-checked:text-zinc-600 opacity-70 peer-checked:opacity-100">                           
-                          <div>
-                            <div class="border-b border-b-zinc-400 p-3 text-zinc-800 text-sm flex justify-between items-center">
-                              بناب - سزوار
-                            </div>
-                            <div class="px-5 py-4 text-zinc-600 space-y-4 text-sm">
-                              <div class="flex gap-x-1 items-center">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="" viewBox="0 0 256 256"><path d="M128,64a40,40,0,1,0,40,40A40,40,0,0,0,128,64Zm0,64a24,24,0,1,1,24-24A24,24,0,0,1,128,128Zm0-112a88.1,88.1,0,0,0-88,88c0,31.4,14.51,64.68,42,96.25a254.19,254.19,0,0,0,41.45,38.3,8,8,0,0,0,9.18,0A254.19,254.19,0,0,0,174,200.25c27.45-31.57,42-64.85,42-96.25A88.1,88.1,0,0,0,128,16Zm0,206c-16.53-13-72-60.75-72-118a72,72,0,0,1,144,0C200,161.23,144.53,209,128,222Z"></path></svg>
-                                بناب - خیابان مطهری - روبروی بانک سپه
-                              </div>
-                              <div class="flex gap-x-1 items-center">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="" viewBox="0 0 256 256"><path d="M228.44,89.34l-96-64a8,8,0,0,0-8.88,0l-96,64A8,8,0,0,0,24,96V200a16,16,0,0,0,16,16H216a16,16,0,0,0,16-16V96A8,8,0,0,0,228.44,89.34ZM96.72,152,40,192V111.53Zm16.37,8h29.82l56.63,40H56.46Zm46.19-8L216,111.53V192ZM128,41.61l81.91,54.61-67,47.78H113.11l-67-47.78Z"></path></svg>
-                                555-12345
-                              </div>
-                              <div class="flex gap-x-1 items-center">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="" viewBox="0 0 256 256"><path d="M222.37,158.46l-47.11-21.11-.13-.06a16,16,0,0,0-15.17,1.4,8.12,8.12,0,0,0-.75.56L134.87,160c-15.42-7.49-31.34-23.29-38.83-38.51l20.78-24.71c.2-.25.39-.5.57-.77a16,16,0,0,0,1.32-15.06l0-.12L97.54,33.64a16,16,0,0,0-16.62-9.52A56.26,56.26,0,0,0,32,80c0,79.4,64.6,144,144,144a56.26,56.26,0,0,0,55.88-48.92A16,16,0,0,0,222.37,158.46ZM176,208A128.14,128.14,0,0,1,48,80,40.2,40.2,0,0,1,82.87,40a.61.61,0,0,0,0,.12l21,47L83.2,111.86a6.13,6.13,0,0,0-.57.77,16,16,0,0,0-1,15.7c9.06,18.53,27.73,37.06,46.46,46.11a16,16,0,0,0,15.75-1.14,8.44,8.44,0,0,0,.74-.56L168.89,152l47,21.05h0s.08,0,.11,0A40.21,40.21,0,0,1,176,208Z"></path></svg>
-                                09018741677
-                              </div>
-                              <div class="flex gap-x-1 items-center">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="" viewBox="0 0 256 256"><path d="M230.92,212c-15.23-26.33-38.7-45.21-66.09-54.16a72,72,0,1,0-73.66,0C63.78,166.78,40.31,185.66,25.08,212a8,8,0,1,0,13.85,8c18.84-32.56,52.14-52,89.07-52s70.23,19.44,89.07,52a8,8,0,1,0,13.85-8ZM72,96a56,56,0,1,1,56,56A56.06,56.06,0,0,1,72,96Z"></path></svg>
-                                امیر محمد سزاوار
-                              </div>
-                            </div>
-                          </div>
-                        </label>
-                      </li>
-                      <li>
-                        <input type="radio" id="16" name="pey" value="16" class="hidden peer" requiblue="">
-                        <label for="16" class="block w-full p-2 text-gray-600 bg-white border border-gray-200 rounded-lg cursor-pointer peer-checked:border-(--color-primary-500) peer-checked:border-2 peer-checked:text-zinc-600 opacity-70 peer-checked:opacity-100">                           
-                          <div>
-                            <div class="border-b border-b-zinc-400 p-3 text-zinc-800 text-sm flex justify-between items-center">
-                              بناب - سزوار
-                            </div>
-                            <div class="px-5 py-4 text-zinc-600 space-y-4 text-sm">
-                              <div class="flex gap-x-1 items-center">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="" viewBox="0 0 256 256"><path d="M128,64a40,40,0,1,0,40,40A40,40,0,0,0,128,64Zm0,64a24,24,0,1,1,24-24A24,24,0,0,1,128,128Zm0-112a88.1,88.1,0,0,0-88,88c0,31.4,14.51,64.68,42,96.25a254.19,254.19,0,0,0,41.45,38.3,8,8,0,0,0,9.18,0A254.19,254.19,0,0,0,174,200.25c27.45-31.57,42-64.85,42-96.25A88.1,88.1,0,0,0,128,16Zm0,206c-16.53-13-72-60.75-72-118a72,72,0,0,1,144,0C200,161.23,144.53,209,128,222Z"></path></svg>
-                                بناب - خیابان مطهری - روبروی بانک سپه
-                              </div>
-                              <div class="flex gap-x-1 items-center">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="" viewBox="0 0 256 256"><path d="M228.44,89.34l-96-64a8,8,0,0,0-8.88,0l-96,64A8,8,0,0,0,24,96V200a16,16,0,0,0,16,16H216a16,16,0,0,0,16-16V96A8,8,0,0,0,228.44,89.34ZM96.72,152,40,192V111.53Zm16.37,8h29.82l56.63,40H56.46Zm46.19-8L216,111.53V192ZM128,41.61l81.91,54.61-67,47.78H113.11l-67-47.78Z"></path></svg>
-                                555-12345
-                              </div>
-                              <div class="flex gap-x-1 items-center">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="" viewBox="0 0 256 256"><path d="M222.37,158.46l-47.11-21.11-.13-.06a16,16,0,0,0-15.17,1.4,8.12,8.12,0,0,0-.75.56L134.87,160c-15.42-7.49-31.34-23.29-38.83-38.51l20.78-24.71c.2-.25.39-.5.57-.77a16,16,0,0,0,1.32-15.06l0-.12L97.54,33.64a16,16,0,0,0-16.62-9.52A56.26,56.26,0,0,0,32,80c0,79.4,64.6,144,144,144a56.26,56.26,0,0,0,55.88-48.92A16,16,0,0,0,222.37,158.46ZM176,208A128.14,128.14,0,0,1,48,80,40.2,40.2,0,0,1,82.87,40a.61.61,0,0,0,0,.12l21,47L83.2,111.86a6.13,6.13,0,0,0-.57.77,16,16,0,0,0-1,15.7c9.06,18.53,27.73,37.06,46.46,46.11a16,16,0,0,0,15.75-1.14,8.44,8.44,0,0,0,.74-.56L168.89,152l47,21.05h0s.08,0,.11,0A40.21,40.21,0,0,1,176,208Z"></path></svg>
-                                09018741677
-                              </div>
-                              <div class="flex gap-x-1 items-center">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="" viewBox="0 0 256 256"><path d="M230.92,212c-15.23-26.33-38.7-45.21-66.09-54.16a72,72,0,1,0-73.66,0C63.78,166.78,40.31,185.66,25.08,212a8,8,0,1,0,13.85,8c18.84-32.56,52.14-52,89.07-52s70.23,19.44,89.07,52a8,8,0,1,0,13.85-8ZM72,96a56,56,0,1,1,56,56A56.06,56.06,0,0,1,72,96Z"></path></svg>
-                                امیر محمد سزاوار
-                              </div>
-                            </div>
-                          </div>
-                        </label>
-                      </li>
-                    </ul>
+          @if($user!=null)
+            <div class="flex justify-end items-center">
+              <button onclick="addressSection('open')" class="cursor-pointer px-4 py-2 bg-(--color-zinc-400) rounded-lg text-sm text-white hover:opacity-90 hover:shadow-lg">
+                انتخاب ادرس
+              </button>
+              <!-- modal address -->
+              <div id="addressForm" class="fixed opacity-0 invisible inset-0 bg-black/20 flex items-center justify-center transition-all duration-300 z-5000000000">
+                <div class="modal-box bg-white p-2 rounded-xl shadow-lg w-10/12 md:w-6/12 scale-90 transition-transform duration-300">
+                  <div class="flex items-center gap-3 p-4 border-b border-zinc-300">
+                    <svg onclick="addressSection('close')" class="size-5 cursor-pointer" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><path d="M345 137c9.4-9.4 9.4-24.6 0-33.9s-24.6-9.4-33.9 0l-119 119L73 103c-9.4-9.4-24.6-9.4-33.9 0s-9.4 24.6 0 33.9l119 119L39 375c-9.4 9.4-9.4 24.6 0 33.9s24.6 9.4 33.9 0l119-119L311 409c9.4 9.4 24.6 9.4 33.9 0s9.4-24.6 0-33.9l-119-119L345 137z"/></svg>
+                    <h3 class="text-gray-700">انتخاب آدرس</h3>
                   </div>
-                  <a href="#" class="block bg-(--color-primary-500) hover:bg-(--color-primary-400) text-white text-center w-8/12 mx-auto mt-10 px-5 py-3 rounded-xl shadow-lg transition-all font-yekanBakhBold">
-                    انتخاب
-                  </a>
-                </form>
+                  <form action="" method="post" class="space-y-6 px-6 lg:px-8 pb-4 sm:pb-6 pt-4">
+                    <div class="space-y-5">
+                      <ul class="w-full flex flex-col gap-3">
+                        @foreach($user->address as $address)
+                          <li>
+                            <input type="radio" id="{{$address->id}}" name="pey" value="16" class="hidden peer" requiblue="">
+                            <label for="{{$address->id}}" class="block w-full p-2 text-gray-600 bg-white border border-gray-200 rounded-lg cursor-pointer peer-checked:border-(--color-primary-500) peer-checked:border-2 peer-checked:text-zinc-600 opacity-70 peer-checked:opacity-100">                           
+                              <div>
+                                <div class="border-b border-b-zinc-400 p-3 text-zinc-800 text-sm flex justify-between items-center">
+                                  بناب - سزوار
+                                </div>
+                                <div class="px-5 py-4 text-zinc-600 space-y-4 text-sm">
+                                  <div class="flex gap-x-1 items-center">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="" viewBox="0 0 256 256"><path d="M128,64a40,40,0,1,0,40,40A40,40,0,0,0,128,64Zm0,64a24,24,0,1,1,24-24A24,24,0,0,1,128,128Zm0-112a88.1,88.1,0,0,0-88,88c0,31.4,14.51,64.68,42,96.25a254.19,254.19,0,0,0,41.45,38.3,8,8,0,0,0,9.18,0A254.19,254.19,0,0,0,174,200.25c27.45-31.57,42-64.85,42-96.25A88.1,88.1,0,0,0,128,16Zm0,206c-16.53-13-72-60.75-72-118a72,72,0,0,1,144,0C200,161.23,144.53,209,128,222Z"></path></svg>
+                                    <span>آدرس:</span>
+                                   {{$address->province_name}} - {{$address->city_name}} /{{$address->location}}
+                                  </div>
+                                  <div class="flex gap-x-1 items-center">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="" viewBox="0 0 256 256"><path d="M228.44,89.34l-96-64a8,8,0,0,0-8.88,0l-96,64A8,8,0,0,0,24,96V200a16,16,0,0,0,16,16H216a16,16,0,0,0,16-16V96A8,8,0,0,0,228.44,89.34ZM96.72,152,40,192V111.53Zm16.37,8h29.82l56.63,40H56.46Zm46.19-8L216,111.53V192ZM128,41.61l81.91,54.61-67,47.78H113.11l-67-47.78Z"></path></svg>
+                                    <span>کد پستی:</span>
+                                    {{$address->postalCode}}
+                                  </div>
+                                  <div class="flex gap-x-1 items-center">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="" viewBox="0 0 256 256"><path d="M222.37,158.46l-47.11-21.11-.13-.06a16,16,0,0,0-15.17,1.4,8.12,8.12,0,0,0-.75.56L134.87,160c-15.42-7.49-31.34-23.29-38.83-38.51l20.78-24.71c.2-.25.39-.5.57-.77a16,16,0,0,0,1.32-15.06l0-.12L97.54,33.64a16,16,0,0,0-16.62-9.52A56.26,56.26,0,0,0,32,80c0,79.4,64.6,144,144,144a56.26,56.26,0,0,0,55.88-48.92A16,16,0,0,0,222.37,158.46ZM176,208A128.14,128.14,0,0,1,48,80,40.2,40.2,0,0,1,82.87,40a.61.61,0,0,0,0,.12l21,47L83.2,111.86a6.13,6.13,0,0,0-.57.77,16,16,0,0,0-1,15.7c9.06,18.53,27.73,37.06,46.46,46.11a16,16,0,0,0,15.75-1.14,8.44,8.44,0,0,0,.74-.56L168.89,152l47,21.05h0s.08,0,.11,0A40.21,40.21,0,0,1,176,208Z"></path></svg>
+                                    <span>شماره تماس:</span>
+                                    {{$address->phoneNumber}}
+                                  </div>
+                                  <div class="flex gap-x-1 items-center">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="" viewBox="0 0 256 256"><path d="M230.92,212c-15.23-26.33-38.7-45.21-66.09-54.16a72,72,0,1,0-73.66,0C63.78,166.78,40.31,185.66,25.08,212a8,8,0,1,0,13.85,8c18.84-32.56,52.14-52,89.07-52s70.23,19.44,89.07,52a8,8,0,1,0,13.85-8ZM72,96a56,56,0,1,1,56,56A56.06,56.06,0,0,1,72,96Z"></path></svg>
+                                    <span>نام و نام خانوادگی:</span>
+                                   {{$user->name}}-{{$user->family}}
+                                  </div>
+                                  <div class="flex gap-x-1 items-center">
+                                    <span> توضحات اضافی:</span>
+                                        {{$address->description}}
+                                  </div>
+                                </div>
+                              </div>
+                            </label>
+                          </li>
+                        @endforeach
+                      </ul>
+                    </div>
+                    <a href="#" class="block bg-(--color-primary-500) hover:bg-(--color-primary-400) text-white text-center w-8/12 mx-auto mt-10 px-5 py-3 rounded-xl shadow-lg transition-all font-yekanBakhBold">
+                      انتخاب
+                    </a>
+                  </form>
+                </div>
               </div>
             </div>
-          </div>
+          @endif
           <div class="sm:flex gap-x-5">
             <div class="sm:w-1/2 mb-2 sm:mb-0 flex flex-col gap-y-1">
               <label for="name" class="text-zinc-700 flex">
@@ -650,27 +634,23 @@
                 استان
                 <svg class="fill-red-500" xmlns="http://www.w3.org/2000/svg" width="10" height="10" fill="#4d4d4d" viewBox="0 0 256 256"><path d="M210.23,101.57l-72.6,29,51.11,65.71a6,6,0,0,1-9.48,7.36L128,137.77,76.74,203.68a6,6,0,1,1-9.48-7.36l51.11-65.71-72.6-29a6,6,0,1,1,4.46-11.14L122,119.14V40a6,6,0,0,1,12,0v79.14l71.77-28.71a6,6,0,1,1,4.46,11.14Z"></path></svg>
               </label>
-              <input type="text" name="selectbox" list="provincee" id="province" class="rounded-2xl text-sm text-(--color-zinc-600) w-full border border-(--color-zinc-200) px-5 py-3.5 placeholder:text-(--color-zinc-400) placeholder:text-xs focus:outline-1 focus:outline-(--color-primary-300) focus:border-(--color-primary-300)">
-                <datalist id="provincee">
-                  <option value="اذربایجان شرقی">اذربایجان شرقی</option>
-                  <option value="اذربایجان غربی">اذربایجان غربی</option>
-                  <option value="اذربایجان شمالی">اذربایجان شمالی</option>
-                  <option value="اذربایجان جنوبی">اذربایجان جنوبی</option>
-                </datalist>
+              <select name="province_id" id="provinces" class="rounded-2xl text-sm text-(--color-zinc-600) w-full border border-(--color-zinc-200) px-5 py-3.5 placeholder:text-(--color-zinc-400) placeholder:text-xs focus:outline-1 focus:outline-(--color-primary-300) focus:border-(--color-primary-300)" onchange="getCities()">
+                @foreach($provinces as $province)
+                
+                  <option value="{{$province->id}}">{{$province->title}}</option>
+                @endforeach
+              </select>
             </div>
             <div class="sm:w-1/2 flex flex-col gap-y-1">
               <label for="city" class="text-zinc-700 flex">
                 شهر
                 <svg class="fill-red-500" xmlns="http://www.w3.org/2000/svg" width="10" height="10" fill="#4d4d4d" viewBox="0 0 256 256"><path d="M210.23,101.57l-72.6,29,51.11,65.71a6,6,0,0,1-9.48,7.36L128,137.77,76.74,203.68a6,6,0,1,1-9.48-7.36l51.11-65.71-72.6-29a6,6,0,1,1,4.46-11.14L122,119.14V40a6,6,0,0,1,12,0v79.14l71.77-28.71a6,6,0,1,1,4.46,11.14Z"></path></svg>
               </label>
-              <input type="text" name="selectbox" list="cityy" id="city" class="rounded-2xl text-sm text-(--color-zinc-600) w-full border border-(--color-zinc-200) px-5 py-3.5 placeholder:text-(--color-zinc-400) placeholder:text-xs focus:outline-1 focus:outline-(--color-primary-300) focus:border-(--color-primary-300)">
-                <datalist id="cityy">
-                  <option value="تهران">تهران</option>
-                  <option value="رباط">رباط کریم</option>
-                  <option value="دماوند">دماوند</option>
-                  <option value="بیناب" selected>بیناب</option>
-                  <option value="مراع">مراع</option>
-                </datalist>
+              <select name="province_id" id="cities" class="rounded-2xl text-sm text-(--color-zinc-600) w-full border border-(--color-zinc-200) px-5 py-3.5 placeholder:text-(--color-zinc-400) placeholder:text-xs focus:outline-1 focus:outline-(--color-primary-300) focus:border-(--color-primary-300)">
+                @foreach($cities as $city)
+                  <option value="{{$city->id}}">{{$city->title}}</option>
+                @endforeach
+              </select>
             </div>
           </div>
           <div class="mt-7">
@@ -1098,6 +1078,37 @@
               address.classList.add('invisible')
           }
       }
+
+
+    let province = document.getElementById('provinces');
+    let cities = document.getElementById('cities');
+    
+    function getCities(){
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': "{{ csrf_token() }}"
+            }
+        })
+        $.ajax({
+            url: "{{route('address.getCities')}}",
+            type: "post",
+            dataType: "json",
+            data:{
+                'province_id':province.value,
+            },
+            success: function(data) {
+                cities.innerHTML='';
+                data.forEach(city => {
+                    cities.innerHTML+=
+                    `  <option value="${city.id}">${city.title}</option>  `;
+                });
+            },
+            error: function() {
+                console.log('☢')
+            }
+        })
+        console.log(province.value);
+    }
   </script>
 </body>
 </html>

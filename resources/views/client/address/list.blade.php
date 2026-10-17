@@ -892,7 +892,6 @@
                 },
                 success: function(data) {
                     removeForm()
-                    console.log('banana')
                     el.parentElement.parentElement.parentElement.children[1].children[0].innerHTML=data.location;
                     el.parentElement.parentElement.parentElement.children[2].children[0].innerHTML=data.city_id;
                     el.parentElement.parentElement.parentElement.children[3].children[0].innerHTML=data.province_id;
