@@ -65,7 +65,60 @@ class CartController extends Controller
                     }
                 }
             };
-        }
+        } 
         return view('client.cart.userCartList' ,['user'=>$user]);
+    }
+    public function checkOutForm(Request $request){
+        // dd($request->all());
+        $sum=0;
+        $finalAmount=0;
+        $benefit=0;
+        $provinces=province_city::where('parent',0)->get();
+        $user=Auth::user();
+        // dd($user);
+        if($user!=null){
+            $user->load(['carts'=>function($query){$query->where('order_id',null)->get();}]);
+            foreach ( $user->carts as $cart) {
+                // هزینه کل
+                $sum+=$cart->product->price * $cart->quantity;
+                // هزینه قابل پرداخت
+                if($cart->product->discunt!=null && $cart->product->discunt>0){
+                    $finalAmount+=$cart->product->discunt * $cart->quantity;
+                }else{
+                    $finalAmount+=$cart->product->price * $cart->quantity;
+                }
+                // dd($cart);
+            };
+            $benefit = $sum - $finalAmount;
+            $user->address;
+            foreach ($user->address as $address) {
+                $address->city_name=province_city::find($address->city_id)->title;
+                $address->province_name=province_city::find($address->province_id)->title;
+            }
+            // dd($user);
+            return view('client.cart.checkoutForm',
+            [
+                'provinces'=>$provinces ,
+                'cities'=>$provinces[0]->cities ,
+                'user'=>$user,
+                'sum'=>$sum,
+                'finalAmount'=>$finalAmount,
+                'benefit'=>$benefit,
+            ]);
+        }
+        return view('client.cart.checkoutForm',
+        [
+            'provinces'=>$provinces ,
+            'cities'=>$provinces[0]->cities ,
+            'user'=>$user,
+        ]);            
+        // return view('client.cart.checkoutForm',  [
+        //         'provinces'=>$provinces ,
+        //         'cities'=>$provinces[0]->cities ,
+        //         'user'=>$user,
+        //         'sum'=>1,
+        //         'finalAmount'=>1,
+        //         'benefit'=>1,
+        //     ]);
     }
 }

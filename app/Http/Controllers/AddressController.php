@@ -35,10 +35,17 @@ class AddressController extends Controller
         dd('create');
     }
     public function store(Request $request){
+        // dd($request->all());
+        $phoneNumber=Auth::user()->phoneNumber;
+        // dd($phoneNumber);
         address::create([
             'user_id'=>Auth::id(),
             'city_id'=>$request->city_id,
+            'province_id'=>$request->province_id,
             'location'=>$request->location,
+            'phoneNumber'=>$phoneNumber,
+            'description'=>$request->description,
+            'postalCode'=>$request->postalCode,
         ]);
         return to_route('address.list');
         dd('store');
@@ -47,15 +54,22 @@ class AddressController extends Controller
         $addresses=Auth::user()->address;
         foreach ($addresses as $address) {
             $address->city=province_city::find($address->city_id)->title;
+            $address->province=province_city::find($address->province_id)->title;
         }
         return view('client.address.list',['addresses'=>$addresses]);
     }
     public function update(Request $request ,address $address){
+        // dd($request->all());
         $address->location=$request->location;
         $address->city_id=$request->city_id;
+        $address->province_id=$request->province;
+        $address->postalCode=$request->postalCode;
+        $address->description=$request->description;
+        $address->phoneNumber=$request->phoneNumber;
         $address->save();
-        $cityName=province_city::find($address->city_id)->title;
-        return response()->json(['location'=>$address->location,'city'=>$cityName]);
+        $address->province_id=province_city::find($address->province_id)->title;
+        $address->city_id=province_city::find($address->city_id)->title;
+        return response()->json(['address'=>$address]);
     }
     public function delete(Address $address){
         $address->delete();
@@ -76,9 +90,13 @@ class AddressController extends Controller
         return response()->json($address);
     }
     public function getAddress(address $address){
-        $city=province_city::find($address->city_id);
-        $address->cities=province_city::find($city->parent)->cities;
-        $address->province=$city->parent;
+        // $city=province_city::find($address->city_id);
+
+        //city
+        $address->cities=province_city::find($address->province_id)->cities;
+        // $address->province=$city->parent;
+
+        //province
         $address->provinces=province_city::where('parent',0)->get();
         return response()->json($address);
     }
