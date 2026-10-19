@@ -40,6 +40,7 @@ class AddressController extends Controller
         // dd($phoneNumber);
         address::create([
             'user_id'=>Auth::id(),
+            'title'=>$request->title,
             'city_id'=>$request->city_id,
             'province_id'=>$request->province_id,
             'location'=>$request->location,
@@ -60,6 +61,7 @@ class AddressController extends Controller
     }
     public function update(Request $request ,address $address){
         // dd($request->all());
+        $address->title=$request->title;
         $address->location=$request->location;
         $address->city_id=$request->city_id;
         $address->province_id=$request->province;

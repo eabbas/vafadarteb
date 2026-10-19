@@ -263,6 +263,16 @@
         <form action="{{route('address.store')}}" method="POST" class="metronic-form">
             @csrf
 
+            <!-- عنوان -->
+
+            <div class="form-group">
+                <label>
+                    <span>  عنوان </span>
+                    <span class="required">*</span>
+                </label>
+                <input required type="text" id="title" placeholder="عنوان برند را وارد کنید" name='title' value="{{old('title')}}" class="vafadar-input">
+            </div>
+
             <!-- استان -->
             <div class="form-group">
                 <label>
@@ -308,7 +318,7 @@
                     <span> کد پستی </span>
                     <span class="required">*</span>
                 </label>
-                <input required type="text" id="postalCode" placeholder="کد پستی برند را وارد کنید" name='postalCode' value="{{old('postalCode')}}" class="vafadar-input">
+                <input required type="number" id="postalCode" placeholder="کد پستی برند را وارد کنید" name='postalCode' value="{{old('postalCode')}}" class="vafadar-input">
             </div>
 
             <button type="submit" class="metronic-submit-btn">
