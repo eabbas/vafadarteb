@@ -168,7 +168,7 @@
               [&::-webkit-scrollbar-thumb]:rounded-full">
   <div class="max-w-[1700px] mx-auto">
 
-    <main class="relative px-3 md:px-20">
+    <main class="relative px-3 md:px-20 pt-10">
       <section id="top" class="flex items-center gap-1 md:gap-5 w-full md:w-10/12 md:mx-auto mt-2 md:mt-0 scroll-mt-50">
         <a href="" class="flex flex-col md:flex-row items-center w-fit min-w-24 md:min-w-32 gap-1 text-sm text-(--color-green-500)">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -196,13 +196,14 @@
           اتمام خرید
         </a>
       </section>
-      <section class="flex flex-col lg:flex-row px-4 md:px-10 mt-10 gap-5 pb-20">
+      <form action='{{route("user.cartInformation")}}' method="POST" class="flex flex-col lg:flex-row px-4 md:px-10 mt-10 gap-5 pb-20">
+        @csrf
         <div class="lg:w-9/12 border border-zinc-200 p-5 rounded-xl">
           @if($user!=null)
             <div class="flex justify-end items-center">
-              <button onclick="addressSection('open')" class="cursor-pointer px-4 py-2 bg-(--color-zinc-400) rounded-lg text-sm text-white hover:opacity-90 hover:shadow-lg">
+              <div onclick="addressSection('open')" class="cursor-pointer px-4 py-2 bg-(--color-zinc-400) rounded-lg text-sm text-white hover:opacity-90 hover:shadow-lg">
                 انتخاب ادرس
-              </button>
+              </div>
               <!-- modal address -->
               <div id="addressForm" class="fixed opacity-0 invisible inset-0 bg-black/20 flex items-center justify-center transition-all duration-300 z-5000000000">
                 <div class="modal-box bg-white p-2 rounded-xl shadow-lg w-10/12 md:w-6/12 scale-90 transition-transform duration-300">
@@ -210,53 +211,53 @@
                     <svg onclick="addressSection('close')" class="size-5 cursor-pointer" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><path d="M345 137c9.4-9.4 9.4-24.6 0-33.9s-24.6-9.4-33.9 0l-119 119L73 103c-9.4-9.4-24.6-9.4-33.9 0s-9.4 24.6 0 33.9l119 119L39 375c-9.4 9.4-9.4 24.6 0 33.9s24.6 9.4 33.9 0l119-119L311 409c9.4 9.4 24.6 9.4 33.9 0s9.4-24.6 0-33.9l-119-119L345 137z"/></svg>
                     <h3 class="text-gray-700">انتخاب آدرس</h3>
                   </div>
-                  <form action="" method="post" class="space-y-6 px-6 lg:px-8 pb-4 sm:pb-6 pt-4">
+                  <div class="space-y-6 px-6 lg:px-8 pb-4 sm:pb-6 pt-4">
                     <div class="space-y-5">
                       <ul class="w-full flex flex-col gap-3">
-                        @foreach($user->address as $address)
-                          <li>
-                            <input type="radio" id="{{$address->id}}" name="pey" value="16" class="hidden peer" requiblue="">
-                            <label for="{{$address->id}}" class="block w-full p-2 text-gray-600 bg-white border border-gray-200 rounded-lg cursor-pointer peer-checked:border-(--color-primary-500) peer-checked:border-2 peer-checked:text-zinc-600 opacity-70 peer-checked:opacity-100">                           
-                              <div>
-                                <div class="border-b border-b-zinc-400 p-3 text-zinc-800 text-sm flex justify-between items-center">
-                                  بناب - سزوار
-                                </div>
-                                <div class="px-5 py-4 text-zinc-600 space-y-4 text-sm">
-                                  <div class="flex gap-x-1 items-center">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="" viewBox="0 0 256 256"><path d="M128,64a40,40,0,1,0,40,40A40,40,0,0,0,128,64Zm0,64a24,24,0,1,1,24-24A24,24,0,0,1,128,128Zm0-112a88.1,88.1,0,0,0-88,88c0,31.4,14.51,64.68,42,96.25a254.19,254.19,0,0,0,41.45,38.3,8,8,0,0,0,9.18,0A254.19,254.19,0,0,0,174,200.25c27.45-31.57,42-64.85,42-96.25A88.1,88.1,0,0,0,128,16Zm0,206c-16.53-13-72-60.75-72-118a72,72,0,0,1,144,0C200,161.23,144.53,209,128,222Z"></path></svg>
-                                    <span>آدرس:</span>
-                                   {{$address->province_name}} - {{$address->city_name}} /{{$address->location}}
+                        @if($user->address)
+                          @foreach($user->address as $address)
+                            <li onclick='setAddress(this , {{$address}})' class='addressess rounded-xl border-2 border-gray-400/50' id="{{$address->id}}">
+                                <div>
+                                  <div class="border-b border-b-zinc-400 p-3 text-zinc-800 text-sm flex justify-between items-center">
+                                    {{$address->title}}
                                   </div>
-                                  <div class="flex gap-x-1 items-center">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="" viewBox="0 0 256 256"><path d="M228.44,89.34l-96-64a8,8,0,0,0-8.88,0l-96,64A8,8,0,0,0,24,96V200a16,16,0,0,0,16,16H216a16,16,0,0,0,16-16V96A8,8,0,0,0,228.44,89.34ZM96.72,152,40,192V111.53Zm16.37,8h29.82l56.63,40H56.46Zm46.19-8L216,111.53V192ZM128,41.61l81.91,54.61-67,47.78H113.11l-67-47.78Z"></path></svg>
-                                    <span>کد پستی:</span>
-                                    {{$address->postalCode}}
-                                  </div>
-                                  <div class="flex gap-x-1 items-center">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="" viewBox="0 0 256 256"><path d="M222.37,158.46l-47.11-21.11-.13-.06a16,16,0,0,0-15.17,1.4,8.12,8.12,0,0,0-.75.56L134.87,160c-15.42-7.49-31.34-23.29-38.83-38.51l20.78-24.71c.2-.25.39-.5.57-.77a16,16,0,0,0,1.32-15.06l0-.12L97.54,33.64a16,16,0,0,0-16.62-9.52A56.26,56.26,0,0,0,32,80c0,79.4,64.6,144,144,144a56.26,56.26,0,0,0,55.88-48.92A16,16,0,0,0,222.37,158.46ZM176,208A128.14,128.14,0,0,1,48,80,40.2,40.2,0,0,1,82.87,40a.61.61,0,0,0,0,.12l21,47L83.2,111.86a6.13,6.13,0,0,0-.57.77,16,16,0,0,0-1,15.7c9.06,18.53,27.73,37.06,46.46,46.11a16,16,0,0,0,15.75-1.14,8.44,8.44,0,0,0,.74-.56L168.89,152l47,21.05h0s.08,0,.11,0A40.21,40.21,0,0,1,176,208Z"></path></svg>
-                                    <span>شماره تماس:</span>
-                                    {{$address->phoneNumber}}
-                                  </div>
-                                  <div class="flex gap-x-1 items-center">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="" viewBox="0 0 256 256"><path d="M230.92,212c-15.23-26.33-38.7-45.21-66.09-54.16a72,72,0,1,0-73.66,0C63.78,166.78,40.31,185.66,25.08,212a8,8,0,1,0,13.85,8c18.84-32.56,52.14-52,89.07-52s70.23,19.44,89.07,52a8,8,0,1,0,13.85-8ZM72,96a56,56,0,1,1,56,56A56.06,56.06,0,0,1,72,96Z"></path></svg>
-                                    <span>نام و نام خانوادگی:</span>
-                                   {{$user->name}}-{{$user->family}}
-                                  </div>
-                                  <div class="flex gap-x-1 items-center">
-                                    <span> توضحات اضافی:</span>
+                                  <div class="px-5 py-4 text-zinc-600 space-y-4 text-sm">
+                                    <div class="flex gap-x-1 items-center">
+                                      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="" viewBox="0 0 256 256"><path d="M128,64a40,40,0,1,0,40,40A40,40,0,0,0,128,64Zm0,64a24,24,0,1,1,24-24A24,24,0,0,1,128,128Zm0-112a88.1,88.1,0,0,0-88,88c0,31.4,14.51,64.68,42,96.25a254.19,254.19,0,0,0,41.45,38.3,8,8,0,0,0,9.18,0A254.19,254.19,0,0,0,174,200.25c27.45-31.57,42-64.85,42-96.25A88.1,88.1,0,0,0,128,16Zm0,206c-16.53-13-72-60.75-72-118a72,72,0,0,1,144,0C200,161.23,144.53,209,128,222Z"></path></svg>
+                                      <span>آدرس:</span>
+                                    {{$address->province_name}} - {{$address->city_name}} /{{$address->location}}
+                                    </div>
+                                    <div class="flex gap-x-1 items-center">
+                                      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="" viewBox="0 0 256 256"><path d="M228.44,89.34l-96-64a8,8,0,0,0-8.88,0l-96,64A8,8,0,0,0,24,96V200a16,16,0,0,0,16,16H216a16,16,0,0,0,16-16V96A8,8,0,0,0,228.44,89.34ZM96.72,152,40,192V111.53Zm16.37,8h29.82l56.63,40H56.46Zm46.19-8L216,111.53V192ZM128,41.61l81.91,54.61-67,47.78H113.11l-67-47.78Z"></path></svg>
+                                      <span>کد پستی:</span>
+                                      {{$address->postalCode}}
+                                    </div>
+                                    <div class="flex gap-x-1 items-center">
+                                      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="" viewBox="0 0 256 256"><path d="M222.37,158.46l-47.11-21.11-.13-.06a16,16,0,0,0-15.17,1.4,8.12,8.12,0,0,0-.75.56L134.87,160c-15.42-7.49-31.34-23.29-38.83-38.51l20.78-24.71c.2-.25.39-.5.57-.77a16,16,0,0,0,1.32-15.06l0-.12L97.54,33.64a16,16,0,0,0-16.62-9.52A56.26,56.26,0,0,0,32,80c0,79.4,64.6,144,144,144a56.26,56.26,0,0,0,55.88-48.92A16,16,0,0,0,222.37,158.46ZM176,208A128.14,128.14,0,0,1,48,80,40.2,40.2,0,0,1,82.87,40a.61.61,0,0,0,0,.12l21,47L83.2,111.86a6.13,6.13,0,0,0-.57.77,16,16,0,0,0-1,15.7c9.06,18.53,27.73,37.06,46.46,46.11a16,16,0,0,0,15.75-1.14,8.44,8.44,0,0,0,.74-.56L168.89,152l47,21.05h0s.08,0,.11,0A40.21,40.21,0,0,1,176,208Z"></path></svg>
+                                      <span>شماره تماس:</span>
+                                      {{$address->phoneNumber}}
+                                    </div>
+                                    <div class="flex gap-x-1 items-center">
+                                      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="" viewBox="0 0 256 256"><path d="M230.92,212c-15.23-26.33-38.7-45.21-66.09-54.16a72,72,0,1,0-73.66,0C63.78,166.78,40.31,185.66,25.08,212a8,8,0,1,0,13.85,8c18.84-32.56,52.14-52,89.07-52s70.23,19.44,89.07,52a8,8,0,1,0,13.85-8ZM72,96a56,56,0,1,1,56,56A56.06,56.06,0,0,1,72,96Z"></path></svg>
+                                      <span>نام و نام خانوادگی:</span>
+                                    {{$user->name}}-{{$user->family}}
+                                    </div>
+                                    <div class="flex gap-x-1 items-center">
+                                      <span> توضحات اضافی:</span>
                                         {{$address->description}}
+                                    </div>
                                   </div>
                                 </div>
-                              </div>
-                            </label>
-                          </li>
-                        @endforeach
+                              </label>
+                            </li>
+                          @endforeach
+                        @endif
                       </ul>
                     </div>
-                    <a href="#" class="block bg-(--color-primary-500) hover:bg-(--color-primary-400) text-white text-center w-8/12 mx-auto mt-10 px-5 py-3 rounded-xl shadow-lg transition-all font-yekanBakhBold">
+                    <div onclick='doChange()' class="block bg-(--color-primary-500) hover:bg-(--color-primary-400) text-white text-center w-8/12 mx-auto mt-10 px-5 py-3 rounded-xl shadow-lg transition-all font-yekanBakhBold">
                       انتخاب
-                    </a>
-                  </form>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -267,14 +268,14 @@
                 نام
                 <svg class="fill-red-500" xmlns="http://www.w3.org/2000/svg" width="10" height="10" fill="#4d4d4d" viewBox="0 0 256 256"><path d="M210.23,101.57l-72.6,29,51.11,65.71a6,6,0,0,1-9.48,7.36L128,137.77,76.74,203.68a6,6,0,1,1-9.48-7.36l51.11-65.71-72.6-29a6,6,0,1,1,4.46-11.14L122,119.14V40a6,6,0,0,1,12,0v79.14l71.77-28.71a6,6,0,1,1,4.46,11.14Z"></path></svg>
               </label>
-              <input type="text" placeholder="نام" id="name"  @if($user!=null) value="{{$user->name}}" @endif class="rounded-2xl text-sm text-(--color-zinc-600) w-full border border-(--color-zinc-200) px-5 py-3.5 placeholder:text-(--color-zinc-400) placeholder:text-xs focus:outline-1 focus:outline-(--color-primary-300) focus:border-(--color-primary-300)">
+              <input type="text" placeholder="نام" id="name_field"  @if($user!=null) value="{{$user->name}}" @endif class="rounded-2xl text-sm text-(--color-zinc-600) w-full border border-(--color-zinc-200) px-5 py-3.5 placeholder:text-(--color-zinc-400) placeholder:text-xs focus:outline-1 focus:outline-(--color-primary-300) focus:border-(--color-primary-300)">
             </div>
             <div class="sm:w-1/2 flex flex-col gap-y-1">
               <label for="family" class="text-zinc-700 flex">
                 نام خانوادگی
                 <svg class="fill-red-500" xmlns="http://www.w3.org/2000/svg" width="10" height="10" fill="#4d4d4d" viewBox="0 0 256 256"><path d="M210.23,101.57l-72.6,29,51.11,65.71a6,6,0,0,1-9.48,7.36L128,137.77,76.74,203.68a6,6,0,1,1-9.48-7.36l51.11-65.71-72.6-29a6,6,0,1,1,4.46-11.14L122,119.14V40a6,6,0,0,1,12,0v79.14l71.77-28.71a6,6,0,1,1,4.46,11.14Z"></path></svg>
               </label>
-              <input type="text" placeholder="نام خانوادگی" id="family" @if($user!=null) value="{{$user->family}}" @endif class="rounded-2xl text-sm text-(--color-zinc-600) w-full border border-(--color-zinc-200) px-5 py-3.5 placeholder:text-(--color-zinc-400) placeholder:text-xs focus:outline-1 focus:outline-(--color-primary-300) focus:border-(--color-primary-300)">
+              <input type="text" placeholder="نام خانوادگی" id="family_field" @if($user!=null) value="{{$user->family}}" @endif class="rounded-2xl text-sm text-(--color-zinc-600) w-full border border-(--color-zinc-200) px-5 py-3.5 placeholder:text-(--color-zinc-400) placeholder:text-xs focus:outline-1 focus:outline-(--color-primary-300) focus:border-(--color-primary-300)">
             </div>
           </div>
           <div class="sm:flex gap-x-5 mt-7">
@@ -283,9 +284,8 @@
                 استان
                 <svg class="fill-red-500" xmlns="http://www.w3.org/2000/svg" width="10" height="10" fill="#4d4d4d" viewBox="0 0 256 256"><path d="M210.23,101.57l-72.6,29,51.11,65.71a6,6,0,0,1-9.48,7.36L128,137.77,76.74,203.68a6,6,0,1,1-9.48-7.36l51.11-65.71-72.6-29a6,6,0,1,1,4.46-11.14L122,119.14V40a6,6,0,0,1,12,0v79.14l71.77-28.71a6,6,0,1,1,4.46,11.14Z"></path></svg>
               </label>
-              <select name="province_id" id="provinces" class="rounded-2xl text-sm text-(--color-zinc-600) w-full border border-(--color-zinc-200) px-5 py-3.5 placeholder:text-(--color-zinc-400) placeholder:text-xs focus:outline-1 focus:outline-(--color-primary-300) focus:border-(--color-primary-300)" onchange="getCities()">
+              <select name="province_id" id="provinces_field" class="rounded-2xl text-sm text-(--color-zinc-600) w-full border border-(--color-zinc-200) px-5 py-3.5 placeholder:text-(--color-zinc-400) placeholder:text-xs focus:outline-1 focus:outline-(--color-primary-300) focus:border-(--color-primary-300)" onchange="getCities()">
                 @foreach($provinces as $province)
-                
                   <option value="{{$province->id}}">{{$province->title}}</option>
                 @endforeach
               </select>
@@ -295,7 +295,7 @@
                 شهر
                 <svg class="fill-red-500" xmlns="http://www.w3.org/2000/svg" width="10" height="10" fill="#4d4d4d" viewBox="0 0 256 256"><path d="M210.23,101.57l-72.6,29,51.11,65.71a6,6,0,0,1-9.48,7.36L128,137.77,76.74,203.68a6,6,0,1,1-9.48-7.36l51.11-65.71-72.6-29a6,6,0,1,1,4.46-11.14L122,119.14V40a6,6,0,0,1,12,0v79.14l71.77-28.71a6,6,0,1,1,4.46,11.14Z"></path></svg>
               </label>
-              <select name="province_id" id="cities" class="rounded-2xl text-sm text-(--color-zinc-600) w-full border border-(--color-zinc-200) px-5 py-3.5 placeholder:text-(--color-zinc-400) placeholder:text-xs focus:outline-1 focus:outline-(--color-primary-300) focus:border-(--color-primary-300)">
+              <select name="city_id" id="cities_field" class="rounded-2xl text-sm text-(--color-zinc-600) w-full border border-(--color-zinc-200) px-5 py-3.5 placeholder:text-(--color-zinc-400) placeholder:text-xs focus:outline-1 focus:outline-(--color-primary-300) focus:border-(--color-primary-300)">
                 @foreach($cities as $city)
                   <option value="{{$city->id}}">{{$city->title}}</option>
                 @endforeach
@@ -308,7 +308,7 @@
                 خیابان و کوچه و شماره پلاک و واحد
                 <svg class="fill-red-500" xmlns="http://www.w3.org/2000/svg" width="10" height="10" fill="#4d4d4d" viewBox="0 0 256 256"><path d="M210.23,101.57l-72.6,29,51.11,65.71a6,6,0,0,1-9.48,7.36L128,137.77,76.74,203.68a6,6,0,1,1-9.48-7.36l51.11-65.71-72.6-29a6,6,0,1,1,4.46-11.14L122,119.14V40a6,6,0,0,1,12,0v79.14l71.77-28.71a6,6,0,1,1,4.46,11.14Z"></path></svg>
               </label>
-              <input type="text" name="location" placeholder="اطلاعات دقیق محل تحویل" id="address" @if($user!=null) value="{{$user->location}}" @endif class="rounded-2xl text-sm text-(--color-zinc-600) w-full border border-(--color-zinc-200) px-5 py-3.5 placeholder:text-(--color-zinc-400) placeholder:text-xs focus:outline-1 focus:outline-(--color-primary-300) focus:border-(--color-primary-300)">
+              <input type="text" name="location" placeholder="اطلاعات دقیق محل تحویل" id="location_field" @if($user!=null) value="{{$user->location}}" @endif class="rounded-2xl text-sm text-(--color-zinc-600) w-full border border-(--color-zinc-200) px-5 py-3.5 placeholder:text-(--color-zinc-400) placeholder:text-xs focus:outline-1 focus:outline-(--color-primary-300) focus:border-(--color-primary-300)">
             </div>
           </div>
           <div class="sm:flex gap-x-5 mt-5">
@@ -317,15 +317,15 @@
                 تلفن
                 <svg class="fill-red-500" xmlns="http://www.w3.org/2000/svg" width="10" height="10" fill="#4d4d4d" viewBox="0 0 256 256"><path d="M210.23,101.57l-72.6,29,51.11,65.71a6,6,0,0,1-9.48,7.36L128,137.77,76.74,203.68a6,6,0,1,1-9.48-7.36l51.11-65.71-72.6-29a6,6,0,1,1,4.46-11.14L122,119.14V40a6,6,0,0,1,12,0v79.14l71.77-28.71a6,6,0,1,1,4.46,11.14Z"></path></svg>
               </label>
-              <input type="number" name="" placeholder="تلفن همراه" id="number" class="rounded-2xl text-sm text-(--color-zinc-600) w-full border border-(--color-zinc-200) px-5 py-3.5 placeholder:text-(--color-zinc-400) placeholder:text-xs focus:outline-1 focus:outline-(--color-primary-300) focus:border-(--color-primary-300)">
+              <input type="number" name="" placeholder="تلفن همراه" id="phoneNumber_field" class="rounded-2xl text-sm text-(--color-zinc-600) w-full border border-(--color-zinc-200) px-5 py-3.5 placeholder:text-(--color-zinc-400) placeholder:text-xs focus:outline-1 focus:outline-(--color-primary-300) focus:border-(--color-primary-300)">
               <!-- appearance-none [&::-webkit-outer-spin-button]:appearance-none -->
             </div>
             <div class="sm:w-1/2 flex flex-col gap-y-1">
-              <label for="idPost" class="text-zinc-700 flex">
+              <label for="postalCode" class="text-zinc-700 flex">
                 کد پستی
                 <svg class="fill-red-500" xmlns="http://www.w3.org/2000/svg" width="10" height="10" fill="#4d4d4d" viewBox="0 0 256 256"><path d="M210.23,101.57l-72.6,29,51.11,65.71a6,6,0,0,1-9.48,7.36L128,137.77,76.74,203.68a6,6,0,1,1-9.48-7.36l51.11-65.71-72.6-29a6,6,0,1,1,4.46-11.14L122,119.14V40a6,6,0,0,1,12,0v79.14l71.77-28.71a6,6,0,1,1,4.46,11.14Z"></path></svg>
               </label>
-              <input type="number" name="" placeholder="کد پستی محل تحویل" id="idPost" class="rounded-2xl text-sm text-(--color-zinc-600) w-full border border-(--color-zinc-200) px-5 py-3.5 placeholder:text-(--color-zinc-400) placeholder:text-xs focus:outline-1 focus:outline-(--color-primary-300) focus:border-(--color-primary-300)">          
+              <input type="number" name="postalCode" placeholder="کد پستی محل تحویل" id="postalCode_field" class="rounded-2xl text-sm text-(--color-zinc-600) w-full border border-(--color-zinc-200) px-5 py-3.5 placeholder:text-(--color-zinc-400) placeholder:text-xs focus:outline-1 focus:outline-(--color-primary-300) focus:border-(--color-primary-300)">          
             </div>
           </div>
           <div class="mt-5">
@@ -333,30 +333,44 @@
               <label for="describtion" class="text-zinc-700 flex">
                 توضیحات اضافه
               </label>
-              <textarea placeholder="نکات مهم درباره تحویل محصول" name="" cols="30" rows="7" id="describtion" class="rounded-2xl text-sm text-(--color-zinc-600) w-full border border-(--color-zinc-200) px-5 py-3.5 placeholder:text-(--color-zinc-400) placeholder:text-xs focus:outline-1 focus:outline-(--color-primary-300) focus:border-(--color-primary-300)"></textarea>
+              <textarea placeholder="نکات مهم درباره تحویل محصول" name="order_description" cols="30" rows="7" id="describtion" class="rounded-2xl text-sm text-(--color-zinc-600) w-full border border-(--color-zinc-200) px-5 py-3.5 placeholder:text-(--color-zinc-400) placeholder:text-xs focus:outline-1 focus:outline-(--color-primary-300) focus:border-(--color-primary-300)"></textarea>
             </div>
           </div>
-
+          <div class='flex gap-1 text-center items-center mt-5'>
+            <input type="checkbox" id="createAcountBtn" onclick='showNeweAcountForm(this)'>
+            <label class='text-xs' for="createAcountBtn"> می خواهید یک حساب کاربری ایجاد کنید؟ </label>
           </div>
+          <div class='w-full p-2 flex flex-col gap-2 h-0 overflow-hidden transition-all duration-500' id='newAcountForm'>
+            <div class="sm:w-1/2 flex flex-col mt-2">
+              <label for="password" class="text-zinc-700 flex">
+                رمز عبور
+                <svg class="fill-red-500" xmlns="http://www.w3.org/2000/svg" width="10" height="10" fill="#4d4d4d" viewBox="0 0 256 256"><path d="M210.23,101.57l-72.6,29,51.11,65.71a6,6,0,0,1-9.48,7.36L128,137.77,76.74,203.68a6,6,0,1,1-9.48-7.36l51.11-65.71-72.6-29a6,6,0,1,1,4.46-11.14L122,119.14V40a6,6,0,0,1,12,0v79.14l71.77-28.71a6,6,0,1,1,4.46,11.14Z"></path></svg>
+              </label>
+              <input type="password" name="password" placeholder=" رمز عبور خود را وارد کنید " id="phoneNumber_field" class="rounded-2xl text-sm text-(--color-zinc-600) w-full border border-(--color-zinc-200) px-5 py-3.5 placeholder:text-(--color-zinc-400) placeholder:text-xs focus:outline-1 focus:outline-(--color-primary-300) focus:border-(--color-primary-300)">
+              <!-- appearance-none [&::-webkit-outer-spin-button]:appearance-none -->
+            </div>
+  
+          </div>
+        </div>
         <div class="lg:w-3/12 lg:pt-5 my-10 lg:my-0">
           <div class="flex items-center justify-between">
             <div class="text-(--color-primary-500)">مبلغ نهایی</div>
             <div class="flex">
-              <div class="text-2xl md:text-3xl text-(--color-primary-500) font-bold">{{$finalAmount}}</div>
+              <input type="number" name='finalAmount' readonly value="{{$finalAmount}}" id='finalAmount_div' class='text-2xl md:text-3xl text-(--color-primary-500) font-bold outline-none'>
               <div class="-rotate-90 text-sm text-(--color-primary-500)">تومان</div>
             </div>
           </div>
           <div class="flex items-center justify-between mt-6 text-(--color-zinc-600)">
             <div class="text-sm">جمع مبلغ کل</div>
             <div class="flex">
-              <div class="text-xl md:text-2xl font-bold">{{$sum}}</div>
+              <input type="number" readonly value="{{$sum}}" class='text-2xl md:text-3xl text-(--color-primary-500) font-bold outline-none'>
               <div class="-rotate-90 text-xs">تومان</div>
             </div>
           </div>
           <div class="flex items-center justify-between mt-6 text-green-300">
             <div class="text-sm"> سود شما </div>
             <div class="flex">
-              <div class="text-xl md:text-2xl font-bold">{{$benefit}}</div>
+              <input type="number" name='benefit' readonly value="{{$benefit}}" id='benefit_div' class='text-2xl md:text-3xl text-(--color-primary-500) font-bold outline-none'>
               <div class="-rotate-90 text-xs">تومان</div>
             </div>
           </div>
@@ -367,371 +381,72 @@
               <div class="-rotate-90 text-xs">تومان</div>
             </div>
           </div>
-          <a href="" class="block bg-gradient-to-bl from-(--color-primary-400) to-(--color-primary-700) hover:opacity-80 text-white text-center font-bold md:text-xl mt-10 px-5 md:px-2.5 py-3 md:py-4 rounded-xl shadow-lg transition-all">
+          <div class='flex gap-1 text-center items-center mt-5'>
+            <input type="checkbox" id="addDiscuntCode" onclick='showDiscuntCodeForm(this)'>
+            <label class='text-xs' for="addDiscuntCode"> کد تخفیف دارید؟ <span class='text-red-400'> برای نوشتن کد اینجا کلیک کنید </span> </label>
+          </div>
+          <div class='w-full flex flex-col h-0 overflow-hidden mt-2 transition-all duration-500' id='discuntCodeForm'>
+              <div class='w-full border-2 flex'>
+                  <input name="code" type="text" class='w-7/12 outline-none active:bg-yellow-100 p-2 border-3' id="codeInput">
+                  <div id='checkCodeButton' class='w-5/12 cursor-pointer bg-green-300 p-2'onclick="checkCode(this)"> اعمال کد تخفیف </div>
+              </div>
+          </div>
+          <button class="w-full block bg-gradient-to-bl from-(--color-primary-400) to-(--color-primary-700) hover:opacity-80 text-white text-center font-bold md:text-xl mt-10 px-5 md:px-2.5 py-3 md:py-4 rounded-xl shadow-lg transition-all">
             ثبت و ادامه
-          </a>
+          </button>
         </div>
-      </section>
+      </form>
     </main>
-    <footer class="relative z-1 md:mt-10 bg-white border-t-1 border-(--color-zinc-300) px-5 md:px-10 py-5">
-      <!-- logo, des, go to up -->
-      <section class="flex gap-x-8 gap-y-4 items-center md:items-start flex-wrap md:flex-nowrap justify-between mb-12">
-      <!-- <section class="w-[99%] mt-5 md:w-[90%] mx-auto flex flex-col md:flex-row justify-between items-center"> -->
-        <div class="w-4/12 md:w-1/12 order-1 md:order-none">
-          <a href="">
-            <img src="img/logo/Screenshot 2025-12-16 063243.png" alt="logo" class="w-full">
-          </a>
-        </div>
-        <div class="md:w-8/12 text-xs text-(--color-zinc-400) leading-7 order-3 md:order-none text-justify flex items-center justify-center">
-        فروشگاه نوترینو فروشگاه آنلاین معتبری است که انواع کالاهای دیجیتال مانند گوشی، لپ‌تاپ، تبلت و لوازم جانبی را با ضمانت اصالت و ارسال سریع ارائه می‌دهد. با تنوع گسترده محصولات، قیمت‌های رقابتی و پشتیبانی حرفه‌ای، خریدی آسان و مطمئن را تجربه کنید. بررسی تخصصی، مقایسه و انتخاب آگاهانه از مزایای خرید از فروشگاه نوترینو است. برای دسترسی به جدیدترین محصولات دیجیتال، همین حالا به فروشگاه نوترینو سر بزنید!
-        </div>
-        <div class="md:w-1/12 order-2 md:order-none">
-          <a href="#top" class="flex items-center justify-center cursor-pointer w-28 gap-x-2 p-3 text-(--color-zinc-400) text-xs md:text-sm border border-(--color-zinc-200) rounded-lg" id="btn-back-to-top" style="display: flex;">
-            برو به بالا
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <g clip-path="url(#clip0_2028_6)">
-                <path d="M12.707 3.63599C12.5194 3.44852 12.2651 3.3432 12 3.3432C11.7348 3.3432 11.4805 3.44852 11.293 3.63599L5.63598 9.29299C5.54047 9.38523 5.46428 9.49558 5.41188 9.61758C5.35947 9.73959 5.33188 9.87081 5.33073 10.0036C5.32957 10.1364 5.35487 10.268 5.40516 10.3909C5.45544 10.5138 5.52969 10.6255 5.62358 10.7194C5.71747 10.8133 5.82913 10.8875 5.95202 10.9378C6.07492 10.9881 6.2066 11.0134 6.33938 11.0122C6.47216 11.0111 6.60338 10.9835 6.72538 10.9311C6.84739 10.8787 6.95773 10.8025 7.04998 10.707L11 6.75699V20C11 20.2652 11.1053 20.5196 11.2929 20.7071C11.4804 20.8946 11.7348 21 12 21C12.2652 21 12.5195 20.8946 12.7071 20.7071C12.8946 20.5196 13 20.2652 13 20V6.75699L16.95 10.707C17.1386 10.8891 17.3912 10.9899 17.6534 10.9877C17.9156 10.9854 18.1664 10.8802 18.3518 10.6948C18.5372 10.5094 18.6424 10.2586 18.6447 9.99639C18.6469 9.73419 18.5461 9.48159 18.364 9.29299L12.707 3.63599Z" fill="#9f9fa9"></path>
-              </g>
-              <defs>
-                <clipPath id="clip0_2028_6">
-                  <rect width="24" height="24" fill="white"></rect>
-                </clipPath>
-              </defs>
-            </svg>
-          </a>
-        </div>
-      </section>
-      <!-- 5 good box -->
-      <section class="w-[99%] mt-5 md:w-[90%] mx-auto my-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-5 gap-5">
-        <div class="flex justify-center items-center gap-2 bg-white border border-(--color-zinc-200) rounded-xl p-5">
-          <div>
-            <svg width="40" height="40" viewBox="0 0 48 49" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M38.94 39.435C39.365 39.415 39.764 39.395 40.136 39.375C42.413 39.254 44.236 37.539 44.449 35.27C44.694 32.671 44.954 28.86 44.994 24.152C45.001 23.332 44.834 22.518 44.452 21.793C43.462 19.915 41.143 16.1 37.655 13.799C36.917 13.313 36.043 13.1 35.159 13.07C32.623 12.985 29.829 12.922 26.986 12.875" stroke="#a1a1aa" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></path>
-              <path d="M3.015 25.75C3.005 26.29 3 26.837 3 27.386C3 30.882 3.21 33.641 3.439 35.603C3.685 37.72 5.419 39.242 7.547 39.359C8.007 39.384 8.511 39.41 9.06 39.436" stroke="#a1a1aa" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></path>
-              <path fill-rule="evenodd" clip-rule="evenodd" d="M34.336 17.929C36.517 19.166 38.107 21.549 39.038 23.277C39.608 24.337 38.96 25.579 37.76 25.682C36.12 25.824 34.617 25.72 33.558 25.589C32.638 25.475 32 24.674 32 23.747V19.37C32.0003 18.9405 32.1711 18.5287 32.4748 18.2251C32.7786 17.9215 33.1905 17.751 33.62 17.751C33.87 17.751 34.118 17.805 34.336 17.929Z" stroke="#F28822" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></path>
-              <path d="M27 25.75H15H3V14.75C3 11.773 3.094 9.487 3.206 7.82C3.349 5.691 4.991 4.085 7.121 3.957C8.962 3.847 11.558 3.75 15 3.75C18.442 3.75 21.038 3.847 22.878 3.957C25.009 4.085 26.651 5.691 26.794 7.821C26.906 9.487 27 11.773 27 14.75V25.75Z" stroke="#a1a1aa" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></path>
-              <path d="M19.9771 39.73C22.6596 39.7569 25.3425 39.7569 28.0251 39.73" stroke="#a1a1aa" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></path>
-              <path d="M28 40.25C28 41.7087 28.5795 43.1076 29.6109 44.1391C30.6424 45.1705 32.0413 45.75 33.5 45.75C34.9587 45.75 36.3576 45.1705 37.3891 44.1391C38.4205 43.1076 39 41.7087 39 40.25C39 38.7913 38.4205 37.3924 37.3891 36.3609C36.3576 35.3295 34.9587 34.75 33.5 34.75C32.0413 34.75 30.6424 35.3295 29.6109 36.3609C28.5795 37.3924 28 38.7913 28 40.25Z" stroke="#a1a1aa" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></path>
-              <path d="M9 40.25C9 41.7087 9.57946 43.1076 10.6109 44.1391C11.6424 45.1705 13.0413 45.75 14.5 45.75C15.9587 45.75 17.3576 45.1705 18.3891 44.1391C19.4205 43.1076 20 41.7087 20 40.25C20 38.7913 19.4205 37.3924 18.3891 36.3609C17.3576 35.3295 15.9587 34.75 14.5 34.75C13.0413 34.75 11.6424 35.3295 10.6109 36.3609C9.57946 37.3924 9 38.7913 9 40.25Z" stroke="#a1a1aa" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></path>
-            </svg>
-          </div>
-          <div class="flex flex-col gap-y-2">
-            <div class="text-sm text-(--color-zinc-600)">
-              ارسال سریع
-            </div>
-            <div class="text-xs text-(--color-zinc-400)">
-              ارسال در سریع ترین زمان
-            </div>
-          </div>
-        </div>
-        <div class="flex justify-center items-center gap-2 bg-white border border-(--color-zinc-200) rounded-xl p-5">
-          <div>
-          <svg width="40" height="40" viewBox="0 0 48 49" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M44.279 18.75C44.465 18.436 44.596 18.078 44.659 17.678C44.846 16.49 45 14.752 45 12.252C45 9.752 44.846 8.014 44.66 6.826C44.413 5.263 43.124 4.329 41.547 4.209C38.852 4.006 33.575 3.752 24 3.752C14.425 3.752 9.148 4.006 6.453 4.209C4.876 4.329 3.587 5.263 3.341 6.826C3.154 8.014 3 9.752 3 12.252C3 14.752 3.154 16.49 3.34 17.678C3.404 18.078 3.535 18.436 3.721 18.75" stroke="#a1a1aa" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></path>
-            <path d="M36.316 10.713C37.819 10.838 38.961 12.093 38.976 13.602C39.037 19.418 38.999 27.71 38.636 38.214C38.542 40.898 36.646 43.118 33.971 43.359C31.647 43.568 28.355 43.75 23.943 43.75C19.555 43.75 16.295 43.57 13.998 43.362C11.338 43.122 9.45799 40.913 9.36599 38.244C8.99999 27.725 8.96299 19.423 9.02299 13.602C9.03899 12.094 10.181 10.838 11.684 10.712C14.77 10.456 18.842 10.252 24 10.252C29.158 10.252 33.23 10.456 36.316 10.712V10.713Z" stroke="#a1a1aa" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></path>
-            <path d="M25 43.746V10.254" stroke="#a1a1aa" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></path>
-            <path d="M32 43.51V10.432" stroke="#a1a1aa" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></path>
-            <path d="M17.221 37.75C16.078 37.75 15.123 36.963 15.056 35.822C15.017 35.132 14.9984 34.4411 15 33.75C15 32.915 15.023 32.23 15.056 31.678C15.123 30.537 16.078 29.75 17.22 29.75H17.778C18.921 29.75 19.876 30.537 19.944 31.678C19.976 32.23 19.999 32.915 19.999 33.75C19.999 34.585 19.976 35.27 19.944 35.822C19.877 36.963 18.922 37.75 17.779 37.75H17.221Z" stroke="#F28822" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></path>
-            </svg>
-          </div>
-          <div class="flex flex-col gap-y-2">
-            <div class="text-sm text-(--color-zinc-600)">
-             پرداخت آنی
-            </div>
-            <div class="text-xs text-(--color-zinc-400)">
-             پرداخت سریع و آسان
-            </div>
-          </div>
-        </div>
-        <div class="flex justify-center items-center gap-2 bg-white border border-(--color-zinc-200) rounded-xl p-5">
-          <div>
-          <svg width="40" height="40" viewBox="0 0 48 49" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M7.44404 8.207C5.21404 8.373 3.53104 9.969 3.32404 12.197C3.16972 13.9221 3.06168 15.6511 3.00004 17.382C2.96504 18.306 3.60004 19.099 4.40004 19.562C5.31149 20.0871 6.06861 20.8429 6.59524 21.7534C7.12187 22.664 7.39944 23.6971 7.40004 24.749C7.39927 25.8007 7.12161 26.8337 6.59499 27.744C6.06837 28.6544 5.31134 29.41 4.40004 29.935C3.60004 30.399 2.96504 31.192 3.00004 32.116C3.08504 34.316 3.20304 36.013 3.32304 37.303C3.53004 39.53 5.21304 41.126 7.44304 41.293C10.417 41.515 15.553 41.75 24 41.75C32.447 41.75 37.583 41.516 40.556 41.293C42.786 41.127 44.469 39.531 44.676 37.303C44.796 36.014 44.913 34.317 44.998 32.118C45.034 31.193 44.398 30.401 43.598 29.937C42.687 29.4116 41.9304 28.6557 41.4041 27.7452C40.8778 26.8347 40.6005 25.8017 40.6 24.75C40.6007 23.6981 40.8783 22.665 41.405 21.7545C41.9316 20.844 42.6887 20.0881 43.6 19.563C44.4 19.1 45.035 18.307 45 17.383C44.9388 15.6514 44.8311 13.9218 44.677 12.196C44.47 9.969 42.787 8.373 40.557 8.206C37.583 7.985 32.446 7.75 24 7.75C15.553 7.75 10.417 7.984 7.44404 8.207Z" stroke="#a1a1aa" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></path>
-            <path d="M33.022 33.69C33.674 32.983 34 32 34 30.737C34 29.492 33.674 28.517 33.022 27.81C32.37 27.103 31.529 26.75 30.5 26.75C29.456 26.75 28.609 27.103 27.956 27.81C27.319 28.517 27 29.492 27 30.737C27 31.999 27.319 32.983 27.956 33.69C28.609 34.397 29.456 34.75 30.5 34.75C31.529 34.75 32.37 34.397 33.022 33.69Z" stroke="#F28822" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></path>
-            <path d="M20.022 21.69C20.674 20.983 21 20 21 18.737C21 17.492 20.674 16.517 20.022 15.81C19.37 15.103 18.529 14.75 17.5 14.75C16.456 14.75 15.609 15.103 14.957 15.81C14.319 16.517 14 17.492 14 18.737C14 19.999 14.319 20.983 14.957 21.69C15.609 22.397 16.457 22.75 17.5 22.75C18.529 22.75 19.37 22.397 20.022 21.69Z" stroke="#F28822" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></path>
-            <path d="M32 16.75L16 32.75" stroke="#F28822" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></path>
-          </svg>
-        </div>
-        <div class="flex flex-col gap-y-2">
-          <div class="text-sm text-(--color-zinc-600)">
-            قیمت های مناسب
-          </div>
-          <div class="text-xs text-(--color-zinc-400)">
-            قیمت های رقابتی در بازار
-          </div>
-        </div>
-        </div>
-        <div class="flex justify-center items-center gap-2 bg-white border border-(--color-zinc-200) rounded-xl p-5">
-        <div>
-          <svg width="40" height="40" viewBox="0 0 48 49" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M6 21.563V31.75C6 35.788 6.16 38.79 6.343 40.894C6.553 43.316 8.425 45.114 10.848 45.306C13.63 45.526 17.942 45.75 24 45.75C30.058 45.75 34.369 45.527 37.152 45.306C39.575 45.114 41.448 43.316 41.657 40.894C41.84 38.79 42 35.788 42 31.75V21.562" stroke="#a1a1aa" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></path>
-            <path d="M3.29 20.02C3.582 21.038 4.59 21.524 5.647 21.553C8.28 21.627 14.167 21.75 24 21.75C33.833 21.75 39.72 21.627 42.353 21.553C43.411 21.523 44.418 21.038 44.71 20.02C44.873 19.45 45 18.7 45 17.75C45 16.8 44.873 16.05 44.71 15.48C44.418 14.462 43.41 13.976 42.353 13.947C39.72 13.873 33.833 13.75 24 13.75C14.167 13.75 8.28 13.873 5.647 13.947C4.589 13.977 3.582 14.462 3.29 15.48C3.127 16.05 3 16.8 3 17.75C3 18.7 3.127 19.45 3.29 20.02Z" stroke="#a1a1aa" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></path>
-            <path d="M24 21.75V45.75" stroke="#a1a1aa" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></path>
-            <path d="M24 13.75C24 10.75 20.5 3.75 15.25 3.75C12.187 3.75 10 6.436 10 9.75C10 11.287 10.505 12.688 11.337 13.75" stroke="#F28822" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></path>
-            <path d="M24 13.75C24 10.75 27.5 3.75 32.75 3.75C35.813 3.75 38 6.436 38 9.75C38 11.287 37.495 12.688 36.663 13.75" stroke="#F28822" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></path>
-          </svg>
-        </div>
-        <div class="flex flex-col gap-y-2">
-          <div class="text-sm text-(--color-zinc-600)">
-            ضمانت کیفیت
-          </div>
-          <div class="text-xs text-(--color-zinc-400)">
-            تضمین کیفیت اجناس
-          </div>
-        </div>
-        </div>
-        <div class="flex justify-center items-center gap-2 bg-white border border-(--color-zinc-200) rounded-xl p-5">
-        <div>
-          <svg width="40" height="40" viewBox="0 0 48 49" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M15 3.75C15 3.75 10.885 3.75 6.734 4.022C5.8344 4.07821 4.98626 4.46087 4.34881 5.09813C3.71137 5.73539 3.32847 6.58342 3.272 7.483C3 11.635 3 15.75 3 15.75" stroke="#a1a1aa" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></path>
-            <path d="M33 3.75C33 3.75 37.115 3.75 41.266 4.022C42.1656 4.07821 43.0137 4.46087 43.6512 5.09813C44.2886 5.73539 44.6715 6.58342 44.728 7.483C45 11.635 45 15.75 45 15.75" stroke="#a1a1aa" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></path>
-            <path d="M33 45.75C33 45.75 37.115 45.75 41.266 45.478C42.1656 45.4218 43.0137 45.0391 43.6512 44.4019C44.2886 43.7646 44.6715 42.9166 44.728 42.017C45 37.865 45 33.75 45 33.75" stroke="#a1a1aa" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></path>
-            <path d="M15 45.75C15 45.75 10.885 45.75 6.734 45.478C5.8344 45.4218 4.98626 45.0391 4.34881 44.4019C3.71137 43.7646 3.32847 42.9166 3.272 42.017C3 37.865 3 33.75 3 33.75" stroke="#a1a1aa" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></path>
-            <path d="M36 13.75V35.75" stroke="#F28822" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></path>
-            <path d="M12 13.75V35.75" stroke="#a1a1aa" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></path>
-            <path d="M30 13.75V29.75" stroke="#F28822" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></path>
-            <path d="M30 35.75V34.75" stroke="#F28822" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></path>
-            <path d="M24 13.75V29.75" stroke="#F28822" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></path>
-            <path d="M24 35.75V34.75" stroke="#F28822" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></path>
-            <path d="M18 13.75V29.75" stroke="#a1a1aa" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></path>
-            <path d="M18 35.75V34.75" stroke="#a1a1aa" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></path>
-          </svg>
-        </div>
-        <div class="flex flex-col gap-y-2">
-          <div class="text-sm text-(--color-zinc-600)">
-            خرید سریع و آسان
-          </div>
-          <div class="text-xs text-(--color-zinc-400)">
-            خرید سریع و راحت محصولات
-          </div>
-        </div>
-        </div>
-      </section>
-      <!-- links -->
-      <section class="relative w-[99%] mt-5 md:w-[90%] mx-auto flex flex-col md:flex-row gap-y-8">
-        <div class="md:w-5/12 grid grid-cols-2 md:grid-cols-3">
-          <div class="">
-            <div class="text-zinc-500 mb-4 text-sm">دسترسی سریع</div>
-            <ul class="flex flex-col gap-y-5">
-              <li>
-                <a href="" class="text-xs text-(--color-zinc-400) hover:text-(--color-primary-500) transition-all hover:pr-1 ease-out duration-300">وبلاگ</a>
-              </li>
-              <li>
-                <a href="" class="text-xs text-(--color-zinc-400) hover:text-(--color-primary-500) transition-all hover:pr-1 ease-out duration-300">درباره ما</a>
-              </li>
-              <li>
-                <a href="" class="text-xs text-(--color-zinc-400) hover:text-(--color-primary-500) transition-all hover:pr-1 ease-out duration-300">تماس با نا</a>
-              </li>
-              <li>
-                <a href="" class="text-xs text-(--color-zinc-400) hover:text-(--color-primary-500) transition-all hover:pr-1 ease-out duration-300">سوالات متداول</a>
-              </li>
-            </ul>
-          </div>
-          <div class="">
-            <div class="text-zinc-500 mb-4 text-sm">محیوب ترین یرند ها</div>
-            <ul class="flex flex-col gap-y-4">
-              <li>
-                <a href="" class="text-xs text-(--color-zinc-400) hover:text-(--color-primary-500) transition-all hover:pr-1 ease-out duration-300">سامسونگ</a>
-              </li>
-              <li>
-                <a href="" class="text-xs text-(--color-zinc-400) hover:text-(--color-primary-500) transition-all hover:pr-1 ease-out duration-300">آیفون</a>
-              </li>
-              <li>
-                <a href="" class="text-xs text-(--color-zinc-400) hover:text-(--color-primary-500) transition-all hover:pr-1 ease-out duration-300">شیاورمی</a>
-              </li>
-              <li>
-                <a href="" class="text-xs text-(--color-zinc-400) hover:text-(--color-primary-500) transition-all hover:pr-1 ease-out duration-300">هواوی</a>
-              </li>
-              <li>
-                <a href="" class="text-xs text-(--color-zinc-400) hover:text-(--color-primary-500) transition-all hover:pr-1 ease-out duration-300">gbl</a>
-              </li>
-            </ul>
-          </div>
-          <div class="">
-            <div class="text-zinc-500 mb-4 text-sm">ارتباط مستقیم</div>
-            <ul class="flex flex-col gap-y-5">
-              <li>
-                <a href="" class="text-xs text-(--color-zinc-500) flex ">
-                   <svg class="fill-zinc-600 w-12" xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="" viewBox="0 0 256 256"><path d="M128,66a38,38,0,1,0,38,38A38,38,0,0,0,128,66Zm0,64a26,26,0,1,1,26-26A26,26,0,0,1,128,130Zm0-112a86.1,86.1,0,0,0-86,86c0,30.91,14.34,63.74,41.47,94.94a252.32,252.32,0,0,0,41.09,38,6,6,0,0,0,6.88,0,252.32,252.32,0,0,0,41.09-38c27.13-31.2,41.47-64,41.47-94.94A86.1,86.1,0,0,0,128,18Zm0,206.51C113,212.93,54,163.62,54,104a74,74,0,0,1,148,0C202,163.62,143,212.93,128,224.51Z"></path></svg>
-                   اذربایجان شرقی-خیابان مطهری-روبروی بانک مسکل-فروشگاه نوترینو
-                </a>
-              </li>
-              <li>
-                <a href="" class="text-xs text-(--color-zinc-500) flex">
-                  <svg class="fill-zinc-600" xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="" viewBox="0 0 256 256"><path d="M128,26a102,102,0,0,0,0,204c21.13,0,43.31-6.35,59.32-17a6,6,0,0,0-6.65-10c-13.9,9.25-34.09,15-52.67,15a90,90,0,1,1,90-90c0,29.58-13.78,34-22,34s-22-4.42-22-34V88a6,6,0,0,0-12,0v9a46,46,0,1,0,4.34,56.32C171.76,166.6,182,174,196,174c21.29,0,34-17.2,34-46A102.12,102.12,0,0,0,128,26Zm0,136a34,34,0,1,1,34-34A34,34,0,0,1,128,162Z"></path></svg>
-                  amir1677se@gmai.com
-                </a>
-              </li>
-              <li>
-                <a href="" class="text-xs text-(--color-zinc-500) flex">
-                  <svg class="fill-zinc-600" xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="" viewBox="0 0 256 256"><path d="M176,18H80A22,22,0,0,0,58,40V216a22,22,0,0,0,22,22h96a22,22,0,0,0,22-22V40A22,22,0,0,0,176,18Zm10,198a10,10,0,0,1-10,10H80a10,10,0,0,1-10-10V40A10,10,0,0,1,80,30h96a10,10,0,0,1,10,10ZM138,60a10,10,0,1,1-10-10A10,10,0,0,1,138,60Z"></path></svg>
-                  0902-222-6606
-                </a>
-              </li>
-            </ul>
-          </div>
-        </div>
-        <div class="md:w-4/12 flex justify-center gap-10">
-          <div class="w-[100px] md:w-[30%]">
-            <img src="img/service/symbol-02.png" alt="">
-          </div>
-          <div class="w-[100px] md:w-[30%]">
-            <img src="img/service/zarinPal.png" alt="">
-          </div>
-        </div>
-        <div class="md:w-4/12">
-          <p class="text-xs text-(--color-zinc-400) pt-6 pb-3 pr-2">
-          شبکه های اجتماعی
-          </p>
-          <div class="grid grid-cols-6">
-            <a href="">
-              <svg width="40" height="40" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <g id="Frame" clip-path="url(#clip0_4667_548)">
-                    <g id="Isolation Mode">
-                        <path id="Vector" fill-rule="evenodd" clip-rule="evenodd" d="M8.72696 8.16637e-05H21.2724C25.8728 8.16637e-05 29.6361 3.75792 29.6361 8.35796V12.3916C25.512 14.2453 21.3518 23.4008 15.2883 21.4114C14.7889 21.7663 13.6378 23.2288 13.557 24.3385C11.4574 24.0589 9.03679 21.6527 9.32727 19.058C5.83255 16.5301 8.71846 11.8638 11.4897 9.9856C17.4293 5.96007 25.6751 9.42212 21.0884 12.3004C18.2994 14.0505 12.3354 15.2066 12.9554 10.9101C11.3194 11.382 10.2721 14.4326 12.2419 16.0223C10.4172 17.815 10.768 21.1105 12.7185 22.1925C14.6912 17.0814 21.5571 17.7494 24.3311 11.6481C26.4182 7.05861 23.3239 1.82911 17.1373 2.63243C12.4682 3.23879 8.09169 7.17735 5.90294 11.8486C3.68218 16.588 4.01267 22.9345 8.57278 26.1331C13.9393 29.8971 19.6528 26.4118 23.1132 21.8565C25.1529 19.1715 26.935 16.1972 29.6361 14.4792V21.6307C29.6361 26.2306 25.8723 30.0001 21.2724 30.0001H8.72696C4.12692 30.0001 0.363281 26.2364 0.363281 21.6364V8.36368C0.363281 3.76364 4.12692 0 8.72696 0V8.16637e-05Z" fill="#EE7F22"></path>
-                    </g>
-                </g>
-                <defs>
-                    <clipPath id="clip0_4667_548">
-                        <rect width="30" height="30" fill="white"></rect>
-                    </clipPath>
-                </defs>
-              </svg>
-            </a>
-            <a href="">
-              <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <g id="Frame">
-                    <g id="Vector" filter="url(#filter0_f_4667_553)">
-                        <path d="M12.4639 31.5463L12.9732 31.848C15.112 33.1174 17.5644 33.7889 20.0653 33.79H20.0706C27.7508 33.79 34.0013 27.5409 34.0044 19.8602C34.0058 16.1383 32.5578 12.6382 29.927 10.0054C28.6367 8.70693 27.1016 7.67732 25.4107 6.97613C23.7198 6.27495 21.9066 5.91612 20.076 5.92043C12.3899 5.92043 6.1392 12.1688 6.13647 19.8491C6.13268 22.4716 6.87121 25.0417 8.26666 27.2623L8.59819 27.789L7.19029 32.929L12.4639 31.5463ZM3.16504 36.9109L5.54359 28.2265C4.07668 25.6851 3.30494 22.8018 3.30585 19.8479C3.30973 10.6071 10.8298 3.08936 20.0708 3.08936C24.5552 3.09163 28.7643 4.83676 31.9298 8.0046C35.0954 11.1724 36.8371 15.3832 36.8355 19.8614C36.8314 29.1015 29.3102 36.6206 20.0706 36.6206H20.0633C17.2577 36.6195 14.5009 35.9156 12.0522 34.5804L3.16504 36.9109Z" fill="#B3B3B3"></path>
-                    </g>
-                    <path id="Vector_2" d="M2.99219 36.7385L5.37074 28.0542C3.9013 25.5065 3.12945 22.6166 3.133 19.6756C3.13687 10.4348 10.6569 2.91699 19.8979 2.91699C24.3823 2.91927 28.5914 4.66439 31.757 7.83223C34.9226 11.0001 36.6643 15.2108 36.6627 19.689C36.6586 28.9291 29.1374 36.4483 19.8977 36.4483H19.8904C17.0849 36.4471 14.3281 35.7433 11.8794 34.4081L2.99219 36.7385Z" fill="white"></path>
-                    <path id="Vector_3" d="M19.9035 5.74809C12.2173 5.74809 5.96662 11.9965 5.96388 19.6767C5.9601 22.2993 6.69862 24.8694 8.09408 27.0899L8.4256 27.6169L7.0177 32.7568L12.2916 31.374L12.8008 31.6757C14.9397 32.945 17.3921 33.6163 19.893 33.6177H19.8982C27.5784 33.6177 33.8291 27.3686 33.8321 19.6879C33.8379 17.8572 33.4805 16.0436 32.7806 14.352C32.0807 12.6604 31.0522 11.1244 29.7547 9.83303C28.4643 8.53456 26.9292 7.50493 25.2383 6.80375C23.5473 6.10256 21.734 5.74375 19.9035 5.74809Z" fill="url(#paint0_linear_4667_553)"></path>
-                    <path id="Vector_4" fill-rule="evenodd" clip-rule="evenodd" d="M15.7086 12.6695C15.3946 11.972 15.0643 11.9579 14.766 11.9458L13.963 11.936C13.6837 11.936 13.2298 12.0408 12.8461 12.4601C12.4624 12.8793 11.3799 13.8926 11.3799 15.9535C11.3799 18.0145 12.881 20.0059 13.0901 20.2857C13.2993 20.5655 15.988 24.9296 20.2459 26.6086C23.7842 28.004 24.5042 27.7265 25.2725 27.6567C26.0408 27.587 27.7509 26.6435 28.0997 25.6653C28.4486 24.6871 28.4488 23.8491 28.3442 23.6739C28.2396 23.4986 27.9603 23.3945 27.541 23.1849C27.1218 22.9753 25.0627 21.962 24.6787 21.8221C24.2948 21.6822 24.0157 21.6127 23.7361 22.032C23.4565 22.4512 22.6547 23.3943 22.4102 23.6739C22.1657 23.9534 21.9217 23.9885 21.5025 23.7791C21.0832 23.5697 19.7343 23.1272 18.1339 21.7002C16.8887 20.5899 16.0481 19.2187 15.8034 18.7996C15.5587 18.3806 15.7774 18.1537 15.9875 17.945C16.1755 17.7572 16.4063 17.4558 16.6162 17.2113C16.826 16.9668 16.8951 16.792 17.0345 16.5129C17.174 16.2338 17.1045 15.9886 16.9996 15.7792C16.8948 15.5698 16.0809 13.498 15.7086 12.6695Z" fill="white"></path>
-                </g>
-                <defs>
-                    <filter id="filter0_f_4667_553" x="1.55594" y="1.48026" width="36.8891" height="37.04" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-                        <feFlood flood-opacity="0" result="BackgroundImageFix"></feFlood>
-                        <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"></feBlend>
-                        <feGaussianBlur stdDeviation="0.804548" result="effect1_foregroundBlur_4667_553"></feGaussianBlur>
-                    </filter>
-                    <linearGradient id="paint0_linear_4667_553" x1="19.6143" y1="7.42052" x2="19.7556" y2="31.2368" gradientUnits="userSpaceOnUse">
-                        <stop stop-color="#57D163"></stop>
-                        <stop offset="1" stop-color="#23B33A"></stop>
-                    </linearGradient>
-                </defs>
-              </svg>
-            </a>
-            <a href="">
-              <svg width="40" height="40" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <g id="Livello_1" clip-path="url(#clip0_4667_561)">
-                    <path id="Vector" d="M16 32C24.8366 32 32 24.8366 32 16C32 7.16344 24.8366 0 16 0C7.16344 0 0 7.16344 0 16C0 24.8366 7.16344 32 16 32Z" fill="url(#paint0_linear_4667_561)"></path>
-                    <path id="Vector_2" d="M10.8301 17.1695L12.7283 22.4236C12.7283 22.4236 12.9657 22.9152 13.2198 22.9152C13.4739 22.9152 17.2538 18.9829 17.2538 18.9829L21.4571 10.8643L10.8978 15.8132L10.8301 17.1695Z" fill="#C8DAEA"></path>
-                    <path id="Vector_3" d="M13.3473 18.5171L12.9829 22.3899C12.9829 22.3899 12.8304 23.5766 14.0168 22.3899C15.2032 21.2032 16.3388 20.2882 16.3388 20.2882" fill="#A9C6D8"></path>
-                    <path id="Vector_4" d="M10.8653 17.3569L6.96047 16.0846C6.96047 16.0846 6.4938 15.8953 6.64407 15.466C6.675 15.3774 6.7374 15.3021 6.92407 15.1726C7.78927 14.5696 22.9382 9.12463 22.9382 9.12463C22.9382 9.12463 23.3659 8.98049 23.6182 9.07636C23.6806 9.09568 23.7368 9.13123 23.7809 9.17937C23.8251 9.22751 23.8557 9.28652 23.8695 9.35036C23.8968 9.46311 23.9082 9.57912 23.9034 9.69503C23.9022 9.79529 23.8901 9.88823 23.8809 10.034C23.7886 11.5226 21.0275 22.633 21.0275 22.633C21.0275 22.633 20.8623 23.2832 20.2705 23.3054C20.125 23.3101 19.9801 23.2855 19.8444 23.233C19.7087 23.1805 19.5849 23.1012 19.4805 22.9998C18.319 22.0008 14.3046 19.3029 13.4175 18.7096C13.3975 18.6959 13.3807 18.6782 13.3681 18.6575C13.3556 18.6368 13.3476 18.6136 13.3447 18.5896C13.3323 18.527 13.4003 18.4496 13.4003 18.4496C13.4003 18.4496 20.3905 12.2362 20.5765 11.584C20.5909 11.5334 20.5365 11.5085 20.4634 11.5306C19.9991 11.7014 11.9509 16.784 11.0626 17.3449C10.9987 17.3642 10.9311 17.3683 10.8653 17.3569Z" fill="white"></path>
-                </g>
-                <defs>
-                    <linearGradient id="paint0_linear_4667_561" x1="16" y1="32" x2="16" y2="0" gradientUnits="userSpaceOnUse">
-                        <stop stop-color="#1D93D2"></stop>
-                        <stop offset="1" stop-color="#38B0E3"></stop>
-                    </linearGradient>
-                    <clipPath id="clip0_4667_561">
-                        <rect width="32" height="32" fill="white"></rect>
-                    </clipPath>
-                </defs>
-              </svg>
-            </a>
-            <a href="">
-              <svg width="40" height="40" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path fill-rule="evenodd" clip-rule="evenodd" d="M124.541 256.001C124.541 183.397 183.397 124.541 256.001 124.541C328.603 124.541 387.459 183.397 387.459 256.001C387.459 328.603 328.603 387.459 256.001 387.459C183.397 387.459 124.541 328.603 124.541 256.001ZM256 341.333C208.871 341.333 170.667 303.129 170.667 256.001C170.667 208.871 208.871 170.667 256 170.667C303.128 170.667 341.333 208.871 341.333 256.001C341.333 303.129 303.128 341.333 256 341.333Z" fill="url(#paint0_linear_1_921)"></path>
-                <path fill-rule="evenodd" clip-rule="evenodd" d="M124.541 256.001C124.541 183.397 183.397 124.541 256.001 124.541C328.603 124.541 387.459 183.397 387.459 256.001C387.459 328.603 328.603 387.459 256.001 387.459C183.397 387.459 124.541 328.603 124.541 256.001ZM256 341.333C208.871 341.333 170.667 303.129 170.667 256.001C170.667 208.871 208.871 170.667 256 170.667C303.128 170.667 341.333 208.871 341.333 256.001C341.333 303.129 303.128 341.333 256 341.333Z" fill="url(#paint1_radial_1_921)"></path>
-                <path d="M392.653 150.066C409.62 150.066 423.374 136.313 423.374 119.347C423.374 102.38 409.62 88.6263 392.653 88.6263C375.688 88.6263 361.934 102.38 361.934 119.347C361.934 136.313 375.688 150.066 392.653 150.066Z" fill="url(#paint2_linear_1_921)"></path>
-                <path d="M392.653 150.066C409.62 150.066 423.374 136.313 423.374 119.347C423.374 102.38 409.62 88.6263 392.653 88.6263C375.688 88.6263 361.934 102.38 361.934 119.347C361.934 136.313 375.688 150.066 392.653 150.066Z" fill="url(#paint3_radial_1_921)"></path>
-                <path fill-rule="evenodd" clip-rule="evenodd" d="M256.001 0C186.475 0 177.757 0.294696 150.452 1.54055C123.203 2.78335 104.594 7.11132 88.3103 13.4402C71.476 19.9814 57.1995 28.7349 42.9667 42.9667C28.7349 57.1995 19.9814 71.476 13.4402 88.3103C7.11132 104.594 2.78335 123.203 1.54055 150.452C0.294696 177.757 0 186.475 0 256.001C0 325.525 0.294696 334.243 1.54055 361.548C2.78335 388.797 7.11132 407.406 13.4402 423.69C19.9814 440.524 28.7349 454.8 42.9667 469.033C57.1995 483.265 71.476 492.019 88.3103 498.561C104.594 504.889 123.203 509.217 150.452 510.459C177.757 511.705 186.475 512 256.001 512C325.525 512 334.243 511.705 361.548 510.459C388.797 509.217 407.406 504.889 423.69 498.561C440.524 492.019 454.8 483.265 469.033 469.033C483.265 454.8 492.019 440.524 498.561 423.69C504.889 407.406 509.217 388.797 510.459 361.548C511.705 334.243 512 325.525 512 256.001C512 186.475 511.705 177.757 510.459 150.452C509.217 123.203 504.889 104.594 498.561 88.3103C492.019 71.476 483.265 57.1995 469.033 42.9667C454.8 28.7349 440.524 19.9814 423.69 13.4402C407.406 7.11132 388.797 2.78335 361.548 1.54055C334.243 0.294696 325.525 0 256.001 0ZM256.001 46.126C324.355 46.126 332.452 46.3872 359.446 47.6188C384.406 48.757 397.961 52.9274 406.982 56.4333C418.931 61.0773 427.459 66.6247 436.417 75.5835C445.375 84.5412 450.923 93.0691 455.567 105.019C459.073 114.039 463.243 127.594 464.381 152.554C465.613 179.548 465.874 187.645 465.874 256.001C465.874 324.355 465.613 332.452 464.381 359.446C463.243 384.406 459.073 397.961 455.567 406.981C450.923 418.931 445.375 427.459 436.417 436.417C427.459 445.375 418.931 450.923 406.982 455.567C397.961 459.073 384.406 463.243 359.446 464.381C332.456 465.613 324.36 465.874 256.001 465.874C187.64 465.874 179.545 465.613 152.554 464.381C127.594 463.243 114.039 459.073 105.019 455.567C93.0692 450.923 84.5413 445.375 75.5835 436.417C66.6258 427.459 61.0774 418.931 56.4333 406.981C52.9275 397.961 48.757 384.406 47.6189 359.446C46.3873 332.452 46.1261 324.355 46.1261 256.001C46.1261 187.645 46.3873 179.548 47.6189 152.554C48.757 127.594 52.9275 114.039 56.4333 105.019C61.0774 93.0691 66.6248 84.5412 75.5835 75.5835C84.5413 66.6247 93.0692 61.0773 105.019 56.4333C114.039 52.9274 127.594 48.757 152.554 47.6188C179.548 46.3872 187.645 46.126 256.001 46.126Z" fill="url(#paint4_linear_1_921)"></path>
-                <path fill-rule="evenodd" clip-rule="evenodd" d="M256.001 0C186.475 0 177.757 0.294696 150.452 1.54055C123.203 2.78335 104.594 7.11132 88.3103 13.4402C71.476 19.9814 57.1995 28.7349 42.9667 42.9667C28.7349 57.1995 19.9814 71.476 13.4402 88.3103C7.11132 104.594 2.78335 123.203 1.54055 150.452C0.294696 177.757 0 186.475 0 256.001C0 325.525 0.294696 334.243 1.54055 361.548C2.78335 388.797 7.11132 407.406 13.4402 423.69C19.9814 440.524 28.7349 454.8 42.9667 469.033C57.1995 483.265 71.476 492.019 88.3103 498.561C104.594 504.889 123.203 509.217 150.452 510.459C177.757 511.705 186.475 512 256.001 512C325.525 512 334.243 511.705 361.548 510.459C388.797 509.217 407.406 504.889 423.69 498.561C440.524 492.019 454.8 483.265 469.033 469.033C483.265 454.8 492.019 440.524 498.561 423.69C504.889 407.406 509.217 388.797 510.459 361.548C511.705 334.243 512 325.525 512 256.001C512 186.475 511.705 177.757 510.459 150.452C509.217 123.203 504.889 104.594 498.561 88.3103C492.019 71.476 483.265 57.1995 469.033 42.9667C454.8 28.7349 440.524 19.9814 423.69 13.4402C407.406 7.11132 388.797 2.78335 361.548 1.54055C334.243 0.294696 325.525 0 256.001 0ZM256.001 46.126C324.355 46.126 332.452 46.3872 359.446 47.6188C384.406 48.757 397.961 52.9274 406.982 56.4333C418.931 61.0773 427.459 66.6247 436.417 75.5835C445.375 84.5412 450.923 93.0691 455.567 105.019C459.073 114.039 463.243 127.594 464.381 152.554C465.613 179.548 465.874 187.645 465.874 256.001C465.874 324.355 465.613 332.452 464.381 359.446C463.243 384.406 459.073 397.961 455.567 406.981C450.923 418.931 445.375 427.459 436.417 436.417C427.459 445.375 418.931 450.923 406.982 455.567C397.961 459.073 384.406 463.243 359.446 464.381C332.456 465.613 324.36 465.874 256.001 465.874C187.64 465.874 179.545 465.613 152.554 464.381C127.594 463.243 114.039 459.073 105.019 455.567C93.0692 450.923 84.5413 445.375 75.5835 436.417C66.6258 427.459 61.0774 418.931 56.4333 406.981C52.9275 397.961 48.757 384.406 47.6189 359.446C46.3873 332.452 46.1261 324.355 46.1261 256.001C46.1261 187.645 46.3873 179.548 47.6189 152.554C48.757 127.594 52.9275 114.039 56.4333 105.019C61.0774 93.0691 66.6248 84.5412 75.5835 75.5835C84.5413 66.6247 93.0692 61.0773 105.019 56.4333C114.039 52.9274 127.594 48.757 152.554 47.6188C179.548 46.3872 187.645 46.126 256.001 46.126Z" fill="url(#paint5_radial_1_921)"></path>
-                <defs>
-                <linearGradient id="paint0_linear_1_921" x1="29.8736" y1="26.9173" x2="191.303" y2="651.345" gradientUnits="userSpaceOnUse">
-                <stop stop-color="#4E60D3"></stop>
-                <stop offset="0.142763" stop-color="#913BAF"></stop>
-                <stop offset="0.761458" stop-color="#D52D88"></stop>
-                <stop offset="1" stop-color="#F26D4F"></stop>
-                </linearGradient>
-                <radialGradient id="paint1_radial_1_921" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(155.005 512) rotate(32.1601) scale(478.18 344.131)">
-                <stop stop-color="#FED276"></stop>
-                <stop offset="0.17024" stop-color="#FDBD61" stop-opacity="0.975006"></stop>
-                <stop offset="0.454081" stop-color="#F6804D"></stop>
-                <stop offset="1" stop-color="#E83D5C" stop-opacity="0.01"></stop>
-                </radialGradient>
-                <linearGradient id="paint2_linear_1_921" x1="29.8736" y1="26.9173" x2="191.303" y2="651.345" gradientUnits="userSpaceOnUse">
-                <stop stop-color="#4E60D3"></stop>
-                <stop offset="0.142763" stop-color="#913BAF"></stop>
-                <stop offset="0.761458" stop-color="#D52D88"></stop>
-                <stop offset="1" stop-color="#F26D4F"></stop>
-                </linearGradient>
-                <radialGradient id="paint3_radial_1_921" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(155.005 512) rotate(32.1601) scale(478.18 344.131)">
-                <stop stop-color="#FED276"></stop>
-                <stop offset="0.17024" stop-color="#FDBD61" stop-opacity="0.975006"></stop>
-                <stop offset="0.454081" stop-color="#F6804D"></stop>
-                <stop offset="1" stop-color="#E83D5C" stop-opacity="0.01"></stop>
-                </radialGradient>
-                <linearGradient id="paint4_linear_1_921" x1="29.8736" y1="26.9173" x2="191.303" y2="651.345" gradientUnits="userSpaceOnUse">
-                <stop stop-color="#4E60D3"></stop>
-                <stop offset="0.142763" stop-color="#913BAF"></stop>
-                <stop offset="0.761458" stop-color="#D52D88"></stop>
-                <stop offset="1" stop-color="#F26D4F"></stop>
-                </linearGradient>
-                <radialGradient id="paint5_radial_1_921" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(155.005 512) rotate(32.1601) scale(478.18 344.131)">
-                <stop stop-color="#FED276"></stop>
-                <stop offset="0.17024" stop-color="#FDBD61" stop-opacity="0.975006"></stop>
-                <stop offset="0.454081" stop-color="#F6804D"></stop>
-                <stop offset="1" stop-color="#E83D5C" stop-opacity="0.01"></stop>
-                </radialGradient>
-                </defs>
-              </svg>
-            </a>
-          </div>
-        </div>
-      </section>
-      <!-- copyright -->
-       <div class="relative w-[99%] mt-7 m-b10 md:w-[90%] mx-auto border-t-1 border-(--color-zinc-400)">
-         <a href="" class="">
-           طراحی و توسعه توسط <span class="text-(--color-primary-500)">امیر محمد سزاوار</span>
-          </a>
-        </div>
-    </footer>
   </div>
   <script>
-      const burgermenu = document.getElementById('burgermenu')
-      function Hamberger(state,element){
-          if(state == "open"){
-              element.nextElementSibling.classList.remove('-right-full')
-              element.nextElementSibling.classList.add('right-0')
-              burgermenu.classList.remove('right-full');
-              burgermenu.classList.add('right-0');
-          }
-          if(state == "close"){
-              element.parentElement.children[1].classList.remove('right-0')
-              element.parentElement.children[1].classList.add('-right-full')
-              burgermenu.classList.remove('right-0');
-              burgermenu.classList.add('right-full');
-          }
-      }
-
-      let address=document.getElementById('addressForm')
-      function addressSection(state){
-          if(state=='open'){
-              address.classList.remove('opacity-0')
-              address.classList.remove('invisible')
-          }
-          if(state=='close'){
-              address.classList.add('opacity-0')
-              address.classList.add('invisible')
-          }
-      }
-
-
-    let province = document.getElementById('provinces');
-    let cities = document.getElementById('cities');
-    
+    let selectedAddress='';
+    let name_field = document.getElementById('name_field');
+    let family_field = document.getElementById('family_field');
+    let provinces_field = document.getElementById('provinces_field');
+    let cities_field = document.getElementById('cities_field');
+    let location_field = document.getElementById('location_field');
+    let phoneNumber_field = document.getElementById('phoneNumber_field');
+    let postalCode_field = document.getElementById('postalCode_field');
+    let addressess=document.querySelectorAll('.addressess');
+    let dataBaseProvinces="{{$provinces}}"
+    let dataBaseCities="{{$cities}}"
+    let finalAmount="{{$finalAmount}}"
+    let benefit="{{$benefit}}"
+    let modal_box=document.querySelector('.modal-box');
+    let createAcountBtn=document.getElementById('createAcountBtn');
+    let newAcountForm=document.getElementById('newAcountForm');
+    let addDiscuntCode=document.getElementById('addDiscuntCode');
+    let discuntCodeForm=document.getElementById('discuntCodeForm');
+    let codeInput = document.getElementById('codeInput')
+    let finalAmount_div=document.getElementById('finalAmount_div');
+    let benefit_div = document.getElementById('benefit_div')
+    let checkCodeButton = document.getElementById('checkCodeButton')
+    const burgermenu = document.getElementById('burgermenu')
+    function Hamberger(state,element){
+        if(state == "open"){
+            element.nextElementSibling.classList.remove('-right-full')
+            element.nextElementSibling.classList.add('right-0')
+            burgermenu.classList.remove('right-full');
+            burgermenu.classList.add('right-0');
+        }
+        if(state == "close"){
+            element.parentElement.children[1].classList.remove('right-0')
+            element.parentElement.children[1].classList.add('-right-full')
+            burgermenu.classList.remove('right-0');
+            burgermenu.classList.add('right-full');
+        }
+    }
+    let addressForm=document.getElementById('addressForm')
+    function addressSection(state){
+        if(state=='open'){
+            addressForm.classList.remove('opacity-0')
+            addressForm.classList.remove('invisible')
+        }
+        if(state=='close'){
+            addressForm.classList.add('opacity-0')
+            addressForm.classList.add('invisible')
+        }
+    }
     function getCities(){
         $.ajaxSetup({
             headers: {
@@ -743,12 +458,12 @@
             type: "post",
             dataType: "json",
             data:{
-                'province_id':province.value,
+                'province_id':provinces_field.value,
             },
             success: function(data) {
-                cities.innerHTML='';
+                cities_field.innerHTML='';
                 data.forEach(city => {
-                    cities.innerHTML+=
+                    cities_field.innerHTML+=
                     `  <option value="${city.id}">${city.title}</option>  `;
                 });
             },
@@ -756,8 +471,153 @@
                 console.log('☢')
             }
         })
-        console.log(province.value);
     }
-  </script>
+    function setAddress(el , address){
+      console.log(address)
+      addressess.forEach(element => {
+        if(element.id==address.id){
+          element.classList.add('border-orange-400')
+        }else{
+          element.classList.remove('border-orange-400')
+        }
+      });
+      selectedAddress=address;
+    }
+    function doChange(){
+      if(selectedAddress!=''){
+        provinces_field.value=selectedAddress.province_id;
+        location_field.value=selectedAddress.location
+        setCity(selectedAddress.province_id)
+        phoneNumber_field.value=selectedAddress.phoneNumber
+        postalCode_field.value=selectedAddress.postalCode
+        cities_field.value=selectedAddress.city_id;
+        addressForm.classList.add('invisible' , 'opacity-0')
+      }else{
+        alert('لطفا نخست آدرس خود را انتخاب کنید');
+      }
+    }
+    function setCity(province_id){
+      $.ajaxSetup({
+          headers: {
+              'X-CSRF-TOKEN': "{{ csrf_token() }}"
+          }
+      })
+      $.ajax({
+          url: "{{route('address.getCities')}}",
+          type: "post",
+          dataType: "json",
+          data:{
+            'province_id':province_id,
+          },
+          success: function(data) {
+              cities_field.innerHTML='';
+              data.forEach(city => {
+                if(city.id==selectedAddress.city_id){
+                  cities_field.innerHTML+=
+                  `  <option selected value="${city.id}">${city.title}</option>  `;
+                }else{
+                  cities_field.innerHTML+=
+                  `  <option value="${city.id}">${city.title}</option>  `;
+                }
+              });
+          },
+          error: function() {
+              console.log('☢')
+          }
+      })
+    }
+    function showNeweAcountForm(el){
+      if(el.checked){
+        newAcountForm.classList.remove('h-0');
+        newAcountForm.classList.add('h-24');
+      }
+      if(!el.checked){
+        newAcountForm.classList.add('h-0');
+        newAcountForm.classList.remove('h-24');
+      }
+    } 
+    function showDiscuntCodeForm(el){
+        if(el.checked){
+          discuntCodeForm.classList.remove('h-0');
+          discuntCodeForm.classList.add('h-15');
+        }
+        if(!el.checked){
+          discuntCodeForm.classList.add('h-0');
+          discuntCodeForm.classList.remove('h-15');
+        }
+    }
+    let code=''
+    function checkCode(el){
+        code=document.getElementById('codeInput').value;
+        console.log(code);
+        if(code!=''){
+            el.innerHTML= `<div class="size-7 border-4 border-(--border) border-t-(--primary_color) rounded-full animate-spin"></div>`;
+            el.removeAttribute('onclick');
+            el.setAttribute('disable',true);
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': "{{ csrf_token() }}"
+                }
+            })
+            $.ajax({
+                url: "{{route('discuntCode.checkCode')}}",
+                type: "post",
+                dataType: "json",
+                data:{
+                    'code':code,
+                },
+                success: function(data) {
+                    console.log(data.access);
+                    if(data.access!='Unavailable'){
+                        if(data.access==true){
+                          el.innerHTML='کد تخفیف اعمال شد'
+                          el.classList.remove('bg-green-100');
+                          el.classList.add('bg-yellow-300');
+                          if(data.discuntCode.number!=null){
+                            finalAmount_div.value=parseInt(finalAmount_div.value)-parseInt(data.discuntCode.number)
+                            benefit_div.value=parseInt(benefit_div.value)+parseInt(data.discuntCode.number)
+                          }
+                          if(data.discuntCode.percent!=null){
+                            let result=parseInt(finalAmount_div.value)*parseInt(data.discuntCode.percent)
+                            result=result/100;
+                            finalAmount_div.value=parseInt(finalAmount_div.value)-parseInt(result)
+                            benefit_div.value=parseInt(benefit_div.value) + result
+                            parseInt(finalAmount_div.value)
+                            parseInt(benefit_div.value) 
+                          }
+                        }if(data.access==false){
+                          alert('کد تخفیف منقصی شد');
+                          el.innerHTML="اعمال کد تخفیف"
+                          el.setAttribute('onclick','checkCode(this)');
+                          el.removeAttribute('disable');
+                        }
+                    }else{
+                      alert('کد تخفیف درست نیست');
+                      el.innerHTML="اعمال کد تخفیف"
+                      el.setAttribute('onclick','checkCode(this)');
+                      el.removeAttribute('disable');
+                    }
+                },
+                error: function() {
+                  console.log('☢')
+                }
+            })
+        }else{
+            alert('اول کد تخفیف را وارد کنید');
+        }
+    }
+    
+    codeInput.addEventListener('keyup', function(event) {
+      if(codeInput.value==''){
+        checkCodeButton.innerHTML="اعمال کد تخفیف"
+        checkCodeButton.setAttribute('onclick','checkCode(this)');
+        checkCodeButton.removeAttribute('disable');
+        checkCodeButton.classList.remove('bg-yellow-300');
+        checkCodeButton.classList.add('bg-green-100');
+        finalAmount_div.value=parseInt(finalAmount);
+        benefit_div.value=parseInt(benefit);
+      }
+    });
+ </script>
 </body>
 </html>

@@ -79,8 +79,10 @@ class AddressController extends Controller
         dd('delete');
     }
     public function getCities(Request $request){
+        // dd($request->all());
         $province=province_city::find($request->province_id);
-        return response()->json($province->cities);
+        $x=$province->cities;
+        return response()->json($x);
     }
     public function createAjax(Request $request){
         $address=address::create([
