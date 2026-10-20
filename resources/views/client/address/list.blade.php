@@ -640,12 +640,13 @@
                 <thead class="vafadar-table-header">
                     <tr>
                         <th style="width:50px;">#</th>
-                        <th>موقعیت</th>
-                        <th class="hidden lg:table-cell">شهر</th>
-                        <th class="hidden lg:table-cell">استان</th>
-                        <th class="hidden lg:table-cell">تلفن</th>
-                        <th class="hidden lg:table-cell">کد پستی</th>
-                        <th class="hidden lg:table-cell">توضیحات</th>
+                        <th class='table-cell'>عنوان</th>
+                        <th class='table-cell'>موقعیت</th>
+                        <th class="table-cell">شهر</th>
+                        <th class="table-cell">استان</th>
+                        <th class="table-cell">تلفن</th>
+                        <th class="table-cell">کد پستی</th>
+                        <th class="table-cell">توضیحات</th>
                         <th class="text-center" style="min-width:140px;">عملیات</th>
                     </tr>
                 </thead>
@@ -654,6 +655,9 @@
                     <tr class="vafadar-table-row" data-id="{{$address->id}}" data-title="{{$address->title}}" data-slug="{{$address->slug}}">
                         <td>
                             <span class="vafadar-address-badge">#{{$address->id}}</span>
+                        </td>
+                        <td>
+                            <div class="font-semibold" style="color: var(--metronic-text-value);">{{$address->title}}</div>
                         </td>
                         <td>
                             <div class="font-semibold" style="color: var(--metronic-text-value);">{{$address->location}}</div>
@@ -804,6 +808,12 @@
                     <div onclick="removeForm()" class='absolute bg-[#1B84FF] rounded-full py-2 px-3 cursor-pointer text-white text-center items-center justify-center flex -right-3 -top-3 shadow-lg hover:scale-110 transition-all'>X</div>
                     @csrf
 
+                    <!-- عنوان -->
+                    <div class="address-form-group">
+                        <label for="title"> عنوان</label>
+                        <input required type="text" id="title" placeholder="عنوان را وارد کنید" name='title' value="${data.title}" class="vafadar-input">
+                    </div>
+                    
                     <!-- موقعیت مکانی -->
                     <div class="address-form-group">
                         <label for="location"> موقعیت مکانی</label>
@@ -865,6 +875,7 @@
     }
     function editAddress(id){
         let el = window._currentEditEl;
+        let title= document.getElementById('title');
         let location= document.getElementById('location');
         let province= document.getElementById('province');
         let cities= document.getElementById('cities');
@@ -883,6 +894,7 @@
                 type: "post",
                 dataType: "json",
                 data:{
+                    'title':title.value,
                     'location':location.value,
                     'city_id':cities.value,
                     'province':province.value,

@@ -663,10 +663,10 @@
           </div>
             <form method="POST" action="{{route('cart.checkOutForm')}}" class='w-full flex flex-col'>
                 @csrf
-                <div class='w-full border-2 flex'>
+                <!-- <div class='w-full border-2 flex'>
                     <input name="code" type="text" class='w-7/12 outline-none active:bg-yellow-100 p-2 border-3' id="codeInput">
                     <div class='w-5/12 cursor-pointer bg-green-300 p-2'onclick="checkCode(this)"> اعمال کد تخفیف </div>
-                </div>
+                </div> -->
                 <button id="formButton" class="block bg-gradient-to-bl from-(--color-primary-400) to-(--color-primary-700) hover:opacity-80 text-white text-center font-bold md:text-xl mt-10 px-5 md:px-2.5 py-3 md:py-4 rounded-xl shadow-lg transition-all"> ادامه جهت تسویه حساب </button>
             </form>
         </div>
@@ -1028,7 +1028,6 @@
             addressForm.classList.add('opacity-100')
             addressForm.classList.remove('invisible')
         }
-
         let product_price=0;
         let quantity=0;
         function updateCart(el,id,state) {
@@ -1263,68 +1262,67 @@
                 alert('آدرس را وارد کنید');
             }
         }
-        let code=''
-        function checkCode(el){
-            code=document.getElementById('codeInput').value;
-            console.log(code);
-            if(code!=''){
-                el.innerHTML= `<div class="size-7 border-4 border-(--border) border-t-(--primary_color) rounded-full animate-spin"></div>`;
-                el.removeAttribute('onclick');
-                el.setAttribute('disable',true);
-                $.ajaxSetup({
-                    headers: {
-                        'X-CSRF-TOKEN': "{{ csrf_token() }}"
-                    }
-                })
-                $.ajax({
-                    url: "{{route('discuntCode.checkCode')}}",
-                    type: "post",
-                    dataType: "json",
-                    data:{
-                        'code':code,
-                    },
-                    success: function(data) {
-                        console.log(data.access);
-                        if(data.access!='Unavailable'){
-                            if(data.access==true){
-                                el.innerHTML='کد تخفیف اعمال شد'
-                                el.classList.remove('bg-green-100');
-                                el.classList.add('bg-yellow-300');
-                                if(data.discuntCode.number!=null){
-                                    total_price.innerHTML=parseInt(total_price.innerHTML)-parseInt(data.discuntCode.number)
-                                    benefit.innerHTML=parseInt(benefit.innerHTML)+parseInt(data.discuntCode.number)
-                                }
-                                if(data.discuntCode.percent!=null){
-                                    let result=parseInt(total_price.innerHTML)*parseInt(data.discuntCode.percent)
-                                    result=result/100;
-                                    total_price.innerHTML=parseInt(total_price.innerHTML)-parseInt(result)
-                                    benefit.innerHTML=parseInt(benefit.innerHTML) + result
-                                    parseInt(total_price.innerHTML)
-                                    parseInt(benefit.innerHTML) 
-                                }
-                                codeInput.setAttribute('readonly',true)
-                            }if(data.access==false){
-                                alert('کد تخفیف منقصی شد');
-                                el.innerHTML="اعمال کد تخفیف"
-                                el.setAttribute('onclick','checkCode(this)');
-                                el.removeAttribute('disable');
-                            }
-                        }else{
-                            alert('کد تخفیف درست نیست');
-                            el.innerHTML="اعمال کد تخفیف"
-                            el.setAttribute('onclick','checkCode(this)');
-                            el.removeAttribute('disable');
-                        }
-                    },
-                    error: function() {
-                        console.log('☢')
-                    }
-                })
-            }else{
-                alert('اول کد تخفیف را وارد کنید');
-            }
-        }
-
+        // let code=''
+        // function checkCode(el){
+        //     code=document.getElementById('codeInput').value;
+        //     console.log(code);
+        //     if(code!=''){
+        //         el.innerHTML= `<div class="size-7 border-4 border-(--border) border-t-(--primary_color) rounded-full animate-spin"></div>`;
+        //         el.removeAttribute('onclick');
+        //         el.setAttribute('disable',true);
+        //         $.ajaxSetup({
+        //             headers: {
+        //                 'X-CSRF-TOKEN': "{{ csrf_token() }}"
+        //             }
+        //         })
+        //         $.ajax({
+        //             url: "{{route('discuntCode.checkCode')}}",
+        //             type: "post",
+        //             dataType: "json",
+        //             data:{
+        //                 'code':code,
+        //             },
+        //             success: function(data) {
+        //                 console.log(data.access);
+        //                 if(data.access!='Unavailable'){
+        //                     if(data.access==true){
+        //                         el.innerHTML='کد تخفیف اعمال شد'
+        //                         el.classList.remove('bg-green-100');
+        //                         el.classList.add('bg-yellow-300');
+        //                         if(data.discuntCode.number!=null){
+        //                             total_price.innerHTML=parseInt(total_price.innerHTML)-parseInt(data.discuntCode.number)
+        //                             benefit.innerHTML=parseInt(benefit.innerHTML)+parseInt(data.discuntCode.number)
+        //                         }
+        //                         if(data.discuntCode.percent!=null){
+        //                             let result=parseInt(total_price.innerHTML)*parseInt(data.discuntCode.percent)
+        //                             result=result/100;
+        //                             total_price.innerHTML=parseInt(total_price.innerHTML)-parseInt(result)
+        //                             benefit.innerHTML=parseInt(benefit.innerHTML) + result
+        //                             parseInt(total_price.innerHTML)
+        //                             parseInt(benefit.innerHTML) 
+        //                         }
+        //                         codeInput.setAttribute('readonly',true)
+        //                     }if(data.access==false){
+        //                         alert('کد تخفیف منقصی شد');
+        //                         el.innerHTML="اعمال کد تخفیف"
+        //                         el.setAttribute('onclick','checkCode(this)');
+        //                         el.removeAttribute('disable');
+        //                     }
+        //                 }else{
+        //                     alert('کد تخفیف درست نیست');
+        //                     el.innerHTML="اعمال کد تخفیف"
+        //                     el.setAttribute('onclick','checkCode(this)');
+        //                     el.removeAttribute('disable');
+        //                 }
+        //             },
+        //             error: function() {
+        //                 console.log('☢')
+        //             }
+        //         })
+        //     }else{
+        //         alert('اول کد تخفیف را وارد کنید');
+        //     }
+        // }
         let currentUpdateProduct='';
         function updateNoAuthCart(el,product_id,state){
             jsonProArray=JSON.parse(localStorage.getItem('products'));
@@ -1618,7 +1616,6 @@
             }
         }
         addProducsToCart();
-        
         function checkCart(){
             
             if(cart_list.children.length==0){

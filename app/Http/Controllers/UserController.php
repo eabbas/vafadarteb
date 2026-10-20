@@ -790,5 +790,8 @@ class UserController extends Controller
             // $request->all()
             );
     }
+    public function cartInformation(Request $request){
+        dd($request->all());
+    }
 
 }
