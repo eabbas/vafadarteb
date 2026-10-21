@@ -69,7 +69,8 @@ class CartController extends Controller
         return view('client.cart.userCartList' ,['user'=>$user]);
     }
     public function checkOutForm(Request $request){
-        dd($request->all());
+        $products=json_decode($request->products[0], true);
+        // dd($products);
         $sum=0;
         $finalAmount=0;
         $benefit=0;
@@ -105,20 +106,26 @@ class CartController extends Controller
                 'finalAmount'=>$finalAmount,
                 'benefit'=>$benefit,
             ]);
+        }else{
+            foreach ($products as $product) {
+                $sum+=$product['price'] * $product['quantity'];
+                // هزینه قابل پرداخت
+                if($product['discunt']!="" && $product['discunt']>0){
+                    $finalAmount+=$product['discunt'] * $product['quantity'];
+                }else{
+                    $finalAmount+=$product['price'] * $product['quantity'];
+                }
+                
+            }
+            $benefit = $sum - $finalAmount;
+            return view('client.cart.checkoutForm',
+            [
+                'provinces'=>$provinces ,
+                'cities'=>$provinces[0]->cities ,
+                'sum'=>$sum,
+                'finalAmount'=>$finalAmount,
+                'benefit'=>$benefit,
+            ]);
         }
-        return view('client.cart.checkoutForm',
-        [
-            'provinces'=>$provinces ,
-            'cities'=>$provinces[0]->cities ,
-            'user'=>$user,
-        ]);            
-        // return view('client.cart.checkoutForm',  [
-        //         'provinces'=>$provinces ,
-        //         'cities'=>$provinces[0]->cities ,
-        //         'user'=>$user,
-        //         'sum'=>1,
-        //         'finalAmount'=>1,
-        //         'benefit'=>1,
-        //     ]);
     }
 }

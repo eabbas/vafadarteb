@@ -791,12 +791,12 @@ class UserController extends Controller
             );
     }
     public function cartInformation(Request $request){
+        $products=json_decode($request->products[0], true);
 
         //  باپکیچ ورتا زمان و تاریخ شمسی را میگیریم
         $dateAndTime=explode(' ',verta());
         $date=implode('/',explode('-',$dateAndTime[0]));
         $time=$dateAndTime[1];
-
 
         dd($request->all());
         if(Auth::check()){

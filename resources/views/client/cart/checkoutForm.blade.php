@@ -199,7 +199,7 @@
       <form id='form' action='{{route("user.cartInformation")}}' method="POST" class="flex flex-col lg:flex-row px-4 md:px-10 mt-10 gap-5 pb-20">
         @csrf
         <div class="lg:w-9/12 border border-zinc-200 p-5 rounded-xl">
-          @if($user!=null)
+          @if(Auth::check())
             <div class="flex justify-end items-center">
               <div onclick="addressSection('open')" class="cursor-pointer px-4 py-2 bg-(--color-zinc-400) rounded-lg text-sm text-white hover:opacity-90 hover:shadow-lg">
                 انتخاب ادرس
@@ -268,14 +268,14 @@
                 نام
                 <svg class="fill-red-500" xmlns="http://www.w3.org/2000/svg" width="10" height="10" fill="#4d4d4d" viewBox="0 0 256 256"><path d="M210.23,101.57l-72.6,29,51.11,65.71a6,6,0,0,1-9.48,7.36L128,137.77,76.74,203.68a6,6,0,1,1-9.48-7.36l51.11-65.71-72.6-29a6,6,0,1,1,4.46-11.14L122,119.14V40a6,6,0,0,1,12,0v79.14l71.77-28.71a6,6,0,1,1,4.46,11.14Z"></path></svg>
               </label>
-              <input type="text" name='name' placeholder="نام" id="name_field"  @if($user!=null) value="{{$user->name}}" @endif class="rounded-2xl text-sm text-(--color-zinc-600) w-full border border-(--color-zinc-200) px-5 py-3.5 placeholder:text-(--color-zinc-400) placeholder:text-xs focus:outline-1 focus:outline-(--color-primary-300) focus:border-(--color-primary-300)">
+              <input type="text" name='name' placeholder="نام" id="name_field"  @if(Auth::check()) value="{{$user->name}}" @endif class="rounded-2xl text-sm text-(--color-zinc-600) w-full border border-(--color-zinc-200) px-5 py-3.5 placeholder:text-(--color-zinc-400) placeholder:text-xs focus:outline-1 focus:outline-(--color-primary-300) focus:border-(--color-primary-300)">
             </div>
             <div class="sm:w-1/2 flex flex-col gap-y-1">
               <label for="family" class="text-zinc-700 flex">
                 نام خانوادگی
                 <svg class="fill-red-500" xmlns="http://www.w3.org/2000/svg" width="10" height="10" fill="#4d4d4d" viewBox="0 0 256 256"><path d="M210.23,101.57l-72.6,29,51.11,65.71a6,6,0,0,1-9.48,7.36L128,137.77,76.74,203.68a6,6,0,1,1-9.48-7.36l51.11-65.71-72.6-29a6,6,0,1,1,4.46-11.14L122,119.14V40a6,6,0,0,1,12,0v79.14l71.77-28.71a6,6,0,1,1,4.46,11.14Z"></path></svg>
               </label>
-              <input type="text" name="family" placeholder="نام خانوادگی" id="family_field" @if($user!=null) value="{{$user->family}}" @endif class="rounded-2xl text-sm text-(--color-zinc-600) w-full border border-(--color-zinc-200) px-5 py-3.5 placeholder:text-(--color-zinc-400) placeholder:text-xs focus:outline-1 focus:outline-(--color-primary-300) focus:border-(--color-primary-300)">
+              <input type="text" name="family" placeholder="نام خانوادگی" id="family_field" @if(Auth::check()) value="{{$user->family}}" @endif class="rounded-2xl text-sm text-(--color-zinc-600) w-full border border-(--color-zinc-200) px-5 py-3.5 placeholder:text-(--color-zinc-400) placeholder:text-xs focus:outline-1 focus:outline-(--color-primary-300) focus:border-(--color-primary-300)">
             </div>
           </div>
           <div class="sm:flex gap-x-5 mt-7">
@@ -308,7 +308,7 @@
                 خیابان و کوچه و شماره پلاک و واحد
                 <svg class="fill-red-500" xmlns="http://www.w3.org/2000/svg" width="10" height="10" fill="#4d4d4d" viewBox="0 0 256 256"><path d="M210.23,101.57l-72.6,29,51.11,65.71a6,6,0,0,1-9.48,7.36L128,137.77,76.74,203.68a6,6,0,1,1-9.48-7.36l51.11-65.71-72.6-29a6,6,0,1,1,4.46-11.14L122,119.14V40a6,6,0,0,1,12,0v79.14l71.77-28.71a6,6,0,1,1,4.46,11.14Z"></path></svg>
               </label>
-              <input type="text" name="location" placeholder="اطلاعات دقیق محل تحویل" id="location_field" @if($user!=null) value="{{$user->location}}" @endif class="rounded-2xl text-sm text-(--color-zinc-600) w-full border border-(--color-zinc-200) px-5 py-3.5 placeholder:text-(--color-zinc-400) placeholder:text-xs focus:outline-1 focus:outline-(--color-primary-300) focus:border-(--color-primary-300)">
+              <input type="text" name="location" placeholder="اطلاعات دقیق محل تحویل" id="location_field" @if(Auth::check()) value="{{$user->location}}" @endif class="rounded-2xl text-sm text-(--color-zinc-600) w-full border border-(--color-zinc-200) px-5 py-3.5 placeholder:text-(--color-zinc-400) placeholder:text-xs focus:outline-1 focus:outline-(--color-primary-300) focus:border-(--color-primary-300)">
             </div>
           </div>
           <div class="sm:flex gap-x-5 mt-5">
