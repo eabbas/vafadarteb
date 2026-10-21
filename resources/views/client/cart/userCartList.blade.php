@@ -661,7 +661,7 @@
               <div class=" text-xs">عدد</div>
             </div>
           </div>
-            <form method="POST" action="{{route('cart.checkOutForm')}}" class='w-full flex flex-col'>
+            <form id="form" method="POST" action="{{route('cart.checkOutForm')}}" class='w-full flex flex-col'>
                 @csrf
                 <!-- <div class='w-full border-2 flex'>
                     <input name="code" type="text" class='w-7/12 outline-none active:bg-yellow-100 p-2 border-3' id="codeInput">
@@ -1659,6 +1659,20 @@
             }
         }
         // checkCart()
+        let form =document.getElementById('form');
+        function addlocalProducts(){
+          let jsonProArray = JSON.parse(localStorage.getItem('products'));
+          console.log(jsonProArray);
+          let productsString = JSON.stringify(jsonProArray);
+          
+          let product_input = document.createElement('input');
+          product_input.setAttribute('name', 'products[]');
+          product_input.setAttribute('type', 'hidden');
+          product_input.setAttribute('value', productsString); 
+          
+          form.appendChild(product_input); 
+        }
+        addlocalProducts();
     </script>
 
 </body>

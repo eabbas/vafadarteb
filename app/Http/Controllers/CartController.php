@@ -69,7 +69,7 @@ class CartController extends Controller
         return view('client.cart.userCartList' ,['user'=>$user]);
     }
     public function checkOutForm(Request $request){
-        // dd($request->all());
+        dd($request->all());
         $sum=0;
         $finalAmount=0;
         $benefit=0;

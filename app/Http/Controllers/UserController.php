@@ -791,7 +791,59 @@ class UserController extends Controller
             );
     }
     public function cartInformation(Request $request){
+
+        //  باپکیچ ورتا زمان و تاریخ شمسی را میگیریم
+        $dateAndTime=explode(' ',verta());
+        $date=implode('/',explode('-',$dateAndTime[0]));
+        $time=$dateAndTime[1];
+
+
         dd($request->all());
+        if(Auth::check()){
+            $user=Auth::user();
+            $address=address::firstOrCreate([
+                "user_id" => $user->id,
+                "province_id" => $request->province_id,
+                "city_id" => $request->city_id,
+                "location" => $request->location,
+                "phoneNumber" => $request->phoneNumber,
+                "postalCode" => $request->postalCode,
+            ]);
+            $receipt=null;
+            if(isset($receipt['receipt'])){
+                $file=$request->file('receipt');
+                $fullName=Str::uuid().$file->getClientOriginalName();
+                $receipt=$request->file("receipt")->storeAs("receipts",$fullName,"public");
+            }
+            $order=order::create([
+                'address_id'=>$address->id,
+                'user_id'=>$user->id,
+                'order_status_id'=>1,
+                'description'=>$request->order_description,
+                'receipt'=>$receipt,
+                'onlinePayment'=>1,
+                'date'=>$date,
+                'time'=>$time,
+            ]);
+            $user->load(['carts'=>function($query){$query->where('order_id',null)->get();}]);
+            foreach ($user->carts as $cart) {
+                $cart->order_id=$order->id;
+                $cart->save();
+            }
+        }else{
+            if(isset($request['password'])){
+                $user=User::upsert(    
+                [
+                    'name' => $request->name ,
+                    'family' => $request->family ,
+                    'phoneNumber' => $request->phoneNumber,
+                    'password' => Hash::make($request->password) ,
+                ],
+                ['phoneNumber'],
+                ['name', 'family', 'password']);
+            }
+        }
+        return redirect('/');
     }
 
 }
