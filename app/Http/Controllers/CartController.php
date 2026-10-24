@@ -29,6 +29,7 @@ class CartController extends Controller
             'product_id'=>$request->product_id,
             'order_id'=>null,
             'quantity'=>1,
+            'pack_id'=>null,
         ]);
         $cart->product;
         foreach ($cart->product->medias as $media) {
