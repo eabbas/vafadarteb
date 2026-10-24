@@ -1,14 +1,3 @@
-/* @font-face {
-    font-family: 'myFont';
-    src: url(../fonts/woff/IRANSansX-Bold.woff);
-    font-weight: normal;
-    font-style: normal;
-    font-display: normal;
-}
-
-*{
-    font-family: 'myFont';
-} */
 @import url(./fontiran.css);
 *{
     font-family: IRANSansXFaNum;
