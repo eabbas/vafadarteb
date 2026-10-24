@@ -11,7 +11,15 @@ class order extends Model
         'user_id',
         'order_status_id',
         'order_code',
+        'created_at',
+        'updated_at',
+        'description',
+        'receipt',
+        'onlinePayment',
+        'date',
+        'time',
     ];
+
 
     public function carts(){
         return $this->hasMany(cart::class,'order_id');
