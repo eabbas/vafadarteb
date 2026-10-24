@@ -1028,6 +1028,20 @@
             }
         }
         // checkCart()
+        let form =document.getElementById('form');
+        function addlocalProducts(){
+          let jsonProArray = JSON.parse(localStorage.getItem('products'));
+          console.log(jsonProArray);
+          let productsString = JSON.stringify(jsonProArray);
+          
+          let product_input = document.createElement('input');
+          product_input.setAttribute('name', 'products[]');
+          product_input.setAttribute('type', 'hidden');
+          product_input.setAttribute('value', productsString); 
+          
+          form.appendChild(product_input); 
+        }
+        addlocalProducts();
     </script>
 
 </body>
