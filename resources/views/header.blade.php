@@ -1210,7 +1210,7 @@
                                                                     @endif
                                                                 </div>
                                                             </div>
-                                                            <div class='absolute top-2 left-2 size-4 text-center items-center flex justify-center cursor-pointer'><svg class='fill-rose-600' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+                                                            <div onclick="fullTrash(this,{{$cart->id}} , {{$cart->product->id}})" class='absolute top-2 left-2 size-4 text-center items-center flex justify-center cursor-pointer'><svg class='fill-rose-600' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
                                                                     <path d="M170.5 51.6L151.5 80h145l-19-28.4c-1.5-2.2-4-3.6-6.7-3.6H177.1c-2.7 0-5.2 1.3-6.7 3.6zm147-26.6L354.2 80H368h48 8c13.3 0 24 10.7 24 24s-10.7 24-24 24h-8V432c0 44.2-35.8 80-80 80H112c-44.2 0-80-35.8-80-80V128H24c-13.3 0-24-10.7-24-24S10.7 80 24 80h8H80 93.8l36.7-55.1C140.9 9.4 158.4 0 177.1 0h93.7c18.7 0 36.2 9.4 46.6 24.9zM80 128V432c0 17.7 14.3 32 32 32H336c17.7 0 32-14.3 32-32V128H80zm80 64V400c0 8.8-7.2 16-16 16s-16-7.2-16-16V192c0-8.8 7.2-16 16-16s16 7.2 16 16zm80 0V400c0 8.8-7.2 16-16 16s-16-7.2-16-16V192c0-8.8 7.2-16 16-16s16 7.2 16 16zm80 0V400c0 8.8-7.2 16-16 16s-16-7.2-16-16V192c0-8.8 7.2-16 16-16s16 7.2 16 16z" />
                                                                 </svg>
                                                             </div>
@@ -1671,7 +1671,48 @@
                 })
             }
         }
+        function fullTrash(el, cart_id, product_id) {
+            quantity = el.parentElement.children[1].children[0].value;
+            let trash_icon = '';
+            console.log(el.closest('.parent_cart'))
+            el.innerHTML =
+                `
+                <div class="size-7 border-4 border-(--border) border-t-(--primary_color) rounded-full animate-spin"></div>
+            `
+            $.ajax({
+                url: "{{url('cart/delete/cart')}}" + "/" + cart_id,
+                type: "get",
+                dataType: "json",
+                success: function(productData) {
+                    cart_counter.innerHTML--
+                    if (cart_counter.innerHTML == 0) {
+                        formButton.disabled = true;
 
+                        location.assign("{{url('/')}}")
+                    }
+                    el.parentElement.classList.remove('flex')
+                    el.parentElement.classList.add('hidden')
+                    el.closest('.parent_cart').remove()
+
+                    SumResult = parseInt(realsum.innerHTML)
+                    if (productData.discunt != null) {
+                        product_price = parseInt(productData.discunt)*quantity
+                    } else {
+                        product_price = parseInt(productData.price)*quantity
+                    }
+                    total_price.innerHTML = parseInt(total_price.innerHTML) - product_price;
+                    realsum.innerHTML = SumResult - parseInt(productData.price);
+                    benefit.innerHTML = parseInt(realsum.innerHTML) - parseInt(total_price.innerHTML)
+
+                },
+                error: function() {
+                    console.log('☢')
+                }
+            })
+            checkCart()
+            // console.log(entry)
+            // el.parentElement.children[2].innerHTML =trash_icon
+        }
         function trash(el, cart_id, product_id) {
             let trash_icon = '';
             console.log(el.closest('.parent_cart'))
@@ -1809,6 +1850,38 @@
             // }
 
         }
+        function NoAuthFullTrash(el,product_id){
+            jsonProArray=JSON.parse(localStorage.getItem('products'));
+            jsonProArray.find(function(pro){
+                if(pro.id == product_id){
+                    currentUpdateProduct=pro
+                } 
+            })
+            cart_counter.innerHTML--
+            el.parentElement.classList.remove('flex')
+            el.parentElement.classList.add('hidden')
+            el.closest('.parent_cart').remove()
+            
+            if(currentUpdateProduct.discunt==null || currentUpdateProduct.discunt<1){
+                product_price=parseInt(currentUpdateProduct.price)*currentUpdateProduct.quantity
+            }else{
+                product_price=parseInt(currentUpdateProduct.discunt)*currentUpdateProduct.quantity
+            }
+
+            total_price.innerHTML=parseInt(total_price.innerHTML)-product_price;
+
+
+            jsonProArray = jsonProArray.filter(function(pro) {
+                if(pro.id != product_id){
+                    return pro;
+                }
+            });
+
+            textProducts=JSON.stringify(jsonProArray)
+            localStorage.removeItem('products')
+            localStorage.setItem('products',textProducts)
+
+        }
         function NoAuthtrash(el,product_id){
             let trash_icon='';
             console.log(el.closest('.parent_cart'))
@@ -1894,15 +1967,15 @@
                             <div class="flex justify-start items-center gap-2">
                                 <div class="flex flex-col justify-start items-end gap-2">
                                     <del class="xl:text-xs text-[10px] text-(--discription) flex justify-start items-center gap-1">
-                                        <span>{{$cart->product->price}}</span>
+                                        <span>${pro.price}</span>
                                         <span>تومان</span>
                                     </del>
                                     <div class="text-[#316361] flex justify-start items-center gap-1">
-                                        <span class="xl:text-lg font-bold">${pro.price}</span>
+                                        <span class="xl:text-lg font-bold">${pro.discunt}</span>
                                         <span>تومان</span>
                                     </div>
                                 </div>
-                                <span class="xl:text-sm text-xs px-2 py-1 rounded-xl bg-red-200 text-red-900">${pro.discunt}%</span>
+                                <span class="xl:text-sm text-xs px-2 py-1 rounded-xl bg-red-200 text-red-900">20%</span>
                             </div>
                             `
                     }
@@ -1933,7 +2006,7 @@
                                         `
                                     }
                                     html+=`
-                                    <div class='absolute top-2 left-2 size-4 text-center items-center flex justify-center cursor-pointer'><svg class='fill-rose-600' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+                                    <div onclick="NoAuthFullTrash(this,${pro.id})" class='absolute top-2 left-2 size-4 text-center items-center flex justify-center cursor-pointer'><svg class='fill-rose-600' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
                                             <path d="M170.5 51.6L151.5 80h145l-19-28.4c-1.5-2.2-4-3.6-6.7-3.6H177.1c-2.7 0-5.2 1.3-6.7 3.6zm147-26.6L354.2 80H368h48 8c13.3 0 24 10.7 24 24s-10.7 24-24 24h-8V432c0 44.2-35.8 80-80 80H112c-44.2 0-80-35.8-80-80V128H24c-13.3 0-24-10.7-24-24S10.7 80 24 80h8H80 93.8l36.7-55.1C140.9 9.4 158.4 0 177.1 0h93.7c18.7 0 36.2 9.4 46.6 24.9zM80 128V432c0 17.7 14.3 32 32 32H336c17.7 0 32-14.3 32-32V128H80zm80 64V400c0 8.8-7.2 16-16 16s-16-7.2-16-16V192c0-8.8 7.2-16 16-16s16 7.2 16 16zm80 0V400c0 8.8-7.2 16-16 16s-16-7.2-16-16V192c0-8.8 7.2-16 16-16s16 7.2 16 16zm80 0V400c0 8.8-7.2 16-16 16s-16-7.2-16-16V192c0-8.8 7.2-16 16-16s16 7.2 16 16z" />
                                         </svg>
                                     </div>
