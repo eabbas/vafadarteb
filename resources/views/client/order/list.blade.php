@@ -362,7 +362,7 @@
                         <polyline points="12 6 12 12 16 14"/>
                     </svg>
                     <span class="label">تاریخ:</span>
-                    <span class="value">{{$order->created_at}}</span>
+                    <span class="value">{{$order->date}} {{$order->time}}</span>
                 </div>
                 <div class="info-item">
                     <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -378,7 +378,9 @@
             <div class="metronic-order-bottom">
                 <div class="metronic-order-products">
                     @foreach($order->carts as $cart)
-                        <img class="product-thumb" src="{{asset('storage/product_medias/'.$cart->product->image)}}" alt="{{$cart->product->title}}" title="{{$cart->product->title}}">
+                        <a href="{{route('product.client_pro_single',['product'=>$cart->product->id])}}">
+                            <img class="product-thumb" src="{{asset('storage/product_medias/'.$cart->product->image)}}" alt="{{$cart->product->title}}" title="{{$cart->product->title}}">
+                        </a>
                     @endforeach
                 </div>
 
