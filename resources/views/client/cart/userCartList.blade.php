@@ -508,6 +508,7 @@
         }
 
         function fullTrash(el, cart_id, product_id) {
+            quantity = el.parentElement.children[0].children[0].children[1].children[0].value;
             let trash_icon = '';
             console.log(el.closest('.parent_cart'))
             el.innerHTML =
@@ -529,15 +530,27 @@
                     el.parentElement.classList.add('hidden')
                     el.closest('.parent_cart').remove()
 
-                    SumResult = parseInt(realsum.innerHTML)
-                    if (productData.discunt != null) {
-                        product_price = parseInt(productData.discunt)*productData.quantity
+                    // SumResult = parseInt(realsum.innerHTML)
+                    // if (productData.discunt != null) {
+                    //     product_price = parseInt(productData.discunt)*productData.quantity
+                    // } else {
+                    //     product_price = parseInt(productData.price)*productData.quantity
+                    // }
+                    // total_price.innerHTML = parseInt(total_price.innerHTML) - product_price;
+                    // realsum.innerHTML = SumResult - parseInt(productData.price);
+                    // benefit.innerHTML = parseInt(realsum.innerHTML) - parseInt(total_price.innerHTML)
+                            
+                    if (productData.discunt == null || productData.discunt < 1) {
+                        product_price = parseInt(productData.price)*quantity
                     } else {
-                        product_price = parseInt(productData.price)*productData.quantity
+                        product_price = parseInt(productData.discunt)*quantity
                     }
+
                     total_price.innerHTML = parseInt(total_price.innerHTML) - product_price;
-                    realsum.innerHTML = SumResult - parseInt(productData.price);
+                    realsum.innerHTML = parseInt(realsum.innerHTML) - parseInt(productData.price)*quantity
+                    if(productData.discunt != null || productData.discunt > 0){
                     benefit.innerHTML = parseInt(realsum.innerHTML) - parseInt(total_price.innerHTML)
+                    }
 
                 },
                 error: function() {
