@@ -1,305 +1,441 @@
 @extends('client.product.headerProduct')
 @section('content')
-    <style>
-        html {
-            scroll-behavior: smooth;
+<style>
+    html {
+        scroll-behavior: smooth;
+    }
+
+    @media (max-width: 1100px) {
+        .main_image {
+            height: 80%;
         }
+    }
 
-        @media (max-width: 1100px) {
-            .main_image {
-                height: 80%;
-            }
+    @media (max-width: 1200px) {
+        .btn {
+            width: 100%;
+            height: 100%;
         }
+    }
 
-        @media (max-width: 1200px) {
-            .btn {
-                width: 100%;
-                height: 100%;
-            }
-        }
+    .shadows {
+        box-shadow: 0px 0px 10px 3px var(--primary_color)
+    }
 
-        .shadows {
-            box-shadow: 0px 0px 10px 3px var(--primary_color)
-        }
+    .pro_shadow:hover {
+        box-shadow: 1px 1px 10px 1px rgb(92, 87, 87, 88)
+    }
 
-        .pro_shadow:hover {
-            box-shadow: 1px 1px 10px 1px rgb(92, 87, 87, 88)
-        }
+    /* .social-icons{display:flex;justify-content:center;align-items:center;gap:10px;margin-top:15px;border:1px solid #c7c7c7;width:fit-content;margin:10px auto;border-radius:2px;padding:10px;} */
+    .social-icons a {
+        margin: 0;
+        padding: 0;
+        display: flex;
+    }
 
-        /* .social-icons{display:flex;justify-content:center;align-items:center;gap:10px;margin-top:15px;border:1px solid #c7c7c7;width:fit-content;margin:10px auto;border-radius:2px;padding:10px;} */
-        .social-icons a {
-            margin: 0;
-            padding: 0;
-            display: flex;
-        }
+    .social-icons a.end_s {
+        border-left: 0;
+        padding-left: 0;
+    }
 
-        .social-icons a.end_s {
-            border-left: 0;
-            padding-left: 0;
-        }
+    .social-icons img {
+        transition: transform 0.3s;
+    }
 
-        .social-icons img {
-            transition: transform 0.3s;
-        }
+    .social-icons img:hover {
+        transform: scale(1.2);
+    }
 
-        .social-icons img:hover {
-            transform: scale(1.2);
-        }
+    .shdow_color_product {
+        box-shadow: 0px 0px 7px 0.1px rgb(102, 102, 102, 10);
+    }
 
-        .shdow_color_product {
-            box-shadow: 0px 0px 7px 0.1px rgb(102, 102, 102, 10);
-        }
+    /* /////////// */
+    :root {
 
-        /* /////////// */
-        :root {
-
-            --background: #FFFFFF;
-            --title: #1d1c1c;
-            --discription: #727272;
-            --secondary-text: #A6A6A6;
-            --metod-text: #c5c3c3;
-            --primary_color: #05df72;
-            --buttom: #03a297;
-            --border: #ebe6e7;
-            --product: #ebf8f7;
-            --greey_section: #023350;
-            --shorp_cart: #03a297;
-            --star: #f0b100;
-            --bg-input: #CCCCCC33;
-
-
+        --background: #FFFFFF;
+        --title: #1d1c1c;
+        --discription: #727272;
+        --secondary-text: #A6A6A6;
+        --metod-text: #c5c3c3;
+        --primary_color: #05df72;
+        --buttom: #03a297;
+        --border: #ebe6e7;
+        --product: #ebf8f7;
+        --greey_section: #023350;
+        --shorp_cart: #03a297;
+        --star: #f0b100;
+        --bg-input: #CCCCCC33;
 
 
-        }
-
-        .cart_shadow {
-            box-shadow: 0px 0px 26px 6px #efefef;
-        }
 
 
-        .transition_fast {
-            transition: all 0.2s ease;
+    }
+
+    .cart_shadow {
+        box-shadow: 0px 0px 26px 6px #efefef;
+    }
+
+
+    .transition_fast {
+        transition: all 0.2s ease;
+    }
+
+    .transition_normal {
+        transition: all 0.3s ease;
+    }
+
+    .transition_slow {
+        transition: all 0.5s ease;
+    }
+</style>
+
+<!--  -->
+<style>
+    /* انیمیشن‌های سفارشی */
+    @keyframes float {
+
+        0%,
+        100% {
+            transform: translateY(0px) rotate(0deg);
         }
 
-        .transition_normal {
-            transition: all 0.3s ease;
+        50% {
+            transform: translateY(-15px) rotate(2deg);
+        }
+    }
+
+    @keyframes pulse-glow {
+
+        0%,
+        100% {
+            box-shadow: 0 0 20px rgba(56, 189, 248, 0.2);
         }
 
-        .transition_slow {
-            transition: all 0.5s ease;
+        50% {
+            box-shadow: 0 0 50px rgba(56, 189, 248, 0.5);
         }
-    </style>
+    }
 
-    <!--  -->
-    <style>
-        /* انیمیشن‌های سفارشی */
-        @keyframes float {
-            0%, 100% { transform: translateY(0px) rotate(0deg); }
-            50% { transform: translateY(-15px) rotate(2deg); }
+    @keyframes slide-up {
+        from {
+            opacity: 0;
+            transform: translateY(40px) scale(0.95);
         }
-        @keyframes pulse-glow {
-            0%, 100% { box-shadow: 0 0 20px rgba(56, 189, 248, 0.2); }
-            50% { box-shadow: 0 0 50px rgba(56, 189, 248, 0.5); }
+
+        to {
+            opacity: 1;
+            transform: translateY(0) scale(1);
         }
-        @keyframes slide-up {
-            from { opacity: 0; transform: translateY(40px) scale(0.95); }
-            to { opacity: 1; transform: translateY(0) scale(1); }
+    }
+
+    @keyframes slide-down {
+        from {
+            opacity: 1;
+            transform: translateY(0) scale(1);
         }
-        @keyframes slide-down {
-            from { opacity: 1; transform: translateY(0) scale(1); }
-            to { opacity: 0; transform: translateY(40px) scale(0.95); }
+
+        to {
+            opacity: 0;
+            transform: translateY(40px) scale(0.95);
         }
-        @keyframes heartbeat {
-            0%, 100% { transform: scale(1); }
-            14% { transform: scale(1.12); }
-            28% { transform: scale(1); }
-            42% { transform: scale(1.12); }
-            70% { transform: scale(1); }
-        }
-        @keyframes shimmer {
-            0% { background-position: -200% center; }
-            100% { background-position: 200% center; }
-        }
-        @keyframes rotate-slow {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
-        }
-        .animate-float { animation: float 4s ease-in-out infinite; }
-        .animate-slide-up { animation: slide-up 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) forwards; }
-        .animate-slide-down { animation: slide-down 0.3s ease-in forwards; }
-        .animate-heartbeat { animation: heartbeat 2s ease-in-out infinite; }
-        .animate-shimmer { background: linear-gradient(90deg, transparent, rgba(255,255,255,0.05), transparent); background-size: 200% auto; animation: shimmer 3s linear infinite; }
-        .animate-rotate-slow { animation: rotate-slow 20s linear infinite; }
-        .delay-1 { animation-delay: 0.1s; }
-        .delay-2 { animation-delay: 0.2s; }
-        .delay-3 { animation-delay: 0.3s; }
-        .delay-4 { animation-delay: 0.4s; }
-        .delay-5 { animation-delay: 0.5s; }
-        
-        /* افکت شیشه‌ای (Glassmorphism) */
-        .glass {
-            background: rgba(15, 23, 42, 0.6);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-        }
-        .glass-light {
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(8px);
-            -webkit-backdrop-filter: blur(8px);
-            border: 1px solid rgba(255, 255, 255, 0.06);
-        }
-        
-        /* اسکرول بار سفارشی */
-        ::-webkit-scrollbar { width: 6px; }
-        ::-webkit-scrollbar-track { background: rgba(15, 23, 42, 0.8); }
-        ::-webkit-scrollbar-thumb { background: #38bdf8; border-radius: 10px; }
-        
-        /* استایل ورودی‌ها */
-        .input-medical {
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            background: rgba(255, 255, 255, 0.05);
-            border: 2px solid rgba(56, 189, 248, 0.1);
-            color: #e2e8f0;
-        }
-        .input-medical:focus {
-            border-color: #38bdf8;
-            box-shadow: 0 0 30px rgba(56, 189, 248, 0.15), inset 0 0 30px rgba(56, 189, 248, 0.03);
-            transform: scale(1.02);
-            background: rgba(255, 255, 255, 0.08);
-        }
-        .input-medical::placeholder {
-            color: rgba(255, 255, 255, 0.3);
-            font-weight: 300;
-        }
-        .input-medical-error {
-            border-color: #f87171 !important;
-            box-shadow: 0 0 25px rgba(248, 113, 113, 0.2) !important;
-        }
-        
-        /* دکمه پزشکی */
-        .btn-medical {
-            background: linear-gradient(135deg, #0ea5e9, #0284c7);
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            border: none;
-            position: relative;
-            overflow: hidden;
-        }
-        .btn-medical::after {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 60%);
-            transform: scale(0);
-            transition: transform 0.6s ease;
-        }
-        .btn-medical:hover::after {
+    }
+
+    @keyframes heartbeat {
+
+        0%,
+        100% {
             transform: scale(1);
         }
-        .btn-medical:hover {
-            transform: translateY(-3px) scale(1.02);
-            box-shadow: 0 15px 40px rgba(14, 165, 233, 0.35);
-        }
-        .btn-medical:active {
-            transform: scale(0.95);
-        }
-        
-        .btn-medical-success {
-            background: linear-gradient(135deg, #22c55e, #16a34a);
-        }
-        .btn-medical-success:hover {
-            box-shadow: 0 15px 40px rgba(34, 197, 94, 0.35);
-        }
-        
-        /* کارت فرم */
-        .form-card {
-            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        .form-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
-        }
-        
-        /* دکمه تغییر حالت */
-        .toggle-btn {
-            background: rgba(255, 255, 255, 0.05);
-            border: 2px solid rgba(255, 255, 255, 0.1);
-            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
-            cursor: pointer;
-            position: relative;
-            overflow: hidden;
-        }
-        .toggle-btn:hover {
-            background: rgba(255, 255, 255, 0.1);
-            border-color: rgba(56, 189, 248, 0.3);
-            transform: scale(1.05);
-            box-shadow: 0 0 30px rgba(56, 189, 248, 0.15);
-        }
-        .toggle-btn:active {
-            transform: scale(0.95);
-        }
-        .toggle-btn .icon-container {
-            transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
-        }
-        .toggle-btn.active .icon-container {
-            transform: rotate(180deg);
-        }
-        
-        /* دایره‌های نورانی پس‌زمینه */
-        .bg-circle {
-            position: absolute;
-            border-radius: 50%;
-            filter: blur(80px);
-            opacity: 0.15;
-        }
-        
-        /* المان‌های پزشکی شناور */
-        .medical-icon {
-            opacity: 0.08;
-            transition: all 0.5s ease;
-        }
-        .medical-icon:hover {
-            opacity: 0.15;
-            transform: scale(1.1);
-        }
-    </style>
-    <?php
-        $summary = $product->description;
-        $count = 0;
-    ?>
 
-    <main id='main' class='w-full mb-10'>
+        14% {
+            transform: scale(1.12);
+        }
 
-        <div class='w-full py-10 bg-(--background)'>
-            <div class='lg:flex hidden w-11/12 mx-auto gap-3 justify-between '>
+        28% {
+            transform: scale(1);
+        }
 
-                <div class='w-4/12 bg-(--background) rounded-xl p-1 py-5 flex flex-col gap-2 border border-(--border) cart_shadow'>
-                    <div id="main_image_div" class=' flex w-full min-h-10/12 max-h-10/12 bg-white rounded-xl items-center justify-center p-4 overflow-hidden'>
-                        <img class='gallery_product_primary size-60 object-cover object-center' src="{{asset('storage/product_medias/'.$product->is_main)}}" alt="">
-                    </div>
-                    <div class='gallery_images w-full h-2/12 flex gap-2 items-center'>
+        42% {
+            transform: scale(1.12);
+        }
 
-                        <div class=' p-1 rounded-full bg-[#11416f] flex items-center justify-center '><svg class='size-3 fill-(--primary_color)' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!-- -->
-                                <path d="M440.6 273.4c4.7-4.5 7.4-10.8 7.4-17.4s-2.7-12.8-7.4-17.4l-176-168c-9.6-9.2-24.8-8.8-33.9 .8s-8.8 24.8 .8 33.9L364.1 232 24 232c-13.3 0-24 10.7-24 24s10.7 24 24 24l340.1 0L231.4 406.6c-9.6 9.2-9.9 24.3-.8 33.9s24.3 9.9 33.9 .8l176-168z" />
-                            </svg></div>
-                        <div id="image_bar" class='w-10/12 bg-white rounded-xl flex overflow-x-auto gap-2 p-2' style="scrollbar-width:none;">
-                            <img class='gallery_product_item size-13 rounded-lg border border-(--border) object-cover' src="{{asset('storage/product_medias/'.$product->is_main)}}" alt="">
+        70% {
+            transform: scale(1);
+        }
+    }
+
+    @keyframes shimmer {
+        0% {
+            background-position: -200% center;
+        }
+
+        100% {
+            background-position: 200% center;
+        }
+    }
+
+    @keyframes rotate-slow {
+        from {
+            transform: rotate(0deg);
+        }
+
+        to {
+            transform: rotate(360deg);
+        }
+    }
+
+    .animate-float {
+        animation: float 4s ease-in-out infinite;
+    }
+
+    .animate-slide-up {
+        animation: slide-up 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+    }
+
+    .animate-slide-down {
+        animation: slide-down 0.3s ease-in forwards;
+    }
+
+    .animate-heartbeat {
+        animation: heartbeat 2s ease-in-out infinite;
+    }
+
+    .animate-shimmer {
+        background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.05), transparent);
+        background-size: 200% auto;
+        animation: shimmer 3s linear infinite;
+    }
+
+    .animate-rotate-slow {
+        animation: rotate-slow 20s linear infinite;
+    }
+
+    .delay-1 {
+        animation-delay: 0.1s;
+    }
+
+    .delay-2 {
+        animation-delay: 0.2s;
+    }
+
+    .delay-3 {
+        animation-delay: 0.3s;
+    }
+
+    .delay-4 {
+        animation-delay: 0.4s;
+    }
+
+    .delay-5 {
+        animation-delay: 0.5s;
+    }
+
+    /* افکت شیشه‌ای (Glassmorphism) */
+    .glass {
+        background: rgba(15, 23, 42, 0.6);
+        backdrop-filter: blur(16px);
+        -webkit-backdrop-filter: blur(16px);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .glass-light {
+        background: rgba(255, 255, 255, 0.05);
+        backdrop-filter: blur(8px);
+        -webkit-backdrop-filter: blur(8px);
+        border: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    /* اسکرول بار سفارشی */
+    ::-webkit-scrollbar {
+        width: 6px;
+    }
+
+    ::-webkit-scrollbar-track {
+        background: rgba(15, 23, 42, 0.8);
+    }
+
+    ::-webkit-scrollbar-thumb {
+        background: #38bdf8;
+        border-radius: 10px;
+    }
+
+    /* استایل ورودی‌ها */
+    .input-medical {
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        background: rgba(255, 255, 255, 0.05);
+        border: 2px solid rgba(56, 189, 248, 0.1);
+        color: #e2e8f0;
+    }
+
+    .input-medical:focus {
+        border-color: #38bdf8;
+        box-shadow: 0 0 30px rgba(56, 189, 248, 0.15), inset 0 0 30px rgba(56, 189, 248, 0.03);
+        transform: scale(1.02);
+        background: rgba(255, 255, 255, 0.08);
+    }
+
+    .input-medical::placeholder {
+        color: rgba(255, 255, 255, 0.3);
+        font-weight: 300;
+    }
+
+    .input-medical-error {
+        border-color: #f87171 !important;
+        box-shadow: 0 0 25px rgba(248, 113, 113, 0.2) !important;
+    }
+
+    /* دکمه پزشکی */
+    .btn-medical {
+        background: linear-gradient(135deg, #0ea5e9, #0284c7);
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        border: none;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .btn-medical::after {
+        content: '';
+        position: absolute;
+        top: -50%;
+        left: -50%;
+        width: 200%;
+        height: 200%;
+        background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 60%);
+        transform: scale(0);
+        transition: transform 0.6s ease;
+    }
+
+    .btn-medical:hover::after {
+        transform: scale(1);
+    }
+
+    .btn-medical:hover {
+        transform: translateY(-3px) scale(1.02);
+        box-shadow: 0 15px 40px rgba(14, 165, 233, 0.35);
+    }
+
+    .btn-medical:active {
+        transform: scale(0.95);
+    }
+
+    .btn-medical-success {
+        background: linear-gradient(135deg, #22c55e, #16a34a);
+    }
+
+    .btn-medical-success:hover {
+        box-shadow: 0 15px 40px rgba(34, 197, 94, 0.35);
+    }
+
+    /* کارت فرم */
+    .form-card {
+        transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .form-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
+    }
+
+    /* دکمه تغییر حالت */
+    .toggle-btn {
+        background: rgba(255, 255, 255, 0.05);
+        border: 2px solid rgba(255, 255, 255, 0.1);
+        transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+        cursor: pointer;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .toggle-btn:hover {
+        background: rgba(255, 255, 255, 0.1);
+        border-color: rgba(56, 189, 248, 0.3);
+        transform: scale(1.05);
+        box-shadow: 0 0 30px rgba(56, 189, 248, 0.15);
+    }
+
+    .toggle-btn:active {
+        transform: scale(0.95);
+    }
+
+    .toggle-btn .icon-container {
+        transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    .toggle-btn.active .icon-container {
+        transform: rotate(180deg);
+    }
+
+    /* دایره‌های نورانی پس‌زمینه */
+    .bg-circle {
+        position: absolute;
+        border-radius: 50%;
+        filter: blur(80px);
+        opacity: 0.15;
+    }
+
+    /* المان‌های پزشکی شناور */
+    .medical-icon {
+        opacity: 0.08;
+        transition: all 0.5s ease;
+    }
+
+    .medical-icon:hover {
+        opacity: 0.15;
+        transform: scale(1.1);
+    }
+</style>
+<?php
+$summary = $product->description;
+$count = 0;
+?>
+
+<main id='main' class='w-full mb-10 mt-30'>
+
+    <div class='w-full bg-(--background)'>
+        <div class='flex max-lg:flex-col w-11/12 mx-auto xl:gap-3 gap-2 justify-between '>
+
+            <div class='lg:w-3/12 w-full bg-(--background) rounded-xl p-1 py-5 flex flex-col gap-2 border border-(--border) cart_shadow'>
+                <div id="main_image_div" class='flex w-full h-10/12 bg-white rounded-xl items-center justify-center p-2'>
+                    <img class='gallery_product_primary min-w-5/12 min-h-5/12 lg:max-h-60  sm:max-h-90 max-h-60 max-w-full rounded-xl' src="{{asset('storage/product_medias/'.$product->is_main)}}" alt="">
+                </div>
+                <div class='gallery_images w-full h-2/12 flex gap-2 items-center'>
+
+                    <div class=' p-1 rounded-full bg-[#11416f] flex items-center justify-center ' onclick="slaiderbottom_in_gallery('right')"><svg class='size-3 fill-(--primary_color)' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!-- -->
+                            <path d="M440.6 273.4c4.7-4.5 7.4-10.8 7.4-17.4s-2.7-12.8-7.4-17.4l-176-168c-9.6-9.2-24.8-8.8-33.9 .8s-8.8 24.8 .8 33.9L364.1 232 24 232c-13.3 0-24 10.7-24 24s10.7 24 24 24l340.1 0L231.4 406.6c-9.6 9.2-9.9 24.3-.8 33.9s24.3 9.9 33.9 .8l176-168z" />
+                        </svg></div>
+                    <div class="max-w-full w-full overflow-x-hidden xl:p-2 p-1">
+                        <div id="image_bar" class='max-w-full w-full bg-white rounded-xl flex  gap-[5px]  slaider_item_gallery' style="scrollbar-width:none;">
+                            <!-- <img class='gallery_product_item size-13 rounded-lg border border-(--border) object-cover' src="{{asset('storage/product_medias/'.$product->is_main)}}" alt=""> -->
                             @foreach($product->gallery as $gallery)
-                                <img class='gallery_product_item size-13 rounded-lg border border-(--border) object-cover' src="{{asset('storage/product_medias/'.$gallery)}}" alt="">
+                            <div class="lg:min-w-24/100 min-w-14/100 max-[500px]:min-w-24/100 lg:max-w-24/100 max-w-14/100 max-[500px]:max-w-24/100 h-full flex justify-center items-center rounded-lg border border-green-500 slaider_item_gallery_children">
+                                <img class='gallery_product_item rounded-lg min-w-8/12 min-h-8/12 max-w-full max-h-full' src="{{asset('storage/product_medias/'.$gallery)}}" alt="">
+                            </div>
+                            <div class="lg:min-w-24/100 min-w-14/100 max-[500px]:min-w-24/100 lg:max-w-24/100 max-w-14/100 max-[500px]:max-w-24/100 h-full flex justify-center items-center rounded-lg border border-green-500 slaider_item_gallery_children">
+                                <img class='gallery_product_item rounded-lg min-w-8/12 min-h-8/12 max-w-full max-h-full' src="{{asset('storage/product_medias/'.$gallery)}}" alt="">
+                            </div>
+                            <div class="lg:min-w-24/100 min-w-14/100 max-[500px]:min-w-24/100 lg:max-w-24/100 max-w-14/100 max-[500px]:max-w-24/100 h-full flex justify-center items-center rounded-lg border border-green-500 slaider_item_gallery_children">
+                                <img class='gallery_product_item rounded-lg min-w-8/12 min-h-8/12 max-w-full max-h-full' src="{{asset('storage/product_medias/'.$gallery)}}" alt="">
+                            </div>
+                          
+                           
+                           
+                            
+                            
+
+
                             @endforeach
 
                         </div>
-                        <div class=' p-1 rounded-full bg-[#11416f] flex items-center justify-center '><svg class='size-3 fill-(--primary_color)' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!-- -->
-                                <path d="M7.4 273.4C2.7 268.8 0 262.6 0 256s2.7-12.8 7.4-17.4l176-168c9.6-9.2 24.8-8.8 33.9 .8s8.8 24.8-.8 33.9L83.9 232 424 232c13.3 0 24 10.7 24 24s-10.7 24-24 24L83.9 280 216.6 406.6c9.6 9.2 9.9 24.3 .8 33.9s-24.3 9.9-33.9 .8l-176-168z" />
-                            </svg></div>
-
                     </div>
-                </div>
+                    <div class=' p-1 rounded-full bg-[#11416f] flex items-center justify-center ' onclick="slaiderbottom_in_gallery('left')"><svg class='size-3 fill-(--primary_color)' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!-- -->
+                            <path d="M7.4 273.4C2.7 268.8 0 262.6 0 256s2.7-12.8 7.4-17.4l176-168c9.6-9.2 24.8-8.8 33.9 .8s8.8 24.8-.8 33.9L83.9 232 424 232c13.3 0 24 10.7 24 24s-10.7 24-24 24L83.9 280 216.6 406.6c9.6 9.2 9.9 24.3 .8 33.9s-24.3 9.9-33.9 .8l-176-168z" />
+                        </svg></div>
 
-                <div class='w-7/12 bg-white rounded-xl p-3 flex flex-col border border-(--border) cart_shadow'>
+                </div>
+            </div>
+            <div class="lg:w-9/12 w-full flex max-md:flex-col gap-3">
+                <div class='md:w-8/12 w-full bg-white rounded-xl p-3 flex flex-col border border-(--border) cart_shadow'>
 
                     <div class='w-full border-b-2 border-(--border) flex flex-col gap-3'>
                         <div class='w-full p-2 flex text-start items-center'>
@@ -307,25 +443,25 @@
                         </div>
                         <div class='w-full p-2 flex justify-between items-center'>
                             <div class='flex gap-1'>
-                                <svg class=' size-4 fill-(--star)' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!-- -->
+                                <svg class=' sm:size-4 size-3 fill-(--star)' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!-- -->
                                     <path d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z" />
                                 </svg>
-                                <svg class=' size-4 fill-(--star)' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!-- -->
+                                <svg class=' sm:size-4 size-3 fill-(--star)' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!-- -->
                                     <path d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z" />
                                 </svg>
-                                <svg class=' size-4 fill-(--star)' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!-- -->
+                                <svg class=' sm:size-4 size-3 fill-(--star)' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!-- -->
                                     <path d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z" />
                                 </svg>
-                                <svg class=' size-4 fill-(--star)' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!-- -->
+                                <svg class=' sm:size-4 size-3 fill-(--star)' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!-- -->
                                     <path d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z" />
                                 </svg>
-                                <svg class=' size-4 fill-(--star)' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!-- -->
+                                <svg class=' sm:size-4 size-3 fill-(--star)' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!-- -->
                                     <path d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z" />
                                 </svg>
                             </div>
                             <div class='flex gap-2 '>
-                                <span class='text-sm text-(--secondary-text)'>شناسه محصول:</span>
-                                <span class='text-sm text-(--secondary-text)'> 1234567890-1-1-1-3 </span>
+                                <span class='sm:text-sm text-xs text-(--secondary-text)'>شناسه محصول:</span>
+                                <span class='sm:text-sm text-xs text-(--secondary-text)'> 1234567890-1-1-1-3 </span>
                             </div>
                         </div>
                     </div>
@@ -333,26 +469,27 @@
                     <div class='w-full border-b-2 border-(--border) flex flex-col gap-2 p-2'>
                         <span class='text-(--primary_color) '>مشخصات مخصول</span>
                         <div class='w-full flex flex-wrap gap-2'>
-                            <div class='p-2 rounded-xl bg-(--product) text-sm text-(--title)'>سرعت حرکت آزاد (RPM): 1500-3000 RPM</div>
-                            <div class='p-2 rounded-xl bg-(--product) text-sm text-(--title)'> کاربری: نیمه صنعتی </div>
-                            <div class='p-2 rounded-xl bg-(--product) text-sm text-(--title)'> کاربری: نیمه صنعتی </div>
+                            <div class='p-2 rounded-xl bg-(--product) sm:text-sm text-xs text-(--title)'>سرعت حرکت آزاد (RPM): 1500-3000 RPM</div>
+                            <div class='p-2 rounded-xl bg-(--product) sm:text-sm text-xs text-(--title)'> کاربری: نیمه صنعتی </div>
+                            <div class='p-2 rounded-xl bg-(--product) sm:text-sm text-xs text-(--title)'> کاربری: نیمه صنعتی </div>
                         </div>
                     </div>
 
-                    <div class='w-full flex flex-col gap-3 p-2'>
+                    <div class='w-full h-full flex flex-col gap-3 p-2'>
                         <span class='text-(--primary_color)'> توضیح کوتاه محصول: </span>
-                        <div class='text-(--secondary-text)'>
-                            <span>
-                                {{$summary}}<span class='flex text-(--primary_color) text-xs text-center items-center'> بیشتر <svg class='fill-(--primary_color) size-3' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!-- -->
+                        <div class='text-(--secondary-text) max-sm:text-sm max-h-36 overflow-y-auto'>
+                            <span class="h-full">
+                                {{$summary}}
+                                <!-- <span class='flex text-(--primary_color) text-xs text-center items-center'> بیشتر <svg class='fill-(--primary_color) size-3' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
                                         <path d="M241 337c-9.4 9.4-24.6 9.4-33.9 0L47 177c-9.4-9.4-9.4-24.6 0-33.9s24.6-9.4 33.9 0l143 143L367 143c9.4-9.4 24.6-9.4 33.9 0s9.4 24.6 0 33.9L241 337z" />
-                                    </svg></span>
+                                    </svg></span> -->
                             </span>
                         </div>
                     </div>
 
                 </div>
 
-                <div class='w-3/12 bg-white rounded-xl p-2 border border-(--border) cart_shadow flex flex-col justify-between'>
+                <div class='md:w-4/12 w-full bg-white rounded-xl p-2 border border-(--border) cart_shadow flex flex-col justify-between'>
 
                     <div class='flex text-center justify-center border-b-2 border-(--border) p-2 gap-1 text-sm items-center'>
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
@@ -418,21 +555,23 @@
                         </div>
                         <div class='w-full flex' id="entry_cart_parent_div">
                             @if($flag)
-                                <div class='entry_cart_submit cursor-pointer w-full h-10 bg-yellow-200 hover:yellow-300 disable flex text-center items-center justify-center rounded-lg text-black text-[10px] px-2 py-3  hover:bg-(--buttom) hover:font-bold transition-all duration-200'> افزوده شده </div>
+                            <div class='entry_cart_submit cursor-pointer w-full h-10 bg-yellow-200 hover:yellow-300 disable flex text-center items-center justify-center rounded-lg text-black text-[10px] px-2 py-3  hover:bg-(--buttom) hover:font-bold transition-all duration-200'> افزوده شده </div>
                             @else
-                                <div onclick='entry_cart(this)' class='entry_cart_submit cursor-pointer w-full h-10 bg-(--primary_color) flex text-center items-center justify-center rounded-lg text-white text-[10px] px-2 py-3  hover:bg-(--buttom) hover:font-bold transition-all duration-200'>افزودن به سبد خرید</div>
+                            <div onclick='entry_cart(this)' class='entry_cart_submit cursor-pointer w-full h-10 bg-(--primary_color) flex text-center items-center justify-center rounded-lg text-white text-[10px] px-2 py-3  hover:bg-(--buttom) hover:font-bold transition-all duration-200'>افزودن به سبد خرید</div>
                             @endif
 
                         </div>
-                        <div class='w-full flex gap-2 text-center items-center '>
-                            <div class='w-2/5 text-(--metod-text) flex justify-end'>
-                                <span class='line-through font-bold text-lg'> {{number_format($product->discunt)}} </span>
-                                <span class='-rotate-90 text-xs'> تومان </span>
+                        <div class='w-full flex flex-col gap-2 text-center xl:justify-between justify-end items-center '>
+                            <div class='w-full text-(--metod-text) flex gap-2 justify-end items-center'>
+                                <span class='line-through font-bold xl:text-lg'> {{number_format($product->discunt)}} </span>
+                                <span class='text-xs'> تومان </span>
                             </div>
-                            <span class='w-1/5 p-2 bg-(--primary_color) text-center rounded-xl text-white font-bold'> <span> {{$product->percent}}% </span> </span>
-                            <div class='w-2/5 text-(--primary_color) flex justify-end'>
-                                <span class='font-bold text-lg'> {{number_format($product->price)}} </span>
-                                <span class='-rotate-90 text-xs'> تومان </span>
+                            <div class="w-full flex justify-start">
+                                <span class='xl:p-2 p-1.5 bg-(--primary_color) text-center rounded-xl text-white xl:text-sm text-xs font-bold'> <span> {{$product->percent}}% </span> </span>
+                            </div>
+                            <div class='w-full text-(--primary_color) flex gap-2 justify-end items-center'>
+                                <span class='font-bold xl:text-lg'> {{number_format($product->price)}} </span>
+                                <span class='text-xs'> تومان </span>
                             </div>
                         </div>
 
@@ -477,7 +616,7 @@
                             </div>
                             <!-- xmark -->
                             <div onclick="show_share_list('close')" class="absolute size-7 rounded-full bg-white -top-10 left-3 flex items-center text-2xl text-center justify-center cursor-pointer
-                                ">
+                                    ">
                                 <span>X</span>
                             </div>
                             <!-- xmark -->
@@ -485,9 +624,10 @@
                     </div>
                     <!-- share_item_end -->
                 </div>
-
             </div>
-            <div class='lg:hidden flex flex-col w-11/12 mx-auto gap-3'>
+
+        </div>
+        <!-- <div class='hidden flex-col w-11/12 mx-auto gap-3'>
 
                 <div class='h-62 w-full bg-white rounded-xl p-1 flex flex-col flex-wrap items-center justify-center gap-2 border border-(--border) cart_shadow overflow-x-auto' style="scrollbar-width:none;">
 
@@ -512,8 +652,8 @@
                 @endfor
                 <?php $count = 0; ?>
 
-            </div>
-            <div class='flex gap-2'>
+            </div> -->
+        <!-- <div class='hidden'>
 
                 <div class='w-full md:w-8/12 bg-white rounded-xl p-3 flex flex-col border border-(--border) cart_shadow'>
 
@@ -523,19 +663,19 @@
                         </div>
                         <div class='w-full p-2 flex sm:flex-row flex-col sm:justify-between sm:items-center gap-2'>
                             <div class='flex  gap-1'>
-                                <svg class=' size-4 fill-(--star)' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!-- -->
+                                <svg class=' size-4 fill-(--star)' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512">
                                     <path d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z" />
                                 </svg>
-                                <svg class=' size-4 fill-(--star)' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!-- -->
+                                <svg class=' size-4 fill-(--star)' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512">
                                     <path d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z" />
                                 </svg>
-                                <svg class=' size-4 fill-(--star)' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!-- -->
+                                <svg class=' size-4 fill-(--star)' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512">
                                     <path d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z" />
                                 </svg>
-                                <svg class=' size-4 fill-(--star)' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!-- -->
+                                <svg class=' size-4 fill-(--star)' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512">
                                     <path d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z" />
                                 </svg>
-                                <svg class=' size-4 fill-(--star)' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!-- -->
+                                <svg class=' size-4 fill-(--star)' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512">
                                     <path d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z" />
                                 </svg>
                             </div>
@@ -559,7 +699,7 @@
                         <span class='text-(--primary_color)'> توضیح کوتاه محصول: </span>
                         <div class='text-(--secondary-text)'>
                             <span class='text-sm'>
-                                {{$summary}}<span class='cursor-pointer flex text-(--primary_color) text-xs text-center items-center'> بیشتر <svg class='fill-(--primary_color) size-3' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!-- -->
+                                {{$summary}}<span class='cursor-pointer flex text-(--primary_color) text-xs text-center items-center'> بیشتر <svg class='fill-(--primary_color) size-3' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
                                         <path d="M241 337c-9.4 9.4-24.6 9.4-33.9 0L47 177c-9.4-9.4-9.4-24.6 0-33.9s24.6-9.4 33.9 0l143 143L367 143c9.4-9.4 24.6-9.4 33.9 0s9.4 24.6 0 33.9L241 337z" />
                                     </svg></span>
                             </span>
@@ -652,10 +792,10 @@
                             <path d="M7.5 3C4.46243 3 2 5.40446 2 8.37051C2 12.9063 10.6044 19.9497 11.8503 20.9458C11.9407 21.0181 12.0593 21.0181 12.1497 20.9458C13.3956 19.9497 22 12.9063 22 8.37051C22 5.40446 19.5376 3 16.5 3C14.7673 3 13.2217 3.78237 12.2136 5.00507C12.1051 5.13662 11.8949 5.13662 11.7864 5.00507C10.7783 3.78237 9.2327 3 7.5 3Z" stroke="#43454D" stroke-width="1.5"></path>
                         </svg>
                     </div>
-                    <!--  -->
+                  
                 </div>
-            </div>
-            <div class='md:hidden flex flex-col w-full bg-white rounded-xl p-3 justify-end gap-4 border border-(--border) cart_shadow '>
+            </div> -->
+        <!-- <div class='md:hidden flex flex-col w-full bg-white rounded-xl p-3 justify-end gap-4 border border-(--border) cart_shadow '>
                 <span class='text-(--primary_color)'>رنگ:</span>
                 <div class='w-full flex gap-4 overflow-x-auto' style="scrollbar-width:none;">
                     <div class='cursor-pointer p-2 flex gap-2 justify-center items-center border border-(--border) rounded-xl'>
@@ -683,8 +823,8 @@
                         <div class='bg-black size-4 rounded-full shadow-[0_0_15px_rgba(0,0,0)] hover:shadow-[0_0_25px_rgba(135,206,235)] transition-shadow duration-300'></div>
                     </div>
                 </div>
-            </div>
-            <div class='md:hidden flex flex-col w-full bg-white rounded-xl p-3 justify-end gap-4 border border-(--border) cart_shadow'>
+            </div> -->
+        <!-- <div class='md:hidden flex flex-col w-full bg-white rounded-xl p-3 justify-end gap-4 border border-(--border) cart_shadow'>
                 <div class='flex flex-col w-full border-b-2 border-(--border)  gap-4 p-2'>
                     <span class='text-(--primary_color)'>مشخصات محصول :</span>
                     <div class='w-full flex gap-2 overflow-x-auto' style="scrollbar-width:none;">
@@ -699,15 +839,15 @@
                         <div class='w-full p-2 rounded-xl bg-(--metood) text-sm text-nowrap'> کاربری: نیمه صنعتی </div>
                     </div>
                 </div>
-            </div>
-            <div class='md:hidden flex flex-col w-full bg-white rounded-xl p-3 justify-end gap-4 border border-(--border) cart_shadow'>
+            </div> -->
+        <!-- <div class='md:hidden flex flex-col w-full bg-white rounded-xl p-3 justify-end gap-4 border border-(--border) cart_shadow'>
                 <div class='flex flex-col w-full border-b-2 border-(--border)  gap-4 p-2'>
                     <span class='text-(--primary_color)'>فروشنده:</span>
                     <div class='w-full flex flex-col gap-2' style="scrollbar-width:none;">
                         <div class='flex items-center gap-2'>
                             <div class='flex text-center items-center gap-4'>
                                 <div class='size-8 p-2 bg-(--metod-text) rounded-full flex justify-center items-center'>
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!-- -->
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512">
                                         <path d="M0 185.8c0-6.4 1.6-12.7 4.7-18.3L82.4 25C90.8 9.6 106.9 0 124.5 0h391c17.6 0 33.7 9.6 42.1 25l77.7 142.4c3.1 5.6 4.7 11.9 4.7 18.3c0 21.1-17.1 38.2-38.2 38.2H576V496c0 8.8-7.2 16-16 16s-16-7.2-16-16V224H96V352H352V272 256h32v16V464c0 26.5-21.5 48-48 48H112c-26.5 0-48-21.5-48-48V224H38.2C17.1 224 0 206.9 0 185.8zM80 192H560h41.8c3.4 0 6.2-2.8 6.2-6.2c0-1-.3-2.1-.8-3L529.6 40.3c-2.8-5.1-8.2-8.3-14-8.3h-391c-5.9 0-11.2 3.2-14 8.3L32.8 182.8c-.5 .9-.8 1.9-.8 3c0 3.4 2.8 6.2 6.2 6.2H80zM96 464c0 8.8 7.2 16 16 16H336c8.8 0 16-7.2 16-16V384H96v80z" />
                                     </svg>
                                 </div>
@@ -738,11 +878,11 @@
                         <div class='flex flex-col  '>
                             <div class='flex text-center items-center gap-4'>
                                 <div class='size-8 p-2 bg-(--metod-text) rounded-full flex justify-center items-center'>
-                                    <svg width="200" height="100" viewBox="0 0 200 100" fill="none" stroke="black" stroke-width="2"><!-- بدنه اصلی -->
-                                        <rect x="10" y="30" width="120" height="50" /><!-- کابین راننده -->
-                                        <rect x="130" y="40" width="40" height="40" /><!-- چرخ‌ها -->
+                                    <svg width="200" height="100" viewBox="0 0 200 100" fill="none" stroke="black" stroke-width="2">
+                                        <rect x="10" y="30" width="120" height="50" />
+                                        <rect x="130" y="40" width="40" height="40" />
                                         <circle cx="40" cy="85" r="10" />
-                                        <circle cx="150" cy="85" r="10" /><!-- پنجره -->
+                                        <circle cx="150" cy="85" r="10" />
                                         <rect x="140" y="50" width="20" height="15" />
                                     </svg>
                                 </div>
@@ -758,197 +898,197 @@
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
+            </div> -->
+    </div>
 
-        </div>
+    </div>
 
-        <div class='w-full py-10 bg-white'>
-            <div class='w-11/12 mx-auto bg-white '>
+    <div class='w-full py-10 bg-white'>
+        <div class='w-11/12 mx-auto bg-white '>
 
-                <div class='w-full flex gap-3'>
+            <div class='w-full flex gap-3'>
 
-                    <div class='w-full lg:w-9/12 mt-5 flex flex-col gap-5'>
+                <div class='w-full mt-5 flex flex-col gap-5'>
 
-                        <div class='max-w-full flex gap-10 text-center items-center text-nowrap overflow-auto'>
+                    <div class='max-w-full flex sm:gap-10 gap-4 text-center items-center text-nowrap overflow-auto [&::-webkit-scrollbar]:h-0'>
 
-                            <div class='w-full bg-(--metod-text) h-[1px] pl-5'></div>
-                            <div class='flex  text-center text-(--primary_color) border-b-3 border-(--primary_color) py-3 items-center'>
-                                <span class='cursor-pointer font-bold'>
-                                    توضیحات
-                                </span>
-                            </div>
-                            <a href="#section_specifications" class='text-center text-(--title) hover:text-(--primary_color) hover:text-cart_shadow text-shadow-orange-200  transition-all duration-200 border-x-2 border-(--border) px-5'>
-                                <span class='cursor-pointer font-bold'>
-                                    مشخصات محصول
-                                </span>
-                            </a>
-                            <a href="#section_comments" class='text-center text-(--title) hover:text-(--primary_color) hover:text-cart_shadow text-shadow-orange-200  transition-all duration-200'>
-                                <span class='cursor-pointer font-bold'>
-                                    نظرات کاربران
-                                </span>
-                            </a>
-                            <div class='w-full bg-(--metod-text) h-[1px] pr-5'></div>
+                        <div class='w-full bg-(--metod-text) h-[1px] pl-5 max-[430px]:hidden'></div>
+                        <div class='flex text-center text-(--primary_color) border-b-3 border-(--primary_color) py-3 items-center'>
+                            <span class='cursor-pointer font-bold max-sm:text-sm '>
+                                توضیحات
+                            </span>
+                        </div>
+                        <a href="#section_specifications" class='text-center text-(--title) hover:text-(--primary_color) hover:text-cart_shadow text-shadow-orange-200  transition-all duration-200 border-x-2 border-(--border) px-5'>
+                            <span class='cursor-pointer font-bold max-sm:text-sm '>
+                                مشخصات محصول
+                            </span>
+                        </a>
+                        <a href="#section_comments" class='text-center text-(--title) hover:text-(--primary_color) hover:text-cart_shadow text-shadow-orange-200  transition-all duration-200'>
+                            <span class='cursor-pointer font-bold max-sm:text-sm '>
+                                نظرات کاربران
+                            </span>
+                        </a>
+                        <div class='w-full bg-(--metod-text) h-[1px] pr-5 max-[430px]:hidden'></div>
 
+                    </div>
+
+
+                    <div class='flex flex-col gap-3'>
+
+                        <div class='border-r-4 border-(--primary_color)  pr-4 text-2xl'>
+                            <span class='font-bold text-(--title)'> توضیحات </span>
                         </div>
 
-
-                        <div class='flex flex-col gap-3'>
-
-                            <div class='border-r-4 border-(--primary_color)  pr-4 text-2xl'>
-                                <span class='font-bold text-(--title)'> توضیحات </span>
-                            </div>
-
-                            <div class=''>
-                                <span class='font-bold text-(--primary_color)'>
-                                    <!-- title -->
-                                    دریل پیچ گوشتی چکشی شارژی آاگ مدل BSB 12C2
-                                </span>
-                            </div>
-
-                            <div class='text-base text-(--discription)'>
-                                <span>
-                                    <!-- desciption -->
-                                    دریل پیچ‌گوشتی مدل «BS12G3LI» محصولی از شرکت مطرح «آاگ» (AEG) است. این دریل پیچ‌گوشتی، شارژی است و انرژی موردنیاز خود را از طریق یک باتری 12 ولتی تامین می‌کند. این باتری از نوع لیتیوم-یون بوده و از ظرفیتی برابر با 1.5 آمپرساعت برخوردار است. حداکثر گشتاور این محصول 30 نیوتن متر است که برای انجام کارهای معمولی و روزمره، گزینه‌ای بسیار مناسب محسوب می‌شود.
-                                </span>
-                            </div>
-
-                            <div class='w-full'>
-                                <!-- image -->
-                                <img src="{{asset('assets/img/pdp-inner-img.png')}}" alt="">
-                            </div>
-
-                            <div class=''>
-                                <span class='font-bold text-(--primary_color)'>
-                                    <!-- title -->
-                                    دریل پیچ گوشتی چکشی شارژی آاگ مدل BSB 12C2
-                                </span>
-                            </div>
-
-                            <div class='text-base text-(--discription)'>
-                                <span>
-                                    <!-- desciption -->
-                                    دریل پیچ‌گوشتی مدل «BS12G3LI» محصولی از شرکت مطرح «آاگ» (AEG) است. این دریل پیچ‌گوشتی، شارژی است و انرژی موردنیاز خود را از طریق یک باتری 12 ولتی تامین می‌کند. این باتری از نوع لیتیوم-یون بوده و از ظرفیتی برابر با 1.5 آمپرساعت برخوردار است. حداکثر گشتاور این محصول 30 نیوتن متر است که برای انجام کارهای معمولی و روزمره، گزینه‌ای بسیار مناسب محسوب می‌شود.
-                                </span>
-                            </div>
-
-                            <div class='flex md:flex-row flex-col gap-3 w-full'>
-
-                                <div class='flex flex-col gap-3 md:w-7/12 w-full'>
-                                    <div class=''>
-                                        <span class='font-bold text-(--primary_color)'>
-                                            <!-- title -->
-                                            دریل پیچ گوشتی چکشی شارژی آاگ مدل BSB 12C2
-                                        </span>
-                                    </div>
-
-                                    <div class='text-base text-(--discription)'>
-                                        <span>
-                                            <!-- desciption -->
-                                            دریل پیچ‌گوشتی مدل «BS12G3LI» محصولی از شرکت مطرح «آاگ» (AEG) است. این دریل پیچ‌گوشتی، شارژی است و انرژی موردنیاز خود را از طریق یک باتری 12 ولتی تامین می‌کند. این باتری از نوع لیتیوم-یون بوده و از ظرفیتی برابر با 1.5 آمپرساعت برخوردار است. حداکثر گشتاور این محصول 30 نیوتن متر است که برای انجام کارهای معمولی و روزمره، گزینه‌ای بسیار مناسب محسوب می‌شود.
-                                        </span>
-                                    </div>
-
-                                    <div class='text-base text-(--discription)'>
-                                        <span>
-                                            <!-- desciption -->
-                                            دریل پیچ‌گوشتی مدل «BS12G3LI» محصولی از شرکت مطرح «آاگ» (AEG) است. این دریل پیچ‌گوشتی، شارژی است و انرژی موردنیاز خود را از طریق یک باتری 12 ولتی تامین می‌کند. این باتری از نوع لیتیوم-یون بوده و از ظرفیتی برابر با 1.5 آمپرساعت برخوردار است. حداکثر گشتاور این محصول 30 نیوتن متر است که برای انجام کارهای معمولی و روزمره، گزینه‌ای بسیار مناسب محسوب می‌شود.
-                                        </span>
-                                    </div>
-                                </div>
-                                <div class='md:w-5/12 w-full flex justify-center items-center '>
-                                    <img src="{{asset('assets/img/pdp-inner-img2.png')}}" alt="">
-                                </div>
-                            </div>
-
+                        <div class=''>
+                            <span class='font-bold text-(--primary_color)'>
+                                <!-- title -->
+                                دریل پیچ گوشتی چکشی شارژی آاگ مدل BSB 12C2
+                            </span>
                         </div>
 
-                        <div class='flex flex-col gap-3'>
+                        <div class='text-base text-(--discription)'>
+                            <span>
+                                <!-- desciption -->
+                                دریل پیچ‌گوشتی مدل «BS12G3LI» محصولی از شرکت مطرح «آاگ» (AEG) است. این دریل پیچ‌گوشتی، شارژی است و انرژی موردنیاز خود را از طریق یک باتری 12 ولتی تامین می‌کند. این باتری از نوع لیتیوم-یون بوده و از ظرفیتی برابر با 1.5 آمپرساعت برخوردار است. حداکثر گشتاور این محصول 30 نیوتن متر است که برای انجام کارهای معمولی و روزمره، گزینه‌ای بسیار مناسب محسوب می‌شود.
+                            </span>
+                        </div>
 
-                            <div class='border-r-4 border-(--primary_color)  pr-4 text-2xl' id="section_specifications">
-                                <span class='font-bold text-(--title)'> مشخصات محصول </span>
+                        <div class='w-full'>
+                            <!-- image -->
+                            <img src="{{asset('assets/img/pdp-inner-img.png')}}" alt="">
+                        </div>
+
+                        <div class=''>
+                            <span class='font-bold text-(--primary_color)'>
+                                <!-- title -->
+                                دریل پیچ گوشتی چکشی شارژی آاگ مدل BSB 12C2
+                            </span>
+                        </div>
+
+                        <div class='text-base text-(--discription)'>
+                            <span>
+                                <!-- desciption -->
+                                دریل پیچ‌گوشتی مدل «BS12G3LI» محصولی از شرکت مطرح «آاگ» (AEG) است. این دریل پیچ‌گوشتی، شارژی است و انرژی موردنیاز خود را از طریق یک باتری 12 ولتی تامین می‌کند. این باتری از نوع لیتیوم-یون بوده و از ظرفیتی برابر با 1.5 آمپرساعت برخوردار است. حداکثر گشتاور این محصول 30 نیوتن متر است که برای انجام کارهای معمولی و روزمره، گزینه‌ای بسیار مناسب محسوب می‌شود.
+                            </span>
+                        </div>
+
+                        <div class='flex md:flex-row flex-col gap-3 w-full'>
+
+                            <div class='flex flex-col gap-3 '>
+                                <div class='w-full'>
+                                    <span class='font-bold text-(--primary_color)'>
+                                        <!-- title -->
+                                        دریل پیچ گوشتی چکشی شارژی آاگ مدل BSB 12C2
+                                    </span>
+                                </div>
+
+                                <div class='text-base text-(--discription)'>
+                                    <span class="w-full">
+                                        <!-- desciption -->
+                                        دریل پیچ‌گوشتی مدل «BS12G3LI» محصولی از شرکت مطرح «آاگ» (AEG) است. این دریل پیچ‌گوشتی، شارژی است و انرژی موردنیاز خود را از طریق یک باتری 12 ولتی تامین می‌کند. این باتری از نوع لیتیوم-یون بوده و از ظرفیتی برابر با 1.5 آمپرساعت برخوردار است. حداکثر گشتاور این محصول 30 نیوتن متر است که برای انجام کارهای معمولی و روزمره، گزینه‌ای بسیار مناسب محسوب می‌شود.
+                                    </span>
+                                </div>
+
+                                <div class='text-base text-(--discription)'>
+                                    <span>
+                                        <!-- desciption -->
+                                        دریل پیچ‌گوشتی مدل «BS12G3LI» محصولی از شرکت مطرح «آاگ» (AEG) است. این دریل پیچ‌گوشتی، شارژی است و انرژی موردنیاز خود را از طریق یک باتری 12 ولتی تامین می‌کند. این باتری از نوع لیتیوم-یون بوده و از ظرفیتی برابر با 1.5 آمپرساعت برخوردار است. حداکثر گشتاور این محصول 30 نیوتن متر است که برای انجام کارهای معمولی و روزمره، گزینه‌ای بسیار مناسب محسوب می‌شود.
+                                    </span>
+                                </div>
                             </div>
+                            <!-- <div class='md:w-5/12 w-full flex justify-center items-center '>
+                                <img src="{{asset('assets/img/pdp-inner-img2.png')}}" alt="">
+                            </div> -->
+                        </div>
 
-                            <div class='flex flex-col w-full gap-3 text-base mt-4'>
-                                <?php
-                                    $cunt=0;
-                                ?>
-                                @foreach($attributes as $key_att => $array_att)
-                                    <?php
-                                        $cunt++;
-                                    ?>
-                                    @if($cunt%2==0)
-                                        <div class='w-full  flex sm:flex-row flex-col  sm:gap-3 gap-2'>
-                                            <div class='flex'>
-                                                <div class=' md:py-4 py-2  md:px-6 px-4  bg-[#F7F7F7] rounded-xl sm:text-center text-nowrap lg:text-base md:text-sm text-[13px]'>
-                                                    <!-- att_key -->
-                                                    <span> {{$key_att}}</span>
-                                                </div>
-                                            </div>
-                                            <!-- <div class='sm:hidden flex'>    
+                    </div>
+
+                    <div class='flex flex-col gap-3'>
+
+                        <div class='border-r-4 border-(--primary_color)  pr-4 text-2xl' id="section_specifications">
+                            <span class='font-bold text-(--title)'> مشخصات محصول </span>
+                        </div>
+
+                        <div class='flex flex-col w-full gap-3 text-base mt-4'>
+                            <?php
+                            $cunt = 0;
+                            ?>
+                            @foreach($attributes as $key_att => $array_att)
+                            <?php
+                            $cunt++;
+                            ?>
+                            @if($cunt%2==0)
+                            <div class='w-full  flex   sm:gap-3 gap-1'>
+                                <div class='w-4/12 flex '>
+                                    <div class='md:py-4 py-2 w-full  bg-[#F7F7F7] rounded-xl text-center xl:text-lg max-sm:text-sm'>
+                                        <!-- att_key -->
+                                        <span> {{$key_att}}</span>
+                                    </div>
+                                </div>
+                                <!-- <div class='sm:hidden flex'>    
                                                         <div class=' p-4 bg-[#f7f7f7] text-[#43454D80] rounded-xl text-nowrap lg:text-md text-xs sm:mr-0 mr-5'>
                                                             att_value
                                                             <span> ساخت کشور آلمان ساخت سری قدیم </span>
                                                         </div>
                                                     </div> -->
-                                            <div class='w-full flex md:p-4 p-2  bg-[#f7f7f7] text-[#43454D80] rounded-xl text-nowrap items-center lg:text-md text-xs sm:mr-0 mr-5'>
-                                                <!-- att_value -->
-                                                @foreach($array_att as $att)
-                                                    <span>  {{$att}} @if(count($array_att)>1)‌ ‌/‌ ‌@endif </span>
-                                                @endforeach
-                                            </div>
-                                        </div>
-                                    @endif
-                                    @if($cunt%2==1)
-                                        <div class='flex sm:flex-row flex-col gap-3'>
-                                            <div class='flex'>
-                                                <div class=' md:py-4 py-2  md:px-6 px-4  bg-[#d2d2d28a] rounded-xl sm:text-center text-nowrap lg:text-base md:text-sm text-[13px]'>
-                                                    <!-- att_key -->
-                                                    <span> {{$key_att}}</span>
-                                                </div>
-                                            </div>
+                                <div class='w-8/12 flex md:p-4 p-2  bg-[#f7f7f7] text-[#43454D80] rounded-xl  items-center  max-xl:text-sm max-sm:text-xs'>
+                                    <!-- att_value -->
+                                    @foreach($array_att as $att)
+                                    <span> {{$att}} @if(count($array_att)>1)‌ ‌/‌ ‌@endif </span>
+                                    @endforeach
+                                </div>
+                            </div>
+                            @endif
+                            @if($cunt%2==1)
+                            <div class='w-full flex sm:gap-3 gap-1'>
+                                <div class='w-4/12 flex'>
+                                    <div class='w-full md:py-4 py-2 flex items-center justify-center bg-[#d2d2d28a] rounded-xl text-center xl:text-lg  text-[13px]'>
+                                        <!-- att_key -->
+                                        <span> {{$key_att}}</span>
+                                    </div>
+                                </div>
 
-                                            <!-- <div class=' sm:hidden flex'>    
+                                <!-- <div class=' sm:hidden flex'>    
                                                         <div class=' p-4 bg-[#d2d2d28a] text-[#43454D80] rounded-xl text-nowrap lg:text-md text-xs sm:mr-0 mr-5'>
                                                             att_value
                                                             <span> ساخت کشور آلمان ساخت سری قدیم </span>
                                                         </div>
                                                     </div> -->
-                                            <div class='w-full flex md:p-4 p-2  bg-[#d2d2d28a] text-[#43454D80] rounded-xl text-nowrap itesm-center lg:text-md text-xs sm:mr-0 mr-5'>
-                                                <!-- att_value -->
-                                                @foreach($array_att as $att)
-                                                    <span>  {{$att}} @if(count($array_att)>1)‌ ‌‌‌/‌ ‌@endif </span>
-                                                @endforeach
-                                            </div>
+                                <div class='w-8/12 md:py-4 py-2 md:px-4 px-2 flex flex-wrap gap-2 bg-[#d2d2d28a] text-[#43454D80] rounded-xl itesm-center text-center max-xl:text-sm'>
+                                    <!-- att_value -->
+                                    @foreach($array_att as $att)
+                                    <span>{{$att}} @if(count($array_att)>1)‌ ‌‌‌/‌ ‌@endif</span>
+                                    @endforeach
+                                </div>
 
-                                        </div>
-                                    @endif
-                                @endforeach
                             </div>
+                            @endif
+                            @endforeach
+                        </div>
 
 
-                        <div class=' w-full lg:hidden flex items-center text-center justify-center mt-5'>
+                        <!-- <div class=' w-full lg:hidden flex items-center text-center justify-center mt-5'>
                             <div class='flex justify-center items-center text-center bg-[#d2d2d28a] gap-3 rounded-full py-2 px-5'>
                                 <span class='text-xs '> مشاهده همه مشخصات </span>
-                                <svg class='size-3' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!-- -->
+                                <svg class='size-3' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
                                     <path d="M47 239c-9.4 9.4-9.4 24.6 0 33.9L207 433c9.4 9.4 24.6 9.4 33.9 0s9.4-24.6 0-33.9L97.9 256 241 113c9.4-9.4 9.4-24.6 0-33.9s-24.6-9.4-33.9 0L47 239z" />
                                 </svg>
                             </div>
-                        </div>
+                        </div> -->
 
-                        <div class=' w-full lg:flex hidden text-start mt-5'>
+                        <!-- <div class=' w-full lg:flex hidden text-start mt-5'>
                             <div class='flex  items-center text-start gap-3 '>
                                 <span class='text-xs text-(--primary_color)'> مشاهده بیشتر </span>
-                                <svg class='size-3 fill-(--primary_color)' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!-- -->
+                                <svg class='size-3 fill-(--primary_color)' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
                                     <path d="M47 239c-9.4 9.4-9.4 24.6 0 33.9L207 433c9.4 9.4 24.6 9.4 33.9 0s9.4-24.6 0-33.9L97.9 256 241 113c9.4-9.4 9.4-24.6 0-33.9s-24.6-9.4-33.9 0L47 239z" />
                                 </svg>
-                            </div>
-                        </div>
+                            </div>v
+                        </div> -->
 
 
-                        <div class='flex border-r-4 border-(--primary_color) pr-4 text-2xl gap-5 items-center text-center' id="section_comments">
-                            <span class='font-bold text-(--title)'> دیدگاه کاربران </span>
-                            <span class='text-sm text-(--secondary-text)'> برای این محصول 1 دیدگاهدیدگاه ثبت شده </span>
+                        <div class='flex max-sm:flex-col  sm:text-2xl text-lg gap-5 sm:items-center sm:text-center mt-5' id="section_comments">
+                            <span class='font-bold text-(--title) border-r-4 border-(--primary_color) sm:pr-4 pr-2'> دیدگاه کاربران </span>
+                            <span class='sm:text-sm text-xs text-(--secondary-text)'> برای این محصول 1 دیدگاهدیدگاه ثبت شده </span>
                         </div>
 
                         <div class='w-full mt-3 flex lg:flex-col gap-2 overflow-x-scroll' style="scrollbar-width:none;">
@@ -964,19 +1104,19 @@
                                     </div>
                                     <div class='flex gap-2 '>
                                         <div class='flex gap-1 items-center '>
-                                            <svg class=' size-4 fill-(--star)' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!-- -->
+                                            <svg class=' size-4 fill-(--star)' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512">
                                                 <path d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z" />
                                             </svg>
-                                            <svg class=' size-4 fill-(--star)' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!-- -->
+                                            <svg class=' size-4 fill-(--star)' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512">
                                                 <path d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z" />
                                             </svg>
-                                            <svg class=' size-4 fill-(--star)' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!-- -->
+                                            <svg class=' size-4 fill-(--star)' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512">
                                                 <path d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z" />
                                             </svg>
-                                            <svg class=' size-4 fill-(--star)' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!-- -->
+                                            <svg class=' size-4 fill-(--star)' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512">
                                                 <path d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z" />
                                             </svg>
-                                            <svg class=' size-4 fill-(--star)' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!-- -->
+                                            <svg class=' size-4 fill-(--star)' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512">
                                                 <path d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z" />
                                             </svg>
                                         </div>
@@ -1112,18 +1252,18 @@
                                         <path d="M3.86327 17.6665C4.28742 14.7343 6.56246 12.3382 9.52369 12.1229C11.2156 11.9999 12.7894 11.9997 14.478 12.1222C17.4381 12.337 19.7114 14.733 20.1354 17.6639L20.2179 18.234C20.4622 19.9233 19.2861 21.5 17.5854 21.682C13.5937 22.1091 10.4184 22.1041 6.42084 21.6787C4.71739 21.4974 3.5374 19.9193 3.78212 18.2274L3.86327 17.6665Z" fill="#43454D"></path>
                                         <path opacity="0.4" d="M16.33 6.32099C16.33 8.7074 14.3911 10.642 11.9995 10.642C9.60778 10.642 7.66895 8.7074 7.66895 6.32099C7.66895 3.93457 9.60778 2 11.9995 2C14.3911 2 16.33 3.93457 16.33 6.32099Z" fill="#43454D"></path>
                                     </svg>
-                                    <input name='name' type="text" class='outline-none w-full lg:p-4 sm:p-3 p-2' placeholder='نام و نام خانوادگی'>
+                                    <input name='name' type="text" class='outline-none w-full lg:p-4 sm:p-3 p-2 max-sm:text-sm' placeholder='نام و نام خانوادگی'>
                                 </div>
                                 <div class='w-full lg:w-1/2  flex gap-1 items-center bg-(--bg-input) rounded-xl p-2'>
                                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                         <path d="M5.49994 4H18.4999C18.9644 4 19.1966 4 19.3915 4.02567C20.7377 4.2029 21.797 5.26222 21.9743 6.60842C21.9761 6.62229 21.9778 6.63634 21.9794 6.65065L12.4093 11.9189C12.2614 12.0002 12.1775 12.0461 12.1124 12.0772C12.0722 12.0964 12.0543 12.1024 12.0495 12.1038C12.0168 12.1104 11.9831 12.1104 11.9503 12.1038C11.9456 12.1024 11.9277 12.0964 11.8875 12.0772C11.8223 12.0461 11.7382 12.0001 11.5903 11.9188L2.02051 6.65066C2.02208 6.63634 2.02378 6.62229 2.0256 6.60842C2.20283 5.26222 3.26216 4.2029 4.60836 4.02567C4.80331 4 5.03552 4 5.49994 4Z" fill="#43454D"></path>
                                         <path opacity="0.4" d="M2 8.35157V15.2C2 16.8801 2 17.7202 2.32698 18.3619C2.6146 18.9264 3.07354 19.3854 3.63803 19.673C4.27976 20 5.11984 20 6.8 20H17.2C18.8802 20 19.7202 20 20.362 19.673C20.9265 19.3854 21.3854 18.9264 21.673 18.3619C22 17.7202 22 16.8801 22 15.2V8.35156L13.1328 13.2329L13.0767 13.2639C12.8533 13.3874 12.6145 13.5194 12.3496 13.5734C12.1189 13.6205 11.8811 13.6205 11.6504 13.5734C11.3855 13.5194 11.1467 13.3874 10.9233 13.2639L10.8675 13.2331L2 8.35157Z" fill="#43454D"></path>
                                     </svg>
-                                    <input name='email' type="text" class='outline-none w-full lg:p-4 sm:p-3 p-2' placeholder='پست الکترونیک'>
+                                    <input name='email' type="text" class='outline-none w-full lg:p-4 sm:p-3 p-2 max-sm:text-sm' placeholder='پست الکترونیک'>
                                 </div>
                             </div>
                             <div class='w-full lg:h-50 h-30 flex gap-1 items-center bg-(--bg-input) rounded-xl p-2'>
-                                <textarea name='description' class='resize-none outline-none w-full h-full p-4 overflow-y-auto text-top' placeholder=' متن دیدگاه خود را اینجا بنویسید '></textarea>
+                                <textarea name='description' class='resize-none outline-none w-full h-full sm:p-4 p-2 overflow-y-auto text-top max-sm:text-sm' placeholder=' متن دیدگاه خود را اینجا بنویسید '></textarea>
                             </div>
                         </div>
                         <div class='flex gap-1 items-center '>
@@ -1149,7 +1289,7 @@
                             <span class="text-(--discription)"> ذخیره نام، ایمیل و وبسایت من در مرورگر برای زمانی که دوباره دیدگاهی می‌نویسم. </span>
                         </div>
                         <button class='flex gap-2 items-center text-center justify-center lg:py-6 lg:px-4 md:py-5 md:px-3 py-3 px-2 bg-(--buttom) rounded-xl'>
-                            <svg width="25" height="25" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <svg class="size-6 max-sm:size-4" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M19.6097 1.90273C21.7686 1.1702 23.83 3.23166 23.0975 5.39052L17.6475 21.4526C17.2828 22.5273 16.2741 23.2503 15.1392 23.2503C14.161 23.2503 13.2625 22.7111 12.8021 21.848L10.566 17.6553L15.8631 9.48332C16.0098 9.25702 15.7437 8.99088 15.5174 9.13754L7.34453 14.434L3.15224 12.1981C2.28913 11.7378 1.75 10.8392 1.75 9.86103C1.75 8.72619 2.47295 7.71745 3.54761 7.3528L19.6097 1.90273Z" fill="white"></path>
                             </svg>
                             <span class='font-bold text-white'> ارسال دیدگاه </span>
@@ -1182,20 +1322,20 @@
 
             <div class='w-3/12  lg:block hidden '>
 
-                <div class='w-full mt-5 sticky top-5 flex flex-col gap-4 border border-(--border) cart_shadow p-2 bg-white rounded-xl '>
+                <div class='w-full mt-5 sticky top-27 flex flex-col gap-4 border border-(--border) cart_shadow p-1 bg-white rounded-xl '>
 
-                    <div class='flex flex-col text-center justify-center border-b-2 border-(--border) p-2 gap-1 text-sm items-center'>
-                        <div class='h-30'>
-                            <img class='w-30 h-ful rounded-lg object-cover' src="{{asset('storage/product_medias/'.$product->is_main)}}" alt="">
+                    <div class='flex flex-col text-center justify-center border-b-2 border-(--border) p-2 gap-4 text-sm items-center'>
+                        <div class='w-full h-30 flex justify-center items-center'>
+                            <img class='min-w-5/12 min-h-5/12 max-w-full max-h-full  rounded-lg ' src="{{asset('storage/product_medias/'.$product->is_main)}}" alt="">
                         </div>
-                        <span class='text-xs font-bold'> دریل پیچ گوشتی چکشی شارژی آاگ مدل BSB 12C2 </span>
+                        <span class='font-bold'> دریل پیچ گوشتی چکشی شارژی آاگ مدل BSB 12C2 </span>
                     </div>
 
                     <div class='flex flex-col gap-2 justify-between p-2 border-b-2 border-(--border) '>
 
-                        <div class='w-full flex gap-2 text-center items-center'>
-                            <span class='w-3/12 '>رنگ:</span>
-                            <div class='w-6/12 h-full flex gap-3 justify-between overflow-x-auto items-center p-2' style="scrollbar-width:none;">
+                        <div class='w-full flex gap-2 text-center justify-between items-center'>
+                            <span class='w-2/12 '>رنگ:</span>
+                            <div class='w-8/12 h-full flex gap-3 justify-between overflow-x-auto items-center p-2' style="scrollbar-width:none;">
                                 <div class='flex items-center justify-center cursor-pointer min-w-6 min-h-6 max-w-6 max-h-6 bg-blue-500/20 transition-shadow duration-300 rounded-full scale-110 shdow_color_product'>
                                     <div class='min-w-4 min-h-4 max-w-4 max-h-4 bg-blue-500 rounded-full' style='box-shadow:0px 0px 7px 0.1px  rgb(255,255,255,100)'></div>
                                 </div>
@@ -1216,7 +1356,7 @@
                                 </div>
 
                             </div>
-                            <span class='w-3/12 text-xs'> سیاه </span>
+                            <span class='w-2/12 text-xs'> سیاه </span>
                         </div>
                         <div class='w-full flex gap-2 '>
                             <div class='quantity_selectors hidden justify-between'>
@@ -1230,7 +1370,7 @@
                             </div>
 
                         </div>
-                        <div class='w-full flex gap-2 text-center items-center '>
+                        <!-- <div class='w-full flex gap-2 text-center items-center '>
                             <div class='w-2/5 text-(--metod-text) flex justify-end'>
                                 <span class='line-through font-bold text-lg'> {{number_format($product->discunt)}}  </span>
                                 <span class='-rotate-90 text-xs'> تومان </span>
@@ -1240,6 +1380,20 @@
                                 <span class='font-bold text-lg'> {{number_format($product->price)}} </span>
                                 <span class='-rotate-90 text-xs'> تومان </span>
                             </div>
+                        </div> -->
+
+                        <div class='w-full flex flex-col gap-2 text-center xl:justify-between justify-end items-center '>
+                            <div class='w-full text-(--metod-text) flex gap-2 justify-end items-center'>
+                                <span class='line-through font-bold xl:text-lg'> {{number_format($product->discunt)}} </span>
+                                <span class='text-xs'> تومان </span>
+                            </div>
+                            <div class="w-full flex justify-start">
+                                <span class='xl:p-2 p-1.5 bg-(--primary_color) text-center rounded-xl text-white xl:text-sm text-xs font-bold'> <span> {{$product->percent}}% </span> </span>
+                            </div>
+                            <div class='w-full text-(--primary_color) flex gap-2 justify-end items-center'>
+                                <span class='font-bold xl:text-lg'> {{number_format($product->price)}} </span>
+                                <span class='text-xs'> تومان </span>
+                            </div>
                         </div>
 
                     </div>
@@ -1247,9 +1401,9 @@
                     <div class='w-full flex flex-col justify-between p-2 gap-2 bg-green-100'>
                         <div class='w-full flex' id="entry_cart_parent_div">
                             @if($flag)
-                                <div class='entry_cart_submit cursor-pointer w-full h-10 bg-yellow-200 hover:yellow-300 disable flex text-center items-center justify-center rounded-lg text-black text-[10px] px-2 py-3  hover:bg-(--buttom) hover:font-bold transition-all duration-200'> افزوده شده </div>
+                            <div class='entry_cart_submit cursor-pointer w-full h-10 bg-yellow-200 hover:yellow-300 disable flex text-center items-center justify-center rounded-lg text-black text-[10px] px-2 py-3  hover:bg-(--buttom) hover:font-bold transition-all duration-200'> افزوده شده </div>
                             @else
-                                <div onclick='entry_cart(this)' class='entry_cart_submit cursor-pointer w-full h-10 bg-(--primary_color) flex text-center items-center justify-center rounded-lg text-white text-[10px] px-2 py-3  hover:bg-(--buttom) hover:font-bold transition-all duration-200'>افزودن به سبد خرید</div>
+                            <div onclick='entry_cart(this)' class='entry_cart_submit cursor-pointer w-full h-10 bg-(--primary_color) flex text-center items-center justify-center rounded-lg text-white text-[10px] px-2 py-3  hover:bg-(--buttom) hover:font-bold transition-all duration-200'>افزودن به سبد خرید</div>
                             @endif
                         </div>
                         <div class='w-full py-2 px-4 rounded-lg text-(--buttom) bg-[#74f7b5] flex text-[10px] items-center text-center justify-center'><span> آخرین بروزرسانی قیمت : ۰۱ بهمن ۱۴۰۴ </span></div>
@@ -1263,252 +1417,315 @@
 
 
 
-        </div>
-        </div>
-
-        <div class=" bg-white w-full z-1">
-            <div class='relative w-11/12 mx-auto md:h-120 sm:h-105 bg-(--primary_color) rounded-xl'>
-                <!-- <img class='md:block hidden w-full h-120' src="{{asset('assets/img/newest-products-bg.png')}}" alt=""> -->
-                <!-- <img class='block md:hidden w-full sm:h-105 rounded-2xl' src="{{asset('assets/img/newest-products-bg-mobile2.png')}}" alt=""> -->
-                <div class='hidden md:flex absolute text-md font-bold items-center text-center text-(--primary_color)  bottom-5 left-5 z-2'>
-                    <a href="" class='text-base ml-4'> مشاهده همه </a>
-                    <div class='w-3 h-[3px] rounded-xl bg-(--primary_color) ml-1'></div>
-                    <svg class='size-6 fill-(--primary_color)' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!-- -->
+    </div>
+    </div>
+    <div class=" w-full flex justify-center items-center" id="number_responsive">
+        <div class='relative w-11/12 mx-auto py-5 px-8 bg-(--primary_color) rounded-xl flex flex-col gap-4 items-center'>
+            <!-- <img class='md:block hidden w-full h-120' src="{{asset('assets/img/newest-products-bg.png')}}" alt=""> -->
+            <!-- <img class='block md:hidden w-full sm:h-105 rounded-2xl' src="{{asset('assets/img/newest-products-bg-mobile2.png')}}" alt=""> -->
+            <div class="w-full flex justify-between items-center">
+                <div class='flex font-bold items-center text-center text-(--title) sm:gap-3 gap-1.5'>
+                    <div class='shadows h-8 w-1 bg-(--buttom) rounded-xl '></div>
+                    <p class='lg:text-xl sm:text-lg text-sm ml-4'> کالا های مشابه   </p>
+                </div>
+                <div class='flex font-bold items-center text-center text-(--primary_color)'>
+                    <a href="" class='max-sm:text-[10px] sm:ml-4 ml-2 text-(--title)'> مشاهده همه </a>
+                    <div class='sm:w-3 w-2 h-[3px] rounded-xl bg-(--title) sm:ml-1 ml-0.5'></div>
+                    <svg class='sm:size-6 size-4 fill-(--title)' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!-- -->
                         <path d="M7.4 273.4C2.7 268.8 0 262.6 0 256s2.7-12.8 7.4-17.4l176-168c9.6-9.2 24.8-8.8 33.9 .8s8.8 24.8-.8 33.9L83.9 232 424 232c13.3 0 24 10.7 24 24s-10.7 24-24 24L83.9 280 216.6 406.6c9.6 9.2 9.9 24.3 .8 33.9s-24.3 9.9-33.9 .8l-176-168z" />
                     </svg>
                 </div>
-                <img class='md:block hidden bottom-0 left-0 absolute w-60 z-1' src="{{asset('assets/img/newest-products-bottom-edge-bg.png')}}" alt="">
-                <div class='sm:absolute w-full mx-auto md:top-22 top-5'>
+            </div>
 
-                    <div class='max-w-11/12 mx-auto flex gap-6 overflow-x-scroll p-2' style="scrollbar-width:none;">
-
-                        <div class='w-full sm:size-85 min-w-full md:min-w-57 md:h-75 border-(--border) border rounded-xl flex flex-col gap-4 p-2 bg-white duration-200 transition-all pro_shadow'>
-                            <img class='h-1/2' src="{{asset('assets/img/product-image4.png')}}" alt="">
-                            <div class='h-1/2 flex flex-col justify-between'>
-                                <div class='w-full line-clamp-2 text-xs md:text-sm font-bold'>
-                                    <p> دریل پیچ گوشتی چکشی شارژی آاگ مدل BSB 12C3 </p>
+            <!-- <img class=' bottom-0 left-0 absolute w-60 z-1' src="{{asset('assets/img/logo.png')}}" alt=""> -->
+            <!-- <div class='w-full mx-auto'> -->
+                <div class="w-full max-w-full relative flex items-center">
+                    <div class="w-full max-w-full overflow-x-hidden  flex">
+                        <div class='w-full max-w-full mx-auto flex gap-4 p-2  transition_normal slaider_item_pro_similarity' style="scrollbar-width:none;">
+        
+                            <div class="lg:min-w-24/100 sm:min-w-32/100 min-w-49/100 max-[500px]:min-w-100/100 lg:max-w-24/100 sm:max-w-32/100 max-w-49/100 max-[500px]:max-w-100/100 bg-white flex flex-col gap-2 justify-start items-center rounded-xl p-2 slaider_item_pro_similarity_children">
+                                <div class="w-full flex justify-center items-center relative py-7 h-50 p-2">
+                                    <a href="" class="w-full h-full flex justify-center items-center">
+                                        <img src="{{asset('assets/img/header/img_heder.webp')}}" alt="" class="min-w-8/12 min-h-8/12 max-w-full max-h-full">
+                                    </a>
+        
                                 </div>
-                                <div class='w-full mx-auto h-[1px] bg-(--metod-text) md:mb-0 -mb-8'></div>
-                                <div class='w-full flex justify-between py-2'>
-                                    <div class='flex gap-1 justify-center items-center '>
-                                        <div class='border border-(--border) rounded-md bg-white p-[6px]'>
-                                            <svg class='size-5 fill-none' viewBox="0 0 23 23" xmlns="http://www.w3.org/2000/svg">
-                                                <path d="M8.96393 5.91744H13.6154M7.30271 2.19629H15.2766C16.928 2.19629 18.2668 3.46251 18.2668 5.02447V20.5659C18.2668 20.7626 18.0272 20.8727 17.8637 20.7512L11.5976 16.0946C11.4168 15.9603 11.1625 15.9603 10.9817 16.0946L4.71563 20.7512C4.55214 20.8727 4.3125 20.7626 4.3125 20.5659V5.02447C4.3125 3.46251 5.65126 2.19629 7.30271 2.19629Z" stroke="var(--secondary-text)" stroke-width="1.39543" stroke-linecap="round"></path>
-                                            </svg>
-                                        </div>
-                                        <div class='border border-(--border) rounded-md bg-(--primary_color)/30 p-[6px]'>
-                                            <svg class='size-5 fill-none' viewBox="0 0 23 23" xmlns="http://www.w3.org/2000/svg">
-                                                <path d="M4.57951 5.22025H19.4076C20.2913 5.22025 20.9593 6.00873 20.8012 6.8653L19.6392 13.1618C19.3942 14.4888 18.221 15.4534 16.8519 15.4534H8.8324C7.46329 15.4534 6.2901 14.4888 6.04518 13.1618L4.57951 5.22025ZM4.57951 5.22025L4.12254 2.96932C4.11371 2.92583 4.07496 2.89453 4.02994 2.89453H2.21875M9.30103 8.47625H12.6061M10.2453 18.7094C10.2453 19.4801 9.61117 20.1048 8.82888 20.1048C8.04659 20.1048 7.41242 19.4801 7.41242 18.7094C7.41242 17.9387 8.04659 17.314 8.82888 17.314C9.61117 17.314 10.2453 17.9387 10.2453 18.7094ZM17.7998 18.7094C17.7998 19.4801 17.1656 20.1048 16.3833 20.1048C15.601 20.1048 14.9669 19.4801 14.9669 18.7094C14.9669 17.9387 15.601 17.314 16.3833 17.314C17.1656 17.314 17.7998 17.9387 17.7998 18.7094Z" stroke="var(--primary_color)" stroke-width="1.39543" stroke-linecap="round"></path>
-                                            </svg>
+                                <div class="w-full flex flex-col gap-1.5 lg:gap-2.5 justify-start items-start">
+                                    <a href="https://tababook.ir/product/show/4" class="lg:text-lg text-sm font-bold max-w-full truncate text-(--primary-text-color)">کتاب مردان مریخی زنان ونوسی</a>
+                                    <span class="text-[#ADB4B2] text-sm line-clamp-2 text-(--secondary-text)">کتاب مردان مریخی و زنان ونوسی نوشته‌ی دکتر ب مردان مریخی و زنان ونوسی نوشته‌ی دکتر ب مردان مریخی و زنان ونوسی نوشته‌ی دکاست.</span>
+        
+                                    <div class="flex items-center gap-3">
+                                        <div class="flex items-center justify-between gap-2">
+                                            <strong class="text-[15px] in-fa">90000</strong>
+                                            <span class="text-[10px] text-[#71717a]">تومان
+                                            </span>
                                         </div>
                                     </div>
-                                    <div class='flex flex-col gap-1 '>
-                                        <div class='relative h-1/2 flex justify-center items-center'>
-                                            <p class=' text-(--secondary-text)'> 1.000.000 </p>
-                                            <div class='absolute left-auto right-auto top-auto bottom-auto w-10/12 mx-auto h-[1px] bg-(--secondary-text)'></div>
-                                        </div>
-                                        <div class='h-1/2 flex text-(--primary_color)'>
-                                            <p class=''> 950.000 </p>
-                                            <p class='text-xs rotate-260'> تومان </p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-
-                        <div class='w-full sm:size-85 min-w-full md:min-w-57 md:h-75 border-(--border) border rounded-xl flex flex-col gap-4 p-2 bg-white duration-200 transition-all pro_shadow'>
-                            <img src="{{asset('assets/img/product-image4.png')}}" alt="">
-                            <div class='h-1/2 flex flex-col justify-between'>
-                                <div class='w-full line-clamp-2 text-xs md:text-sm font-bold'>
-                                    <p> دریل پیچ گوشتی چکشی شارژی آاگ مدل BSB 12C3 </p>
-                                </div>
-                                <div class='w-full mx-auto h-[1px] bg-(--metod-text) md:mb-0 -mb-8'></div>
-                                <div class='w-full flex justify-between py-2'>
-                                    <div class='flex gap-1 justify-center items-center '>
-                                        <div class='border border-(--border) rounded-md bg-white p-[6px]'>
-                                            <svg class='size-5 fill-none' viewBox="0 0 23 23" xmlns="http://www.w3.org/2000/svg">
-                                                <path d="M8.96393 5.91744H13.6154M7.30271 2.19629H15.2766C16.928 2.19629 18.2668 3.46251 18.2668 5.02447V20.5659C18.2668 20.7626 18.0272 20.8727 17.8637 20.7512L11.5976 16.0946C11.4168 15.9603 11.1625 15.9603 10.9817 16.0946L4.71563 20.7512C4.55214 20.8727 4.3125 20.7626 4.3125 20.5659V5.02447C4.3125 3.46251 5.65126 2.19629 7.30271 2.19629Z" stroke="var(--secondary-text)" stroke-width="1.39543" stroke-linecap="round"></path>
-                                            </svg>
-                                        </div>
-                                        <div class='border border-(--border) rounded-md bg-(--primary_color)/30 p-[6px]'>
-                                            <svg class='size-5 fill-none' viewBox="0 0 23 23" xmlns="http://www.w3.org/2000/svg">
-                                                <path d="M4.57951 5.22025H19.4076C20.2913 5.22025 20.9593 6.00873 20.8012 6.8653L19.6392 13.1618C19.3942 14.4888 18.221 15.4534 16.8519 15.4534H8.8324C7.46329 15.4534 6.2901 14.4888 6.04518 13.1618L4.57951 5.22025ZM4.57951 5.22025L4.12254 2.96932C4.11371 2.92583 4.07496 2.89453 4.02994 2.89453H2.21875M9.30103 8.47625H12.6061M10.2453 18.7094C10.2453 19.4801 9.61117 20.1048 8.82888 20.1048C8.04659 20.1048 7.41242 19.4801 7.41242 18.7094C7.41242 17.9387 8.04659 17.314 8.82888 17.314C9.61117 17.314 10.2453 17.9387 10.2453 18.7094ZM17.7998 18.7094C17.7998 19.4801 17.1656 20.1048 16.3833 20.1048C15.601 20.1048 14.9669 19.4801 14.9669 18.7094C14.9669 17.9387 15.601 17.314 16.3833 17.314C17.1656 17.314 17.7998 17.9387 17.7998 18.7094Z" stroke="var(--primary_color)" stroke-width="1.39543" stroke-linecap="round"></path>
-                                            </svg>
-                                        </div>
-                                    </div>
-                                    <div class='flex flex-col gap-1 '>
-                                        <div class='relative h-1/2 flex justify-center items-center'>
-                                            <p class=' text-(--secondary-text)'> 1.000.000 </p>
-                                            <div class='absolute left-auto right-auto top-auto bottom-auto w-10/12 mx-auto h-[1px] bg-(--secondary-text)'></div>
-                                        </div>
-                                        <div class='h-1/2 flex text-(--primary_color)'>
-                                            <p class=''> 950.000 </p>
-                                            <p class='text-xs rotate-260'> تومان </p>
-                                        </div>
+                                    <div class="w-full h-12 addToCartBtns" data-product-id="4">
+        
+                                        <button onclick="addToCart(this)" class="w-full px-4 h-full bg-[#b7ddc9] hover:bg-[#95ADA2] flex gap-2 justify-center items-center rounded-xl cursor-pointer transition-all duration-300 group">
+                                            <div>
+                                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" class="lg:size-4 size-3 fill-(--primary-text-color) transition-all duration-300 group-hover:fill-white">
+                                                    <path d="M16 0H0V32H16 67.2l77.2 339.5 2.8 12.5H160 496h16V352H496 172.8l-14.5-64H496L566 64l10-32H542.5 100L95.6 12.5 92.8 0H80 16zm91.3 64H532.5l-60 192H151L107.3 64zM184 432a24 24 0 1 1 0 48 24 24 0 1 1 0-48zm0 80a56 56 0 1 0 0-112 56 56 0 1 0 0 112zm248-56a24 24 0 1 1 48 0 24 24 0 1 1 -48 0zm80 0a56 56 0 1 0 -112 0 56 56 0 1 0 112 0z">
+                                                    </path>
+                                                </svg>
+                                            </div>
+                                            <span class="lg:text-sm text-[10px] text-(--primary-text-color) font-bold transition-all duration-300 group-hover:text-white">افزودن به سبد خرید</span>
+                                        </button>
+        
                                     </div>
                                 </div>
                             </div>
-                        </div>
-
-
-
-                        <div class='w-full sm:size-85 min-w-full md:min-w-57 md:h-75 border-(--border) border rounded-xl flex flex-col gap-4 p-2 bg-white duration-200 transition-all pro_shadow'>
-                            <img src="{{asset('assets/img/product-image4.png')}}" alt="">
-                            <div class='h-1/2 flex flex-col justify-between'>
-                                <div class=' w-full line-clamp-2 text-sm font-bold'>
-                                    <p> دریل پیچ گوشتی چکشی شارژی آاگ مدل BSB 12C3 </p>
+                            <div class="lg:min-w-24/100 sm:min-w-32/100 min-w-49/100 max-[500px]:min-w-100/100 lg:max-w-24/100 sm:max-w-32/100 max-w-49/100 max-[500px]:max-w-100/100 bg-white flex flex-col gap-2 justify-start items-center rounded-xl p-2 slaider_item_pro_similarity_children">
+                                <div class="w-full flex justify-center items-center relative py-7 h-50 p-2">
+                                    <a href="" class="w-full h-full flex justify-center items-center">
+                                        <img src="{{asset('assets/img/header/img_heder.webp')}}" alt="" class="min-w-8/12 min-h-8/12 max-w-full max-h-full">
+                                    </a>
+        
                                 </div>
-                                <div class='w-full mx-auto h-[1px] bg-(--metod-text) '></div>
-                                <div class='w-full flex justify-between py-2'>
-                                    <div class='flex gap-1 justify-center items-center '>
-                                        <div class='border border-(--border) rounded-md bg-white p-[6px]'>
-                                            <svg class='size-5 fill-none' viewBox="0 0 23 23" xmlns="http://www.w3.org/2000/svg">
-                                                <path d="M8.96393 5.91744H13.6154M7.30271 2.19629H15.2766C16.928 2.19629 18.2668 3.46251 18.2668 5.02447V20.5659C18.2668 20.7626 18.0272 20.8727 17.8637 20.7512L11.5976 16.0946C11.4168 15.9603 11.1625 15.9603 10.9817 16.0946L4.71563 20.7512C4.55214 20.8727 4.3125 20.7626 4.3125 20.5659V5.02447C4.3125 3.46251 5.65126 2.19629 7.30271 2.19629Z" stroke="var(--secondary-text)" stroke-width="1.39543" stroke-linecap="round"></path>
-                                            </svg>
-                                        </div>
-                                        <div class='border border-(--border) rounded-md bg-(--primary_color)/30 p-[6px]'>
-                                            <svg class='size-5 fill-none' viewBox="0 0 23 23" xmlns="http://www.w3.org/2000/svg">
-                                                <path d="M4.57951 5.22025H19.4076C20.2913 5.22025 20.9593 6.00873 20.8012 6.8653L19.6392 13.1618C19.3942 14.4888 18.221 15.4534 16.8519 15.4534H8.8324C7.46329 15.4534 6.2901 14.4888 6.04518 13.1618L4.57951 5.22025ZM4.57951 5.22025L4.12254 2.96932C4.11371 2.92583 4.07496 2.89453 4.02994 2.89453H2.21875M9.30103 8.47625H12.6061M10.2453 18.7094C10.2453 19.4801 9.61117 20.1048 8.82888 20.1048C8.04659 20.1048 7.41242 19.4801 7.41242 18.7094C7.41242 17.9387 8.04659 17.314 8.82888 17.314C9.61117 17.314 10.2453 17.9387 10.2453 18.7094ZM17.7998 18.7094C17.7998 19.4801 17.1656 20.1048 16.3833 20.1048C15.601 20.1048 14.9669 19.4801 14.9669 18.7094C14.9669 17.9387 15.601 17.314 16.3833 17.314C17.1656 17.314 17.7998 17.9387 17.7998 18.7094Z" stroke="var(--primary_color)" stroke-width="1.39543" stroke-linecap="round"></path>
-                                            </svg>
+                                <div class="w-full flex flex-col gap-1.5 lg:gap-2.5 justify-start items-start">
+                                    <a href="https://tababook.ir/product/show/4" class="lg:text-lg text-sm font-bold max-w-full truncate text-(--primary-text-color)">کتاب مردان مریخی زنان ونوسی</a>
+                                    <span class="text-[#ADB4B2] text-sm line-clamp-2 text-(--secondary-text)">کتاب مردان مریخی و زنان ونوسی نوشته‌ی دکتر ب مردان مریخی و زنان ونوسی نوشته‌ی دکتر ب مردان مریخی و زنان ونوسی نوشته‌ی دکاست.</span>
+        
+                                    <div class="flex items-center gap-3">
+                                        <div class="flex items-center justify-between gap-2">
+                                            <strong class="text-[15px] in-fa">90000</strong>
+                                            <span class="text-[10px] text-[#71717a]">تومان
+                                            </span>
                                         </div>
                                     </div>
-                                    <div class='flex flex-col gap-1 '>
-                                        <div class='relative h-1/2 flex justify-center items-center'>
-                                            <p class=' text-(--secondary-text)'> 1.000.000 </p>
-                                            <div class='absolute left-auto right-auto top-auto bottom-auto w-10/12 mx-auto h-[1px] bg-(--secondary-text)'></div>
-                                        </div>
-                                        <div class='h-1/2 flex text-(--primary_color)'>
-                                            <p class=''> 950.000 </p>
-                                            <p class='text-xs rotate-260'> تومان </p>
-                                        </div>
+                                    <div class="w-full h-12 addToCartBtns" data-product-id="4">
+        
+                                        <button class="w-full px-4 h-full bg-[#ea9ca1] hover:bg-[#ed8a9c] flex gap-2 justify-center items-center rounded-xl cursor-no-drop transition-all duration-300 group">
+                                            <span class="lg:text-sm text-[10px] text-(--primary-text-color) font-bold transition-all duration-300 group-hover:text-white">عدم موجودی</span>
+                                        </button>
+        
                                     </div>
                                 </div>
                             </div>
-                        </div>
-
-
-
-                        <div class='w-full sm:size-85 min-w-full md:min-w-57 md:h-75 border-(--border) border rounded-xl flex flex-col gap-4 p-2 bg-white duration-200 transition-all pro_shadow'>
-                            <img src="{{asset('assets/img/product-image4.png')}}" alt="">
-                            <div class='h-1/2 flex flex-col justify-between'>
-                                <div class=' w-full line-clamp-2 text-sm font-bold'>
-                                    <p> دریل پیچ گوشتی چکشی شارژی آاگ مدل BSB 12C3 </p>
+                            <div class="lg:min-w-24/100 sm:min-w-32/100 min-w-49/100 max-[500px]:min-w-100/100 lg:max-w-24/100 sm:max-w-32/100 max-w-49/100 max-[500px]:max-w-100/100 bg-white flex flex-col gap-2 justify-start items-center rounded-xl p-2 slaider_item_pro_similarity_children">
+                                <div class="w-full flex justify-center items-center relative py-7 h-50 p-2">
+                                    <a href="" class="w-full h-full flex justify-center items-center">
+                                        <img src="{{asset('assets/img/header/img_heder.webp')}}" alt="" class="min-w-8/12 min-h-8/12 max-w-full max-h-full">
+                                    </a>
+        
                                 </div>
-                                <div class='w-full mx-auto h-[1px] bg-(--metod-text) '></div>
-                                <div class='w-full flex justify-between py-2'>
-                                    <div class='flex gap-1 justify-center items-center '>
-                                        <div class='border border-(--border) rounded-md bg-white p-[6px]'>
-                                            <svg class='size-5 fill-none' viewBox="0 0 23 23" xmlns="http://www.w3.org/2000/svg">
-                                                <path d="M8.96393 5.91744H13.6154M7.30271 2.19629H15.2766C16.928 2.19629 18.2668 3.46251 18.2668 5.02447V20.5659C18.2668 20.7626 18.0272 20.8727 17.8637 20.7512L11.5976 16.0946C11.4168 15.9603 11.1625 15.9603 10.9817 16.0946L4.71563 20.7512C4.55214 20.8727 4.3125 20.7626 4.3125 20.5659V5.02447C4.3125 3.46251 5.65126 2.19629 7.30271 2.19629Z" stroke="var(--secondary-text)" stroke-width="1.39543" stroke-linecap="round"></path>
-                                            </svg>
-                                        </div>
-                                        <div class='border border-(--border) rounded-md bg-(--primary_color)/30 p-[6px]'>
-                                            <svg class='size-5 fill-none' viewBox="0 0 23 23" xmlns="http://www.w3.org/2000/svg">
-                                                <path d="M4.57951 5.22025H19.4076C20.2913 5.22025 20.9593 6.00873 20.8012 6.8653L19.6392 13.1618C19.3942 14.4888 18.221 15.4534 16.8519 15.4534H8.8324C7.46329 15.4534 6.2901 14.4888 6.04518 13.1618L4.57951 5.22025ZM4.57951 5.22025L4.12254 2.96932C4.11371 2.92583 4.07496 2.89453 4.02994 2.89453H2.21875M9.30103 8.47625H12.6061M10.2453 18.7094C10.2453 19.4801 9.61117 20.1048 8.82888 20.1048C8.04659 20.1048 7.41242 19.4801 7.41242 18.7094C7.41242 17.9387 8.04659 17.314 8.82888 17.314C9.61117 17.314 10.2453 17.9387 10.2453 18.7094ZM17.7998 18.7094C17.7998 19.4801 17.1656 20.1048 16.3833 20.1048C15.601 20.1048 14.9669 19.4801 14.9669 18.7094C14.9669 17.9387 15.601 17.314 16.3833 17.314C17.1656 17.314 17.7998 17.9387 17.7998 18.7094Z" stroke="var(--primary_color)" stroke-width="1.39543" stroke-linecap="round"></path>
-                                            </svg>
+                                <div class="w-full flex flex-col gap-1.5 lg:gap-2.5 justify-start items-start">
+                                    <a href="https://tababook.ir/product/show/4" class="lg:text-lg text-sm font-bold max-w-full truncate text-(--primary-text-color)">کتاب مردان مریخی زنان ونوسی</a>
+                                    <span class="text-[#ADB4B2] text-sm line-clamp-2 text-(--secondary-text)">کتاب مردان مریخی و زنان ونوسی نوشته‌ی دکتر ب مردان مریخی و زنان ونوسی نوشته‌ی دکتر ب مردان مریخی و زنان ونوسی نوشته‌ی دکاست.</span>
+        
+                                    <div class="flex items-center gap-3">
+                                        <div class="flex items-center justify-between gap-2">
+                                            <strong class="text-[15px] in-fa">90000</strong>
+                                            <span class="text-[10px] text-[#71717a]">تومان
+                                            </span>
                                         </div>
                                     </div>
-                                    <div class='flex flex-col gap-1 '>
-                                        <div class='relative h-1/2 flex justify-center items-center'>
-                                            <p class=' text-(--secondary-text)'> 1.000.000 </p>
-                                            <div class='absolute left-auto right-auto top-auto bottom-auto w-10/12 mx-auto h-[1px] bg-(--secondary-text)'></div>
-                                        </div>
-                                        <div class='h-1/2 flex text-(--primary_color)'>
-                                            <p class=''> 950.000 </p>
-                                            <p class='text-xs rotate-260'> تومان </p>
-                                        </div>
+                                    <div class="w-full h-12 addToCartBtns" data-product-id="4">
+        
+                                        <button onclick="addToCart(this)" class="w-full px-4 h-full bg-[#b7ddc9] hover:bg-[#95ADA2] flex gap-2 justify-center items-center rounded-xl cursor-pointer transition-all duration-300 group">
+                                            <div>
+                                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" class="lg:size-4 size-3 fill-(--primary-text-color) transition-all duration-300 group-hover:fill-white">
+                                                    <path d="M16 0H0V32H16 67.2l77.2 339.5 2.8 12.5H160 496h16V352H496 172.8l-14.5-64H496L566 64l10-32H542.5 100L95.6 12.5 92.8 0H80 16zm91.3 64H532.5l-60 192H151L107.3 64zM184 432a24 24 0 1 1 0 48 24 24 0 1 1 0-48zm0 80a56 56 0 1 0 0-112 56 56 0 1 0 0 112zm248-56a24 24 0 1 1 48 0 24 24 0 1 1 -48 0zm80 0a56 56 0 1 0 -112 0 56 56 0 1 0 112 0z">
+                                                    </path>
+                                                </svg>
+                                            </div>
+                                            <span class="lg:text-sm text-[10px] text-(--primary-text-color) font-bold transition-all duration-300 group-hover:text-white">افزودن به سبد خرید</span>
+                                        </button>
+        
                                     </div>
                                 </div>
                             </div>
-                        </div>
-
-
-
-                        <div class='w-full sm:size-85 min-w-full md:min-w-57 md:h-75 border-(--border) border rounded-xl flex flex-col gap-4 p-2 bg-white duration-200 transition-all pro_shadow'>
-                            <img src="{{asset('assets/img/product-image4.png')}}" alt="">
-                            <div class='h-1/2 flex flex-col justify-between'>
-                                <div class=' w-full line-clamp-2 text-sm font-bold'>
-                                    <p> دریل پیچ گوشتی چکشی شارژی آاگ مدل BSB 12C3 </p>
+                            <div class="lg:min-w-24/100 sm:min-w-32/100 min-w-49/100 max-[500px]:min-w-100/100 lg:max-w-24/100 sm:max-w-32/100 max-w-49/100 max-[500px]:max-w-100/100 bg-white flex flex-col gap-2 justify-start items-center rounded-xl p-2 slaider_item_pro_similarity_children">
+                                <div class="w-full flex justify-center items-center relative py-7 h-50 p-2">
+                                    <a href="" class="w-full h-full flex justify-center items-center">
+                                        <img src="{{asset('assets/img/header/img_heder.webp')}}" alt="" class="min-w-8/12 min-h-8/12 max-w-full max-h-full">
+                                    </a>
+        
                                 </div>
-                                <div class='w-full mx-auto h-[1px] bg-(--metod-text) '></div>
-                                <div class='w-full flex justify-between py-2'>
-                                    <div class='flex gap-1 justify-center items-center '>
-                                        <div class='border border-(--border) rounded-md bg-white p-[6px]'>
-                                            <svg class='size-5 fill-none' viewBox="0 0 23 23" xmlns="http://www.w3.org/2000/svg">
-                                                <path d="M8.96393 5.91744H13.6154M7.30271 2.19629H15.2766C16.928 2.19629 18.2668 3.46251 18.2668 5.02447V20.5659C18.2668 20.7626 18.0272 20.8727 17.8637 20.7512L11.5976 16.0946C11.4168 15.9603 11.1625 15.9603 10.9817 16.0946L4.71563 20.7512C4.55214 20.8727 4.3125 20.7626 4.3125 20.5659V5.02447C4.3125 3.46251 5.65126 2.19629 7.30271 2.19629Z" stroke="var(--secondary-text)" stroke-width="1.39543" stroke-linecap="round"></path>
-                                            </svg>
-                                        </div>
-                                        <div class='border border-(--border) rounded-md bg-(--primary_color)/30 p-[6px]'>
-                                            <svg class='size-5 fill-none' viewBox="0 0 23 23" xmlns="http://www.w3.org/2000/svg">
-                                                <path d="M4.57951 5.22025H19.4076C20.2913 5.22025 20.9593 6.00873 20.8012 6.8653L19.6392 13.1618C19.3942 14.4888 18.221 15.4534 16.8519 15.4534H8.8324C7.46329 15.4534 6.2901 14.4888 6.04518 13.1618L4.57951 5.22025ZM4.57951 5.22025L4.12254 2.96932C4.11371 2.92583 4.07496 2.89453 4.02994 2.89453H2.21875M9.30103 8.47625H12.6061M10.2453 18.7094C10.2453 19.4801 9.61117 20.1048 8.82888 20.1048C8.04659 20.1048 7.41242 19.4801 7.41242 18.7094C7.41242 17.9387 8.04659 17.314 8.82888 17.314C9.61117 17.314 10.2453 17.9387 10.2453 18.7094ZM17.7998 18.7094C17.7998 19.4801 17.1656 20.1048 16.3833 20.1048C15.601 20.1048 14.9669 19.4801 14.9669 18.7094C14.9669 17.9387 15.601 17.314 16.3833 17.314C17.1656 17.314 17.7998 17.9387 17.7998 18.7094Z" stroke="var(--primary_color)" stroke-width="1.39543" stroke-linecap="round"></path>
-                                            </svg>
+                                <div class="w-full flex flex-col gap-1.5 lg:gap-2.5 justify-start items-start">
+                                    <a href="https://tababook.ir/product/show/4" class="lg:text-lg text-sm font-bold max-w-full truncate text-(--primary-text-color)">کتاب مردان مریخی زنان ونوسی</a>
+                                    <span class="text-[#ADB4B2] text-sm line-clamp-2 text-(--secondary-text)">کتاب مردان مریخی و زنان ونوسی نوشته‌ی دکتر ب مردان مریخی و زنان ونوسی نوشته‌ی دکتر ب مردان مریخی و زنان ونوسی نوشته‌ی دکاست.</span>
+        
+                                    <div class="flex items-center gap-3">
+                                        <div class="flex items-center justify-between gap-2">
+                                            <strong class="text-[15px] in-fa">90000</strong>
+                                            <span class="text-[10px] text-[#71717a]">تومان
+                                            </span>
                                         </div>
                                     </div>
-                                    <div class='flex flex-col gap-1 '>
-                                        <div class='relative h-1/2 flex justify-center items-center'>
-                                            <p class=' text-(--secondary-text)'> 1.000.000 </p>
-                                            <div class='absolute left-auto right-auto top-auto bottom-auto w-10/12 mx-auto h-[1px] bg-(--secondary-text)'></div>
-                                        </div>
-                                        <div class='h-1/2 flex text-(--primary_color)'>
-                                            <p class=''> 950.000 </p>
-                                            <p class='text-xs rotate-260'> تومان </p>
-                                        </div>
+                                    <div class="w-full h-12 addToCartBtns" data-product-id="4">
+        
+                                        <button onclick="addToCart(this)" class="w-full px-4 h-full bg-[#b7ddc9] hover:bg-[#95ADA2] flex gap-2 justify-center items-center rounded-xl cursor-pointer transition-all duration-300 group">
+                                            <div>
+                                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" class="lg:size-4 size-3 fill-(--primary-text-color) transition-all duration-300 group-hover:fill-white">
+                                                    <path d="M16 0H0V32H16 67.2l77.2 339.5 2.8 12.5H160 496h16V352H496 172.8l-14.5-64H496L566 64l10-32H542.5 100L95.6 12.5 92.8 0H80 16zm91.3 64H532.5l-60 192H151L107.3 64zM184 432a24 24 0 1 1 0 48 24 24 0 1 1 0-48zm0 80a56 56 0 1 0 0-112 56 56 0 1 0 0 112zm248-56a24 24 0 1 1 48 0 24 24 0 1 1 -48 0zm80 0a56 56 0 1 0 -112 0 56 56 0 1 0 112 0z">
+                                                    </path>
+                                                </svg>
+                                            </div>
+                                            <span class="lg:text-sm text-[10px] text-(--primary-text-color) font-bold transition-all duration-300 group-hover:text-white">افزودن به سبد خرید</span>
+                                        </button>
+        
                                     </div>
                                 </div>
                             </div>
+                            <div class="lg:min-w-24/100 sm:min-w-32/100 min-w-49/100 max-[500px]:min-w-100/100 lg:max-w-24/100 sm:max-w-32/100 max-w-49/100 max-[500px]:max-w-100/100 bg-white flex flex-col gap-2 justify-start items-center rounded-xl p-2 slaider_item_pro_similarity_children">
+                                <div class="w-full flex justify-center items-center relative py-7 h-50 p-2">
+                                    <a href="" class="w-full h-full flex justify-center items-center">
+                                        <img src="{{asset('assets/img/header/img_heder.webp')}}" alt="" class="min-w-8/12 min-h-8/12 max-w-full max-h-full">
+                                    </a>
+        
+                                </div>
+                                <div class="w-full flex flex-col gap-1.5 lg:gap-2.5 justify-start items-start">
+                                    <a href="https://tababook.ir/product/show/4" class="lg:text-lg text-sm font-bold max-w-full truncate text-(--primary-text-color)">کتاب مردان مریخی زنان ونوسی</a>
+                                    <span class="text-[#ADB4B2] text-sm line-clamp-2 text-(--secondary-text)">کتاب مردان مریخی و زنان ونوسی نوشته‌ی دکتر ب مردان مریخی و زنان ونوسی نوشته‌ی دکتر ب مردان مریخی و زنان ونوسی نوشته‌ی دکاست.</span>
+        
+                                    <div class="flex items-center gap-3">
+                                        <div class="flex items-center justify-between gap-2">
+                                            <strong class="text-[15px] in-fa">90000</strong>
+                                            <span class="text-[10px] text-[#71717a]">تومان
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="w-full h-12 addToCartBtns" data-product-id="4">
+        
+                                        <button onclick="addToCart(this)" class="w-full px-4 h-full bg-[#b7ddc9] hover:bg-[#95ADA2] flex gap-2 justify-center items-center rounded-xl cursor-pointer transition-all duration-300 group">
+                                            <div>
+                                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" class="lg:size-4 size-3 fill-(--primary-text-color) transition-all duration-300 group-hover:fill-white">
+                                                    <path d="M16 0H0V32H16 67.2l77.2 339.5 2.8 12.5H160 496h16V352H496 172.8l-14.5-64H496L566 64l10-32H542.5 100L95.6 12.5 92.8 0H80 16zm91.3 64H532.5l-60 192H151L107.3 64zM184 432a24 24 0 1 1 0 48 24 24 0 1 1 0-48zm0 80a56 56 0 1 0 0-112 56 56 0 1 0 0 112zm248-56a24 24 0 1 1 48 0 24 24 0 1 1 -48 0zm80 0a56 56 0 1 0 -112 0 56 56 0 1 0 112 0z">
+                                                    </path>
+                                                </svg>
+                                            </div>
+                                            <span class="lg:text-sm text-[10px] text-(--primary-text-color) font-bold transition-all duration-300 group-hover:text-white">افزودن به سبد خرید</span>
+                                        </button>
+        
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="lg:min-w-24/100 sm:min-w-32/100 min-w-49/100 max-[500px]:min-w-100/100 lg:max-w-24/100 sm:max-w-32/100 max-w-49/100 max-[500px]:max-w-100/100 bg-white flex flex-col gap-2 justify-start items-center rounded-xl p-2 slaider_item_pro_similarity_children">
+                                <div class="w-full flex justify-center items-center relative py-7 h-50 p-2">
+                                    <a href="" class="w-full h-full flex justify-center items-center">
+                                        <img src="{{asset('assets/img/header/img_heder.webp')}}" alt="" class="min-w-8/12 min-h-8/12 max-w-full max-h-full">
+                                    </a>
+        
+                                </div>
+                                <div class="w-full flex flex-col gap-1.5 lg:gap-2.5 justify-start items-start">
+                                    <a href="https://tababook.ir/product/show/4" class="lg:text-lg text-sm font-bold max-w-full truncate text-(--primary-text-color)">کتاب مردان مریخی زنان ونوسی</a>
+                                    <span class="text-[#ADB4B2] text-sm line-clamp-2 text-(--secondary-text)">کتاب مردان مریخی و زنان ونوسی نوشته‌ی دکتر ب مردان مریخی و زنان ونوسی نوشته‌ی دکتر ب مردان مریخی و زنان ونوسی نوشته‌ی دکاست.</span>
+        
+                                    <div class="flex items-center gap-3">
+                                        <div class="flex items-center justify-between gap-2">
+                                            <strong class="text-[15px] in-fa">90000</strong>
+                                            <span class="text-[10px] text-[#71717a]">تومان
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="w-full h-12 addToCartBtns" data-product-id="4">
+        
+                                        <button onclick="addToCart(this)" class="w-full px-4 h-full bg-[#b7ddc9] hover:bg-[#95ADA2] flex gap-2 justify-center items-center rounded-xl cursor-pointer transition-all duration-300 group">
+                                            <div>
+                                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" class="lg:size-4 size-3 fill-(--primary-text-color) transition-all duration-300 group-hover:fill-white">
+                                                    <path d="M16 0H0V32H16 67.2l77.2 339.5 2.8 12.5H160 496h16V352H496 172.8l-14.5-64H496L566 64l10-32H542.5 100L95.6 12.5 92.8 0H80 16zm91.3 64H532.5l-60 192H151L107.3 64zM184 432a24 24 0 1 1 0 48 24 24 0 1 1 0-48zm0 80a56 56 0 1 0 0-112 56 56 0 1 0 0 112zm248-56a24 24 0 1 1 48 0 24 24 0 1 1 -48 0zm80 0a56 56 0 1 0 -112 0 56 56 0 1 0 112 0z">
+                                                    </path>
+                                                </svg>
+                                            </div>
+                                            <span class="lg:text-sm text-[10px] text-(--primary-text-color) font-bold transition-all duration-300 group-hover:text-white">افزودن به سبد خرید</span>
+                                        </button>
+        
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="lg:min-w-24/100 sm:min-w-32/100 min-w-49/100 max-[500px]:min-w-100/100 lg:max-w-24/100 sm:max-w-32/100 max-w-49/100 max-[500px]:max-w-100/100 bg-white flex flex-col gap-2 justify-start items-center rounded-xl p-2 slaider_item_pro_similarity_children">
+                                <div class="w-full flex justify-center items-center relative py-7 h-50 p-2">
+                                    <a href="" class="w-full h-full flex justify-center items-center">
+                                        <img src="{{asset('assets/img/header/img_heder.webp')}}" alt="" class="min-w-8/12 min-h-8/12 max-w-full max-h-full">
+                                    </a>
+        
+                                </div>
+                                <div class="w-full flex flex-col gap-1.5 lg:gap-2.5 justify-start items-start">
+                                    <a href="https://tababook.ir/product/show/4" class="lg:text-lg text-sm font-bold max-w-full truncate text-(--primary-text-color)">کتاب مردان مریخی زنان ونوسی</a>
+                                    <span class="text-[#ADB4B2] text-sm line-clamp-2 text-(--secondary-text)">کتاب مردان مریخی و زنان ونوسی نوشته‌ی دکتر ب مردان مریخی و زنان ونوسی نوشته‌ی دکتر ب مردان مریخی و زنان ونوسی نوشته‌ی دکاست.</span>
+        
+                                    <div class="flex items-center gap-3">
+                                        <div class="flex items-center justify-between gap-2">
+                                            <strong class="text-[15px] in-fa">90000</strong>
+                                            <span class="text-[10px] text-[#71717a]">تومان
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="w-full h-12 addToCartBtns" data-product-id="4">
+        
+                                        <button onclick="addToCart(this)" class="w-full px-4 h-full bg-[#b7ddc9] hover:bg-[#95ADA2] flex gap-2 justify-center items-center rounded-xl cursor-pointer transition-all duration-300 group">
+                                            <div>
+                                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" class="lg:size-4 size-3 fill-(--primary-text-color) transition-all duration-300 group-hover:fill-white">
+                                                    <path d="M16 0H0V32H16 67.2l77.2 339.5 2.8 12.5H160 496h16V352H496 172.8l-14.5-64H496L566 64l10-32H542.5 100L95.6 12.5 92.8 0H80 16zm91.3 64H532.5l-60 192H151L107.3 64zM184 432a24 24 0 1 1 0 48 24 24 0 1 1 0-48zm0 80a56 56 0 1 0 0-112 56 56 0 1 0 0 112zm248-56a24 24 0 1 1 48 0 24 24 0 1 1 -48 0zm80 0a56 56 0 1 0 -112 0 56 56 0 1 0 112 0z">
+                                                    </path>
+                                                </svg>
+                                            </div>
+                                            <span class="lg:text-sm text-[10px] text-(--primary-text-color) font-bold transition-all duration-300 group-hover:text-white">افزودن به سبد خرید</span>
+                                        </button>
+        
+                                    </div>
+                                </div>
+                            </div>
+        
                         </div>
-
+        
+                    </div>
+                    <div class="p-2 rounded-full bg-white border border-[#e0e0e2] absolute  -right-5" onclick="slaiderbottom_in_pro_similarity('right')">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512" class="size-5 rotate-180"><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg>
+                    </div>
+                    <div class="p-2 rounded-full bg-white border border-[#e0e0e2] absolute -left-5" onclick="slaiderbottom_in_pro_similarity('left')">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512" class="size-5"><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg>
                     </div>
 
-                    <!-- scrollbar -->
-                    <!-- <div class='w-4/12 mx-auto flex gap-2 mt-5'>
+                </div>
+
+                <!-- scrollbar -->
+                <!-- <div class='w-4/12 mx-auto flex gap-2 mt-5'>
                         @for($i=0;$i<4;$i++)
                         <div class='md:w-1/7 h-[6px] bg-white rounded-xl'></div>
                         @endfor
                     </div> -->
 
-                </div>
+            <!-- </div> -->
 
-                <div class='md:flex hidden absolute text-md font-bold items-center text-center text-(--primary_color) gap-3 top-3 right-5 z-2'>
-                    <div class='shadows h-8 w-1 bg-(--buttom) rounded-xl '></div>
-                    <p class='text-xl ml-4'> کالا های مشابه این محصول </p>
-                </div>
-                <img class="md:block hidden absolute w-90 top-0 right-0 z-1" src="{{asset('assets/img/newest-products-top-edge-bg.png')}}" alt="">
-            </div>
 
+            <!-- <img class="bg-ye absolute w-90 top-0 right-0 z-1" src="{{asset('assets/img/logo.png')}}" alt=""> -->
         </div>
 
-
-        <div id="entry_cart_parent_div" class='md:hidden flex fixed bottom-0 right-0 w-full sm:h-18 h-15 p-3 bg-white justify-between text-center items-center rounded-t-xl border-t-3 border-[#11416f]'>
-                @if($flag)
-                    <div class='entry_cart_submit cursor-pointer w-8/12 h-10 bg-yellow-200 hover:yellow-300 disable flex text-center items-center justify-center rounded-lg text-black text-[10px] px-2 py-3  hover:bg-(--buttom) hover:font-bold transition-all duration-200'> افزوده شده </div>
-                @else
-                    <div onclick="entry_cart(this)" class='entry_cart_submit w-8/12 h-full flex items-center text-center rounded-md justify-center bg-(--primary_color) cursor-pointer'><span class='text-sm text-white font-bold'> افزودن به سبد خرید </span></div>
-                @endif
+    </div>
 
 
+    <div id="entry_cart_parent_div" class='md:hidden flex fixed bottom-0 right-0 w-full sm:h-18 h-15 p-3 bg-white justify-between text-center items-center rounded-t-xl border-t-3 border-[#11416f]'>
+        @if($flag)
+        <div class='entry_cart_submit cursor-pointer h-10 bg-yellow-200 hover:yellow-300 disable flex text-center items-center justify-center rounded-lg text-black text-[10px] [430px]:px-7 [430px]:py-3 px-5 py-2  hover:bg-(--buttom) hover:font-bold transition-all duration-200'> افزوده شده </div>
+        @else
+        <div onclick="entry_cart(this)" class='entry_cart_submit [430px]:px-7 [430px]:py-3 px-5 py-2 flex items-center text-center rounded-md justify-center bg-(--primary_color) cursor-pointer '><span class='text-sm max-[430px]:text-xs text-white font-bold'> افزودن به سبد خرید </span></div>
+        @endif
 
-            <div class='w-2/12 flex flex-col text-center items-end '>
-                <div class=' p-1 items-center text-center flex gap-1'>
-                    <div class='w-6 text-white bg-rose-500 flex items-center text-center justify-center rounded-full p-1'>
-                        <span> {{$product->percent}} </span>
-                        %
-                    </div>
-                    <div class='relative text-(--metod-text) flex items-center text-center'>
-                        <span class='text-xs'>{{number_format($product->discunt)}}</span>
-                        <div class='absolute w-full h-[1px]'></div>
-                    </div>
+
+
+        <div class='w-2/12 flex flex-col text-center items-end '>
+            <div class=' p-1 items-center text-center flex gap-1'>
+                <div class='px-2 py-1 text-white bg-rose-500 flex items-center text-center justify-center rounded-full max-[390px]:text-[10px] p-1'>
+                    <span> {{$product->percent}} </span>
+                    %
                 </div>
-                <div class='flex gap-1 '>
-                    <span class='text-black font-bold'>{{number_format($product->price)}} </span>
-                    <span class='text-[7px]'> تومان </span>
+                <div class='relative text-(--metod-text) flex items-center text-center'>
+                    <span class='text-xs'>{{number_format($product->discunt)}}</span>
+                    <div class='absolute w-full h-[1px]'></div>
                 </div>
             </div>
+            <div class='flex gap-1 items-center'>
+                <span class='text-black font-bold'>{{number_format($product->price)}}</span>
+                <span class='text-[10px]'> تومان </span>
+            </div>
         </div>
+    </div>
 
-        <!-- changed by blue -->
-        <!-- 
+    <!-- changed by blue -->
+    <!-- 
         <div class=" bg-white w-full z-1">
             <div class='relative w-11/12 mx-auto'>
                 <img class='w-full ' src="{{asset('assets/img/newest-products-bg.png')}}" alt="">
@@ -1533,89 +1750,89 @@
         </div> -->
 
 
-    </main>
+</main>
 
 
 
 
 
-    <script>
-        // کد انیمیشن 
-        `
+<script>
+    // کد انیمیشن 
+    `
             --animate-spin  spin 1s linear infinite;  
 
         `
 
 
-        let main = document.getElementById('main')
-        let quantity_selectors = document.querySelectorAll('.quantity_selectors')
-        let entry_cart_submit = document.querySelectorAll('.entry_cart_submit')
-        let quantity_selector_inputs = document.querySelectorAll('.quantity_selector_inputs')
-        let plus_quantities = document.querySelectorAll('.plus_quantities')
-        let minus_quantities = document.querySelectorAll('.minus_quantities')
-        let trash_quantities = document.querySelectorAll('.trash_quantities')
-        let like_icons = document.querySelectorAll('.like_icons')
+    let main = document.getElementById('main')
+    let quantity_selectors = document.querySelectorAll('.quantity_selectors')
+    let entry_cart_submit = document.querySelectorAll('.entry_cart_submit')
+    let quantity_selector_inputs = document.querySelectorAll('.quantity_selector_inputs')
+    let plus_quantities = document.querySelectorAll('.plus_quantities')
+    let minus_quantities = document.querySelectorAll('.minus_quantities')
+    let trash_quantities = document.querySelectorAll('.trash_quantities')
+    let like_icons = document.querySelectorAll('.like_icons')
 
 
 
 
-        //   main_image=  main_image size-full w-full object-cover object-center
-        //   mini image=  size-13 rounded-lg border border-(--border) object-cover    // onclick="changeImage(this)"
+    //   main_image=  main_image size-full w-full object-cover object-center
+    //   mini image=  size-13 rounded-lg border border-(--border) object-cover    // onclick="changeImage(this)"
 
 
-        let main_image_div = document.getElementById("main_image_div");
-        let image_bar = document.getElementById("image_bar");
-        let old_main_image = ''
+    let main_image_div = document.getElementById("main_image_div");
+    let image_bar = document.getElementById("image_bar");
+    let old_main_image = ''
 
 
-        function changeImage(image) {
-            image.classList = `main_image size-60 object-cover object-center`
-            // image.gerAttribute('onclick').remove()
-            old_main_image = main_image_div.children[0]
-            old_main_image.classList = `size-13 rounded-lg border border-(--border) object-cover`
-            old_main_image.setAttribute('onclick', 'changeImage(this)')
-            main_image_div.children[0].remove()
-            main_image_div.append(image)
-            image_bar.append(old_main_image)
-            // console.log(image);
-        }
+    function changeImage(image) {
+        image.classList = `main_image size-60 object-cover object-center`
+        // image.gerAttribute('onclick').remove()
+        old_main_image = main_image_div.children[0]
+        old_main_image.classList = `size-13 rounded-lg border border-(--border) object-cover`
+        old_main_image.setAttribute('onclick', 'changeImage(this)')
+        main_image_div.children[0].remove()
+        main_image_div.append(image)
+        image_bar.append(old_main_image)
+        // console.log(image);
+    }
 
 
-        let gallery_product_primary = document.querySelector('.gallery_product_primary')
-        let gallery_product_item = document.querySelectorAll('.gallery_product_item')
-        gallery_product_item.forEach((item) => {
-            item.addEventListener('click', function() {
-                let src_img_gallery = item.getAttribute('src')
-                gallery_product_primary.setAttribute('src', src_img_gallery)
-            })
+    let gallery_product_primary = document.querySelector('.gallery_product_primary')
+    let gallery_product_item = document.querySelectorAll('.gallery_product_item')
+    gallery_product_item.forEach((item) => {
+        item.addEventListener('click', function() {
+            let src_img_gallery = item.getAttribute('src')
+            gallery_product_primary.setAttribute('src', src_img_gallery)
         })
+    })
 
 
 
 
 
-        let phoneNumber_signup='';
-        let phoneNumber_signin='';
-        let countDownSignup='';
-        let signin_password='';
-        let signup_password='';
-        let login_state='';
-        let phoneNumber='';
-        let countDownLogin='';
-        let loginForm='';
-        let signupForm='';
-        let currentPassword='';
-        let body=document.querySelector('.body');
+    let phoneNumber_signup = '';
+    let phoneNumber_signin = '';
+    let countDownSignup = '';
+    let signin_password = '';
+    let signup_password = '';
+    let login_state = '';
+    let phoneNumber = '';
+    let countDownLogin = '';
+    let loginForm = '';
+    let signupForm = '';
+    let currentPassword = '';
+    let body = document.querySelector('.body');
 
 
-        
-        function showLoginForm(){
-            let div=document.createElement('div');
-            let blackBackground=document.createElement('div');
 
-            div.classList=`absolute top-40 left-20 bg-gray-400 text-white shadow-xl w-200 flex z-100`
-            div.id='ajax_form'
-            div.innerHTML=
+    function showLoginForm() {
+        let div = document.createElement('div');
+        let blackBackground = document.createElement('div');
+
+        div.classList = `absolute top-40 left-20 bg-gray-400 text-white shadow-xl w-200 flex z-100`
+        div.id = 'ajax_form'
+        div.innerHTML =
             `
 
                 <div class='size-5 bg-red-600 text-white flex items-center text-center justify-center' onclick="removeForm(this)">X</div>
@@ -1794,39 +2011,41 @@
                 </div>
 
             `
-            body.appendChild(div)
+        body.appendChild(div)
+    }
+
+    function changeForm(state) {
+        loginForm = document.getElementById('loginForm');
+        signupForm = document.getElementById('signupForm');
+
+        if (state === 'login') {
+            loginForm.classList.add('visible');
+            loginForm.classList.remove('hidden');
+
+            signupForm.classList.remove('visible');
+            signupForm.classList.add('hidden');
+        } else {
+            signupForm.classList.add('visible');
+            signupForm.classList.remove('hidden');
+
+            loginForm.classList.remove('visible');
+            loginForm.classList.add('hidden');
         }
-        function changeForm(state) {
-            loginForm = document.getElementById('loginForm');
-            signupForm = document.getElementById('signupForm');
+    }
 
-            if (state === 'login') {
-                loginForm.classList.add('visible');
-                loginForm.classList.remove('hidden');
-
-                signupForm.classList.remove('visible');
-                signupForm.classList.add('hidden');
-            } else {
-                signupForm.classList.add('visible');
-                signupForm.classList.remove('hidden');
-
-                loginForm.classList.remove('visible');
-                loginForm.classList.add('hidden');
-            }
-        }
-        function change_login_state(el,string){
-            phoneNumber_signup=document.getElementById('tell_signup');
-            phoneNumber_signin=document.getElementById('tell_signin');
-            countDownSignup=document.getElementById('countDownSignup');
-            signin_password=document.getElementById('signin_password');
-            signup_password=document.getElementById('signup_password');
-            login_state=document.getElementById('login_state');
-            countDownLogin=document.getElementById('countDownLogin');
-            if(string=='code'){
-                el.previousElementSibling.classList.add('flex');
-                el.previousElementSibling.classList.add('justify-between');
-                el.previousElementSibling.classList.add('gap-2');
-                el.previousElementSibling.innerHTML=
+    function change_login_state(el, string) {
+        phoneNumber_signup = document.getElementById('tell_signup');
+        phoneNumber_signin = document.getElementById('tell_signin');
+        countDownSignup = document.getElementById('countDownSignup');
+        signin_password = document.getElementById('signin_password');
+        signup_password = document.getElementById('signup_password');
+        login_state = document.getElementById('login_state');
+        countDownLogin = document.getElementById('countDownLogin');
+        if (string == 'code') {
+            el.previousElementSibling.classList.add('flex');
+            el.previousElementSibling.classList.add('justify-between');
+            el.previousElementSibling.classList.add('gap-2');
+            el.previousElementSibling.innerHTML =
                 `
                     <div class="relative group w-4/12 ">
                         <div onclick='sendCodeLogin("signin")' id="countDownLogin" class='btn-medical btn-medical-success cursor-pointer w-full flex bg-emerald-400/40 h-full rounded-2xl  text-white text-center items-center justify-center font-bold'>
@@ -1844,14 +2063,14 @@
                         <input id="signin_password_or_code" data-format="code" type="number" name="code" oninput="limitDigits(this)" required placeholder="کد ورود " class="input-medical w-full rounded-2xl py-3.5 pr-12 pl-4 text-white placeholder:text-white/35 outline-none transition-all duration-300">
                     </div>
                 `
-                el.innerHTML='ورورد با رمز عبور'
-                el.setAttribute('onclick',"change_login_state(this,'password')")
+            el.innerHTML = 'ورورد با رمز عبور'
+            el.setAttribute('onclick', "change_login_state(this,'password')")
 
-            }else{
-                el.previousElementSibling.classList.remove('flex');
-                el.previousElementSibling.classList.remove('justify-between');
-                el.previousElementSibling.classList.remove('gap-2');
-                el.previousElementSibling.innerHTML=
+        } else {
+            el.previousElementSibling.classList.remove('flex');
+            el.previousElementSibling.classList.remove('justify-between');
+            el.previousElementSibling.classList.remove('gap-2');
+            el.previousElementSibling.innerHTML =
                 `
                     <div class="relative group" id='signin_password'>
                         <div class="absolute right-3 top-1/2 -translate-y-1/2 text-blue-400/40 group-focus-within:text-blue-400 transition-colors duration-300">
@@ -1864,1085 +2083,1221 @@
                             class="input-medical w-full rounded-2xl py-3.5 pr-12 pl-4 text-white placeholder:text-white/35 outline-none transition-all duration-300">
                     </div>
                 `
-                el.innerHTML='ورورد با رمز یکبار مصرف '
-                el.setAttribute('onclick',"change_login_state(this,'code')")
+            el.innerHTML = 'ورورد با رمز یکبار مصرف '
+            el.setAttribute('onclick', "change_login_state(this,'code')")
 
-            }
         }
-        function checkUser(state){
-            console.log(state);
-            let currentPhoneNumber=document.getElementById('tell_'+state);
-            if(state=='signin'){
-                currentPassword=document.getElementById('signin_password_or_code');
-            }
-            if(state=='signup'){
-                currentPassword=document.getElementById('signup_code_input');
-            }
+    }
 
-            if(currentPhoneNumber.children[1].value.length>=11){
-                $.ajaxSetup({
-                    headers: {
-                        'X-CSRF-TOKEN': "{{ csrf_token() }}"
-                    }
-                })
-                $.ajax({
-                    url:"{{route('user.checkUser')}}",
-                    type:"post",
-                    dataType:"json",
-                    data:{
-                        'phoneNumber':currentPhoneNumber.children[1].value,
-                        'password_or_code':currentPassword.value,
-                        'password_format':currentPassword.getAttribute('data-format'),
-                        'state':state,
-                    },
-                    success:function(data){
-                        let myForm='';
-                        console.log(data)
-                        if(data.state=='signin'){
-                            if(data.exists){
-                                if(data.confirmation){
-                                    myForm=document.getElementById('loginForm').children[0];
-                                    myForm.submit();
-                                }else{
-                                    alert('رمز نادرست میباشد ');
-                                }
-                            }else{
-                                alert('کاربری با این شماره وجود ندارد نمیتوان ورود کرد');
-                            }
-                        }
-                        if(data.state=='signup'){
-                            if(!data.exists){
-                                if(data.confirmation){
-                                    myForm=document.getElementById('signupForm').children[0];
-                                    myForm.submit();
-                                }else{
-                                    alert('رمز نادرست میباشد ');
-                                }
-                            }else{
-                                alert('کاربری با این شماره وجود دارد نمیتوان ثبت نام کرد');
-                            }
-                        }
-                    },
-                    error:function(){
-                        alert('کد ارسال نشد بعدا امتحان کنید');
-                    }
-                })
-            }else{
-                alert("شماره تلفن خود را به درستی وارد کنید");
-            }
-            console.log(currentPhoneNumber);
+    function checkUser(state) {
+        console.log(state);
+        let currentPhoneNumber = document.getElementById('tell_' + state);
+        if (state == 'signin') {
+            currentPassword = document.getElementById('signin_password_or_code');
         }
-        function sendCodeSignup(state){
-            phoneNumber_signup=document.getElementById('tell_signup');
-            phoneNumber_signin=document.getElementById('tell_signin');
-            countDownSignup=document.getElementById('countDownSignup');
-            signin_password=document.getElementById('signin_password');
-            signup_password=document.getElementById('signup_password');
-            login_state=document.getElementById('login_state');
-            countDownLogin=document.getElementById('countDownLogin');
-            phoneNumber = phoneNumber_signup.children[1].value
-            if(phoneNumber!=""){
-                $.ajaxSetup({
-                    headers: {
-                        'X-CSRF-TOKEN': "{{ csrf_token() }}"
-                    }
-                })
-                $.ajax({
-                    url:"{{route('user.send_code_signup')}}",
-                    type:"post",
-                    dataType:"json",
-                    data:{
-                        'phoneNumber':phoneNumber,
-                        'state':state,
-
-                    },
-                    success:function(data){
-                        if(data){
-                            alert('کد ارسال شد🥼');
-                            counterSignupButton(phoneNumber);
-                        }else{
-                            alert('این شماره قبلا ثبت نام شده است')
-                        }
-                    },
-                    error:function(){
-                        alert('کد ارسال نشد بعدا امتحان کنید');
-                    }
-                })
-            }else{
-                phoneNumber_signup.classList.add('border-3')
-                phoneNumber_signup.classList.add('border-red-600')
-                phoneNumber_signup.classList.add('rounded-2xl')
-                alert('شماره تلفن خود را وارد کنید');
-            }
-        }
-        function sendCodeLogin(state){
-            phoneNumber_signup=document.getElementById('tell_signup');
-            phoneNumber_signin=document.getElementById('tell_signin');
-            countDownSignup=document.getElementById('countDownSignup');
-            signin_password=document.getElementById('signin_password');
-            signup_password=document.getElementById('signup_password');
-            login_state=document.getElementById('login_state');
-            countDownLogin=document.getElementById('countDownLogin');
-            phoneNumber = phoneNumber_signin.children[1].value
-            console.log(phoneNumber)
-            if(phoneNumber!=""){
-                $.ajaxSetup({
-                    headers: {
-                        'X-CSRF-TOKEN': "{{ csrf_token() }}"
-                    }
-                })
-                $.ajax({
-                    url:"{{route('user.send_code_login')}}",
-                    type:"post",
-                    dataType:"json",
-                    data:{
-                        'phoneNumber':phoneNumber,
-                        'state':state,
-
-                    },
-                    success:function(data){
-
-                        if(data){
-                            alert('کد ارسال شد');
-                            counterLoginButton(phoneNumber);
-                        }else{
-                            alert("شما از قبل ثبت نام نکرده اید");
-                        }
-                    },
-                    error:function(){
-                        alert("'کد ارسال نشد بعدا امتحان کنید'");
-                    }
-                })
-            }else{
-
-                phoneNumber_signin.classList.add('border-3')
-                phoneNumber_signin.classList.add('border-red-600')
-                phoneNumber_signin.classList.add('rounded-2xl')
-                alert('شماره تلفن خود را وارد کنید');
-
-            }
-        }
-        function counterSignupButton(phoneNumber) {
-            phoneNumber_signup=document.getElementById('tell_signup');
-            phoneNumber_signin=document.getElementById('tell_signin');
-            countDownSignup=document.getElementById('countDownSignup');
-            signin_password=document.getElementById('signin_password');
-            signup_password=document.getElementById('signup_password');
-            login_state=document.getElementById('login_state');
-            countDownLogin=document.getElementById('countDownLogin');
-            countDownSignup.classList.add('cursor-no-drop')
-            countDownSignup.classList.remove('cursor-pointer')
-            countDownSignup.classList.remove('hover:bg-[#d52b4a]')
-            countDownSignup.classList.add('hover:bg-[#d52b4a]/50')
-            countDownSignup.classList.remove('bg-[#eb3254]')
-            countDownSignup.classList.add('bg-[#eb3254]/50')
-            countDownSignup.setAttribute('disabled', true)
-            countDownSignup.removeAttribute('onclick')
-            countDownSignup.setAttribute('dir', 'ltr')
-            let count = 120
-            let result = setInterval(() => {
-                let minute = Math.floor(count / 60)
-                let seconds = count % 60
-                count -= 1
-                if (count < 0) {
-
-                    $.ajaxSetup({
-                        headers: {
-                            'X-CSRF-TOKEN': "{{ csrf_token() }}"
-                        }
-                    })
-                    $.ajax({
-                        url: "{{ route('user.removeActivationCode') }}",
-                        type: "POST",
-                        dataType: "json",
-                        data: {
-                            'phoneNumber': phoneNumber
-                        },
-                        success: function(data) {
-                            console.log(data)
-                            countDownSignup.classList.remove('cursor-no-drop')
-                            countDownSignup.classList.add('bg-[#eb3254]')
-                            countDownSignup.classList.remove('bg-[#eb3254]/50')
-                            countDownSignup.classList.add('cursor-pointer')
-                            countDownSignup.classList.add('hover:bg-[#d52b4a]')
-                            countDownSignup.classList.remove('hover:bg-[#d52b4a]/50')
-                            countDownSignup.removeAttribute('disabled')
-                            countDownSignup.setAttribute('onclick','sendCodeSignup("signup")')
-                            countDownSignup.removeAttribute('dir')
-                            countDownSignup.innerText = "ارسال مجدد"
-                        },
-                        error: function() {
-                            showMessage('open')
-                            element.innerHTML = `
-                                <span>❌</span>
-                                <span class="text-shadw-lg">خطا در دریافت اطلاعات!</span>
-                            `
-                            message.children[0].appendChild(element)
-                            setTimeout(() => {
-                                showMessage('close')
-                            }, 2500)
-                        }
-                    })
-                    clearInterval(result)
-                }
-                countDownSignup.innerText = minute.toString().padStart(2, "0") + " : " + seconds.toString().padStart(2,
-                    "0");
-            }, 1000)
-        }
-        function counterLoginButton(phoneNumber) {
-            phoneNumber_signup=document.getElementById('tell_signup');
-            phoneNumber_signin=document.getElementById('tell_signin');
-            countDownSignup=document.getElementById('countDownSignup');
-            signin_password=document.getElementById('signin_password');
-            signup_password=document.getElementById('signup_password');
-            login_state=document.getElementById('login_state');
-            countDownLogin=document.getElementById('countDownLogin');
-            countDownLogin.classList.add('cursor-no-drop')
-            countDownLogin.classList.remove('cursor-pointer')
-            countDownLogin.classList.remove('hover:bg-[#d52b4a]')
-            countDownLogin.classList.add('hover:bg-[#d52b4a]/50')
-            countDownLogin.classList.remove('bg-[#eb3254]')
-            countDownLogin.classList.add('bg-[#eb3254]/50')
-            countDownLogin.setAttribute('disabled', true)
-            countDownLogin.removeAttribute('onclick')
-            countDownLogin.setAttribute('dir', 'ltr')
-            let count = 120
-            let result = setInterval(() => {
-                let minute = Math.floor(count / 60)
-                let seconds = count % 60
-                count -= 1
-                if (count < 0) {
-
-                    $.ajaxSetup({
-                        headers: {
-                            'X-CSRF-TOKEN': "{{ csrf_token() }}"
-                        }
-                    })
-                    $.ajax({
-                        url: "{{ route('user.removeActivationCode') }}",
-                        type: "POST",
-                        dataType: "json",
-                        data: {
-                            'phoneNumber': phoneNumber
-                        },
-                        success: function(data) {
-                            console.log(data)
-                            countDownLogin.classList.remove('cursor-no-drop')
-                            countDownLogin.classList.add('bg-[#eb3254]')
-                            countDownLogin.classList.remove('bg-[#eb3254]/50')
-                            countDownLogin.classList.add('cursor-pointer')
-                            countDownLogin.classList.add('hover:bg-[#d52b4a]')
-                            countDownLogin.classList.remove('hover:bg-[#d52b4a]/50')
-                            countDownLogin.removeAttribute('disabled')
-                            countDownLogin.setAttribute('onclick','sendCodeLogin("login")')
-                            countDownLogin.removeAttribute('dir')
-                            countDownLogin.innerText = "ارسال مجدد"
-                        },
-                        error: function() {
-                            showMessage('open')
-                            element.innerHTML = `
-                                <span>❌</span>
-                                <span class="text-shadw-lg">خطا در دریافت اطلاعات!</span>
-                            `
-                            message.children[0].appendChild(element)
-                            setTimeout(() => {
-                                showMessage('close')
-                            }, 2500)
-                        }
-                    })
-                    clearInterval(result)
-                }
-                countDownLogin.innerText = minute.toString().padStart(2, "0") + " : " + seconds.toString().padStart(2,
-                    "0");
-            }, 1000)
-        }
-        function removeForm(){
-            document.getElementById('ajax_form').remove();
+        if (state == 'signup') {
+            currentPassword = document.getElementById('signup_code_input');
         }
 
-
-
-
-
-
-
-
-
-
-
-        // let user_id="{{Auth::id()}}";
-        // let product_id="{{$product->id}}";
-        // let link="{{route('user.loginPage')}}";
-        // let check="{{Auth::check()}}";
-
-
-
-        // function entry_cart(el) {
-        //     entry_cart_submit.forEach(entry => {
-        //         entry.innerHTML =
-        //         `
-        //             <div class="size-7 border-4 border-(--border) border-t-(--primary_color) rounded-full animate-spin"></div>
-        //         `
-        //     })
-        //         if(check){
-        //             $.ajaxSetup({
-        //                 headers: {
-        //                     'X-CSRF-TOKEN': "{{ csrf_token() }}"
-        //                 }
-        //             })
-        //             $.ajax({
-        //                 url: "{{route('cart.store')}}",
-        //                 type: "post",
-        //                 dataType: "json",
-        //                 data:{
-        //                     'product_id':product_id,
-        //                     'user_id':user_id,
-        //                 },
-        //                 success: function(data) {
-        //                     cart_counter.innerHTML++
-        //                     console.log(data.product.path);
-        //                     entry_cart_submit.forEach(entry => {
-        //                         entry.innerHTML='افزوده شد'
-        //                         entry.setAttribute('disable',true)
-        //                         entry.removeAttribute('onclick')
-        //                         entry.classList.remove('bg-(--primary_color)');
-        //                         entry.classList.remove('hover:bg-green-600');
-        //                         entry.classList.add('bg-yellow-200');
-        //                         entry.classList.add('hover:bg-yellow-300');
-        //                         entry.classList.remove('text-white');
-        //                         entry.classList.add('text-black');
-                                
-        //                         //  افزودن به سبد خرید  //
-                                
-                                
-        //                     })
-
-        //                     let div_image=document.createElement('div');
-        //                     let div_text_and_counter=document.createElement('div');
-        //                     let parent_div=document.createElement('div');
-        //                     parent_div.classList=`parent_cart w-full flex justify-between border-2 gap-4`
-        //                     div_image.classList=`w-1/5 p-2`
-        //                     if(data.product.path!=null){
-        //                         div_image.innerHTML = `<img class="w-full h-20 rounded-xl" src="{{ asset('storage/product_medias/`+data.product.path+`') }}" alt="">`;
-        //                     }else{
-        //                         div_image.innerHTML=`<div class="w-full h-20 rounded-xl"> 🖼 </div>`
-        //                     }
-        //                     div_text_and_counter.classList=`w-4/5 flex flex-col justify-evenly`;
-        //                     div_text_and_counter.innerHTML=
-        //                     `
-        //                         <div class='w-4/5 flex flex-col justify-evenly '>
-        //                             <div class='text-xl text-center items-center'>
-        //                                 <span> ${data.product.title} </span>
-        //                             </div>
-        //                             <div class='flex gap-5 justify-between px-4'>
-        //                                 <div class='grid grid-cols-3 w-20 border-1 overflow-hidden rounded-full items-center text-center'>
-        //                                     <div onclick="updateCart(this,${data.cart.id},'plus')" class='p-2 text-center items-center flex justify-center cursor-pointer bg-gray-300 h-full'><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z"/></svg></div>
-        //                                     <div class='p-2 text-center items-center flex justify-center '><input type="number" class='w-5 outline-none text-center items-center text-black' readonly value="${data.cart.quantity}"></div>
-        //                                     <div onclick="trash(this,${data.cart.id},${data.product.id})" class='p-2 text-center items-center flex justify-center cursor-pointer bg-gray-300 h-full'><svg class='fill-rose-600' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M170.5 51.6L151.5 80h145l-19-28.4c-1.5-2.2-4-3.6-6.7-3.6H177.1c-2.7 0-5.2 1.3-6.7 3.6zm147-26.6L354.2 80H368h48 8c13.3 0 24 10.7 24 24s-10.7 24-24 24h-8V432c0 44.2-35.8 80-80 80H112c-44.2 0-80-35.8-80-80V128H24c-13.3 0-24-10.7-24-24S10.7 80 24 80h8H80 93.8l36.7-55.1C140.9 9.4 158.4 0 177.1 0h93.7c18.7 0 36.2 9.4 46.6 24.9zM80 128V432c0 17.7 14.3 32 32 32H336c17.7 0 32-14.3 32-32V128H80zm80 64V400c0 8.8-7.2 16-16 16s-16-7.2-16-16V192c0-8.8 7.2-16 16-16s16 7.2 16 16zm80 0V400c0 8.8-7.2 16-16 16s-16-7.2-16-16V192c0-8.8 7.2-16 16-16s16 7.2 16 16zm80 0V400c0 8.8-7.2 16-16 16s-16-7.2-16-16V192c0-8.8 7.2-16 16-16s16 7.2 16 16z"/></svg></div>
-        //                                 </div>
-                                        
-        //                                 <div class='text-black text-xl'> ${data.product.price} </div>
-        //                             </div>
-        //                         </div>   
-        //                     ` 
-
-        //                     product_price=parseInt(data.product.price)
-        //                     price=parseInt(total_price.value)
-        //                     total_price.value= product_price + price;
-
-        //                     parent_div.appendChild(div_image)
-        //                     parent_div.appendChild(div_text_and_counter)
-        //                     cart_list.appendChild(parent_div);
-        //                     console.log(cart_list);
-        //                 },
-        //                 error: function() {
-        //                     console.log('☢')
-        //                 }
-        //             })
-        //         }else{
-        //             location.assign(link)
-        //         } 
-
-
-
-        //     // });
-
-        // }
-
-
-        // let quantity=0;
-        // let plus_icon='';
-        // function updateCart(el,id,state) {
-
-        //     quantity = el.parentElement.children[1].value;
-
-        //     if (quantity < 30) {
-
-        //         plus_icon=el.parentElement.children[0].innerHTML;
-        //         el.parentElement.children[0].innerHTML =
-        //         `
-        //         <div class="size-7 border-4 border-(--border) border-t-(--primary_color) rounded-full animate-spin"></div>
-
-        //         `;
-        //         el.parentElement.children[0].setAttribute('disabled', true);
-        //         el.parentElement.children[0].removeAttribute('onclick');
-
-        //         el.parentElement.children[2].innerHTML =
-        //         `
-        //         <div class="size-7 border-4 border-(--border) border-t-(--primary_color) rounded-full animate-spin"></div>
-
-        //         `;
-        //         el.parentElement.children[2].setAttribute('disabled', true);
-        //         el.parentElement.children[2].removeAttribute('onclick');
-
-        //         if(state=='plus'){
-        //             quantity++;
-        //         }else{
-        //             quantity--;
-        //         }
-        //         $.ajaxSetup({
-        //             headers: {
-        //                 'X-CSRF-TOKEN': "{{ csrf_token() }}"
-        //             }
-        //         })
-        //         $.ajax({
-        //             url: "{{url('cart/update/cart')}}"+"/"+id,
-        //             type: "post",
-        //             dataType:"json",
-        //             data:{
-        //                 'quantity':quantity,
-        //             },
-        //             success: function(data) {
-        //                 el.parentElement.children[1].value = data.quantity
-        //                 if(data.quantity==1){
-
-        //                     //  تغییر دادن  اس وی جی علامت پلاس  //
-                            
-        //                     el.parentElement.children[0].removeAttribute('disabled');
-        //                     el.parentElement.children[0].setAttribute('onclick',`updateCart(this,${data.cartId},'minus')`)
-        //                     el.parentElement.children[0].innerHTML=plus_icon;
-
-
-        //                     //  تغییر دادن  اس وی جی علامت سطل آشغال  //
-
-        //                     el.parentElement.children[2].innerHTML =
-        //                     `
-        //                     <svg class='size-5 fill-rose-600' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M170.5 51.6L151.5 80h145l-19-28.4c-1.5-2.2-4-3.6-6.7-3.6H177.1c-2.7 0-5.2 1.3-6.7 3.6zm147-26.6L354.2 80H368h48 8c13.3 0 24 10.7 24 24s-10.7 24-24 24h-8V432c0 44.2-35.8 80-80 80H112c-44.2 0-80-35.8-80-80V128H24c-13.3 0-24-10.7-24-24S10.7 80 24 80h8H80 93.8l36.7-55.1C140.9 9.4 158.4 0 177.1 0h93.7c18.7 0 36.2 9.4 46.6 24.9zM80 128V432c0 17.7 14.3 32 32 32H336c17.7 0 32-14.3 32-32V128H80zm80 64V400c0 8.8-7.2 16-16 16s-16-7.2-16-16V192c0-8.8 7.2-16 16-16s16 7.2 16 16zm80 0V400c0 8.8-7.2 16-16 16s-16-7.2-16-16V192c0-8.8 7.2-16 16-16s16 7.2 16 16zm80 0V400c0 8.8-7.2 16-16 16s-16-7.2-16-16V192c0-8.8 7.2-16 16-16s16 7.2 16 16z"/></svg>
-        //                     `
-        //                     el.parentElement.children[2].setAttribute('onclick',`trash(this,${data.cartId})`);
-        //                     el.parentElement.children[2].removeAttribute('disabled');
-        //                 }
-        //                 if(data.quantity>1){
-        //                     el.parentElement.children[2].removeAttribute('disabled');
-        //                     el.parentElement.children[2].setAttribute('onclick',`updateCart(this,${data.cartId},'minus')`)
-        //                     el.parentElement.children[2].innerHTML =
-        //                     `
-        //                         <svg class='size-3 fill-black' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M432 256c0 13.3-10.7 24-24 24L40 280c-13.3 0-24-10.7-24-24s10.7-24 24-24l368 0c13.3 0 24 10.7 24 24z"/></svg>
-        //                     `
-
-        //                 }
-        //             },
-        //             error: function() {
-        //                 console.log('☢')
-        //             }
-        //         })
-        //     }
-
-        // }
-
-
-        // function trash(el,id) {
-        //     let trash_icon='';
-        //     // console.log(entry)
-        //     trash_icon=el.parentElement.children[2].innerHTML;
-        //     el.parentElement.children[2].innerHTML =
-        //     `
-        //         <div class="size-7 border-4 border-(--border) border-t-(--primary_color) rounded-full animate-spin"></div>
-        //     `
-        //     $.ajax({
-        //         url: "{{url('cart/delete/cart')}}"+"/" + id,
-        //         type: "get",
-        //         dataType: "json",
-        //         success: function(data) {
-        //             let product="{{$product}}";
-        //             el.parentElement.classList.remove('flex')
-        //             el.parentElement.classList.add('hidden')
-        //             if(product!=null){
-        //                 entry_cart_submit.forEach(entry => {
-        //                     entry.setAttribute('onclick', 'entry_cart(this)');
-        //                     entry.innerHTML = 'افزودن به سبد خرید'
-        //                     entry.removeAttribute('disable')
-        //                     entry.setAttribute('onclick','entry_cart(this)')
-        //                     entry.classList.remove('bg-(--primary_color)');
-        //                     entry.classList.remove('hover:bg-green-600');
-        //                     entry.classList.remove('text-white');
-        //                 });
-        //             }
-        //         },
-        //         error: function() {
-        //             console.log('☢')
-        //         }
-        //     })
-        //         // console.log(entry)
-        //     // el.parentElement.children[2].innerHTML =trash_icon
-        // }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        // function entry_cart(el) {
-        //     entry_cart_submit.forEach(entry => {
-        //         entry.innerHTML =
-        //         `
-        //             <div class="size-7 border-4 border-(--border) border-t-(--primary_color) rounded-full animate-spin"></div>
-        //         `
-        //     })
-        //         if(check){
-        //             $.ajaxSetup({
-        //                 headers: {
-        //                     'X-CSRF-TOKEN': "{{ csrf_token() }}"
-        //                 }
-        //             })
-        //             $.ajax({
-        //                 url: "{{route('cart.store')}}",
-        //                 type: "post",
-        //                 dataType: "json",
-        //                 data:{
-        //                     'product_id':product_id,
-        //                     'user_id':user_id,
-        //                 },
-        //                 success: function(cartId) {
-        //                     console.log(cartId);
-        //                     entry_cart_submit.forEach(entry => {
-        //                         entry.classList.add('hidden');
-        //                         quantity_selectors.forEach(quantity_selector => {
-        //                             quantity_selector.classList.remove('hidden');
-        //                             quantity_selector.classList.add('flex');
-        //                             quantity_selector.classList.add('w-full');
-        //                             quantity_selector.children[0].setAttribute('onclick',`quantity_selector(this,${cartId},'plus')`);
-        //                             quantity_selector.children[2].setAttribute('onclick',`trash(${cartId})`);
-        //                         });
-        //                     })
-        //                 },
-        //                 error: function() {
-        //                     console.log('☢')
-        //                 }
-        //             })
-        //         }else{
-        //             location.assign(link)
-        //         } 
-
-
-
-        //     // });
-
-        // }
-
-
-        // let flag = true
-        // // let count = 0
-        // let test = document.getElementById('test')
-        // let quantity=0;
-        // let plus_icon='';
-        // function quantity_selector(el,id,state) {
-        //     // let value=0;
-        //     // count++
-        //     quantity_selectors.forEach(quantity_selector => {
-        //         plus_icon=quantity_selector.children[0].innerHTML;
-        //         quantity_selector.children[0].innerHTML =
-        //         `
-        //         <div class="size-7 border-4 border-(--border) border-t-(--primary_color) rounded-full animate-spin"></div>
-                
-        //         `;
-        //         quantity_selector.children[0].setAttribute('disabled', true);
-
-        //         quantity_selector.children[2].innerHTML =
-        //         `
-        //         <div class="size-7 border-4 border-(--border) border-t-(--primary_color) rounded-full animate-spin"></div>
-                
-        //         `;
-        //         quantity_selector.children[2].setAttribute('disabled', true);
-        //         quantity = quantity_selector.children[1].value;
-        //     })
-        //     if (quantity < 30) {
-        //         if(state=='plus'){
-        //             quantity++;
-        //         }else{
-        //             quantity--;
-        //         }
-        //         $.ajaxSetup({
-        //             headers: {
-        //                 'X-CSRF-TOKEN': "{{ csrf_token() }}"
-        //             }
-        //         })
-        //         $.ajax({
-        //             url: "{{url('cart/update/cart')}}"+"/"+id,
-        //             type: "post",
-        //             dataType:"json",
-        //             data:{
-        //                 'quantity':quantity,
-        //             },
-        //             success: function(data) {
-        //                 quantity_selectors.forEach(quantity_selector => {
-        //                     quantity_selector.children[1].value = data.quantity
-        //                     quantity_selector.children[0].innerHTML=plus_icon;
-        //                     if(data.quantity==1){
-        //                         quantity_selector.children[0].removeAttribute('disabled');
-        //                         quantity_selector.children[2].innerHTML=
-        //                         `
-        //                             <div class="size-7 border-4 border-(--border) border-t-(--primary_color) rounded-full animate-spin"></div>
-                                
-        //                         `;
-        //                         quantity_selector.children[2].innerHTML =
-        //                         `
-        //                         <svg class='size-5 fill-rose-600' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M170.5 51.6L151.5 80h145l-19-28.4c-1.5-2.2-4-3.6-6.7-3.6H177.1c-2.7 0-5.2 1.3-6.7 3.6zm147-26.6L354.2 80H368h48 8c13.3 0 24 10.7 24 24s-10.7 24-24 24h-8V432c0 44.2-35.8 80-80 80H112c-44.2 0-80-35.8-80-80V128H24c-13.3 0-24-10.7-24-24S10.7 80 24 80h8H80 93.8l36.7-55.1C140.9 9.4 158.4 0 177.1 0h93.7c18.7 0 36.2 9.4 46.6 24.9zM80 128V432c0 17.7 14.3 32 32 32H336c17.7 0 32-14.3 32-32V128H80zm80 64V400c0 8.8-7.2 16-16 16s-16-7.2-16-16V192c0-8.8 7.2-16 16-16s16 7.2 16 16zm80 0V400c0 8.8-7.2 16-16 16s-16-7.2-16-16V192c0-8.8 7.2-16 16-16s16 7.2 16 16zm80 0V400c0 8.8-7.2 16-16 16s-16-7.2-16-16V192c0-8.8 7.2-16 16-16s16 7.2 16 16z"/></svg>
-        //                         `
-        //                         // quantity_selector.children[2].removeAttribute('onclick');
-        //                         quantity_selector.children[2].setAttribute('onclick',`trash(${data.cartId})`);
-        //                         quantity_selector.children[2].removeAttribute('disabled');
-        //                     }
-        //                     if(data.quantity>1){
-        //                         quantity_selector.children[2].removeAttribute('disabled');
-        //                         quantity_selector.children[2].innerHTML=
-        //                         `
-        //                             <div class="size-7 border-4 border-(--border) border-t-(--primary_color) rounded-full animate-spin"></div>
-                                
-        //                         `;
-        //                         quantity_selector.children[2].setAttribute('onclick',`quantity_selector(this,${data.cartId},'minus')`)
-        //                         quantity_selector.children[2].innerHTML =
-        //                         `
-        //                          <svg class='size-3 fill-black' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M432 256c0 13.3-10.7 24-24 24L40 280c-13.3 0-24-10.7-24-24s10.7-24 24-24l368 0c13.3 0 24 10.7 24 24z"/></svg>
-        //                         `
-    
-        //                     }
-        //                 })
-        //             },
-        //             error: function() {
-        //                 console.log('☢')
-        //             }
-        //         })
-        //     }
-
-        // }
-
-        // function trash(id) {
-        //     let trash_icon='';
-        //     quantity_selectors.forEach(quantity_selector => {
-        //         // console.log(entry)
-        //         trash_icon=quantity_selector.children[2].innerHTML;
-        //         quantity_selector.children[2].innerHTML =
-        //         `
-        //             <div class="size-7 border-4 border-(--border) border-t-(--primary_color) rounded-full animate-spin"></div>
-
-        //         `
-        //     });
-        //     $.ajax({
-        //         url: "{{url('cart/delete/cart')}}"+"/" + id,
-        //         type: "get",
-        //         dataType: "json",
-        //         success: function(data) {
-        //             quantity_selectors.forEach(quantity_selector => {
-        //                 quantity_selector.classList.remove('flex')
-        //                 quantity_selector.classList.add('hidden')
-        //             });
-        //             entry_cart_submit.forEach(entry => {
-        //                 entry.classList.remove('hidden');
-        //                 entry.classList.add('flex');
-        //                 entry.setAttribute('onclick', 'entry_cart(this)');
-        //                 entry.innerHTML = 'افزودن به سبد خرید'
-        //             });
-    
-    
-        //         },
-        //         error: function() {
-        //             console.log('☢')
-        //         }
-        //     })
-        //     quantity_selectors.forEach(quantity_selector => {
-        //         // console.log(entry)
-        //         quantity_selector.children[2].innerHTML =trash_icon
-        //     });
-        // }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        // let entry_cart_mobile = document.querySelector('.entry_cart_mobile')
-        // let quantity_selectors_mobile = document.querySelector('.quantity_selectors_mobile')
-        // let quantity_selector_input = document.querySelector('.quantity_selector_input')
-        // let plus_quantity = document.querySelector('.plus_quantity')
-        // let minus_quantity = document.querySelector('.minus_quantity')
-        // let trash_quantity = document.querySelector('.trash_quantity')
-
-
-        // function entry_cart_mobile_function(el) {
-        //     // console.log(entry_cart_mobile)
-        //     entry_cart_mobile.innerHTML =
-        //         `
-        //         <div class="size-7 border-4 border-(--border) border-t-(--primary_color) rounded-full animate-spin"></div>
-
-        //     `
-        //     $.ajax({
-        //         url: "{{url('cart/set/quantity/cart')}}/" + 1,
-        //         type: "get",
-        //         dataType: "json",
-        //         success: function(data) {
-        //             entry_cart_mobile.classList.remove('flex');
-        //             entry_cart_mobile.classList.add('hidden');
-        //             quantity_selectors_mobile.classList.remove('hidden')
-        //             quantity_selectors_mobile.classList.add('flex')
-        //         },
-        //         error: function() {
-        //             console.log('☢')
-        //         }
-        //     })
-
-
-
-
-
-        // }
-
-        // function trash_mobile() {
-        //     entry_cart_mobile.innerHTML =
-        //         `
-        //             <div class="size-7 border-4 border-(--border) border-t-(--primary_color) rounded-full animate-spin"></div>
-        //         `
-        //     $.ajax({
-        //         url: "{{url('cart/set/quantity/cart')}}/" + 1,
-        //         type: "get",
-        //         dataType: "json",
-        //         success: function(data) {
-        //             quantity_selectors_mobile.classList.remove('flex')
-        //             quantity_selectors_mobile.classList.add('hidden')
-
-        //             entry_cart_mobile.classList.remove('hidden')
-        //             entry_cart_mobile.classList.add('flex')
-        //             entry_cart_mobile.innerHTML = `<span class='text-sm text-white font-bold'> افزودن به سبد خرید </span>`
-
-        //         },
-        //         error: function() {
-        //             console.log('☢')
-        //         }
-        //     })
-        // }
-
-        // function quantity_selector_mobile(state) {
-        //     let value = 0;
-        //     if (state == 'plus') {
-        //         if (quantity_selectors_mobile.children[2].children[0].classList.contains('fill-rose-600')) {
-        //             quantity_selectors_mobile.children[2].remove()
-        //             quantity_selectors_mobile.innerHTML +=
-        //                 `
-        //                    <div onclick="quantity_selector('minus')" class='minus_quantity w-3/12 min-h-8  flex items-center border border-(--border) rounded-xl justify-center hover:bg-(--metod-text) hover:scale-95 transition-all duration-200'> <svg class='size-3 fill-black' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M432 256c0 13.3-10.7 24-24 24L40 280c-13.3 0-24-10.7-24-24s10.7-24 24-24l368 0c13.3 0 24 10.7 24 24z"/></svg> </div>
-        //                 `
-        //         }
-        //         if (quantity_selectors_mobile.children[1].value < 30) {
-        //             let value = quantity_selectors_mobile.children[1].value
-        //             $.ajax({
-        //                 url: "{{url('cart/set/quantity/cart')}}/" + 1,
-        //                 type: "get",
-        //                 success: function(quantity) {
-        //                     value = quantity_selector_input.value + quantity
-        //                     quantity_selector_input.value = value
-        //                 },
-        //                 error: function() {
-        //                     console.log('☢')
-        //                 }
-        //             })
-        //         }
-        //     }
-        //     if (state == 'minus') {
-        //         if (quantity_selectors_mobile.children[1].value > 1) {
-        //             $.ajax({
-        //                 url: "{{url('cart/set/quantity/cart')}}/" + 1,
-        //                 type: "get",
-        //                 dataType: "json",
-        //                 success: function(quantity) {
-        //                     value = quantity_selector_input.getAttribute('value')
-        //                     value--
-        //                     quantity_selector_input.setAttribute('value', value)
-        //                 },
-        //                 error: function() {
-        //                     console.log('☢')
-        //                 }
-        //             })
-
-        //             if (quantity_selectors_mobile.children[1].value = 1) {
-        //                 quantity_selectors_mobile.children[2].remove()
-        //                 quantity_selectors_mobile.innerHTML +=
-        //                     `
-        //                     <div onclick="trash()" class='trash_quantities min-w-10 min-h-10 max-w-10 max-h-10  flex items-center border border-(--border) rounded-xl justify-center hover:bg-(--metod-text) hover:scale-95 transition-all duration-200'> <svg class='size-5 fill-rose-600' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M170.5 51.6L151.5 80h145l-19-28.4c-1.5-2.2-4-3.6-6.7-3.6H177.1c-2.7 0-5.2 1.3-6.7 3.6zm147-26.6L354.2 80H368h48 8c13.3 0 24 10.7 24 24s-10.7 24-24 24h-8V432c0 44.2-35.8 80-80 80H112c-44.2 0-80-35.8-80-80V128H24c-13.3 0-24-10.7-24-24S10.7 80 24 80h8H80 93.8l36.7-55.1C140.9 9.4 158.4 0 177.1 0h93.7c18.7 0 36.2 9.4 46.6 24.9zM80 128V432c0 17.7 14.3 32 32 32H336c17.7 0 32-14.3 32-32V128H80zm80 64V400c0 8.8-7.2 16-16 16s-16-7.2-16-16V192c0-8.8 7.2-16 16-16s16 7.2 16 16zm80 0V400c0 8.8-7.2 16-16 16s-16-7.2-16-16V192c0-8.8 7.2-16 16-16s16 7.2 16 16zm80 0V400c0 8.8-7.2 16-16 16s-16-7.2-16-16V192c0-8.8 7.2-16 16-16s16 7.2 16 16z"/></svg> </div>
-        //                     `
-        //             }
-        //         }
-
-        //     }
-        // }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        // function quantity_selector(state){
-        //     if(state == "plus"){
-        //         count++
-        //         console.log(count)
-        //         test.value++
-        //         console.log(test.value)
-        //     }
-        // }
-
-        // let flag1=true;
-        function set_favored() {
-            // if(flag1){
-            $.ajax({
-                url: "{{url('cart/set/quantity/cart')}}/" + 1,
-                type: "get",
-                dataType: "json",
-                success: function(data) {
-                    like_icons.forEach(like_icon => {
-                        // console.log(like_icon)
-                        if (like_icon.classList.contains('fill-none')) {
-                            like_icon.classList.remove('fill-none')
-                            like_icon.classList.add('fill-rose-600')
-                        } else {
-                            like_icon.classList.remove('fill-rose-600')
-                            like_icon.classList.add('fill-none')
-                        }
-
-                    });
-                },
-                error: function() {
-                    console.log('☢')
+        if (currentPhoneNumber.children[1].value.length >= 11) {
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': "{{ csrf_token() }}"
                 }
             })
-            // flag1=false
-            // }
+            $.ajax({
+                url: "{{route('user.checkUser')}}",
+                type: "post",
+                dataType: "json",
+                data: {
+                    'phoneNumber': currentPhoneNumber.children[1].value,
+                    'password_or_code': currentPassword.value,
+                    'password_format': currentPassword.getAttribute('data-format'),
+                    'state': state,
+                },
+                success: function(data) {
+                    let myForm = '';
+                    console.log(data)
+                    if (data.state == 'signin') {
+                        if (data.exists) {
+                            if (data.confirmation) {
+                                myForm = document.getElementById('loginForm').children[0];
+                                myForm.submit();
+                            } else {
+                                alert('رمز نادرست میباشد ');
+                            }
+                        } else {
+                            alert('کاربری با این شماره وجود ندارد نمیتوان ورود کرد');
+                        }
+                    }
+                    if (data.state == 'signup') {
+                        if (!data.exists) {
+                            if (data.confirmation) {
+                                myForm = document.getElementById('signupForm').children[0];
+                                myForm.submit();
+                            } else {
+                                alert('رمز نادرست میباشد ');
+                            }
+                        } else {
+                            alert('کاربری با این شماره وجود دارد نمیتوان ثبت نام کرد');
+                        }
+                    }
+                },
+                error: function() {
+                    alert('کد ارسال نشد بعدا امتحان کنید');
+                }
+            })
+        } else {
+            alert("شماره تلفن خود را به درستی وارد کنید");
         }
+        console.log(currentPhoneNumber);
+    }
 
+    function sendCodeSignup(state) {
+        phoneNumber_signup = document.getElementById('tell_signup');
+        phoneNumber_signin = document.getElementById('tell_signin');
+        countDownSignup = document.getElementById('countDownSignup');
+        signin_password = document.getElementById('signin_password');
+        signup_password = document.getElementById('signup_password');
+        login_state = document.getElementById('login_state');
+        countDownLogin = document.getElementById('countDownLogin');
+        phoneNumber = phoneNumber_signup.children[1].value
+        if (phoneNumber != "") {
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': "{{ csrf_token() }}"
+                }
+            })
+            $.ajax({
+                url: "{{route('user.send_code_signup')}}",
+                type: "post",
+                dataType: "json",
+                data: {
+                    'phoneNumber': phoneNumber,
+                    'state': state,
 
-        let share_item = document.getElementById('share_item')
+                },
+                success: function(data) {
+                    if (data) {
+                        alert('کد ارسال شد🥼');
+                        counterSignupButton(phoneNumber);
+                    } else {
+                        alert('این شماره قبلا ثبت نام شده است')
+                    }
+                },
+                error: function() {
+                    alert('کد ارسال نشد بعدا امتحان کنید');
+                }
+            })
+        } else {
+            phoneNumber_signup.classList.add('border-3')
+            phoneNumber_signup.classList.add('border-red-600')
+            phoneNumber_signup.classList.add('rounded-2xl')
+            alert('شماره تلفن خود را وارد کنید');
+        }
+    }
 
-        function show_share_list(item) {
+    function sendCodeLogin(state) {
+        phoneNumber_signup = document.getElementById('tell_signup');
+        phoneNumber_signin = document.getElementById('tell_signin');
+        countDownSignup = document.getElementById('countDownSignup');
+        signin_password = document.getElementById('signin_password');
+        signup_password = document.getElementById('signup_password');
+        login_state = document.getElementById('login_state');
+        countDownLogin = document.getElementById('countDownLogin');
+        phoneNumber = phoneNumber_signin.children[1].value
+        console.log(phoneNumber)
+        if (phoneNumber != "") {
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': "{{ csrf_token() }}"
+                }
+            })
+            $.ajax({
+                url: "{{route('user.send_code_login')}}",
+                type: "post",
+                dataType: "json",
+                data: {
+                    'phoneNumber': phoneNumber,
+                    'state': state,
 
-            // // ایجاد دیویژن ها
-            // black_div = document.createElement('div')
-            // social_medias_parent = document.createElement('div')
-            // social_medias = document.createElement('div')
-            // title = document.createElement('div')
-            // hidden_botton = document.createElement('div')
+                },
+                success: function(data) {
 
-            // // اتریبیوت دهی 
-            // black_div.setAttribute('onclick', 'hidden_share_list()')
-            // black_div.setAttribute('id', 'black_div')
-            // social_medias_parent.setAttribute('id', 'social_medias_parent')
-            // hidden_botton.setAttribute('onclick', 'hidden_share_list()')
+                    if (data) {
+                        alert('کد ارسال شد');
+                        counterLoginButton(phoneNumber);
+                    } else {
+                        alert("شما از قبل ثبت نام نکرده اید");
+                    }
+                },
+                error: function() {
+                    alert("'کد ارسال نشد بعدا امتحان کنید'");
+                }
+            })
+        } else {
 
+            phoneNumber_signin.classList.add('border-3')
+            phoneNumber_signin.classList.add('border-red-600')
+            phoneNumber_signin.classList.add('rounded-2xl')
+            alert('شماره تلفن خود را وارد کنید');
 
+        }
+    }
 
-            // //استایل دهی به آنها
-            // black_div.classList =
-            //     `
-            //   fixed top-0 size-[100%] bg-black/70 flex justify_center items-center transition-all duration-500
-            // `
-            // social_medias_parent.classList =
-            //     `
-            //   social-icons fixed top-2/5 left-0 right-0 w-1/3 h-50 p-3 mx-auto bg-white flex flex-col transition-all duration-500 rounded-lg gap-3 -tems-center justify-evenly border border-(--border)
-            // `
-            // hidden_botton.classList =
-            //     `
-            //   absolute size-7 rounded-full bg-white -top-10 left-3 flex items-center text-2xl text-center justify-center cursor-pointer
-            // `
-            // hidden_botton.innerHTML =
-            //     `
-            //     <span>X</span> 
-            // `
-            // title.classList =
-            //     `
-            //   w-full flex text-center items-center gap-4 justify-center
-            // `
-            // title.innerHTML =
-            //     `
-            // <div class='shadows w-1 h-6 rounded-xl bg-(--primary_color)'></div>
-            //   <span class='text-sm font-bold'> این محصول رو با دوستانت به اشتراک بزار: </span>
-            // `
-            // social_medias.classList =
-            //     `
-            //   w-full flex gap-4 justify-evenly
-            // `
-            // social_medias.innerHTML =
-            //     `
-            //     <a href="eitaa.ir" target="_blank">
-            //         <img src="{{asset('assets/img/eitaa_logo.svg')}}" alt="Rubika" class='w-14'>
-            //     </a>
-            //     <a href="rubika.ir" target="_blank">
-            //         <img src="{{asset('assets/img/rubika-icon.png')}}" alt="Rubika" class='w-14'>
-            //     </a>
-            //     <a href="rubika.ir" target="_blank">
-            //         <img src="{{asset('assets/img/whatsapp.png')}}" alt="Rubika" class='w-14'>
-            //     </a>
-            //     <a href="instagram.com" target="_blank">
-            //         <img src="{{asset('assets/img/instagram-farsgraphic.png')}}" alt="Rubika" class='w-14'>
-            //     </a>
-            //     <a href="telegram.com" target="_blank">
-            //         <img src="{{asset('assets/img/telegram-farsgraphic.png')}}" alt="Rubika" class='w-14'>
-            //     </a>
-            // `
+    function counterSignupButton(phoneNumber) {
+        phoneNumber_signup = document.getElementById('tell_signup');
+        phoneNumber_signin = document.getElementById('tell_signin');
+        countDownSignup = document.getElementById('countDownSignup');
+        signin_password = document.getElementById('signin_password');
+        signup_password = document.getElementById('signup_password');
+        login_state = document.getElementById('login_state');
+        countDownLogin = document.getElementById('countDownLogin');
+        countDownSignup.classList.add('cursor-no-drop')
+        countDownSignup.classList.remove('cursor-pointer')
+        countDownSignup.classList.remove('hover:bg-[#d52b4a]')
+        countDownSignup.classList.add('hover:bg-[#d52b4a]/50')
+        countDownSignup.classList.remove('bg-[#eb3254]')
+        countDownSignup.classList.add('bg-[#eb3254]/50')
+        countDownSignup.setAttribute('disabled', true)
+        countDownSignup.removeAttribute('onclick')
+        countDownSignup.setAttribute('dir', 'ltr')
+        let count = 120
+        let result = setInterval(() => {
+            let minute = Math.floor(count / 60)
+            let seconds = count % 60
+            count -= 1
+            if (count < 0) {
 
-            // social_medias_parent.append(title)
-            // social_medias_parent.append(social_medias)
-            // social_medias_parent.append(hidden_botton)
-            // // black_div.append(social_medias_parent)
-            // main.append(black_div)
-            // main.append(social_medias_parent)
-
-            // console.log(main)
-
-            console.log('lsflshf')
-            if (item == 'open') {
-                share_item.classList.remove('invisible')
-                share_item.classList.remove('opacity-0')
+                $.ajaxSetup({
+                    headers: {
+                        'X-CSRF-TOKEN': "{{ csrf_token() }}"
+                    }
+                })
+                $.ajax({
+                    url: "{{ route('user.removeActivationCode') }}",
+                    type: "POST",
+                    dataType: "json",
+                    data: {
+                        'phoneNumber': phoneNumber
+                    },
+                    success: function(data) {
+                        console.log(data)
+                        countDownSignup.classList.remove('cursor-no-drop')
+                        countDownSignup.classList.add('bg-[#eb3254]')
+                        countDownSignup.classList.remove('bg-[#eb3254]/50')
+                        countDownSignup.classList.add('cursor-pointer')
+                        countDownSignup.classList.add('hover:bg-[#d52b4a]')
+                        countDownSignup.classList.remove('hover:bg-[#d52b4a]/50')
+                        countDownSignup.removeAttribute('disabled')
+                        countDownSignup.setAttribute('onclick', 'sendCodeSignup("signup")')
+                        countDownSignup.removeAttribute('dir')
+                        countDownSignup.innerText = "ارسال مجدد"
+                    },
+                    error: function() {
+                        showMessage('open')
+                        element.innerHTML = `
+                                <span>❌</span>
+                                <span class="text-shadw-lg">خطا در دریافت اطلاعات!</span>
+                            `
+                        message.children[0].appendChild(element)
+                        setTimeout(() => {
+                            showMessage('close')
+                        }, 2500)
+                    }
+                })
+                clearInterval(result)
             }
-            if (item == 'close') {
-                share_item.classList.add('invisible')
-                share_item.classList.add('opacity-0')
+            countDownSignup.innerText = minute.toString().padStart(2, "0") + " : " + seconds.toString().padStart(2,
+                "0");
+        }, 1000)
+    }
+
+    function counterLoginButton(phoneNumber) {
+        phoneNumber_signup = document.getElementById('tell_signup');
+        phoneNumber_signin = document.getElementById('tell_signin');
+        countDownSignup = document.getElementById('countDownSignup');
+        signin_password = document.getElementById('signin_password');
+        signup_password = document.getElementById('signup_password');
+        login_state = document.getElementById('login_state');
+        countDownLogin = document.getElementById('countDownLogin');
+        countDownLogin.classList.add('cursor-no-drop')
+        countDownLogin.classList.remove('cursor-pointer')
+        countDownLogin.classList.remove('hover:bg-[#d52b4a]')
+        countDownLogin.classList.add('hover:bg-[#d52b4a]/50')
+        countDownLogin.classList.remove('bg-[#eb3254]')
+        countDownLogin.classList.add('bg-[#eb3254]/50')
+        countDownLogin.setAttribute('disabled', true)
+        countDownLogin.removeAttribute('onclick')
+        countDownLogin.setAttribute('dir', 'ltr')
+        let count = 120
+        let result = setInterval(() => {
+            let minute = Math.floor(count / 60)
+            let seconds = count % 60
+            count -= 1
+            if (count < 0) {
+
+                $.ajaxSetup({
+                    headers: {
+                        'X-CSRF-TOKEN': "{{ csrf_token() }}"
+                    }
+                })
+                $.ajax({
+                    url: "{{ route('user.removeActivationCode') }}",
+                    type: "POST",
+                    dataType: "json",
+                    data: {
+                        'phoneNumber': phoneNumber
+                    },
+                    success: function(data) {
+                        console.log(data)
+                        countDownLogin.classList.remove('cursor-no-drop')
+                        countDownLogin.classList.add('bg-[#eb3254]')
+                        countDownLogin.classList.remove('bg-[#eb3254]/50')
+                        countDownLogin.classList.add('cursor-pointer')
+                        countDownLogin.classList.add('hover:bg-[#d52b4a]')
+                        countDownLogin.classList.remove('hover:bg-[#d52b4a]/50')
+                        countDownLogin.removeAttribute('disabled')
+                        countDownLogin.setAttribute('onclick', 'sendCodeLogin("login")')
+                        countDownLogin.removeAttribute('dir')
+                        countDownLogin.innerText = "ارسال مجدد"
+                    },
+                    error: function() {
+                        showMessage('open')
+                        element.innerHTML = `
+                                <span>❌</span>
+                                <span class="text-shadw-lg">خطا در دریافت اطلاعات!</span>
+                            `
+                        message.children[0].appendChild(element)
+                        setTimeout(() => {
+                            showMessage('close')
+                        }, 2500)
+                    }
+                })
+                clearInterval(result)
+            }
+            countDownLogin.innerText = minute.toString().padStart(2, "0") + " : " + seconds.toString().padStart(2,
+                "0");
+        }, 1000)
+    }
+
+    function removeForm() {
+        document.getElementById('ajax_form').remove();
+    }
+
+
+     let number_responsive = document.getElementById('number_responsive')
+        let responsive_width_in_gallery  = number_responsive.scrollWidth
+        let number_element_in_gallery = 0
+        if(responsive_width_in_gallery >= 1024){
+            number_element_in_gallery = 3
+        }
+        
+        if( 640 < responsive_width_in_gallery && responsive_width_in_gallery < 1024){
+            number_element_in_gallery = 6
+        }
+        if( 500 < responsive_width_in_gallery && responsive_width_in_gallery < 640){
+            number_element_in_gallery = 6
+        }
+        
+        if(responsive_width_in_gallery < 500){
+            number_element_in_gallery = 3
+        }                               
+    // slaider_gallery
+    let slaider_item_gallery = document.querySelector('.slaider_item_gallery')
+    
+    let slaider_item_gallery_children = document.querySelectorAll('.slaider_item_gallery_children')
+    let number_in_gallery = 0
+    let nimber_children_element_in_gallery = 0
+    let messurement_size_collection_in_gallery = 0
+    let for_in_array_size_collection_in_gallery = 0
+    let size_collection_in_gallery = []
+    let gap_in_gallery = 7
+    slaider_item_gallery_children.forEach(item => {
+        size_collection_in_gallery[for_in_array_size_collection_in_gallery] = item.scrollWidth
+        for_in_array_size_collection_in_gallery++
+    });
+
+    function slaiderbottom_in_gallery(state) {
+
+        nimber_children_element_in_gallery = slaider_item_gallery.children.length
+        if (!slaider_item_gallery.classList.contains('duration-500')) {
+            slaider_item_gallery.classList.add('duration-500')
+        }
+        if (messurement_size_collection_in_gallery + number_element_in_gallery < nimber_children_element_in_gallery) {
+            if (state == 'left') {
+                slaider_item_gallery.classList.remove('translate-x-[' + number_in_gallery + 'px]')
+                number_in_gallery = number_in_gallery + size_collection_in_gallery[messurement_size_collection_in_gallery] + gap_in_gallery
+                slaider_item_gallery.classList.add('translate-x-[' + number_in_gallery + 'px]')
+                messurement_size_collection_in_gallery++
+            }
+        }
+        if (!messurement_size_collection_in_gallery == 0) {
+            if (state == 'right') {
+                slaider_item_gallery.classList.remove('translate-x-[' + number_in_gallery + 'px]')
+                number_in_gallery = number_in_gallery - size_collection_in_gallery[messurement_size_collection_in_gallery] - gap_in_gallery
+                slaider_item_gallery.classList.add('translate-x-[' + number_in_gallery + 'px]')
+                messurement_size_collection_in_gallery--
+            }
+        }
+
+        //    if(messurement_size_collection+3 == nimber_children_element){
+        //         slaider_item_gallery.classList.remove('translate-x-['+number1+'px]') 
+        //         number1 = 0
+        //         messurement_size_collection=0
+        //         slaider_item_gallery.classList.remove('duration-500')
+        //     }
+
+    }
+
+      // slaider_product_similarity       
+      
+       let number_element_in_pro_similarity = 0
+        if(responsive_width_in_gallery >= 1024){
+            number_element_in_number_element_in_pro_similarity = 3
+        }
+        
+        if( 640 < responsive_width_in_gallery && responsive_width_in_gallery < 1024){
+            number_element_in_number_element_in_pro_similarity = 2
+        }
+        if( 500 < responsive_width_in_gallery && responsive_width_in_gallery < 640){
+            number_element_in_number_element_in_pro_similarity = 1
+        }
+        
+        if(responsive_width_in_gallery < 500){
+            number_element_in_number_element_in_pro_similarity = 0
+        }
+        
+       let slaider_item_pro_similarity = document.querySelector('.slaider_item_pro_similarity')
+    
+    let slaider_item_pro_similarity_children = document.querySelectorAll('.slaider_item_pro_similarity_children')
+    let number_in_pro_similarity = 0
+    let number_children_element_in_pro_similarity = 0
+    let messurement_size_collection_in_pro_similarity = 0
+    let for_in_array_size_collection_in_pro_similarity = 0
+    let size_collection_in_pro_similarity = []
+    let gap_in_pro_similarity = 16
+    slaider_item_pro_similarity_children.forEach(item => {
+        size_collection_in_pro_similarity[for_in_array_size_collection_in_pro_similarity] = item.scrollWidth
+        for_in_array_size_collection_in_pro_similarity++
+    });
+
+    function slaiderbottom_in_pro_similarity(state) {
+
+        number_children_element_in_pro_similarity = slaider_item_pro_similarity.children.length
+        if (!slaider_item_pro_similarity.classList.contains('duration-500')) {
+            slaider_item_pro_similarity.classList.add('duration-500')
+        }
+        if (messurement_size_collection_in_pro_similarity + number_element_in_number_element_in_pro_similarity < number_children_element_in_pro_similarity) {
+            if (state == 'left') {
+                
+                slaider_item_pro_similarity.classList.remove('translate-x-[' + number_in_pro_similarity + 'px]')
+                number_in_pro_similarity = number_in_pro_similarity + size_collection_in_pro_similarity[messurement_size_collection_in_pro_similarity] + gap_in_pro_similarity
+                slaider_item_pro_similarity.classList.add('translate-x-[' + number_in_pro_similarity + 'px]')
+                messurement_size_collection_in_pro_similarity++
+            }
+        }
+        if (!messurement_size_collection_in_pro_similarity == 0) {
+            if (state == 'right') {
+                slaider_item_pro_similarity.classList.remove('translate-x-[' + number_in_pro_similarity + 'px]')
+                number_in_pro_similarity = number_in_pro_similarity - size_collection_in_pro_similarity[messurement_size_collection_in_pro_similarity] - gap_in_pro_similarity
+                slaider_item_pro_similarity.classList.add('translate-x-[' + number_in_pro_similarity + 'px]')
+                messurement_size_collection_in_pro_similarity--
+            }
+        }
+          
+          
+           if(messurement_size_collection_in_pro_similarity  + number_element_in_number_element_in_pro_similarity  == number_children_element_in_pro_similarity){
+            
+                slaider_item_pro_similarity.classList.remove('translate-x-['+number_in_pro_similarity+'px]') 
+                number_in_pro_similarity = 0
+                messurement_size_collection_in_pro_similarity=0
+                slaider_item_pro_similarity.classList.remove('duration-500')
+            }
+    }     
+    
+       let result = setInterval(() =>{
+            slaiderbottom_in_pro_similarity('left')
+        
+        },2000)
+
+
+
+
+    // let user_id="{{Auth::id()}}";
+    // let product_id="{{$product->id}}";
+    // let link="{{route('user.loginPage')}}";
+    // let check="{{Auth::check()}}";
+
+
+
+    // function entry_cart(el) {
+    //     entry_cart_submit.forEach(entry => {
+    //         entry.innerHTML =
+    //         `
+    //             <div class="size-7 border-4 border-(--border) border-t-(--primary_color) rounded-full animate-spin"></div>
+    //         `
+    //     })
+    //         if(check){
+    //             $.ajaxSetup({
+    //                 headers: {
+    //                     'X-CSRF-TOKEN': "{{ csrf_token() }}"
+    //                 }
+    //             })
+    //             $.ajax({
+    //                 url: "{{route('cart.store')}}",
+    //                 type: "post",
+    //                 dataType: "json",
+    //                 data:{
+    //                     'product_id':product_id,
+    //                     'user_id':user_id,
+    //                 },
+    //                 success: function(data) {
+    //                     cart_counter.innerHTML++
+    //                     console.log(data.product.path);
+    //                     entry_cart_submit.forEach(entry => {
+    //                         entry.innerHTML='افزوده شد'
+    //                         entry.setAttribute('disable',true)
+    //                         entry.removeAttribute('onclick')
+    //                         entry.classList.remove('bg-(--primary_color)');
+    //                         entry.classList.remove('hover:bg-green-600');
+    //                         entry.classList.add('bg-yellow-200');
+    //                         entry.classList.add('hover:bg-yellow-300');
+    //                         entry.classList.remove('text-white');
+    //                         entry.classList.add('text-black');
+
+    //                         //  افزودن به سبد خرید  //
+
+
+    //                     })
+
+    //                     let div_image=document.createElement('div');
+    //                     let div_text_and_counter=document.createElement('div');
+    //                     let parent_div=document.createElement('div');
+    //                     parent_div.classList=`parent_cart w-full flex justify-between border-2 gap-4`
+    //                     div_image.classList=`w-1/5 p-2`
+    //                     if(data.product.path!=null){
+    //                         div_image.innerHTML = `<img class="w-full h-20 rounded-xl" src="{{ asset('storage/product_medias/`+data.product.path+`') }}" alt="">`;
+    //                     }else{
+    //                         div_image.innerHTML=`<div class="w-full h-20 rounded-xl"> 🖼 </div>`
+    //                     }
+    //                     div_text_and_counter.classList=`w-4/5 flex flex-col justify-evenly`;
+    //                     div_text_and_counter.innerHTML=
+    //                     `
+    //                         <div class='w-4/5 flex flex-col justify-evenly '>
+    //                             <div class='text-xl text-center items-center'>
+    //                                 <span> ${data.product.title} </span>
+    //                             </div>
+    //                             <div class='flex gap-5 justify-between px-4'>
+    //                                 <div class='grid grid-cols-3 w-20 border-1 overflow-hidden rounded-full items-center text-center'>
+    //                                     <div onclick="updateCart(this,${data.cart.id},'plus')" class='p-2 text-center items-center flex justify-center cursor-pointer bg-gray-300 h-full'><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z"/></svg></div>
+    //                                     <div class='p-2 text-center items-center flex justify-center '><input type="number" class='w-5 outline-none text-center items-center text-black' readonly value="${data.cart.quantity}"></div>
+    //                                     <div onclick="trash(this,${data.cart.id},${data.product.id})" class='p-2 text-center items-center flex justify-center cursor-pointer bg-gray-300 h-full'><svg class='fill-rose-600' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M170.5 51.6L151.5 80h145l-19-28.4c-1.5-2.2-4-3.6-6.7-3.6H177.1c-2.7 0-5.2 1.3-6.7 3.6zm147-26.6L354.2 80H368h48 8c13.3 0 24 10.7 24 24s-10.7 24-24 24h-8V432c0 44.2-35.8 80-80 80H112c-44.2 0-80-35.8-80-80V128H24c-13.3 0-24-10.7-24-24S10.7 80 24 80h8H80 93.8l36.7-55.1C140.9 9.4 158.4 0 177.1 0h93.7c18.7 0 36.2 9.4 46.6 24.9zM80 128V432c0 17.7 14.3 32 32 32H336c17.7 0 32-14.3 32-32V128H80zm80 64V400c0 8.8-7.2 16-16 16s-16-7.2-16-16V192c0-8.8 7.2-16 16-16s16 7.2 16 16zm80 0V400c0 8.8-7.2 16-16 16s-16-7.2-16-16V192c0-8.8 7.2-16 16-16s16 7.2 16 16zm80 0V400c0 8.8-7.2 16-16 16s-16-7.2-16-16V192c0-8.8 7.2-16 16-16s16 7.2 16 16z"/></svg></div>
+    //                                 </div>
+
+    //                                 <div class='text-black text-xl'> ${data.product.price} </div>
+    //                             </div>
+    //                         </div>   
+    //                     ` 
+
+    //                     product_price=parseInt(data.product.price)
+    //                     price=parseInt(total_price.value)
+    //                     total_price.value= product_price + price;
+
+    //                     parent_div.appendChild(div_image)
+    //                     parent_div.appendChild(div_text_and_counter)
+    //                     cart_list.appendChild(parent_div);
+    //                     console.log(cart_list);
+    //                 },
+    //                 error: function() {
+    //                     console.log('☢')
+    //                 }
+    //             })
+    //         }else{
+    //             location.assign(link)
+    //         } 
+
+
+
+    //     // });
+
+    // }
+
+
+    // let quantity=0;
+    // let plus_icon='';
+    // function updateCart(el,id,state) {
+
+    //     quantity = el.parentElement.children[1].value;
+
+    //     if (quantity < 30) {
+
+    //         plus_icon=el.parentElement.children[0].innerHTML;
+    //         el.parentElement.children[0].innerHTML =
+    //         `
+    //         <div class="size-7 border-4 border-(--border) border-t-(--primary_color) rounded-full animate-spin"></div>
+
+    //         `;
+    //         el.parentElement.children[0].setAttribute('disabled', true);
+    //         el.parentElement.children[0].removeAttribute('onclick');
+
+    //         el.parentElement.children[2].innerHTML =
+    //         `
+    //         <div class="size-7 border-4 border-(--border) border-t-(--primary_color) rounded-full animate-spin"></div>
+
+    //         `;
+    //         el.parentElement.children[2].setAttribute('disabled', true);
+    //         el.parentElement.children[2].removeAttribute('onclick');
+
+    //         if(state=='plus'){
+    //             quantity++;
+    //         }else{
+    //             quantity--;
+    //         }
+    //         $.ajaxSetup({
+    //             headers: {
+    //                 'X-CSRF-TOKEN': "{{ csrf_token() }}"
+    //             }
+    //         })
+    //         $.ajax({
+    //             url: "{{url('cart/update/cart')}}"+"/"+id,
+    //             type: "post",
+    //             dataType:"json",
+    //             data:{
+    //                 'quantity':quantity,
+    //             },
+    //             success: function(data) {
+    //                 el.parentElement.children[1].value = data.quantity
+    //                 if(data.quantity==1){
+
+    //                     //  تغییر دادن  اس وی جی علامت پلاس  //
+
+    //                     el.parentElement.children[0].removeAttribute('disabled');
+    //                     el.parentElement.children[0].setAttribute('onclick',`updateCart(this,${data.cartId},'minus')`)
+    //                     el.parentElement.children[0].innerHTML=plus_icon;
+
+
+    //                     //  تغییر دادن  اس وی جی علامت سطل آشغال  //
+
+    //                     el.parentElement.children[2].innerHTML =
+    //                     `
+    //                     <svg class='size-5 fill-rose-600' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M170.5 51.6L151.5 80h145l-19-28.4c-1.5-2.2-4-3.6-6.7-3.6H177.1c-2.7 0-5.2 1.3-6.7 3.6zm147-26.6L354.2 80H368h48 8c13.3 0 24 10.7 24 24s-10.7 24-24 24h-8V432c0 44.2-35.8 80-80 80H112c-44.2 0-80-35.8-80-80V128H24c-13.3 0-24-10.7-24-24S10.7 80 24 80h8H80 93.8l36.7-55.1C140.9 9.4 158.4 0 177.1 0h93.7c18.7 0 36.2 9.4 46.6 24.9zM80 128V432c0 17.7 14.3 32 32 32H336c17.7 0 32-14.3 32-32V128H80zm80 64V400c0 8.8-7.2 16-16 16s-16-7.2-16-16V192c0-8.8 7.2-16 16-16s16 7.2 16 16zm80 0V400c0 8.8-7.2 16-16 16s-16-7.2-16-16V192c0-8.8 7.2-16 16-16s16 7.2 16 16zm80 0V400c0 8.8-7.2 16-16 16s-16-7.2-16-16V192c0-8.8 7.2-16 16-16s16 7.2 16 16z"/></svg>
+    //                     `
+    //                     el.parentElement.children[2].setAttribute('onclick',`trash(this,${data.cartId})`);
+    //                     el.parentElement.children[2].removeAttribute('disabled');
+    //                 }
+    //                 if(data.quantity>1){
+    //                     el.parentElement.children[2].removeAttribute('disabled');
+    //                     el.parentElement.children[2].setAttribute('onclick',`updateCart(this,${data.cartId},'minus')`)
+    //                     el.parentElement.children[2].innerHTML =
+    //                     `
+    //                         <svg class='size-3 fill-black' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M432 256c0 13.3-10.7 24-24 24L40 280c-13.3 0-24-10.7-24-24s10.7-24 24-24l368 0c13.3 0 24 10.7 24 24z"/></svg>
+    //                     `
+
+    //                 }
+    //             },
+    //             error: function() {
+    //                 console.log('☢')
+    //             }
+    //         })
+    //     }
+
+    // }
+
+
+    // function trash(el,id) {
+    //     let trash_icon='';
+    //     // console.log(entry)
+    //     trash_icon=el.parentElement.children[2].innerHTML;
+    //     el.parentElement.children[2].innerHTML =
+    //     `
+    //         <div class="size-7 border-4 border-(--border) border-t-(--primary_color) rounded-full animate-spin"></div>
+    //     `
+    //     $.ajax({
+    //         url: "{{url('cart/delete/cart')}}"+"/" + id,
+    //         type: "get",
+    //         dataType: "json",
+    //         success: function(data) {
+    //             let product="{{$product}}";
+    //             el.parentElement.classList.remove('flex')
+    //             el.parentElement.classList.add('hidden')
+    //             if(product!=null){
+    //                 entry_cart_submit.forEach(entry => {
+    //                     entry.setAttribute('onclick', 'entry_cart(this)');
+    //                     entry.innerHTML = 'افزودن به سبد خرید'
+    //                     entry.removeAttribute('disable')
+    //                     entry.setAttribute('onclick','entry_cart(this)')
+    //                     entry.classList.remove('bg-(--primary_color)');
+    //                     entry.classList.remove('hover:bg-green-600');
+    //                     entry.classList.remove('text-white');
+    //                 });
+    //             }
+    //         },
+    //         error: function() {
+    //             console.log('☢')
+    //         }
+    //     })
+    //         // console.log(entry)
+    //     // el.parentElement.children[2].innerHTML =trash_icon
+    // }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    // function entry_cart(el) {
+    //     entry_cart_submit.forEach(entry => {
+    //         entry.innerHTML =
+    //         `
+    //             <div class="size-7 border-4 border-(--border) border-t-(--primary_color) rounded-full animate-spin"></div>
+    //         `
+    //     })
+    //         if(check){
+    //             $.ajaxSetup({
+    //                 headers: {
+    //                     'X-CSRF-TOKEN': "{{ csrf_token() }}"
+    //                 }
+    //             })
+    //             $.ajax({
+    //                 url: "{{route('cart.store')}}",
+    //                 type: "post",
+    //                 dataType: "json",
+    //                 data:{
+    //                     'product_id':product_id,
+    //                     'user_id':user_id,
+    //                 },
+    //                 success: function(cartId) {
+    //                     console.log(cartId);
+    //                     entry_cart_submit.forEach(entry => {
+    //                         entry.classList.add('hidden');
+    //                         quantity_selectors.forEach(quantity_selector => {
+    //                             quantity_selector.classList.remove('hidden');
+    //                             quantity_selector.classList.add('flex');
+    //                             quantity_selector.classList.add('w-full');
+    //                             quantity_selector.children[0].setAttribute('onclick',`quantity_selector(this,${cartId},'plus')`);
+    //                             quantity_selector.children[2].setAttribute('onclick',`trash(${cartId})`);
+    //                         });
+    //                     })
+    //                 },
+    //                 error: function() {
+    //                     console.log('☢')
+    //                 }
+    //             })
+    //         }else{
+    //             location.assign(link)
+    //         } 
+
+
+
+    //     // });
+
+    // }
+
+
+    // let flag = true
+    // // let count = 0
+    // let test = document.getElementById('test')
+    // let quantity=0;
+    // let plus_icon='';
+    // function quantity_selector(el,id,state) {
+    //     // let value=0;
+    //     // count++
+    //     quantity_selectors.forEach(quantity_selector => {
+    //         plus_icon=quantity_selector.children[0].innerHTML;
+    //         quantity_selector.children[0].innerHTML =
+    //         `
+    //         <div class="size-7 border-4 border-(--border) border-t-(--primary_color) rounded-full animate-spin"></div>
+
+    //         `;
+    //         quantity_selector.children[0].setAttribute('disabled', true);
+
+    //         quantity_selector.children[2].innerHTML =
+    //         `
+    //         <div class="size-7 border-4 border-(--border) border-t-(--primary_color) rounded-full animate-spin"></div>
+
+    //         `;
+    //         quantity_selector.children[2].setAttribute('disabled', true);
+    //         quantity = quantity_selector.children[1].value;
+    //     })
+    //     if (quantity < 30) {
+    //         if(state=='plus'){
+    //             quantity++;
+    //         }else{
+    //             quantity--;
+    //         }
+    //         $.ajaxSetup({
+    //             headers: {
+    //                 'X-CSRF-TOKEN': "{{ csrf_token() }}"
+    //             }
+    //         })
+    //         $.ajax({
+    //             url: "{{url('cart/update/cart')}}"+"/"+id,
+    //             type: "post",
+    //             dataType:"json",
+    //             data:{
+    //                 'quantity':quantity,
+    //             },
+    //             success: function(data) {
+    //                 quantity_selectors.forEach(quantity_selector => {
+    //                     quantity_selector.children[1].value = data.quantity
+    //                     quantity_selector.children[0].innerHTML=plus_icon;
+    //                     if(data.quantity==1){
+    //                         quantity_selector.children[0].removeAttribute('disabled');
+    //                         quantity_selector.children[2].innerHTML=
+    //                         `
+    //                             <div class="size-7 border-4 border-(--border) border-t-(--primary_color) rounded-full animate-spin"></div>
+
+    //                         `;
+    //                         quantity_selector.children[2].innerHTML =
+    //                         `
+    //                         <svg class='size-5 fill-rose-600' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M170.5 51.6L151.5 80h145l-19-28.4c-1.5-2.2-4-3.6-6.7-3.6H177.1c-2.7 0-5.2 1.3-6.7 3.6zm147-26.6L354.2 80H368h48 8c13.3 0 24 10.7 24 24s-10.7 24-24 24h-8V432c0 44.2-35.8 80-80 80H112c-44.2 0-80-35.8-80-80V128H24c-13.3 0-24-10.7-24-24S10.7 80 24 80h8H80 93.8l36.7-55.1C140.9 9.4 158.4 0 177.1 0h93.7c18.7 0 36.2 9.4 46.6 24.9zM80 128V432c0 17.7 14.3 32 32 32H336c17.7 0 32-14.3 32-32V128H80zm80 64V400c0 8.8-7.2 16-16 16s-16-7.2-16-16V192c0-8.8 7.2-16 16-16s16 7.2 16 16zm80 0V400c0 8.8-7.2 16-16 16s-16-7.2-16-16V192c0-8.8 7.2-16 16-16s16 7.2 16 16zm80 0V400c0 8.8-7.2 16-16 16s-16-7.2-16-16V192c0-8.8 7.2-16 16-16s16 7.2 16 16z"/></svg>
+    //                         `
+    //                         // quantity_selector.children[2].removeAttribute('onclick');
+    //                         quantity_selector.children[2].setAttribute('onclick',`trash(${data.cartId})`);
+    //                         quantity_selector.children[2].removeAttribute('disabled');
+    //                     }
+    //                     if(data.quantity>1){
+    //                         quantity_selector.children[2].removeAttribute('disabled');
+    //                         quantity_selector.children[2].innerHTML=
+    //                         `
+    //                             <div class="size-7 border-4 border-(--border) border-t-(--primary_color) rounded-full animate-spin"></div>
+
+    //                         `;
+    //                         quantity_selector.children[2].setAttribute('onclick',`quantity_selector(this,${data.cartId},'minus')`)
+    //                         quantity_selector.children[2].innerHTML =
+    //                         `
+    //                          <svg class='size-3 fill-black' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M432 256c0 13.3-10.7 24-24 24L40 280c-13.3 0-24-10.7-24-24s10.7-24 24-24l368 0c13.3 0 24 10.7 24 24z"/></svg>
+    //                         `
+
+    //                     }
+    //                 })
+    //             },
+    //             error: function() {
+    //                 console.log('☢')
+    //             }
+    //         })
+    //     }
+
+    // }
+
+    // function trash(id) {
+    //     let trash_icon='';
+    //     quantity_selectors.forEach(quantity_selector => {
+    //         // console.log(entry)
+    //         trash_icon=quantity_selector.children[2].innerHTML;
+    //         quantity_selector.children[2].innerHTML =
+    //         `
+    //             <div class="size-7 border-4 border-(--border) border-t-(--primary_color) rounded-full animate-spin"></div>
+
+    //         `
+    //     });
+    //     $.ajax({
+    //         url: "{{url('cart/delete/cart')}}"+"/" + id,
+    //         type: "get",
+    //         dataType: "json",
+    //         success: function(data) {
+    //             quantity_selectors.forEach(quantity_selector => {
+    //                 quantity_selector.classList.remove('flex')
+    //                 quantity_selector.classList.add('hidden')
+    //             });
+    //             entry_cart_submit.forEach(entry => {
+    //                 entry.classList.remove('hidden');
+    //                 entry.classList.add('flex');
+    //                 entry.setAttribute('onclick', 'entry_cart(this)');
+    //                 entry.innerHTML = 'افزودن به سبد خرید'
+    //             });
+
+
+    //         },
+    //         error: function() {
+    //             console.log('☢')
+    //         }
+    //     })
+    //     quantity_selectors.forEach(quantity_selector => {
+    //         // console.log(entry)
+    //         quantity_selector.children[2].innerHTML =trash_icon
+    //     });
+    // }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    // let entry_cart_mobile = document.querySelector('.entry_cart_mobile')
+    // let quantity_selectors_mobile = document.querySelector('.quantity_selectors_mobile')
+    // let quantity_selector_input = document.querySelector('.quantity_selector_input')
+    // let plus_quantity = document.querySelector('.plus_quantity')
+    // let minus_quantity = document.querySelector('.minus_quantity')
+    // let trash_quantity = document.querySelector('.trash_quantity')
+
+
+    // function entry_cart_mobile_function(el) {
+    //     // console.log(entry_cart_mobile)
+    //     entry_cart_mobile.innerHTML =
+    //         `
+    //         <div class="size-7 border-4 border-(--border) border-t-(--primary_color) rounded-full animate-spin"></div>
+
+    //     `
+    //     $.ajax({
+    //         url: "{{url('cart/set/quantity/cart')}}/" + 1,
+    //         type: "get",
+    //         dataType: "json",
+    //         success: function(data) {
+    //             entry_cart_mobile.classList.remove('flex');
+    //             entry_cart_mobile.classList.add('hidden');
+    //             quantity_selectors_mobile.classList.remove('hidden')
+    //             quantity_selectors_mobile.classList.add('flex')
+    //         },
+    //         error: function() {
+    //             console.log('☢')
+    //         }
+    //     })
+
+
+
+
+
+    // }
+
+    // function trash_mobile() {
+    //     entry_cart_mobile.innerHTML =
+    //         `
+    //             <div class="size-7 border-4 border-(--border) border-t-(--primary_color) rounded-full animate-spin"></div>
+    //         `
+    //     $.ajax({
+    //         url: "{{url('cart/set/quantity/cart')}}/" + 1,
+    //         type: "get",
+    //         dataType: "json",
+    //         success: function(data) {
+    //             quantity_selectors_mobile.classList.remove('flex')
+    //             quantity_selectors_mobile.classList.add('hidden')
+
+    //             entry_cart_mobile.classList.remove('hidden')
+    //             entry_cart_mobile.classList.add('flex')
+    //             entry_cart_mobile.innerHTML = `<span class='text-sm text-white font-bold'> افزودن به سبد خرید </span>`
+
+    //         },
+    //         error: function() {
+    //             console.log('☢')
+    //         }
+    //     })
+    // }
+
+    // function quantity_selector_mobile(state) {
+    //     let value = 0;
+    //     if (state == 'plus') {
+    //         if (quantity_selectors_mobile.children[2].children[0].classList.contains('fill-rose-600')) {
+    //             quantity_selectors_mobile.children[2].remove()
+    //             quantity_selectors_mobile.innerHTML +=
+    //                 `
+    //                    <div onclick="quantity_selector('minus')" class='minus_quantity w-3/12 min-h-8  flex items-center border border-(--border) rounded-xl justify-center hover:bg-(--metod-text) hover:scale-95 transition-all duration-200'> <svg class='size-3 fill-black' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M432 256c0 13.3-10.7 24-24 24L40 280c-13.3 0-24-10.7-24-24s10.7-24 24-24l368 0c13.3 0 24 10.7 24 24z"/></svg> </div>
+    //                 `
+    //         }
+    //         if (quantity_selectors_mobile.children[1].value < 30) {
+    //             let value = quantity_selectors_mobile.children[1].value
+    //             $.ajax({
+    //                 url: "{{url('cart/set/quantity/cart')}}/" + 1,
+    //                 type: "get",
+    //                 success: function(quantity) {
+    //                     value = quantity_selector_input.value + quantity
+    //                     quantity_selector_input.value = value
+    //                 },
+    //                 error: function() {
+    //                     console.log('☢')
+    //                 }
+    //             })
+    //         }
+    //     }
+    //     if (state == 'minus') {
+    //         if (quantity_selectors_mobile.children[1].value > 1) {
+    //             $.ajax({
+    //                 url: "{{url('cart/set/quantity/cart')}}/" + 1,
+    //                 type: "get",
+    //                 dataType: "json",
+    //                 success: function(quantity) {
+    //                     value = quantity_selector_input.getAttribute('value')
+    //                     value--
+    //                     quantity_selector_input.setAttribute('value', value)
+    //                 },
+    //                 error: function() {
+    //                     console.log('☢')
+    //                 }
+    //             })
+
+    //             if (quantity_selectors_mobile.children[1].value = 1) {
+    //                 quantity_selectors_mobile.children[2].remove()
+    //                 quantity_selectors_mobile.innerHTML +=
+    //                     `
+    //                     <div onclick="trash()" class='trash_quantities min-w-10 min-h-10 max-w-10 max-h-10  flex items-center border border-(--border) rounded-xl justify-center hover:bg-(--metod-text) hover:scale-95 transition-all duration-200'> <svg class='size-5 fill-rose-600' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M170.5 51.6L151.5 80h145l-19-28.4c-1.5-2.2-4-3.6-6.7-3.6H177.1c-2.7 0-5.2 1.3-6.7 3.6zm147-26.6L354.2 80H368h48 8c13.3 0 24 10.7 24 24s-10.7 24-24 24h-8V432c0 44.2-35.8 80-80 80H112c-44.2 0-80-35.8-80-80V128H24c-13.3 0-24-10.7-24-24S10.7 80 24 80h8H80 93.8l36.7-55.1C140.9 9.4 158.4 0 177.1 0h93.7c18.7 0 36.2 9.4 46.6 24.9zM80 128V432c0 17.7 14.3 32 32 32H336c17.7 0 32-14.3 32-32V128H80zm80 64V400c0 8.8-7.2 16-16 16s-16-7.2-16-16V192c0-8.8 7.2-16 16-16s16 7.2 16 16zm80 0V400c0 8.8-7.2 16-16 16s-16-7.2-16-16V192c0-8.8 7.2-16 16-16s16 7.2 16 16zm80 0V400c0 8.8-7.2 16-16 16s-16-7.2-16-16V192c0-8.8 7.2-16 16-16s16 7.2 16 16z"/></svg> </div>
+    //                     `
+    //             }
+    //         }
+
+    //     }
+    // }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    // function quantity_selector(state){
+    //     if(state == "plus"){
+    //         count++
+    //         console.log(count)
+    //         test.value++
+    //         console.log(test.value)
+    //     }
+    // }
+
+    // let flag1=true;
+    function set_favored() {
+        // if(flag1){
+        $.ajax({
+            url: "{{url('cart/set/quantity/cart')}}/" + 1,
+            type: "get",
+            dataType: "json",
+            success: function(data) {
+                like_icons.forEach(like_icon => {
+                    // console.log(like_icon)
+                    if (like_icon.classList.contains('fill-none')) {
+                        like_icon.classList.remove('fill-none')
+                        like_icon.classList.add('fill-rose-600')
+                    } else {
+                        like_icon.classList.remove('fill-rose-600')
+                        like_icon.classList.add('fill-none')
+                    }
+
+                });
+            },
+            error: function() {
+                console.log('☢')
+            }
+        })
+        // flag1=false
+        // }
+    }
+
+
+    let share_item = document.getElementById('share_item')
+
+    function show_share_list(item) {
+
+        // // ایجاد دیویژن ها
+        // black_div = document.createElement('div')
+        // social_medias_parent = document.createElement('div')
+        // social_medias = document.createElement('div')
+        // title = document.createElement('div')
+        // hidden_botton = document.createElement('div')
+
+        // // اتریبیوت دهی 
+        // black_div.setAttribute('onclick', 'hidden_share_list()')
+        // black_div.setAttribute('id', 'black_div')
+        // social_medias_parent.setAttribute('id', 'social_medias_parent')
+        // hidden_botton.setAttribute('onclick', 'hidden_share_list()')
+
+
+
+        // //استایل دهی به آنها
+        // black_div.classList =
+        //     `
+        //   fixed top-0 size-[100%] bg-black/70 flex justify_center items-center transition-all duration-500
+        // `
+        // social_medias_parent.classList =
+        //     `
+        //   social-icons fixed top-2/5 left-0 right-0 w-1/3 h-50 p-3 mx-auto bg-white flex flex-col transition-all duration-500 rounded-lg gap-3 -tems-center justify-evenly border border-(--border)
+        // `
+        // hidden_botton.classList =
+        //     `
+        //   absolute size-7 rounded-full bg-white -top-10 left-3 flex items-center text-2xl text-center justify-center cursor-pointer
+        // `
+        // hidden_botton.innerHTML =
+        //     `
+        //     <span>X</span> 
+        // `
+        // title.classList =
+        //     `
+        //   w-full flex text-center items-center gap-4 justify-center
+        // `
+        // title.innerHTML =
+        //     `
+        // <div class='shadows w-1 h-6 rounded-xl bg-(--primary_color)'></div>
+        //   <span class='text-sm font-bold'> این محصول رو با دوستانت به اشتراک بزار: </span>
+        // `
+        // social_medias.classList =
+        //     `
+        //   w-full flex gap-4 justify-evenly
+        // `
+        // social_medias.innerHTML =
+        //     `
+        //     <a href="eitaa.ir" target="_blank">
+        //         <img src="{{asset('assets/img/eitaa_logo.svg')}}" alt="Rubika" class='w-14'>
+        //     </a>
+        //     <a href="rubika.ir" target="_blank">
+        //         <img src="{{asset('assets/img/rubika-icon.png')}}" alt="Rubika" class='w-14'>
+        //     </a>
+        //     <a href="rubika.ir" target="_blank">
+        //         <img src="{{asset('assets/img/whatsapp.png')}}" alt="Rubika" class='w-14'>
+        //     </a>
+        //     <a href="instagram.com" target="_blank">
+        //         <img src="{{asset('assets/img/instagram-farsgraphic.png')}}" alt="Rubika" class='w-14'>
+        //     </a>
+        //     <a href="telegram.com" target="_blank">
+        //         <img src="{{asset('assets/img/telegram-farsgraphic.png')}}" alt="Rubika" class='w-14'>
+        //     </a>
+        // `
+
+        // social_medias_parent.append(title)
+        // social_medias_parent.append(social_medias)
+        // social_medias_parent.append(hidden_botton)
+        // // black_div.append(social_medias_parent)
+        // main.append(black_div)
+        // main.append(social_medias_parent)
+
+        // console.log(main)
+
+        console.log('lsflshf')
+        if (item == 'open') {
+            share_item.classList.remove('invisible')
+            share_item.classList.remove('opacity-0')
+        }
+        if (item == 'close') {
+            share_item.classList.add('invisible')
+            share_item.classList.add('opacity-0')
+        }
+
+
+
+    }
+
+    function hidden_share_list() {
+        let black_div = document.getElementById('black_div')
+        let social_medias_parent = document.getElementById('social_medias_parent')
+        black_div.remove()
+        social_medias_parent.remove()
+    }
+
+
+
+    function show_selected_star(number) {
+        // console.log(number)    
+        let star = ''
+
+        if (number == 0) {
+
+            for (let i = 1; i <= 5; i++) {
+                let star = 'star' + i
+                selected = document.getElementById(star)
+                if (selected.classList.contains('notActive')) {
+                    selected.classList.remove('fill-(--star)')
+                    selected.classList.add('fill-none')
+                }
+
             }
 
+        } else {
 
-
-        }
-
-        function hidden_share_list() {
-            let black_div = document.getElementById('black_div')
-            let social_medias_parent = document.getElementById('social_medias_parent')
-            black_div.remove()
-            social_medias_parent.remove()
-        }
-
-
-
-        function show_selected_star(number) {
-            // console.log(number)    
-            let star = ''
-
-            if (number == 0) {
-
-                for (let i = 1; i <= 5; i++) {
+            for (let i = 1; i <= 5; i++) {
+                if (i <= number) {
+                    // console.log(i)    
                     let star = 'star' + i
                     selected = document.getElementById(star)
                     if (selected.classList.contains('notActive')) {
+                        selected.classList.remove('fill-none')
+                        selected.classList.add('fill-(--star)')
+                    }
+
+                }
+            }
+        }
+
+        // console.log("به ستاره شماره " + number + "هاور شد")
+
+    }
+
+
+
+    function set_star(id) {
+        // console.log("به   " + id + "کلیک شد")
+        $.ajax({
+            url: "{{url('cart/set/quantity/cart')}}/" + id,
+            type: "get",
+            dataType: "json",
+            success: function(data) {
+                for (let i = 1; i <= 5; i++) {
+
+                    if (i <= id) {
+                        let star = 'star' + i
+                        selected = document.getElementById(star)
+                        selected.classList.remove('notActive')
+                        selected.classList.add('active')
+                        selected.classList.remove('fill-none')
+                        selected.classList.add('fill-(--star)')
+                    }
+
+                    if (i > id) {
+                        let star = 'star' + i
+                        selected = document.getElementById(star)
+                        selected.classList.remove('active')
+                        selected.classList.add('notActive')
                         selected.classList.remove('fill-(--star)')
                         selected.classList.add('fill-none')
                     }
-
                 }
-
-            } else {
-
-                for (let i = 1; i <= 5; i++) {
-                    if (i <= number) {
-                        // console.log(i)    
-                        let star = 'star' + i
-                        selected = document.getElementById(star)
-                        if (selected.classList.contains('notActive')) {
-                            selected.classList.remove('fill-none')
-                            selected.classList.add('fill-(--star)')
-                        }
-
-                    }
-                }
+            },
+            error: function() {
+                console.log('☢')
             }
-
-            // console.log("به ستاره شماره " + number + "هاور شد")
-
-        }
+        })
 
 
 
-        function set_star(id) {
-            // console.log("به   " + id + "کلیک شد")
-            $.ajax({
-                url: "{{url('cart/set/quantity/cart')}}/" + id,
-                type: "get",
-                dataType: "json",
-                success: function(data) {
-                    for (let i = 1; i <= 5; i++) {
-
-                        if (i <= id) {
-                            let star = 'star' + i
-                            selected = document.getElementById(star)
-                            selected.classList.remove('notActive')
-                            selected.classList.add('active')
-                            selected.classList.remove('fill-none')
-                            selected.classList.add('fill-(--star)')
-                        }
-
-                        if (i > id) {
-                            let star = 'star' + i
-                            selected = document.getElementById(star)
-                            selected.classList.remove('active')
-                            selected.classList.add('notActive')
-                            selected.classList.remove('fill-(--star)')
-                            selected.classList.add('fill-none')
-                        }
-                    }
-                },
-                error: function() {
-                    console.log('☢')
-                }
-            })
-
-
-
-        }
-    </script>
-    <!--  -  -->
-    <!-- <svg class='size-3 fill-black' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M432 256c0 13.3-10.7 24-24 24L40 280c-13.3 0-24-10.7-24-24s10.7-24 24-24l368 0c13.3 0 24 10.7 24 24z"/></svg> -->
-    <!-- trash -->
-    <!-- <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M170.5 51.6L151.5 80h145l-19-28.4c-1.5-2.2-4-3.6-6.7-3.6H177.1c-2.7 0-5.2 1.3-6.7 3.6zm147-26.6L354.2 80H368h48 8c13.3 0 24 10.7 24 24s-10.7 24-24 24h-8V432c0 44.2-35.8 80-80 80H112c-44.2 0-80-35.8-80-80V128H24c-13.3 0-24-10.7-24-24S10.7 80 24 80h8H80 93.8l36.7-55.1C140.9 9.4 158.4 0 177.1 0h93.7c18.7 0 36.2 9.4 46.6 24.9zM80 128V432c0 17.7 14.3 32 32 32H336c17.7 0 32-14.3 32-32V128H80zm80 64V400c0 8.8-7.2 16-16 16s-16-7.2-16-16V192c0-8.8 7.2-16 16-16s16 7.2 16 16zm80 0V400c0 8.8-7.2 16-16 16s-16-7.2-16-16V192c0-8.8 7.2-16 16-16s16 7.2 16 16zm80 0V400c0 8.8-7.2 16-16 16s-16-7.2-16-16V192c0-8.8 7.2-16 16-16s16 7.2 16 16z"/></svg> -->
-    <!-- + -->
-    <!-- <svg class='size-3 fill-black' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M488 232c13.3 0 24 10.7 24 24s-10.7 24-24 24l-208 0 0 208c0 13.3-10.7 24-24 24s-24-10.7-24-24l0-208L24 280c-13.3 0-24-10.7-24-24s10.7-24 24-24H232l0-208c0-13.3 10.7-24 24-24s24 10.7 24 24l0 208 208 0z"/></svg> -->
+    }
+</script>
+<!--  -  -->
+<!-- <svg class='size-3 fill-black' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M432 256c0 13.3-10.7 24-24 24L40 280c-13.3 0-24-10.7-24-24s10.7-24 24-24l368 0c13.3 0 24 10.7 24 24z"/></svg> -->
+<!-- trash -->
+<!-- <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M170.5 51.6L151.5 80h145l-19-28.4c-1.5-2.2-4-3.6-6.7-3.6H177.1c-2.7 0-5.2 1.3-6.7 3.6zm147-26.6L354.2 80H368h48 8c13.3 0 24 10.7 24 24s-10.7 24-24 24h-8V432c0 44.2-35.8 80-80 80H112c-44.2 0-80-35.8-80-80V128H24c-13.3 0-24-10.7-24-24S10.7 80 24 80h8H80 93.8l36.7-55.1C140.9 9.4 158.4 0 177.1 0h93.7c18.7 0 36.2 9.4 46.6 24.9zM80 128V432c0 17.7 14.3 32 32 32H336c17.7 0 32-14.3 32-32V128H80zm80 64V400c0 8.8-7.2 16-16 16s-16-7.2-16-16V192c0-8.8 7.2-16 16-16s16 7.2 16 16zm80 0V400c0 8.8-7.2 16-16 16s-16-7.2-16-16V192c0-8.8 7.2-16 16-16s16 7.2 16 16zm80 0V400c0 8.8-7.2 16-16 16s-16-7.2-16-16V192c0-8.8 7.2-16 16-16s16 7.2 16 16z"/></svg> -->
+<!-- + -->
+<!-- <svg class='size-3 fill-black' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M488 232c13.3 0 24 10.7 24 24s-10.7 24-24 24l-208 0 0 208c0 13.3-10.7 24-24 24s-24-10.7-24-24l0-208L24 280c-13.3 0-24-10.7-24-24s10.7-24 24-24H232l0-208c0-13.3 10.7-24 24-24s24 10.7 24 24l0 208 208 0z"/></svg> -->
 </body>
+
 </html>
 
 
