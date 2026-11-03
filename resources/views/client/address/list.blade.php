@@ -662,19 +662,19 @@
                         <td>
                             <div class="font-semibold" style="color: var(--metronic-text-value);">{{$address->location}}</div>
                         </td>
-                        <td class="hidden lg:table-cell">
+                        <td class="table-cell">
                             <div class="font-semibold" style="color: var(--metronic-text-value);">{{$address->city}}</div>
                         </td>
-                        <td class="hidden lg:table-cell">
+                        <td class="table-cell">
                             <div class="font-semibold" style="color: var(--metronic-text-value);">{{$address->province}}</div>
                         </td>
-                        <td class="hidden lg:table-cell">
+                        <td class="table-cell">
                             <div class="font-semibold" style="color: var(--metronic-text-value);">{{$address->phoneNumber}}</div>
                         </td>
-                        <td class="hidden lg:table-cell">
+                        <td class="table-cell">
                             <div class="font-semibold" style="color: var(--metronic-text-value);">{{$address->postalCode}}</div>
                         </td>
-                        <td class="hidden lg:table-cell">
+                        <td class="table-cell">
                             <div class="font-semibold" style="color: var(--metronic-text-value);">{{$address->description}}</div>
                         </td>
                         <td>

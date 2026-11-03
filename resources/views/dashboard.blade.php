@@ -398,7 +398,7 @@
         <!-- ============================================================ -->
         <!-- ===== سایدبار ===== -->
         <!-- ============================================================ -->
-        <aside id="sidebar" class="w-2/12 sidebar fixed top-0 right-0 h-full bg-[#0D0E12] shadow-xl transition-all z-999 overflow-y-auto">
+        <aside id="sidebar" class="xl:w-21/100 lg:w-25/100 sidebar fixed top-0 right-0 h-full bg-[#0D0E12] shadow-xl transition-all z-999 overflow-y-auto">
             
             <!-- لوگو -->
             <div class="flex items-center gap-3 px-6 py-6 bg-gradient-to-r from-[#0D0E12] to-[#1a1a20]">
@@ -432,13 +432,13 @@
                             </svg>
                         </div>
                         <div class='w-full grid grid-cols-1 text-end max-h-0 overflow-hidden transition-all duration-500'>
-                            <div class='w-12/12 justify-start text-white flex p-2 text-base gap-2 sub-menu-item'>
+                            <div class='w-12/12 justify-start text-white flex p-2 text-sm gap-2 sub-menu-item'>
                                 <svg class='size-4 fill-[#059669]' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
                                     <path d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z"/>
                                 </svg>
                                 <a href="{{route('address.create')}}" class="hover:text-white transition-colors font-medium">ایجاد آدرس جدید</a>
                             </div>
-                            <div class='w-12/12 justify-start text-white flex p-2 text-base gap-2 sub-menu-item'>
+                            <div class='w-12/12 justify-start text-white flex p-2 text-sm gap-2 sub-menu-item'>
                                 <svg class='size-4 fill-[#1B84FF]' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
                                     <path d="M40 48C26.7 48 16 58.7 16 72v48c0 13.3 10.7 24 24 24H88c13.3 0 24-10.7 24-24V72c0-13.3-10.7-24-24-24H40zM192 64c-17.7 0-32 14.3-32 32s14.3 32 32 32H480c17.7 0 32-14.3 32-32s-14.3-32-32-32H192zm0 160c-17.7 0-32 14.3-32 32s14.3 32 32 32H480c17.7 0 32-14.3 32-32s-14.3-32-32-32H192zm0 160c-17.7 0-32 14.3-32 32s14.3 32 32 32H480c17.7 0 32-14.3 32-32s-14.3-32-32-32H192zM16 232v48c0 13.3 10.7 24 24 24H88c13.3 0 24-10.7 24-24V232c0-13.3-10.7-24-24-24H40c-13.3 0-24 10.7-24 24zM40 368c-13.3 0-24 10.7-24 24v48c0 13.3 10.7 24 24 24H88c13.3 0 24-10.7 24-24V392c0-13.3-10.7-24-24-24H40z"/>
                                 </svg>
@@ -459,7 +459,7 @@
                             </svg>
                         </div>
                         <div class='w-full grid grid-cols-1 text-end max-h-0 overflow-hidden transition-all duration-500'>
-                            <div class='w-12/12 justify-start text-white flex p-2 text-base gap-2 sub-menu-item'>
+                            <div class='w-12/12 justify-start text-white flex p-2 text-sm gap-2 sub-menu-item'>
                                 <svg class='size-4 fill-[#1B84FF]' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
                                     <path d="M40 48C26.7 48 16 58.7 16 72v48c0 13.3 10.7 24 24 24H88c13.3 0 24-10.7 24-24V72c0-13.3-10.7-24-24-24H40zM192 64c-17.7 0-32 14.3-32 32s14.3 32 32 32H480c17.7 0 32-14.3 32-32s-14.3-32-32-32H192zm0 160c-17.7 0-32 14.3-32 32s14.3 32 32 32H480c17.7 0 32-14.3 32-32s-14.3-32-32-32H192zm0 160c-17.7 0-32 14.3-32 32s14.3 32 32 32H480c17.7 0 32-14.3 32-32s-14.3-32-32-32H192zM16 232v48c0 13.3 10.7 24 24 24H88c13.3 0 24-10.7 24-24V232c0-13.3-10.7-24-24-24H40c-13.3 0-24 10.7-24 24zM40 368c-13.3 0-24 10.7-24 24v48c0 13.3 10.7 24 24 24H88c13.3 0 24-10.7 24-24V392c0-13.3-10.7-24-24-24H40z"/>
                                 </svg>
@@ -485,13 +485,13 @@
                             </svg>
                         </div>
                         <div class='w-full grid grid-cols-1 text-end max-h-0 overflow-hidden transition-all duration-500'>
-                            <div class='w-12/12 justify-start text-white flex p-2 text-base gap-2 sub-menu-item'>
+                            <div class='w-12/12 justify-start text-white flex p-2 text-sm gap-2 sub-menu-item'>
                                 <svg class='size-4 fill-[#059669]' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
                                     <path d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z"/>
                                 </svg>
                                 <a href="{{route('product.create')}}" class="hover:text-white transition-colors font-medium">ایجاد محصول جدید</a>
                             </div>
-                            <div class='w-12/12 justify-start text-white flex p-2 text-base gap-2 sub-menu-item'>
+                            <div class='w-12/12 justify-start text-white flex p-2 text-sm gap-2 sub-menu-item'>
                                 <svg class='size-4 fill-[#1B84FF]' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
                                     <path d="M40 48C26.7 48 16 58.7 16 72v48c0 13.3 10.7 24 24 24H88c13.3 0 24-10.7 24-24V72c0-13.3-10.7-24-24-24H40zM192 64c-17.7 0-32 14.3-32 32s14.3 32 32 32H480c17.7 0 32-14.3 32-32s-14.3-32-32-32H192zm0 160c-17.7 0-32 14.3-32 32s14.3 32 32 32H480c17.7 0 32-14.3 32-32s-14.3-32-32-32H192zm0 160c-17.7 0-32 14.3-32 32s14.3 32 32 32H480c17.7 0 32-14.3 32-32s-14.3-32-32-32H192zM16 232v48c0 13.3 10.7 24 24 24H88c13.3 0 24-10.7 24-24V232c0-13.3-10.7-24-24-24H40c-13.3 0-24 10.7-24 24zM40 368c-13.3 0-24 10.7-24 24v48c0 13.3 10.7 24 24 24H88c13.3 0 24-10.7 24-24V392c0-13.3-10.7-24-24-24H40z"/>
                                 </svg>
@@ -515,13 +515,13 @@
                             </svg>
                         </div>
                         <div class='w-full grid grid-cols-1 text-end max-h-0 overflow-hidden transition-all duration-500'>
-                            <div class='w-12/12 justify-start text-white flex p-2 text-base gap-2 sub-menu-item'>
+                            <div class='w-12/12 justify-start text-white flex p-2 text-sm gap-2 sub-menu-item'>
                                 <svg class='size-4 fill-[#059669]' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
                                     <path d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z"/>
                                 </svg>
                                 <a href="{{route('discuntCode.create')}}" class="hover:text-white transition-colors font-medium">ایجاد کد تخفیف جدید</a>
                             </div>
-                            <div class='w-12/12 justify-start text-white flex p-2 text-base gap-2 sub-menu-item'>
+                            <div class='w-12/12 justify-start text-white flex p-2 text-sm gap-2 sub-menu-item'>
                                 <svg class='size-4 fill-[#1B84FF]' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
                                     <path d="M40 48C26.7 48 16 58.7 16 72v48c0 13.3 10.7 24 24 24H88c13.3 0 24-10.7 24-24V72c0-13.3-10.7-24-24-24H40zM192 64c-17.7 0-32 14.3-32 32s14.3 32 32 32H480c17.7 0 32-14.3 32-32s-14.3-32-32-32H192zm0 160c-17.7 0-32 14.3-32 32s14.3 32 32 32H480c17.7 0 32-14.3 32-32s-14.3-32-32-32H192zm0 160c-17.7 0-32 14.3-32 32s14.3 32 32 32H480c17.7 0 32-14.3 32-32s-14.3-32-32-32H192zM16 232v48c0 13.3 10.7 24 24 24H88c13.3 0 24-10.7 24-24V232c0-13.3-10.7-24-24-24H40c-13.3 0-24 10.7-24 24zM40 368c-13.3 0-24 10.7-24 24v48c0 13.3 10.7 24 24 24H88c13.3 0 24-10.7 24-24V392c0-13.3-10.7-24-24-24H40z"/>
                                 </svg>
@@ -545,13 +545,13 @@
                             </svg>
                         </div>
                         <div class='w-full grid grid-cols-1 text-end max-h-0 overflow-hidden transition-all duration-500'>
-                            <div class='w-12/12 justify-start text-white flex p-2 text-base gap-2 sub-menu-item'>
+                            <div class='w-12/12 justify-start text-white flex p-2 text-sm gap-2 sub-menu-item'>
                                 <svg class='size-4 fill-[#059669]' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
                                     <path d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z"/>
                                 </svg>
                                 <a href="{{route('category.create')}}" class="hover:text-white transition-colors font-medium">ایجاد دسته بندی جدید</a>
                             </div>
-                            <div class='w-12/12 justify-start text-white flex p-2 text-base gap-2 sub-menu-item'>
+                            <div class='w-12/12 justify-start text-white flex p-2 text-sm gap-2 sub-menu-item'>
                                 <svg class='size-4 fill-[#1B84FF]' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
                                     <path d="M40 48C26.7 48 16 58.7 16 72v48c0 13.3 10.7 24 24 24H88c13.3 0 24-10.7 24-24V72c0-13.3-10.7-24-24-24H40zM192 64c-17.7 0-32 14.3-32 32s14.3 32 32 32H480c17.7 0 32-14.3 32-32s-14.3-32-32-32H192zm0 160c-17.7 0-32 14.3-32 32s14.3 32 32 32H480c17.7 0 32-14.3 32-32s-14.3-32-32-32H192zm0 160c-17.7 0-32 14.3-32 32s14.3 32 32 32H480c17.7 0 32-14.3 32-32s-14.3-32-32-32H192zM16 232v48c0 13.3 10.7 24 24 24H88c13.3 0 24-10.7 24-24V232c0-13.3-10.7-24-24-24H40c-13.3 0-24 10.7-24 24zM40 368c-13.3 0-24 10.7-24 24v48c0 13.3 10.7 24 24 24H88c13.3 0 24-10.7 24-24V392c0-13.3-10.7-24-24-24H40z"/>
                                 </svg>
@@ -574,13 +574,13 @@
                             </svg>
                         </div>
                         <div class='w-full grid grid-cols-1 text-end max-h-0 overflow-hidden transition-all duration-500'>
-                            <div class='w-12/12 justify-start text-white flex p-2 text-base gap-2 sub-menu-item'>
+                            <div class='w-12/12 justify-start text-white flex p-2 text-sm gap-2 sub-menu-item'>
                                 <svg class='size-4 fill-[#059669]' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
                                     <path d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z"/>
                                 </svg>
                                 <a href="{{route('brand.create')}}" class="hover:text-white transition-colors font-medium">ایجاد برند جدید</a>
                             </div>
-                            <div class='w-12/12 justify-start text-white flex p-2 text-base gap-2 sub-menu-item'>
+                            <div class='w-12/12 justify-start text-white flex p-2 text-sm gap-2 sub-menu-item'>
                                 <svg class='size-4 fill-[#1B84FF]' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
                                     <path d="M40 48C26.7 48 16 58.7 16 72v48c0 13.3 10.7 24 24 24H88c13.3 0 24-10.7 24-24V72c0-13.3-10.7-24-24-24H40zM192 64c-17.7 0-32 14.3-32 32s14.3 32 32 32H480c17.7 0 32-14.3 32-32s-14.3-32-32-32H192zm0 160c-17.7 0-32 14.3-32 32s14.3 32 32 32H480c17.7 0 32-14.3 32-32s-14.3-32-32-32H192zm0 160c-17.7 0-32 14.3-32 32s14.3 32 32 32H480c17.7 0 32-14.3 32-32s-14.3-32-32-32H192zM16 232v48c0 13.3 10.7 24 24 24H88c13.3 0 24-10.7 24-24V232c0-13.3-10.7-24-24-24H40c-13.3 0-24 10.7-24 24zM40 368c-13.3 0-24 10.7-24 24v48c0 13.3 10.7 24 24 24H88c13.3 0 24-10.7 24-24V392c0-13.3-10.7-24-24-24H40z"/>
                                 </svg>
@@ -604,7 +604,7 @@
                         <div class='w-full grid grid-cols-1 text-end max-h-0 overflow-hidden transition-all duration-500'>
                             <div class='element flex flex-col items-center gap-2 px-4 py-3 rounded-xl bg-[#1a1a20] shadow-sm hover:shadow-md transition-all'>
                                 <div class='flex w-full justify-between items-center text-center cursor-pointer'>
-                                    <div class='flex items-center gap-2 text-white text-base font-medium'>
+                                    <div class='flex items-center gap-2 text-white text-sm font-medium'>
                                         <svg class='section-icon' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="#d97706">
                                             <path d="M499.1 6.3c-8.1-6-12.9-17.1-11.1-27.1L496 0c-44.3 0-80 35.7-80 80c0 14.3 3.8 27.7 10.4 39.3L352 193.4l-25.4-25.4c-12.5-12.5-32.8-12.5-45.3 0l-56.6 56.6c-12.5 12.5-12.5 32.8 0 45.3l22.6 22.6-56.6 56.6-22.6-22.6c-12.5-12.5-32.8-12.5-45.3 0L88.1 368c-12.5 12.5-12.5 32.8 0 45.3l13.7 13.7L64 464l48 48 36.9-36.9 13.7 13.7c12.5 12.5 32.8 12.5 45.3 0l56.6-56.6 22.6 22.6c12.5 12.5 32.8 12.5 45.3 0l56.6-56.6c12.5-12.5 12.5-32.8 0-45.3l-25.4-25.4L405.3 206c11.6 6.6 25 10.4 38.7 10.4c44.3 0 80-35.7 80-80c0-4.9-.4-9.7-1.2-14.4L505.7 15.4c1.5-7.8-1.8-15.9-6.6-19.1z"/>
                                         </svg>
@@ -615,7 +615,7 @@
                                     </svg>
                                 </div>
                                 <div class='w-full grid grid-cols-1 text-end max-h-0 overflow-hidden transition-all duration-500'>
-                                    <div class='w-12/12 justify-start text-white flex p-2 text-base gap-2 sub-menu-item'>
+                                    <div class='w-12/12 justify-start text-white flex p-2 text-sm gap-2 sub-menu-item'>
                                         <svg class='size-4 fill-[#059669]' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
                                             <path d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z"/>
                                         </svg>
@@ -625,7 +625,7 @@
                             </div>
                             <div class='element flex flex-col items-center gap-2 px-4 py-3 rounded-xl bg-[#1a1a20] shadow-sm hover:shadow-md transition-all'>
                                 <div class='flex w-full justify-between items-center text-center cursor-pointer'>
-                                    <div class='flex items-center gap-2 text-white text-base font-medium'>
+                                    <div class='flex items-center gap-2 text-white text-sm font-medium'>
                                         <svg class='section-icon' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="#d97706">
                                             <path d="M499.1 6.3c-8.1-6-12.9-17.1-11.1-27.1L496 0c-44.3 0-80 35.7-80 80c0 14.3 3.8 27.7 10.4 39.3L352 193.4l-25.4-25.4c-12.5-12.5-32.8-12.5-45.3 0l-56.6 56.6c-12.5 12.5-12.5 32.8 0 45.3l22.6 22.6-56.6 56.6-22.6-22.6c-12.5-12.5-32.8-12.5-45.3 0L88.1 368c-12.5 12.5-12.5 32.8 0 45.3l13.7 13.7L64 464l48 48 36.9-36.9 13.7 13.7c12.5 12.5 32.8 12.5 45.3 0l56.6-56.6 22.6 22.6c12.5 12.5 32.8 12.5 45.3 0l56.6-56.6c12.5-12.5 12.5-32.8 0-45.3l-25.4-25.4L405.3 206c11.6 6.6 25 10.4 38.7 10.4c44.3 0 80-35.7 80-80c0-4.9-.4-9.7-1.2-14.4L505.7 15.4c1.5-7.8-1.8-15.9-6.6-19.1z"/>
                                         </svg>
@@ -636,13 +636,13 @@
                                     </svg>
                                 </div>
                                 <div class='w-full grid grid-cols-1 text-end max-h-0 overflow-hidden transition-all duration-500'>
-                                    <div class='w-12/12 justify-start text-white flex p-2 text-base gap-2 sub-menu-item'>
+                                    <div class='w-12/12 justify-start text-white flex p-2 text-sm gap-2 sub-menu-item'>
                                         <svg class='size-4 fill-[#059669]' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
                                             <path d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z"/>
                                         </svg>
                                         <a href="{{route('hero.create')}}" class="hover:text-white transition-colors font-medium">ایجاد هیرو</a>
                                     </div>
-                                    <div class='w-12/12 justify-start text-white flex p-2 text-base gap-2 sub-menu-item'>
+                                    <div class='w-12/12 justify-start text-white flex p-2 text-sm gap-2 sub-menu-item'>
                                         <svg class='size-4 fill-[#059669]' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
                                             <path d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z"/>
                                         </svg>
@@ -652,7 +652,7 @@
                             </div>
                             <div class='element flex flex-col items-center gap-2 px-4 py-3 rounded-xl bg-[#1a1a20] shadow-sm hover:shadow-md transition-all'>
                                 <div class='flex w-full justify-between items-center text-center cursor-pointer'>
-                                    <div class='flex items-center gap-2 text-white text-base font-medium'>
+                                    <div class='flex items-center gap-2 text-white text-sm font-medium'>
                                         <svg class='section-icon' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="#d97706">
                                             <path d="M499.1 6.3c-8.1-6-12.9-17.1-11.1-27.1L496 0c-44.3 0-80 35.7-80 80c0 14.3 3.8 27.7 10.4 39.3L352 193.4l-25.4-25.4c-12.5-12.5-32.8-12.5-45.3 0l-56.6 56.6c-12.5 12.5-12.5 32.8 0 45.3l22.6 22.6-56.6 56.6-22.6-22.6c-12.5-12.5-32.8-12.5-45.3 0L88.1 368c-12.5 12.5-12.5 32.8 0 45.3l13.7 13.7L64 464l48 48 36.9-36.9 13.7 13.7c12.5 12.5 32.8 12.5 45.3 0l56.6-56.6 22.6 22.6c12.5 12.5 32.8 12.5 45.3 0l56.6-56.6c12.5-12.5 12.5-32.8 0-45.3l-25.4-25.4L405.3 206c11.6 6.6 25 10.4 38.7 10.4c44.3 0 80-35.7 80-80c0-4.9-.4-9.7-1.2-14.4L505.7 15.4c1.5-7.8-1.8-15.9-6.6-19.1z"/>
                                         </svg>
@@ -663,13 +663,13 @@
                                     </svg>
                                 </div>
                                 <div class='w-full grid grid-cols-1 text-end max-h-0 overflow-hidden transition-all duration-500'>
-                                    <div class='w-12/12 justify-start text-white flex p-2 text-base gap-2 sub-menu-item'>
+                                    <div class='w-12/12 justify-start text-white flex p-2 text-sm gap-2 sub-menu-item'>
                                         <svg class='size-4 fill-[#059669]' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
                                             <path d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z"/>
                                         </svg>
                                         <a href="{{route('support_information.create')}}" class="hover:text-white transition-colors font-medium">ایجاد اطلاعات</a>
                                     </div>
-                                    <div class='w-12/12 justify-start text-white flex p-2 text-base gap-2 sub-menu-item'>
+                                    <div class='w-12/12 justify-start text-white flex p-2 text-sm gap-2 sub-menu-item'>
                                         <svg class='size-4 fill-[#059669]' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
                                             <path d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z"/>
                                         </svg>
@@ -679,7 +679,7 @@
                             </div>
                             <div class='element flex flex-col items-center gap-2 px-4 py-3 rounded-xl bg-[#1a1a20] shadow-sm hover:shadow-md transition-all'>
                                 <div class='flex w-full justify-between items-center text-center cursor-pointer'>
-                                    <div class='flex items-center gap-2 text-white text-base font-medium'>
+                                    <div class='flex items-center gap-2 text-white text-sm font-medium'>
                                         <svg class='section-icon' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="#d97706">
                                             <path d="M499.1 6.3c-8.1-6-12.9-17.1-11.1-27.1L496 0c-44.3 0-80 35.7-80 80c0 14.3 3.8 27.7 10.4 39.3L352 193.4l-25.4-25.4c-12.5-12.5-32.8-12.5-45.3 0l-56.6 56.6c-12.5 12.5-12.5 32.8 0 45.3l22.6 22.6-56.6 56.6-22.6-22.6c-12.5-12.5-32.8-12.5-45.3 0L88.1 368c-12.5 12.5-12.5 32.8 0 45.3l13.7 13.7L64 464l48 48 36.9-36.9 13.7 13.7c12.5 12.5 32.8 12.5 45.3 0l56.6-56.6 22.6 22.6c12.5 12.5 32.8 12.5 45.3 0l56.6-56.6c12.5-12.5 12.5-32.8 0-45.3l-25.4-25.4L405.3 206c11.6 6.6 25 10.4 38.7 10.4c44.3 0 80-35.7 80-80c0-4.9-.4-9.7-1.2-14.4L505.7 15.4c1.5-7.8-1.8-15.9-6.6-19.1z"/>
                                         </svg>
@@ -690,7 +690,7 @@
                                     </svg>
                                 </div>
                                 <div class='w-full grid grid-cols-1 text-end max-h-0 overflow-hidden transition-all duration-500'>
-                                    <div class='w-12/12 justify-start text-white flex p-2 text-base gap-2 sub-menu-item'>
+                                    <div class='w-12/12 justify-start text-white flex p-2 text-sm gap-2 sub-menu-item'>
                                         <svg class='size-4 fill-[#059669]' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
                                             <path d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z"/>
                                         </svg>
@@ -700,7 +700,7 @@
                             </div>
                             <div class='element flex flex-col items-center gap-2 px-4 py-3 rounded-xl bg-[#1a1a20] shadow-sm hover:shadow-md transition-all'>
                                 <div class='flex w-full justify-between items-center text-center cursor-pointer'>
-                                    <div class='flex items-center gap-2 text-white text-base font-medium'>
+                                    <div class='flex items-center gap-2 text-white text-sm font-medium'>
                                         <svg class='section-icon' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="#d97706">
                                             <path d="M499.1 6.3c-8.1-6-12.9-17.1-11.1-27.1L496 0c-44.3 0-80 35.7-80 80c0 14.3 3.8 27.7 10.4 39.3L352 193.4l-25.4-25.4c-12.5-12.5-32.8-12.5-45.3 0l-56.6 56.6c-12.5 12.5-12.5 32.8 0 45.3l22.6 22.6-56.6 56.6-22.6-22.6c-12.5-12.5-32.8-12.5-45.3 0L88.1 368c-12.5 12.5-12.5 32.8 0 45.3l13.7 13.7L64 464l48 48 36.9-36.9 13.7 13.7c12.5 12.5 32.8 12.5 45.3 0l56.6-56.6 22.6 22.6c12.5 12.5 32.8 12.5 45.3 0l56.6-56.6c12.5-12.5 12.5-32.8 0-45.3l-25.4-25.4L405.3 206c11.6 6.6 25 10.4 38.7 10.4c44.3 0 80-35.7 80-80c0-4.9-.4-9.7-1.2-14.4L505.7 15.4c1.5-7.8-1.8-15.9-6.6-19.1z"/>
                                         </svg>
@@ -711,7 +711,7 @@
                                     </svg>
                                 </div>
                                 <div class='w-full grid grid-cols-1 text-end max-h-0 overflow-hidden transition-all duration-500'>
-                                    <div class='w-12/12 justify-start text-white flex p-2 text-base gap-2 sub-menu-item'>
+                                    <div class='w-12/12 justify-start text-white flex p-2 text-sm gap-2 sub-menu-item'>
                                         <svg class='size-4 fill-[#059669]' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
                                             <path d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z"/>
                                         </svg>
@@ -721,7 +721,7 @@
                             </div>
                             <div class='element flex flex-col items-center gap-2 px-4 py-3 rounded-xl bg-[#1a1a20] shadow-sm hover:shadow-md transition-all'>
                                 <div class='flex w-full justify-between items-center text-center cursor-pointer'>
-                                    <div class='flex items-center gap-2 text-white text-base font-medium'>
+                                    <div class='flex items-center gap-2 text-white text-sm font-medium'>
                                         <svg class='section-icon' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="#d97706">
                                             <path d="M499.1 6.3c-8.1-6-12.9-17.1-11.1-27.1L496 0c-44.3 0-80 35.7-80 80c0 14.3 3.8 27.7 10.4 39.3L352 193.4l-25.4-25.4c-12.5-12.5-32.8-12.5-45.3 0l-56.6 56.6c-12.5 12.5-12.5 32.8 0 45.3l22.6 22.6-56.6 56.6-22.6-22.6c-12.5-12.5-32.8-12.5-45.3 0L88.1 368c-12.5 12.5-12.5 32.8 0 45.3l13.7 13.7L64 464l48 48 36.9-36.9 13.7 13.7c12.5 12.5 32.8 12.5 45.3 0l56.6-56.6 22.6 22.6c12.5 12.5 32.8 12.5 45.3 0l56.6-56.6c12.5-12.5 12.5-32.8 0-45.3l-25.4-25.4L405.3 206c11.6 6.6 25 10.4 38.7 10.4c44.3 0 80-35.7 80-80c0-4.9-.4-9.7-1.2-14.4L505.7 15.4c1.5-7.8-1.8-15.9-6.6-19.1z"/>
                                         </svg>
@@ -732,7 +732,7 @@
                                     </svg>
                                 </div>
                                 <div class='w-full grid grid-cols-1 text-end max-h-0 overflow-hidden transition-all duration-500'>
-                                    <div class='w-12/12 justify-start text-white flex p-2 text-base gap-2 sub-menu-item'>
+                                    <div class='w-12/12 justify-start text-white flex p-2 text-sm gap-2 sub-menu-item'>
                                         <svg class='size-4 fill-[#059669]' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
                                             <path d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z"/>
                                         </svg>
@@ -748,7 +748,7 @@
                             </div>
                             <div class='element flex flex-col items-center gap-2 px-4 py-3 rounded-xl bg-[#1a1a20] shadow-sm hover:shadow-md transition-all'>
                                 <div class='flex w-full justify-between items-center text-center cursor-pointer'>
-                                    <div class='flex items-center gap-2 text-white text-base font-medium'>
+                                    <div class='flex items-center gap-2 text-white text-sm font-medium'>
                                         <svg class='section-icon' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="#d97706">
                                             <path d="M499.1 6.3c-8.1-6-12.9-17.1-11.1-27.1L496 0c-44.3 0-80 35.7-80 80c0 14.3 3.8 27.7 10.4 39.3L352 193.4l-25.4-25.4c-12.5-12.5-32.8-12.5-45.3 0l-56.6 56.6c-12.5 12.5-12.5 32.8 0 45.3l22.6 22.6-56.6 56.6-22.6-22.6c-12.5-12.5-32.8-12.5-45.3 0L88.1 368c-12.5 12.5-12.5 32.8 0 45.3l13.7 13.7L64 464l48 48 36.9-36.9 13.7 13.7c12.5 12.5 32.8 12.5 45.3 0l56.6-56.6 22.6 22.6c12.5 12.5 32.8 12.5 45.3 0l56.6-56.6c12.5-12.5 12.5-32.8 0-45.3l-25.4-25.4L405.3 206c11.6 6.6 25 10.4 38.7 10.4c44.3 0 80-35.7 80-80c0-4.9-.4-9.7-1.2-14.4L505.7 15.4c1.5-7.8-1.8-15.9-6.6-19.1z"/>
                                         </svg>
@@ -785,13 +785,13 @@
                             </svg>
                         </div>
                         <div class='w-full grid grid-cols-1 text-end max-h-0 overflow-hidden transition-all duration-500'>
-                            <div class='w-12/12 justify-start text-white flex p-2 text-base gap-2 sub-menu-item'>
+                            <div class='w-12/12 justify-start text-white flex p-2 text-sm gap-2 sub-menu-item'>
                                 <svg class='size-4 fill-[#059669]' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
                                     <path d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z"/>
                                 </svg>
                                 <a href="{{route('user.create')}}" class="hover:text-white transition-colors font-medium">ایجاد کاربر جدید</a>
                             </div>
-                            <div class='w-12/12 justify-start text-white flex p-2 text-base gap-2 sub-menu-item'>
+                            <div class='w-12/12 justify-start text-white flex p-2 text-sm gap-2 sub-menu-item'>
                                 <svg class='size-4 fill-[#1B84FF]' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
                                     <path d="M40 48C26.7 48 16 58.7 16 72v48c0 13.3 10.7 24 24 24H88c13.3 0 24-10.7 24-24V72c0-13.3-10.7-24-24-24H40zM192 64c-17.7 0-32 14.3-32 32s14.3 32 32 32H480c17.7 0 32-14.3 32-32s-14.3-32-32-32H192zm0 160c-17.7 0-32 14.3-32 32s14.3 32 32 32H480c17.7 0 32-14.3 32-32s-14.3-32-32-32H192zm0 160c-17.7 0-32 14.3-32 32s14.3 32 32 32H480c17.7 0 32-14.3 32-32s-14.3-32-32-32H192zM16 232v48c0 13.3 10.7 24 24 24H88c13.3 0 24-10.7 24-24V232c0-13.3-10.7-24-24-24H40c-13.3 0-24 10.7-24 24zM40 368c-13.3 0-24 10.7-24 24v48c0 13.3 10.7 24 24 24H88c13.3 0 24-10.7 24-24V392c0-13.3-10.7-24-24-24H40z"/>
                                 </svg>
@@ -800,26 +800,26 @@
                             @can('role_permision',['admin1'])
                                 <div class="w-full border-t border-[#DBDFE9] my-2"></div>
                                 <span class='text-xs font-semibold text-[#1B84FF] text-start mt-1'>نقش</span>
-                                <div class='w-12/12 justify-start text-white mr-3 flex p-2 text-base gap-2 sub-menu-item'>
+                                <div class='w-12/12 justify-start text-white mr-3 flex p-2 text-sm gap-2 sub-menu-item'>
                                     <svg class='size-4 fill-[#059669]' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
                                         <path d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z"/>
                                     </svg>
                                     <a href="{{route('role.create')}}" class="hover:text-white transition-colors font-medium">ایجاد نقش</a>
                                 </div>
-                                <div class='w-12/12 justify-start text-white mr-3 flex p-2 text-base gap-2 sub-menu-item'>
+                                <div class='w-12/12 justify-start text-white mr-3 flex p-2 text-sm gap-2 sub-menu-item'>
                                     <svg class='size-4 fill-[#1B84FF]' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
                                         <path d="M40 48C26.7 48 16 58.7 16 72v48c0 13.3 10.7 24 24 24H88c13.3 0 24-10.7 24-24V72c0-13.3-10.7-24-24-24H40zM192 64c-17.7 0-32 14.3-32 32s14.3 32 32 32H480c17.7 0 32-14.3 32-32s-14.3-32-32-32H192zm0 160c-17.7 0-32 14.3-32 32s14.3 32 32 32H480c17.7 0 32-14.3 32-32s-14.3-32-32-32H192zm0 160c-17.7 0-32 14.3-32 32s14.3 32 32 32H480c17.7 0 32-14.3 32-32s-14.3-32-32-32H192zM16 232v48c0 13.3 10.7 24 24 24H88c13.3 0 24-10.7 24-24V232c0-13.3-10.7-24-24-24H40c-13.3 0-24 10.7-24 24zM40 368c-13.3 0-24 10.7-24 24v48c0 13.3 10.7 24 24 24H88c13.3 0 24-10.7 24-24V392c0-13.3-10.7-24-24-24H40z"/>
                                     </svg>
                                     <a href="{{route('role.list')}}" class="hover:text-white transition-colors font-medium">لیست نقش ها</a>
                                 </div>
                                 <span class='text-xs font-semibold text-[#1B84FF] text-start mt-1'>دسترسی</span>
-                                <div class='w-12/12 justify-start text-white mr-3 flex p-2 text-base gap-2 sub-menu-item'>
+                                <div class='w-12/12 justify-start text-white mr-3 flex p-2 text-sm gap-2 sub-menu-item'>
                                     <svg class='size-4 fill-[#059669]' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
                                         <path d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z"/>
                                     </svg>
                                     <a href="{{route('permision.create')}}" class="hover:text-white transition-colors font-medium">ایجاد دسترسی</a>
                                 </div>
-                                <div class='w-12/12 justify-start text-white mr-3 flex p-2 text-base gap-2 sub-menu-item'>
+                                <div class='w-12/12 justify-start text-white mr-3 flex p-2 text-sm gap-2 sub-menu-item'>
                                     <svg class='size-4 fill-[#1B84FF]' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
                                         <path d="M40 48C26.7 48 16 58.7 16 72v48c0 13.3 10.7 24 24 24H88c13.3 0 24-10.7 24-24V72c0-13.3-10.7-24-24-24H40zM192 64c-17.7 0-32 14.3-32 32s14.3 32 32 32H480c17.7 0 32-14.3 32-32s-14.3-32-32-32H192zm0 160c-17.7 0-32 14.3-32 32s14.3 32 32 32H480c17.7 0 32-14.3 32-32s-14.3-32-32-32H192zm0 160c-17.7 0-32 14.3-32 32s14.3 32 32 32H480c17.7 0 32-14.3 32-32s-14.3-32-32-32H192zM16 232v48c0 13.3 10.7 24 24 24H88c13.3 0 24-10.7 24-24V232c0-13.3-10.7-24-24-24H40c-13.3 0-24 10.7-24 24zM40 368c-13.3 0-24 10.7-24 24v48c0 13.3 10.7 24 24 24H88c13.3 0 24-10.7 24-24V392c0-13.3-10.7-24-24-24H40z"/>
                                     </svg>
@@ -846,7 +846,7 @@
         <!-- ============================================================ -->
         <!-- =====  اصلی ===== -->
         <!-- ============================================================ -->
-        <main class="main-content w-full lg:w-10/12 transition-all bg-[#FCFCFC]">
+        <main class="main-content xl:w-79/100 lg:w-75/100 w-full transition-all bg-[#FCFCFC]">
 
             <!-- ===== هدر ===== -->
             <header class="w-full bg-white shadow-lg sticky top-0 z-40 transition-all">
