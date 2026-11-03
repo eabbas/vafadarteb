@@ -376,15 +376,15 @@
         .vafadar-form-header h2 {
             font-size: 17px;
         }
-        .vafadar-grid {
+        /* .vafadar-grid {
             grid-template-columns: 1fr !important;
             gap: 16px !important;
-        }
-        .vafadar-toggle-group {
+        } */
+        /* .vafadar-toggle-group {
             flex-direction: column;
             align-items: flex-start !important;
             gap: 12px !important;
-        }
+        } */
         .vafadar-package-box .package-grid {
             grid-template-columns: 1fr;
         }
@@ -471,7 +471,7 @@ $count=0
             @csrf
             
             <!-- ===== گرید فیلدها ===== -->
-            <div class="vafadar-grid grid grid-cols-2 gap-6">
+            <div class="w-full grid grid-cols-2 max-sm:flex max-sm:flex-col sm:gap-6 gap-4">
 
                 <!-- عنوان -->
                 <div>
@@ -556,7 +556,7 @@ $count=0
                 </div>
 
                 <!-- ===== توگل‌ها ===== -->
-                <div class="vafadar-toggle-group col-span-2 flex gap-8 justify-start items-center flex-wrap">
+                <div class="col-span-2 flex gap-8 justify-start items-center flex-wrap max-[390px]:flex-col max-[390px]:items-start">
 
                     <div class="vafadar-toggle-label">
                         <span> نمایش در خانه</span>
@@ -712,19 +712,19 @@ $count=0
         let div= document.createElement('div');
         let input= document.createElement('input');
         let select= document.createElement('select');
-        div.classList=`relative w-full p-2 border-1 rounded-xl flex gap-2`;
+        div.classList=`relative w-full p-2 border-1 rounded-xl flex max-sm:flex-col gap-2`;
         input.setAttribute('type', 'text');
         input.setAttribute('required', true);
         input.setAttribute('name', 'attributes_value[]');
-        input.classList = 'vafadar-input attributes_inputs max-w-9/12 min-w-9/12';
+        input.classList = 'vafadar-input attributes_inputs w-full';
         select.setAttribute('name', 'attributes_id[]');
-        select.classList = 'vafadar-select attributes_select_element max-w-3/12 min-w-3/12 ';
+        select.classList = 'vafadar-select attributes_select_element  ';
         select.innerHTML=
         `
             <option value='0'></option>
         `;
-        xmark.classList = 'absolute remove top-0 -right-5 bg-red-300 hover:bg-red-500 p-1 rounded-full cursor-pointer';
-        xmark.innerHTML = '✕';
+        xmark.classList = 'absolute remove -top-3 -right-3 bg-red-300 flex justify-center font-bold items-center hover:bg-red-500 p-1 rounded-full cursor-pointer';
+        xmark.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" class="size-5"><path d="M342.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 210.7 86.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L146.7 256 41.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 301.3 297.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.3 256 342.6 150.6z"/></svg>';
         xmark.setAttribute('onclick', 'deleteAttribute(this)');
         div.append(select);
         div.append(input);

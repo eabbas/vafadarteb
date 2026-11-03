@@ -475,7 +475,7 @@
             <table class="w-full" id="productTable">
                 <thead class="vafadar-table-header">
                     <tr>
-                        <th style="width:50px;">#</th>
+                        <th style="width:50px;">ردیف‌</th>
                         <th>تصویر</th>
                         <th>عنوان</th>
                         <th class="hidden md:table-cell">دسته‌بندی</th>
@@ -491,13 +491,13 @@
                     @forelse($products as $product)
                     <tr class="vafadar-table-row" data-id="{{$product->id}}" data-title="{{$product->title}}" data-slug="{{$product->slug}}">
                         <td>
-                            <span class="vafadar-product-badge">#{{$product->id}}</span>
+                            <span class="vafadar-product-badge">{{$product->id}}</span>
                         </td>
                         <td>
                             @if(isset($product->is_main_media))
                                 <img class="vafadar-thumb" 
                                      src="{{asset('storage/product_medias/'.$product->is_main_media)}}" 
-                                     alt="{{$product->title}}">
+                                     alt="{{$product->title}}" class="min-w-50">
                             @else
                                 <div class="vafadar-thumb-placeholder"></div>
                             @endif
