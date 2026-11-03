@@ -149,67 +149,55 @@ class ProductController extends Controller
                 }else{
                     $is_active=0;
                 }
-                if(isset($package['featured'])){
-                    $featured=1;
-                }else{
-                    $featured=0;
-                }
+                // if(isset($package['featured'])){
+                //     $featured=1;
+                // }else{
+                //     $featured=0;
+                // }
 
                 // ذخیره پکیچ
                 $creratedPackage=package::create([
                     'product_id'=>$createdProduct->id,
-                    'description'=>$package['description'],
-                    'summary'=>$package['summary'],
+                    // 'description'=>$package['description'],
+                    // 'summary'=>$package['summary'],
                     'is_active'=>$is_active,
                     'stock'=>$package['stock'],
                     'price'=>$package['price'],
                     'discunt'=>$package['discunt'],
-                    'featured'=>$featured,
+                    // 'featured'=>$featured,
                 ]);
                 
-                //ذخیره عکس پکیچ ها
-                if(isset($package['is_main'])){
-                    $fullName_ismain=Str::uuid().$package['is_main']->getClientOriginalName();
-                    $extension_ismain=$package['is_main']->getClientOriginalExtension();
-                    $package['is_main']->storeAs('package_medias',"$fullName_ismain","public");
-                    package_media::create([
-                        'path'=>$fullName_ismain,
-                        'package_id'=>$creratedPackage->id,
-                        'is_main'=>1,
-                        'is_active'=>1,
-                        'type'=>$extension_ismain,
-                    ]);
-                }
+                // //ذخیره عکس پکیچ ها
+                // if(isset($package['is_main'])){
+                //     $fullName_ismain=Str::uuid().$package['is_main']->getClientOriginalName();
+                //     $extension_ismain=$package['is_main']->getClientOriginalExtension();
+                //     $package['is_main']->storeAs('package_medias',"$fullName_ismain","public");
+                //     package_media::create([
+                //         'path'=>$fullName_ismain,
+                //         'package_id'=>$creratedPackage->id,
+                //         'is_main'=>1,
+                //         'is_active'=>1,
+                //         'type'=>$extension_ismain,
+                //     ]);
+                // }
 
-                //ذخیره کردن عکس های گالری
-                if(isset($package['gallery'])){
+                // //ذخیره کردن عکس های گالری
+                // if(isset($package['gallery'])){
 
-                    foreach ($package['gallery'] as $image) {
-                        $fullName_package_gallery=Str::uuid().$image->getClientOriginalName();
-                        $extension_package_gallery=$image->getClientOriginalExtension();
-                        $image->storeAs('package_medias',"$fullName_package_gallery","public");
-                        package_media::create([
-                            'path'=>$fullName_package_gallery,
-                            'package_id'=>$creratedPackage->id,
-                            'is_main'=>0,
-                            'is_active'=>1,
-                            'type'=>$extension_package_gallery,
-                        ]);
-                    }
-                }
-
-                //افزودن اتریبیوت برای پکیج
-                // if(isset($package['attributes'])){
-                //     foreach ($package['attributes'] as $att_id => $atts_array) {
-                //         foreach ($atts_array as $attribute_value) {
-                //             attribute_package::create([
-                //                 'attribute_id'=>$att_id,
-                //                 'package_id'=>$creratedPackage->id,
-                //                 'value'=>$attribute_value,
-                //             ]);
-                //         }
+                //     foreach ($package['gallery'] as $image) {
+                //         $fullName_package_gallery=Str::uuid().$image->getClientOriginalName();
+                //         $extension_package_gallery=$image->getClientOriginalExtension();
+                //         $image->storeAs('package_medias',"$fullName_package_gallery","public");
+                //         package_media::create([
+                //             'path'=>$fullName_package_gallery,
+                //             'package_id'=>$creratedPackage->id,
+                //             'is_main'=>0,
+                //             'is_active'=>1,
+                //             'type'=>$extension_package_gallery,
+                //         ]);
                 //     }
                 // }
+
                 if(isset($package['attribute_id'])){
                     foreach ($package['attribute_value'] as $key => $id) {
                         product_attribute::create([
@@ -268,7 +256,7 @@ class ProductController extends Controller
         $product->attributes;
         foreach ($product->packages as $package) {
             $package->attributes;
-            $package->medias;
+            // $package->medias;
         }
         // $is_main='';
         // $gallery=[];
@@ -312,7 +300,7 @@ class ProductController extends Controller
         $packages=$product->packages;
         foreach ($product->packages as $package) {
             $package->attributes;
-            $package->medias;
+            // $package->medias;
         }
         // dd($product->packages);
         return view('product.edit',['categories'=>$categories,'brands'=>$brands,'product'=>$product]);
@@ -422,13 +410,13 @@ class ProductController extends Controller
         if(isset($request['createdPackages'])){
             foreach ($request['createdPackages'] as $package_id => $oldpackage) {
                 $package=package::find($package_id);
-                $package["description"]=$oldpackage['description'];
-                $package["summary"]=$oldpackage['summary'];
+                // $package["description"]=$oldpackage['description'];
+                // $package["summary"]=$oldpackage['summary'];
                 $package["stock"]=$oldpackage['stock'];
                 $package["price"]=$oldpackage['price'];
                 $package["discunt"]=$oldpackage['discunt'];
                 $package["is_active"]=$oldpackage['is_active'];
-                $package["featured"]=$oldpackage['featured'];
+                // $package["featured"]=$oldpackage['featured'];
                 $package->save();
                 // if(isset($oldpackage['attributes'])){
                 //     foreach ($oldpackage['attributes'] as $att_id => $atts_array) {
@@ -451,48 +439,48 @@ class ProductController extends Controller
                     }
                 }
                                 
-                //ذخیره عکس پکیچ ها
-                if(isset($oldpackage['is_main'])){
-                    $fullName=Str::uuid().$oldpackage['is_main']->getClientOriginalName();
-                    $extension=$oldpackage['is_main']->getClientOriginalExtension();
-                    $oldpackage['is_main']->storeAs('package_medias',"$fullName","public");
-                    package_media::create([
-                        'path'=>$fullName,
-                        'package_id'=>$package->id,
-                        'is_main'=>1,
-                        'is_active'=>1,
-                        'type'=>$extension,
-                    ]);
-                }
+                // //ذخیره عکس پکیچ ها
+                // if(isset($oldpackage['is_main'])){
+                //     $fullName=Str::uuid().$oldpackage['is_main']->getClientOriginalName();
+                //     $extension=$oldpackage['is_main']->getClientOriginalExtension();
+                //     $oldpackage['is_main']->storeAs('package_medias',"$fullName","public");
+                //     package_media::create([
+                //         'path'=>$fullName,
+                //         'package_id'=>$package->id,
+                //         'is_main'=>1,
+                //         'is_active'=>1,
+                //         'type'=>$extension,
+                //     ]);
+                // }
 
-                //ذخیره کردن عکس های گالری
-                if(isset($oldpackage['gallery'])){
-                    foreach ($oldpackage['gallery'] as $image) {
-                        $fullName=Str::uuid().$image->getClientOriginalName();
-                        $extension=$image->getClientOriginalExtension();
-                        $image->storeAs('package_medias',"$fullName","public");
-                        package_media::create([
-                            'path'=>$fullName,
-                            'package_id'=>$package->id,
-                            'is_main'=>0,
-                            'is_active'=>1,
-                            'type'=>$extension,
-                        ]);
-                    }
-                }
+                // //ذخیره کردن عکس های گالری
+                // if(isset($oldpackage['gallery'])){
+                //     foreach ($oldpackage['gallery'] as $image) {
+                //         $fullName=Str::uuid().$image->getClientOriginalName();
+                //         $extension=$image->getClientOriginalExtension();
+                //         $image->storeAs('package_medias',"$fullName","public");
+                //         package_media::create([
+                //             'path'=>$fullName,
+                //             'package_id'=>$package->id,
+                //             'is_main'=>0,
+                //             'is_active'=>1,
+                //             'type'=>$extension,
+                //         ]);
+                //     }
+                // }
 
             }
         }
 
-        if(isset($request['deletedPackageMedias'])){
-            foreach ($request['deletedPackageMedias'] as $media_id) {
-                $medias=package_media::where('id',$media_id)->get();
-                foreach ($medias as $media) {
-                    Storage::disk('public')->delete("package_medias/".$media->path);
-                    $media->delete();
-                }
-            }
-        }
+        // if(isset($request['deletedPackageMedias'])){
+        //     foreach ($request['deletedPackageMedias'] as $media_id) {
+        //         $medias=package_media::where('id',$media_id)->get();
+        //         foreach ($medias as $media) {
+        //             Storage::disk('public')->delete("package_medias/".$media->path);
+        //             $media->delete();
+        //         }
+        //     }
+        // }
         /////// قسمت حذف و ایجاد اتریبیوت های محصول
         if(isset($request['deletedPackageAttributes'])){
             foreach ($request['deletedPackageAttributes'] as $attribute_id) {
@@ -506,11 +494,11 @@ class ProductController extends Controller
         if(isset($request['deleteCreatedPackage'])){
             foreach ($request['deleteCreatedPackage'] as $package_id) {
                 $package=package::find($package_id); 
-                $medias=package_media::where('package_id',$package_id)->get();
-                foreach ($medias as $media) {
-                    Storage::disk('public')->delete("package_medias/".$media->path);
-                    $media->delete();
-                }
+                // $medias=package_media::where('package_id',$package_id)->get();
+                // foreach ($medias as $media) {
+                //     Storage::disk('public')->delete("package_medias/".$media->path);
+                //     $media->delete();
+                // }
                 attribute_package::where('package_id',$package->id)->delete();
                 $package->delete();
             }
@@ -527,54 +515,54 @@ class ProductController extends Controller
                 }else{
                     $is_active=0;
                 }
-                if(isset($package['featured'])){
-                    $featured=1;
-                }else{
-                    $featured=0;
-                }
+                // if(isset($package['featured'])){
+                //     $featured=1;
+                // }else{
+                //     $featured=0;
+                // }
 
                 // ذخیره پکیچ
                 $creratedPackage=package::create([
                     'product_id'=>$product->id,
-                    'description'=>$package['description'],
-                    'summary'=>$package['summary'],
+                    // 'description'=>$package['description'],
+                    // 'summary'=>$package['summary'],
                     'is_active'=>$is_active,
                     'stock'=>$package['stock'],
                     'price'=>$package['price'],
                     'discunt'=>$package['discunt'],
-                    'featured'=>$featured,
+                    // 'featured'=>$featured,
                 ]);
                 
-                //ذخیره عکس پکیچ ها
-                if(isset($package['is_main'])){
-                    $fullName=Str::uuid().$package['is_main']->getClientOriginalName();
-                    $extension=$package['is_main']->getClientOriginalExtension();
-                    $package['is_main']->storeAs('package_medias',"$fullName","public");
-                    package_media::create([
-                        'path'=>$fullName,
-                        'package_id'=>$creratedPackage->id,
-                        'is_main'=>1,
-                        'is_active'=>1,
-                        'type'=>$extension,
-                    ]);
-                }
+                // //ذخیره عکس پکیچ ها
+                // if(isset($package['is_main'])){
+                //     $fullName=Str::uuid().$package['is_main']->getClientOriginalName();
+                //     $extension=$package['is_main']->getClientOriginalExtension();
+                //     $package['is_main']->storeAs('package_medias',"$fullName","public");
+                //     package_media::create([
+                //         'path'=>$fullName,
+                //         'package_id'=>$creratedPackage->id,
+                //         'is_main'=>1,
+                //         'is_active'=>1,
+                //         'type'=>$extension,
+                //     ]);
+                // }
 
-                //ذخیره کردن عکس های گالری
-                if(isset($package['gallery'])){
+                // //ذخیره کردن عکس های گالری
+                // if(isset($package['gallery'])){
 
-                    foreach ($package['gallery'] as $image) {
-                        $fullName=Str::uuid().$image->getClientOriginalName();
-                        $extension=$image->getClientOriginalExtension();
-                        $image->storeAs('package_medias',"$fullName","public");
-                        package_media::create([
-                            'path'=>$fullName,
-                            'package_id'=>$creratedPackage->id,
-                            'is_main'=>0,
-                            'is_active'=>1,
-                            'type'=>$extension,
-                        ]);
-                    }
-                }
+                //     foreach ($package['gallery'] as $image) {
+                //         $fullName=Str::uuid().$image->getClientOriginalName();
+                //         $extension=$image->getClientOriginalExtension();
+                //         $image->storeAs('package_medias',"$fullName","public");
+                //         package_media::create([
+                //             'path'=>$fullName,
+                //             'package_id'=>$creratedPackage->id,
+                //             'is_main'=>0,
+                //             'is_active'=>1,
+                //             'type'=>$extension,
+                //         ]);
+                //     }
+                // }
 
                 //افزودن اتریبیوت برای پکیج
                 // if(isset($package['attributes'])){
@@ -616,12 +604,12 @@ class ProductController extends Controller
         }
         product_attribute::where('product_id',$product->id)->delete();
         foreach ($product['packages'] as $package) {
-            $package->medias;
+            // $package->medias;
 
-            foreach ($package['medias'] as $media) {
-                Storage::disk('public')->delete("package_medias/".$media->path);
-                $media->delete();
-            }
+            // foreach ($package['medias'] as $media) {
+            //     Storage::disk('public')->delete("package_medias/".$media->path);
+            //     $media->delete();
+            // }
             attribute_package::where('package_id',$package->id)->delete();
             $package->delete();
         }

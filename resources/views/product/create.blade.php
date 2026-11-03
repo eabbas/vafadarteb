@@ -175,7 +175,6 @@
     }
 
     .vafadar-toggle-label {
-        display: flex;
         align-items: center;
         gap: 8px;
     }
@@ -556,9 +555,9 @@ $count=0
                 </div>
 
                 <!-- ===== توگل‌ها ===== -->
-                <div class="col-span-2 flex gap-8 justify-start items-center flex-wrap max-[390px]:flex-col max-[390px]:items-start">
+                <div class="flex gap-8 justify-start items-center flex-wrap max-[390px]:flex-col max-[390px]:items-start ">
 
-                    <div class="vafadar-toggle-label">
+                    <div class="vafadar-toggle-label flex sm:flex-col max-[520px]:flex-col">
                         <span> نمایش در خانه</span>
                         <div class="vafadar-toggle" onclick="toggleState(this)">
                             <div class="vafadar-toggle-dot"></div>
@@ -566,7 +565,7 @@ $count=0
                         <input type="number" name='show_in_home' value="0" class="absolute invisible">
                     </div>
 
-                    <div class="vafadar-toggle-label">
+                    <div class="vafadar-toggle-label flex sm:flex-col flex-row max-[520px]:flex-col">
                         <span> محصول ویژه</span>
                         <div class="vafadar-toggle" onclick="toggleState(this)">
                             <div class="vafadar-toggle-dot"></div>
@@ -574,7 +573,7 @@ $count=0
                         <input type="number" name='featured' value="0" class="absolute invisible">
                     </div>
 
-                    <div class="vafadar-toggle-label">
+                    <div class="vafadar-toggle-label flex sm:flex-col max-[520px]:flex-col">
                         <span> فعال</span>
                         <div class="vafadar-toggle" onclick="toggleState(this)">
                             <div class="vafadar-toggle-dot"></div>
@@ -749,26 +748,6 @@ $count=0
         div.innerHTML = `
             <div class='package-title'> پکیج محصول</div>
             <div class='package-grid'>
-                <div class='full'>
-                    <label class='vafadar-label'> تصویر اصلی</label>
-                    <input type="file" name='packages[${randomNumber}][is_main]' class="vafadar-input" style="padding: 8px 12px;">
-                </div>
-                <div class='full'>
-                    <label class='vafadar-label'> گالری</label>
-                    <input type="file" name='packages[${randomNumber}][gallery][]' multiple class="vafadar-input" style="padding: 8px 12px;">
-                </div>
-                <div>
-                    <label class='vafadar-label'> توضیحات</label>
-                    <input type="text"    name="packages[${randomNumber}][description]" class="vafadar-input" placeholder="توضیحات پکیج">
-                </div>
-                <div>
-                    <label class='vafadar-label'> خلاصه</label>
-                    <input type="text" name="packages[${randomNumber}][summary]" class="vafadar-input" placeholder="خلاصه پکیج">
-                </div>
-                <div>
-                    <label class='vafadar-label'> موجودی</label>
-                    <input type="number"    name="packages[${randomNumber}][stock]" class="vafadar-input" placeholder="تعداد موجودی">
-                </div>
                 <div>
                     <label class='vafadar-label'> قیمت</label>
                     <input type="number"    name="packages[${randomNumber}][price]" class="vafadar-input" placeholder="قیمت پکیج">
@@ -776,6 +755,10 @@ $count=0
                 <div>
                     <label class='vafadar-label'> تخفیف</label>
                     <input type="number" name="packages[${randomNumber}][discunt]" class="vafadar-input" placeholder="تخفیف پکیج">
+                </div>
+                <div>
+                    <label class='vafadar-label'> موجودی</label>
+                    <input type="number"    name="packages[${randomNumber}][stock]" class="vafadar-input" placeholder="تعداد موجودی">
                 </div>
                 <div class='flex items-center gap-6'>
                     <label class="vafadar-toggle-label">
