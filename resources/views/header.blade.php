@@ -122,7 +122,9 @@
                     <!-- hambuarger_menu_item -->
                 </div>
                 <div class="max-lg:w-1/3 flex items-center max-lg:justify-center lg:gap-10 ">
-                    <img src="{{asset('storage/'.$logo->logo_path)}}" alt="" class="max-w-20 sm:max-w-30 md:max-w-50 md:min-w-20 max-h-15">
+                    <a href="">
+                        <img src="{{asset('storage/'.$logo->logo_path)}}" alt="" class="max-w-20 sm:max-w-30 md:max-w-50 md:min-w-20 max-h-15">
+                    </a>
                     <ul class="flex gap-7 xl:gap-9 max-lg:hidden h-full items-center max-xl:text-sm">
                         <li class="lable-1 group">
                             <a href="">
