@@ -173,13 +173,44 @@
                         @endif
                     </p>
                     <a href="#">
-                        <div class="px-6 py-3 bg-[#0a9a73] mt-6 rounded-xl text-white flex gap-3 justify-center items-center hover:shadow-md font-bold transition-all duration-300">
+                        <div class="px-6 py-3 bg-[#0a9a73] mt-6 rounded-2xl text-white flex gap-3 justify-center items-center hover:shadow-md font-bold transition-all duration-300">
                             <span>مشاهده محصولات</span>
                             <svg xmlns="http://www.w3.org/2000/svg" class="w-4 fill-white transition-all duration-200" viewBox="0 0 448 512">
                                 <path d="M7.4 273.4C2.7 268.8 0 262.6 0 256s2.7-12.8 7.4-17.4l176-168c9.6-9.2 24.8-8.8 33.9 .8s8.8 24.8-.8 33.9L83.9 232 424 232c13.3 0 24 10.7 24 24s-10.7 24-24 24L83.9 280 216.6 406.6c9.6 9.2 9.9 24.3 .8 33.9s-24.3 9.9-33.9 .8l-176-168z" />
                             </svg>
                         </div>
                     </a>
+                    <div class="flex gap-2 items-center w-full justify-between mt-5">
+                        <div class="flex max-lg:flex-col justify-center items-center xl:gap-2 gap-1">
+                            <span class="font-bold xl:text-sm text-xs text-(--buttom) max-lg:order-2">پشتیباتی 24 ساعته</span>
+                            <div class="max-lg:order-1">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80" class=" xl:size-8 size-6 fill-(--primary_color)">
+
+                                    <g>
+                                        <!-- <circle class="fill-none stroke-[#2563ff] stroke-5" style="stroke-linecap: round;" cx="40" cy="40" r="39.5"></circle> -->
+                                        <g>
+                                            <path class="fill-none stroke-(--primary_color) stroke-5" style="stroke-linecap: round;" d="M20.3,39.3v-6.6c0-11.6,8.3-18.2,19.9-18.2s19.9,6.6,19.9,18.2v6.6"></path>
+                                            <path class="fill-none stroke-(--primary_color) stroke-5" style="stroke-linecap: round;" d="M20.3,36h0c2.7,0,5,2.2,5,5v9.9c0,2.7-2.2,5-5,5h0c-2.7,0-5-2.2-5-5v-9.9c0-2.7,2.2-5,5-5Z"></path>
+                                            <path class="fill-none stroke-(--primary_color) stroke-5" style="stroke-linecap: round;" d="M60,36h0c2.7,0,5,2.2,5,5v9.9c0,2.7-2.2,5-5,5h0c-2.7,0-5-2.2-5-5v-9.9c0-2.7,2.2-5,5-5Z"></path>
+                                            <path class="fill-none stroke-(--primary_color) stroke-5" style="stroke-linecap: round;" d="M60,55.9c0,6.6-5,9.9-13.3,9.9"></path>
+                                        </g>
+                                    </g>
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="flex max-lg:flex-col justify-center items-center xl:gap-2 gap-1">
+                            <span class="font-bold xl:text-sm text-xs text-(--buttom) max-lg:order-2">تحویل سریع</span>
+                            <div class="max-lg:order-1">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512" class="xl:size-8 size-6 fill-(--primary_color)"><path d="M352 48H128c-8.8 0-16 7.2-16 16V96H240c8.8 0 16 7.2 16 16s-7.2 16-16 16H16c-8.8 0-16-7.2-16-16s7.2-16 16-16H64V64C64 28.7 92.7 0 128 0H352c35.3 0 64 28.7 64 64V96h42.7c14.9 0 29.1 5.9 39.6 16.4l93.3 93.3c10.5 10.5 16.4 24.7 16.4 39.6V368h8c13.3 0 24 10.7 24 24s-10.7 24-24 24H576c0 53-43 96-96 96s-96-43-96-96h-8H352 320 256c0 53-43 96-96 96s-96-43-96-96V368 288h48v44.8c14.1-8.2 30.5-12.8 48-12.8c35.5 0 66.6 19.3 83.2 48H320h32c8.8 0 16-7.2 16-16V64c0-8.8-7.2-16-16-16zM557.7 239.6l-93.3-93.3c-1.5-1.5-3.5-2.3-5.7-2.3H416v96H558l-.2-.2-.2-.2zM208 416a48 48 0 1 0 -96 0 48 48 0 1 0 96 0zm272 48a48 48 0 1 0 0-96 48 48 0 1 0 0 96zM48 160H272c8.8 0 16 7.2 16 16s-7.2 16-16 16H48c-8.8 0-16-7.2-16-16s7.2-16 16-16zM16 224H240c8.8 0 16 7.2 16 16s-7.2 16-16 16H16c-8.8 0-16-7.2-16-16s7.2-16 16-16z"/></svg>
+                            </div>
+                        </div>
+                        <div class="flex max-lg:flex-col justify-center items-center xl:gap-2 gap-1">
+                            <span class="font-bold xl:text-sm text-xs text-(--buttom) max-lg:order-2">ضمانت اصالت کالا</span>
+                            <div class="max-lg:order-1">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="xl:size-8 size-6 fill-(--primary_color)"><path d="M73 127L256 49.4 439 127c5.9 2.5 9.1 7.8 9 12.8c-.4 91.4-38.4 249.3-186.3 320.1c-3.6 1.7-7.8 1.7-11.3 0C102.4 389 64.5 231.2 64 139.7c0-5 3.1-10.2 9-12.8zM457.7 82.8L269.4 2.9C265.2 1 260.7 0 256 0s-9.2 1-13.4 2.9L54.3 82.8c-22 9.3-38.4 31-38.3 57.2c.5 99.2 41.3 280.7 213.6 363.2c16.7 8 36.1 8 52.8 0C454.8 420.7 495.5 239.2 496 140c.1-26.2-16.3-47.9-38.3-57.2zM369 209c9.4-9.4 9.4-24.6 0-33.9s-24.6-9.4-33.9 0l-111 111-47-47c-9.4-9.4-24.6-9.4-33.9 0s-9.4 24.6 0 33.9l64 64c9.4 9.4 24.6 9.4 33.9 0L369 209z"/></svg>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
 
