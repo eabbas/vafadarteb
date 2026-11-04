@@ -487,7 +487,7 @@
             padding: 16px 18px 20px;
         }
         .vafadar-info-grid {
-            grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+            grid-template-columns: 1fr 1fr;
         }
         .vafadar-media-grid {
             grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
@@ -516,7 +516,7 @@
             padding: 12px 14px 16px;
         }
         .vafadar-info-grid {
-            grid-template-columns: 1fr 1fr;
+            grid-template-columns: 1fr;
         }
         .vafadar-info-item {
             padding: 8px 12px;

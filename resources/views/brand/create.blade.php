@@ -253,7 +253,7 @@
             @csrf
 
             <!-- ===== گرید فیلدها ===== -->
-            <div class="vafadar-form-grid grid grid-cols-2 gap-6">
+            <div class="vafadar-form-grid grid grid-cols-2 max-[420px]:flex max-[420px]:flex-col gap-6">
 
                 <!-- عنوان -->
                 <div>

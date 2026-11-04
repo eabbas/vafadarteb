@@ -477,7 +477,7 @@
             <table class="w-full" id="brandTable">
                 <thead class="vafadar-table-header">
                     <tr>
-                        <th style="width: 50px;">#</th>
+                        <th style="width: 50px;">ردیف</th>
                         <th>عنوان</th>
                         <th>کد تخفیف</th>
                         <th>مقدار تخفیف</th>
@@ -489,7 +489,7 @@
                     @forelse($codes as $code)
                     <tr class="vafadar-table-row" data-id="{{$code->id}}" data-title="{{$code->title}}">
                         <td>
-                            <span class="vafadar-code-badge">#{{$code->id}}</span>
+                            <span class="vafadar-code-badge">{{$code->id}}</span>
                         </td>
                         <td>
                             <span class="font-semibold" style="color: var(--metronic-dark);">{{$code->title}}</span>
@@ -501,18 +501,18 @@
                             @if($code->percent!=null)
                                 <span class="font-semibold" style="color: var(--metronic-dark);">{{$code->percent}} درصد </span>
                             @else
-                                <span class="font-semibold" style="color: var(--metronic-dark);">{{$code->number}}  هزار تومان</span>
+                                <span class="font-semibold" style="color: var(--metronic-dark);">{{$code->number}}   تومان</span>
                             @endif
                         </td>
 
-                        <td class="hidden sm:table-cell">
+                        <td class="table-cell">
                             <span class="vafadar-status {{ $code->is_active != 0 ? 'active' : 'inactive' }}">
                                 <span class="dot"></span>
                                 {{ $code->is_active != 0 ? 'فعال' : 'غیرفعال' }}
                             </span>
                         </td>
                         <td>
-                            <div class="vafadar-action-group justify-center">
+                            <div class="vafadar-action-group">
                                 <a href="{{route('discuntCode.edit',['discuntCode'=>$code->id])}}" class="vafadar-action-btn edit" title="ویرایش کد تخفیف">
                                     <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                         <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/>

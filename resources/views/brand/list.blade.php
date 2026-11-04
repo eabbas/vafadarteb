@@ -477,7 +477,7 @@
             <table class="w-full" id="brandTable">
                 <thead class="vafadar-table-header">
                     <tr>
-                        <th style="width: 50px;">#</th>
+                        <th style="width: 50px;">ردیف</th>
                         <th>عنوان</th>
                         <th class="hidden md:table-cell">لوگو</th>
                         <th class="hidden lg:table-cell">توضیحات</th>
@@ -490,7 +490,7 @@
                     @forelse($brands as $brand)
                     <tr class="vafadar-table-row" data-id="{{$brand->id}}" data-title="{{$brand->title}}" data-slug="{{$brand->slug}}">
                         <td>
-                            <span class="vafadar-brand-badge">#{{$brand->id}}</span>
+                            <span class="vafadar-brand-badge">{{$brand->id}}</span>
                         </td>
                         <td>
                             <span class="font-semibold" style="color: var(--metronic-dark);">{{$brand->title}}</span>

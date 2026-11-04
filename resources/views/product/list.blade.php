@@ -129,7 +129,7 @@
         display: inline-flex;
         align-items: center;
         gap: 4px;
-        padding: 2px 10px;
+        padding: 5px 10px;
         border-radius: 50px;
         font-size: 11px;
         font-weight: 600;
@@ -479,8 +479,8 @@
                         <th>تصویر</th>
                         <th>عنوان</th>
                         <th class="hidden md:table-cell">دسته‌بندی</th>
-                        <th class="hidden lg:table-cell">قیمت</th>
-                        <th class="hidden lg:table-cell"> تخفیف</th>
+                        <th class="hidden lg:table-cell">قیمت (تومان)</th>
+                        <th class="hidden lg:table-cell">تخفیف (تومان)</th>
                         <th class="hidden lg:table-cell">درصد تخفیف</th>
                         <th class="hidden sm:table-cell">موجودی</th>
                         <th class="hidden lg:table-cell">وضعیت</th>
@@ -493,25 +493,26 @@
                         <td>
                             <span class="vafadar-product-badge">{{$product->id}}</span>
                         </td>
-                        <td>
+                        <td class="">
                             @if(isset($product->is_main_media))
-                                <img class="vafadar-thumb" 
+                                <img class="vafadar-thumb sm:min-w-14 min-w-10 sm:min-h-14 min-h-10 sm:max-w-20 max-w-15 sm:max-h-20 max-h-15" 
                                      src="{{asset('storage/product_medias/'.$product->is_main_media)}}" 
-                                     alt="{{$product->title}}" class="min-w-50">
+                                     alt="{{$product->title}}">
                             @else
                                 <div class="vafadar-thumb-placeholder"></div>
                             @endif
                         </td>
                         <td>
-                            <div class="font-semibold" style="color: var(--metronic-dark);">{{$product->title}}</div>
+                            <div class="font-semibold text-nowrap xl:text-base" style="color: var(--metronic-dark);">{{$product->title}}</div>
                             <div class="text-xs md:hidden" style="color: var(--metronic-text-dark);">
                                 {{number_format($product->price)}} تومان
                             </div>
                         </td>
                         <td class="hidden md:table-cell" style="color: var(--metronic-text-dark);">
-                            <span class="px-3 py-1 rounded-full text-xs border" style="background: var(--metronic-shadow); border-color: var(--metronic-border);">
+                            <span class="px-3 py-1 rounded-full text-xs border text-nowrap" style="background: var(--metronic-shadow); border-color: var(--metronic-border);">
                                 {{$product->categories[0]->title ?? 'بدون دسته‌بندی'}}
                             </span>
+                           
                         </td>
                         <td class="hidden lg:table-cell">
                             <span class="vafadar-price">{{number_format($product->price)}}</span>
@@ -526,8 +527,8 @@
                                 <span> ندارد </span>
                             @endif
                         </td>
-                        <td class="hidden sm:table-cell">
-                            <span class="px-1 py-1 rounded-full text-sm border" style="background: var(--metronic-shadow); border-color: var(--metronic-border);">
+                        <td class="hidden sm:table-cell text-center">
+                            <span class="px-1.5 py-1 rounded-full text-sm border text-nowrap" style="background: var(--metronic-shadow); border-color: var(--metronic-border);">
                                 @if($product->stock>0)
                                     {{$product->stock}} عدد
                                 @else
@@ -559,7 +560,7 @@
                                 
                                 <!-- ===== نمایش در خانه ===== -->
                                 @if($product->show_in_home)
-                                    <span class="vafadar-feature-badge show-home"> نمایش در خانه</span>
+                                    <span class="vafadar-feature-badge show-home text-nowrap"> نمایش در خانه</span>
                                 @else
                                     <span class="vafadar-feature-badge normal"> بدون نمایش</span>
                                 @endif

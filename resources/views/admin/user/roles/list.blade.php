@@ -611,7 +611,7 @@
             <table class="w-full" id="roleTable">
                 <thead class="vafadar-table-header">
                     <tr>
-                        <th style="width: 60px;">#</th>
+                        <th style="width: 60px;">ردیف</th>
                         <th>عنوان فارسی</th>
                         <th class="hidden sm:table-cell">عنوان انگلیسی</th>
                         <th class="text-center">عملیات</th>
@@ -621,7 +621,7 @@
                     @forelse($roles as $role)
                     <tr class="vafadar-table-row" data-id="{{$role->id}}" data-fa="{{$role->fa_title}}" data-ea="{{$role->ea_title}}">
                         <td>
-                            <span class="vafadar-role-badge">#{{$role->id}}</span>
+                            <span class="vafadar-role-badge">{{$role->id}}</span>
                         </td>
                         <td>
                             <span class="font-semibold" style="color: var(--metronic-dark);">{{$role->fa_title}}</span>
@@ -769,9 +769,11 @@ let table = document.getElementById('table');
                 let div = document.createElement('div');
                 
                 // ===== پالت رنگی مترونیک با تیلویند =====
+               
                 div.classList = `absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-11/12 md:w-8/12 lg:w-5/12 mx-auto rounded-2xl shadow-2xl flex flex-col p-6 gap-4 items-center z-50`;
                 div.style.background = 'var(--metronic-content-bg)';
-                div.style.border = '4px solid var(--metronic-dark)';
+                div.style.border = '2px solid #d8d8d8';
+                div.style.boxShadow = '#ededed 0px 0px 24px 21px';
                 
                 // ===== ساخت فرم =====
                 let form = document.createElement('form');
@@ -801,6 +803,8 @@ let table = document.getElementById('table');
                 
                 // ===== اضافه کردن چک‌باکس‌ها =====
                 permisions.forEach(permision => {
+                    // let div_black = document.createElement('div')
+                    // div_black.classList = `w-full h-dvh fixed top-0 right-0 bg-black/50`
                     let checkboxDiv = document.createElement('div');
                     checkboxDiv.className = `flex items-center gap-2 px-3 py-2 rounded-lg border`;
                     checkboxDiv.style.background = 'var(--metronic-content-bg)';
