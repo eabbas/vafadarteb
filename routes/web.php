@@ -60,6 +60,7 @@ Route::group([
     Route::post('/checkUser','checkUser')->name('checkUser');
     Route::any('/cartInformation','cartInformation')->name('cartInformation');
     Route::any('/innerDashboard','innerDashboard')->name('innerDashboard');
+    Route::any('/getHeaderSubCats/{category}','getHeaderSubCats')->name('getHeaderSubCats');
 });
 Route::group([
     'prefix'=>'role',
