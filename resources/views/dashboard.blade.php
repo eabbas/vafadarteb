@@ -8,6 +8,7 @@
     <script src="{{asset('assets/js/jquery.js')}}"></script>
     <link rel="stylesheet" href="{{asset('assets/css/index.css')}}">
     <link rel="stylesheet" href="{{asset('assets/css/style.css')}}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
         /* ===== پالت رنگی مترونیک ===== */
         :root {
@@ -417,6 +418,16 @@
                     <svg class='w-7' viewBox="-1.6 -1.6 19.20 19.20" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="#1fd699" stroke-width="0.00016" transform="matrix(1, 0, 0, 1, 0, 0)"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round" stroke="#CCCCCC" stroke-width="0.032"></g><g id="SVGRepo_iconCarrier"> <path fill-rule="evenodd" clip-rule="evenodd" d="M8 0L0 6V8H1V15H4V10H7V15H15V8H16V6L14 4.5V1H11V2.25L8 0ZM9 10H12V13H9V10Z" fill="#18c390"></path> </g></svg>
                     <span>رفتن به خانه</span>
                 </a>
+                <a href="{{route('user.profile')}}" class="text-md font-semibold text-[#9A9CAE] uppercase tracking-wider px-3 mb-4 flex gap-1 text-center items-center"> 
+                    <svg class='section-icon w-7' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" fill="#FFFFFF">
+                        <path d="M224 256A128 128 0 1 0 224 0a128 128 0 1 0 0 256zm-45.7 48C79.8 304 0 383.8 0 482.3C0 498.7 13.3 512 29.7 512H418.3c16.4 0 29.7-13.3 29.7-29.7C448 383.8 368.2 304 269.7 304H178.3z"/>
+                    </svg>
+                    <span>رفتن به پروفایل</span>
+                </a>
+                <a href="{{route('user.innerDashboard')}}" class="text-md font-semibold text-[#9A9CAE] uppercase tracking-wider px-3 mb-4 flex gap-1 text-center items-center"> 
+                    <svg class="section-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"> <defs> <linearGradient id="sectionGrad" gradientUnits="objectBoundingBox" gradientTransform="rotate(77 0.5 0.5)"> <stop offset="0%"   stop-color="rgba(255,0,0,0.7)" /> <stop offset="100%" stop-color="rgba(85,255,0,0.7)" /> </linearGradient> </defs><path fill="url(#sectionGrad)" d="M499.1 6.3c-8.1-6-12.9-17.1-11.1-27.1L496 0c-44.3 0-80 35.7-80 80c0 14.3 3.8 27.7 10.4 39.3L352 193.4l-25.4-25.4c-12.5-12.5-32.8-12.5-45.3 0l-56.6 56.6c-12.5 12.5-12.5 32.8 0 45.3l22.6 22.6-56.6 56.6-22.6-22.6c-12.5-12.5-32.8-12.5-45.3 0L88.1 368c-12.5 12.5-12.5 32.8 0 45.3l13.7 13.7L64 464l48 48 36.9-36.9 13.7 13.7c12.5 12.5 32.8 12.5 45.3 0l56.6-56.6 22.6 22.6c12.5 12.5 32.8 12.5 45.3 0l56.6-56.6c12.5-12.5 12.5-32.8 0-45.3l-25.4-25.4L405.3 206c11.6 6.6 25 10.4 38.7 10.4c44.3 0 80-35.7 80-80c0-4.9-.4-9.7-1.2-14.4L505.7 15.4c1.5-7.8-1.8-15.9-6.6-19.1z"/></svg>
+                    <span>رفتن به داشبورد</span>
+                </a>
 
 
                     <div class='element flex flex-col items-center gap-2 px-4 py-3 rounded-xl bg-[#1a1a20] shadow-sm hover:shadow-md transition-all mb-3'>
@@ -775,7 +786,7 @@
                     <div class='element flex flex-col items-center gap-2 px-4 py-3 rounded-xl bg-[#1a1a20] shadow-sm hover:shadow-md transition-all mb-3'>
                         <div class='flex w-full justify-between items-center text-center cursor-pointer'>
                             <div class='flex items-center gap-2 text-white text-base font-medium'>
-                                <svg class='section-icon' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" fill="#059669">
+                                <svg class='section-icon w-7' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" fill="#059669">
                                     <path d="M224 256A128 128 0 1 0 224 0a128 128 0 1 0 0 256zm-45.7 48C79.8 304 0 383.8 0 482.3C0 498.7 13.3 512 29.7 512H418.3c16.4 0 29.7-13.3 29.7-29.7C448 383.8 368.2 304 269.7 304H178.3z"/>
                                 </svg>
                                 <span class="text-[#9A9CAE]">کاربر</span>
@@ -885,7 +896,7 @@
                                 @if(Auth::user()->path!=null)
                                     <img class='rounded-full w-full h-full object-cover' src="{{asset('storage/user_medias/'.Auth::user()->path)}}" alt="">
                                 @else
-                                    {{Auth::user()->name[0]}}
+                                    <img class='rounded-full w-full h-full object-cover' src="{{asset('assets/img/user.jfif')}}" alt="">
                                 @endif
                             </a>
                         </div>

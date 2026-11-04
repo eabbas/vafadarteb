@@ -59,6 +59,7 @@ Route::group([
     Route::post('/signin_with_ajax','signin_with_ajax')->name('signin_with_ajax');
     Route::post('/checkUser','checkUser')->name('checkUser');
     Route::any('/cartInformation','cartInformation')->name('cartInformation');
+    Route::any('/innerDashboard','innerDashboard')->name('innerDashboard');
 });
 Route::group([
     'prefix'=>'role',

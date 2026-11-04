@@ -737,23 +737,6 @@ $count = 1;
                         <div class="vafadar-package-box" id="package-{{$package->id}}">
                             <div class="package-title"> پک {{$product->title}}</div>
                             <div class="package-grid">
-
-                                <div class="full">
-                                    <label class="vafadar-label"> تصویر اصلی</label>
-                                    <input type="file" name='createdPackages[{{$package->id}}][is_main]' class="vafadar-input" style="padding: 8px 12px;">
-                                </div>
-                                <div class="full">
-                                    <label class="vafadar-label"> گالری</label>
-                                    <input type="file" name='createdPackages[{{$package->id}}][gallery][]' multiple class="vafadar-input" style="padding: 8px 12px;">
-                                </div>
-                                <div>
-                                    <label class="vafadar-label"> توضیحات</label>
-                                    <input type="text"    name="createdPackages[{{$package->id}}][description]" value="{{$package->description}}" class="vafadar-input" placeholder="توضیحات">
-                                </div>
-                                <div>
-                                    <label class="vafadar-label"> خلاصه</label>
-                                    <input type="text" name="createdPackages[{{$package->id}}][summary]" value="{{$package->summary}}" class="vafadar-input" placeholder="خلاصه">
-                                </div>
                                 <div>
                                     <label class="vafadar-label"> موجودی</label>
                                     <input type="number"    name="createdPackages[{{$package->id}}][stock]" value="{{$package->stock}}" class="vafadar-input" placeholder="موجودی">
@@ -1113,22 +1096,6 @@ $count = 1;
         div.innerHTML = `
             <div class="package-title"> پکیج جدید</div>
             <div class="package-grid">
-                <div class="full">
-                    <label class="vafadar-label"> تصویر اصلی</label>
-                    <input type="file" name="packages[${randomNumber}][is_main]" class="vafadar-input" style="padding: 8px 12px;">
-                </div>
-                <div class="full">
-                    <label class="vafadar-label"> گالری</label>
-                    <input type="file" name="packages[${randomNumber}][gallery][]" multiple class="vafadar-input" style="padding: 8px 12px;">
-                </div>
-                <div>
-                    <label class="vafadar-label"> توضیحات</label>
-                    <input type="text"    name="packages[${randomNumber}][description]" class="vafadar-input" placeholder="توضیحات پکیج">
-                </div>
-                <div>
-                    <label class="vafadar-label"> خلاصه</label>
-                    <input type="text" name="packages[${randomNumber}][summary]" class="vafadar-input" placeholder="خلاصه پکیج">
-                </div>
                 <div>
                     <label class="vafadar-label"> موجودی</label>
                     <input type="number"    name="packages[${randomNumber}][stock]" class="vafadar-input" placeholder="تعداد موجودی">
