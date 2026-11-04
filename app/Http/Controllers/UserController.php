@@ -557,6 +557,10 @@ class UserController extends Controller
             $is_mainpicture='';
             $galleryPicture=[];
         }
+        $parentCategories=category::where('parent_id',0)->get();
+
+
+
         return view('firstPage',[
             'user'=>$user,
             'logo'=>$logo ,
@@ -567,7 +571,8 @@ class UserController extends Controller
             'comments'=>$comments,
             'banner'=>$banner,
             'products'=>$products,
-            'localCash'=>$localCash
+            'localCash'=>$localCash,
+            'parentCategories'=>$parentCategories,
         ]);
     }
     public function setting(){
@@ -876,4 +881,55 @@ class UserController extends Controller
     public function innerDashboard(){
         return view('innerDashboard');
     }
+    public function recursiveCategory1($state ,$category=null){
+        $cats=category::where('parent_id',0)->with('children')->get();
+        // dd($cats);
+        if($state=='create'){
+            $result=$this->recursiveCategory2($cats->all());
+        }else{
+            // $result=$this->recursiveCategory3($cats->all() ,$category);
+            $result=$this->recursiveCategory4($cats->all() ,$category);
+        }
+        return $result;
+    }  
+    public function recursiveCategory2($categories , $category=null){
+        $result="<ul class='pr-5'>";
+        if(!is_array($categories)){
+            if($categories->is_active==1){
+                if($categories->parent_id==0){
+                    $result.="<li class='flex items-center text-center gap-1 -mr-3 text-red-300'><input type='radio' name='parent_id' value='$categories->id'>$categories->title</li>";
+                }else{
+                    if($categories->id!=1){
+                        $result.="<li class='flex items-center text-center gap-1 mr-5 text-blue-300'><input type='radio' name='parent_id' value='$categories->id'>$categories->title</li>";
+                    }
+                }
+                if($categories["children"]){
+                    // dd($categories["children"]);
+                    foreach ($categories["children"]->all() as $children) {
+                        if($children->is_active==1){
+    
+                            $result.= "<ul class='pr-5'>";
+                            $result.="<li class='flex items-center text-center gap-1 mr-5'><input type='radio' name='parent_id' value='$children->id'>$children->title</li>";
+                            $result.= "</ul>";
+                            if($children["children"]){
+                                $result.=$this->recursiveCategory2($children['children']->all());
+                            }
+                        }
+                    }
+                }
+            }else{
+                $result='';
+            }
+            return $result;
+        }
+        foreach ($categories as $category) {
+            // $result.='<ul>';
+            $result.=$this->recursiveCategory2($category);
+            $result.='</ul>';
+        }
+        $result.='</ul>';
+        return $result;
+    }
 }
+
+
