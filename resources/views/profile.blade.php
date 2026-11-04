@@ -44,16 +44,14 @@
                                 @if(Auth::user()->path!=null)
                                     <img class='rounded-full w-full h-full object-cover' src="{{asset('storage/user_medias/'.Auth::user()->path)}}" alt="">
                                 @else
-                                <div class="w-full h-full rounded-full bg-[#F5F5F5] overflow-hidden flex items-center justify-center">
-                                    <span class="text-4xl text-[#9A9CAE] font-bold">{{Auth::user()->name[0]}}</span>
-                                </div>
+                                    <img class='rounded-full w-full h-full object-cover' src="{{asset('assets/img/user.jfif')}}" alt="">
                                 @endif
                             </div>
                         </div>
                         <label for="avatarUpload" class="absolute bottom-0 left-0 bg-[#1B84FF] hover:bg-[#0a6fd6] text-white w-8 h-8 rounded-full flex items-center justify-center cursor-pointer shadow-lg transition-all hover:scale-110 border-2 border-white">
                             <i class="fas fa-camera text-xs"></i>
                         </label>
-                        <input type="file" id="avatarUpload" class="hidden" accept="image/*">
+                        <input name='avatar' type="file" id="avatarUpload" onchange="setAvatar(this)" class="hidden" accept="image/*">
                         <span class='absolute top-0 -right-17 font-bold text-[#1e293b] text-sm'> عکس پروفایل </span>
                     </div>
                 </div>
@@ -300,11 +298,14 @@
     //     }
     // }
 // });
-$('#avatarUpload').on('change', function() {
-    let file = this.files[0];
+    function setAvatar(el){
+
+        let file=el.files[0];
         let url = "{{url('/user/change/avatar')}}/" + user_id_input.value;
         let formData = new FormData();
         formData.append('avatar', file);
+        // console.log(formData.avatar)
+        // return
         $.ajax({
             url: url,
             type: "POST",
@@ -338,8 +339,7 @@ $('#avatarUpload').on('change', function() {
                 // toastr.error(errorMsg);
             }
         });
-    
-});
+    }
     // =====================================
     // ذخیره اطلاعات پروفایل
     // =====================================

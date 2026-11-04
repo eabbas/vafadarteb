@@ -84,7 +84,7 @@
                                         <polyline points="2 12 12 17 22 12"></polyline>
                                     </svg>
                                 </div>
-                                <span class=" font-bold group-active:pr-2 group-active:text-[#01906A] transition_normal max-sm:text-sm">محصولات</span>
+                                <span class=" font-bold group-active:pr-2 group-active:text-[#01906A] transition_normal max-sm:text-sm">دسته بندی</span>
                             </div>
                             <div class="w-full py-3 active:bg-(--product) rounded-full flex gap-2 justify-start items-center px-5 group">
                                 <div>
@@ -142,7 +142,7 @@
 
                         <li class="lable-1 group">
                             <a href="">
-                                <span class="text-[#023350] font-bold group-hover:text-[#03a297] transition_normal group-active:text-[#03a297]">محصولات</span>
+                                <span class="text-[#023350] font-bold group-hover:text-[#03a297] transition_normal group-active:text-[#03a297]">دسته بندی</span>
                             </a>
                             <div
                                 class="w-full h-dvh fixed top-22 right-0 flex justify-center items-start lable-1-1 absolute">
@@ -1079,7 +1079,7 @@
                             <!-- search_box_item -->
                         </div>
                         @if(Auth::check())
-                        <a href="{{route('user.profile')}}">
+                        <a href="{{route('user.innerDashboard')}}">
                             <div class='px-4 py-3 bg-[#EBECEE] hover:shadow-[0_0_2px_2px_#cccccc] rounded-xl transition_normal max-xl:text-sm max-sm:text-xs max-lg:hidden'>{{Auth::user()->name}} خوش آمدید</div>
                             <div class="lg:hidden">
                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="sm:size-5 size-4">

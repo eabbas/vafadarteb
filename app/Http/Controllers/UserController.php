@@ -466,6 +466,7 @@ class UserController extends Controller
         return response()->json($user);
     }
     public function changeAvatar(Request $request , User $user){
+        // dd($request->all());
         Log::info($request->all());
         $file=$request->file('avatar');
         $fullName=Str::uuid().$file->getClientOriginalName();
@@ -872,5 +873,7 @@ class UserController extends Controller
         }
         return view('client.cart.receipt',['code'=>$code ,'date'=>$date ,'time'=>$time , 'user'=>$user]);
     }
-
+    public function innerDashboard(){
+        return view('innerDashboard');
+    }
 }

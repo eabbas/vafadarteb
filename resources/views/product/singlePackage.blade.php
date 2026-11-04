@@ -733,26 +733,26 @@
                     <span class="label"> تخفیف</span>
                     <span class="value">{{$package->discunt}}%</span>
                 </div>
-                <div class="vafadar-info-item">
+                <!-- <div class="vafadar-info-item">
                     <span class="label"> توضیحات</span>
                     <span class="value text-sm">{{$package->description}}</span>
-                </div>
+                </div> -->
                 <div class="vafadar-info-item">
                     <span class="label"> دسته‌بندی</span>
                     <span class="value">{{$package['product']->categories[0]->title ?? 'بدون دسته‌بندی'}}</span>
                 </div>
-                <div class="vafadar-info-item">
+                <!-- <div class="vafadar-info-item">
                     <span class="label"> خلاصه</span>
                     <span class="value text-sm">{{$package->summary}}</span>
-                </div>
+                </div> -->
                 <div class="vafadar-info-item">
                     <span class="label"> برند</span>
                     <span class="value">#{{$package['product']->brand_id}}</span>
                 </div>
-                <div class="vafadar-info-item">
+                <!-- <div class="vafadar-info-item">
                     <span class="label"> اسلاگ</span>
                     <span class="value text-sm">{{$package['product']->slug}}</span>
-                </div>
+                </div> -->
 
                 <div class="vafadar-info-item">
                     <span class="label"> موجودی</span>
@@ -766,7 +766,7 @@
                         </span>
                     </span>
                 </div>
-                <div class="vafadar-info-item">
+                <!-- <div class="vafadar-info-item">
                     <span class="label"> نمایش در خانه</span>
                     <span class="value">
                         <span class="badge {{$package['product']->show_in_home ? 'show-home' : 'inactive'}}">
@@ -781,7 +781,7 @@
                             {{$package->featured ? '⭐ ویژه' : 'معمولی'}}
                         </span>
                     </span>
-                </div>
+                </div> -->
             </div>
 
             <!-- ===== ویژگی‌ها ===== -->
@@ -803,7 +803,7 @@
                 </div>
             </div>
 
-            <!-- ===== تصاویر ===== -->
+            <!-- ===== تصاویر =====
             <div class="vafadar-section">
                 <div class="vafadar-section-title">
                     <h3> تصاویر</h3>
@@ -821,7 +821,7 @@
                         <span class="text-gray-400 dark:text-gray-500 text-sm">هیچ تصویری ثبت نشده است</span>
                     @endforelse
                 </div>
-            </div>
+            </div> -->
 
         </div>
 

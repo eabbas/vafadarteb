@@ -700,21 +700,10 @@
                             <span class="package-badge {{$package->is_active ? 'active' : 'inactive'}}">
                                 {{$package->is_active ? '✅ فعال' : '❌ غیرفعال'}}
                             </span>
-                            @if($package->featured)
-                                <span class="package-badge featured">⭐ ویژه</span>
-                            @endif
                         </div>
                     </div>
                     
                     <div class="package-info">
-                        <div class="package-info-item">
-                            <span class="label"> توضیحات</span>
-                            <span class="value">{{$package->description}}</span>
-                        </div>
-                        <div class="package-info-item">
-                            <span class="label"> خلاصه</span>
-                            <span class="value">{{$package->summary}}</span>
-                        </div>
                         <div class="package-info-item">
                             <span class="label"> قیمت</span>
                             <span class="value">{{$package->price}} تومان</span>
