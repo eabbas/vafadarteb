@@ -584,7 +584,7 @@ $count=1;
             
             <!-- ===== گرید فیلدها ===== -->
              <h3> اطلاعات اصلی </h3>
-            <div class="vafadar-grid grid grid-cols-2 gap-6 mr-4 mt-5">
+            <div class="vafadar-grid grid grid-cols-2 max-sm:flex max-sm:flex-col gap-6 mr-4 mt-5">
 
                 <!-- تصویر -->
                 <div>
@@ -635,50 +635,52 @@ $count=1;
                     </div>
                 @endif
                 <!-- ===== توگل‌ها ===== -->
-                <h3> تنظیمات نمایش </h3>
-                <div class="vafadar-toggle-group col-span-2 flex gap-8 justify-start items-center flex-wrap">
+                <div class="vafadar-toggle-group col-span-2 flex flex-col gap-2">
+                    <h3> تنظیمات نمایش </h3>
                     <!-- نمایش در خانه -->
-                    <div class="vafadar-toggle-label mr-4">
-                        <span> نمایش در خانه</span>
-                        @if($category->show_in_home==0)
-                            <div class="vafadar-toggle" onclick="toggleState(this)">
-                                <div class="vafadar-toggle-dot"></div>
-                            </div>
-                            <input type="number" name='show_in_home' value="0" class="absolute invisible">
-                        @else
-                            <div class="vafadar-toggle active" onclick="toggleState(this)">
-                                <div class="vafadar-toggle-dot"></div>
-                            </div>
-                            <input type="number" name='show_in_home' value="1" class="absolute invisible">
-                        @endif
-                    </div>
-
-                    <!-- فعال -->
-                    <div class="vafadar-toggle-label">
-                        <span> فعال</span>
-                        @if($category->is_active==0)
-                            <div class="vafadar-toggle" onclick="toggleState(this)">
-                                <div class="vafadar-toggle-dot"></div>
-                            </div>
-                            <input type="number" name='is_active' value="0" class="absolute invisible">
-                        @else
-                            <div class="vafadar-toggle active" onclick="toggleState(this)">
-                                <div class="vafadar-toggle-dot"></div>
-                            </div>
-                            <input type="number" name='is_active' value="1" class="absolute invisible">
-                        @endif
-                    </div>
-
-                    <!-- تصویر -->
-                    <div class="vafadar-image-box">
-                        @if($category->image_path!=null)
-
-                            <img src="{{asset('storage/category_medias/'.$category->image_path)}}" alt="{{$category->title}}">
-                        @else
-
-                                <span class="w-full h-full flex items-center text-center justify-center text-4xl">📷</span>
-                        @endif
-                    </div>
+                     <div class="flex gap-8 justify-start items-center flex-wrap">
+                         <div class="vafadar-toggle-label mr-4">
+                             <span> نمایش در خانه</span>
+                             @if($category->show_in_home==0)
+                                 <div class="vafadar-toggle" onclick="toggleState(this)">
+                                     <div class="vafadar-toggle-dot"></div>
+                                 </div>
+                                 <input type="number" name='show_in_home' value="0" class="absolute invisible">
+                             @else
+                                 <div class="vafadar-toggle active" onclick="toggleState(this)">
+                                     <div class="vafadar-toggle-dot"></div>
+                                 </div>
+                                 <input type="number" name='show_in_home' value="1" class="absolute invisible">
+                             @endif
+                         </div>
+     
+                         <!-- فعال -->
+                         <div class="vafadar-toggle-label">
+                             <span> فعال</span>
+                             @if($category->is_active==0)
+                                 <div class="vafadar-toggle" onclick="toggleState(this)">
+                                     <div class="vafadar-toggle-dot"></div>
+                                 </div>
+                                 <input type="number" name='is_active' value="0" class="absolute invisible">
+                             @else
+                                 <div class="vafadar-toggle active" onclick="toggleState(this)">
+                                     <div class="vafadar-toggle-dot"></div>
+                                 </div>
+                                 <input type="number" name='is_active' value="1" class="absolute invisible">
+                             @endif
+                         </div>
+     
+                         <!-- تصویر -->
+                         <div class="vafadar-image-box">
+                             @if($category->image_path!=null)
+     
+                                 <img src="{{asset('storage/category_medias/'.$category->image_path)}}" alt="{{$category->title}}">
+                             @else
+     
+                                     <span class="w-full h-full flex items-center text-center justify-center text-4xl">📷</span>
+                             @endif
+                         </div>
+                     </div>
 
                 </div>
             </div>

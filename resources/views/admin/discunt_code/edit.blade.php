@@ -248,11 +248,12 @@
             height: 26px;
         }
         .vafadar-toggle-dot {
-            width: 20px;
+            min-width: 20px;
+            max-width: 20px;
             height: 20px;
         }
         .vafadar-toggle.active .vafadar-toggle-dot {
-            transform: translateX(20px);
+            transform: translateX(-19px);
         }
     }
 </style>
@@ -279,7 +280,7 @@
             @csrf
 
             <!-- ===== گرید فیلدها ===== -->
-            <div class="vafadar-form-grid grid grid-cols-2 gap-6">
+            <div class="vafadar-form-grid grid grid-cols-2 max-[400px]:flex max-[400px]:flex-col gap-6">
 
                 <!-- عنوان -->
                 <div>

@@ -198,7 +198,9 @@
     /* ===== ریسپانسیو ===== */
     @media (max-width: 768px) {
         .vafadar-form-grid {
-            grid-template-columns: 1fr;
+            /* grid-template-columns: 1fr; */
+            display: flex;
+            flex-direction: column;
             gap: 18px;
         }
         .vafadar-brand-form {

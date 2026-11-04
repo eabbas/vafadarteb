@@ -142,6 +142,7 @@
         font-size: 14px;
         transition: all 0.3s ease;
         outline: none;
+        background-color: #F5F5F5;
     }
     .vafadar-input::placeholder {
         color: #9A9CAE;
@@ -413,7 +414,7 @@
         }
         .vafadar-categories-box {
             max-height: 140px;
-            padding: 8px 12px;
+            padding: 4px 0px;
         }
     }
 </style>
@@ -446,37 +447,37 @@
                 <div class="vafadar-grid-2 mr-4">
                     <!-- عنوان -->
                     <div class="full">
-                        <label class="vafadar-label"> عنوان</label>
+                        <label class=" text-[#9A9CAE]"> عنوان</label>
                         <input type="text" name="title" value="{{old('title')}}" placeholder="عنوان دسته‌بندی" class="vafadar-input" required>
                         @error('title') <span class="vafadar-error">{{$message}}</span> @enderror
                     </div>
 
                     <!-- خلاصه -->
                     <div>
-                        <label class="vafadar-label"> خلاصه</label>
+                        <label class=" text-[#9A9CAE]"> خلاصه</label>
                         <input type="text" name="summary" value="{{old('summary')}}" placeholder="خلاصه دسته‌بندی" class="vafadar-input">
                     </div>
 
                     <!-- توضیحات -->
                     <div>
-                        <label class="vafadar-label"> توضیحات</label>
+                        <label class=" text-[#9A9CAE]"> توضیحات</label>
                         <input type="text" name="description" value="{{old('description')}}" placeholder="توضیحات دسته‌بندی" class="vafadar-input">
                     </div>
 
                     <!-- اسلاگ -->
                     <div>
-                        <label class="vafadar-label"> اسلاگ</label>
+                        <label class=" text-[#9A9CAE]"> اسلاگ</label>
                         <input type="text" name="slug" placeholder="اسلاگ دسته‌بندی" class="vafadar-input">
                     </div>
 
                     <!-- تصویر -->
                     <div>
-                        <label class="vafadar-label"> تصویر</label>
+                        <label class=" text-[#9A9CAE]"> تصویر</label>
                         <input type="file" name="image_path" class="vafadar-input" style="padding: 8px 12px;">
                     </div>
                 </div>
 
-                <div class="vafadar-section-title my-5">
+                <div class="vafadar-section-title my-5 text-[#9A9CAE]">
                     <h3>تنظیمات نمایش</h3>
                 </div>
 
@@ -485,7 +486,7 @@
                     <div>
                         <div class="vafadar-checkbox-group">
                             <input type="checkbox" name="show_in_home" value="1" class="vafadar-checkbox" id="show_in_home">
-                            <label for="show_in_home"> نمایش در خانه</label>
+                            <label for="show_in_home text-[#9A9CAE]"> نمایش در خانه</label>
                         </div>
                     </div>
 
@@ -493,7 +494,7 @@
                     <div>
                         <div class="vafadar-checkbox-group">
                             <input type="checkbox" name="is_active" value="1" class="vafadar-checkbox" id="is_active">
-                            <label for="is_active"> فعال</label>
+                            <label for="is_active text-[#9A9CAE]"> فعال</label>
                         </div>
                     </div>
                 </div>
@@ -502,11 +503,11 @@
                     <h3>دسته‌بندی والد</h3>
                 </div>
 
-                <div class="vafadar-categories-box mr-4">
-                    <div class="vafadar-category-item">
+                <div class="vafadar-categories-box max-lg:text-sm max-sm:text-xs text-nowrap">
+                    <!-- <div class="vafadar-category-item"> -->
                         <!-- <input type="radio" name="parent_id" value="0" class="vafadar-checkbox" id="parent_0"> -->
                         <!-- <label for="parent_0">والد</label> -->
-                    </div>
+                    <!-- </div> -->
                     {!! $categories !!}
                 </div>
 

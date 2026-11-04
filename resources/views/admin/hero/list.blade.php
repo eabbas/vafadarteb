@@ -361,8 +361,8 @@
                         <th style="min-width:110px;">تصاویر</th>
                         <th>عنوان</th>
                         <th class="hidden sm:table-cell">خلاصه</th>
-                        <th class="hidden lg:table-cell">آدرس</th>
-                        <th class="hidden sm:table-cell">وضعیت</th>
+                        <th class="table-cell">آدرس</th>
+                        <th class="table-cell">وضعیت</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -409,14 +409,14 @@
                                 —
                             @endif
                         </td>
-                        <td class="hidden lg:table-cell" style="color: var(--metronic-text-dark);">
+                        <td class="table-cell" style="color: var(--metronic-text-dark);">
                             @if($hero->addres)
                                 {{$hero->addres}}
                             @else
                                 —
                             @endif
                         </td>
-                        <td class="hidden sm:table-cell">
+                        <td class="table-cell">
                             @if($hero->is_active)
                                 <span class="metronic-status active">
                                     <span class="dot"></span>
