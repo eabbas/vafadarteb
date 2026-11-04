@@ -151,23 +151,11 @@
                                     class="w-11/12 h-9/12 bg-[var(--background-2)] border border-text-[var(--green)] flex justify-start items-start py-5">
                                     <div class="h-full border-l border-[var(--green)] flex flex-col gap-2 justify-start items-start overflow-auto [&::-webkit-scrollbar]:w-2  [&::-webkit-scrollbar-thumb]:bg-[var(--green)]  [&::-webkit-scrollbar-thumb]:rounded-full pl-2">
                                         @foreach($parentCategories as $parentCat)
-                                            <div
-                                                class="min-w-11/12 w-11/12 group py-3 hover:bg-[var(--background)]  border-y-1 border-l-1 border-[var(--background-2)] hover:border-[var(--green)] flex justify-between items-center xl:px-4 px-2 rounded-y-xl rounded-l-xl transition_root">
+                                            <div id='{{$parentCat->id}}' class="parentCats min-w-11/12 w-11/12 group py-3 hover:bg-[var(--background)]  border-y-1 border-l-1 border-[var(--green)] flex justify-between items-center xl:px-4 px-2 rounded-y-xl rounded-l-xl transition_root">
                                                 <div class="flex justify-start items-center xl:gap-3 gap-2 px-2">
-                                                    <div>
-                                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"class="xl:size-8 lg:size-6"><g fill="none"    class="stroke-[var(--text)] group-hover:stroke-[var(--green)] transition_root"    stroke-width="10" stroke-linecap="round"    stroke-linejoin="round">    <!-- Outer Card -->    <rect x="90" y="110" width="332" height="220" rx="10">    </rect>    <!-- Inner Border -->    <rect x="120" y="140" width="272" height="160" rx="2">    </rect>    <!-- Top Right Circle -->    <circle cx="340" cy="175" r="18"></circle>    <!-- Logo -->    <path d=" M165 235 L165 205 Q165 180 188 180 L205 180 Q225 180 225 198 Q225 214 208 214 L188 214 L188 225 L215 225 Q235 225 235 245 L165 245 Z"></path>    <!-- Text Line -->    <line x1="220" y1="225" x2="305" y2="225"></line>    <!-- Corner Accent -->    <path d="M375 270 L375 295 L350 295"></path></g></svg>
-                                                    </div>
                                                     <span class="max-xl:text-sm font-bold text-[var(--text)] group-hover:text-[var(--green)] transition_root group-hover:pr-2">
                                                         {{$parentCat->title}}
                                                     </span>
-                                                </div>
-                                                <div>
-                                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"
-                                                        class="size-4 fill-[var(--text)] group-hover:fill-[var(--green)] rotate-90 transition_root">
-                                                        <path
-                                                            d="M241 337c-9.4 9.4-24.6 9.4-33.9 0L47 177c-9.4-9.4-9.4-24.6 0-33.9s24.6-9.4 33.9 0l143 143L367 143c9.4-9.4 24.6-9.4 33.9 0s9.4 24.6 0 33.9L241 337z">
-                                                        </path>
-                                                    </svg>
                                                 </div>
                                             </div>
                                         @endforeach
@@ -175,211 +163,20 @@
 
 
                                     </div>
-                                    <div
-                                        class="w-19/24 h-full flex flex-col">
-                                        <div class="w-11/12 mx-auto flex  border-b-1 border-[var(--purple)]">
-                                            <span class="text-[var(--text)] text-[1.3rem] font-bold pb-2">تمام محصولات مصرفی خانگی</span>
+                                    <div class="w-19/24 h-full flex flex-col">
+
+                                        <div class="w-11/12 mx-auto flex border-b border-[var(--purple)]">
+                                            <span class="text-[var(--text)] text-[1.3rem] font-bold pb-2">
+                                                تمام محصولات مصرفی خانگی
+                                            </span>
                                         </div>
-                                        <div class="w-11/12 mx-auto h-full flex flex-wrap gap-3 justify-start pt-10  overflow-auto [&::-webkit-scrollbar]:w-2  [&::-webkit-scrollbar-thumb]:bg-[var(--gold)]  [&::-webkit-scrollbar-thumb]:rounded-full">
-                                            <div class="px-5 h-50">
-                                                <div class="border-r-3 pr-2 border-[var(--green)]">
-                                                    <h1 class="text-[var(--text)]">لوازم تشخیصی</h1>
-                                                </div>
-                                                <div class="flex flex-col items-center gap-3 pt-3">
-                                                    <span class="text-[var(--text-muted)] hover:text-[var(--purple)]">کرم </span>
-                                                    <span class="text-[var(--text-muted)] hover:text-[var(--purple)]">کرم </span>
-                                                    <span class="text-[var(--text-muted)] hover:text-[var(--purple)]">کرم </span>
-                                                    <span class="text-[var(--text-muted)] hover:text-[var(--purple)]">کرم </span>
-                                                </div>
-                                            </div>
-                                            <div class="px-5 h-50">
-                                                <div class="border-r-3 pr-2 border-[var(--green)]">
-                                                    <h1 class="text-[var(--text)]">لوازم تشخیصی</h1>
-                                                </div>
-                                                <div class="flex flex-col items-center gap-3 pt-3">
-                                                    <span class="text-[var(--text-muted)] hover:text-[var(--purple)]">کرم </span>
-                                                    <span class="text-[var(--text-muted)] hover:text-[var(--purple)]">کرم </span>
-                                                    <span class="text-[var(--text-muted)] hover:text-[var(--purple)]">کرم </span>
-                                                    <span class="text-[var(--text-muted)] hover:text-[var(--purple)]">کرم </span>
-                                                </div>
-                                            </div>
-                                            <div class="px-5 h-50">
-                                                <div class="border-r-3 pr-2 border-[var(--green)]">
-                                                    <h1 class="text-[var(--text)]">لوازم تشخیصی</h1>
-                                                </div>
-                                                <div class="flex flex-col items-center gap-3 pt-3">
-                                                    <span class="text-[var(--text-muted)] hover:text-[var(--purple)]">کرم </span>
-                                                    <span class="text-[var(--text-muted)] hover:text-[var(--purple)]">کرم </span>
-                                                    <span class="text-[var(--text-muted)] hover:text-[var(--purple)]">کرم </span>
-                                                    <span class="text-[var(--text-muted)] hover:text-[var(--purple)]">کرم </span>
-                                                </div>
-                                            </div>
-                                            <div class="px-5 h-50">
-                                                <div class="border-r-3 pr-2 border-[var(--green)]">
-                                                    <h1 class="text-[var(--text)]">لوازم تشخیصی</h1>
-                                                </div>
-                                                <div class="flex flex-col items-center gap-3 pt-3">
-                                                    <span class="text-[var(--text-muted)] hover:text-[var(--purple)]">کرم </span>
-                                                    <span class="text-[var(--text-muted)] hover:text-[var(--purple)]">کرم </span>
-                                                    <span class="text-[var(--text-muted)] hover:text-[var(--purple)]">کرم </span>
-                                                    <span class="text-[var(--text-muted)] hover:text-[var(--purple)]">کرم </span>
-                                                </div>
-                                            </div>
-                                            <div class="px-5 h-50">
-                                                <div class="border-r-3 pr-2 border-[var(--green)]">
-                                                    <h1 class="text-[var(--text)]">لوازم تشخیصی</h1>
-                                                </div>
-                                                <div class="flex flex-col items-center gap-3 pt-3">
-                                                    <span class="text-[var(--text-muted)] hover:text-[var(--purple)]">کرم </span>
-                                                    <span class="text-[var(--text-muted)] hover:text-[var(--purple)]">کرم </span>
-                                                    <span class="text-[var(--text-muted)] hover:text-[var(--purple)]">کرم </span>
-                                                    <span class="text-[var(--text-muted)] hover:text-[var(--purple)]">کرم </span>
-                                                </div>
-                                            </div>
-                                            <div class="px-5 h-50">
-                                                <div class="border-r-3 pr-2 border-[var(--green)]">
-                                                    <h1 class="text-[var(--text)]">لوازم تشخیصی</h1>
-                                                </div>
-                                                <div class="flex flex-col items-center gap-3 pt-3">
-                                                    <span class="text-[var(--text-muted)] hover:text-[var(--purple)]">کرم </span>
-                                                    <span class="text-[var(--text-muted)] hover:text-[var(--purple)]">کرم </span>
-                                                    <span class="text-[var(--text-muted)] hover:text-[var(--purple)]">کرم </span>
-                                                    <span class="text-[var(--text-muted)] hover:text-[var(--purple)]">کرم </span>
-                                                </div>
-                                            </div>
-                                            <div class="px-5 h-50">
-                                                <div class="border-r-3 pr-2 border-[var(--green)]">
-                                                    <h1 class="text-[var(--text)]">لوازم تشخیصی</h1>
-                                                </div>
-                                                <div class="flex flex-col items-center gap-3 pt-3">
-                                                    <span class="text-[var(--text-muted)] hover:text-[var(--purple)]">کرم </span>
-                                                    <span class="text-[var(--text-muted)] hover:text-[var(--purple)]">کرم </span>
-                                                    <span class="text-[var(--text-muted)] hover:text-[var(--purple)]">کرم </span>
-                                                    <span class="text-[var(--text-muted)] hover:text-[var(--purple)]">کرم </span>
-                                                </div>
-                                            </div>
-                                            <div class="px-5 h-50">
-                                                <div class="border-r-3 pr-2 border-[var(--green)]">
-                                                    <h1 class="text-[var(--text)]">لوازم تشخیصی</h1>
-                                                </div>
-                                                <div class="flex flex-col items-center gap-3 pt-3">
-                                                    <span class="text-[var(--text-muted)] hover:text-[var(--purple)]">کرم </span>
-                                                    <span class="text-[var(--text-muted)] hover:text-[var(--purple)]">کرم </span>
-                                                    <span class="text-[var(--text-muted)] hover:text-[var(--purple)]">کرم </span>
-                                                    <span class="text-[var(--text-muted)] hover:text-[var(--purple)]">کرم </span>
-                                                </div>
-                                            </div>
-                                            <div class="px-5 h-50">
-                                                <div class="border-r-3 pr-2 border-[var(--green)]">
-                                                    <h1 class="text-[var(--text)]">لوازم تشخیصی</h1>
-                                                </div>
-                                                <div class="flex flex-col items-center gap-3 pt-3">
-                                                    <span class="text-[var(--text-muted)] hover:text-[var(--purple)]">کرم </span>
-                                                    <span class="text-[var(--text-muted)] hover:text-[var(--purple)]">کرم </span>
-                                                    <span class="text-[var(--text-muted)] hover:text-[var(--purple)]">کرم </span>
-                                                    <span class="text-[var(--text-muted)] hover:text-[var(--purple)]">کرم </span>
-                                                </div>
-                                            </div>
-                                            <div class="px-5 h-50">
-                                                <div class="border-r-3 pr-2 border-[var(--green)]">
-                                                    <h1 class="text-[var(--text)]">لوازم تشخیصی</h1>
-                                                </div>
-                                                <div class="flex flex-col items-center gap-3 pt-3">
-                                                    <span class="text-[var(--text-muted)] hover:text-[var(--purple)]">کرم </span>
-                                                    <span class="text-[var(--text-muted)] hover:text-[var(--purple)]">کرم </span>
-                                                    <span class="text-[var(--text-muted)] hover:text-[var(--purple)]">کرم </span>
-                                                    <span class="text-[var(--text-muted)] hover:text-[var(--purple)]">کرم </span>
-                                                </div>
-                                            </div>
-                                            <div class="px-5 h-50">
-                                                <div class="border-r-3 pr-2 border-[var(--green)]">
-                                                    <h1 class="text-[var(--text)]">لوازم تشخیصی</h1>
-                                                </div>
-                                                <div class="flex flex-col items-center gap-3 pt-3">
-                                                    <span class="text-[var(--text-muted)] hover:text-[var(--purple)]">کرم </span>
-                                                    <span class="text-[var(--text-muted)] hover:text-[var(--purple)]">کرم </span>
-                                                    <span class="text-[var(--text-muted)] hover:text-[var(--purple)]">کرم </span>
-                                                    <span class="text-[var(--text-muted)] hover:text-[var(--purple)]">کرم </span>
-                                                </div>
-                                            </div>
-                                            <div class="px-5 h-50">
-                                                <div class="border-r-3 pr-2 border-[var(--green)]">
-                                                    <h1 class="text-[var(--text)]">لوازم تشخیصی</h1>
-                                                </div>
-                                                <div class="flex flex-col items-center gap-3 pt-3">
-                                                    <span class="text-[var(--text-muted)] hover:text-[var(--purple)]">کرم </span>
-                                                    <span class="text-[var(--text-muted)] hover:text-[var(--purple)]">کرم </span>
-                                                    <span class="text-[var(--text-muted)] hover:text-[var(--purple)]">کرم </span>
-                                                    <span class="text-[var(--text-muted)] hover:text-[var(--purple)]">کرم </span>
-                                                </div>
-                                            </div>
-                                            <div class="px-5 h-50">
-                                                <div class="border-r-3 pr-2 border-[var(--green)]">
-                                                    <h1 class="text-[var(--text)]">لوازم تشخیصی</h1>
-                                                </div>
-                                                <div class="flex flex-col items-center gap-3 pt-3">
-                                                    <span class="text-[var(--text-muted)] hover:text-[var(--purple)]">کرم </span>
-                                                    <span class="text-[var(--text-muted)] hover:text-[var(--purple)]">کرم </span>
-                                                    <span class="text-[var(--text-muted)] hover:text-[var(--purple)]">کرم </span>
-                                                    <span class="text-[var(--text-muted)] hover:text-[var(--purple)]">کرم </span>
-                                                </div>
-                                            </div>
-                                            <div class="px-5 h-50">
-                                                <div class="border-r-3 pr-2 border-[var(--green)]">
-                                                    <h1 class="text-[var(--text)]">لوازم تشخیصی</h1>
-                                                </div>
-                                                <div class="flex flex-col items-center gap-3 pt-3">
-                                                    <span class="text-[var(--text-muted)] hover:text-[var(--purple)]">کرم </span>
-                                                    <span class="text-[var(--text-muted)] hover:text-[var(--purple)]">کرم </span>
-                                                    <span class="text-[var(--text-muted)] hover:text-[var(--purple)]">کرم </span>
-                                                    <span class="text-[var(--text-muted)] hover:text-[var(--purple)]">کرم </span>
-                                                </div>
-                                            </div>
-                                            <div class="px-5 h-50">
-                                                <div class="border-r-3 pr-2 border-[var(--green)]">
-                                                    <h1 class="text-[var(--text)]">لوازم تشخیصی</h1>
-                                                </div>
-                                                <div class="flex flex-col items-center gap-3 pt-3">
-                                                    <span class="text-[var(--text-muted)] hover:text-[var(--purple)]">کرم </span>
-                                                    <span class="text-[var(--text-muted)] hover:text-[var(--purple)]">کرم </span>
-                                                    <span class="text-[var(--text-muted)] hover:text-[var(--purple)]">کرم </span>
-                                                    <span class="text-[var(--text-muted)] hover:text-[var(--purple)]">کرم </span>
-                                                </div>
-                                            </div>
-                                            <div class="px-5 h-50">
-                                                <div class="border-r-3 pr-2 border-[var(--green)]">
-                                                    <h1 class="text-[var(--text)]">لوازم تشخیصی</h1>
-                                                </div>
-                                                <div class="flex flex-col items-center gap-3 pt-3">
-                                                    <span class="text-[var(--text-muted)] hover:text-[var(--purple)]">کرم </span>
-                                                    <span class="text-[var(--text-muted)] hover:text-[var(--purple)]">کرم </span>
-                                                    <span class="text-[var(--text-muted)] hover:text-[var(--purple)]">کرم </span>
-                                                    <span class="text-[var(--text-muted)] hover:text-[var(--purple)]">کرم </span>
-                                                </div>
-                                            </div>
-                                            <div class="px-5 h-50">
-                                                <div class="border-r-3 pr-2 border-[var(--green)]">
-                                                    <h1 class="text-[var(--text)]">لوازم تشخیصی</h1>
-                                                </div>
-                                                <div class="flex flex-col items-center gap-3 pt-3">
-                                                    <span class="text-[var(--text-muted)] hover:text-[var(--purple)]">کرم </span>
-                                                    <span class="text-[var(--text-muted)] hover:text-[var(--purple)]">کرم </span>
-                                                    <span class="text-[var(--text-muted)] hover:text-[var(--purple)]">کرم </span>
-                                                    <span class="text-[var(--text-muted)] hover:text-[var(--purple)]">کرم </span>
-                                                </div>
-                                            </div>
-                                            <div class="px-5 h-50">
-                                                <div>
-                                                    <h class="text-[var(--text)]" 1>لوازم تشخیصی</h>
-                                                </div>
-                                                <div class="flex flex-col items-center gap-3 pt-3">
-                                                    <span class="text-[var(--text-muted)] hover:text-[var(--purple)]">کرم </span>
-                                                    <span class="text-[var(--text-muted)] hover:text-[var(--purple)]">کرم </span>
-                                                    <span class="text-[var(--text-muted)] hover:text-[var(--purple)]">کرم </span>
-                                                    <span class="text-[var(--text-muted)] hover:text-[var(--purple)]">کرم </span>
-                                                </div>
-                                            </div>
+
+                                        <div id="subCats" class="w-12/12 mx-auto h-full grid grid-cols-4 gap-x-10 gap-y-10 pt-10 px-2 overflow-auto">
+
+                                            <?php echo $subCats; ?>
+
                                         </div>
+
                                     </div>
                                 </div>
                             </div>
@@ -1465,4 +1262,29 @@
             }
         }
         addProducsToCart();
+
+        
+        let parentCats=document.querySelectorAll('.parentCats');
+        parentCats.forEach(element => {
+            element.addEventListener('mouseover',function (){
+                getsubCats(element.id);
+            })
+        });
+        let subCats=document.getElementById('subCats');
+        function getsubCats(category){
+            $.ajax({
+                url: "{{url('user/getHeaderSubCats')}}" + "/" + category,
+                type: "get",
+                dataType: "json",
+                success: function(data) {
+                    subCats.innerHTML=data;
+                },
+                error: function() {
+                    console.log('☢')
+                }
+            })
+        }
+
+
+
     </script>
