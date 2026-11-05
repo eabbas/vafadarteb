@@ -397,7 +397,13 @@ $count = 0;
 
             <div class='lg:w-3/12 w-full bg-(--background) rounded-xl p-1 py-5 flex flex-col gap-2 border border-(--border) cart_shadow'>
                 <div id="main_image_div" class='flex w-full h-10/12 bg-white rounded-xl items-center justify-center p-2'>
-                    <img class='gallery_product_primary min-w-5/12 min-h-5/12 lg:max-h-60  sm:max-h-90 max-h-60 max-w-full rounded-xl' src="{{asset('storage/product_medias/'.$product->is_main)}}" alt="">
+                    @if($product->image!=null)
+                        <img class='gallery_product_primary min-w-5/12 min-h-5/12 lg:max-h-60  sm:max-h-90 max-h-60 max-w-full rounded-xl' src="{{asset('storage/product_medias/'.$product->image)}}" alt="">
+                    @else
+                        @if(count($product->gallery)>0)
+                            <img class='gallery_product_primary min-w-5/12 min-h-5/12 lg:max-h-60  sm:max-h-90 max-h-60 max-w-full rounded-xl' src="{{asset('storage/product_medias/'.$product->gallery[0])}}" alt="">
+                        @endif
+                    @endif
                 </div>
                 <div class='gallery_images w-full h-2/12 flex gap-2 items-center'>
 
@@ -408,22 +414,9 @@ $count = 0;
                         <div id="image_bar" class='max-w-full w-full bg-white rounded-xl flex  gap-[5px]  slaider_item_gallery' style="scrollbar-width:none;">
                             <!-- <img class='gallery_product_item size-13 rounded-lg border border-(--border) object-cover' src="{{asset('storage/product_medias/'.$product->is_main)}}" alt=""> -->
                             @foreach($product->gallery as $gallery)
-                            <div class="lg:min-w-24/100 min-w-14/100 max-[500px]:min-w-24/100 lg:max-w-24/100 max-w-14/100 max-[500px]:max-w-24/100 h-full flex justify-center items-center rounded-lg border border-green-500 slaider_item_gallery_children">
-                                <img class='gallery_product_item rounded-lg min-w-8/12 min-h-8/12 max-w-full max-h-full' src="{{asset('storage/product_medias/'.$gallery)}}" alt="">
-                            </div>
-                            <div class="lg:min-w-24/100 min-w-14/100 max-[500px]:min-w-24/100 lg:max-w-24/100 max-w-14/100 max-[500px]:max-w-24/100 h-full flex justify-center items-center rounded-lg border border-green-500 slaider_item_gallery_children">
-                                <img class='gallery_product_item rounded-lg min-w-8/12 min-h-8/12 max-w-full max-h-full' src="{{asset('storage/product_medias/'.$gallery)}}" alt="">
-                            </div>
-                            <div class="lg:min-w-24/100 min-w-14/100 max-[500px]:min-w-24/100 lg:max-w-24/100 max-w-14/100 max-[500px]:max-w-24/100 h-full flex justify-center items-center rounded-lg border border-green-500 slaider_item_gallery_children">
-                                <img class='gallery_product_item rounded-lg min-w-8/12 min-h-8/12 max-w-full max-h-full' src="{{asset('storage/product_medias/'.$gallery)}}" alt="">
-                            </div>
-                          
-                           
-                           
-                            
-                            
-
-
+                                <div class="lg:min-w-24/100 min-w-14/100 max-[500px]:min-w-24/100 lg:max-w-24/100 max-w-14/100 max-[500px]:max-w-24/100 h-full flex justify-center items-center rounded-lg border border-green-500 slaider_item_gallery_children">
+                                    <img class='gallery_product_item rounded-lg min-w-8/12 min-h-8/12 max-w-full max-h-full' src="{{asset('storage/product_medias/'.$gallery)}}" alt="">
+                                </div>
                             @endforeach
 
                         </div>
@@ -555,25 +548,32 @@ $count = 0;
                         </div>
                         <div class='w-full flex' id="entry_cart_parent_div">
                             @if($flag)
-                            <div class='entry_cart_submit cursor-pointer w-full h-10 bg-yellow-200 hover:yellow-300 disable flex text-center items-center justify-center rounded-lg text-black text-[10px] px-2 py-3  hover:bg-(--buttom) hover:font-bold transition-all duration-200'> افزوده شده </div>
+                                <div class='entry_cart_submit cursor-pointer w-full h-10 bg-yellow-200 hover:yellow-300 disable flex text-center items-center justify-center rounded-lg text-black text-[10px] px-2 py-3  hover:bg-(--buttom) hover:font-bold transition-all duration-200'> افزوده شده </div>
                             @else
-                            <div onclick='entry_cart(this)' class='entry_cart_submit cursor-pointer w-full h-10 bg-(--primary_color) flex text-center items-center justify-center rounded-lg text-white text-[10px] px-2 py-3  hover:bg-(--buttom) hover:font-bold transition-all duration-200'>افزودن به سبد خرید</div>
+                                @if($product->price!=null)
+                                    <div onclick='entry_cart(this)' class='entry_cart_submit cursor-pointer w-full h-10 bg-(--primary_color) flex text-center items-center justify-center rounded-lg text-white text-[10px] px-2 py-3  hover:bg-(--buttom) hover:font-bold transition-all duration-200'>افزودن به سبد خرید</div>
+                                @else
+                                    <div class=' cursor-pointer w-full h-10 bg-red-600 flex text-center items-center justify-center rounded-lg text-white text-[10px] px-2 py-3  hover:bg-red-400 hover:font-bold transition-all duration-200'>این محصول قابل خرید نیست</div>
+                                @endif
                             @endif
+                        </div>
+                        @if($product->price!=null)
 
-                        </div>
-                        <div class='w-full flex flex-col gap-2 text-center xl:justify-between justify-end items-center '>
-                            <div class='w-full text-(--metod-text) flex gap-2 justify-end items-center'>
-                                <span class='line-through font-bold xl:text-lg'> {{number_format($product->discunt)}} </span>
-                                <span class='text-xs'> تومان </span>
+                            <div class='w-full flex flex-col gap-2 text-center xl:justify-between justify-end items-center '>
+                                <div class='w-full text-(--metod-text) flex gap-2 justify-end items-center'>
+                                    <span class='line-through font-bold xl:text-lg'> {{number_format($product->discunt)}} </span>
+                                    <span class='text-xs'> تومان </span>
+                                </div>
+                                <div class="w-full flex justify-start">
+                                    <span class='xl:p-2 p-1.5 bg-(--primary_color) text-center rounded-xl text-white xl:text-sm text-xs font-bold'> <span> {{$product->percent}}% </span> </span>
+                                </div>
+                                <div class='w-full text-(--primary_color) flex gap-2 justify-end items-center'>
+                                    <span class='font-bold xl:text-lg'> {{number_format($product->price)}} </span>
+                                    <span class='text-xs'> تومان </span>
+                                </div>
                             </div>
-                            <div class="w-full flex justify-start">
-                                <span class='xl:p-2 p-1.5 bg-(--primary_color) text-center rounded-xl text-white xl:text-sm text-xs font-bold'> <span> {{$product->percent}}% </span> </span>
-                            </div>
-                            <div class='w-full text-(--primary_color) flex gap-2 justify-end items-center'>
-                                <span class='font-bold xl:text-lg'> {{number_format($product->price)}} </span>
-                                <span class='text-xs'> تومان </span>
-                            </div>
-                        </div>
+                        @endif
+
 
                     </div>
 
@@ -1381,20 +1381,21 @@ $count = 0;
                                 <span class='-rotate-90 text-xs'> تومان </span>
                             </div>
                         </div> -->
-
-                        <div class='w-full flex flex-col gap-2 text-center xl:justify-between justify-end items-center '>
-                            <div class='w-full text-(--metod-text) flex gap-2 justify-end items-center'>
-                                <span class='line-through font-bold xl:text-lg'> {{number_format($product->discunt)}} </span>
-                                <span class='text-xs'> تومان </span>
+                        @if($product->price!=null)
+                            <div class='w-full flex flex-col gap-2 text-center xl:justify-between justify-end items-center '>
+                                <div class='w-full text-(--metod-text) flex gap-2 justify-end items-center'>
+                                    <span class='line-through font-bold xl:text-lg'> {{number_format($product->discunt)}} </span>
+                                    <span class='text-xs'> تومان </span>
+                                </div>
+                                <div class="w-full flex justify-start">
+                                    <span class='xl:p-2 p-1.5 bg-(--primary_color) text-center rounded-xl text-white xl:text-sm text-xs font-bold'> <span> {{$product->percent}}% </span> </span>
+                                </div>
+                                <div class='w-full text-(--primary_color) flex gap-2 justify-end items-center'>
+                                    <span class='font-bold xl:text-lg'> {{number_format($product->price)}} </span>
+                                    <span class='text-xs'> تومان </span>
+                                </div>
                             </div>
-                            <div class="w-full flex justify-start">
-                                <span class='xl:p-2 p-1.5 bg-(--primary_color) text-center rounded-xl text-white xl:text-sm text-xs font-bold'> <span> {{$product->percent}}% </span> </span>
-                            </div>
-                            <div class='w-full text-(--primary_color) flex gap-2 justify-end items-center'>
-                                <span class='font-bold xl:text-lg'> {{number_format($product->price)}} </span>
-                                <span class='text-xs'> تومان </span>
-                            </div>
-                        </div>
+                        @endif
 
                     </div>
 
@@ -1403,7 +1404,11 @@ $count = 0;
                             @if($flag)
                             <div class='entry_cart_submit cursor-pointer w-full h-10 bg-yellow-200 hover:yellow-300 disable flex text-center items-center justify-center rounded-lg text-black text-[10px] px-2 py-3  hover:bg-(--buttom) hover:font-bold transition-all duration-200'> افزوده شده </div>
                             @else
-                            <div onclick='entry_cart(this)' class='entry_cart_submit cursor-pointer w-full h-10 bg-(--primary_color) flex text-center items-center justify-center rounded-lg text-white text-[10px] px-2 py-3  hover:bg-(--buttom) hover:font-bold transition-all duration-200'>افزودن به سبد خرید</div>
+                                @if($product->price==null)
+                                    <div class=' cursor-pointer w-full h-10 bg-red-600 flex text-center items-center justify-center rounded-lg text-white text-[10px] px-2 py-3  hover:bg-red-400 hover:font-bold transition-all duration-200'>این محصول قابل خرید نیست</div>
+                                @else
+                                    <div onclick='entry_cart(this)' class='entry_cart_submit cursor-pointer w-full h-10 bg-(--primary_color) flex text-center items-center justify-center rounded-lg text-white text-[10px] px-2 py-3  hover:bg-(--buttom) hover:font-bold transition-all duration-200'>افزودن به سبد خرید</div>
+                                @endif
                             @endif
                         </div>
                         <div class='w-full py-2 px-4 rounded-lg text-(--buttom) bg-[#74f7b5] flex text-[10px] items-center text-center justify-center'><span> آخرین بروزرسانی قیمت : ۰۱ بهمن ۱۴۰۴ </span></div>
@@ -1696,32 +1701,34 @@ $count = 0;
 
     </div>
 
-
+    
     <div id="entry_cart_parent_div" class='md:hidden flex fixed bottom-0 right-0 w-full sm:h-18 h-15 p-3 bg-white justify-between text-center items-center rounded-t-xl border-t-3 border-[#11416f]'>
-        @if($flag)
-        <div class='entry_cart_submit cursor-pointer h-10 bg-yellow-200 hover:yellow-300 disable flex text-center items-center justify-center rounded-lg text-black text-[10px] [430px]:px-7 [430px]:py-3 px-5 py-2  hover:bg-(--buttom) hover:font-bold transition-all duration-200'> افزوده شده </div>
+        @if($product->price!=null)
+            @if($flag)
+            <div class='entry_cart_submit cursor-pointer h-10 bg-yellow-200 hover:yellow-300 disable flex text-center items-center justify-center rounded-lg text-black text-[10px] [430px]:px-7 [430px]:py-3 px-5 py-2  hover:bg-(--buttom) hover:font-bold transition-all duration-200'> افزوده شده </div>
+            @else
+            <div onclick="entry_cart(this)" class='entry_cart_submit [430px]:px-7 [430px]:py-3 px-5 py-2 flex items-center text-center rounded-md justify-center bg-(--primary_color) cursor-pointer '><span class='text-sm max-[430px]:text-xs text-white font-bold'> افزودن به سبد خرید </span></div>
+            @endif
+            <div class='w-2/12 flex flex-col text-center items-end '>
+                <div class=' p-1 items-center text-center flex gap-1'>
+                    <div class='px-2 py-1 text-white bg-rose-500 flex items-center text-center justify-center rounded-full max-[390px]:text-[10px] p-1'>
+                        <span> {{$product->percent}} </span>
+                        %
+                    </div>
+                    <div class='relative text-(--metod-text) flex items-center text-center'>
+                        <span class='text-xs'>{{number_format($product->discunt)}}</span>
+                        <div class='absolute w-full h-[1px]'></div>
+                    </div>
+                </div>
+                <div class='flex gap-1 items-center'>
+                    <span class='text-black font-bold'>{{number_format($product->price)}}</span>
+                    <span class='text-[10px]'> تومان </span>
+                </div>
+            </div>
         @else
-        <div onclick="entry_cart(this)" class='entry_cart_submit [430px]:px-7 [430px]:py-3 px-5 py-2 flex items-center text-center rounded-md justify-center bg-(--primary_color) cursor-pointer '><span class='text-sm max-[430px]:text-xs text-white font-bold'> افزودن به سبد خرید </span></div>
+            <div class=' cursor-pointer w-full h-10 bg-red-600 flex text-center items-center justify-center rounded-lg text-white text-[10px] px-2 py-3  hover:bg-red-400 hover:font-bold transition-all duration-200'>این محصول قابل خرید نیست</div>
         @endif
 
-
-
-        <div class='w-2/12 flex flex-col text-center items-end '>
-            <div class=' p-1 items-center text-center flex gap-1'>
-                <div class='px-2 py-1 text-white bg-rose-500 flex items-center text-center justify-center rounded-full max-[390px]:text-[10px] p-1'>
-                    <span> {{$product->percent}} </span>
-                    %
-                </div>
-                <div class='relative text-(--metod-text) flex items-center text-center'>
-                    <span class='text-xs'>{{number_format($product->discunt)}}</span>
-                    <div class='absolute w-full h-[1px]'></div>
-                </div>
-            </div>
-            <div class='flex gap-1 items-center'>
-                <span class='text-black font-bold'>{{number_format($product->price)}}</span>
-                <span class='text-[10px]'> تومان </span>
-            </div>
-        </div>
     </div>
 
     <!-- changed by blue -->

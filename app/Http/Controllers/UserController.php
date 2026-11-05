@@ -784,7 +784,7 @@ class UserController extends Controller
     public function cartInformation(Request $request){
         $products=json_decode($request->products[0], true);
         // dd($products);
-
+        $flag=false;
         //  باپکیچ ورتا زمان و تاریخ شمسی را میگیریم
         $dateAndTime=explode(' ',verta());
         $date=implode('/',explode('-',$dateAndTime[0]));
@@ -801,6 +801,9 @@ class UserController extends Controller
                 $chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
                 $password= substr(str_shuffle(str_repeat($chars, 5)), 0,6);
             }
+            if(User::where('phoneNumber',$request->phoneNumber)->first()){
+                $flag=true;
+            }
             $user=User::updateOrCreate(    
             ['phoneNumber'=>$request->phoneNumber],
             [
@@ -809,6 +812,13 @@ class UserController extends Controller
                 'password' => $password,
             ],
             );
+            if($flag==false){
+                $role=role::where('ea_title','user')->first();
+                role_user::create([
+                    'user_id'=>$user->id,
+                    'role_id'=>$role->id,
+                ]);                
+            }
             Auth::login($user);
         }
         // dd($user);

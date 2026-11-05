@@ -272,7 +272,7 @@
                                      <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
                                  </svg>
                              </div>
-                             <input type="password" name="password" placeholder="رمز عبور" 
+                             <input type="password" name="password" placeholder="رمز عبور (حداقل 4 کاراکتر)"
                                  class="input-medical w-full rounded-2xl py-3.5 pr-12 pl-4 text-white placeholder:text-white/35 outline-none transition-all duration-300">
                          </div>
                      </div>
@@ -367,7 +367,7 @@
                                 <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
                             </svg>
                         </div>
-                        <input type="password" name="password" placeholder="رمز عبور (حداقل 9 کاراکتر)" 
+                        <input type="password" name="password" placeholder="رمز عبور (حداقل 4 کاراکتر)" 
                             class="input-medical w-full rounded-2xl py-3.5 pr-12 pl-4 text-white placeholder:text-white/35 outline-none transition-all duration-300">
                     </div>
                     <div class='w-full flex gap-2 justify-between'>

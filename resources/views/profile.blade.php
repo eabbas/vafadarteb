@@ -204,7 +204,7 @@
         if(new_password.value == new_password_confirmation.value){
             let countPassword=countPasswordChars(new_password.value)
             console.log(countPassword.total)
-            if(countPassword.total>7){
+            if(countPassword.total>4){
 
                 $.ajaxSetup({
                     headers: {
@@ -229,7 +229,7 @@
                     }
                 })
             }else{
-                alert('تعداد کاراکتر رمز عبور باید بالای 8 باشد');
+                alert('تعداد کاراکتر رمز عبور باید بالای 4 باشد');
             }
 
         }else{
