@@ -66,7 +66,7 @@
                             <h3 class="sm:text-xl text-lg font-bold">وفادار طب</h3>
                         </div>
                         <div class="w-full flex flex-col items-center gap-3">
-                            <div class="w-full py-3 bg-(--product) rounded-full flex gap-2 justify-start items-center px-5 group">
+                            <a  href="{{url('/')}}" class="w-full py-3 bg-(--product) rounded-full flex gap-2 justify-start items-center px-5 group">
                                 <div>
                                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" class="size-5 fill-[#01906A]">
                                         <path d="M272.5 5.7c9-7.6 22.1-7.6 31.1 0l264 224c10.1 8.6 11.4 23.7 2.8 33.8s-23.7 11.3-33.8 2.8L512 245.5V432c0 44.2-35.8 80-80 80H144c-44.2 0-80-35.8-80-80V245.5L39.5 266.3c-10.1 8.6-25.3 7.3-33.8-2.8s-7.3-25.3 2.8-33.8l264-224zM288 55.5L112 204.8V432c0 17.7 14.3 32 32 32h48V312c0-22.1 17.9-40 40-40H344c22.1 0 40 17.9 40 40V464h48c17.7 0 32-14.3 32-32V204.8L288 55.5zM240 464h96V320H240V464z">
@@ -74,8 +74,8 @@
                                     </svg>
                                 </div>
                                 <span class="text-[#01906A]  font-bold group-active:pr-2 transition_normal max-sm:text-sm">خانه</span>
-                            </div>
-                            <div class="w-full py-3 active:bg-(--product) rounded-full flex gap-2 justify-start items-center px-5 group">
+                            </a>
+                            <a href="{{route('product.searchProduct')}}" class="w-full py-3 active:bg-(--product) rounded-full flex gap-2 justify-start items-center px-5 group">
                                 <div>
 
                                     <svg xmlns="http://www.w3.org/2000/svg" class="size-5 fill-none stroke-[#01906A]" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -85,8 +85,8 @@
                                     </svg>
                                 </div>
                                 <span class=" font-bold group-active:pr-2 group-active:text-[#01906A] transition_normal max-sm:text-sm">دسته بندی</span>
-                            </div>
-                            <div class="w-full py-3 active:bg-(--product) rounded-full flex gap-2 justify-start items-center px-5 group">
+                            </a>
+                            <a  href="{{url('/')}}" class="w-full py-3 active:bg-(--product) rounded-full flex gap-2 justify-start items-center px-5 group">
                                 <div>
                                     <svg xmlns="http://www.w3.org/2000/svg" class="size-5 fill-none stroke-[#01906A]" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                         <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
@@ -97,8 +97,8 @@
                                     </svg>
                                 </div>
                                 <span class=" font-bold group-active:pr-2 group-active:text-[#01906A] transition_normal max-sm:text-sm">مقالات</span>
-                            </div>
-                            <div class="w-full py-3 active:bg-(--product) rounded-full flex gap-2 justify-start items-center px-5 group">
+                            </a>
+                            <a href="{{url('/')}}" class="w-full py-3 active:bg-(--product) rounded-full flex gap-2 justify-start items-center px-5 group">
                                 <div>
                                     <svg xmlns="http://www.w3.org/2000/svg" class="size-5 fill-none stroke-[#01906A]" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                         <rect x="3" y="5" width="18" height="14" rx="2"></rect>
@@ -107,8 +107,8 @@
                                     </svg>
                                 </div>
                                 <span class=" font-bold group-active:pr-2 group-active:text-[#01906A] transition_normal max-sm:text-sm">درباره ما</span>
-                            </div>
-                            <div class="w-full py-3 active:bg-(--product) rounded-full flex gap-2 justify-start items-center px-5 group">
+                            </a>
+                            <a href="{{url('/')}}" class="w-full py-3 active:bg-(--product) rounded-full flex gap-2 justify-start items-center px-5 group">
                                 <div>
                                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="size-5 fill-[#01906A]">
                                         <path d="M375.8 275.2c-16.4-7-35.4-2.4-46.7 11.4l-33.2 40.6c-46-26.7-84.4-65.1-111.1-111.1L225.3 183c13.8-11.3 18.5-30.3 11.4-46.7l-48-112C181.2 6.7 162.3-3.1 143.6 .9l-112 24C13.2 28.8 0 45.1 0 64v0C0 295.2 175.2 485.6 400.1 509.5c9.8 1 19.6 1.8 29.6 2.2c0 0 0 0 0 0c0 0 .1 0 .1 0c6.1 .2 12.1 .4 18.2 .4l0 0c18.9 0 35.2-13.2 39.1-31.6l24-112c4-18.7-5.8-37.6-23.4-45.1l-112-48zM441.5 464C225.8 460.5 51.5 286.2 48.1 70.5l99.2-21.3 43 100.4L154.4 179c-18.2 14.9-22.9 40.8-11.1 61.2c30.9 53.3 75.3 97.7 128.6 128.6c20.4 11.8 46.3 7.1 61.2-11.1l29.4-35.9 100.4 43L441.5 464zM48 64v0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0s0 0 0 0">
@@ -116,7 +116,7 @@
                                     </svg>
                                 </div>
                                 <span class=" font-bold group-active:pr-2 group-active:text-[#01906A] transition_normal max-sm:text-sm">تماس با ما</span>
-                            </div>
+                            </a>
                         </div>
                     </div>
                     <!-- hambuarger_menu_item -->
@@ -141,7 +141,7 @@
                         </li>
 
                         <li class="lable-1 group">
-                            <a href="">
+                            <a href="{{route('product.searchProduct')}}">
                                 <span class="text-[#023350] font-bold group-hover:text-[#03a297] transition_normal group-active:text-[#03a297]">دسته بندی</span>
                             </a>
                             <div

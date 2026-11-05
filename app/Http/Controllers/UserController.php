@@ -154,18 +154,19 @@ class UserController extends Controller
                 $galleryPicture=[];
             }
             $products=product::all();
-            return view('firstPage',[
-                'user'=>$user,
-                'logo'=>$logo ,
-                'hero'=>$hero ,
-                'SI'=>$support_informations ,
-                'advertisement'=>$advertisement,
-                'product_label'=>$product_label,
-                'comments'=>$comments,
-                'banner'=>$banner,
-                'products'=>$products,
-                'localCash'=>$localCash
-            ]);
+            // return view('firstPage',[
+            //     'user'=>$user,
+            //     'logo'=>$logo ,
+            //     'hero'=>$hero ,
+            //     'SI'=>$support_informations ,
+            //     'advertisement'=>$advertisement,
+            //     'product_label'=>$product_label,
+            //     'comments'=>$comments,
+            //     'banner'=>$banner,
+            //     'products'=>$products,
+            //     'localCash'=>$localCash
+            // ]);
+            return $this->firstPage($localCash);
         }
 
 
@@ -222,18 +223,7 @@ class UserController extends Controller
             $galleryPicture=[];
         }
         $products=product::all();
-        return view('firstPage',[
-            'user'=>$user,
-            'logo'=>$logo ,
-            'hero'=>$hero ,
-            'SI'=>$support_informations ,
-            'advertisement'=>$advertisement,
-            'product_label'=>$product_label,
-            'comments'=>$comments,
-            'banner'=>$banner,
-            'products'=>$products,
-            'localCash'=>$localCash
-        ]);
+        return $this->firstPage($localCash);
     }
     public function createUser(Request $request){
 
@@ -376,18 +366,7 @@ class UserController extends Controller
         }
         $is_mainpicture='';
         $galleryPicture=[];
-        return view('firstPage',[
-            'user'=>$user,
-            'logo'=>$logo ,
-            'hero'=>$hero ,
-            'SI'=>$support_informations ,
-            'advertisement'=>$advertisement,
-            'product_label'=>$product_label,
-            'comments'=>$comments,
-            'banner'=>$banner,
-            'products'=>$products,
-            'localCash'=>$localCash
-        ]);
+        return $this->firstPage($localCash);
     }
     public function list(){
         $users=User::all();
@@ -517,8 +496,7 @@ class UserController extends Controller
     public function profile(){
         return view('profile');
     }
-    public function firstPage(){
-        $localCash='cashSave';
+    public function firstPage($localCash='cashSave'){
         $comments=staticUser::all();
         $products=product::all();
         $support_informations=support_information::all();
@@ -530,32 +508,34 @@ class UserController extends Controller
         // $product=product::find(8);
         $user=Auth::user();
         $flag=false;
-        if($user){
-            $user->load(['carts'=>function($query){$query->where('order_id',null)->get();}]);
-            if(count($user->carts)>0){
-                foreach ($user->carts as $cart) {
-                    foreach ($cart->product->medias as $media) {
-                        if($media->is_main==1){
-                            $cart->product->path=$media->path;
+        if($localCash=='cashSave'){
+            if($user){
+                $user->load(['carts'=>function($query){$query->where('order_id',null)->get();}]);
+                if(count($user->carts)>0){
+                    foreach ($user->carts as $cart) {
+                        foreach ($cart->product->medias as $media) {
+                            if($media->is_main==1){
+                                $cart->product->path=$media->path;
+                            }
+                            if ($cart->product->discunt!=null ||$cart->product->discunt>0 ) {
+                                $campare = $cart->product->price - $cart->product->discunt;
+                                $x = $campare / $cart->product->price;
+                                $cart->product->percent = intval($x * 100);
+                            }
                         }
-                        if ($cart->product->discunt!=null ||$cart->product->discunt>0 ) {
-                            $campare = $cart->product->price - $cart->product->discunt;
-                            $x = $campare / $cart->product->price;
-                            $cart->product->percent = intval($x * 100);
-                        }
+                        
+                        
                     }
-                    
-                    
                 }
+                // foreach ($user->carts as $cart) {
+                //     // dd($product);
+                //     if($cart->product->id==$product->id){
+                //         $flag=true;
+                //     }
+                // }
+                $is_mainpicture='';
+                $galleryPicture=[];
             }
-            // foreach ($user->carts as $cart) {
-            //     // dd($product);
-            //     if($cart->product->id==$product->id){
-            //         $flag=true;
-            //     }
-            // }
-            $is_mainpicture='';
-            $galleryPicture=[];
         }
         $parentCategories=category::where('parent_id',0)->get();
         $subCats=$this->recursiveCategory1();
@@ -804,7 +784,7 @@ class UserController extends Controller
     public function cartInformation(Request $request){
         $products=json_decode($request->products[0], true);
         // dd($products);
-
+        $flag=false;
         //  باپکیچ ورتا زمان و تاریخ شمسی را میگیریم
         $dateAndTime=explode(' ',verta());
         $date=implode('/',explode('-',$dateAndTime[0]));
@@ -821,6 +801,9 @@ class UserController extends Controller
                 $chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
                 $password= substr(str_shuffle(str_repeat($chars, 5)), 0,6);
             }
+            if(User::where('phoneNumber',$request->phoneNumber)->first()){
+                $flag=true;
+            }
             $user=User::updateOrCreate(    
             ['phoneNumber'=>$request->phoneNumber],
             [
@@ -829,6 +812,13 @@ class UserController extends Controller
                 'password' => $password,
             ],
             );
+            if($flag==false){
+                $role=role::where('ea_title','user')->first();
+                role_user::create([
+                    'user_id'=>$user->id,
+                    'role_id'=>$role->id,
+                ]);                
+            }
             Auth::login($user);
         }
         // dd($user);
