@@ -162,10 +162,7 @@
 </style>
 
 </head>
-<body class="overflow-y-auto
-              [&::-webkit-scrollbar]:w-1.5
-              [&::-webkit-scrollbar-thumb]:bg-(--color-primary-500)
-              [&::-webkit-scrollbar-thumb]:rounded-full">
+<body>
   <div class="max-w-[1700px] mx-auto">
 
     <main class="w-full relative pt-10 flex flex-col gap-10 items-center mb-10">
@@ -213,8 +210,8 @@
                     <h3 class="text-gray-700">انتخاب آدرس</h3>
                   </div>
                   <div class="space-y-6 px-6 lg:px-8 pb-4 sm:pb-6 pt-4">
-                    <div class="space-y-5">
-                      <ul class="w-full flex flex-col gap-3">
+                    <div class="space-y-5 max-h-[75vh] overflow-y-auto [&::-webkit-scrollbar]:w-1.5 [&::-webkit-scrollbar-thumb]:bg-(--primary_color) [&::-webkit-scrollbar-thumb]:rounded-full">
+                      <ul class="w-full flex flex-col gap-3 ">
                         @if($user->address)
                           @foreach($user->address as $address)
                             <li onclick='setAddress(this , {{$address}})' class='addressess rounded-xl border-2 border-gray-400/50' id="{{$address->id}}">
@@ -251,6 +248,8 @@
                                 </div>
                               </label>
                             </li>
+                          
+                           
                           @endforeach
                         @endif
                       </ul>
