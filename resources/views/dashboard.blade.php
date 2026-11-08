@@ -250,7 +250,8 @@
             background: var(--metronic-bg-content);
         }
         ::-webkit-scrollbar-thumb {
-            background: linear-gradient(to bottom, var(--metronic-primary), var(--metronic-primary-dark));
+            /* background: linear-gradient(to bottom, var(--metronic-primary), var(--metronic-primary-dark)); */
+            background-color:  var(--metronic-primary-dark);
             border-radius: 10px;
         }
         ::-webkit-scrollbar-thumb:hover {
@@ -860,45 +861,72 @@
         <main class="main-content xl:w-79/100 lg:w-75/100 w-full transition-all bg-[#FCFCFC]">
 
             <!-- ===== هدر ===== -->
-            <header class="w-full bg-white shadow-lg sticky top-0 z-40 transition-all">
+            <header class="w-full bg-[#0D0E12] shadow-lg sticky top-0 z-40 transition-all">
                 <div class="flex items-center justify-between px-4 sm:px-6 lg:px-8 py-3 sm:py-4">
                     
                     <!-- دکمه منو موبایل -->
-                    <button onclick="toggleSidebar()" class="mobile-menu-btn p-2.5 rounded-xl bg-white shadow-sm text-[#1a2a3a] hover:bg-[#1B84FF] hover:text-white hover:shadow-md transition-all lg:hidden">
-                        <i class="fas fa-bars text-xl"></i>
+                    <button onclick="toggleSidebar()" class="mobile-menu-btn min-w-10 size-10 rounded-xl bg-white shadow-sm text-[#1a2a3a] hover:bg-[#1B84FF] hover:text-white hover:shadow-md transition-all lg:hidden ml-4">
+                        <i class="fas fa-bars text-lg"></i>
                     </button>
 
                     <!-- جستجو -->
-                    <div class="flex items-center gap-3 sm:gap-4 flex-1 max-w-xs sm:max-w-md mx-2 sm:mx-4">
+                    <!-- <div class="flex items-center gap-3 sm:gap-4 flex-1 max-w-xs sm:max-w-md mx-2 sm:mx-4">
                         <div class="relative flex-1 search-box">
                             <i class="fas fa-search absolute right-3 sm:right-4 top-1/2 -translate-y-1/2 text-[#9A9CAE] text-xs sm:text-sm"></i>
                             <input type="text" placeholder="جستجوی محصولات پزشکی..." class="w-full pr-9 sm:pr-11 pl-3 sm:pl-4 py-2 sm:py-2.5 rounded-xl text-[#1e293b] placeholder-[#9A9CAE] focus:outline-none text-xs sm:text-sm">
                         </div>
 
-                    </div>
+                    </div> -->
 
                     <!-- راست هدر -->
-                    <div class="flex items-center gap-2 sm:gap-4">
+                    <div class="w-full flex justify-between items-center gap-2 sm:gap-4">
                         
                         <!-- اعلان -->
-                        <button class="relative p-2 sm:p-2.5 rounded-xl bg-white shadow-sm text-[#9A9CAE] hover:bg-[#1B84FF] hover:text-white hover:shadow-md transition-all">
-                            <i class="fas fa-bell text-sm sm:text-base"></i>
+                        <button class="relative min-w-10 size-10 rounded-xl bg-white shadow-sm text-[#9A9CAE] hover:bg-[#1B84FF] hover:text-white hover:shadow-md transition-all">
+                            <i class="fas fa-bell text-sm sm:text-xl"></i>
                             <span class="absolute -top-1 -left-1 w-3 h-3 bg-red-500 rounded-full badge-dot border-2 border-white"></span>
                         </button>
-
+                        <!-- href="{{route('user.profile')}}" -->
                         <!-- پروفایل -->
-                        <div class="flex items-center gap-2 sm:gap-3 pr-2 sm:pr-4 border-r border-[#DBDFE9]">
-                            <div class="text-left hidden sm:block">
-                                <p class="text-xs sm:text-sm font-bold text-[#1e293b]"> {{Auth::user()->name}} </p>
-                                <p class="text-[10px] sm:text-xs text-[#9A9CAE]"> {{Auth::user()->roles[0]->fa_title}} </p>
+                        <div class="relative group">
+                            <div class="flex items-center gap-2 sm:gap-3 pr-2 sm:pr-4" onclick="dashboard_profile_drap_down('open')">
+                                <div class="text-left">
+                                    <p class="text-xs sm:text-sm font-bold text-white"> {{Auth::user()->name}} {{Auth::user()->family}} </p>
+                                    <p class="text-[10px] sm:text-xs text-[#d7daf7]"> {{Auth::user()->roles[0]->fa_title}} </p>
+                                </div>
+                                <div id="header_avatar" class="w-9 h-9 sm:w-11 sm:h-11 rounded-full avatar-gradient flex items-center justify-center text-white font-bold shadow-lg shadow-[#1B84FF]/25 cursor-pointer hover:scale-105 transition-all text-sm sm:text-base overflow-hidden p-1">
+                                    @if(Auth::user()->path!=null)
+                                        <img class='rounded-full w-full h-full object-cover' src="{{asset('storage/user_medias/'.Auth::user()->path)}}" alt="">
+                                    @else
+                                        <img class='rounded-full w-full h-full object-cover' src="{{asset('assets/img/user.jfif')}}" alt="">
+                                    @endif
+                                </div>
                             </div>
-                            <a href="{{route('user.profile')}}" id="header_avatar" class="w-9 h-9 sm:w-11 sm:h-11 rounded-full avatar-gradient flex items-center justify-center text-white font-bold shadow-lg shadow-[#1B84FF]/25 cursor-pointer hover:scale-105 transition-all text-sm sm:text-base overflow-hidden p-1">
-                                @if(Auth::user()->path!=null)
-                                    <img class='rounded-full w-full h-full object-cover' src="{{asset('storage/user_medias/'.Auth::user()->path)}}" alt="">
-                                @else
-                                    <img class='rounded-full w-full h-full object-cover' src="{{asset('assets/img/user.jfif')}}" alt="">
-                                @endif
-                            </a>
+                            <div class="w-full h-dvh fixed top-0 right-0 hidden z-2" id="dashboard_profile_drap_down_item_close" onclick="dashboard_profile_drap_down('close')"></div>
+                            <div class="sm:w-60 w-42 max-h-0 bg-white absolute top-12 left-0 overflow-y-hidden group-hover:max-h-50 group-hover:border border-zinc-200 shadow-xl shadow-zinc-200 transition_normal z-3 flex flex-col gap-2 items-center group-hover:p-2 rounded-xl" id="dashboard_profile_drap_down_item">
+                                
+                                <a href="{{url('/')}}" class="w-full sm:px-4 px-2 sm:py-2 py-1 hover:bg-(--product) active:bg-(--product) flex gap-2 items-center rounded-xl transition_normal">
+                                    <div>
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" class="size-4 max-sm:size-3"><path d="M272.5 5.7c9-7.6 22.1-7.6 31.1 0l264 224c10.1 8.6 11.4 23.7 2.8 33.8s-23.7 11.3-33.8 2.8L512 245.5V432c0 44.2-35.8 80-80 80H144c-44.2 0-80-35.8-80-80V245.5L39.5 266.3c-10.1 8.6-25.3 7.3-33.8-2.8s-7.3-25.3 2.8-33.8l264-224zM288 55.5L112 204.8V432c0 17.7 14.3 32 32 32h48V312c0-22.1 17.9-40 40-40H344c22.1 0 40 17.9 40 40V464h48c17.7 0 32-14.3 32-32V204.8L288 55.5zM240 464h96V320H240V464z"/></svg>
+                                    </div>
+                                    <span class="text-nowrap text-zinc-700 max-sm:text-xs">خانه</span>
+                                </a>
+                                <a href="{{route('user.profile')}}" class="w-full sm:px-4 px-2 sm:py-2 py-1 hover:bg-(--product) active:bg-(--product) flex gap-2 items-center rounded-xl transition_normal">
+                                    <div>
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="size-4 max-sm:size-3"><path d="M304 128a80 80 0 1 0 -160 0 80 80 0 1 0 160 0zM96 128a128 128 0 1 1 256 0A128 128 0 1 1 96 128zM49.3 464H398.7c-8.9-63.3-63.3-112-129-112H178.3c-65.7 0-120.1 48.7-129 112zM0 482.3C0 383.8 79.8 304 178.3 304h91.4C368.2 304 448 383.8 448 482.3c0 16.4-13.3 29.7-29.7 29.7H29.7C13.3 512 0 498.7 0 482.3z"/></svg>
+                                    </div>
+                                    <span class="text-nowrap text-zinc-700 max-sm:text-xs">پروفایل</span>
+                                </a>
+                                <a href="{{route('user.logOut')}}" class="w-full sm:px-4 px-2 sm:py-2 py-1 flex gap-2 items-center rounded-xl hover:bg-red-100/30 active:bg-red-100/30 transition_normal">
+                                    <div>
+                                        <svg class="size-4 max-sm:size-3 fill-red-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                                            <path d="M377.9 105.9L500.7 228.7c7.2 7.2 11.3 17.1 11.3 27.3s-4.1 20.1-11.3 27.3L377.9 406.1c-6.4 6.4-15 9.9-24 9.9c-18.7 0-33.9-15.2-33.9-33.9l0-62.1-128 0c-17.7 0-32-14.3-32-32l0-64c0-17.7 14.3-32 32-32l128 0 0-62.1c0-18.7 15.2-33.9 33.9-33.9c9 0 17.6 3.6 24 9.9zM160 96L96 96c-17.7 0-32 14.3-32 32l0 256c0 17.7 14.3 32 32 32l64 0c17.7 0 32 14.3 32 32s-14.3 32-32 32l-64 0c-53 0-96-43-96-96L0 128C0 75 43 32 96 32l64 0c17.7 0 32 14.3 32 32s-14.3 32-32 32z"></path>
+                                        </svg>
+                                    </div>
+                                    <span class="text-nowrap text-red-500 max-sm:text-xs">خروج از حساب کاربری</span>
+                                </a>
+                                
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -982,6 +1010,28 @@
                 }
             })
         })
+
+         let dashboard_profile_drap_down_item = document.getElementById('dashboard_profile_drap_down_item')
+        let dashboard_profile_drap_down_item_close = document.getElementById('dashboard_profile_drap_down_item_close')
+        function dashboard_profile_drap_down(item){
+            if(item == 'open'){
+                console.log('sdfhskhfsd')
+                dashboard_profile_drap_down_item.classList.remove('max-h-0')
+                dashboard_profile_drap_down_item.classList.add('max-h-50')
+                dashboard_profile_drap_down_item.classList.add('border')
+                dashboard_profile_drap_down_item.classList.add('p-2')
+                dashboard_profile_drap_down_item_close.classList.remove('hidden')
+            }
+            if(item == 'close'){
+                dashboard_profile_drap_down_item.classList.add('max-h-0')
+                dashboard_profile_drap_down_item.classList.remove('max-h-50')
+                  dashboard_profile_drap_down_item.classList.remove('border')
+                dashboard_profile_drap_down_item.classList.remove('p-2')
+                dashboard_profile_drap_down_item_close.classList.add('hidden')
+            }
+            
+        }
+
     </script>
     
     @stack('scripts')
