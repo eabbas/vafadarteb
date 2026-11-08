@@ -39,8 +39,8 @@
 <body class='body relative'>
 
     <div class="w-full flex justify-center fixed top-0 z-100">
-        <div class="flex w-19/20 bg-[#f3f4f6] justify-center py-3 mt-5 rounded-md">
-            <div class="w-19/20 flex justify-between max-lg:items-center">
+        <div class="flex w-full bg-[#f3f4f6] justify-center py-5 rounded-md">
+            <div class="w-11/12 flex justify-between max-lg:items-center">
                 <div class="max-lg:w-1/3 lg:hidden">
                     <div onclick="hambarger_menue('open')">
                         <svg class="w-6 h-8" xmlns="http://www.w3.org/2000/svg" width="10"
@@ -275,20 +275,44 @@
                             </div>
                             <!-- search_box_item -->
                         </div>
+                        <!-- href="{{route('user.innerDashboard')}}" -->
                         @if(Auth::check())
-                        <a href="{{route('user.innerDashboard')}}">
-                            <div class='px-4 py-3 bg-[#EBECEE] hover:shadow-[0_0_2px_2px_#cccccc] rounded-xl transition_normal max-xl:text-sm max-sm:text-xs max-lg:hidden'>{{Auth::user()->name}} خوش آمدید</div>
-                            <div class="lg:hidden">
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="sm:size-5 size-4">
-                                    <path d="M304 128a80 80 0 1 0 -160 0 80 80 0 1 0 160 0zM96 128a128 128 0 1 1 256 0A128 128 0 1 1 96 128zM49.3 464H398.7c-8.9-63.3-63.3-112-129-112H178.3c-65.7 0-120.1 48.7-129 112zM0 482.3C0 383.8 79.8 304 178.3 304h91.4C368.2 304 448 383.8 448 482.3c0 16.4-13.3 29.7-29.7 29.7H29.7C13.3 512 0 498.7 0 482.3z" />
-                                </svg>
+                        <!-- <div class="w-full h-dvh bg-black/50 fixed top-17 right-0 z-2 invisible opacity-0 group-hover:visible group-hover:opacity-100"></div> -->
+                        <div  class="relative group">
+                            <div onclick="profile_drap_down('open')">
+                                <div class='px-4 py-3 bg-[#EBECEE] hover:shadow-[0_0_2px_2px_#cccccc] rounded-xl transition_normal max-xl:text-sm max-sm:text-xs max-lg:hidden'>{{Auth::user()->name}} خوش آمدید</div>
+                                <div class="lg:hidden">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="sm:size-5 size-4">
+                                        <path d="M304 128a80 80 0 1 0 -160 0 80 80 0 1 0 160 0zM96 128a128 128 0 1 1 256 0A128 128 0 1 1 96 128zM49.3 464H398.7c-8.9-63.3-63.3-112-129-112H178.3c-65.7 0-120.1 48.7-129 112zM0 482.3C0 383.8 79.8 304 178.3 304h91.4C368.2 304 448 383.8 448 482.3c0 16.4-13.3 29.7-29.7 29.7H29.7C13.3 512 0 498.7 0 482.3z" />
+                                    </svg>
+                                </div>
                             </div>
-                        </a>
+                            <div class="w-full h-dvh fixed top-0 right-0 hidden z-2" id="profile_drap_down_item_close" onclick="profile_drap_down('close')"></div>
+                            <div class="sm:w-60 w-42 max-h-0 bg-white absolute top-12 left-0 overflow-y-hidden group-hover:max-h-50 group-hover:border border-zinc-200 shadow-xl shadow-zinc-200 transition_normal z-3 flex flex-col gap-2 items-center group-hover:p-2 rounded-xl" id="profile_drap_down_item">
+                                
+                                <a href="{{route('user.innerDashboard')}}" class="w-full sm:px-4 px-2 sm:py-2 py-1 hover:bg-(--product) active:bg-(--product) flex gap-2 items-center rounded-xl transition_normal">
+                                    <div>
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="size-4 max-sm:size-3"><path d="M304 128a80 80 0 1 0 -160 0 80 80 0 1 0 160 0zM96 128a128 128 0 1 1 256 0A128 128 0 1 1 96 128zM49.3 464H398.7c-8.9-63.3-63.3-112-129-112H178.3c-65.7 0-120.1 48.7-129 112zM0 482.3C0 383.8 79.8 304 178.3 304h91.4C368.2 304 448 383.8 448 482.3c0 16.4-13.3 29.7-29.7 29.7H29.7C13.3 512 0 498.7 0 482.3z"/></svg>
+                                    </div>
+                                    <span class="text-nowrap text-zinc-700 max-sm:text-xs">حساب کاربری</span>
+                                </a>
+                                <a href="{{route('user.logOut')}}" class="w-full sm:px-4 px-2 sm:py-2 py-1 flex gap-2 items-center rounded-xl hover:bg-red-100/30 active:bg-red-100/30 transition_normal">
+                                    <div>
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="size-4 max-sm:size-3 fill-red-500"><path d="M304 128a80 80 0 1 0 -160 0 80 80 0 1 0 160 0zM96 128a128 128 0 1 1 256 0A128 128 0 1 1 96 128zM49.3 464H398.7c-8.9-63.3-63.3-112-129-112H178.3c-65.7 0-120.1 48.7-129 112zM0 482.3C0 383.8 79.8 304 178.3 304h91.4C368.2 304 448 383.8 448 482.3c0 16.4-13.3 29.7-29.7 29.7H29.7C13.3 512 0 498.7 0 482.3z"/></svg>
+                                    </div>
+                                    <span class="text-nowrap text-red-500 max-sm:text-xs">خروج از حساب کاربری</span>
+                                </a>
+                                
+                            </div>
+                            
+                        </div>
+
                         @else
                         <a href="{{route('user.loginPage')}}">
-                            <svg class='sm:size-5 size-4' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+                            <svg class='sm:size-5 size-4 sm:hidden' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
                                 <path d="M224 256A128 128 0 1 0 224 0a128 128 0 1 0 0 256zm-45.7 48C79.8 304 0 383.8 0 482.3C0 498.7 13.3 512 29.7 512H418.3c16.4 0 29.7-13.3 29.7-29.7C448 383.8 368.2 304 269.7 304H178.3z" />
                             </svg>
+                            <span class="font-bold text-sm max-sm:hidden">ورود/ثبت نام</span>
                         </a>
                         @endif
 
@@ -1283,6 +1307,27 @@
                     console.log('☢')
                 }
             })
+        }
+
+        let profile_drap_down_item = document.getElementById('profile_drap_down_item')
+        let profile_drap_down_item_close = document.getElementById('profile_drap_down_item_close')
+        function profile_drap_down(item){
+            if(item == 'open'){
+                console.log('sdfhskhfsd')
+                profile_drap_down_item.classList.remove('max-h-0')
+                profile_drap_down_item.classList.add('max-h-50')
+                profile_drap_down_item.classList.add('border')
+                profile_drap_down_item.classList.add('p-2')
+                profile_drap_down_item_close.classList.remove('hidden')
+            }
+            if(item == 'close'){
+                profile_drap_down_item.classList.add('max-h-0')
+                profile_drap_down_item.classList.remove('max-h-50')
+                  profile_drap_down_item.classList.remove('border')
+                profile_drap_down_item.classList.remove('p-2')
+                profile_drap_down_item_close.classList.add('hidden')
+            }
+            
         }
 
 
