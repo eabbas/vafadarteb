@@ -572,5 +572,16 @@ class CategoryController extends Controller
         $result.='</ul>';
         return $result;
     }
-
+    public function getCategoryProducts(category $category){
+        foreach ($category->products as $product) {
+            foreach($product->medias as $media){
+                if($media->is_main!=1){
+                    $product->is_main_image=$media->path;
+                }else{
+                    $product->is_main_image=$media->path;
+                }
+            }
+        }
+        return response()->json($category->products);
+    }
 }

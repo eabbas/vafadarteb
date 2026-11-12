@@ -858,11 +858,15 @@
 
                 <div class="xl:min-w-19/100 xl:max-w-19/100 lg:min-w-24/100 lg:max-w-24/100 sm:min-w-33/100 sm:max-w-33/100 min-w-49/100 max-w-49/100 xl:h-95 lg:h-90 sm:h-80 h-70 relative group  flex flex-col shadow-[0_0_10px_3px] shadow-gray-200 rounded-xl" onclick="show_this_product(this)">
                     <div class="w-full h-8/12 relative overflow-hidden flex justify-center items-center">
-                        <span class="w-full h-1/3 group-hover:h-2/3 group-active:h-2/3 bg-[#00ffff]/30 absolute bottom-0 right-0 z-0 transition_normal rounded-t-xl"></span>
+                        <span class="w-full h-1/3 group-hover:h-2/3 group-active:h-2/3 bg-[#00ffff]/30 absolute bottom-0 right-0 z-2 transition_normal rounded-t-xl"></span>
                         <div class="w-full h-full relative">
-                            <img src="{{asset('assets/img/header/img_heder.webp')}}" alt="" class="min-w-1/2 min-h-1/2 max-w-full max-h-full">
+                            @if($product->is_main_image!=null)
+                                <img src="{{asset('storage/product_medias/'.$product->is_main_image)}}" alt="" class="min-w-1/2 min-h-1/2 max-w-full max-h-full">
+                            @else
+                                <img src="{{asset('assets/img/defaultPicture.jpg')}}" alt="" class="min-w-1/2 min-h-1/2 max-w-full max-h-full">
+                            @endif
                         </div>
-                        <a href="{{route('product.client_pro_single',['product'=>$product->id])}}" class="px-4 py-2 rounded-full bg-(--buttom)  absolute bottom-0 translate-y-full group-hover:-translate-y-5 transition_normal z-1 text-white font-bold">مشاهده محصول</a>
+                        <a href="{{route('product.client_pro_single',['product'=>$product->id])}}" class="px-4 py-2 rounded-full bg-(--buttom) z-3 absolute bottom-0 translate-y-full group-hover:-translate-y-5 transition_normal z-1 text-white font-bold">مشاهده محصول</a>
                     </div>
                     <div class="w-full h-4/12 bg-[#00ffff] rounded-b-xl flex flex-col gap-1 justify-center p-3">
                         <div class="flex flex-col ">
@@ -931,46 +935,61 @@
                                 </g>
                             </svg>
                         </a>
-                        <span class="text-[17px] md:text-[25px] font-bold text-(--title)">Popular Items</span>
+                        <span class="text-[17px] md:text-[25px] font-bold text-(--title)"> محصولات </span>
                     </div>
                     <div class="max-w-full flex gap-4 justify-start text-white font-bold max-lg:text-sm max-sm:text-xs text-nowrap overflow-x-auto">
-                        <button class="px-9 py-3 rounded-4xl bg-(--buttom)">Baby & Mom Care</button>
-                        <button class="px-9 py-3 rounded-4xl bg-(--buttom)">Medical Equipments</button>
-                        <button class="px-9 py-3 rounded-4xl bg-(--buttom)">Medicine</button>
-                        <button class="px-9 py-3 rounded-4xl bg-(--buttom)">تجهیزات</button>
-                        <button class="px-9 py-3 rounded-4xl bg-(--buttom)">Medicine</button>
+                        @foreach($categories as $category)
+                            <div onclick='chnageProducts({{$category->id}})' class="px-9 py-3 rounded-4xl bg-(--buttom) cursor-pointer select-none">{{$category->title}}</div>
+                        @endforeach
                     </div>
-                    <div class="w-full flex lg:gap-4.5  gap-3 mt-5 overflow-x-auto p-4">
-                        <div class="lg:min-w-24/100 lg:max-w-24/100 sm:min-w-33/100 sm:max-w-33/100 min-w-49/100 max-w-49/100 xl:h-95 lg:h-90 sm:h-80 h-70 relative group  flex flex-col shadow-[0_0_10px_3px] shadow-gray-200 rounded-xl" onclick="show_this_product(this)">
-                            <div class="w-full h-8/12 relative overflow-hidden flex justify-center items-center">
-                                <span class="w-full h-1/3 group-hover:h-2/3 group-active:h-2/3 bg-[#00ffff]/50 absolute bottom-0 right-0 z-0 transition_normal rounded-t-xl"></span>
-                                <div class="w-full h-full relative">
-                                    <img src="{{asset('assets/img/header/img_heder.webp')}}" alt="" class="min-w-1/2 min-h-1/2 max-w-full max-h-full">
+                    <div class="w-full flex lg:gap-4.5  gap-3 mt-5 overflow-x-auto p-4" id='category_products_list'>
+                        @foreach($category_products as $product)
+                            <div class="lg:min-w-24/100 lg:max-w-24/100 sm:min-w-33/100 sm:max-w-33/100 min-w-49/100 max-w-49/100 xl:h-95 lg:h-90 sm:h-80 h-70 relative group  flex flex-col shadow-[0_0_10px_3px] shadow-gray-200 rounded-xl" onclick="show_this_product(this)">
+                                <div class="w-full h-8/12 relative overflow-hidden flex justify-center items-center">
+                                    <span class="w-full h-1/3 group-hover:h-2/3 group-active:h-2/3 bg-[#00ffff]/50 absolute bottom-0 right-0 z-2 transition_normal rounded-t-xl"></span>
+                                    <div class="w-full h-full relative">
+                                        @if($product->is_main_image!=null)
+                                            <img src="{{asset('storage/product_medias/'.$product->is_main_image)}}" alt="" class="min-w-1/2 min-h-1/2 max-w-full max-h-full">
+                                        @else
+                                            <img src="{{asset('assets/img/defaultPicture.jpg')}}" alt="" class="min-w-1/2 min-h-1/2 max-w-full max-h-full">
+                                        @endif
+                                    </div>
+                                    <a href="{{route('product.client_pro_single',['product'=>$product->id])}}" class="px-4 py-2 rounded-full bg-(--buttom) z-3 absolute bottom-0 translate-y-full group-hover:-translate-y-5 transition_normal z-1 text-white font-bold">مشاهده محصول</a>
                                 </div>
-                                <a href="{{route('product.client_pro_single',['product'=>$product->id])}}" class="px-4 py-2 rounded-full bg-(--buttom)  absolute bottom-0 translate-y-full group-hover:-translate-y-5 transition_normal z-1 text-white font-bold">مشاهده محصول</a>
-                            </div>
-                            <div class="w-full h-4/12 bg-[#00ffff] rounded-b-xl flex flex-col gap-1 justify-center p-3">
-                                <div class="flex flex-col ">
-                                    <h4 class="xl:text-xl lg:text-lg max-sm:text-sm font-bold max-w-full truncate">{{$product->title}}</h4>
-                                    <p class="lg:text-sm sm:text-xs text-[10px] text-(--discription) max-w-full truncate">توضیحات محصول</p>
-                                </div>
-                                <div class="flex flex-col gap-0.5">
-                                    <div class="flex gap-2 justify-start items-center">
-                                        <del class="flex gap-2 justify-start items-center text-(--discription)">
-                                            <div class="flex gap-1 justify-start items-center lg:text-sm sm:text-xs text-[10px]">
+                                <div class="w-full h-4/12 bg-[#00ffff] rounded-b-xl flex flex-col gap-1 justify-center p-3">
+                                    <div class="flex flex-col ">
+                                        <h4 class="xl:text-xl lg:text-lg max-sm:text-sm font-bold max-w-full truncate">{{$product->title}}</h4>
+                                        @if($product->summary!=null)
+                                            <p class="lg:text-sm sm:text-xs text-[10px] text-(--discription) max-w-full truncate">{{$product->summary}}</p>
+                                        @else
+                                            <p class="lg:text-sm sm:text-xs text-[10px] text-(--discription) max-w-full truncate py-2"></p>
+                                        @endif
+                                    </div>
+                                    <div class="flex flex-col gap-0.5">
+                                        @if($product->discunt!=null)
+                                            <div class="flex gap-2 justify-start items-center">
+                                                <del class="flex gap-2 justify-start items-center text-(--discription)">
+                                                    <div class="flex gap-1 justify-start items-center lg:text-sm sm:text-xs text-[10px]">
+                                                        <span>{{number_format($product->price)}}</span>
+                                                        <span>تومان</span>
+                                                    </div>
+                                                </del>
+                                                <span class="px-2 py-1 font-bold lg:text-[10px] sm:text-[8px] text-[6px] text-white rounded-xl bg-(--buttom)">40%</span>
+                                            </div>
+                                            <div class="flex gap-1 justify-start items-center font-bold max-lg:text-sm max-sm:text-xs">
+                                                <span>{{number_format($product->discunt)}}</span>
+                                                <span>تومان</span>
+                                            </div>
+                                        @else
+                                            <div class="flex gap-1 justify-start items-center font-bold max-lg:text-sm max-sm:text-xs">
                                                 <span>{{number_format($product->price)}}</span>
                                                 <span>تومان</span>
                                             </div>
-                                        </del>
-                                        <span class="px-2 py-1 font-bold lg:text-[10px] sm:text-[8px] text-[6px] text-white rounded-xl bg-(--buttom)">40%</span>
-                                    </div>
-                                    <div class="flex gap-1 justify-start items-center font-bold max-lg:text-sm max-sm:text-xs">
-                                        <span>{{number_format($product->price)}}</span>
-                                        <span>تومان</span>
+                                        @endif
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        @endforeach
 
                     </div>
                 </div>
@@ -994,7 +1013,7 @@
             <div class="w-full mx-auto flex justify-between">
                 <a href=""
                     class="flex flex-row-reverse gap-2 fill-[#54ab9a] text-[#54ab9a] hover:text-[#fd6a6a] hover:fill-[#fd6a6a] transition-all duration-300">
-                    <span class="">All Products </span>
+                    <span class="">همه برند ها  </span>
                     <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
                     <svg height="20px" width="20px" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg"
                         xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 297 297" xml:space="preserve">
@@ -1006,16 +1025,21 @@
                         </g>
                     </svg>
                 </a>
-                <span class="text-[17px] md:text-[25px] font-bold text-[#023350]">Popular Items</span>
+                <span class="text-[17px] md:text-[25px] font-bold text-[#023350]"> برند ها </span>
             </div>
             <div class="w-full mx-auto py-2 bg-white flex lg:gap-2 gap-2.5 items-center overflow-x-auto">
 
+                @foreach($brands as $brand)
+                    <div class="lg:min-w-12/100 lg:max-w-12/100 sm:min-w-15/100 sm:max-w-15/100 min-w-22/100 max-w-22/100 lg:h-15 sm:h-13 h-10 flex justify-center items-center group bg-zinc-300 rounded-md">
+                        <img src="{{asset('storage/'.$brand->logo_path)}}" alt="" class="min-w-8/12 min-h-8/12 max-w-full max-h-full p-1 lg:opacity-40 lg:group-hover:opacity-100 transition_normal">
+                    </div>
+                @endforeach
+                <!-- 
                 @for($i=0;$i<20;$i++)
                     <div class="lg:min-w-12/100 lg:max-w-12/100 sm:min-w-15/100 sm:max-w-15/100 min-w-22/100 max-w-22/100 lg:h-15 sm:h-13 h-10 flex justify-center items-center group">
                         <img src="{{asset('assets/img/header/logo.png')}}" alt="" class="min-w-8/12 min-h-8/12 max-w-full max-h-full p-1 lg:opacity-40 lg:group-hover:opacity-100 transition_normal">
                     </div>
-                @endfor
-
+                @endfor -->
 
             </div>
 
@@ -1478,5 +1502,116 @@
             item.children[0].children[2].classList.toggle('translate-y-full')
             item.children[0].children[2].classList.toggle('-translate-y-5')
         }
+
+
+        
+        let category_products_list= document.getElementById('category_products_list');
+        let html='';
+        let product='';
+        let image='';
+        let cat_pros=[];
+        let imageAddress="{{asset('storage/product_medias/')}}"
+        let singleAddress="{{url('product/client/product/')}}"
+        let sum=0;
+        function chnageProducts(cat_id){
+
+            $.ajax({
+                url:"{{url('category/get/category/products')}}"+'/'+cat_id,
+                type:"get",
+                dataType:"json",
+                success:function(datas){
+                    
+                    cat_pros=[];
+                    console.log(datas);
+                    if(datas.length>0){
+                            category_products_list.innerHTML=''
+                        datas.forEach(data => {
+                            product=document.createElement('div');
+                            image=document.createElement('div');
+                            html=document.createElement('div');
+                            sum++;
+                            product.classList=`lg:min-w-24/100 lg:max-w-24/100 sm:min-w-33/100 sm:max-w-33/100 min-w-49/100 max-w-49/100 xl:h-95 lg:h-90 sm:h-80 h-70 relative group  flex flex-col shadow-[0_0_10px_3px] shadow-gray-200 rounded-xl`
+                            product.setAttribute('onclick','show_this_product(this)');
+                            image.classList=`w-full h-8/12 relative overflow-hidden flex justify-center items-center`
+                            image.innerHTML=
+                            `
+                                <span class="w-full h-1/3 group-hover:h-2/3 group-active:h-2/3 bg-[#00ffff]/50 absolute bottom-0 right-0 z-2 transition_normal rounded-t-xl"></span>
+                                <div class="w-full h-full relative">
+                            `
+                                    if(data.is_main_image==null){
+                                        image.innerHTML+=
+                                       ` <img src="{{asset('assets/img/defaultPicture.jpg')}}" alt="" class=" max-w-full max-h-full object-cover bg-cover bg-center">`;
+                                    }else{
+                                        image.innerHTML+=
+                                       ` <img src="${imageAddress}/${data.is_main_image}" alt="" class=" max-w-full max-h-full object-cover bg-cover bg-center">`;
+                                    }
+                            image.innerHTML+=
+                                    `</div>
+                                    <a href="${singleAddress}/${data.id}" class="px-4 py-2 rounded-full bg-(--buttom)  absolute bottom-0 z-3 translate-y-full group-hover:-translate-y-5 transition_normal z-1 text-white font-bold">مشاهده محصول</a>
+                            `;
+                            html.classList=`w-full h-4/12 bg-[#00ffff] rounded-b-xl flex flex-col gap-1 justify-center p-3`
+                            html.innerHTML=
+                            `
+                                <div class="">
+                                    <div class="flex flex-col ">
+                                        <h4 class="xl:text-xl lg:text-lg max-sm:text-sm font-bold max-w-full truncate">${data.title}</h4>`
+                                        
+                                        if(data.summary!=null){
+                                            html.innerHTML+=
+                                            `<p class="lg:text-sm sm:text-xs text-[10px] text-(--discription) max-w-full truncate">${data.summary}</p>`;
+                                        }else{
+                                            html.innerHTML+=
+                                            `<p class="lg:text-sm sm:text-xs text-[10px] text-(--discription) max-w-full truncate py-2"></p>`;
+                                        }
+                            html.innerHTML+=
+                                    `</div>
+                                    <div class="flex flex-col gap-0.5">`
+                                        if(data.discunt!=null){
+                                            html.innerHTML+=
+                                            `<div class="flex gap-2 justify-start items-center">
+                                                <del class="flex gap-2 justify-start items-center text-(--discription)">
+                                                    <div class="flex gap-1 justify-start items-center lg:text-sm sm:text-xs text-[10px]">
+                                                        <span>${data.price}</span>
+                                                        <span>تومان</span>
+                                                    </div>
+                                                </del>
+                                                <span class="px-2 py-1 font-bold lg:text-[10px] sm:text-[8px] text-[6px] text-white rounded-xl bg-(--buttom)">40%</span>
+                                            </div>
+                                            <div class="flex gap-1 justify-start items-center font-bold max-lg:text-sm max-sm:text-xs">
+                                                <span>${data.discunt}</span>
+                                                <span>تومان</span>
+                                            </div>`
+                                        }else{
+                                        html.innerHTML+=
+                                            `<div class="flex gap-1 justify-start items-center font-bold max-lg:text-sm max-sm:text-xs">
+                                                <span>${data.price}</span>
+                                                <span>تومان</span>
+                                            </div>`
+                                        }
+                            html.innerHTML+=
+                                  `  </div>`
+                                
+                            
+                            product.appendChild(image)
+                            product.appendChild(html)
+                            // cat_pros.push(product);
+                            category_products_list.appendChild(product);
+                        });
+                        // cat_pros.forEach(element => {
+                        //     category_products_list.innerHTML+=element;
+                        // });
+                        // console.log(sum);
+                    }
+                },
+                error:function(){
+                }
+            })
+        }
+
+                            // <div class="" onclick="">
+
+
+                            // </div>
+
     </script>
 @endsection

@@ -13,6 +13,7 @@ use App\Models\hero;
 use App\Models\category;
 use App\Models\product;
 use App\Models\address;
+use App\Models\brand;
 use App\Models\order;
 use App\Models\cart;
 use App\Models\advertisement;
@@ -498,7 +499,6 @@ class UserController extends Controller
     }
     public function firstPage($localCash='cashSave'){
         $comments=staticUser::all();
-        $products=product::all();
         $support_informations=support_information::all();
         $logo = headerSetting::first();
         $banner = banner::first();
@@ -527,22 +527,43 @@ class UserController extends Controller
                         
                     }
                 }
-                // foreach ($user->carts as $cart) {
-                //     // dd($product);
-                //     if($cart->product->id==$product->id){
-                //         $flag=true;
-                //     }
-                // }
                 $is_mainpicture='';
                 $galleryPicture=[];
             }
         }
         $parentCategories=category::where('parent_id',0)->get();
         $subCats=$this->recursiveCategory1();
-        
-        //     echo $x;
-        // dd($x);
+        $brands=brand::where('show_in_home',1)->get();
 
+        $categories = category::has('products')->get();
+        $category_products=[];
+        foreach ($categories[0]->products as $product) {
+            foreach($product->medias as $media){
+                if($media->is_main!=1){
+                    $product->is_main_image=$media->path;
+                }else{
+                    $product->is_main_image=$media->path;
+                }
+            }
+            $category_products[]=$product;
+        }
+        $products=product::all();
+        foreach ($products as $product) {
+            foreach ($product->medias as $media) {
+                if($media->is_main!=1){
+                    $product->is_main_image=$media->path;
+                }else{
+                    $product->is_main_image=$media->path;
+                }
+            }
+        }
+
+
+
+
+
+
+        
         return view('firstPage',[
             'user'=>$user,
             'logo'=>$logo ,
@@ -555,7 +576,10 @@ class UserController extends Controller
             'products'=>$products,
             'localCash'=>$localCash,
             'parentCategories'=>$parentCategories,
+            'categories'=>$categories,
+            'category_products'=>$category_products,
             'subCats'=>$subCats,
+            'brands'=>$brands,
         ]);
     }
     public function setting(){
@@ -886,89 +910,86 @@ class UserController extends Controller
         return response()->json($result);
     }
 
-public function recursiveCategory2($categories)
-{
-    $result = '';
+    public function recursiveCategory2($categories)
+    {
+        $result = '';
 
-    if ($categories instanceof \Illuminate\Support\Collection) {
-        $categories = $categories->all();
-    }
-
-    if (!is_iterable($categories)) {
-        return '';
-    }
-
-    foreach ($categories as $category) {
-
-        if (!$category || $category->is_active != 1) {
-            continue;
+        if ($categories instanceof \Illuminate\Support\Collection) {
+            $categories = $categories->all();
         }
 
-        $children = $category->children ?? [];
-
-        // رد شدن از دسته بندی اصلی
-        if ($category->id == 1) {
-            $result .= $this->recursiveCategory2($children);
-            continue;
+        if (!is_iterable($categories)) {
+            return '';
         }
 
-        // شروع ستون دسته بندی
-        $result .= "
-            <div class='flex flex-col gap-5'>
+        foreach ($categories as $category) {
 
-                <!-- عنوان دسته بندی -->
-                <a href='{$category->id}'
-                   class='flex items-center gap-2 text-[15px] font-bold text-gray-800 whitespace-nowrap hover:text-blue-600 transition'>
-
-                    <span class='text-gray-500 text-xl'>‹</span>
-
-                    <span>{$category->title}</span>
-
-                    <span class='w-[2px] h-[17px] bg-red-500 mr-auto'></span>
-
-                </a>
-
-                <!-- زیر دسته بندی ها -->
-                <div class='flex flex-col gap-5 pr-6 text-sm text-gray-400'>
-        ";
-
-        foreach ($children as $child) {
-
-            if (!$child || $child->is_active != 1) {
+            if (!$category || $category->is_active != 1) {
                 continue;
             }
 
+            $children = $category->children ?? [];
+
+            // رد شدن از دسته بندی اصلی
+            if ($category->id == 1) {
+                $result .= $this->recursiveCategory2($children);
+                continue;
+            }
+
+            // شروع ستون دسته بندی
             $result .= "
-                <a href='{$child->id}'
-                   class='hover:text-blue-600 transition duration-200'>
-                    {$child->title}
-                </a>
+                <div class='flex flex-col gap-5'>
+
+                    <!-- عنوان دسته بندی -->
+                    <a href='{$category->id}'
+                    class='flex items-center gap-2 text-[15px] font-bold text-gray-800 whitespace-nowrap hover:text-blue-600 transition'>
+
+                        <span class='text-gray-500 text-xl'>‹</span>
+
+                        <span>{$category->title}</span>
+
+                        <span class='w-[2px] h-[17px] bg-red-500 mr-auto'></span>
+
+                    </a>
+
+                    <!-- زیر دسته بندی ها -->
+                    <div class='flex flex-col gap-5 pr-6 text-sm text-gray-400'>
             ";
-        }
 
-        $result .= "
+            foreach ($children as $child) {
+
+                if (!$child || $child->is_active != 1) {
+                    continue;
+                }
+
+                $result .= "
+                    <a href='{$child->id}'
+                    class='hover:text-blue-600 transition duration-200'>
+                        {$child->title}
+                    </a>
+                ";
+            }
+
+            $result .= "
+                    </div>
                 </div>
-            </div>
-        ";
+            ";
 
-        // بررسی زیرمجموعه های عمیق تر
-        foreach ($children as $child) {
+            // بررسی زیرمجموعه های عمیق تر
+            foreach ($children as $child) {
 
-            if (
-                $child->is_active == 1 &&
-                $child->children &&
-                $child->children->isNotEmpty()
-            ) {
-                $result .= $this->recursiveCategory2($child->children);
+                if (
+                    $child->is_active == 1 &&
+                    $child->children &&
+                    $child->children->isNotEmpty()
+                ) {
+                    $result .= $this->recursiveCategory2($child->children);
+                }
             }
         }
+
+        return $result;
     }
-
-    return $result;
-}
-
-
-
     // public function recursiveCategory2($categories){
     //     $result="<ul class='pr-5'>";
     //     if(!is_array($categories)){
@@ -1005,6 +1026,14 @@ public function recursiveCategory2($categories)
     //     $result.='</ul>';
     //     return $result;
     // }
+
+
+
 }
 
 
+// // فقط دسته‌بندی‌هایی که محصول دارن
+// $categories = Category::has('products')->get();
+
+// // فقط دسته‌بندی‌هایی که محصول ندارن
+// $categories = Category::doesntHave('products')->get();

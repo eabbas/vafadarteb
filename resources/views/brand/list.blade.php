@@ -108,6 +108,32 @@
         border-color: var(--metronic-border);
     }
 
+    .vafadar-thumb {
+        width: 40px;
+        height: 40px;
+        border-radius: 10px;
+        object-fit: cover;
+        border: 2px solid var(--metronic-border);
+        transition: all 0.3s ease;
+    }
+    .vafadar-thumb:hover {
+        transform: scale(1.1);
+        border-color: var(--metronic-blue);
+        box-shadow: 0 4px 12px rgba(27, 132, 255, 0.15);
+    }
+
+    .vafadar-thumb-placeholder {
+        width: 40px;
+        height: 40px;
+        border-radius: 10px;
+        background: var(--metronic-shadow);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 18px;
+        border: 2px solid var(--metronic-border);
+    }
+
     /* ===== وضعیت ===== */
     .vafadar-status {
         display: inline-flex;
@@ -478,8 +504,8 @@
                 <thead class="vafadar-table-header">
                     <tr>
                         <th style="width: 50px;">ردیف</th>
-                        <th>عنوان</th>
                         <th class="hidden md:table-cell">لوگو</th>
+                        <th>عنوان</th>
                         <th class="hidden lg:table-cell">توضیحات</th>
                         <th class="hidden sm:table-cell">نمایش در خانه</th>
                         <th class="hidden sm:table-cell">وضعیت</th>
@@ -492,16 +518,16 @@
                         <td>
                             <span class="vafadar-brand-badge">{{$brand->id}}</span>
                         </td>
+                        <td class="hidden md:table-cell">
+                            @if($brand->logo_path)
+                                <img class="vafadar-thumb sm:min-w-14 min-w-10 sm:min-h-14 min-h-10 sm:max-w-20 max-w-15 sm:max-h-20 max-h-15" src="{{asset('storage/'.$brand->logo_path)}}" alt="{{$brand->title}}">
+                            @else
+                                <img class="vafadar-thumb sm:min-w-14 min-w-10 sm:min-h-14 min-h-10 sm:max-w-20 max-w-15 sm:max-h-20 max-h-15" src="{{asset('assets/img/defaultPicture.jpg')}}" alt="{{$brand->title}}">
+                            @endif
+                        </td>
                         <td>
                             <span class="font-semibold" style="color: var(--metronic-dark);">{{$brand->title}}</span>
                             <div class="text-xs lg:hidden" style="color: var(--metronic-text-dark);">{{$brand->slug}}</div>
-                        </td>
-                        <td class="hidden md:table-cell">
-                            @if($brand->logo_path)
-                                <span class="text-sm" style="color: var(--metronic-text-dark);">{{ Str::limit($brand->logo_path, 20) }}</span>
-                            @else
-                                <span class="text-xs" style="color: var(--metronic-text-dark);">—</span>
-                            @endif
                         </td>
                         <td class="hidden lg:table-cell">
                             @if($brand->description)

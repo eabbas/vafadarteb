@@ -153,6 +153,7 @@ route::group([
     Route::get('/edit/{category}','edit')->name('edit');
     Route::post('/update/{category}','update')->name('update');
     Route::get('/delete/{category}','delete')->name('delete');
+    Route::get('/get/category/products/{category}','getCategoryProducts')->name('getCategoryProducts');
 });
 route::group([
     'prefix'=>'brand',
