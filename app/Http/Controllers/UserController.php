@@ -499,7 +499,6 @@ class UserController extends Controller
     }
     public function firstPage($localCash='cashSave'){
         $comments=staticUser::all();
-        $products=product::all();
         $support_informations=support_information::all();
         $logo = headerSetting::first();
         $banner = banner::first();
@@ -540,7 +539,7 @@ class UserController extends Controller
         $category_products=[];
         foreach ($categories[0]->products as $product) {
             foreach($product->medias as $media){
-                if($media->is_main==1){
+                if($media->is_main!=1){
                     $product->is_main_image=$media->path;
                 }else{
                     $product->is_main_image=$media->path;
@@ -548,8 +547,17 @@ class UserController extends Controller
             }
             $category_products[]=$product;
         }
-            // dd($categories);
-            // dd(category::find(2)->products);
+        $products=product::all();
+        foreach ($products as $product) {
+            foreach ($product->medias as $media) {
+                if($media->is_main!=1){
+                    $product->is_main_image=$media->path;
+                }else{
+                    $product->is_main_image=$media->path;
+                }
+            }
+        }
+
 
 
 

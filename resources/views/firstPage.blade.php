@@ -858,11 +858,15 @@
 
                 <div class="xl:min-w-19/100 xl:max-w-19/100 lg:min-w-24/100 lg:max-w-24/100 sm:min-w-33/100 sm:max-w-33/100 min-w-49/100 max-w-49/100 xl:h-95 lg:h-90 sm:h-80 h-70 relative group  flex flex-col shadow-[0_0_10px_3px] shadow-gray-200 rounded-xl" onclick="show_this_product(this)">
                     <div class="w-full h-8/12 relative overflow-hidden flex justify-center items-center">
-                        <span class="w-full h-1/3 group-hover:h-2/3 group-active:h-2/3 bg-[#00ffff]/30 absolute bottom-0 right-0 z-0 transition_normal rounded-t-xl"></span>
+                        <span class="w-full h-1/3 group-hover:h-2/3 group-active:h-2/3 bg-[#00ffff]/30 absolute bottom-0 right-0 z-2 transition_normal rounded-t-xl"></span>
                         <div class="w-full h-full relative">
-                            <img src="{{asset('assets/img/header/img_heder.webp')}}" alt="" class="min-w-1/2 min-h-1/2 max-w-full max-h-full">
+                            @if($product->is_main_image!=null)
+                                <img src="{{asset('storage/product_medias/'.$product->is_main_image)}}" alt="" class="min-w-1/2 min-h-1/2 max-w-full max-h-full">
+                            @else
+                                <img src="{{asset('assets/img/defaultPicture.jpg')}}" alt="" class="min-w-1/2 min-h-1/2 max-w-full max-h-full">
+                            @endif
                         </div>
-                        <a href="{{route('product.client_pro_single',['product'=>$product->id])}}" class="px-4 py-2 rounded-full bg-(--buttom)  absolute bottom-0 translate-y-full group-hover:-translate-y-5 transition_normal z-1 text-white font-bold">مشاهده محصول</a>
+                        <a href="{{route('product.client_pro_single',['product'=>$product->id])}}" class="px-4 py-2 rounded-full bg-(--buttom) z-3 absolute bottom-0 translate-y-full group-hover:-translate-y-5 transition_normal z-1 text-white font-bold">مشاهده محصول</a>
                     </div>
                     <div class="w-full h-4/12 bg-[#00ffff] rounded-b-xl flex flex-col gap-1 justify-center p-3">
                         <div class="flex flex-col ">
