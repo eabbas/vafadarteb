@@ -258,14 +258,14 @@
                 <!-- عنوان -->
                 <div>
                     <label class="vafadar-label" for="title"> عنوان</label>
-                    <input type="text" id="title" placeholder="عنوان برند را وارد کنید" name='title' value="{{old('title')}}" class="vafadar-input">
+                    <input type="text" id="title" required placeholder="عنوان برند را وارد کنید" name='title' value="{{old('title')}}" class="vafadar-input">
                     @error('title') <span class="vafadar-error">{{$message}}</span> @enderror
                 </div>
 
                 <!-- لوگو -->
                 <div>
                     <label class="vafadar-label" for="logo_path"> لوگو</label>
-                    <input type="text" id="logo_path" placeholder="مسیر لوگو را وارد کنید" name='logo_path' class="vafadar-input">
+                    <input type="file" id="logo_path" placeholder="=لوگو را وارد کنید" name='logo_path' class="vafadar-input">
                 </div>
 
                 <!-- اسلاگ -->

@@ -3,7 +3,21 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\product;
+use App\Models\category;
+use App\Models\attribute;
+use App\Models\user;
+use App\Models\product_category;
+use App\Models\product_media;
+use App\Models\product_attribute;
+use App\Models\package;
+use App\Models\headerSetting;
+use App\Models\attribute_package;
+use App\Models\package_media;
 use App\Models\brand;
+use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Auth;
 
 class BrandController extends Controller
 {
@@ -17,14 +31,17 @@ class BrandController extends Controller
         $validate=$request->validate(
         [
             'title'=>['required'],
-            // 'slug'=>['required'],
         ],[
             'title.required'=>'فیلد مورد نظر را پر کنید',
-            // 'slug.required'=>'فیلد مورد نظر را پر کنید',
         ]);
+        $path=null;
+        if(isset($request->logo_path) && $request->logo_path!=null){
+            $fullName=Str::uuid().$request->logo_path->getClientOriginalName();
+            $path=$request->file("logo_path")->storeAs("brand_medias",$fullName,"public");
+        }
         $created_brand=brand::create([
             'title'=>$validate['title'],
-            'logo_path'=>$request['logo_path'],
+            'logo_path'=>$path,
             'slug'=>$request['slug'],
             'description'=>$request['description'],
             'show_in_home'=>$request['show_in_home'],
@@ -51,14 +68,19 @@ class BrandController extends Controller
         $validate=$request->validate(
         [
             'title'=>['required'],
-            'slug'=>['required'],
         ],[
             'title.required'=>'فیلد مورد نظر را پر کنید',
-            'slug.required'=>'فیلد مورد نظر را پر کنید',
         ]);
+        if(isset($request->logo_path)){
+            $fullName=Str::uuid().$request->logo_path->getClientOriginalName();
+            $path=$request->file("logo_path")->storeAs("brand_medias",$fullName,"public");
+            if($brand->logo_path!=null){
+                Storage::disk('public')->delete($brand->logo_path);
+            }
+            $brand->logo_path=$path;
+        }
         $brand->title=$validate['title'];
-        $brand->logo_path=$request['logo_path'];
-        $brand->slug=$validate['slug'];
+        $brand->slug=$request['slug'];
         $brand->description=$request['description'];
         $brand->show_in_home=$request['show_in_home'];
         $brand->is_active=$request['is_active'];
@@ -67,6 +89,13 @@ class BrandController extends Controller
         dd('update');
     }
     public function delete(brand $brand){
+        if($brand->logo_path!=null){
+            Storage::disk('public')->delete($brand->logo_path);
+        }
+        foreach ($brand->products as $product) {
+            $product->brand_id=null;
+            $product->save();
+        }
         $brand->delete();
         return to_route('brand.list');
         dd('delete');

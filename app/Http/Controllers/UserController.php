@@ -13,6 +13,7 @@ use App\Models\hero;
 use App\Models\category;
 use App\Models\product;
 use App\Models\address;
+use App\Models\brand;
 use App\Models\order;
 use App\Models\cart;
 use App\Models\advertisement;
@@ -539,6 +540,8 @@ class UserController extends Controller
         }
         $parentCategories=category::where('parent_id',0)->get();
         $subCats=$this->recursiveCategory1();
+        $brands=brand::where('show_in_home',1)->get();
+
         
         //     echo $x;
         // dd($x);
@@ -556,6 +559,7 @@ class UserController extends Controller
             'localCash'=>$localCash,
             'parentCategories'=>$parentCategories,
             'subCats'=>$subCats,
+            'brands'=>$brands,
         ]);
     }
     public function setting(){

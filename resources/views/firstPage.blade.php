@@ -931,7 +931,7 @@
                                 </g>
                             </svg>
                         </a>
-                        <span class="text-[17px] md:text-[25px] font-bold text-(--title)">Popular Items</span>
+                        <span class="text-[17px] md:text-[25px] font-bold text-(--title)"> محصولات </span>
                     </div>
                     <div class="max-w-full flex gap-4 justify-start text-white font-bold max-lg:text-sm max-sm:text-xs text-nowrap overflow-x-auto">
                         <button class="px-9 py-3 rounded-4xl bg-(--buttom)">Baby & Mom Care</button>
@@ -994,7 +994,7 @@
             <div class="w-full mx-auto flex justify-between">
                 <a href=""
                     class="flex flex-row-reverse gap-2 fill-[#54ab9a] text-[#54ab9a] hover:text-[#fd6a6a] hover:fill-[#fd6a6a] transition-all duration-300">
-                    <span class="">All Products </span>
+                    <span class="">همه برند ها  </span>
                     <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
                     <svg height="20px" width="20px" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg"
                         xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 297 297" xml:space="preserve">
@@ -1006,16 +1006,21 @@
                         </g>
                     </svg>
                 </a>
-                <span class="text-[17px] md:text-[25px] font-bold text-[#023350]">Popular Items</span>
+                <span class="text-[17px] md:text-[25px] font-bold text-[#023350]"> برند ها </span>
             </div>
             <div class="w-full mx-auto py-2 bg-white flex lg:gap-2 gap-2.5 items-center overflow-x-auto">
 
+                @foreach($brands as $brand)
+                    <div class="lg:min-w-12/100 lg:max-w-12/100 sm:min-w-15/100 sm:max-w-15/100 min-w-22/100 max-w-22/100 lg:h-15 sm:h-13 h-10 flex justify-center items-center group bg-zinc-300 rounded-md">
+                        <img src="{{asset('storage/'.$brand->logo_path)}}" alt="" class="min-w-8/12 min-h-8/12 max-w-full max-h-full p-1 lg:opacity-40 lg:group-hover:opacity-100 transition_normal">
+                    </div>
+                @endforeach
+                <!-- 
                 @for($i=0;$i<20;$i++)
                     <div class="lg:min-w-12/100 lg:max-w-12/100 sm:min-w-15/100 sm:max-w-15/100 min-w-22/100 max-w-22/100 lg:h-15 sm:h-13 h-10 flex justify-center items-center group">
                         <img src="{{asset('assets/img/header/logo.png')}}" alt="" class="min-w-8/12 min-h-8/12 max-w-full max-h-full p-1 lg:opacity-40 lg:group-hover:opacity-100 transition_normal">
                     </div>
-                @endfor
-
+                @endfor -->
 
             </div>
 
