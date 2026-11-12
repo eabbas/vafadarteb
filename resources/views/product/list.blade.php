@@ -497,7 +497,7 @@
                             @if(isset($product->is_main_media))
                                 <img class="vafadar-thumb sm:min-w-14 min-w-10 sm:min-h-14 min-h-10 sm:max-w-20 max-w-15 sm:max-h-20 max-h-15" src="{{asset('storage/product_medias/'.$product->is_main_media)}}" alt="{{$product->title}}">
                             @else
-                                <img class="vafadar-thumb sm:min-w-14 min-w-10 sm:min-h-14 min-h-10 sm:max-w-20 max-w-15 sm:max-h-20 max-h-15" src="{{asset('assets/img/defaultPicture.jpg')}}" alt="{{$brand->title}}">
+                                <img class="vafadar-thumb sm:min-w-14 min-w-10 sm:min-h-14 min-h-10 sm:max-w-20 max-w-15 sm:max-h-20 max-h-15" src="{{asset('assets/img/defaultPicture.jpg')}}" alt="{{$product->title}}">
                             @endif
                         </td>
                         <td>
