@@ -910,9 +910,89 @@ class UserController extends Controller
         return response()->json($result);
     }
 
-    public function recursiveCategory2($categories)
-    {
-        $result = '';
+// public function recursiveCategory2($categories)
+// {
+//     $result = '';
+
+//     if ($categories instanceof \Illuminate\Support\Collection) {
+//         $categories = $categories->all();
+//     }
+
+//     if (!is_iterable($categories)) {
+//         return '';
+//     }
+
+//     foreach ($categories as $category) {
+
+//         if (!$category || $category->is_active != 1) {
+//             continue;
+//         }
+
+//         $children = $category->children ?? [];
+
+//         // رد شدن از دسته بندی اصلی
+//         if ($category->id == 1) {
+//             $result .= $this->recursiveCategory2($children);
+//             continue;
+//         }
+
+//         // شروع ستون دسته بندی
+//         $result .= "
+//             <div class='flex flex-col gap-5'>
+
+//                 <!-- عنوان دسته بندی -->
+//                 <a href='{$category->id}'
+//                    class='flex items-center gap-2 text-[15px] font-bold text-gray-800 whitespace-nowrap hover:text-blue-600 transition'>
+
+//                     <span class='text-gray-500 text-xl'>‹</span>
+
+//                     <span>{$category->title}</span>
+
+//                     <span class='w-[2px] h-[17px] bg-red-500 mr-auto'></span>
+
+//                 </a>
+
+//                 <!-- زیر دسته بندی ها -->
+//                 <div class='flex flex-col gap-5 pr-6 text-sm text-gray-400'>
+//         ";
+
+//         foreach ($children as $child) {
+
+//             if (!$child || $child->is_active != 1) {
+//                 continue;
+//             }
+
+//             $result .= "
+//                 <a href='{$child->id}'
+//                    class='hover:text-blue-600 transition duration-200'>
+//                     {$child->title}
+//                 </a>
+//             ";
+//         }
+
+//         $result .= "
+//                 </div>
+//             </div>
+//         ";
+
+//         // بررسی زیرمجموعه های عمیق تر
+//         foreach ($children as $child) {
+
+//             if (
+//                 $child->is_active == 1 &&
+//                 $child->children &&
+//                 $child->children->isNotEmpty()
+//             ) {
+//                 $result .= $this->recursiveCategory2($child->children);
+//             }
+//         }
+//     }
+
+//     return $result;
+// }
+public function recursiveCategory2($categories)
+{
+    $result = '';
 
         if ($categories instanceof \Illuminate\Support\Collection) {
             $categories = $categories->all();
@@ -940,11 +1020,11 @@ class UserController extends Controller
             $result .= "
                 <div class='flex flex-col gap-5'>
 
-                    <!-- عنوان دسته بندی -->
-                    <a href='{$category->id}'
-                    class='flex items-center gap-2 text-[15px] font-bold text-gray-800 whitespace-nowrap hover:text-blue-600 transition'>
+                <!-- عنوان دسته بندی -->
+                <a href='{$category->id}'
+                   class='flex items-center gap-2 text-sm font-bold text-gray-800 whitespace-nowrap hover:text-blue-600 transition'>
 
-                        <span class='text-gray-500 text-xl'>‹</span>
+                    <span class='text-gray-500'>‹</span>
 
                         <span>{$category->title}</span>
 
