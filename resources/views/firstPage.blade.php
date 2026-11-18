@@ -1,10 +1,10 @@
 @extends('header')
 @section('content')
-    <div class="w-full flex flex-col gap-6 justify-start items-center">
+<div class="w-full flex flex-col gap-6 justify-start items-center">
 
 
-        <div class="w-full md:h-dvh relative  flex justify-center items-end ">
-            <!-- هدر
+    <div class="w-full md:h-dvh relative  flex justify-center items-end ">
+        <!-- هدر
             <div class="absolute top-0 w-full flex justify-center z-3">
                 <div class="flex w-19/20 bg-[#ffffff]/70 justify-center mt-5 head">
                     <div class="w-19/20 flex justify-between">
@@ -133,91 +133,95 @@
                 </div>
             </div> -->
 
-            <!-- عکس پس‌زمینه به صورت absolute -->
+        <!-- عکس پس‌زمینه به صورت absolute -->
+        @if($hero!=null)
+        <img class="absolute w-full h-full top-0 left-0 object-cover z-2" src="{{ asset('storage/' . $hero->background_image_path) }}" alt="Background">
+        @else
+        <img class="absolute w-full h-full top-0 left-0 object-cover z-2" src="{{ asset('assets/img/header/bg_defalt_hero.webp') }}" alt="Background">
+        @endif
+
+        <!-- محتوای اصلی -->
+        <div class="relative w-11/12  h-85/100 z-2 flex max-sm:flex-col max-md:gap-8 md:justify-center justify-start md:items-center items-center max-md:mt-23">
+
+            <!-- عکس hero (سمت راست) -->
             @if($hero!=null)
-            <img class="absolute w-full h-full top-0 left-0 object-cover z-2" src="{{ asset('storage/' . $hero->background_image_path) }}" alt="Background">
+            <div class="md:w-7/12 w-full md:h-full flex items-center justify-center ">
+                <img class="lg:min-w-8/12 lg:min-h-8/12 min-w-9/12 min-h-9/12 lg:max-w-10/12 lg:max-h-10/12 max-w-11/12 md:max-h-11/12 " src="{{ asset('storage/' . $hero->hero_image_path) }}" alt="{{ $hero->title }}">
+            </div>
             @else
-            <img class="absolute w-full h-full top-0 left-0 object-cover z-2" src="{{ asset('assets/img/header/bg_defalt_hero.webp') }}" alt="Background">
+            <div class="md:w-7/12 w-full md:h-full  flex items-center justify-center">
+                <img class=" min-w-8/12 min-h-8/12 max-w-11/12 md:max-h-11/12 max-h-80" src="{{ asset('assets/img/header/img_heder.webp') }}" alt="">
+            </div>
             @endif
 
-            <!-- محتوای اصلی -->
-            <div class="relative w-11/12  h-85/100 z-2 flex max-sm:flex-col max-md:gap-8 md:justify-center justify-start md:items-center items-center max-md:mt-23">
-
-                <!-- عکس hero (سمت راست) -->
-                @if($hero!=null)
-                    <div class="md:w-7/12 w-full md:h-full flex items-center justify-center ">
-                        <img class="lg:min-w-8/12 lg:min-h-8/12 min-w-9/12 min-h-9/12 lg:max-w-10/12 lg:max-h-10/12 max-w-11/12 md:max-h-11/12 " src="{{ asset('storage/' . $hero->hero_image_path) }}" alt="{{ $hero->title }}">
+            <!-- بخش متن و دکمه (سمت چپ) -->
+            <div class="md:w-5/12 w-full h-full flex flex-col justify-center items-center text-center gap-3 sm:pt-30">
+                <h1 class="xl:text-[46px] lg:text-4xl md:text-3xl text-2xl font-bold flex flex-col">
+                    @if($hero!=null)
+                    {{ $hero->title }}
+                    @else
+                    تجهیزات پزشکی
+                    با کیفیت برای مراکز درمانی
+                    @endif
+                </h1>
+                <p class="xl:text-lg max-lg:text-sm text-(--discription) text-center font-bold ">
+                    @if($hero!=null)
+                    {{ $hero->summary }}
+                    @else
+                    از فشارسنج. اکسیژن ساز . ویلچر . نیولایزر. دستگاه قندخون.
+                    و صد‌ها محصولات دیگر با بهترین قیمت
+                    @endif
+                </p>
+                <a href="#">
+                    <div class="px-6 py-3 bg-[#0a9a73] mt-6 rounded-2xl text-white flex gap-3 justify-center items-center hover:shadow-md font-bold transition-all duration-300">
+                        <span>مشاهده محصولات</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-4 fill-white transition-all duration-200" viewBox="0 0 448 512">
+                            <path d="M7.4 273.4C2.7 268.8 0 262.6 0 256s2.7-12.8 7.4-17.4l176-168c9.6-9.2 24.8-8.8 33.9 .8s8.8 24.8-.8 33.9L83.9 232 424 232c13.3 0 24 10.7 24 24s-10.7 24-24 24L83.9 280 216.6 406.6c9.6 9.2 9.9 24.3 .8 33.9s-24.3 9.9-33.9 .8l-176-168z" />
+                        </svg>
                     </div>
-                @else
-                    <div class="md:w-7/12 w-full md:h-full  flex items-center justify-center">
-                        <img class=" min-w-8/12 min-h-8/12 max-w-11/12 md:max-h-11/12 max-h-80" src="{{ asset('assets/img/header/img_heder.webp') }}" alt="">
-                    </div>
-                @endif
+                </a>
+                <div class="flex gap-2 items-center w-full justify-between mt-5">
+                    <div class="flex max-lg:flex-col justify-center items-center xl:gap-2 gap-1">
+                        <span class="font-bold xl:text-sm text-xs text-(--buttom) max-lg:order-2">پشتیباتی 24 ساعته</span>
+                        <div class="max-lg:order-1">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80" class=" xl:size-8 size-6 fill-(--primary_color)">
 
-                <!-- بخش متن و دکمه (سمت چپ) -->
-                <div class="md:w-5/12 w-full h-full flex flex-col justify-center items-center text-center gap-3 sm:pt-30">
-                    <h1 class="xl:text-[46px] lg:text-4xl md:text-3xl text-2xl font-bold flex flex-col">
-                        @if($hero!=null)
-                        {{ $hero->title }}
-                        @else
-                       تجهیزات پزشکی
-                       با کیفیت برای مراکز درمانی
-                        @endif
-                    </h1>
-                    <p class="xl:text-lg max-lg:text-sm text-(--discription) text-center font-bold ">
-                        @if($hero!=null)
-                        {{ $hero->summary }}
-                        @else
-                        از فشارسنج. اکسیژن ساز . ویلچر . نیولایزر. دستگاه قندخون.
-                        و صد‌ها محصولات دیگر با بهترین قیمت
-                        @endif
-                    </p>
-                    <a href="#">
-                        <div class="px-6 py-3 bg-[#0a9a73] mt-6 rounded-2xl text-white flex gap-3 justify-center items-center hover:shadow-md font-bold transition-all duration-300">
-                            <span>مشاهده محصولات</span>
-                            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 fill-white transition-all duration-200" viewBox="0 0 448 512">
-                                <path d="M7.4 273.4C2.7 268.8 0 262.6 0 256s2.7-12.8 7.4-17.4l176-168c9.6-9.2 24.8-8.8 33.9 .8s8.8 24.8-.8 33.9L83.9 232 424 232c13.3 0 24 10.7 24 24s-10.7 24-24 24L83.9 280 216.6 406.6c9.6 9.2 9.9 24.3 .8 33.9s-24.3 9.9-33.9 .8l-176-168z" />
+                                <g>
+                                    <!-- <circle class="fill-none stroke-[#2563ff] stroke-5" style="stroke-linecap: round;" cx="40" cy="40" r="39.5"></circle> -->
+                                    <g>
+                                        <path class="fill-none stroke-(--primary_color) stroke-5" style="stroke-linecap: round;" d="M20.3,39.3v-6.6c0-11.6,8.3-18.2,19.9-18.2s19.9,6.6,19.9,18.2v6.6"></path>
+                                        <path class="fill-none stroke-(--primary_color) stroke-5" style="stroke-linecap: round;" d="M20.3,36h0c2.7,0,5,2.2,5,5v9.9c0,2.7-2.2,5-5,5h0c-2.7,0-5-2.2-5-5v-9.9c0-2.7,2.2-5,5-5Z"></path>
+                                        <path class="fill-none stroke-(--primary_color) stroke-5" style="stroke-linecap: round;" d="M60,36h0c2.7,0,5,2.2,5,5v9.9c0,2.7-2.2,5-5,5h0c-2.7,0-5-2.2-5-5v-9.9c0-2.7,2.2-5,5-5Z"></path>
+                                        <path class="fill-none stroke-(--primary_color) stroke-5" style="stroke-linecap: round;" d="M60,55.9c0,6.6-5,9.9-13.3,9.9"></path>
+                                    </g>
+                                </g>
                             </svg>
                         </div>
-                    </a>
-                    <div class="flex gap-2 items-center w-full justify-between mt-5">
-                        <div class="flex max-lg:flex-col justify-center items-center xl:gap-2 gap-1">
-                            <span class="font-bold xl:text-sm text-xs text-(--buttom) max-lg:order-2">پشتیباتی 24 ساعته</span>
-                            <div class="max-lg:order-1">
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80" class=" xl:size-8 size-6 fill-(--primary_color)">
-
-                                    <g>
-                                        <!-- <circle class="fill-none stroke-[#2563ff] stroke-5" style="stroke-linecap: round;" cx="40" cy="40" r="39.5"></circle> -->
-                                        <g>
-                                            <path class="fill-none stroke-(--primary_color) stroke-5" style="stroke-linecap: round;" d="M20.3,39.3v-6.6c0-11.6,8.3-18.2,19.9-18.2s19.9,6.6,19.9,18.2v6.6"></path>
-                                            <path class="fill-none stroke-(--primary_color) stroke-5" style="stroke-linecap: round;" d="M20.3,36h0c2.7,0,5,2.2,5,5v9.9c0,2.7-2.2,5-5,5h0c-2.7,0-5-2.2-5-5v-9.9c0-2.7,2.2-5,5-5Z"></path>
-                                            <path class="fill-none stroke-(--primary_color) stroke-5" style="stroke-linecap: round;" d="M60,36h0c2.7,0,5,2.2,5,5v9.9c0,2.7-2.2,5-5,5h0c-2.7,0-5-2.2-5-5v-9.9c0-2.7,2.2-5,5-5Z"></path>
-                                            <path class="fill-none stroke-(--primary_color) stroke-5" style="stroke-linecap: round;" d="M60,55.9c0,6.6-5,9.9-13.3,9.9"></path>
-                                        </g>
-                                    </g>
-                                </svg>
-                            </div>
+                    </div>
+                    <div class="flex max-lg:flex-col justify-center items-center xl:gap-2 gap-1">
+                        <span class="font-bold xl:text-sm text-xs text-(--buttom) max-lg:order-2">تحویل سریع</span>
+                        <div class="max-lg:order-1">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512" class="xl:size-8 size-6 fill-(--primary_color)">
+                                <path d="M352 48H128c-8.8 0-16 7.2-16 16V96H240c8.8 0 16 7.2 16 16s-7.2 16-16 16H16c-8.8 0-16-7.2-16-16s7.2-16 16-16H64V64C64 28.7 92.7 0 128 0H352c35.3 0 64 28.7 64 64V96h42.7c14.9 0 29.1 5.9 39.6 16.4l93.3 93.3c10.5 10.5 16.4 24.7 16.4 39.6V368h8c13.3 0 24 10.7 24 24s-10.7 24-24 24H576c0 53-43 96-96 96s-96-43-96-96h-8H352 320 256c0 53-43 96-96 96s-96-43-96-96V368 288h48v44.8c14.1-8.2 30.5-12.8 48-12.8c35.5 0 66.6 19.3 83.2 48H320h32c8.8 0 16-7.2 16-16V64c0-8.8-7.2-16-16-16zM557.7 239.6l-93.3-93.3c-1.5-1.5-3.5-2.3-5.7-2.3H416v96H558l-.2-.2-.2-.2zM208 416a48 48 0 1 0 -96 0 48 48 0 1 0 96 0zm272 48a48 48 0 1 0 0-96 48 48 0 1 0 0 96zM48 160H272c8.8 0 16 7.2 16 16s-7.2 16-16 16H48c-8.8 0-16-7.2-16-16s7.2-16 16-16zM16 224H240c8.8 0 16 7.2 16 16s-7.2 16-16 16H16c-8.8 0-16-7.2-16-16s7.2-16 16-16z" />
+                            </svg>
                         </div>
-                        <div class="flex max-lg:flex-col justify-center items-center xl:gap-2 gap-1">
-                            <span class="font-bold xl:text-sm text-xs text-(--buttom) max-lg:order-2">تحویل سریع</span>
-                            <div class="max-lg:order-1">
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512" class="xl:size-8 size-6 fill-(--primary_color)"><path d="M352 48H128c-8.8 0-16 7.2-16 16V96H240c8.8 0 16 7.2 16 16s-7.2 16-16 16H16c-8.8 0-16-7.2-16-16s7.2-16 16-16H64V64C64 28.7 92.7 0 128 0H352c35.3 0 64 28.7 64 64V96h42.7c14.9 0 29.1 5.9 39.6 16.4l93.3 93.3c10.5 10.5 16.4 24.7 16.4 39.6V368h8c13.3 0 24 10.7 24 24s-10.7 24-24 24H576c0 53-43 96-96 96s-96-43-96-96h-8H352 320 256c0 53-43 96-96 96s-96-43-96-96V368 288h48v44.8c14.1-8.2 30.5-12.8 48-12.8c35.5 0 66.6 19.3 83.2 48H320h32c8.8 0 16-7.2 16-16V64c0-8.8-7.2-16-16-16zM557.7 239.6l-93.3-93.3c-1.5-1.5-3.5-2.3-5.7-2.3H416v96H558l-.2-.2-.2-.2zM208 416a48 48 0 1 0 -96 0 48 48 0 1 0 96 0zm272 48a48 48 0 1 0 0-96 48 48 0 1 0 0 96zM48 160H272c8.8 0 16 7.2 16 16s-7.2 16-16 16H48c-8.8 0-16-7.2-16-16s7.2-16 16-16zM16 224H240c8.8 0 16 7.2 16 16s-7.2 16-16 16H16c-8.8 0-16-7.2-16-16s7.2-16 16-16z"/></svg>
-                            </div>
-                        </div>
-                        <div class="flex max-lg:flex-col justify-center items-center xl:gap-2 gap-1">
-                            <span class="font-bold xl:text-sm text-xs text-(--buttom) max-lg:order-2">ضمانت اصالت کالا</span>
-                            <div class="max-lg:order-1">
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="xl:size-8 size-6 fill-(--primary_color)"><path d="M73 127L256 49.4 439 127c5.9 2.5 9.1 7.8 9 12.8c-.4 91.4-38.4 249.3-186.3 320.1c-3.6 1.7-7.8 1.7-11.3 0C102.4 389 64.5 231.2 64 139.7c0-5 3.1-10.2 9-12.8zM457.7 82.8L269.4 2.9C265.2 1 260.7 0 256 0s-9.2 1-13.4 2.9L54.3 82.8c-22 9.3-38.4 31-38.3 57.2c.5 99.2 41.3 280.7 213.6 363.2c16.7 8 36.1 8 52.8 0C454.8 420.7 495.5 239.2 496 140c.1-26.2-16.3-47.9-38.3-57.2zM369 209c9.4-9.4 9.4-24.6 0-33.9s-24.6-9.4-33.9 0l-111 111-47-47c-9.4-9.4-24.6-9.4-33.9 0s-9.4 24.6 0 33.9l64 64c9.4 9.4 24.6 9.4 33.9 0L369 209z"/></svg>
-                            </div>
+                    </div>
+                    <div class="flex max-lg:flex-col justify-center items-center xl:gap-2 gap-1">
+                        <span class="font-bold xl:text-sm text-xs text-(--buttom) max-lg:order-2">ضمانت اصالت کالا</span>
+                        <div class="max-lg:order-1">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="xl:size-8 size-6 fill-(--primary_color)">
+                                <path d="M73 127L256 49.4 439 127c5.9 2.5 9.1 7.8 9 12.8c-.4 91.4-38.4 249.3-186.3 320.1c-3.6 1.7-7.8 1.7-11.3 0C102.4 389 64.5 231.2 64 139.7c0-5 3.1-10.2 9-12.8zM457.7 82.8L269.4 2.9C265.2 1 260.7 0 256 0s-9.2 1-13.4 2.9L54.3 82.8c-22 9.3-38.4 31-38.3 57.2c.5 99.2 41.3 280.7 213.6 363.2c16.7 8 36.1 8 52.8 0C454.8 420.7 495.5 239.2 496 140c.1-26.2-16.3-47.9-38.3-57.2zM369 209c9.4-9.4 9.4-24.6 0-33.9s-24.6-9.4-33.9 0l-111 111-47-47c-9.4-9.4-24.6-9.4-33.9 0s-9.4 24.6 0 33.9l64 64c9.4 9.4 24.6 9.4 33.9 0L369 209z" />
+                            </svg>
                         </div>
                     </div>
                 </div>
             </div>
-
         </div>
 
-        <!-- منوهنبرگر -->
-        <!-- <section>
+    </div>
+
+    <!-- منوهنبرگر -->
+    <!-- <section>
             <div class="w-full h-[100vh] fixed top-0 right-0 bg-white/40 overflow-hidden z-100 hidden " id="naser">
                 <div class="w-[300px] h-full top-0 right-0 bg-white z-200 flex flex-col gap-15">
                     <div class="w-full h-25 flex border-b justify-between items-center">
@@ -466,8 +470,8 @@
                 <div class="w-full h-full" onclick="hambarger_menue('close')"></div>
             </div>
         </section> -->
-        <!-- سلایدر -->
-        <!-- <section>
+    <!-- سلایدر -->
+    <!-- <section>
         <div class="w-11/12 h-30 bg-white mx-auto flex overflow-x-auto mt-20">
             <a href="" class="min-w-50 h-auto flex flex-col gap-5 items-center">
                 <div>
@@ -747,11 +751,14 @@
         </div>
         </section> -->
 
-        <!-- categorys -->
+    <!-- categorys -->
 
-        <section class="w-11/12 mx-auto xl:h-105 lg:h-85 sm:h-100 h-200 grid gap-3 sm:grid-cols-6 grid-cols-1 lg:grid-rows-2 sm:grid-rows-3 grid-rows-5">
-            <div class="w-full bg-[url({{asset('assets/img/baner/asdf.jpg')}})] bg-cover bg-center lg:col-span-2 sm:col-span-3 rounded-xl flex justify-between items-center p-2 sm:row-span-1">
-                <div class="w-1/2 h-full flex justify-center items-center">
+    <section class="w-11/12 mx-auto xl:h-105 lg:h-85 sm:h-100 h-200 grid gap-3 sm:grid-cols-6 grid-cols-1 lg:grid-rows-2 sm:grid-rows-3 grid-rows-5">
+
+        <div class="w-full h-full lg:col-span-2 sm:col-span-3 rounded-xl bg-[#D2ECFF] flex justify-between items-center p-2 relative">
+            <img src="{{asset('assets/img/baner/category_trent2.webp')}}" alt="" class="w-full h-full absolute top-0 right-0 z-1 opacity-50">
+            <div class="w-full h-full flex justify-between items-center relative z-2">
+                <div class="w-1/2 h-full flex justify-center items-center ">
                     <img src="{{ asset('assets/img/header/img_heder.webp') }}" alt="" class="min-w-1/2 min-h-1/2 max-w-full max-h-full">
                 </div>
                 <div class="w-1/2 h-full flex flex-col gap-2 justify-center items-center">
@@ -759,8 +766,11 @@
                     <a href="" class="xl:text-sm text-xs text-(--discription)">مشاهده بیشتر</a>
                 </div>
             </div>
-            <div class="w-full h-full bg-[url({{asset('assets/img/baner/asdf.jpg')}})] bg-cover bg-center lg:col-span-2 sm:col-span-3 rounded-xl sm:row-span-1 flex justify-between items-center p-2">
-                <div class="w-1/2 h-full flex justify-center items-center">
+        </div>
+        <div class="w-full h-full lg:col-span-2 sm:col-span-3 rounded-xl bg-[#D2ECFF] flex justify-between items-center p-2 relative">
+            <img src="{{asset('assets/img/baner/category_trent2.webp')}}" alt="" class="w-full h-full absolute top-0 right-0 z-1 opacity-50">
+            <div class="w-full h-full flex justify-between items-center relative z-2">
+                <div class="w-1/2 h-full flex justify-center items-center ">
                     <img src="{{ asset('assets/img/header/img_heder.webp') }}" alt="" class="min-w-1/2 min-h-1/2 max-w-full max-h-full">
                 </div>
                 <div class="w-1/2 h-full flex flex-col gap-2 justify-center items-center">
@@ -768,9 +778,13 @@
                     <a href="" class="xl:text-sm text-xs text-(--discription)">مشاهده بیشتر</a>
                 </div>
             </div>
-            <div class="w-full h-full  lg:col-span-2 sm:col-span-6 sm:row-span-1 flex justify-center items-center">
-                <div class="w-full sm:w-4/6 lg:w-full h-full rounded-xl bg-[url({{asset('assets/img/baner/asdf.jpg')}})] bg-cover bg-center flex justify-between items-center p-2">
-                    <div class="w-1/2 h-full flex justify-center items-center">
+        </div>
+        <div class="w-full h-full  lg:col-span-2 sm:col-span-6 sm:row-span-1 flex justify-center items-center">
+
+            <div class="w-full sm:w-4/6 lg:w-full h-full lg:col-span-2 sm:col-span-3 rounded-xl bg-[#D2ECFF] flex justify-between items-center p-2 relative">
+                <img src="{{asset('assets/img/baner/category_trent2.webp')}}" alt="" class="w-full h-full absolute top-0 right-0 z-1 opacity-50">
+                <div class="w-full h-full flex justify-between items-center relative z-2">
+                    <div class="w-1/2 h-full flex justify-center items-center ">
                         <img src="{{ asset('assets/img/header/img_heder.webp') }}" alt="" class="min-w-1/2 min-h-1/2 max-w-full max-h-full">
                     </div>
                     <div class="w-1/2 h-full flex flex-col gap-2 justify-center items-center">
@@ -779,8 +793,12 @@
                     </div>
                 </div>
             </div>
-            <div class="w-full h-full sm:col-span-3 rounded-xl sm:row-span-1 bg-[url({{asset('assets/img/baner/asdf2.jpg')}})] bg-cover bg-center flex justify-between items-center p-2">
-                <div class="w-1/2 h-full flex justify-center items-center">
+        </div>
+
+        <div class="w-full h-full sm:col-span-3 rounded-xl sm:row-span-1  bg-[#FFE1E2] flex justify-between items-center p-2 relative">
+            <img src="{{asset('assets/img/baner/category_trend.webp')}}" alt="" class="w-full h-full absolute top-0 right-0 z-1 opacity-10">
+            <div class="w-full h-full flex justify-between items-center relative z-2">
+                <div class="w-1/2 h-full flex justify-center items-center ">
                     <img src="{{ asset('assets/img/header/img_heder.webp') }}" alt="" class="min-w-1/2 min-h-1/2 max-w-full max-h-full">
                 </div>
                 <div class="w-1/2 h-full flex flex-col gap-2 justify-center items-center">
@@ -788,8 +806,11 @@
                     <a href="" class="xl:text-sm text-xs text-(--discription)">مشاهده بیشتر</a>
                 </div>
             </div>
-            <div class="w-full h-full sm:col-span-3 rounded-xl sm:row-span-1 bg-[url({{asset('assets/img/baner/asdf2.jpg')}})] bg-cover bg-center flex justify-between items-center p-2">
-                <div class="w-1/2 h-full flex justify-center items-center">
+        </div>
+        <div class="w-full h-full sm:col-span-3 rounded-xl sm:row-span-1  bg-[#FFE1E2] flex justify-between items-center p-2 relative">
+            <img src="{{asset('assets/img/baner/category_trend.webp')}}" alt="" class="w-full h-full absolute top-0 right-0 z-1 opacity-10">
+            <div class="w-full h-full flex justify-between items-center relative z-2">
+                <div class="w-1/2 h-full flex justify-center items-center ">
                     <img src="{{ asset('assets/img/header/img_heder.webp') }}" alt="" class="min-w-1/2 min-h-1/2 max-w-full max-h-full">
                 </div>
                 <div class="w-1/2 h-full flex flex-col gap-2 justify-center items-center">
@@ -797,66 +818,67 @@
                     <a href="" class="xl:text-sm text-xs text-(--discription)">مشاهده بیشتر</a>
                 </div>
             </div>
-        </section>
-        <!-- categorys -->
-        <!-- بنر محصولات ترند -->
+        </div>
+    </section>
+    <!-- categorys -->
+    <!-- بنر محصولات ترند -->
 
-        <section class="w-11/12  flex flex-col gap-5 justify-start items-center ">
-            <h2 class="font-bold text-[6vw] sm:text-[5vw] md:text-[4vw] lg:text-[3vw]">محصولات ترند</h2>
+    <section class="w-11/12  flex flex-col gap-5 justify-start items-center ">
+        <h2 class="font-bold text-[6vw] sm:text-[5vw] md:text-[4vw] lg:text-[3vw]">محصولات ترند</h2>
 
-            <div class="w-full lg:h-70 grid lg:grid-cols-3 grid-cols-1 grid-rows-1 gap-4 ">
-                <div class="w-full h-full flex justify-end relative">
-                    <img src="{{asset('assets/img/baner/img3.webp')}}" alt="" class="">
-                    <div class="absolute w-1/2 h-full flex gap-3 flex-col justify-center items-center">
-                        <p class="py-1 px-5 bg-green-400 rounded-2xl">Sanitizer</p>
-                        <h3 class="text-center font-bold text-[1.2rem] sm:text-[3.5vw] md:text-[1.9vw] lg:text-[1.8vw]">
-                            Hand Sanitizer
-                            <br>
-                            Collectons
-                        </h3>
-                        <a href="" class="border-b-1 border-red-500">
-                            <span class="text-[1.2rem]">artanv</span>
-                        </a>
-                    </div>
-                </div>
-                <div class="w-full h-full flex justify-end relative">
-                    <img src="{{asset('assets/img/baner/img1.webp')}}" alt="" class="rounded-lg">
-                    <div class="absolute w-1/2 h-full flex gap-3 flex-col justify-center items-center">
-                        <p class="py-1 px-5 bg-green-400 rounded-2xl">Sanitizer</p>
-                        <h3 class="text-center font-bold text-[1.2rem] sm:text-[3.5vw] md:text-[1.9vw] lg:text-[1.8vw]">
-                            Hand Sanitizer
-                            <br>
-                            Collectons
-                        </h3>
-                        <a href="" class="border-b-1 border-red-500">
-                            <span class="text-[1.2rem]">artanv</span>
-                        </a>
-                    </div>
-                </div>
-                <div class="w-full h-full flex justify-end relative">
-                    <img src="{{asset('assets/img/baner/img2.webp')}}" alt="" class="rounded-lg">
-                    <div class="absolute w-1/2 h-full flex gap-3 flex-col justify-center items-center">
-                        <p class="py-1 px-5 bg-green-400 rounded-2xl">Sanitizer</p>
-                        <h3 class="text-center font-bold text-[1.2rem] sm:text-[3.5vw] md:text-[1.9vw] lg:text-[1.8vw]">
-                            Hand Sanitizer
-                            <br>
-                            Collectons
-                        </h3>
-                        <a href="" class="border-b-1 border-red-500">
-                            <span class="text-[1.2rem]">artanv</span>
-                        </a>
-                    </div>
+        <div class="w-full lg:h-70 grid lg:grid-cols-3 grid-cols-1 grid-rows-1 gap-4 ">
+            <div class="w-full h-full flex justify-end relative">
+                <img src="{{asset('assets/img/baner/img3.webp')}}" alt="" class="">
+                <div class="absolute w-1/2 h-full flex gap-3 flex-col justify-center items-center">
+                    <p class="py-1 px-5 bg-green-400 rounded-2xl">Sanitizer</p>
+                    <h3 class="text-center font-bold text-[1.2rem] sm:text-[3.5vw] md:text-[1.9vw] lg:text-[1.8vw]">
+                        Hand Sanitizer
+                        <br>
+                        Collectons
+                    </h3>
+                    <a href="" class="border-b-1 border-red-500">
+                        <span class="text-[1.2rem]">artanv</span>
+                    </a>
                 </div>
             </div>
-        </section>
-        <!-- محصولات مهم -->
-        <section class="w-11/12  flex flex-col gap-2 justify-start items-center">
-            <h3 class="font-bold text-[6vw] sm:text-[5vw] md:text-[4vw] lg:text-[3vw]">Trending Items</h3>
+            <div class="w-full h-full flex justify-end relative">
+                <img src="{{asset('assets/img/baner/img1.webp')}}" alt="" class="rounded-lg">
+                <div class="absolute w-1/2 h-full flex gap-3 flex-col justify-center items-center">
+                    <p class="py-1 px-5 bg-green-400 rounded-2xl">Sanitizer</p>
+                    <h3 class="text-center font-bold text-[1.2rem] sm:text-[3.5vw] md:text-[1.9vw] lg:text-[1.8vw]">
+                        Hand Sanitizer
+                        <br>
+                        Collectons
+                    </h3>
+                    <a href="" class="border-b-1 border-red-500">
+                        <span class="text-[1.2rem]">artanv</span>
+                    </a>
+                </div>
+            </div>
+            <div class="w-full h-full flex justify-end relative">
+                <img src="{{asset('assets/img/baner/img2.webp')}}" alt="" class="rounded-lg">
+                <div class="absolute w-1/2 h-full flex gap-3 flex-col justify-center items-center">
+                    <p class="py-1 px-5 bg-green-400 rounded-2xl">Sanitizer</p>
+                    <h3 class="text-center font-bold text-[1.2rem] sm:text-[3.5vw] md:text-[1.9vw] lg:text-[1.8vw]">
+                        Hand Sanitizer
+                        <br>
+                        Collectons
+                    </h3>
+                    <a href="" class="border-b-1 border-red-500">
+                        <span class="text-[1.2rem]">artanv</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- محصولات مهم -->
+    <section class="w-11/12  flex flex-col gap-2 justify-start items-center">
+        <h3 class="font-bold text-[6vw] sm:text-[5vw] md:text-[4vw] lg:text-[3vw]">Trending Items</h3>
 
-            <div class="max-w-full w-full lg:gap-4.5  gap-3 overflow-x-auto mt-10 flex justify-start items-ceter p-4">
-                @foreach($products as $product)
+        <div class="max-w-full w-full lg:gap-4.5  gap-3 overflow-x-auto mt-10 flex justify-start items-ceter p-4">
+            @foreach($products as $product)
 
-                <div class="xl:min-w-19/100 xl:max-w-19/100 lg:min-w-24/100 lg:max-w-24/100 sm:min-w-33/100 sm:max-w-33/100 min-w-49/100 max-w-49/100 xl:h-95 lg:h-90 sm:h-80 h-70 relative group  flex flex-col shadow-[0_0_10px_3px] shadow-gray-200 rounded-xl" onclick="show_this_product(this)">
+            <!-- <div class="xl:min-w-19/100 xl:max-w-19/100 lg:min-w-24/100 lg:max-w-24/100 sm:min-w-33/100 sm:max-w-33/100 min-w-49/100 max-w-49/100 xl:h-95 lg:h-90 sm:h-80 h-70 relative group  flex flex-col shadow-[0_0_10px_3px] shadow-gray-200 rounded-xl" onclick="show_this_product(this)">
                     <div class="w-full h-8/12 relative overflow-hidden flex justify-center items-center">
                         <span class="w-full h-1/3 group-hover:h-2/3 group-active:h-2/3 bg-[#00ffff]/30 absolute bottom-0 right-0 z-0 transition_normal rounded-t-xl"></span>
                         <div class="w-full h-full relative">
@@ -885,63 +907,114 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> -->
 
-
-
-                @endforeach
-            </div>
-        </section>
-        <!-- خدمات -->
-        <section class="w-11/12  flex flex-col gap-5 justify-start items-center">
-            <div class="w-full mx-auto bg-[#023350] py-7 px-3 xl:gap-4 gap-3 sm:gap-y-6 grid lg:grid-cols-4 sm:grid-cols-2 grid-cols-1 rounded-3xl">
-                @foreach($SI as $support)
-                <div class="w-full flex max-xl:flex-col max-lg:flex-row max-sm:flex-col justify-center items-center xl:gap-4 gap-3">
-                    <div class='xl:min-w-21 min-w-17 xl:min-h-21 min-h-17 xl:max-w-21 max-w-17 xl:max-h-21 max-h-17 rounded-full h-full bg-[#EDE0D7] flex justify-center items-center p-1'>
-                        <img class='min-w-8/12 min-h-8/12 max-w-10/12 max-h-10/12' src="{{asset('storage/'.$support->image)}}" alt="">
+            <div class="xl:min-w-19/100 xl:max-w-19/100 lg:min-w-24/100 lg:max-w-24/100 sm:min-w-33/100 sm:max-w-33/100 min-[450px]:min-w-49/100 min-[450px]:max-w-49/100 min-w-full max-w-full xl:h-95 lg:h-90 sm:h-85 h-80 relative group  flex flex-col gap-1 shadow-[0_0_10px_3px] shadow-gray-200 rounded-xl bg-white p-0.5 " onclick="show_this_product(this)">
+                <div class="w-full h-7/12 relative  flex justify-center items-center bg-[#E0F2FE] rounded-xl">
+                    <!-- <span class="w-full h-1/3 group-hover:h-2/3 group-active:h-2/3 bg-[#00ffff]/30 absolute bottom-0 right-0 z-0 transition_normal rounded-t-xl"></span> -->
+                    <!-- <div class="w-full h-full relative flex j"> -->
+                    <img src="{{asset('assets/img/header/img_heder.webp')}}" alt="" class="min-w-1/2 min-h-1/2 max-w-full max-h-full rounded-xl select-none ">
+                    <!-- </div> -->
+                    <!-- <a href="{{route('product.client_pro_single',['product'=>$product->id])}}" class="px-4 py-2 rounded-full bg-(--buttom)  absolute bottom-0 translate-y-full group-hover:-translate-y-5 transition_normal z-1 text-white font-bold">مشاهده محصول</a> -->
+                    <div class="size-7 bg-white rounded-full absolute top-3 right-3 flex justify-center items-center shadow-[0_0_12px_2px] shadow-zinc-200" onclick="like_dislike(this)">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="size-7/12 ">
+                            <path d="M225.8 468.2l-2.5-2.3L48.1 303.2C17.4 274.7 0 234.7 0 192.8v-3.3c0-70.4 50-130.8 119.2-144C158.6 37.9 198.9 47 231 69.6c9 6.4 17.4 13.8 25 22.3c4.2-4.8 8.7-9.2 13.5-13.3c3.7-3.2 7.5-6.2 11.5-9c0 0 0 0 0 0C313.1 47 353.4 37.9 392.8 45.4C462 58.6 512 119.1 512 189.5v3.3c0 41.9-17.4 81.9-48.1 110.4L288.7 465.9l-2.5 2.3c-8.2 7.6-19 11.9-30.2 11.9s-22-4.2-30.2-11.9zM239.1 145c-.4-.3-.7-.7-1-1.1l-17.8-20c0 0-.1-.1-.1-.1c0 0 0 0 0 0c-23.1-25.9-58-37.7-92-31.2C81.6 101.5 48 142.1 48 189.5v3.3c0 28.5 11.9 55.8 32.8 75.2L256 430.7 431.2 268c20.9-19.4 32.8-46.7 32.8-75.2v-3.3c0-47.3-33.6-88-80.1-96.9c-34-6.5-69 5.4-92 31.2c0 0 0 0-.1 .1s0 0-.1 .1l-17.8 20c-.3 .4-.7 .7-1 1.1c-4.5 4.5-10.6 7-16.9 7s-12.4-2.5-16.9-7z" />
+                        </svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="size-7/12 fill-red-500 hidden">
+                            <path d="M47.6 300.4L228.3 469.1c7.5 7 17.4 10.9 27.7 10.9s20.2-3.9 27.7-10.9L464.4 300.4c30.4-28.3 47.6-68 47.6-109.5v-5.8c0-69.9-50.5-129.5-119.4-141C347 36.5 300.6 51.4 268 84L256 96 244 84c-32.6-32.6-79-47.5-124.6-39.9C50.5 55.6 0 115.2 0 185.1v5.8c0 41.5 17.2 81.2 47.6 109.5z" />
+                        </svg>
                     </div>
-                    <div class="xl:w-8/12 lg:w-11/12 sm:8/12 w-11/12 text-white flex flex-col gap-3 max-xl:items-center max-lg:items-start max-sm:items-center">
-                        <h4 class="max-xl:text-sm max-sm:text-base font-bold">{{$support->title}}</h4>
-                        <p class="xl:text-sm sm:text-xs text-sm text-[#efefef]">{{$support->summary}}</p>
+                    <div class="sm:text-xs text-[10px] font-bold text-white bg-[#01AF6A] rounded-full sm:px-3 sm:py-1.5 px-2 py-1 flex gap-1 justify-center items-center absolute top-3 left-3">
+                        <span>40%</span>
+                        <span>تخفیف</span>
                     </div>
                 </div>
-                @endforeach
-            </div>
-        </section>
-        <!-- Popular Items -->
-        <section class="w-11/12  flex flex-col gap-5 justify-start items-center">
-            <div class="w-full flex gap-2 mt-20">
-                <div class="w-5/20 min-h-full max-xl:hidden flex justify-center items-center bg-red-500">
-                    <img src="{{asset('storage/'.$banner->image)}}" alt="" class="min-w-1/2 min-h-1/3 max-w-full max-h-full rounded-xl">
-                </div>
-                <div class="w-full min-h-full flex flex-col gap-4">
-                    <div class="w-11/12 mx-auto flex justify-between">
-                        <a href=""
-                            class="flex flex-row-reverse gap-2 fill-(--buttom) text-(--buttom) hover:text-[#fd6a6a] hover:fill-[#fd6a6a] transition-all duration-300">
-                            <span class="">All Products </span>
-                            <!DOCTYPE svg
-                                PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-                            <svg height="20px" width="20px" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg"
-                                xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 297 297" xml:space="preserve">
-                                <g>
-                                    <polygon points="33,66 0,66 66,148 0,231 33,231 99,148 	" />
-                                    <polygon points="83,66 50,66 116,148 50,231 83,231 149,148 	" />
-                                    <polygon points="133,66 100,66 166,148 100,231 133,231 199,148 	" />
-                                    <polygon points="231,66 149,66 215,148 149,231 231,231 297,148 	" />
-                                </g>
-                            </svg>
+                <div class="w-full h-5/12  rounded-b-xl flex flex-col gap-2 justify-center p-3">
+                    <div class="flex flex-col gap-1">
+                        <h4 class="xl:text-lg lg:text-base max-sm:text-sm font-bold max-w-full truncate">ماسک تنفسی</h4>
+                        <p class="xl:text-[13px] text-[11px] text-zinc-400 font-bold max-w-full truncate">توضیحات توضیحات توضیحات محصول</p>
+                    </div>
+                    <div class="flex flex-col gap-0.5">
+                        <div class="flex gap-2 justify-start items-center">
+                            <del class="flex gap-2 justify-start items-center text-(--discription)">
+                                <div class="flex gap-1 justify-start items-center lg:text-sm sm:text-xs text-[10px]">
+                                    <span>{{number_format($product->price)}}</span>
+                                    <span>تومان</span>
+                                </div>
+                            </del>
+                            <!-- <span class="px-2 py-1 font-bold lg:text-[10px] sm:text-[8px] text-[6px] text-white rounded-xl bg-(--buttom)">40%</span> -->
+                        </div>
+                        <div class="flex gap-1 justify-start items-center font-bold xl:text-lg max-lg:text-sm max-sm:text-xs">
+                            <span>{{number_format($product->price)}}</span>
+                            <span>تومان</span>
+                        </div>
+                        <a href="{{route('product.client_pro_single',['product'=>$product->id])}}" class="w-full px-4 py-2 rounded-full bg-[#037C77] transition_normal z-1 text-white font-bold flex gap-1 hover:gap-2 justify-center items-center text-sm max-xl:text-xs mt-0.5">
+                            <div class=" transition_normal">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512" class="size-4 max-xl:size-3 fill-white">
+                                    <path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z" />
+                                </svg>
+                            </div>
+                            <span>مشاهده مخصول</span>
                         </a>
-                        <span class="text-[17px] md:text-[25px] font-bold text-(--title)">Popular Items</span>
+
                     </div>
-                    <div class="max-w-full flex gap-4 justify-start text-white font-bold max-lg:text-sm max-sm:text-xs text-nowrap overflow-x-auto">
-                        <button class="px-9 py-3 rounded-4xl bg-(--buttom)">Baby & Mom Care</button>
-                        <button class="px-9 py-3 rounded-4xl bg-(--buttom)">Medical Equipments</button>
-                        <button class="px-9 py-3 rounded-4xl bg-(--buttom)">Medicine</button>
-                        <button class="px-9 py-3 rounded-4xl bg-(--buttom)">تجهیزات</button>
-                        <button class="px-9 py-3 rounded-4xl bg-(--buttom)">Medicine</button>
-                    </div>
-                    <div class="w-full flex lg:gap-4.5  gap-3 mt-5 overflow-x-auto p-4">
-                        <div class="lg:min-w-24/100 lg:max-w-24/100 sm:min-w-33/100 sm:max-w-33/100 min-w-49/100 max-w-49/100 xl:h-95 lg:h-90 sm:h-80 h-70 relative group  flex flex-col shadow-[0_0_10px_3px] shadow-gray-200 rounded-xl" onclick="show_this_product(this)">
+                </div>
+            </div>
+
+
+
+            @endforeach
+        </div>
+    </section>
+    <!-- خدمات -->
+    <section class="w-11/12  flex flex-col gap-5 justify-start items-center">
+        <div class="w-full mx-auto bg-[#023350] py-7 px-3 xl:gap-4 gap-3 sm:gap-y-6 grid lg:grid-cols-4 sm:grid-cols-2 grid-cols-1 rounded-3xl">
+            @foreach($SI as $support)
+            <div class="w-full flex max-xl:flex-col max-lg:flex-row max-sm:flex-col justify-center items-center xl:gap-4 gap-3">
+                <div class='xl:min-w-21 min-w-17 xl:min-h-21 min-h-17 xl:max-w-21 max-w-17 xl:max-h-21 max-h-17 rounded-full h-full bg-[#EDE0D7] flex justify-center items-center p-1'>
+                    <img class='min-w-8/12 min-h-8/12 max-w-10/12 max-h-10/12' src="{{asset('storage/'.$support->image)}}" alt="">
+                </div>
+                <div class="xl:w-8/12 lg:w-11/12 sm:8/12 w-11/12 text-white flex flex-col gap-3 max-xl:items-center max-lg:items-start max-sm:items-center">
+                    <h4 class="max-xl:text-sm max-sm:text-base font-bold">{{$support->title}}</h4>
+                    <p class="xl:text-sm sm:text-xs text-sm text-[#efefef]">{{$support->summary}}</p>
+                </div>
+            </div>
+            @endforeach
+        </div>
+    </section>
+    <!-- Popular Items -->
+    <section class="w-11/12  flex flex-col gap-5 justify-start items-center">
+        <div class="w-full flex justify-between gap-5 mt-20">
+            <div class="xl:w-6/24 w-full min-h-full max-xl:hidden max-h-135 overflow-y-hidden flex justify-center items-start rounded-xl">
+                <img src="{{asset('assets/img/0ec7015a-eb8d-44c8-b874-c942e86c38c3screencapture-montazami-dev-ir-2026-08-10-23_27_01.png')}}" alt="" class="min-w-1/2 min-h-1/2 max-w-full rounded-xl">
+            </div>
+            <div class="xl:w-18/24 w-full min-h-full flex flex-col gap-3">
+                <div class="w-full mx-auto flex justify-between">
+                    <a href=""
+                        class="flex flex-row-reverse gap-2 fill-(--buttom) text-(--buttom) hover:text-[#fd6a6a] hover:fill-[#fd6a6a] transition-all duration-300">
+                        <span class="">All Products </span>
+                       
+                        <svg height="20px" width="20px" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg"
+                            xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 297 297" xml:space="preserve">
+                            <g>
+                                <polygon points="33,66 0,66 66,148 0,231 33,231 99,148 	" />
+                                <polygon points="83,66 50,66 116,148 50,231 83,231 149,148 	" />
+                                <polygon points="133,66 100,66 166,148 100,231 133,231 199,148 	" />
+                                <polygon points="231,66 149,66 215,148 149,231 231,231 297,148 	" />
+                            </g>
+                        </svg>
+                    </a>
+                    <span class="text-[17px] md:text-[25px] font-bold text-(--title)">Popular Items</span>
+                </div>
+                <div class="max-w-full flex gap-4 justify-start text-white font-bold max-lg:text-sm max-sm:text-xs text-nowrap overflow-x-auto">
+                    <button class="px-9 py-3 rounded-4xl bg-(--buttom)">Baby & Mom Care</button>
+                    <button class="px-9 py-3 rounded-4xl bg-(--buttom)">Medical Equipments</button>
+                    <button class="px-9 py-3 rounded-4xl bg-(--buttom)">Medicine</button>
+                    <button class="px-9 py-3 rounded-4xl bg-(--buttom)">تجهیزات</button>
+                    <button class="px-9 py-3 rounded-4xl bg-(--buttom)">Medicine</button>
+                </div>
+                <div class="w-full flex lg:gap-4.5  gap-3 mt-5 overflow-x-auto p-4">
+                    <!-- <div class="lg:min-w-24/100 lg:max-w-24/100 sm:min-w-33/100 sm:max-w-33/100 min-w-49/100 max-w-49/100 xl:h-95 lg:h-90 sm:h-80 h-70 relative group  flex flex-col shadow-[0_0_10px_3px] shadow-gray-200 rounded-xl" onclick="show_this_product(this)">
                             <div class="w-full h-8/12 relative overflow-hidden flex justify-center items-center">
                                 <span class="w-full h-1/3 group-hover:h-2/3 group-active:h-2/3 bg-[#00ffff]/50 absolute bottom-0 right-0 z-0 transition_normal rounded-t-xl"></span>
                                 <div class="w-full h-full relative">
@@ -970,166 +1043,471 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-          
-        </section>
-        <!-- بنر2 -->
-        <section class="w-11/12  flex flex-col gap-5 justify-start items-center">
-            <div class="w-full mx-auto lg:h-85 sm:h-75 h-65 relative">
-                <img src="{{asset('storage/'.$advertisement->image_path)}}" alt="" class="w-full h-full rounded-2xl object-cover">
-                <div class="absolute w-full h-full top-0 flex flex-col justify-center items-center gap-5">
-                    <h6 class="lg:text-xl max-sm:text-sm text-[#023350]">{{$advertisement->subtitle}}</h6>
-                    <h2 class="text-[#023350] lg:text-5xl sm:text-4xl text-2xl  font-bold text-center">{{$advertisement->title}}</h2>
-                    <p class="lg:text-lg max-sm:text-sm px-4 py-1 border-y">{{$advertisement->summary}}</p>
-                    <a href="{{$advertisement->category_id}}" class="px-4 py-2 bg-[#03a297] rounded-4xl max-lg:text-sm">{{$advertisement->category_id}}</a>
-                </div>
-            </div>
-        </section>
-        <!-- برندها -->
-        <section class="w-11/12  flex flex-col gap-5 justify-start items-center">
-            <div class="w-full mx-auto flex justify-between">
-                <a href=""
-                    class="flex flex-row-reverse gap-2 fill-[#54ab9a] text-[#54ab9a] hover:text-[#fd6a6a] hover:fill-[#fd6a6a] transition-all duration-300">
-                    <span class="">All Products </span>
-                    <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-                    <svg height="20px" width="20px" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg"
-                        xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 297 297" xml:space="preserve">
-                        <g>
-                            <polygon points="33,66 0,66 66,148 0,231 33,231 99,148 	" />
-                            <polygon points="83,66 50,66 116,148 50,231 83,231 149,148 	" />
-                            <polygon points="133,66 100,66 166,148 100,231 133,231 199,148 	" />
-                            <polygon points="231,66 149,66 215,148 149,231 231,231 297,148 	" />
-                        </g>
-                    </svg>
-                </a>
-                <span class="text-[17px] md:text-[25px] font-bold text-[#023350]">Popular Items</span>
-            </div>
-            <div class="w-full mx-auto py-2 bg-white flex lg:gap-2 gap-2.5 items-center overflow-x-auto">
-
-                @for($i=0;$i<20;$i++)
-                    <div class="lg:min-w-12/100 lg:max-w-12/100 sm:min-w-15/100 sm:max-w-15/100 min-w-22/100 max-w-22/100 lg:h-15 sm:h-13 h-10 flex justify-center items-center group">
-                        <img src="{{asset('assets/img/header/logo.png')}}" alt="" class="min-w-8/12 min-h-8/12 max-w-full max-h-full p-1 lg:opacity-40 lg:group-hover:opacity-100 transition_normal">
-                    </div>
-                @endfor
-
-
-            </div>
-
-
-        </section>
-        <!-- بهترین محصولات -->
-        <section class="w-11/12  flex flex-col gap-5 justify-start items-center">
-            <div class="w-full mx-auto">
-                <img src="{{asset('storage/'.$product_label->image)}}" alt="" class="w-full h-60 lg:h-80 object-cover rounded-2xl">
-                <div class="relative -top-20 w-full flex justify-center">
-                    <div class="w-98/100 grid lg:grid-cols-3 sm:grid-cols-2 grid-cols-1 items-center gap-2">
-                        <div class="w-full flex flex-col items-center gap-5 bg-(--product) rounded-2xl py-5">
-                            <div class="w-11/12 mx-auto">
-                                <div class="w-full">
-                                    <span class="text-[30px]  items-end">{{$product_label->label_1}}</span>
-                                </div>
-                                <div class="w-full min-h-[1px] max-h-[1px] bg-white rounded-full"></div>
+                        </div> -->
+                    <div class="xl:min-w-33/100 xl:max-w-33/100 lg:min-w-24/100 lg:max-w-24/100 sm:min-w-33/100 sm:max-w-33/100 min-w-49/100 max-w-49/100 min-[450px]:min-w-49/100 min-[450px]:max-w-49/100 min-w-full max-w-full xl:h-100 lg:h-90 sm:h-85 h-80 relative group  flex flex-col gap-1 shadow-[0_0_10px_3px] shadow-gray-200 rounded-xl bg-white p-0.5 " onclick="show_this_product(this)">
+                        <div class="w-full h-7/12 relative  flex justify-center items-center bg-[#E0F2FE] rounded-xl">
+                            <!-- <span class="w-full h-1/3 group-hover:h-2/3 group-active:h-2/3 bg-[#00ffff]/30 absolute bottom-0 right-0 z-0 transition_normal rounded-t-xl"></span> -->
+                            <!-- <div class="w-full h-full relative flex j"> -->
+                            <img src="{{asset('assets/img/header/img_heder.webp')}}" alt="" class="min-w-1/2 min-h-1/2 max-w-full max-h-full rounded-xl select-none ">
+                            <!-- </div> -->
+                            <!-- <a href="{{route('product.client_pro_single',['product'=>$product->id])}}" class="px-4 py-2 rounded-full bg-(--buttom)  absolute bottom-0 translate-y-full group-hover:-translate-y-5 transition_normal z-1 text-white font-bold">مشاهده محصول</a> -->
+                            <div class="size-7 bg-white rounded-full absolute top-3 right-3 flex justify-center items-center shadow-[0_0_12px_2px] shadow-zinc-200" onclick="like_dislike(this)">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="size-7/12 ">
+                                    <path d="M225.8 468.2l-2.5-2.3L48.1 303.2C17.4 274.7 0 234.7 0 192.8v-3.3c0-70.4 50-130.8 119.2-144C158.6 37.9 198.9 47 231 69.6c9 6.4 17.4 13.8 25 22.3c4.2-4.8 8.7-9.2 13.5-13.3c3.7-3.2 7.5-6.2 11.5-9c0 0 0 0 0 0C313.1 47 353.4 37.9 392.8 45.4C462 58.6 512 119.1 512 189.5v3.3c0 41.9-17.4 81.9-48.1 110.4L288.7 465.9l-2.5 2.3c-8.2 7.6-19 11.9-30.2 11.9s-22-4.2-30.2-11.9zM239.1 145c-.4-.3-.7-.7-1-1.1l-17.8-20c0 0-.1-.1-.1-.1c0 0 0 0 0 0c-23.1-25.9-58-37.7-92-31.2C81.6 101.5 48 142.1 48 189.5v3.3c0 28.5 11.9 55.8 32.8 75.2L256 430.7 431.2 268c20.9-19.4 32.8-46.7 32.8-75.2v-3.3c0-47.3-33.6-88-80.1-96.9c-34-6.5-69 5.4-92 31.2c0 0 0 0-.1 .1s0 0-.1 .1l-17.8 20c-.3 .4-.7 .7-1 1.1c-4.5 4.5-10.6 7-16.9 7s-12.4-2.5-16.9-7z" />
+                                </svg>
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="size-7/12 fill-red-500 hidden">
+                                    <path d="M47.6 300.4L228.3 469.1c7.5 7 17.4 10.9 27.7 10.9s20.2-3.9 27.7-10.9L464.4 300.4c30.4-28.3 47.6-68 47.6-109.5v-5.8c0-69.9-50.5-129.5-119.4-141C347 36.5 300.6 51.4 268 84L256 96 244 84c-32.6-32.6-79-47.5-124.6-39.9C50.5 55.6 0 115.2 0 185.1v5.8c0 41.5 17.2 81.2 47.6 109.5z" />
+                                </svg>
                             </div>
-                            <div class="w-11/12 flex flex-col gap-5 items-center">
-                                <div class="w-full mx-auto flex gap-1 justify-between bg-(--primary_color) rounded-lg xl:h-35 lg:h-32 sm:h-27 h-23">
-                                    <div class="w-5/12 h-full flex justify-center items-center p-2">
-                                        <img src="{{asset('assets/img/silyder.producte/01.png')}}" alt=""
-                                            class="min-w-8/12 min-h-8/12 max-w-full max-h-full">
-                                    </div>
-                                    <div class="w-7/10 flex items-center justify-start relative">
-
-                                        <div class="w-full rounded-b-xl flex flex-col gap-1 justify-center p-3">
-                                            <div class="flex flex-col ">
-                                                <h4 class="xl:text-xl lg:text-lg max-sm:text-sm font-bold max-w-full truncate">df.s</h4>
-                                                <p class="lg:text-sm sm:text-xs text-[10px] text-gray-500 max-w-full truncate">توضیحات محصول</p>
-                                            </div>
-                                            <div class="flex flex-col gap-0.5">
-                                                <div class="flex gap-2 justify-start items-center">
-                                                    <del class="flex gap-2 justify-start items-center text-gray-500">
-                                                        <div class="flex gap-1 justify-start items-center lg:text-sm sm:text-xs text-[10px]">
-                                                            <span>55,555,555</span>
-                                                            <span>تومان</span>
-                                                        </div>
-                                                    </del>
-                                                    <span class="px-2 py-1 font-bold lg:text-[10px] sm:text-[8px] text-[6px] text-white rounded-xl bg-(--buttom)">40%</span>
-                                                </div>
-                                                <div class="flex gap-1 justify-start items-center font-bold max-lg:text-sm max-sm:text-xs">
-                                                    <span>55,555,555</span>
-                                                    <span>تومان</span>
-                                                </div>
-                                            </div>
+                            <div class="sm:text-xs text-[10px] font-bold text-white bg-[#01AF6A] rounded-full sm:px-3 sm:py-1.5 px-2 py-1 flex gap-1 justify-center items-center absolute top-3 left-3">
+                                <span>40%</span>
+                                <span>تخفیف</span>
+                            </div>
+                        </div>
+                        <div class="w-full h-5/12  rounded-b-xl flex flex-col gap-2 justify-center p-3">
+                            <div class="flex flex-col gap-1">
+                                <h4 class="xl:text-lg lg:text-base max-sm:text-sm font-bold max-w-full truncate">ماسک تنفسی</h4>
+                                <p class="xl:text-[13px] text-[11px] text-zinc-400 font-bold max-w-full truncate">توضیحات توضیحات توضیحات محصول</p>
+                            </div>
+                            <div class="flex flex-col gap-0.5">
+                                <div class="flex gap-2 justify-start items-center">
+                                    <del class="flex gap-2 justify-start items-center text-(--discription)">
+                                        <div class="flex gap-1 justify-start items-center lg:text-sm sm:text-xs text-[10px]">
+                                            <span>{{number_format($product->price)}}</span>
+                                            <span>تومان</span>
                                         </div>
-                                    </div>
+                                    </del>
+                                    <!-- <span class="px-2 py-1 font-bold lg:text-[10px] sm:text-[8px] text-[6px] text-white rounded-xl bg-(--buttom)">40%</span> -->
                                 </div>
-                                <div class="w-full mx-auto flex gap-1 justify-between bg-(--primary_color) rounded-lg xl:h-35 lg:h-32 sm:h-27 h-23">
-                                    <div class="w-5/12 h-full flex justify-center items-center p-2">
-                                        <img src="{{asset('assets/img/silyder.producte/01.png')}}" alt=""
-                                            class="min-w-8/12 min-h-8/12 max-w-full max-h-full">
-                                    </div>
-                                    <div class="w-7/10 flex items-center justify-start relative">
-
-                                        <div class="w-full rounded-b-xl flex flex-col gap-1 justify-center p-3">
-                                            <div class="flex flex-col ">
-                                                <h4 class="xl:text-xl lg:text-lg max-sm:text-sm font-bold max-w-full truncate">df.s</h4>
-                                                <p class="lg:text-sm sm:text-xs text-[10px] text-gray-500 max-w-full truncate">توضیحات محصول</p>
-                                            </div>
-                                            <div class="flex flex-col gap-0.5">
-                                                <div class="flex gap-2 justify-start items-center">
-                                                    <del class="flex gap-2 justify-start items-center text-gray-500">
-                                                        <div class="flex gap-1 justify-start items-center lg:text-sm sm:text-xs text-[10px]">
-                                                            <span>55,555,555</span>
-                                                            <span>تومان</span>
-                                                        </div>
-                                                    </del>
-                                                    <span class="px-2 py-1 font-bold lg:text-[10px] sm:text-[8px] text-[6px] text-white rounded-xl bg-(--buttom)">40%</span>
-                                                </div>
-                                                <div class="flex gap-1 justify-start items-center font-bold max-lg:text-sm max-sm:text-xs">
-                                                    <span>55,555,555</span>
-                                                    <span>تومان</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
+                                <div class="flex gap-1 justify-start items-center font-bold xl:text-lg max-lg:text-sm max-sm:text-xs">
+                                    <span>{{number_format($product->price)}}</span>
+                                    <span>تومان</span>
                                 </div>
-                                <div class="w-full mx-auto flex gap-1 justify-between bg-(--primary_color) rounded-lg xl:h-35 lg:h-32 sm:h-27 h-23">
-                                    <div class="w-5/12 h-full flex justify-center items-center p-2">
-                                        <img src="{{asset('assets/img/silyder.producte/01.png')}}" alt=""
-                                            class="min-w-8/12 min-h-8/12 max-w-full max-h-full">
+                                <a href="{{route('product.client_pro_single',['product'=>$product->id])}}" class="w-full px-4 py-2 rounded-full bg-[#037C77] transition_normal z-1 text-white font-bold flex gap-1 hover:gap-2 justify-center items-center text-sm max-xl:text-xs mt-0.5">
+                                    <div class=" transition_normal">
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512" class="size-4 max-xl:size-3 fill-white">
+                                            <path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z" />
+                                        </svg>
                                     </div>
-                                    <div class="w-7/10 flex items-center justify-start relative">
-
-                                        <div class="w-full rounded-b-xl flex flex-col gap-1 justify-center p-3">
-                                            <div class="flex flex-col ">
-                                                <h4 class="xl:text-xl lg:text-lg max-sm:text-sm font-bold max-w-full truncate">df.s</h4>
-                                                <p class="lg:text-sm sm:text-xs text-[10px] text-gray-500 max-w-full truncate">توضیحات محصول</p>
-                                            </div>
-                                            <div class="flex flex-col gap-0.5">
-                                                <div class="flex gap-2 justify-start items-center">
-                                                    <del class="flex gap-2 justify-start items-center text-gray-500">
-                                                        <div class="flex gap-1 justify-start items-center lg:text-sm sm:text-xs text-[10px]">
-                                                            <span>55,555,555</span>
-                                                            <span>تومان</span>
-                                                        </div>
-                                                    </del>
-                                                    <span class="px-2 py-1 font-bold lg:text-[10px] sm:text-[8px] text-[6px] text-white rounded-xl bg-(--buttom)">40%</span>
-                                                </div>
-                                                <div class="flex gap-1 justify-start items-center font-bold max-lg:text-sm max-sm:text-xs">
-                                                    <span>55,555,555</span>
-                                                    <span>تومان</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
+                                    <span>مشاهده مخصول</span>
+                                </a>
 
                             </div>
                         </div>
-                        <div class="w-full flex flex-col items-center gap-5 bg-(--product) rounded-2xl py-5">
+                    </div>
+                    <div class="xl:min-w-33/100 xl:max-w-33/100 lg:min-w-24/100 lg:max-w-24/100 sm:min-w-33/100 sm:max-w-33/100 min-w-49/100 max-w-49/100 min-[450px]:min-w-49/100 min-[450px]:max-w-49/100 min-w-full max-w-full xl:h-100 lg:h-90 sm:h-85 h-80 relative group  flex flex-col gap-1 shadow-[0_0_10px_3px] shadow-gray-200 rounded-xl bg-white p-0.5 " onclick="show_this_product(this)">
+                        <div class="w-full h-7/12 relative  flex justify-center items-center bg-[#E0F2FE] rounded-xl">
+                            <!-- <span class="w-full h-1/3 group-hover:h-2/3 group-active:h-2/3 bg-[#00ffff]/30 absolute bottom-0 right-0 z-0 transition_normal rounded-t-xl"></span> -->
+                            <!-- <div class="w-full h-full relative flex j"> -->
+                            <img src="{{asset('assets/img/header/img_heder.webp')}}" alt="" class="min-w-1/2 min-h-1/2 max-w-full max-h-full rounded-xl select-none ">
+                            <!-- </div> -->
+                            <!-- <a href="{{route('product.client_pro_single',['product'=>$product->id])}}" class="px-4 py-2 rounded-full bg-(--buttom)  absolute bottom-0 translate-y-full group-hover:-translate-y-5 transition_normal z-1 text-white font-bold">مشاهده محصول</a> -->
+                            <div class="size-7 bg-white rounded-full absolute top-3 right-3 flex justify-center items-center shadow-[0_0_12px_2px] shadow-zinc-200" onclick="like_dislike(this)">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="size-7/12 ">
+                                    <path d="M225.8 468.2l-2.5-2.3L48.1 303.2C17.4 274.7 0 234.7 0 192.8v-3.3c0-70.4 50-130.8 119.2-144C158.6 37.9 198.9 47 231 69.6c9 6.4 17.4 13.8 25 22.3c4.2-4.8 8.7-9.2 13.5-13.3c3.7-3.2 7.5-6.2 11.5-9c0 0 0 0 0 0C313.1 47 353.4 37.9 392.8 45.4C462 58.6 512 119.1 512 189.5v3.3c0 41.9-17.4 81.9-48.1 110.4L288.7 465.9l-2.5 2.3c-8.2 7.6-19 11.9-30.2 11.9s-22-4.2-30.2-11.9zM239.1 145c-.4-.3-.7-.7-1-1.1l-17.8-20c0 0-.1-.1-.1-.1c0 0 0 0 0 0c-23.1-25.9-58-37.7-92-31.2C81.6 101.5 48 142.1 48 189.5v3.3c0 28.5 11.9 55.8 32.8 75.2L256 430.7 431.2 268c20.9-19.4 32.8-46.7 32.8-75.2v-3.3c0-47.3-33.6-88-80.1-96.9c-34-6.5-69 5.4-92 31.2c0 0 0 0-.1 .1s0 0-.1 .1l-17.8 20c-.3 .4-.7 .7-1 1.1c-4.5 4.5-10.6 7-16.9 7s-12.4-2.5-16.9-7z" />
+                                </svg>
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="size-7/12 fill-red-500 hidden">
+                                    <path d="M47.6 300.4L228.3 469.1c7.5 7 17.4 10.9 27.7 10.9s20.2-3.9 27.7-10.9L464.4 300.4c30.4-28.3 47.6-68 47.6-109.5v-5.8c0-69.9-50.5-129.5-119.4-141C347 36.5 300.6 51.4 268 84L256 96 244 84c-32.6-32.6-79-47.5-124.6-39.9C50.5 55.6 0 115.2 0 185.1v5.8c0 41.5 17.2 81.2 47.6 109.5z" />
+                                </svg>
+                            </div>
+                            <div class="sm:text-xs text-[10px] font-bold text-white bg-[#01AF6A] rounded-full sm:px-3 sm:py-1.5 px-2 py-1 flex gap-1 justify-center items-center absolute top-3 left-3">
+                                <span>40%</span>
+                                <span>تخفیف</span>
+                            </div>
+                        </div>
+                        <div class="w-full h-5/12  rounded-b-xl flex flex-col gap-2 justify-center p-3">
+                            <div class="flex flex-col gap-1">
+                                <h4 class="xl:text-lg lg:text-base max-sm:text-sm font-bold max-w-full truncate">ماسک تنفسی</h4>
+                                <p class="xl:text-[13px] text-[11px] text-zinc-400 font-bold max-w-full truncate">توضیحات توضیحات توضیحات محصول</p>
+                            </div>
+                            <div class="flex flex-col gap-0.5">
+                                <div class="flex gap-2 justify-start items-center">
+                                    <del class="flex gap-2 justify-start items-center text-(--discription)">
+                                        <div class="flex gap-1 justify-start items-center lg:text-sm sm:text-xs text-[10px]">
+                                            <span>{{number_format($product->price)}}</span>
+                                            <span>تومان</span>
+                                        </div>
+                                    </del>
+                                    <!-- <span class="px-2 py-1 font-bold lg:text-[10px] sm:text-[8px] text-[6px] text-white rounded-xl bg-(--buttom)">40%</span> -->
+                                </div>
+                                <div class="flex gap-1 justify-start items-center font-bold xl:text-lg max-lg:text-sm max-sm:text-xs">
+                                    <span>{{number_format($product->price)}}</span>
+                                    <span>تومان</span>
+                                </div>
+                                <a href="{{route('product.client_pro_single',['product'=>$product->id])}}" class="w-full px-4 py-2 rounded-full bg-[#037C77] transition_normal z-1 text-white font-bold flex gap-1 hover:gap-2 justify-center items-center text-sm max-xl:text-xs mt-0.5">
+                                    <div class=" transition_normal">
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512" class="size-4 max-xl:size-3 fill-white">
+                                            <path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z" />
+                                        </svg>
+                                    </div>
+                                    <span>مشاهده مخصول</span>
+                                </a>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="xl:min-w-33/100 xl:max-w-33/100 lg:min-w-24/100 lg:max-w-24/100 sm:min-w-33/100 sm:max-w-33/100 min-w-49/100 max-w-49/100 min-[450px]:min-w-49/100 min-[450px]:max-w-49/100 min-w-full max-w-full xl:h-100 lg:h-90 sm:h-85 h-80 relative group  flex flex-col gap-1 shadow-[0_0_10px_3px] shadow-gray-200 rounded-xl bg-white p-0.5 " onclick="show_this_product(this)">
+                        <div class="w-full h-7/12 relative  flex justify-center items-center bg-[#E0F2FE] rounded-xl">
+                            <!-- <span class="w-full h-1/3 group-hover:h-2/3 group-active:h-2/3 bg-[#00ffff]/30 absolute bottom-0 right-0 z-0 transition_normal rounded-t-xl"></span> -->
+                            <!-- <div class="w-full h-full relative flex j"> -->
+                            <img src="{{asset('assets/img/header/img_heder.webp')}}" alt="" class="min-w-1/2 min-h-1/2 max-w-full max-h-full rounded-xl select-none ">
+                            <!-- </div> -->
+                            <!-- <a href="{{route('product.client_pro_single',['product'=>$product->id])}}" class="px-4 py-2 rounded-full bg-(--buttom)  absolute bottom-0 translate-y-full group-hover:-translate-y-5 transition_normal z-1 text-white font-bold">مشاهده محصول</a> -->
+                            <div class="size-7 bg-white rounded-full absolute top-3 right-3 flex justify-center items-center shadow-[0_0_12px_2px] shadow-zinc-200" onclick="like_dislike(this)">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="size-7/12 ">
+                                    <path d="M225.8 468.2l-2.5-2.3L48.1 303.2C17.4 274.7 0 234.7 0 192.8v-3.3c0-70.4 50-130.8 119.2-144C158.6 37.9 198.9 47 231 69.6c9 6.4 17.4 13.8 25 22.3c4.2-4.8 8.7-9.2 13.5-13.3c3.7-3.2 7.5-6.2 11.5-9c0 0 0 0 0 0C313.1 47 353.4 37.9 392.8 45.4C462 58.6 512 119.1 512 189.5v3.3c0 41.9-17.4 81.9-48.1 110.4L288.7 465.9l-2.5 2.3c-8.2 7.6-19 11.9-30.2 11.9s-22-4.2-30.2-11.9zM239.1 145c-.4-.3-.7-.7-1-1.1l-17.8-20c0 0-.1-.1-.1-.1c0 0 0 0 0 0c-23.1-25.9-58-37.7-92-31.2C81.6 101.5 48 142.1 48 189.5v3.3c0 28.5 11.9 55.8 32.8 75.2L256 430.7 431.2 268c20.9-19.4 32.8-46.7 32.8-75.2v-3.3c0-47.3-33.6-88-80.1-96.9c-34-6.5-69 5.4-92 31.2c0 0 0 0-.1 .1s0 0-.1 .1l-17.8 20c-.3 .4-.7 .7-1 1.1c-4.5 4.5-10.6 7-16.9 7s-12.4-2.5-16.9-7z" />
+                                </svg>
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="size-7/12 fill-red-500 hidden">
+                                    <path d="M47.6 300.4L228.3 469.1c7.5 7 17.4 10.9 27.7 10.9s20.2-3.9 27.7-10.9L464.4 300.4c30.4-28.3 47.6-68 47.6-109.5v-5.8c0-69.9-50.5-129.5-119.4-141C347 36.5 300.6 51.4 268 84L256 96 244 84c-32.6-32.6-79-47.5-124.6-39.9C50.5 55.6 0 115.2 0 185.1v5.8c0 41.5 17.2 81.2 47.6 109.5z" />
+                                </svg>
+                            </div>
+                            <div class="sm:text-xs text-[10px] font-bold text-white bg-[#01AF6A] rounded-full sm:px-3 sm:py-1.5 px-2 py-1 flex gap-1 justify-center items-center absolute top-3 left-3">
+                                <span>40%</span>
+                                <span>تخفیف</span>
+                            </div>
+                        </div>
+                        <div class="w-full h-5/12  rounded-b-xl flex flex-col gap-2 justify-center p-3">
+                            <div class="flex flex-col gap-1">
+                                <h4 class="xl:text-lg lg:text-base max-sm:text-sm font-bold max-w-full truncate">ماسک تنفسی</h4>
+                                <p class="xl:text-[13px] text-[11px] text-zinc-400 font-bold max-w-full truncate">توضیحات توضیحات توضیحات محصول</p>
+                            </div>
+                            <div class="flex flex-col gap-0.5">
+                                <div class="flex gap-2 justify-start items-center">
+                                    <del class="flex gap-2 justify-start items-center text-(--discription)">
+                                        <div class="flex gap-1 justify-start items-center lg:text-sm sm:text-xs text-[10px]">
+                                            <span>{{number_format($product->price)}}</span>
+                                            <span>تومان</span>
+                                        </div>
+                                    </del>
+                                    <!-- <span class="px-2 py-1 font-bold lg:text-[10px] sm:text-[8px] text-[6px] text-white rounded-xl bg-(--buttom)">40%</span> -->
+                                </div>
+                                <div class="flex gap-1 justify-start items-center font-bold xl:text-lg max-lg:text-sm max-sm:text-xs">
+                                    <span>{{number_format($product->price)}}</span>
+                                    <span>تومان</span>
+                                </div>
+                                <a href="{{route('product.client_pro_single',['product'=>$product->id])}}" class="w-full px-4 py-2 rounded-full bg-[#037C77] transition_normal z-1 text-white font-bold flex gap-1 hover:gap-2 justify-center items-center text-sm max-xl:text-xs mt-0.5">
+                                    <div class=" transition_normal">
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512" class="size-4 max-xl:size-3 fill-white">
+                                            <path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z" />
+                                        </svg>
+                                    </div>
+                                    <span>مشاهده مخصول</span>
+                                </a>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="xl:min-w-33/100 xl:max-w-33/100 lg:min-w-24/100 lg:max-w-24/100 sm:min-w-33/100 sm:max-w-33/100 min-w-49/100 max-w-49/100 min-[450px]:min-w-49/100 min-[450px]:max-w-49/100 min-w-full max-w-full xl:h-100 lg:h-90 sm:h-85 h-80 relative group  flex flex-col gap-1 shadow-[0_0_10px_3px] shadow-gray-200 rounded-xl bg-white p-0.5 " onclick="show_this_product(this)">
+                        <div class="w-full h-7/12 relative  flex justify-center items-center bg-[#E0F2FE] rounded-xl">
+                            <!-- <span class="w-full h-1/3 group-hover:h-2/3 group-active:h-2/3 bg-[#00ffff]/30 absolute bottom-0 right-0 z-0 transition_normal rounded-t-xl"></span> -->
+                            <!-- <div class="w-full h-full relative flex j"> -->
+                            <img src="{{asset('assets/img/header/img_heder.webp')}}" alt="" class="min-w-1/2 min-h-1/2 max-w-full max-h-full rounded-xl select-none ">
+                            <!-- </div> -->
+                            <!-- <a href="{{route('product.client_pro_single',['product'=>$product->id])}}" class="px-4 py-2 rounded-full bg-(--buttom)  absolute bottom-0 translate-y-full group-hover:-translate-y-5 transition_normal z-1 text-white font-bold">مشاهده محصول</a> -->
+                            <div class="size-7 bg-white rounded-full absolute top-3 right-3 flex justify-center items-center shadow-[0_0_12px_2px] shadow-zinc-200" onclick="like_dislike(this)">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="size-7/12 ">
+                                    <path d="M225.8 468.2l-2.5-2.3L48.1 303.2C17.4 274.7 0 234.7 0 192.8v-3.3c0-70.4 50-130.8 119.2-144C158.6 37.9 198.9 47 231 69.6c9 6.4 17.4 13.8 25 22.3c4.2-4.8 8.7-9.2 13.5-13.3c3.7-3.2 7.5-6.2 11.5-9c0 0 0 0 0 0C313.1 47 353.4 37.9 392.8 45.4C462 58.6 512 119.1 512 189.5v3.3c0 41.9-17.4 81.9-48.1 110.4L288.7 465.9l-2.5 2.3c-8.2 7.6-19 11.9-30.2 11.9s-22-4.2-30.2-11.9zM239.1 145c-.4-.3-.7-.7-1-1.1l-17.8-20c0 0-.1-.1-.1-.1c0 0 0 0 0 0c-23.1-25.9-58-37.7-92-31.2C81.6 101.5 48 142.1 48 189.5v3.3c0 28.5 11.9 55.8 32.8 75.2L256 430.7 431.2 268c20.9-19.4 32.8-46.7 32.8-75.2v-3.3c0-47.3-33.6-88-80.1-96.9c-34-6.5-69 5.4-92 31.2c0 0 0 0-.1 .1s0 0-.1 .1l-17.8 20c-.3 .4-.7 .7-1 1.1c-4.5 4.5-10.6 7-16.9 7s-12.4-2.5-16.9-7z" />
+                                </svg>
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="size-7/12 fill-red-500 hidden">
+                                    <path d="M47.6 300.4L228.3 469.1c7.5 7 17.4 10.9 27.7 10.9s20.2-3.9 27.7-10.9L464.4 300.4c30.4-28.3 47.6-68 47.6-109.5v-5.8c0-69.9-50.5-129.5-119.4-141C347 36.5 300.6 51.4 268 84L256 96 244 84c-32.6-32.6-79-47.5-124.6-39.9C50.5 55.6 0 115.2 0 185.1v5.8c0 41.5 17.2 81.2 47.6 109.5z" />
+                                </svg>
+                            </div>
+                            <div class="sm:text-xs text-[10px] font-bold text-white bg-[#01AF6A] rounded-full sm:px-3 sm:py-1.5 px-2 py-1 flex gap-1 justify-center items-center absolute top-3 left-3">
+                                <span>40%</span>
+                                <span>تخفیف</span>
+                            </div>
+                        </div>
+                        <div class="w-full h-5/12  rounded-b-xl flex flex-col gap-2 justify-center p-3">
+                            <div class="flex flex-col gap-1">
+                                <h4 class="xl:text-lg lg:text-base max-sm:text-sm font-bold max-w-full truncate">ماسک تنفسی</h4>
+                                <p class="xl:text-[13px] text-[11px] text-zinc-400 font-bold max-w-full truncate">توضیحات توضیحات توضیحات محصول</p>
+                            </div>
+                            <div class="flex flex-col gap-0.5">
+                                <div class="flex gap-2 justify-start items-center">
+                                    <del class="flex gap-2 justify-start items-center text-(--discription)">
+                                        <div class="flex gap-1 justify-start items-center lg:text-sm sm:text-xs text-[10px]">
+                                            <span>{{number_format($product->price)}}</span>
+                                            <span>تومان</span>
+                                        </div>
+                                    </del>
+                                    <!-- <span class="px-2 py-1 font-bold lg:text-[10px] sm:text-[8px] text-[6px] text-white rounded-xl bg-(--buttom)">40%</span> -->
+                                </div>
+                                <div class="flex gap-1 justify-start items-center font-bold xl:text-lg max-lg:text-sm max-sm:text-xs">
+                                    <span>{{number_format($product->price)}}</span>
+                                    <span>تومان</span>
+                                </div>
+                                <a href="{{route('product.client_pro_single',['product'=>$product->id])}}" class="w-full px-4 py-2 rounded-full bg-[#037C77] transition_normal z-1 text-white font-bold flex gap-1 hover:gap-2 justify-center items-center text-sm max-xl:text-xs mt-0.5">
+                                    <div class=" transition_normal">
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512" class="size-4 max-xl:size-3 fill-white">
+                                            <path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z" />
+                                        </svg>
+                                    </div>
+                                    <span>مشاهده مخصول</span>
+                                </a>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="xl:min-w-33/100 xl:max-w-33/100 lg:min-w-24/100 lg:max-w-24/100 sm:min-w-33/100 sm:max-w-33/100 min-w-49/100 max-w-49/100 min-[450px]:min-w-49/100 min-[450px]:max-w-49/100 min-w-full max-w-full xl:h-100 lg:h-90 sm:h-85 h-80 relative group  flex flex-col gap-1 shadow-[0_0_10px_3px] shadow-gray-200 rounded-xl bg-white p-0.5 " onclick="show_this_product(this)">
+                        <div class="w-full h-7/12 relative  flex justify-center items-center bg-[#E0F2FE] rounded-xl">
+                            <!-- <span class="w-full h-1/3 group-hover:h-2/3 group-active:h-2/3 bg-[#00ffff]/30 absolute bottom-0 right-0 z-0 transition_normal rounded-t-xl"></span> -->
+                            <!-- <div class="w-full h-full relative flex j"> -->
+                            <img src="{{asset('assets/img/header/img_heder.webp')}}" alt="" class="min-w-1/2 min-h-1/2 max-w-full max-h-full rounded-xl select-none ">
+                            <!-- </div> -->
+                            <!-- <a href="{{route('product.client_pro_single',['product'=>$product->id])}}" class="px-4 py-2 rounded-full bg-(--buttom)  absolute bottom-0 translate-y-full group-hover:-translate-y-5 transition_normal z-1 text-white font-bold">مشاهده محصول</a> -->
+                            <div class="size-7 bg-white rounded-full absolute top-3 right-3 flex justify-center items-center shadow-[0_0_12px_2px] shadow-zinc-200" onclick="like_dislike(this)">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="size-7/12 ">
+                                    <path d="M225.8 468.2l-2.5-2.3L48.1 303.2C17.4 274.7 0 234.7 0 192.8v-3.3c0-70.4 50-130.8 119.2-144C158.6 37.9 198.9 47 231 69.6c9 6.4 17.4 13.8 25 22.3c4.2-4.8 8.7-9.2 13.5-13.3c3.7-3.2 7.5-6.2 11.5-9c0 0 0 0 0 0C313.1 47 353.4 37.9 392.8 45.4C462 58.6 512 119.1 512 189.5v3.3c0 41.9-17.4 81.9-48.1 110.4L288.7 465.9l-2.5 2.3c-8.2 7.6-19 11.9-30.2 11.9s-22-4.2-30.2-11.9zM239.1 145c-.4-.3-.7-.7-1-1.1l-17.8-20c0 0-.1-.1-.1-.1c0 0 0 0 0 0c-23.1-25.9-58-37.7-92-31.2C81.6 101.5 48 142.1 48 189.5v3.3c0 28.5 11.9 55.8 32.8 75.2L256 430.7 431.2 268c20.9-19.4 32.8-46.7 32.8-75.2v-3.3c0-47.3-33.6-88-80.1-96.9c-34-6.5-69 5.4-92 31.2c0 0 0 0-.1 .1s0 0-.1 .1l-17.8 20c-.3 .4-.7 .7-1 1.1c-4.5 4.5-10.6 7-16.9 7s-12.4-2.5-16.9-7z" />
+                                </svg>
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="size-7/12 fill-red-500 hidden">
+                                    <path d="M47.6 300.4L228.3 469.1c7.5 7 17.4 10.9 27.7 10.9s20.2-3.9 27.7-10.9L464.4 300.4c30.4-28.3 47.6-68 47.6-109.5v-5.8c0-69.9-50.5-129.5-119.4-141C347 36.5 300.6 51.4 268 84L256 96 244 84c-32.6-32.6-79-47.5-124.6-39.9C50.5 55.6 0 115.2 0 185.1v5.8c0 41.5 17.2 81.2 47.6 109.5z" />
+                                </svg>
+                            </div>
+                            <div class="sm:text-xs text-[10px] font-bold text-white bg-[#01AF6A] rounded-full sm:px-3 sm:py-1.5 px-2 py-1 flex gap-1 justify-center items-center absolute top-3 left-3">
+                                <span>40%</span>
+                                <span>تخفیف</span>
+                            </div>
+                        </div>
+                        <div class="w-full h-5/12  rounded-b-xl flex flex-col gap-2 justify-center p-3">
+                            <div class="flex flex-col gap-1">
+                                <h4 class="xl:text-lg lg:text-base max-sm:text-sm font-bold max-w-full truncate">ماسک تنفسی</h4>
+                                <p class="xl:text-[13px] text-[11px] text-zinc-400 font-bold max-w-full truncate">توضیحات توضیحات توضیحات محصول</p>
+                            </div>
+                            <div class="flex flex-col gap-0.5">
+                                <div class="flex gap-2 justify-start items-center">
+                                    <del class="flex gap-2 justify-start items-center text-(--discription)">
+                                        <div class="flex gap-1 justify-start items-center lg:text-sm sm:text-xs text-[10px]">
+                                            <span>{{number_format($product->price)}}</span>
+                                            <span>تومان</span>
+                                        </div>
+                                    </del>
+                                    <!-- <span class="px-2 py-1 font-bold lg:text-[10px] sm:text-[8px] text-[6px] text-white rounded-xl bg-(--buttom)">40%</span> -->
+                                </div>
+                                <div class="flex gap-1 justify-start items-center font-bold xl:text-lg max-lg:text-sm max-sm:text-xs">
+                                    <span>{{number_format($product->price)}}</span>
+                                    <span>تومان</span>
+                                </div>
+                                <a href="{{route('product.client_pro_single',['product'=>$product->id])}}" class="w-full px-4 py-2 rounded-full bg-[#037C77] transition_normal z-1 text-white font-bold flex gap-1 hover:gap-2 justify-center items-center text-sm max-xl:text-xs mt-0.5">
+                                    <div class=" transition_normal">
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512" class="size-4 max-xl:size-3 fill-white">
+                                            <path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z" />
+                                        </svg>
+                                    </div>
+                                    <span>مشاهده مخصول</span>
+                                </a>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="xl:min-w-33/100 xl:max-w-33/100 lg:min-w-24/100 lg:max-w-24/100 sm:min-w-33/100 sm:max-w-33/100 min-w-49/100 max-w-49/100 min-[450px]:min-w-49/100 min-[450px]:max-w-49/100 min-w-full max-w-full xl:h-100 lg:h-90 sm:h-85 h-80 relative group  flex flex-col gap-1 shadow-[0_0_10px_3px] shadow-gray-200 rounded-xl bg-white p-0.5 " onclick="show_this_product(this)">
+                        <div class="w-full h-7/12 relative  flex justify-center items-center bg-[#E0F2FE] rounded-xl">
+                            <!-- <span class="w-full h-1/3 group-hover:h-2/3 group-active:h-2/3 bg-[#00ffff]/30 absolute bottom-0 right-0 z-0 transition_normal rounded-t-xl"></span> -->
+                            <!-- <div class="w-full h-full relative flex j"> -->
+                            <img src="{{asset('assets/img/header/img_heder.webp')}}" alt="" class="min-w-1/2 min-h-1/2 max-w-full max-h-full rounded-xl select-none ">
+                            <!-- </div> -->
+                            <!-- <a href="{{route('product.client_pro_single',['product'=>$product->id])}}" class="px-4 py-2 rounded-full bg-(--buttom)  absolute bottom-0 translate-y-full group-hover:-translate-y-5 transition_normal z-1 text-white font-bold">مشاهده محصول</a> -->
+                            <div class="size-7 bg-white rounded-full absolute top-3 right-3 flex justify-center items-center shadow-[0_0_12px_2px] shadow-zinc-200" onclick="like_dislike(this)">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="size-7/12 ">
+                                    <path d="M225.8 468.2l-2.5-2.3L48.1 303.2C17.4 274.7 0 234.7 0 192.8v-3.3c0-70.4 50-130.8 119.2-144C158.6 37.9 198.9 47 231 69.6c9 6.4 17.4 13.8 25 22.3c4.2-4.8 8.7-9.2 13.5-13.3c3.7-3.2 7.5-6.2 11.5-9c0 0 0 0 0 0C313.1 47 353.4 37.9 392.8 45.4C462 58.6 512 119.1 512 189.5v3.3c0 41.9-17.4 81.9-48.1 110.4L288.7 465.9l-2.5 2.3c-8.2 7.6-19 11.9-30.2 11.9s-22-4.2-30.2-11.9zM239.1 145c-.4-.3-.7-.7-1-1.1l-17.8-20c0 0-.1-.1-.1-.1c0 0 0 0 0 0c-23.1-25.9-58-37.7-92-31.2C81.6 101.5 48 142.1 48 189.5v3.3c0 28.5 11.9 55.8 32.8 75.2L256 430.7 431.2 268c20.9-19.4 32.8-46.7 32.8-75.2v-3.3c0-47.3-33.6-88-80.1-96.9c-34-6.5-69 5.4-92 31.2c0 0 0 0-.1 .1s0 0-.1 .1l-17.8 20c-.3 .4-.7 .7-1 1.1c-4.5 4.5-10.6 7-16.9 7s-12.4-2.5-16.9-7z" />
+                                </svg>
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="size-7/12 fill-red-500 hidden">
+                                    <path d="M47.6 300.4L228.3 469.1c7.5 7 17.4 10.9 27.7 10.9s20.2-3.9 27.7-10.9L464.4 300.4c30.4-28.3 47.6-68 47.6-109.5v-5.8c0-69.9-50.5-129.5-119.4-141C347 36.5 300.6 51.4 268 84L256 96 244 84c-32.6-32.6-79-47.5-124.6-39.9C50.5 55.6 0 115.2 0 185.1v5.8c0 41.5 17.2 81.2 47.6 109.5z" />
+                                </svg>
+                            </div>
+                            <div class="sm:text-xs text-[10px] font-bold text-white bg-[#01AF6A] rounded-full sm:px-3 sm:py-1.5 px-2 py-1 flex gap-1 justify-center items-center absolute top-3 left-3">
+                                <span>40%</span>
+                                <span>تخفیف</span>
+                            </div>
+                        </div>
+                        <div class="w-full h-5/12  rounded-b-xl flex flex-col gap-2 justify-center p-3">
+                            <div class="flex flex-col gap-1">
+                                <h4 class="xl:text-lg lg:text-base max-sm:text-sm font-bold max-w-full truncate">ماسک تنفسی</h4>
+                                <p class="xl:text-[13px] text-[11px] text-zinc-400 font-bold max-w-full truncate">توضیحات توضیحات توضیحات محصول</p>
+                            </div>
+                            <div class="flex flex-col gap-0.5">
+                                <div class="flex gap-2 justify-start items-center">
+                                    <del class="flex gap-2 justify-start items-center text-(--discription)">
+                                        <div class="flex gap-1 justify-start items-center lg:text-sm sm:text-xs text-[10px]">
+                                            <span>{{number_format($product->price)}}</span>
+                                            <span>تومان</span>
+                                        </div>
+                                    </del>
+                                    <!-- <span class="px-2 py-1 font-bold lg:text-[10px] sm:text-[8px] text-[6px] text-white rounded-xl bg-(--buttom)">40%</span> -->
+                                </div>
+                                <div class="flex gap-1 justify-start items-center font-bold xl:text-lg max-lg:text-sm max-sm:text-xs">
+                                    <span>{{number_format($product->price)}}</span>
+                                    <span>تومان</span>
+                                </div>
+                                <a href="{{route('product.client_pro_single',['product'=>$product->id])}}" class="w-full px-4 py-2 rounded-full bg-[#037C77] transition_normal z-1 text-white font-bold flex gap-1 hover:gap-2 justify-center items-center text-sm max-xl:text-xs mt-0.5">
+                                    <div class=" transition_normal">
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512" class="size-4 max-xl:size-3 fill-white">
+                                            <path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z" />
+                                        </svg>
+                                    </div>
+                                    <span>مشاهده مخصول</span>
+                                </a>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </section>
+    <!-- بنر2 -->
+    <section class="w-11/12  flex flex-col gap-5 justify-start items-center">
+        <div class="w-full mx-auto lg:h-85 sm:h-75 h-65 relative">
+            <img src="{{asset('storage/'.$advertisement->image_path)}}" alt="" class="w-full h-full rounded-2xl object-cover">
+            <div class="absolute w-full h-full top-0 flex flex-col justify-center items-center gap-5">
+                <h6 class="lg:text-xl max-sm:text-sm text-[#023350]">{{$advertisement->subtitle}}</h6>
+                <h2 class="text-[#023350] lg:text-5xl sm:text-4xl text-2xl  font-bold text-center">{{$advertisement->title}}</h2>
+                <p class="lg:text-lg max-sm:text-sm px-4 py-1 border-y">{{$advertisement->summary}}</p>
+                <a href="{{$advertisement->category_id}}" class="px-4 py-2 bg-[#03a297] rounded-4xl max-lg:text-sm">{{$advertisement->category_id}}</a>
+            </div>
+        </div>
+    </section>
+    <!-- برندها -->
+    <section class="w-11/12  flex flex-col gap-5 justify-start items-center">
+        <div class="w-full mx-auto flex justify-between">
+            <a href=""
+                class="flex flex-row-reverse gap-2 fill-[#54ab9a] text-[#54ab9a] hover:text-[#fd6a6a] hover:fill-[#fd6a6a] transition-all duration-300">
+                <span class="">All Products </span>
+                <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+                <svg height="20px" width="20px" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg"
+                    xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 297 297" xml:space="preserve">
+                    <g>
+                        <polygon points="33,66 0,66 66,148 0,231 33,231 99,148 	" />
+                        <polygon points="83,66 50,66 116,148 50,231 83,231 149,148 	" />
+                        <polygon points="133,66 100,66 166,148 100,231 133,231 199,148 	" />
+                        <polygon points="231,66 149,66 215,148 149,231 231,231 297,148 	" />
+                    </g>
+                </svg>
+            </a>
+            <span class="text-[17px] md:text-[25px] font-bold text-[#023350]">Popular Items</span>
+        </div>
+        <div class="w-full mx-auto py-2 bg-white flex lg:gap-2 gap-2.5 items-center overflow-x-auto">
+
+            @for($i=0;$i<20;$i++)
+                <div class="lg:min-w-12/100 lg:max-w-12/100 sm:min-w-15/100 sm:max-w-15/100 min-w-22/100 max-w-22/100 lg:h-15 sm:h-13 h-10 flex justify-center items-center group">
+                <img src="{{asset('assets/img/header/logo.png')}}" alt="" class="min-w-8/12 min-h-8/12 max-w-full max-h-full p-1 lg:opacity-40 lg:group-hover:opacity-100 transition_normal">
+        </div>
+        @endfor
+
+
+</div>
+
+
+</section>
+<!-- بهترین محصولات -->
+<section class="w-11/12  flex flex-col gap-5 justify-start items-center">
+    <div class="w-full mx-auto">
+        <img src="{{asset('storage/'.$product_label->image)}}" alt="" class="w-full h-60 lg:h-80 object-cover rounded-2xl">
+        <div class="relative -top-20 w-full flex justify-center">
+            <div class="w-98/100 grid lg:grid-cols-3 sm:grid-cols-2 grid-cols-1 items-center gap-2">
+                <div class="w-full flex flex-col items-center gap-5 bg-[#fff] rounded-2xl py-5 shadow-[0_20px_25px_-5px] shadow-zinc-300">
+                    <div class="w-11/12 mx-auto">
+                        <div class="w-full">
+                            <span class="text-[30px]  items-end">{{$product_label->label_1}}</span>
+                        </div>
+                        <div class="w-full min-h-[1px] max-h-[1px] bg-white rounded-full"></div>
+                    </div>
+                    <div class="w-11/12 flex flex-col gap-5 items-center">
+                        <div class="w-full mx-auto flex gap-1 justify-between bg-[#7FFEFF] rounded-lg xl:h-35 lg:h-32 sm:h-27 h-23">
+                            <div class="w-5/12 h-full flex justify-center items-center p-2">
+                                <img src="{{asset('assets/img/silyder.producte/01.png')}}" alt=""
+                                    class="min-w-8/12 min-h-8/12 max-w-full max-h-full">
+                            </div>
+                            <div class="w-7/10 flex items-center justify-start relative">
+
+                                <div class="w-full rounded-b-xl flex flex-col gap-1 justify-center p-3">
+                                    <div class="flex flex-col ">
+                                        <h4 class="xl:text-xl lg:text-lg max-sm:text-sm font-bold max-w-full truncate">df.s</h4>
+                                        <p class="lg:text-sm sm:text-xs text-[10px] text-gray-500 max-w-full truncate">توضیحات محصول</p>
+                                    </div>
+                                    <div class="flex flex-col gap-0.5">
+                                        <div class="flex gap-2 justify-start items-center">
+                                            <del class="flex gap-2 justify-start items-center text-gray-500">
+                                                <div class="flex gap-1 justify-start items-center lg:text-sm sm:text-xs text-[10px]">
+                                                    <span>55,555,555</span>
+                                                    <span>تومان</span>
+                                                </div>
+                                            </del>
+                                            <span class="px-2 py-1 font-bold lg:text-[10px] sm:text-[8px] text-[6px] text-white rounded-xl bg-(--buttom)">40%</span>
+                                        </div>
+                                        <div class="flex gap-1 justify-start items-center font-bold max-lg:text-sm max-sm:text-xs">
+                                            <span>55,555,555</span>
+                                            <span>تومان</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="w-full mx-auto flex gap-1 justify-between bg-[#7FFEFF] rounded-lg xl:h-35 lg:h-32 sm:h-27 h-23">
+                            <div class="w-5/12 h-full flex justify-center items-center p-2">
+                                <img src="{{asset('assets/img/silyder.producte/01.png')}}" alt=""
+                                    class="min-w-8/12 min-h-8/12 max-w-full max-h-full">
+                            </div>
+                            <div class="w-7/10 flex items-center justify-start relative">
+
+                                <div class="w-full rounded-b-xl flex flex-col gap-1 justify-center p-3">
+                                    <div class="flex flex-col ">
+                                        <h4 class="xl:text-xl lg:text-lg max-sm:text-sm font-bold max-w-full truncate">df.s</h4>
+                                        <p class="lg:text-sm sm:text-xs text-[10px] text-gray-500 max-w-full truncate">توضیحات محصول</p>
+                                    </div>
+                                    <div class="flex flex-col gap-0.5">
+                                        <div class="flex gap-2 justify-start items-center">
+                                            <del class="flex gap-2 justify-start items-center text-gray-500">
+                                                <div class="flex gap-1 justify-start items-center lg:text-sm sm:text-xs text-[10px]">
+                                                    <span>55,555,555</span>
+                                                    <span>تومان</span>
+                                                </div>
+                                            </del>
+                                            <span class="px-2 py-1 font-bold lg:text-[10px] sm:text-[8px] text-[6px] text-white rounded-xl bg-(--buttom)">40%</span>
+                                        </div>
+                                        <div class="flex gap-1 justify-start items-center font-bold max-lg:text-sm max-sm:text-xs">
+                                            <span>55,555,555</span>
+                                            <span>تومان</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="w-full mx-auto flex gap-1 justify-between bg-[#7FFEFF] rounded-lg xl:h-35 lg:h-32 sm:h-27 h-23">
+                            <div class="w-5/12 h-full flex justify-center items-center p-2">
+                                <img src="{{asset('assets/img/silyder.producte/01.png')}}" alt=""
+                                    class="min-w-8/12 min-h-8/12 max-w-full max-h-full">
+                            </div>
+                            <div class="w-7/10 flex items-center justify-start relative">
+
+                                <div class="w-full rounded-b-xl flex flex-col gap-1 justify-center p-3">
+                                    <div class="flex flex-col ">
+                                        <h4 class="xl:text-xl lg:text-lg max-sm:text-sm font-bold max-w-full truncate">df.s</h4>
+                                        <p class="lg:text-sm sm:text-xs text-[10px] text-gray-500 max-w-full truncate">توضیحات محصول</p>
+                                    </div>
+                                    <div class="flex flex-col gap-0.5">
+                                        <div class="flex gap-2 justify-start items-center">
+                                            <del class="flex gap-2 justify-start items-center text-gray-500">
+                                                <div class="flex gap-1 justify-start items-center lg:text-sm sm:text-xs text-[10px]">
+                                                    <span>55,555,555</span>
+                                                    <span>تومان</span>
+                                                </div>
+                                            </del>
+                                            <span class="px-2 py-1 font-bold lg:text-[10px] sm:text-[8px] text-[6px] text-white rounded-xl bg-(--buttom)">40%</span>
+                                        </div>
+                                        <div class="flex gap-1 justify-start items-center font-bold max-lg:text-sm max-sm:text-xs">
+                                            <span>55,555,555</span>
+                                            <span>تومان</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+                <!-- <div class="w-full flex flex-col items-center gap-5 bg-(--product) rounded-2xl py-5">
                             <div class="w-11/12 mx-auto">
                                 <div class="w-full">
                                     <span class="text-[30px]  items-end">{{$product_label->label_1}}</span>
@@ -1332,151 +1710,361 @@
 
 
                             </div>
+                        </div> -->
+                <div class="w-full flex flex-col items-center gap-5 bg-[#fff] rounded-2xl py-5 shadow-[0_20px_25px_-5px] shadow-zinc-300">
+                    <div class="w-11/12 mx-auto">
+                        <div class="w-full">
+                            <span class="text-[30px]  items-end">{{$product_label->label_1}}</span>
                         </div>
+                        <div class="w-full min-h-[1px] max-h-[1px] bg-white rounded-full"></div>
+                    </div>
+                    <div class="w-11/12 flex flex-col gap-5 items-center">
+                        <div class="w-full mx-auto flex gap-1 justify-between bg-[#7FFEFF] rounded-lg xl:h-35 lg:h-32 sm:h-27 h-23">
+                            <div class="w-5/12 h-full flex justify-center items-center p-2">
+                                <img src="{{asset('assets/img/silyder.producte/01.png')}}" alt=""
+                                    class="min-w-8/12 min-h-8/12 max-w-full max-h-full">
+                            </div>
+                            <div class="w-7/10 flex items-center justify-start relative">
+
+                                <div class="w-full rounded-b-xl flex flex-col gap-1 justify-center p-3">
+                                    <div class="flex flex-col ">
+                                        <h4 class="xl:text-xl lg:text-lg max-sm:text-sm font-bold max-w-full truncate">df.s</h4>
+                                        <p class="lg:text-sm sm:text-xs text-[10px] text-gray-500 max-w-full truncate">توضیحات محصول</p>
+                                    </div>
+                                    <div class="flex flex-col gap-0.5">
+                                        <div class="flex gap-2 justify-start items-center">
+                                            <del class="flex gap-2 justify-start items-center text-gray-500">
+                                                <div class="flex gap-1 justify-start items-center lg:text-sm sm:text-xs text-[10px]">
+                                                    <span>55,555,555</span>
+                                                    <span>تومان</span>
+                                                </div>
+                                            </del>
+                                            <span class="px-2 py-1 font-bold lg:text-[10px] sm:text-[8px] text-[6px] text-white rounded-xl bg-(--buttom)">40%</span>
+                                        </div>
+                                        <div class="flex gap-1 justify-start items-center font-bold max-lg:text-sm max-sm:text-xs">
+                                            <span>55,555,555</span>
+                                            <span>تومان</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="w-full mx-auto flex gap-1 justify-between bg-[#7FFEFF] rounded-lg xl:h-35 lg:h-32 sm:h-27 h-23">
+                            <div class="w-5/12 h-full flex justify-center items-center p-2">
+                                <img src="{{asset('assets/img/silyder.producte/01.png')}}" alt=""
+                                    class="min-w-8/12 min-h-8/12 max-w-full max-h-full">
+                            </div>
+                            <div class="w-7/10 flex items-center justify-start relative">
+
+                                <div class="w-full rounded-b-xl flex flex-col gap-1 justify-center p-3">
+                                    <div class="flex flex-col ">
+                                        <h4 class="xl:text-xl lg:text-lg max-sm:text-sm font-bold max-w-full truncate">df.s</h4>
+                                        <p class="lg:text-sm sm:text-xs text-[10px] text-gray-500 max-w-full truncate">توضیحات محصول</p>
+                                    </div>
+                                    <div class="flex flex-col gap-0.5">
+                                        <div class="flex gap-2 justify-start items-center">
+                                            <del class="flex gap-2 justify-start items-center text-gray-500">
+                                                <div class="flex gap-1 justify-start items-center lg:text-sm sm:text-xs text-[10px]">
+                                                    <span>55,555,555</span>
+                                                    <span>تومان</span>
+                                                </div>
+                                            </del>
+                                            <span class="px-2 py-1 font-bold lg:text-[10px] sm:text-[8px] text-[6px] text-white rounded-xl bg-(--buttom)">40%</span>
+                                        </div>
+                                        <div class="flex gap-1 justify-start items-center font-bold max-lg:text-sm max-sm:text-xs">
+                                            <span>55,555,555</span>
+                                            <span>تومان</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="w-full mx-auto flex gap-1 justify-between bg-[#7FFEFF] rounded-lg xl:h-35 lg:h-32 sm:h-27 h-23">
+                            <div class="w-5/12 h-full flex justify-center items-center p-2">
+                                <img src="{{asset('assets/img/silyder.producte/01.png')}}" alt=""
+                                    class="min-w-8/12 min-h-8/12 max-w-full max-h-full">
+                            </div>
+                            <div class="w-7/10 flex items-center justify-start relative">
+
+                                <div class="w-full rounded-b-xl flex flex-col gap-1 justify-center p-3">
+                                    <div class="flex flex-col ">
+                                        <h4 class="xl:text-xl lg:text-lg max-sm:text-sm font-bold max-w-full truncate">df.s</h4>
+                                        <p class="lg:text-sm sm:text-xs text-[10px] text-gray-500 max-w-full truncate">توضیحات محصول</p>
+                                    </div>
+                                    <div class="flex flex-col gap-0.5">
+                                        <div class="flex gap-2 justify-start items-center">
+                                            <del class="flex gap-2 justify-start items-center text-gray-500">
+                                                <div class="flex gap-1 justify-start items-center lg:text-sm sm:text-xs text-[10px]">
+                                                    <span>55,555,555</span>
+                                                    <span>تومان</span>
+                                                </div>
+                                            </del>
+                                            <span class="px-2 py-1 font-bold lg:text-[10px] sm:text-[8px] text-[6px] text-white rounded-xl bg-(--buttom)">40%</span>
+                                        </div>
+                                        <div class="flex gap-1 justify-start items-center font-bold max-lg:text-sm max-sm:text-xs">
+                                            <span>55,555,555</span>
+                                            <span>تومان</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
 
                     </div>
                 </div>
-            </div>
-        </section>
-
-        <div class="w-full bg-[#023350] xl:p-10 lg:p-8 p-6 flex flex-col gap-10 items-center">
-
-            <h2 class="text-center text-4xl font-bold text-white ">
-                نظرات
-                <span class="text-emerald-500">مشتریان</span>
-            </h2>
-
-            <div class="max-w-full w-full bg-[#023350] flex gap-4 justify-start h-90 overflow-x-auto p-2">
-
-                <!-- Card -->
-                @foreach($comments as $comment)
-                    <div class="xl:min-w-24/100 xl:max-w-24/100 lg:min-w-32/100 lg:max-w-32/100 sm:min-w-49/100 sm:max-w-49/100 min-w-98/100 max-w-98/100 h-full bg-[#FFF8F1] relative p-4 rounded-xl flex flex-col gap-7">
-                        <div class="w-full bg-[#172230] rounded-full flex items-center gap-2 p-2">
-                            <div class="min-w-16 min-h-16 max-w-16 max-h-16 rounded-full  flex justify-center items-center">
-                                <img src="{{asset('assets/img/baner/gallery/05.webp')}}" class="min-w-8/12 min-h-8/12 max-w-10/12 max-h-10/12 rounded-full">
-                            </div>
-                            <div>
-                                <h3 class="text-white font-bold max-lg:text-sm">
-                                   {{$comment->name}}
-                                </h3>
-                                <p class="text-emerald-500 lg:text-sm text-xs">
-                                   {{$comment->role}}
-                                </p>
-                            </div>
+                <div class="w-full flex flex-col items-center gap-5 bg-[#fff] rounded-2xl py-5 shadow-[0_20px_25px_-5px] shadow-zinc-300">
+                    <div class="w-11/12 mx-auto">
+                        <div class="w-full">
+                            <span class="text-[30px]  items-end">{{$product_label->label_1}}</span>
                         </div>
-                        <div class="max-h-50 overflow-y-auto">
-                            <p class="text-gray-600 leading-8 max-lg:text-sm">
-=                               {{$comment->message}}
-                            </p>
-                        </div>
-                        <div class="flex gap-1 text-emerald-500 text-2xl">
-                            ★★★★★
-                        </div>
+                        <div class="w-full min-h-[1px] max-h-[1px] bg-white rounded-full"></div>
                     </div>
-                @endforeach
+                    <div class="w-11/12 flex flex-col gap-5 items-center">
+                        <div class="w-full mx-auto flex gap-1 justify-between bg-[#7FFEFF] rounded-lg xl:h-35 lg:h-32 sm:h-27 h-23">
+                            <div class="w-5/12 h-full flex justify-center items-center p-2">
+                                <img src="{{asset('assets/img/silyder.producte/01.png')}}" alt=""
+                                    class="min-w-8/12 min-h-8/12 max-w-full max-h-full">
+                            </div>
+                            <div class="w-7/10 flex items-center justify-start relative">
 
-            
+                                <div class="w-full rounded-b-xl flex flex-col gap-1 justify-center p-3">
+                                    <div class="flex flex-col ">
+                                        <h4 class="xl:text-xl lg:text-lg max-sm:text-sm font-bold max-w-full truncate">df.s</h4>
+                                        <p class="lg:text-sm sm:text-xs text-[10px] text-gray-500 max-w-full truncate">توضیحات محصول</p>
+                                    </div>
+                                    <div class="flex flex-col gap-0.5">
+                                        <div class="flex gap-2 justify-start items-center">
+                                            <del class="flex gap-2 justify-start items-center text-gray-500">
+                                                <div class="flex gap-1 justify-start items-center lg:text-sm sm:text-xs text-[10px]">
+                                                    <span>55,555,555</span>
+                                                    <span>تومان</span>
+                                                </div>
+                                            </del>
+                                            <span class="px-2 py-1 font-bold lg:text-[10px] sm:text-[8px] text-[6px] text-white rounded-xl bg-(--buttom)">40%</span>
+                                        </div>
+                                        <div class="flex gap-1 justify-start items-center font-bold max-lg:text-sm max-sm:text-xs">
+                                            <span>55,555,555</span>
+                                            <span>تومان</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="w-full mx-auto flex gap-1 justify-between bg-[#7FFEFF] rounded-lg xl:h-35 lg:h-32 sm:h-27 h-23">
+                            <div class="w-5/12 h-full flex justify-center items-center p-2">
+                                <img src="{{asset('assets/img/silyder.producte/01.png')}}" alt=""
+                                    class="min-w-8/12 min-h-8/12 max-w-full max-h-full">
+                            </div>
+                            <div class="w-7/10 flex items-center justify-start relative">
+
+                                <div class="w-full rounded-b-xl flex flex-col gap-1 justify-center p-3">
+                                    <div class="flex flex-col ">
+                                        <h4 class="xl:text-xl lg:text-lg max-sm:text-sm font-bold max-w-full truncate">df.s</h4>
+                                        <p class="lg:text-sm sm:text-xs text-[10px] text-gray-500 max-w-full truncate">توضیحات محصول</p>
+                                    </div>
+                                    <div class="flex flex-col gap-0.5">
+                                        <div class="flex gap-2 justify-start items-center">
+                                            <del class="flex gap-2 justify-start items-center text-gray-500">
+                                                <div class="flex gap-1 justify-start items-center lg:text-sm sm:text-xs text-[10px]">
+                                                    <span>55,555,555</span>
+                                                    <span>تومان</span>
+                                                </div>
+                                            </del>
+                                            <span class="px-2 py-1 font-bold lg:text-[10px] sm:text-[8px] text-[6px] text-white rounded-xl bg-(--buttom)">40%</span>
+                                        </div>
+                                        <div class="flex gap-1 justify-start items-center font-bold max-lg:text-sm max-sm:text-xs">
+                                            <span>55,555,555</span>
+                                            <span>تومان</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="w-full mx-auto flex gap-1 justify-between bg-[#7FFEFF] rounded-lg xl:h-35 lg:h-32 sm:h-27 h-23">
+                            <div class="w-5/12 h-full flex justify-center items-center p-2">
+                                <img src="{{asset('assets/img/silyder.producte/01.png')}}" alt=""
+                                    class="min-w-8/12 min-h-8/12 max-w-full max-h-full">
+                            </div>
+                            <div class="w-7/10 flex items-center justify-start relative">
+
+                                <div class="w-full rounded-b-xl flex flex-col gap-1 justify-center p-3">
+                                    <div class="flex flex-col ">
+                                        <h4 class="xl:text-xl lg:text-lg max-sm:text-sm font-bold max-w-full truncate">df.s</h4>
+                                        <p class="lg:text-sm sm:text-xs text-[10px] text-gray-500 max-w-full truncate">توضیحات محصول</p>
+                                    </div>
+                                    <div class="flex flex-col gap-0.5">
+                                        <div class="flex gap-2 justify-start items-center">
+                                            <del class="flex gap-2 justify-start items-center text-gray-500">
+                                                <div class="flex gap-1 justify-start items-center lg:text-sm sm:text-xs text-[10px]">
+                                                    <span>55,555,555</span>
+                                                    <span>تومان</span>
+                                                </div>
+                                            </del>
+                                            <span class="px-2 py-1 font-bold lg:text-[10px] sm:text-[8px] text-[6px] text-white rounded-xl bg-(--buttom)">40%</span>
+                                        </div>
+                                        <div class="flex gap-1 justify-start items-center font-bold max-lg:text-sm max-sm:text-xs">
+                                            <span>55,555,555</span>
+                                            <span>تومان</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="w-full bg-[#023350] xl:p-10 lg:p-8 p-6 flex flex-col gap-10 items-center">
+
+    <h2 class="text-center text-4xl font-bold text-white ">
+        نظرات
+        <span class="text-emerald-500">مشتریان</span>
+    </h2>
+
+    <div class="max-w-full w-full bg-[#023350] grid xl:grid-cols-4 sm:grid-cols-2 grid-cols-1 gap-4 ">
+
+        <!-- Card -->
+        @foreach($comments as $comment)
+        <div class="w-full max-h-80 bg-[#FFF8F1] relative p-3 rounded-xl flex flex-col gap-5">
+            <div class="w-full bg-[#172230] rounded-full flex items-center gap-2 p-0.5">
+                <div class="min-w-16 min-h-16 max-w-16 max-h-16 rounded-full  flex justify-center items-center">
+                    <img src="{{asset('assets/img/baner/gallery/05.webp')}}" class="min-w-8/12 min-h-8/12 max-w-10/12 max-h-10/12 rounded-full">
+                </div>
+                <div>
+                    <h3 class="text-white font-bold max-lg:text-sm">
+                        {{$comment->name}}
+                    </h3>
+                    <p class="text-emerald-500 lg:text-sm text-xs">
+                        {{$comment->role}}
+                    </p>
+                </div>
+            </div>
+            <div class="max-h-40 overflow-y-auto">
+                <p class="text-gray-600 leading-8 max-lg:text-sm">
+                    = {{$comment->message}}
+                </p>
+            </div>
+            <div class="flex gap-1 text-emerald-500 text-2xl">
+                ★★★★★
             </div>
         </div>
 
-        <!-- فوتر -->
-        <footer class="w-full bg-[url({{asset('assets/img/baner/gallery/06.webp')}})] bg-cover bg-center mt-7 flex justify-center items-start relative">
-            <div class="w-full h-full absolute top-0 right-0 bg-(--greey_section)/90"></div>
-            <div class="w-11/12 h-full z-1 flex max-md:flex-col max-md:gap-8 justify-between items-start py-7">
-                <div class="md:w-3/12 w-full flex">
-                    <div class="w-full h-full flex flex-col lg:gap-6 gap-4 justify-start max-lg:items-center items-start">
-                        <div class="lw-full flex flex-col lg:gap-6 gap-4 justify-start items-center ">
-                            <div class="w-7/12 max-h-20 flex justify-center items-center">
-                                <img src="{{asset('assets/img/header/logo.png')}}" alt="" class="min-w-8/12 min-h-8/12 max-w-10/12 max-h-10/12">
-                            </div>
-                            <p class="w-full xl:text-sm lg:text-xs text-[11px] font-bold text-[#f4f1ff] max-lg:text-center ">
-                                مجموعه برسو طراحی اختصاصی سایت که شما همیشه میخواستی با مشاوره کسب کار و اجرای ایده های
-                                شما در سایت کسب و کار خود</p>
-                            <div class="w-full flex items-center justify-center xl:gap-8 gap-6">
-                                <a href="" class="p-1.5 bg-white rounded-full">
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="xl:size-5 size-4 fill-(--gold-primary)">
-                                        <path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z">
-                                        </path>
-                                    </svg>
-                                </a>
-                                <a href="" class="p-1.5 bg-white rounded-full">
-                                    <svg viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg" class="xl:size-5 size-4 fill-(--gold-primary)">
-                                        <path d="M1764 11q33 24 27 64l-256 1536q-5 29-32 45-14 8-31 8-11 0-24-5l-527-215-298 327q-18 21-47 21-14 0-23-4-19-7-30-23.5t-11-36.5v-452l-472-193q-37-14-40-55-3-39 32-59l1664-960q35-21 68 2zm-342 1499l221-1323-1434 827 336 137 863-639-478 797z">
-                                        </path>
-                                    </svg>
-                                </a>
-                                <a href="" class="p-1.5 bg-white rounded-full">
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="xl:size-5 size-4 fill-(--gold-primary)">
-                                        <path d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z">
-                                        </path>
-                                    </svg>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-                <div class="md:w-8/12 w-full h-full flex flex-col gap-4 justify-start items-start">
-                    <div class="w-full flex justify-start items-start">
-                        <div class="w-1/3 flex flex-col gap-2 justify-start md:items-start items-center">
-                            <h4 class="lg:text-lg max-md:text-sm text-white font-bold">دسترسی سریع</h4>
-                            <ul class="max-lg:text-sm max-md:text-xs flex flex-col gap-1 justify-start md:items-start items-center text-(--secondary-text) font-bold">
-                                <li>تعمییرات</li>
-                                <li>تعمییرات</li>
-                                <li>شستشو</li>
-                                <li>تعمییرات</li>
-                            </ul>
-                        </div>
-                        <div class="w-1/3 flex flex-col gap-2 justify-start md:items-start items-center">
-                            <h4 class="lg:text-lg text-white font-bold">خدمات ما</h4>
-                            <ul class="max-lg:text-sm flex flex-col gap-1 justify-start md:items-start items-center text-(--secondary-text) font-bold">
-                                <li>تعمییرات</li>
-                                <li>تعمییرات</li>
-                                <li>شستشو</li>
-                                <li>تعمییرات</li>
-                            </ul>
-                        </div>
-                        <div class="w-1/3 flex flex-col gap-2 justify-start md:items-start items-center">
-                            <h4 class="lg:text-lg text-white font-bold">کمک</h4>
-                            <ul class="max-lg:text-sm flex flex-col gap-1 justify-start md:items-start items-center text-(--secondary-text) font-bold">
-                                <li>تعمییرات</li>
-                                <li>تعمییرات</li>
-                                <li>شستشو</li>
-                                <li>تعمییرات</li>
-                            </ul>
-                        </div>
-
-                    </div>
-                    <span class="w-full h-0.5 bg-white/50 rounded-full"></span>
-                    <div class="w-full flex max-sm:flex-col max-md:gap-2 justify-between items-center max-lg:text-sm max-md:text-xs">
-                        <p class="text-(--secondary-text)">طراحی و توسعه شرکت اندیشه گران طراحان دیجیتال <span class="text-white font-bold">(فائوس)</span></p>
-                        <span class=" text-white font-bold">09147794595</span>
-                    </div>
-                </div>
-            </div>
-        </footer>
-        <!-- finish -->
-
-        <!-- js -->
-        <!-- js -->
-        <!-- js -->
-        <!-- js -->
-
+        @endforeach
 
 
     </div>
-    <script>
-        let localCash="{{$localCash}}";
-            console.log(localCash);
-        if(localCash=='cashClear'){
-            localStorage.getItem('products');
-            localStorage.removeItem('products');
-        }
+</div>
 
-        function show_this_product(item) {
-            console.log('sdhf.shdf')
-            item.children[0].children[2].classList.toggle('translate-y-full')
-            item.children[0].children[2].classList.toggle('-translate-y-5')
-        }
-    </script>
+<!-- فوتر -->
+<footer class="w-full bg-[url({{asset('assets/img/baner/gallery/06.webp')}})] bg-cover bg-center mt-7 flex justify-center items-start relative">
+    <div class="w-full h-full absolute top-0 right-0 bg-(--greey_section)/90"></div>
+    <div class="w-11/12 h-full z-1 flex max-md:flex-col max-md:gap-8 justify-between items-start py-7">
+        <div class="md:w-3/12 w-full flex">
+            <div class="w-full h-full flex flex-col lg:gap-6 gap-4 justify-start max-lg:items-center items-start">
+                <div class="lw-full flex flex-col lg:gap-6 gap-4 justify-start items-center ">
+                    <div class="w-7/12 max-h-20 flex justify-center items-center">
+                        <img src="{{asset('assets/img/header/logo.png')}}" alt="" class="min-w-8/12 min-h-8/12 max-w-10/12 max-h-10/12">
+                    </div>
+                    <p class="w-full xl:text-sm lg:text-xs text-[11px] font-bold text-[#f4f1ff] max-lg:text-center ">
+                        مجموعه برسو طراحی اختصاصی سایت که شما همیشه میخواستی با مشاوره کسب کار و اجرای ایده های
+                        شما در سایت کسب و کار خود</p>
+                    <div class="w-full flex items-center justify-center xl:gap-8 gap-6">
+                        <a href="" class="p-1.5 bg-white rounded-full">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="xl:size-5 size-4 fill-(--gold-primary)">
+                                <path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z">
+                                </path>
+                            </svg>
+                        </a>
+                        <a href="" class="p-1.5 bg-white rounded-full">
+                            <svg viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg" class="xl:size-5 size-4 fill-(--gold-primary)">
+                                <path d="M1764 11q33 24 27 64l-256 1536q-5 29-32 45-14 8-31 8-11 0-24-5l-527-215-298 327q-18 21-47 21-14 0-23-4-19-7-30-23.5t-11-36.5v-452l-472-193q-37-14-40-55-3-39 32-59l1664-960q35-21 68 2zm-342 1499l221-1323-1434 827 336 137 863-639-478 797z">
+                                </path>
+                            </svg>
+                        </a>
+                        <a href="" class="p-1.5 bg-white rounded-full">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="xl:size-5 size-4 fill-(--gold-primary)">
+                                <path d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z">
+                                </path>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="md:w-8/12 w-full h-full flex flex-col gap-4 justify-start items-start">
+            <div class="w-full flex justify-start items-start">
+                <div class="w-1/3 flex flex-col gap-2 justify-start md:items-start items-center">
+                    <h4 class="lg:text-lg max-md:text-sm text-white font-bold">دسترسی سریع</h4>
+                    <ul class="max-lg:text-sm max-md:text-xs flex flex-col gap-1 justify-start md:items-start items-center text-(--secondary-text) font-bold">
+                        <li>تعمییرات</li>
+                        <li>تعمییرات</li>
+                        <li>شستشو</li>
+                        <li>تعمییرات</li>
+                    </ul>
+                </div>
+                <div class="w-1/3 flex flex-col gap-2 justify-start md:items-start items-center">
+                    <h4 class="lg:text-lg text-white font-bold">خدمات ما</h4>
+                    <ul class="max-lg:text-sm flex flex-col gap-1 justify-start md:items-start items-center text-(--secondary-text) font-bold">
+                        <li>تعمییرات</li>
+                        <li>تعمییرات</li>
+                        <li>شستشو</li>
+                        <li>تعمییرات</li>
+                    </ul>
+                </div>
+                <div class="w-1/3 flex flex-col gap-2 justify-start md:items-start items-center">
+                    <h4 class="lg:text-lg text-white font-bold">کمک</h4>
+                    <ul class="max-lg:text-sm flex flex-col gap-1 justify-start md:items-start items-center text-(--secondary-text) font-bold">
+                        <li>تعمییرات</li>
+                        <li>تعمییرات</li>
+                        <li>شستشو</li>
+                        <li>تعمییرات</li>
+                    </ul>
+                </div>
+
+            </div>
+            <span class="w-full h-0.5 bg-white/50 rounded-full"></span>
+            <div class="w-full flex max-sm:flex-col max-md:gap-2 justify-between items-center max-lg:text-sm max-md:text-xs">
+                <p class="text-(--secondary-text)">طراحی و توسعه شرکت اندیشه گران طراحان دیجیتال <span class="text-white font-bold">(فائوس)</span></p>
+                <span class=" text-white font-bold">09147794595</span>
+            </div>
+        </div>
+    </div>
+</footer>
+<!-- finish -->
+
+<!-- js -->
+<!-- js -->
+<!-- js -->
+<!-- js -->
+
+
+
+</div>
+<script>
+    let localCash = "{{$localCash}}";
+    console.log(localCash);
+    if (localCash == 'cashClear') {
+        localStorage.getItem('products');
+        localStorage.removeItem('products');
+    }
+
+    // function show_this_product(item) {
+    //     console.log('sdhf.shdf')
+    //     item.children[0].children[2].classList.toggle('translate-y-full')
+    //     item.children[0].children[2].classList.toggle('-translate-y-5')
+    // }
+
+    function like_dislike(chenge) {
+        chenge.children[0].classList.toggle('hidden')
+        chenge.children[1].classList.toggle('hidden')
+    }
+</script>
 @endsection

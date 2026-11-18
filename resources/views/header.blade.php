@@ -13,7 +13,9 @@
 </head>
 
 <style>
+    
     :root {
+        
         --background: #F6FAFC;
         --background-2: #EAF3F6;
         --card: #FFFFFF;
@@ -140,20 +142,23 @@
                             </div> -->
                         </li>
 
-                        <li class="lable-1 group">
-                            <a href="{{route('product.searchProduct')}}">
+                        <div class="w-full h-full bg-black/30 fixed top-22 right-0 -z-1 invisible opacity-0 transition_normal open_category_pup_up_hover_close"></div>
+                        <li class="lable-1 group relative open_category_pup_up_hover">
+                            <div>
                                 <span class="text-[#023350] font-bold group-hover:text-[#03a297] transition_normal group-active:text-[#03a297]">دسته بندی</span>
-                            </a>
+                            </div>
+                            <!-- hover_keeper -->
+                            <div class="absolute top-0 right-0 w-full h-15 "></div>
+                            <!-- hover_keeper -->
                             <div
-                                class="w-full h-dvh fixed top-22 right-0 flex justify-center items-start lable-1-1 absolute">
-                                <div class="w-full h-full bg-black/50 absolute -z-1"></div>
+                                class="2xl:w-290 xl:w-230 w-180 h-dvh absolute top-14 right-0 flex justify-center items-start invisible opacity-0 transition_normal open_category_pup_up_item">
                                 <div
-                                    class="w-11/12 h-9/12 bg-[var(--background-2)] border border-text-[var(--green)] flex justify-start items-start py-5">
-                                    <div class="h-full border-l border-[var(--green)] flex flex-col gap-2 justify-start items-start overflow-auto [&::-webkit-scrollbar]:w-2  [&::-webkit-scrollbar-thumb]:bg-[var(--green)]  [&::-webkit-scrollbar-thumb]:rounded-full pl-2">
+                                    class="w-full h-9/12 bg-white flex justify-start items-start rounded-xl mt-2">
+                                    <div class="w-6/24 h-full bg-[#F6FAF9] border-l border-[#F1F3F5] flex flex-col gap-2 justify-start py-4 items-center overflow-auto [&::-webkit-scrollbar]:w-2  [&::-webkit-scrollbar-thumb]:bg-[var(--green)]  [&::-webkit-scrollbar-thumb]:rounded-full pl-2 rounded-r-xl">
                                         @foreach($parentCategories as $parentCat)
-                                            <div id='{{$parentCat->id}}' class="parentCats min-w-11/12 w-11/12 group py-3 hover:bg-[var(--background)]  border-y-1 border-l-1 border-[var(--green)] flex justify-between items-center xl:px-4 px-2 rounded-y-xl rounded-l-xl transition_root">
+                                            <div id='{{$parentCat->id}}' class="parentCats min-w-11/12 w-11/12 group py-3 hover:bg-(--primary_color)/60 bg-white  flex justify-between items-center xl:px-4 px-2 rounded-xl rounded-l-xl transition_root">
                                                 <div class="flex justify-start items-center xl:gap-3 gap-2 px-2">
-                                                    <span class="max-xl:text-sm font-bold text-[var(--text)] group-hover:text-[var(--green)] transition_root group-hover:pr-2">
+                                                    <span class="max-xl:text-sm font-bold text-[var(--text)] group-hover:text-[var(--green)] transition_root">
                                                         {{$parentCat->title}}
                                                     </span>
                                                 </div>
@@ -163,15 +168,16 @@
 
 
                                     </div>
-                                    <div class="w-19/24 h-full flex flex-col">
+                                    <div class="w-18/24 h-full flex flex-col p-4">
 
-                                        <div class="w-11/12 mx-auto flex border-b border-[var(--purple)]">
-                                            <span class="text-[var(--text)] text-[1.3rem] font-bold pb-2">
+                                        <div class="w-full mx-auto flex items-center gap-3 pb-3">
+                                            <span class="text-[var(--text)] text-[1.2rem] max-xl:text-[1rem] font-bold text-nowrap">
                                                 تمام محصولات مصرفی خانگی
                                             </span>
+                                            <span class="w-full h-0.5 bg-(--primary_color) rounded-full"></span>
                                         </div>
 
-                                        <div id="subCats" class="w-12/12 mx-auto h-full grid grid-cols-4 gap-x-10 gap-y-10 pt-10 px-2 overflow-auto">
+                                        <div id="subCats" class="w-12/12 mx-auto h-full flex flex-wrap gap-x-10 gap-y-10 pt-5 px-2 overflow-auto [&::-webkit-scrollbar]:w-1.5  [&::-webkit-scrollbar-thumb]:bg-[var(--green)]  [&::-webkit-scrollbar-thumb]:rounded-full">
 
                                             <?php echo $subCats; ?>
 
@@ -558,6 +564,29 @@
 
 
     <script>
+
+        let open_category_pup_up_hover_close= document.querySelector('.open_category_pup_up_hover_close')
+        let open_category_pup_up_hover= document.querySelector('.open_category_pup_up_hover')
+        let open_category_pup_up_item = document.querySelector('.open_category_pup_up_item')
+
+        open_category_pup_up_hover.addEventListener('mouseover' , function(){
+            open_category_pup_up_item.classList.remove('invisible')
+            open_category_pup_up_item.classList.remove('opacity-0')
+            open_category_pup_up_hover_close.classList.remove('invisible')
+            open_category_pup_up_hover_close.classList.remove('opacity-0')
+        })
+        open_category_pup_up_hover.addEventListener('mouseleave' , function(){
+            open_category_pup_up_item.classList.add('invisible')
+            open_category_pup_up_item.classList.add('opacity-0')
+            open_category_pup_up_hover_close.classList.add('invisible')
+            open_category_pup_up_hover_close.classList.add('opacity-0')
+        })
+        open_category_pup_up_hover_close.addEventListener('mouseover' , function(){
+           open_category_pup_up_item.classList.add('invisible')
+            open_category_pup_up_item.classList.add('opacity-0')
+            open_category_pup_up_hover_close.classList.add('invisible')
+            open_category_pup_up_hover_close.classList.add('opacity-0')
+        })
 
         let hambarger_menue_item = document.getElementById('hambarger_menue_item')
         let hambarger_menue_item_close = document.getElementById('hambarger_menue_item_close')

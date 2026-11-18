@@ -879,13 +879,13 @@
                     </div> -->
 
                     <!-- راست هدر -->
-                    <div class="w-full flex justify-between items-center gap-2 sm:gap-4">
+                    <div class="w-full flex justify-end items-center gap-2 sm:gap-4">
                         
                         <!-- اعلان -->
-                        <button class="relative min-w-10 size-10 rounded-xl bg-white shadow-sm text-[#9A9CAE] hover:bg-[#1B84FF] hover:text-white hover:shadow-md transition-all">
+                        <!-- <button class="relative min-w-10 size-10 rounded-xl bg-white shadow-sm text-[#9A9CAE] hover:bg-[#1B84FF] hover:text-white hover:shadow-md transition-all">
                             <i class="fas fa-bell text-sm sm:text-xl"></i>
                             <span class="absolute -top-1 -left-1 w-3 h-3 bg-red-500 rounded-full badge-dot border-2 border-white"></span>
-                        </button>
+                        </button> -->
                         <!-- href="{{route('user.profile')}}" -->
                         <!-- پروفایل -->
                         <div class="relative group">
