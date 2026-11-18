@@ -53,6 +53,27 @@
         border-radius: 4px;
     }
 
+    /* ===== تصویر ===== */
+    .vafadar-image-box {
+        width: 200px;
+        height: 100px;
+        border-radius: 12px;
+        overflow: hidden;
+        border: 2px solid var(--metronic-border);
+        position: relative;
+        transition: all 0.3s ease;
+        padding:10px;
+    }
+    .vafadar-image-box:hover {
+        border-color: var(--metronic-primary);
+        box-shadow: var(--shadow-sm);
+    }
+    .vafadar-image-box img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
     /* ===== کارت فرم ===== */
     .vafadar-brand-form {
         background: var(--metronic-bg-form);
@@ -274,6 +295,12 @@
                 @error('title') <span class="vafadar-error">{{$message}}</span> @enderror
             </div>
 
+            <!-- لوگو -->
+            <div>
+                <label class="vafadar-label" for="logo_path"> لوگو</label>
+                <input type="file" id="logo_path" placeholder="=لوگو را وارد کنید" name='logo_path' class="vafadar-input">
+            </div>
+
             <!-- اسلاگ -->
             <div>
                 <label class="vafadar-label" for="slug"> اسلاگ</label>
@@ -287,12 +314,14 @@
                 <input type="text" id="description" value="{{$brand->description}}" placeholder="توضیحات برند را وارد کنید" name='description' class="vafadar-input">
             </div>
 
-            <!-- لوگو -->
-            <div>
-                <label class="vafadar-label" for="logo_path"> لوگو</label>
-                <input type="text" id="logo_path" value="{{$brand->logo_path}}" placeholder="مسیر لوگو را وارد کنید" name='logo_path' class="vafadar-input">
-            </div>
 
+                <div class="vafadar-image-box">
+                    @if($brand->logo_path!=null)
+                        <img src="{{asset('storage/'.$brand->logo_path)}}" alt="{{$brand->title}}">
+                    @else
+                        <img class="" src="{{asset('assets/img/defaultPicture.jpg')}}" alt="{{$brand->title}}">
+                    @endif
+                </div>
             <!-- ===== توگل‌ها ===== -->
             <div class="col-span-2">
                 <div class="flex gap-8 justify-start items-center flex-wrap vafadar-toggle-group">
@@ -316,6 +345,7 @@
                     </div>
 
                 </div>
+
             </div>
 
         </div>

@@ -34,7 +34,7 @@ class category extends Model
         return $this->hasMany(category::class,'parent_id')->with('children');
     }
     public function products(){
-        return $this->belongsToMany(product::class , 'product_categories' , 'product_id' , 'category_id');
+        return $this->belongsToMany(product::class , 'product_categories' , 'category_id' , 'product_id');
     }
     public function attributes(){
         return $this->hasMany(attribute::class);
