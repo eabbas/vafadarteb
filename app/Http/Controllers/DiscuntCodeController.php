@@ -4,29 +4,63 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\discunt_code;
+use App\Models\User;
+use App\Models\role;
+use App\Models\role_user;
+use App\Models\permision;
+use App\Models\role_permision;
+use App\Models\headerSetting;
+use App\Models\hero;
+use App\Models\category;
+use App\Models\product;
+use App\Models\address;
+use App\Models\brand;
+use App\Models\order;
+use App\Models\cart;
+use App\Models\advertisement;
+use App\Models\referralCode;
+use App\Models\product_labels;
+use App\Models\phone_code;
+use App\Models\staticUser;
+use App\Models\support_information;
+use App\Models\banner;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
+use App\Http\Middleware\checkUserExist;
+use App\Http\Middleware\checkAuthUser;
+use Illuminate\Support\Facades\storage;
+use Illuminate\Support\Str;
+use Log;
 class DiscuntCodeController extends Controller
 {
+
     public function create(){
-        return view('admin.discunt_code.create');
-        dd('create');
+        $products   = product::select('id', 'title','price')->get();
+        $users      = User::select('id', 'name', 'phoneNumber')->get();
+        $categories = category::select('id', 'title')->get();
+
+        return view('admin.discunt_code.create', [
+            'products'   => $products,
+            'users'      => $users,
+            'categories' => $categories,
+        ]);
     }
+
     public function store(Request $request){
-        $chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
-        $code= substr(str_shuffle(str_repeat($chars, 5)), 0,5);
-        if(isset($request->code)){
-            $code=$request->code;
-        }
+        dd($request->all());
         $validate=$request->validate(
         [
             'title'=>['required'],
+            'code'=>['required'],
             // 'slug'=>['required'],
         ],[
             'title.required'=>'فیلد مورد نظر را پر کنید',
+            'code.required'=>'فیلد مورد نظر را پر کنید',
             // 'slug.required'=>'فیلد مورد نظر را پر کنید',
         ]);
         $discunt_code=discunt_code::create([
             'title'=>$validate['title'],
-            'code'=>$code,
+            'code'=>$validate['code'],
             'number'=>$request['number'],
             'percent'=>$request['percent'],
             'is_active'=>1,

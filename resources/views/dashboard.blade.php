@@ -434,8 +434,10 @@
                     <div class='element flex flex-col items-center gap-2 px-4 py-3 rounded-xl bg-[#1a1a20] shadow-sm hover:shadow-md transition-all mb-3'>
                         <div class='flex w-full justify-between items-center text-center cursor-pointer'>
                             <div class='flex items-center gap-2 text-white text-base font-medium'>
-                                <svg class='section-icon' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" fill="#1B84FF">
-                                    <path d="M0 24C0 10.7 10.7 0 24 0H69.5c22 0 41.5 12.8 50.6 32h411c26.3 0 45.5 25 38.6 50.4l-41 152.3c-8.5 31.4-37 53.3-69.5 53.3H170.7l5.4 28.5c2.2 11.3 12.1 19.5 23.6 19.5H488c13.3 0 24 10.7 24 24s-10.7 24-24 24H199.7c-34.6 0-64.3-24.6-70.7-58.5L77.4 54.5c-.7-3.8-4-6.5-7.9-6.5H24C10.7 48 0 37.3 0 24zM128 464a48 48 0 1 1 96 0 48 48 0 1 1 -96 0zm336-48a48 48 0 1 1 0 96 48 48 0 1 1 0-96z"/>
+                               <svg class='section-icon fill-orange-500' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" >
+                                <!-- آیکون لوکیشن (Pin) -->
+                                <path d="M128 28c-35.3 0-64 28.7-64 64 0 48 64 120 64 120s64-72 64-120c0-35.3-28.7-64-64-64z" stroke="black" stroke-width="10" stroke-linejoin="round"/>
+                                <circle cx="128" cy="92" r="20" stroke="black" stroke-width="10"/>
                                 </svg>
                                 <span class="text-[#9A9CAE]">آدرس</span>
                             </div>
@@ -487,8 +489,8 @@
                     <div class='element flex flex-col items-center gap-2 px-4 py-3 rounded-xl bg-[#1a1a20] shadow-sm hover:shadow-md transition-all mb-3'>
                         <div class='flex w-full justify-between items-center text-center cursor-pointer'>
                             <div class='flex items-center gap-2 text-white text-base font-medium'>
-                                <svg class='section-icon' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" fill="#1B84FF">
-                                    <path d="M0 24C0 10.7 10.7 0 24 0H69.5c22 0 41.5 12.8 50.6 32h411c26.3 0 45.5 25 38.6 50.4l-41 152.3c-8.5 31.4-37 53.3-69.5 53.3H170.7l5.4 28.5c2.2 11.3 12.1 19.5 23.6 19.5H488c13.3 0 24 10.7 24 24s-10.7 24-24 24H199.7c-34.6 0-64.3-24.6-70.7-58.5L77.4 54.5c-.7-3.8-4-6.5-7.9-6.5H24C10.7 48 0 37.3 0 24zM128 464a48 48 0 1 1 96 0 48 48 0 1 1 -96 0zm336-48a48 48 0 1 1 0 96 48 48 0 1 1 0-96z"/>
+                               <svg class='section-icon fill-red-400' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                                <path d="M256 0c-4.7 0-9.4 1-13.7 3L28.6 82.4C11.4 89.2 0 105.9 0 124.6V387.4c0 18.7 11.4 35.4 28.6 42.2l213.7 79.4c4.3 2 9 3 13.7 3s9.4-1 13.7-3l213.7-79.4C500.6 422.8 512 406.1 512 387.4V124.6c0-18.7-11.4-35.4-28.6-42.2L269.7 3C265.4 1 260.7 0 256 0zM48 152.6l184-68.4v144.4L48 297V152.6zm232-68.4l184 68.4V297l-184-68.4V84.2zM232 472.2L48 403.8V312l184 68.4v91.8zm48 0v-91.8L464 312v91.8l-184 68.4z"/>
                                 </svg>
                                 <span class="text-[#9A9CAE]">محصولات</span>
                             </div>
