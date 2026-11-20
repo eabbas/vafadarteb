@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\PermisionController;
+use App\Http\Controllers\ReferralCodeController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProductController;
@@ -181,6 +182,13 @@ route::group([
     Route::get('/delete/{discuntCode}','delete')->name('delete');
     Route::post('/checkCode','checkCode')->name('checkCode');
 });
+
+
+
+
+
+
+
 route::group([
     'prefix'=>'logo',
     'as'=>'logo.',

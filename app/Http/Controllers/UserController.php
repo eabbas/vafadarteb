@@ -17,6 +17,7 @@ use App\Models\brand;
 use App\Models\order;
 use App\Models\cart;
 use App\Models\advertisement;
+use App\Models\referralCode;
 use App\Models\product_labels;
 use App\Models\phone_code;
 use App\Models\staticUser;
@@ -170,7 +171,8 @@ class UserController extends Controller
             return $this->firstPage($localCash);
         }
 
-
+        $chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+        $code= substr(str_shuffle(str_repeat($chars, 5)), 0,6);
         $createdUser=User::create([
             "name"=>$validation['name'],
             "family"=>$validation['family'],
@@ -182,6 +184,10 @@ class UserController extends Controller
         role_user::create([
             'user_id'=>$createdUser->id,
             'role_id'=>$role->id,
+        ]);
+        referralCode::create([
+            'user_id'=>$createdUser->id,
+            'code'=>$code.$createdUser->id,
         ]);
         Auth::login($createdUser);
         $user=Auth::user();
@@ -253,12 +259,18 @@ class UserController extends Controller
         if($user){
             return 'کاربری با همین مشخصات از قبل ثبت شده';   
         }
+        $chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+        $code= substr(str_shuffle(str_repeat($chars, 5)), 0,6);
         $createdUser=User::create([
             "name"=>$validation['name'],
             "family"=>$validation['family'],
             "phoneNumber"=>$validation['phoneNumber'],
             "email"=>$request['email'],
             "password"=>$validation['password'],
+        ]);
+        referralCode::create([
+            'user_id'=>$createdUser->id,
+            'code'=>$code.$createdUser->id,
         ]);
         if(isset($request->roles)){
             foreach ($request->roles as $role_id) {
@@ -513,15 +525,17 @@ class UserController extends Controller
                 $user->load(['carts'=>function($query){$query->where('order_id',null)->get();}]);
                 if(count($user->carts)>0){
                     foreach ($user->carts as $cart) {
-                        foreach ($cart->product->medias as $media) {
-                            if($media->is_main==1){
-                                $cart->product->path=$media->path;
+                        if($cart->product->medias){
+                            foreach ($cart->product->medias as $media) {
+                                if($media->is_main==1){
+                                    $cart->product->path=$media->path;
+                                }
                             }
-                            if ($cart->product->discunt!=null ||$cart->product->discunt>0 ) {
-                                $campare = $cart->product->price - $cart->product->discunt;
-                                $x = $campare / $cart->product->price;
-                                $cart->product->percent = intval($x * 100);
-                            }
+                        }
+                        if ($cart->product->discunt!=null ||$cart->product->discunt>0 ) {
+                            $campare = $cart->product->price - $cart->product->discunt;
+                            $x = $campare / $cart->product->price;
+                            $cart->product->percent = intval($x * 100);
                         }
                         
                         
@@ -740,12 +754,18 @@ class UserController extends Controller
     //     // dd($request->all());
     // }
     public function signup_with_ajax(Request $request){
+        $chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+        $code= substr(str_shuffle(str_repeat($chars, 5)), 0,6);
         $createdUser=User::create([
             "name"=>$request['name'],
             "family"=>$request['family'],
             "phoneNumber"=>$request['phoneNumber'],
             "email"=>null,
             "password"=>$request['password'],
+        ]);
+        referralCode::create([
+            'user_id'=>$createdUser->id,
+            'code'=>$code.$createdUser->id,
         ]);
         $role=role::where('ea_title','user')->first();
         role_user::create([

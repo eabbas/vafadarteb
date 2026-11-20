@@ -91,5 +91,8 @@ class User extends Authenticatable
     public function address(){
         return $this->hasMany(address::class);
     }
+    public function referralCode(){
+        return $this->hasOne(referralCode::class);
+    }
     
 }

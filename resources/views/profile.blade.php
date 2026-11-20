@@ -17,8 +17,18 @@
                     <p class="text-sm text-[#9A9CAE] mt-0.5">اطلاعات شخصی خود را مدیریت کنید</p>
                 </div>
             </div>
-            <span class="px-4 py-2 bg-[#1B84FF]/10 text-[#1B84FF] text-sm font-medium rounded-xl border border-[#1B84FF]/20">
-                <i class="fas fa-check-circle ml-1"></i> حساب تایید شده
+            <span class="inline-flex items-center gap-2 pr-4 pl-1 py-1 bg-[#1B84FF]/10 text-[#1B84FF] text-sm font-medium rounded-xl border border-[#1B84FF]/20">
+                <i class="fas fa-check-circle"></i>
+                <span id="referral-code">{{ Auth::user()->referralCode->code }}</span>
+                <button
+                    type="button"
+                    onclick="copyReferralCode(this)"
+                    class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-[#1B84FF]/10 hover:bg-[#1B84FF]/20 active:scale-95 transition-all duration-150 cursor-pointer"
+                    title="کپی کد معرف"
+                >
+                    <i class="fas fa-copy text-xs"></i>
+                    <span class="text-xs copy-text">کپی</span>
+                </button>
             </span>
         </div>
     </div>
@@ -452,15 +462,45 @@
         }
     }
 
-    function countPasswordChars(password) {
-        return {
-            total: password.length,  // تعداد کل کاراکترها
-            english: (password.match(/[A-Za-z]/g) || []).length,  // حروف انگلیسی
-            numbers: (password.match(/[0-9]/g) || []).length,  // اعداد
-            special: (password.match(/[^A-Za-z0-9]/g) || []).length,  // کاراکترهای خاص (همه)
-            persian: (password.match(/[آ-ی]/g) || []).length  // حروف فارسی
+    function copyReferralCode(btn) {
+        const code = document.getElementById('referral-code').textContent.trim();
+
+        const done = () => {
+            const icon = btn.querySelector('i');
+            const label = btn.querySelector('.copy-text');
+            const originalIcon = icon.className;
+
+            icon.className = 'fas fa-check text-xs';
+            label.textContent = 'کپی شد';
+            btn.classList.add('bg-green-100', 'text-green-600');
+            btn.classList.remove('bg-[#1B84FF]/10', 'text-[#1B84FF]');
+
+            setTimeout(() => {
+                icon.className = originalIcon;
+                label.textContent = 'کپی';
+                btn.classList.remove('bg-green-100', 'text-green-600');
+                btn.classList.add('bg-[#1B84FF]/10');
+            }, 1500);
         };
+
+        if (navigator.clipboard && window.isSecureContext) {
+            navigator.clipboard.writeText(code).then(done).catch(() => fallbackCopy(code, done));
+        } else {
+            fallbackCopy(code, done);
+        }
+    }
+
+    function fallbackCopy(text, cb) {
+        const ta = document.createElement('textarea');
+        ta.value = text;
+        ta.style.position = 'fixed';
+        ta.style.opacity = '0';
+        document.body.appendChild(ta);
+        ta.select();
+        try { document.execCommand('copy'); cb(); } catch (e) { alert('کپی نشد'); }
+        document.body.removeChild(ta);
     }
 </script>
+
 @endpush
 @endsection
