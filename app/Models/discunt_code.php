@@ -13,5 +13,8 @@ class discunt_code extends Model
         "number",
         "percent",
         "is_active",
+        'free_shipping',
+        'start_date',
+        'end_date',
     ];
 }
