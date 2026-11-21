@@ -62,6 +62,7 @@ Route::group([
     Route::any('/cartInformation','cartInformation')->name('cartInformation');
     Route::any('/innerDashboard','innerDashboard')->name('innerDashboard');
     Route::any('/getHeaderSubCats/{category}','getHeaderSubCats')->name('getHeaderSubCats');
+    Route::any('/aboutMy','aboutMy')->name('aboutMy');
 });
 Route::group([
     'prefix'=>'role',
@@ -280,9 +281,9 @@ Route::group([
     Route::post('/create/ajax','createAjax')->name('createAjax');
 });
 
-Route::get('/aboutMy' , function(){
-    return view('aboutMy');
-});
+// Route::get('/aboutMy' , function(){
+//     return view('aboutMy');
+// });
 
 
 
