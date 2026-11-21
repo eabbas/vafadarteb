@@ -39,4 +39,7 @@ class category extends Model
     public function attributes(){
         return $this->hasMany(attribute::class);
     }
+    public function discunt_code(){
+        return $this->belongsToMany(discunt_code::class,'category_discunt_codes','category_id','discunt_code_id');
+    }
 }

@@ -726,9 +726,9 @@
                 </div>
 
                 {{-- نوع تخفیف برای ارسال به کنترلر --}}
-                <input type="hidden" name="discount_type"
-                    id="discount_type"
-                    value="{{ old('discount_type', 'percent') }}">
+                <input type="hidden" name="discunt_type"
+                    id="discunt_type"
+                    value="{{ old('discunt_type', 'percent') }}">
 
 
                 <!-- تاریخ شروع -->
@@ -793,67 +793,100 @@
                         <span class="vafadar-error">{{ $message }}</span>
                     @enderror
                 </div>
+                {{-- کد تخفیف --}}
+                <div class="">
 
-{{-- مزایای اضافی کد تخفیف --}}
-<div class="col-span-2">
+                    <label class="vafadar-label" for="code">
+                        کد تخفیف
+                    </label>
 
-    <label class="vafadar-label">
-        مزایای اضافی کد تخفیف
-    </label>
+                    <div class=" flex flex-row gap-1">
 
-    <div class="grid grid-cols-2 gap-4">
+                        <input
+                            type="text"
+                            name="code"
+                            id="code"
+                            maxlength="5"
+                            value="{{ old('code') }}"
+                            placeholder="کد تخفیف را وارد کنید"
+                            class="vafadar-input w-8/12 "
+                            dir="ltr"
+                        >
 
-        {{-- ارسال رایگان --}}
-        <label class="free-shipping-option">
+                        <button type="button" class='w-4/12 text-white rounded-xl bg-[#1B84FF] cursor-pointer' id="generateCodeBtn">
+                            <i class="fa fa-sync-alt "></i>
+                            تولید کد
+                        </button>
 
-            <input
-                type="checkbox"
-                name="free_shipping"
-                value="1"
-                {{ old('free_shipping') == '1' ? 'checked' : '' }}
-            >
+                    </div>
 
-            <span class="free-shipping-icon">
-                <i class="fa fa-truck"></i>
-            </span>
+                    @error('code')
+                        <span class="vafadar-error">{{ $message }}</span>
+                    @enderror
 
-            <span class="free-shipping-content">
-                <strong>ارسال رایگان</strong>
-            </span>
+                </div>
+                {{-- مزایای اضافی کد تخفیف --}}
+                <div class="col-span-2">
 
-            <span class="free-shipping-check">
-                <i class="fa fa-check"></i>
-            </span>
+                    <label class="vafadar-label">
+                        مزایای اضافی کد تخفیف
+                    </label>
 
-        </label>
+                    <div class="grid grid-cols-2 gap-4">
 
-        {{-- فعال / غیرفعال --}}
-        <label class="free-shipping-option">
+                        {{-- ارسال رایگان --}}
+                        <label class="free-shipping-option">
 
-            <input
-                type="checkbox"
-                name="is_active"
-                value="1"
-                {{ old('is_active') == '1' ? 'checked' : '' }}
-            >
+                            <input
+                                type="checkbox"
+                                name="free_shipping"
+                                value="1"
+                                {{ old('free_shipping') == '1' ? 'checked' : '' }}
+                            >
 
-            <span class="free-shipping-icon">
-                <i class="fa fa-toggle-on"></i>
-            </span>
+                            <span class="free-shipping-icon">
+                                <i class="fa fa-truck"></i>
+                            </span>
 
-            <span class="free-shipping-content">
-                <strong>فعال / غیرفعال</strong>
-            </span>
+                            <span class="free-shipping-content">
+                                <strong>ارسال رایگان</strong>
+                            </span>
 
-            <span class="free-shipping-check">
-                <i class="fa fa-check"></i>
-            </span>
+                            <span class="free-shipping-check">
+                                <i class="fa fa-check"></i>
+                            </span>
 
-        </label>
+                        </label>
 
-    </div>
+                        {{-- فعال / غیرفعال --}}
+                        <label class="free-shipping-option">
 
-</div>
+                            <input
+                                type="checkbox"
+                                name="is_active"
+                                value="1"
+                                {{ old('is_active') == '1' ? 'checked' : '' }}
+                            >
+
+                            <span class="free-shipping-icon">
+                                <i class="fa fa-toggle-on"></i>
+                            </span>
+
+                            <span class="free-shipping-content">
+                                <strong>فعال / غیرفعال</strong>
+                            </span>
+
+                            <span class="free-shipping-check">
+                                <i class="fa fa-check"></i>
+                            </span>
+
+                        </label>
+
+                    </div>
+
+                </div>
+
+                
             </div>
 
             {{-- ===== سه باکس انتخاب: محصولات / کاربران / دسته‌بندی‌ها ===== --}}
@@ -876,10 +909,9 @@
 
                             @foreach($products as $product)
                                 @php
-                                    $productId = data_get($product, 'id');
-                                    $productName = data_get($product, 'title')
-                                        ?? 'محصول شماره ' . $productId;
-                                    $productPrice = data_get($product, 'price');
+                                    $productId = $product->id;
+                                    $productName =$product->title;
+                                    $productPrice = $product->price;
                                 @endphp
 
                                 <label class="picker-option"
@@ -938,11 +970,9 @@
 
                             @foreach($users as $user)
                                 @php
-                                    $userId = data_get($user, 'id');
-                                    $userName = data_get($user, 'name')
-                                        ?? data_get($user, 'username')
-                                        ?? 'کاربر شماره ' . $userId;
-                                    $userPhone = data_get($user, 'phoneNumber');
+                                    $userId = $user->id;
+                                    $userName = $user->name;
+                                    $userPhone = $user->phoneNumber;
                                 @endphp
 
                                 <label class="picker-option"
@@ -1005,10 +1035,8 @@
 
                             @foreach($categories as $category)
                                 @php
-                                    $categoryId = data_get($category, 'id');
-                                    $categoryName = data_get($category, 'name')
-                                        ?? data_get($category, 'title')
-                                        ?? 'دسته‌بندی شماره ' . $categoryId;
+                                    $categoryId = $category->id;
+                                    $categoryName = $category->title;
                                 @endphp
 
                                 <label class="picker-option"
@@ -1124,7 +1152,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     const percentBox = document.getElementById('percentBox');
     const fixedBox = document.getElementById('fixedBox');
-    const discountTypeInput = document.getElementById('discount_type');
+    const discountTypeInput = document.getElementById('discunt_type');
 
     const discountButtons = document.querySelectorAll('[data-discount-type]');
 

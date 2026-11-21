@@ -15,8 +15,6 @@ return new class extends Migration
             $table->id();
             $table->string("title")->nullable();
             $table->string("code")->unique();
-            $table->string("number")->nullable();
-            $table->string("percent")->nullable();
             $table->string("is_active");
             $table->timestamps();
         });

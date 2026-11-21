@@ -24,6 +24,9 @@ use App\Models\phone_code;
 use App\Models\staticUser;
 use App\Models\support_information;
 use App\Models\banner;
+use App\Models\category_discunt_code;
+use App\Models\product_discunt_code;
+use App\Models\user_discunt_code;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use App\Http\Middleware\checkUserExist;
@@ -31,6 +34,7 @@ use App\Http\Middleware\checkAuthUser;
 use Illuminate\Support\Facades\storage;
 use Illuminate\Support\Str;
 use Log;
+use Illuminate\Validation\Rule;
 class DiscuntCodeController extends Controller
 {
 
@@ -38,7 +42,6 @@ class DiscuntCodeController extends Controller
         $products   = product::select('id', 'title','price')->get();
         $users      = User::select('id', 'name', 'phoneNumber')->get();
         $categories = category::select('id', 'title')->get();
-
         return view('admin.discunt_code.create', [
             'products'   => $products,
             'users'      => $users,
@@ -47,24 +50,86 @@ class DiscuntCodeController extends Controller
     }
 
     public function store(Request $request){
-        dd($request->all());
-        $validate=$request->validate(
-        [
-            'title'=>['required'],
-            'code'=>['required'],
-            // 'slug'=>['required'],
-        ],[
-            'title.required'=>'فیلد مورد نظر را پر کنید',
-            'code.required'=>'فیلد مورد نظر را پر کنید',
-            // 'slug.required'=>'فیلد مورد نظر را پر کنید',
-        ]);
+        $validate = $request->validate(
+            [
+                'title' => ['required'],
+                'code'  => ['required', 'unique:discunt_codes,code'],
+            ],
+            [
+                'title.required' => 'فیلد مورد نظر را پر کنید',
+                'code.required'  => 'فیلد مورد نظر را پر کنید',
+                'code.unique'    => 'این کد تخفیف قبلاً ثبت شده است',
+            ]
+        );   
+        // dd($request->all());
+
+        if($request->discunt_type=='percent'){
+            $validate=$request->validate(
+            [
+                'title'=>['required'],
+                'code'=>['required', 'unique:discunt_codes,code'],
+                'number'=>['required'],
+            ],[
+                'title.required'=>'فیلد مورد نظر را پر کنید',
+                'code.required'=>'فیلد مورد نظر را پر کنید',
+                'number.required'=>'فیلد مورد نظر را پر کنید',
+                'code.unique'    => 'این کد تخفیف قبلاً ثبت شده است',
+            ]);
+            $value=$validate['number'];
+        }
+        if($request->discunt_type=='number'){
+            $validate=$request->validate(
+            [
+                'title'=>['required'],
+                'code'=>['required', 'unique:discunt_codes,code'],
+                'price'=>['required'],
+            ],[
+                'title.required'=>'فیلد مورد نظر را پر کنید',
+                'code.required'=>'فیلد مورد نظر را پر کنید',
+                'price.required'=>'فیلد مورد نظر را پر کنید',
+                'code.unique'    => 'این کد تخفیف قبلاً ثبت شده است',
+            ]);
+            $value=$validate['price'];
+        }
+
+
         $discunt_code=discunt_code::create([
             'title'=>$validate['title'],
             'code'=>$validate['code'],
-            'number'=>$request['number'],
-            'percent'=>$request['percent'],
-            'is_active'=>1,
+            'discunt_type'=>$request['discunt_type'],
+            'discunt_value'=>$value,
+            'is_active'=>$request['is_active'] ?? 0,
+            'free_shipping'=>$request['free_shipping'] ?? 0,
+            'usage_limit'=>$request['usage_limit'] ?? null,
+            'start_date'=>$request['start_date'] ?? null,
+            'end_date'=>$request['end_date'] ?? null,
         ]);
+        if(isset($request['products'])){
+            foreach ($request['products'] as $product_id) {
+                product_discunt_code::create([
+                    'product_id'=>$product_id,
+                    'discunt_code_id'=>$discunt_code->id,
+                ]);
+            }
+        }
+        if(isset($request['users'])){
+            foreach ($request['users'] as $user_id) {
+                user_discunt_code::create([
+                    'user_id'=>$user_id,
+                    'discunt_code_id'=>$discunt_code->id,
+                ]);
+            }
+
+        }
+        if(isset($request['categories'])){
+            foreach ($request['categories'] as $category_id) {
+                category_discunt_code::create([
+                    'category_id'=>$category_id,
+                    'discunt_code_id'=>$discunt_code->id,
+                ]);
+            }
+
+        }
         return to_route('discuntCode.list');
         dd('store');
     }
@@ -74,28 +139,122 @@ class DiscuntCodeController extends Controller
         dd('list');
     }
     public function edit(discunt_code $discuntCode){
+        $products   = product::select('id', 'title','price')->get();
+        $users      = User::select('id', 'name', 'phoneNumber')->get();
+        $categories = category::select('id', 'title')->get();
+        $discuntCode->products;
+        $discuntCode->categories;
+        $discuntCode->users;
         // dd($discuntCode);
-        return view('admin.discunt_code.edit',['discuntCode'=>$discuntCode]);
+        return view('admin.discunt_code.edit', [
+            'discuntCode'=>$discuntCode,
+            'products'   => $products,
+            'users'      => $users,
+            'categories' => $categories,
+        ]);
         dd('edit');
     }
     public function update(Request $request , discunt_code $discuntCode){
+        dd($request->all());
+        $validate = $request->validate(
+            [
+                'title' => ['required'],
+                'code' => [
+                    'required',
+                    Rule::unique('discunt_codes', 'code')->ignore($discuntCode->id)
+                ],  
+            ],
+            [
+                'title.required' => 'فیلد مورد نظر را پر کنید',
+                'code.required'  => 'فیلد مورد نظر را پر کنید',
+                'code.unique'    => 'این کد تخفیف قبلاً ثبت شده است',
+            ]
+        );   
         // dd($request->all());
-        $chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
-        $code= substr(str_shuffle(str_repeat($chars, 5)), 0,5);
-        if(isset($request->code)){
-            $code=$request->code;
+
+        if($request->discunt_type=='percent'){
+            $validate=$request->validate(
+            [
+                'title'=>['required'],
+                'code' => [
+                    'required',
+                    Rule::unique('discunt_codes', 'code')->ignore($discuntCode->id)
+                ],  
+                'number'=>['required'],
+            ],[
+                'title.required'=>'فیلد مورد نظر را پر کنید',
+                'code.required'=>'فیلد مورد نظر را پر کنید',
+                'number.required'=>'فیلد مورد نظر را پر کنید',
+                'code.unique'    => 'این کد تخفیف قبلاً ثبت شده است',
+            ]);
+            $value=$validate['number'];
         }
-        $discuntCode->title=$request->title;
-        $discuntCode->code=$code;
-        if(isset($request->percent)){
-            $discuntCode->percent=$request->percent;
-            $discuntCode->number=null;
-        }else{
-            $discuntCode->number=$request->number;
-            $discuntCode->percent=null;
+        if($request->discunt_type=='number'){
+            $validate=$request->validate(
+            [
+                'title'=>['required'],
+                'code' => [
+                    'required',
+                    Rule::unique('discunt_codes', 'code')->ignore($discuntCode->id)
+                ],  
+                'price'=>['required'],
+            ],[
+                'title.required'=>'فیلد مورد نظر را پر کنید',
+                'code.required'=>'فیلد مورد نظر را پر کنید',
+                'price.required'=>'فیلد مورد نظر را پر کنید',
+                'code.unique'    => 'این کد تخفیف قبلاً ثبت شده است',
+            ]);
+            $value=$validate['price'];
         }
-        $discuntCode->is_active=$request->is_active;
+
+
+        $discuntCode->title = $validate['title'];
+        $discuntCode->code = $validate['code'];
+        $discuntCode->discunt_type = $request['discunt_type'];
+        $discuntCode->discunt_value = $value;
+        $discuntCode->is_active = $request['is_active'] ?? 0;
+        $discuntCode->free_shipping = $request['free_shipping'] ?? 0;
+        $discuntCode->usage_limit = $request['usage_limit'] ?? null;
+        $discuntCode->start_date = $request['start_date'] ?? null;
+        $discuntCode->end_date = $request['end_date'] ?? null;
         $discuntCode->save();
+
+
+        $products=$discuntCode->products->pluck('id')->toArray();
+        $categories=$discuntCode->categories->pluck('id')->toArray();
+        $users=$discuntCode->users->pluck('id')->toArray();
+
+
+        if(isset($request['products'])){
+            foreach ($request['products'] as $product_id) {
+                if(!in_array($product_id,$products)){
+                    product_discunt_code::create([
+                        'product_id'=>$product_id,
+                        'discunt_code_id'=>$discuntCode->id,
+                    ]);
+                }
+            }
+        }
+        if(isset($request['users'])){
+            foreach ($request['users'] as $user_id) {
+                if(!in_array($user_id,$users)){
+                    user_discunt_code::create([
+                        'user_id'=>$user_id,
+                        'discunt_code_id'=>$discuntCode->id,
+                    ]);
+                }
+            }
+        }
+        if(isset($request['categories'])){
+            foreach ($request['categories'] as $category_id) {
+                if(!in_array($category_id,$categories)){
+                    category_discunt_code::create([
+                        'category_id'=>$category_id,
+                        'discunt_code_id'=>$discuntCode->id,
+                    ]);
+                }
+            }
+        }
         return to_route('discuntCode.list');
     }
     public function delete(discunt_code $discuntCode){
