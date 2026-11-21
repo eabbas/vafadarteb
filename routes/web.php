@@ -280,5 +280,9 @@ Route::group([
     Route::post('/create/ajax','createAjax')->name('createAjax');
 });
 
+Route::get('/aboutMy' , function(){
+    return view('aboutMy');
+});
+
 
 

@@ -214,7 +214,7 @@
                             </div> -->
                         </li>
                         <li class="lable-1 group">
-                            <a href="">
+                            <a href="http://localhost/vafadarteb/public/aboutMy">
                                 <span class="text-[#023350] font-bold group-hover:text-[#03a297] transition_normal group-active:text-[#03a297]">درباره ما</span>
                             </a>
                             <!-- <div class="lable-1-1 w-56 h-40 bg-white absolute mt-4">
