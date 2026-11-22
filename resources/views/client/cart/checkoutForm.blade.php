@@ -576,6 +576,8 @@
     }
     let code=''
     function checkCode(el){
+      if("{{Auth::check()}}"){
+
         code=document.getElementById('codeInput').value;
         console.log(code);
         if(code!=''){
@@ -595,6 +597,69 @@
                   'code':code,
                 },
                 success: function(data) {
+                  console.log(data.access);
+                  if(data.access!='Unavailable'){
+                      if(data.access==true){
+                        el.innerHTML='کد تخفیف اعمال شد'
+                        el.classList.remove('bg-green-100');
+                        el.classList.add('bg-yellow-300');
+                        if(data.discuntCode.number!=null){
+                          finalAmount_div.value=parseInt(finalAmount_div.value)-parseInt(data.discuntCode.number)
+                          benefit_div.value=parseInt(benefit_div.value)+parseInt(data.discuntCode.number)
+                        }
+                        if(data.discuntCode.percent!=null){
+                          let result=parseInt(finalAmount_div.value)*parseInt(data.discuntCode.percent)
+                          result=result/100;
+                          finalAmount_div.value=parseInt(finalAmount_div.value)-parseInt(result)
+                          benefit_div.value=parseInt(benefit_div.value) + result
+                          parseInt(finalAmount_div.value)
+                          parseInt(benefit_div.value) 
+                        }
+                      }
+                      if(data.access==false){
+                        alert('کد تخفیف قابل دسترتس نیست');
+                        el.innerHTML="اعمال کد تخفیف"
+                        el.setAttribute('onclick','checkCode(this)');
+                        el.removeAttribute('disable');
+                      }
+                  }else{
+                    alert('کد تخفیف درست نیست');
+                    el.innerHTML="اعمال کد تخفیف"
+                    el.setAttribute('onclick','checkCode(this)');
+                    el.removeAttribute('disable');
+                  }
+                },
+                error: function() {
+                  console.log('☢')
+                }
+            })
+        }else{
+            alert('اول کد تخفیف را وارد کنید');
+        }
+      }else{
+        let jsonProArray = JSON.parse(localStorage.getItem('vafadarLocalStorageProducts'));
+        let productsString = JSON.stringify(jsonProArray);
+
+          code=document.getElementById('codeInput').value;
+          console.log(code);
+          if(code!=''){
+              el.innerHTML= `<div class="size-7 border-4 border-(--border) border-t-(--primary_color) rounded-full animate-spin"></div>`;
+              el.removeAttribute('onclick');
+              el.setAttribute('disable',true);
+              $.ajaxSetup({
+                  headers: {
+                      'X-CSRF-TOKEN': "{{ csrf_token() }}"
+                  }
+              })
+              $.ajax({
+                  url: "{{route('discuntCode.checkCode')}}",
+                  type: "post",
+                  dataType: "json",
+                  data:{
+                    'code':code,
+                    'productsString':productsString,
+                  },
+                  success: function(data) {
                     console.log(data.access);
                     if(data.access!='Unavailable'){
                         if(data.access==true){
@@ -613,8 +678,9 @@
                             parseInt(finalAmount_div.value)
                             parseInt(benefit_div.value) 
                           }
-                        }if(data.access==false){
-                          alert('کد تخفیف منقصی شد');
+                        }
+                        if(data.access==false){
+                          alert('کد تخفیف قابل دسترتس نیست');
                           el.innerHTML="اعمال کد تخفیف"
                           el.setAttribute('onclick','checkCode(this)');
                           el.removeAttribute('disable');
@@ -625,14 +691,16 @@
                       el.setAttribute('onclick','checkCode(this)');
                       el.removeAttribute('disable');
                     }
-                },
-                error: function() {
-                  console.log('☢')
-                }
-            })
-        }else{
-            alert('اول کد تخفیف را وارد کنید');
-        }
+                  },
+                  error: function() {
+                    console.log('☢')
+                  }
+              })
+          }else{
+              alert('اول کد تخفیف را وارد کنید');
+          }
+        
+      }
     }
     
     codeInput.addEventListener('keyup', function(event) {
@@ -649,7 +717,7 @@
 
 
     function addlocalProducts(){
-        let jsonProArray = JSON.parse(localStorage.getItem('products'));
+        let jsonProArray = JSON.parse(localStorage.getItem('vafadarLocalStorageProducts'));
 
         console.log(jsonProArray);
         let productsString = JSON.stringify(jsonProArray);

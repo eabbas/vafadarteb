@@ -739,13 +739,13 @@
                     // localStorage.removeItem('products');
                     // console.log(localStorage.getItem('products'));
                     // return
-                    if(localStorage.getItem('products') == null){
+                    if(localStorage.getItem('vafadarLocalStorageProducts') == null){
                         jsonPro={id:current_product_id, title:current_product_title , price:current_product_price , discunt:current_product_discunt , path:current_product_path , quantity:current_product_quantity};
                         products.push(jsonPro);
                         textProducts=JSON.stringify(products)
-                        localStorage.setItem('products',textProducts)
+                        localStorage.setItem('vafadarLocalStorageProducts',textProducts)
                     }else{
-                        jsonProArray=JSON.parse(localStorage.getItem('products'));
+                        jsonProArray=JSON.parse(localStorage.getItem('vafadarLocalStorageProducts'));
                             myProduct= jsonProArray.find(function(pro){
                             if(pro.id ==current_product_id){
                                 flag=false
@@ -755,12 +755,12 @@
                             jsonPro={id:current_product_id, title:current_product_title , price:current_product_price , discunt:current_product_discunt , path:current_product_path , quantity:current_product_quantity};
                             jsonProArray.push(jsonPro);
                             textProducts=JSON.stringify(jsonProArray)
-                            localStorage.setItem('products',textProducts)
+                            localStorage.setItem('vafadarLocalStorageProducts',textProducts)
                         }else{
                             alert('در سبد خرید شما وجود دارد');
                         }
                     }
-                    console.log(localStorage.getItem('products'));
+                    console.log(localStorage.getItem('vafadarLocalStorageProducts'));
                     
 
                     if(flag){
@@ -1008,7 +1008,7 @@
 
         let currentUpdateProduct='';
         function updateNoAuthCart(el,product_id,state){
-            jsonProArray=JSON.parse(localStorage.getItem('products'));
+            jsonProArray=JSON.parse(localStorage.getItem('vafadarLocalStorageProducts'));
             jsonProArray.find(function(pro){
                 if(pro.id == product_id){
                     currentUpdateProduct=pro
@@ -1104,13 +1104,13 @@
                     } 
                 })
                 textProducts=JSON.stringify(jsonProArray)
-                localStorage.removeItem('products')
-                localStorage.setItem('products',textProducts)
+                localStorage.removeItem('vafadarLocalStorageProducts')
+                localStorage.setItem('vafadarLocalStorageProducts',textProducts)
             // }
 
         }
         function NoAuthFullTrash(el,product_id){
-            jsonProArray=JSON.parse(localStorage.getItem('products'));
+            jsonProArray=JSON.parse(localStorage.getItem('vafadarLocalStorageProducts'));
             jsonProArray.find(function(pro){
                 if(pro.id == product_id){
                     currentUpdateProduct=pro
@@ -1137,8 +1137,8 @@
             });
 
             textProducts=JSON.stringify(jsonProArray)
-            localStorage.removeItem('products')
-            localStorage.setItem('products',textProducts)
+            localStorage.removeItem('vafadarLocalStorageProducts')
+            localStorage.setItem('vafadarLocalStorageProducts',textProducts)
 
         }
         function NoAuthtrash(el,product_id){
@@ -1149,7 +1149,7 @@
             `
                 <div class="size-7 border-4 border-(--border) border-t-(--primary_color) rounded-full animate-spin"></div>
             `
-            jsonProArray=JSON.parse(localStorage.getItem('products'));
+            jsonProArray=JSON.parse(localStorage.getItem('vafadarLocalStorageProducts'));
             jsonProArray.find(function(pro){
                 if(pro.id == product_id){
                     currentUpdateProduct=pro
@@ -1176,14 +1176,14 @@
             });
 
             textProducts=JSON.stringify(jsonProArray)
-            localStorage.removeItem('products')
-            localStorage.setItem('products',textProducts)
+            localStorage.removeItem('vafadarLocalStorageProducts')
+            localStorage.setItem('vafadarLocalStorageProducts',textProducts)
 
         }
         function addProducsToCart(){
             
-            if(localStorage.getItem('products') != null){
-                jsonProArray=JSON.parse(localStorage.getItem('products'));
+            if(localStorage.getItem('vafadarLocalStorageProducts') != null){
+                jsonProArray=JSON.parse(localStorage.getItem('vafadarLocalStorageProducts'));
 
                 jsonProArray.forEach(pro => {
                     console.log(pro);

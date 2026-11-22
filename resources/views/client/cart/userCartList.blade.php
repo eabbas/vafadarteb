@@ -687,7 +687,7 @@
 
         let currentUpdateProduct = '';
         function updateNoAuthCart(el, product_id, state) {
-            jsonProArray = JSON.parse(localStorage.getItem('products'));
+            jsonProArray = JSON.parse(localStorage.getItem('vafadarLocalStorageProducts'));
             jsonProArray.find(function(pro) {
                 if (pro.id == product_id) {
                     currentUpdateProduct = pro
@@ -796,14 +796,14 @@
                 }
             })
             textProducts = JSON.stringify(jsonProArray)
-            localStorage.removeItem('products')
-            localStorage.setItem('products', textProducts)
+            localStorage.removeItem('vafadarLocalStorageProducts')
+            localStorage.setItem('vafadarLocalStorageProducts', textProducts)
             // }
 
         }
 
         function NoAuthFullTrash(el, product_id) {
-            jsonProArray = JSON.parse(localStorage.getItem('products'));
+            jsonProArray = JSON.parse(localStorage.getItem('vafadarLocalStorageProducts'));
             jsonProArray.find(function(pro) {
                 if (pro.id == product_id) {
                     currentUpdateProduct = pro
@@ -834,8 +834,8 @@
             });
 
             textProducts = JSON.stringify(jsonProArray)
-            localStorage.removeItem('products')
-            localStorage.setItem('products', textProducts)
+            localStorage.removeItem('vafadarLocalStorageProducts')
+            localStorage.setItem('vafadarLocalStorageProducts', textProducts)
             checkCart()
         }
         function NoAuthtrash(el, product_id) {
@@ -846,7 +846,7 @@
                 `
                 <div class="size-7 border-4 border-(--border) border-t-(--primary_color) rounded-full animate-spin"></div>
             `
-            jsonProArray = JSON.parse(localStorage.getItem('products'));
+            jsonProArray = JSON.parse(localStorage.getItem('vafadarLocalStorageProducts'));
             jsonProArray.find(function(pro) {
                 if (pro.id == product_id) {
                     currentUpdateProduct = pro
@@ -875,15 +875,15 @@
             });
 
             textProducts = JSON.stringify(jsonProArray)
-            localStorage.removeItem('products')
-            localStorage.setItem('products', textProducts)
+            localStorage.removeItem('vafadarLocalStorageProducts')
+            localStorage.setItem('vafadarLocalStorageProducts', textProducts)
             checkCart()
         }
 
         function addProducsToCart() {
 
-            if (localStorage.getItem('products') != null) {
-                jsonProArray = JSON.parse(localStorage.getItem('products'));
+            if (localStorage.getItem('vafadarLocalStorageProducts') != null) {
+                jsonProArray = JSON.parse(localStorage.getItem('vafadarLocalStorageProducts'));
 
                 jsonProArray.forEach(pro => {
                     console.log(pro);
@@ -1059,7 +1059,7 @@
         checkCart()
         let form =document.getElementById('form');
         function addlocalProducts(){
-          let jsonProArray = JSON.parse(localStorage.getItem('products'));
+          let jsonProArray = JSON.parse(localStorage.getItem('vafadarLocalStorageProducts'));
           console.log(jsonProArray);
           let productsString = JSON.stringify(jsonProArray);
           

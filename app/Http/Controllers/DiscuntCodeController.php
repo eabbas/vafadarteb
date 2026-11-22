@@ -314,46 +314,277 @@ class DiscuntCodeController extends Controller
         return to_route('discuntCode.list');
         dd('delete');
     }
-    public function checkCode(Request $request){
-        $code=discunt_code::where('code',$request->code)->first();
-        // $dateAndTime=explode(' ',verta());
-        // $dateAndTime=implode('/',explode('-',$dateAndTime[0]));
-        // $dateAndTime=str_replace(['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'],['۰', '۱', '۲', '۳', '۴', '۵', '۶', '۷', '۸', '۹'],$dateAndTime);
-        // dd($dateAndTime);
+    // public function checkCode(Request $request){
+    //     $code=discunt_code::where('code',$request->code)->first();
+
+
+    //     $startDate=str_replace(['۰', '۱', '۲', '۳', '۴', '۵', '۶', '۷', '۸', '۹'],['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'],$code->start_date);
+    //     $endDate=str_replace(['۰', '۱', '۲', '۳', '۴', '۵', '۶', '۷', '۸', '۹'],['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'],$code->end_date);
+    //     $startDate = Verta::parse($startDate);
+    //     $endDate = Verta::parse($endDate);
+    //     $today = Verta::now();
         
-        $startDate=str_replace(['۰', '۱', '۲', '۳', '۴', '۵', '۶', '۷', '۸', '۹'],['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'],$code->start_date);
-        $endDate=str_replace(['۰', '۱', '۲', '۳', '۴', '۵', '۶', '۷', '۸', '۹'],['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'],$code->end_date);
+    //     if($code){
+    //         $code->products;
+    //         $code->users;
+    //         $code->categories;
+    //         $user=Auth::user();
+    //         $access=true;
+    //         if($code->is_active==1){
+    //             $access=true;
+    //         }else{
+    //             $access=false;
+    //             return response()->json(['access'=>$access , 'discuntCode'=>$code]);
+    //         }
+    //         if ($today->between($startDate, $endDate)) {
+    //             $access=true;
+    //         } else {
+    //             $access=false;
+    //             return response()->json(['access'=>$access , 'discuntCode'=>$code]);
+    //         }
+    //         if($code->usage_limit>0){
+    //             $access=true;
+    //         }else{
+    //             $access=false;
+    //             return response()->json(['access'=>$access , 'discuntCode'=>$code]);
+    //         }
+    //         if(count($code->products)>0 || count($code->users)>0 || count($code->categories)>0){
+
+    //             if(Auth::check()){
+    //                 $users=$code->users->pluck('id')->toArray();
+    //                 $products=$code->products->pluck('id')->toArray();
+    //                 $categories=$code->categories->pluck('id')->toArray();
+
+    //                 if(in_array(Auth::id(),$users)){
+    //                     $access=true;
+    //                     return response()->json(['access'=>$access , 'discuntCode'=>$code]);
+    //                 }else{
+    //                     $access=false;
+    //                 }
+    //                 $user->load(['carts'=>function($query){$query->where('order_id',null)->get();}]);
+    //                 foreach ($user->carts as $cart) {
+    //                     $product=product::find($cart->product_id);
+    //                     if(count($product->categories)>0){
+    //                         $pro_cats_id=$product->categories->pluck('id')->toArray();
+    //                         foreach ($pro_cats_id as $cat_id) {
+    //                             if(in_array($cat_id,$categories)){
+    //                                 $access=true;
+    //                                 return response()->json(['access'=>$access , 'discuntCode'=>$code]);
+    //                             }else{
+    //                                 $access=false;
+    //                             }
+    //                         }
+    //                     }
+    //                 }
+    //                 foreach ($user->carts as $cart) {
+    //                     if(in_array($cart->product_id,$products)){
+    //                         $access=true;
+    //                         return response()->json(['access'=>$access , 'discuntCode'=>$code]);
+    //                     }else{
+    //                         $access=false;
+    //                     }
+    //                 }
+                    
+    //             }else{
+    //                 $NoAuthProducts=json_decode($request->productsString , true);
+    //                 foreach ($NoAuthProducts as $product) {
+    //                     if(count($product->categories)>0){
+    //                         $pro_cats_id=$product->categories->pluck('id')->toArray();
+    //                         foreach ($pro_cats_id as $cat_id) {
+    //                             if(in_array($cat_id,$categories)){
+    //                                 $access=true;
+    //                                 return response()->json(['access'=>$access , 'discuntCode'=>$code]);
+    //                             }else{
+    //                                 $access=false;
+    //                             }
+    //                         }
+    //                     }
+    //                     if(in_array($product->id,$products)){
+    //                         $access=true;
+    //                         return response()->json(['access'=>$access , 'discuntCode'=>$code]);
+    //                     }else{
+    //                         $access=false;
+    //                     }
+    //                 }
+    //             }
+
+    //         }
+    //     }else{
+    //         $access='Unavailable';
+    //     }
+    //     return response()->json(['access'=>$access , 'discuntCode'=>$code]);
+    // }
+
+    public function checkCode(Request $request){
+        $code = discunt_code::where('code', $request->code)->first();
+
+        if (!$code) {
+            return response()->json([
+                'access' => 'Unavailable',
+                'discuntCode' => null
+            ]);
+        }
+
+        $startDate = str_replace(
+            ['۰', '۱', '۲', '۳', '۴', '۵', '۶', '۷', '۸', '۹'],
+            ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'],
+            $code->start_date
+        );
+
+        $endDate = str_replace(
+            ['۰', '۱', '۲', '۳', '۴', '۵', '۶', '۷', '۸', '۹'],
+            ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'],
+            $code->end_date
+        );
+
         $startDate = Verta::parse($startDate);
         $endDate = Verta::parse($endDate);
         $today = Verta::now();
-        
-        if($code){
-            if($code->is_active==1){
-                $access=true;
-            }else{
-                $access=false;
-                return response()->json(['access'=>$access , 'discuntCode'=>$code]);
-            }
-            if ($today->between($startDate, $endDate)) {
-                $access=true;
-            } else {
-                $access=false;
-                return response()->json(['access'=>$access , 'discuntCode'=>$code]);
-            }
-            if($code->usage_limit>0){
-                $access=true;
-            }else{
-                $access=false;
-                return response()->json(['access'=>$access , 'discuntCode'=>$code]);
-            }
-            if($code->free_shipping==1){
-                $free_shipping=true;
-            }else{
-                $free_shipping=false;
-            }
-        }else{
-            $access='Unavailable';
+
+        $code->products;
+        $code->users;
+        $code->categories;
+
+        $user = Auth::user();
+        $access = true;
+
+        if ($code->is_active != 1) {
+            $access = false;
+
+            return response()->json([
+                'access' => $access,
+                'discuntCode' => $code
+            ]);
         }
-        return response()->json(['access'=>$access , 'discuntCode'=>$code]);
+
+        if (!$today->between($startDate, $endDate)) {
+            $access = false;
+
+            return response()->json([
+                'access' => $access,
+                'discuntCode' => $code
+            ]);
+        }
+
+        if ($code->usage_limit <= 0) {
+            $access = false;
+
+            return response()->json([
+                'access' => $access,
+                'discuntCode' => $code
+            ]);
+        }
+
+        if (
+            count($code->products) > 0 ||
+            count($code->users) > 0 ||
+            count($code->categories) > 0
+        ) {
+
+            $users = $code->users->pluck('id')->toArray();
+            $products = $code->products->pluck('id')->toArray();
+            $categories = $code->categories->pluck('id')->toArray();
+
+            if (Auth::check()) {
+
+                if (in_array(Auth::id(), $users)) {
+                    $access = true;
+
+                    return response()->json([
+                        'access' => $access,
+                        'discuntCode' => $code
+                    ]);
+                }
+
+                $user->load([
+                    'carts' => function ($query) {
+                        $query->whereNull('order_id');
+                    }
+                ]);
+
+                foreach ($user->carts as $cart) {
+
+                    $product = product::find($cart->product_id);
+
+                    if (!$product) {
+                        continue;
+                    }
+
+                    if (count($product->categories) > 0) {
+
+                        $pro_cats_id = $product->categories->pluck('id')->toArray();
+
+                        foreach ($pro_cats_id as $cat_id) {
+
+                            if (in_array($cat_id, $categories)) {
+                                $access = true;
+
+                                return response()->json([
+                                    'access' => $access,
+                                    'discuntCode' => $code
+                                ]);
+                            } else {
+                                $access = false;
+                            }
+                        }
+                    }
+                }
+
+                foreach ($user->carts as $cart) {
+
+                    if (in_array($cart->product_id, $products)) {
+                        $access = true;
+
+                        return response()->json([
+                            'access' => $access,
+                            'discuntCode' => $code
+                        ]);
+                    } else {
+                        $access = false;
+                    }
+                }
+
+            } else {
+
+                $NoAuthProducts = json_decode($request->productsString, true);
+
+                foreach ($NoAuthProducts as $product) {
+
+                    if (!empty($product['categories'])) {
+
+                        foreach ($product['categories'] as $cat_id) {
+
+                            if (in_array($cat_id, $categories)) {
+                                $access = true;
+
+                                return response()->json([
+                                    'access' => $access,
+                                    'discuntCode' => $code
+                                ]);
+                            } else {
+                                $access = false;
+                            }
+                        }
+                    }
+
+                    if (in_array($product['id'], $products)) {
+                        $access = true;
+
+                        return response()->json([
+                            'access' => $access,
+                            'discuntCode' => $code
+                        ]);
+                    } else {
+                        $access = false;
+                    }
+                }
+            }
+        }
+
+        return response()->json([
+            'access' => $access,
+            'discuntCode' => $code
+        ]);
     }
+
 }

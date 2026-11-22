@@ -2060,8 +2060,8 @@
         let localCash="{{$localCash}}";
             console.log(localCash);
         if(localCash=='cashClear'){
-            localStorage.getItem('products');
-            localStorage.removeItem('products');
+            localStorage.getItem('vafadarLocalStorageProducts');
+            localStorage.removeItem('vafadarLocalStorageProducts');
         }
 
         function show_this_product(item) {
