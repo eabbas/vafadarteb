@@ -94,5 +94,7 @@ class User extends Authenticatable
     public function referralCode(){
         return $this->hasOne(referralCode::class);
     }
-    
+    public function discunt_code(){
+        return $this->belongsToMany(discunt_code::class,'user_discunt_codes','user_id','discunt_code_id');
+    }
 }

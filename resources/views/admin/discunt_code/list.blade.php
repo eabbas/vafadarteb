@@ -15,7 +15,7 @@
         --metronic-text-hover: #F5F5F5;
         --metronic-blue: #1B84FF;
     }
-    
+
     /* ===== کارت اصلی ===== */
     .vafadar-table-card {
         background: var(--metronic-content-bg);
@@ -55,6 +55,7 @@
         letter-spacing: 0.5px;
         padding: 16px 20px;
         text-align: right;
+        white-space: nowrap;
     }
     .dark .vafadar-table-header th {
         color: var(--metronic-text-dark);
@@ -117,6 +118,7 @@
         border-radius: 50px;
         font-size: 12px;
         font-weight: 600;
+        white-space: nowrap;
     }
     .vafadar-status.active {
         background: var(--metronic-blue);
@@ -391,6 +393,40 @@
         box-shadow: 0 8px 24px rgba(27, 132, 255, 0.25);
     }
 
+    /* ===== متفرقه ===== */
+    .vafadar-date-cell {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+        font-size: 12px;
+        color: var(--metronic-dark);
+        line-height: 1.6;
+    }
+    .dark .vafadar-date-cell {
+        color: var(--metronic-content-bg);
+    }
+    .vafadar-date-cell strong {
+        color: var(--metronic-text-dark);
+        font-weight: 700;
+    }
+    .vafadar-type-badge {
+        display: inline-flex;
+        align-items: center;
+        padding: 4px 12px;
+        border-radius: 50px;
+        font-size: 11px;
+        font-weight: 700;
+        white-space: nowrap;
+        background: #EFF7FF;
+        color: var(--metronic-blue);
+        border: 1px solid #DCEBFC;
+    }
+    .dark .vafadar-type-badge {
+        background: rgba(27,132,255,.15);
+        color: #4a9fff;
+        border-color: rgba(27,132,255,.3);
+    }
+
     /* ===== ریسپانسیو ===== */
     @media (max-width: 768px) {
         .vafadar-table-row td {
@@ -435,7 +471,7 @@
 </style>
 
 <div class="w-full">
-    
+
     <!-- ===== هدر لیست ===== -->
     <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-6">
         <div>
@@ -444,8 +480,11 @@
         </div>
         <div class="flex items-center gap-3 flex-wrap">
             <span class="vafadar-counter">
-                <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M21 10V7a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v3a2 2 0 0 1 0 4v3a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-3a2 2 0 0 1 0-4z"/>
+                    <path d="M13 5v2"/>
+                    <path d="M13 17v2"/>
+                    <path d="M13 11v2"/>
                 </svg>
                 {{ count($codes) }} کد تخفیف
             </span>
@@ -460,7 +499,7 @@
 
     <!-- ===== کارت جدول ===== -->
     <div class="vafadar-table-card">
-        
+
         <!-- ===== نوار جستجو ===== -->
         <div class="p-4 border-b" style="border-color: var(--metronic-border);">
             <div class="vafadar-search-wrap">
@@ -480,47 +519,121 @@
                         <th style="width: 50px;">ردیف</th>
                         <th>عنوان</th>
                         <th>کد تخفیف</th>
+                        <th>نوع تخفیف</th>
                         <th>مقدار تخفیف</th>
-                        <th class="table-cell">وضعیت</th>
+                        <th>ارسال رایگان</th>
+                        <th>بازه اعتبار</th>
+                        <th>محدودیت استفاده</th>
+                        <th>وضعیت</th>
                         <th class="text-center">عملیات</th>
                     </tr>
                 </thead>
                 <tbody id="brandTableBody">
                     @forelse($codes as $code)
-                    <tr class="vafadar-table-row" data-id="{{$code->id}}" data-title="{{$code->title}}">
+                    <tr class="vafadar-table-row"
+                        data-id="{{ $code->id }}"
+                        data-title="{{ $code->title }}"
+                        data-code="{{ $code->code }}">
+
+                        {{-- ردیف --}}
                         <td>
-                            <span class="vafadar-code-badge">{{$code->id}}</span>
+                            <span class="vafadar-code-badge">{{ $loop->iteration }}</span>
                         </td>
+
+                        {{-- عنوان --}}
                         <td>
-                            <span class="font-semibold" style="color: var(--metronic-dark);">{{$code->title}}</span>
+                            <span class="font-semibold" style="color: var(--metronic-dark);">
+                                {{ $code->title }}
+                            </span>
                         </td>
+
+                        {{-- کد تخفیف --}}
                         <td>
-                            <span class="font-semibold" style="color: var(--metronic-dark);">{{$code->code}}</span>
+                            <span class="vafadar-code-badge" style="direction: ltr;">
+                                {{ $code->code }}
+                            </span>
                         </td>
+
+                        {{-- نوع تخفیف --}}
                         <td>
-                            @if($code->percent!=null)
-                                <span class="font-semibold" style="color: var(--metronic-dark);">{{$code->percent}} درصد </span>
+                            @if($code->discunt_type === 'percent')
+                                <span class="vafadar-type-badge">درصدی</span>
                             @else
-                                <span class="font-semibold" style="color: var(--metronic-dark);">{{$code->number}}   تومان</span>
+                                <span class="vafadar-type-badge">مبلغ ثابت</span>
                             @endif
                         </td>
 
-                        <td class="table-cell">
+                        {{-- مقدار تخفیف --}}
+                        <td>
+                            @if($code->discunt_type === 'percent')
+                                <span class="font-semibold" style="color: var(--metronic-dark);">
+                                    {{ $code->percent ?? $code->discunt_value }} %
+                                </span>
+                            @else
+                                <span class="font-semibold" style="color: var(--metronic-dark);">
+                                    {{ number_format((float) ($code->number ?? $code->discunt_value)) }} تومان
+                                </span>
+                            @endif
+                        </td>
+
+                        {{-- ارسال رایگان --}}
+                        <td>
+                            @if($code->free_shipping)
+                                <span class="vafadar-status active">
+                                    <span class="dot"></span>
+                                    فعال
+                                </span>
+                            @else
+                                <span class="vafadar-status inactive">
+                                    <span class="dot"></span>
+                                    ندارد
+                                </span>
+                            @endif
+                        </td>
+
+                        {{-- بازه اعتبار --}}
+                        <td>
+                            <div class="vafadar-date-cell">
+                                <span>
+                                    <strong>از:</strong>
+                                    {{ $code->start_date ?: '—' }}
+                                </span>
+                                <span>
+                                    <strong>تا:</strong>
+                                    {{ $code->end_date ?: '—' }}
+                                </span>
+                            </div>
+                        </td>
+
+                        {{-- محدودیت استفاده --}}
+                        <td>
+                            <span class="vafadar-code-badge">
+                                {{ $code->usage_limit ? number_format($code->usage_limit) : 'نامحدود' }}
+                            </span>
+                        </td>
+
+                        {{-- وضعیت --}}
+                        <td>
                             <span class="vafadar-status {{ $code->is_active != 0 ? 'active' : 'inactive' }}">
                                 <span class="dot"></span>
                                 {{ $code->is_active != 0 ? 'فعال' : 'غیرفعال' }}
                             </span>
                         </td>
+
+                        {{-- عملیات --}}
                         <td>
                             <div class="vafadar-action-group">
-                                <a href="{{route('discuntCode.edit',['discuntCode'=>$code->id])}}" class="vafadar-action-btn edit" title="ویرایش کد تخفیف">
+                                <a href="{{ route('discuntCode.edit', ['discuntCode' => $code->id]) }}"
+                                   class="vafadar-action-btn edit" title="ویرایش کد تخفیف">
                                     <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                         <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/>
                                         <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/>
                                     </svg>
                                     <span class="hidden sm:inline">ویرایش</span>
                                 </a>
-                                <a href="{{route('discuntCode.delete',['discuntCode'=>$code->id])}}" class="vafadar-action-btn delete" title="حذف کد تخفیف" onclick="return confirm('آیا از حذف کد تخفیف «{{$code->title}}» مطمئن هستید؟')">
+                                <a href="{{ route('discuntCode.delete', ['discuntCode' => $code->id]) }}"
+                                   class="vafadar-action-btn delete" title="حذف کد تخفیف"
+                                   onclick="return confirm('آیا از حذف کد تخفیف «{{ $code->title }}» مطمئن هستید؟')">
                                     <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                         <path d="M3 6h18"/>
                                         <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/>
@@ -532,14 +645,14 @@
                     </tr>
                     @empty
                     <tr>
-                        <td colspan="7">
+                        <td colspan="10">
                             <div class="vafadar-empty">
                                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1">
                                     <path d="M4 7h16M4 12h16M4 17h10"/>
                                     <rect x="2" y="3" width="20" height="18" rx="2"/>
                                 </svg>
-                                <h3>هیچ برندی یافت نشد</h3>
-                                <p>برای شروع، روی دکمه «برند جدید» کلیک کنید</p>
+                                <h3>هیچ کد تخفیفی یافت نشد</h3>
+                                <p>برای شروع، روی دکمه «کد تخفیف جدید» کلیک کنید</p>
                             </div>
                         </td>
                     </tr>
@@ -571,10 +684,10 @@
 
                 rows.forEach(row => {
                     const title = row.getAttribute('data-title')?.toLowerCase() || '';
-                    const slug = row.getAttribute('data-slug')?.toLowerCase() || '';
-                    const id = row.getAttribute('data-id') || '';
+                    const code  = row.getAttribute('data-code')?.toLowerCase() || '';
+                    const id    = row.getAttribute('data-id') || '';
 
-                    const match = title.includes(query) || slug.includes(query) || id.includes(query);
+                    const match = title.includes(query) || code.includes(query) || id.includes(query);
                     row.style.display = match ? '' : 'none';
                 });
             });

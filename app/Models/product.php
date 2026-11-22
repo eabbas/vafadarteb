@@ -52,5 +52,7 @@ class product extends Model
     public function cart(){
         return $this->hasMany(cart::class);    
     }
-    
+    public function discunt_code(){
+        return $this->belongsToMany(discunt_code::class,'product_discunt_codes','product_id','discunt_code_id');
+    }
 }
