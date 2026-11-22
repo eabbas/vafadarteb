@@ -35,6 +35,7 @@ use Illuminate\Support\Facades\storage;
 use Illuminate\Support\Str;
 use Log;
 use Illuminate\Validation\Rule;
+use Hekmatinasser\Verta\Verta;
 class DiscuntCodeController extends Controller
 {
 
@@ -315,11 +316,40 @@ class DiscuntCodeController extends Controller
     }
     public function checkCode(Request $request){
         $code=discunt_code::where('code',$request->code)->first();
+        // $dateAndTime=explode(' ',verta());
+        // $dateAndTime=implode('/',explode('-',$dateAndTime[0]));
+        // $dateAndTime=str_replace(['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'],['۰', '۱', '۲', '۳', '۴', '۵', '۶', '۷', '۸', '۹'],$dateAndTime);
+        // dd($dateAndTime);
+        
+        $startDate=str_replace(['۰', '۱', '۲', '۳', '۴', '۵', '۶', '۷', '۸', '۹'],['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'],$code->start_date);
+        $endDate=str_replace(['۰', '۱', '۲', '۳', '۴', '۵', '۶', '۷', '۸', '۹'],['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'],$code->end_date);
+        $startDate = Verta::parse($startDate);
+        $endDate = Verta::parse($endDate);
+        $today = Verta::now();
+        
         if($code){
             if($code->is_active==1){
                 $access=true;
             }else{
                 $access=false;
+                return response()->json(['access'=>$access , 'discuntCode'=>$code]);
+            }
+            if ($today->between($startDate, $endDate)) {
+                $access=true;
+            } else {
+                $access=false;
+                return response()->json(['access'=>$access , 'discuntCode'=>$code]);
+            }
+            if($code->usage_limit>0){
+                $access=true;
+            }else{
+                $access=false;
+                return response()->json(['access'=>$access , 'discuntCode'=>$code]);
+            }
+            if($code->free_shipping==1){
+                $free_shipping=true;
+            }else{
+                $free_shipping=false;
             }
         }else{
             $access='Unavailable';

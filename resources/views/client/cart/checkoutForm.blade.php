@@ -592,7 +592,7 @@
                 type: "post",
                 dataType: "json",
                 data:{
-                    'code':code,
+                  'code':code,
                 },
                 success: function(data) {
                     console.log(data.access);
