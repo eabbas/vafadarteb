@@ -662,8 +662,6 @@
                             type="number"
                             name="number"
                             id="number"
-                            min="1"
-                            max="100"
                             value="{{ old('number') }}"
                             placeholder="مثلاً ۲۰"
                             class="vafadar-input discount-value-input"
@@ -700,7 +698,6 @@
                             type="number"
                             name="price"
                             id="price"
-                            min="1"
                             value="{{ old('price') }}"
                             placeholder="مبلغ تخفیف را وارد کنید"
                             class="vafadar-input discount-value-input"
@@ -1038,21 +1035,22 @@
                                     $categoryId = $category->id;
                                     $categoryName = $category->title;
                                 @endphp
+                                @if($category->id!=1)
+                                    <label class="picker-option"
+                                        data-picker-option
+                                        data-title="{{ $categoryName }}">
 
-                                <label class="picker-option"
-                                    data-picker-option
-                                    data-title="{{ $categoryName }}">
+                                        <input
+                                            type="checkbox"
+                                            name="categories[]"
+                                            value="{{ $categoryId }}"
+                                            {{ in_array($categoryId, old('categories', [])) ? 'checked' : '' }}
+                                        >
 
-                                    <input
-                                        type="checkbox"
-                                        name="categories[]"
-                                        value="{{ $categoryId }}"
-                                        {{ in_array($categoryId, old('categories', [])) ? 'checked' : '' }}
-                                    >
+                                        <span>{{ $categoryName }}</span>
 
-                                    <span>{{ $categoryName }}</span>
-
-                                </label>
+                                    </label>
+                                @endif
                             @endforeach
 
                         </div>

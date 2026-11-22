@@ -68,11 +68,14 @@ class DiscuntCodeController extends Controller
             [
                 'title'=>['required'],
                 'code'=>['required', 'unique:discunt_codes,code'],
-                'number'=>['required'],
+                'number' => ['required', 'numeric', 'min:0', 'max:100'],
             ],[
                 'title.required'=>'فیلد مورد نظر را پر کنید',
                 'code.required'=>'فیلد مورد نظر را پر کنید',
                 'number.required'=>'فیلد مورد نظر را پر کنید',
+                'number.numeric'=>'فیلد مورد نظر باید عددی پر شود',
+                'number.min'=>'مقدار باید حداقل 0 باشد',
+                'number.max'=>'مقدار باید حداکثر 100 باشد',
                 'code.unique'    => 'این کد تخفیف قبلاً ثبت شده است',
             ]);
             $value=$validate['number'];
@@ -82,11 +85,13 @@ class DiscuntCodeController extends Controller
             [
                 'title'=>['required'],
                 'code'=>['required', 'unique:discunt_codes,code'],
-                'price'=>['required'],
+                'price'  => ['required', 'numeric', 'min:0'],
             ],[
                 'title.required'=>'فیلد مورد نظر را پر کنید',
                 'code.required'=>'فیلد مورد نظر را پر کنید',
                 'price.required'=>'فیلد مورد نظر را پر کنید',
+                'price.numeric'=>'فیلد مورد نظر باید عددی پر شود',
+                'price.min'=>'مقدار باید حداقل 0 باشد',
                 'code.unique'    => 'این کد تخفیف قبلاً ثبت شده است',
             ]);
             $value=$validate['price'];
@@ -155,7 +160,7 @@ class DiscuntCodeController extends Controller
         dd('edit');
     }
     public function update(Request $request , discunt_code $discuntCode){
-        dd($request->all());
+        // dd($request->all());
         $validate = $request->validate(
             [
                 'title' => ['required'],
@@ -180,12 +185,15 @@ class DiscuntCodeController extends Controller
                     'required',
                     Rule::unique('discunt_codes', 'code')->ignore($discuntCode->id)
                 ],  
-                'number'=>['required'],
+                'number' => ['required', 'numeric', 'min:0', 'max:100'],
             ],[
                 'title.required'=>'فیلد مورد نظر را پر کنید',
                 'code.required'=>'فیلد مورد نظر را پر کنید',
                 'number.required'=>'فیلد مورد نظر را پر کنید',
                 'code.unique'    => 'این کد تخفیف قبلاً ثبت شده است',
+                'number.numeric'=>'فیلد مورد نظر باید عددی پر شود',
+                'number.min'=>'مقدار باید حداقل 0 باشد',
+                'number.max'=>'مقدار باید حداکثر 100 باشد',
             ]);
             $value=$validate['number'];
         }
@@ -197,12 +205,14 @@ class DiscuntCodeController extends Controller
                     'required',
                     Rule::unique('discunt_codes', 'code')->ignore($discuntCode->id)
                 ],  
-                'price'=>['required'],
+                'price'  => ['required', 'numeric', 'min:0'],
             ],[
                 'title.required'=>'فیلد مورد نظر را پر کنید',
                 'code.required'=>'فیلد مورد نظر را پر کنید',
                 'price.required'=>'فیلد مورد نظر را پر کنید',
                 'code.unique'    => 'این کد تخفیف قبلاً ثبت شده است',
+                'price.numeric'=>'فیلد مورد نظر باید عددی پر شود',
+                'price.min'=>'مقدار باید حداقل 0 باشد',
             ]);
             $value=$validate['price'];
         }
@@ -224,6 +234,27 @@ class DiscuntCodeController extends Controller
         $categories=$discuntCode->categories->pluck('id')->toArray();
         $users=$discuntCode->users->pluck('id')->toArray();
 
+        if(isset($request['removed_products'])){
+            if(count($request['removed_products'])>0){
+                foreach ($request['removed_products'] as $product) {
+                    product_discunt_code::where('product_id',$product)->delete();
+                }
+            }            
+        }
+        if(isset($request['removed_users'])){
+            if(count($request['removed_users'])>0){
+                foreach ($request['removed_users'] as $user) {
+                    user_discunt_code::where('user_id',$user)->delete();
+                }
+            }            
+        }
+        if(isset($request['removed_categories'])){
+            if(count($request['removed_categories'])>0){
+                foreach ($request['removed_categories'] as $category) {
+                    category_discunt_code::where('category_id',$category)->delete();
+                }
+            }            
+        }
 
         if(isset($request['products'])){
             foreach ($request['products'] as $product_id) {
@@ -255,9 +286,29 @@ class DiscuntCodeController extends Controller
                 }
             }
         }
+
+        
+        
+        
+
         return to_route('discuntCode.list');
     }
     public function delete(discunt_code $discuntCode){
+        if(count($discuntCode->products)>0){
+            foreach ($discuntCode->products as $product) {
+                $product->pivot->delete();
+            }
+        }
+        if(count($discuntCode->users)>0){
+            foreach ($discuntCode->users as $user) {
+                $user->pivot->delete();
+            }
+        }
+        if(count($discuntCode->categories)>0){
+            foreach ($discuntCode->categories as $category) {
+                $category->pivot->delete();
+            }
+        }
         $discuntCode->delete();
         return to_route('discuntCode.list');
         dd('delete');

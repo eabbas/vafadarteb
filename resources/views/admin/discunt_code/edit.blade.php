@@ -1,4 +1,6 @@
+
 @extends('dashboard')
+
 @section('content')
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/persian-datepicker@1.2.0/dist/css/persian-datepicker.min.css">
@@ -7,45 +9,32 @@
 
 <style>
     :root {
-        --metronic-primary: #1B84FF;
-        --metronic-primary-dark: #0a6fd6;
-        --metronic-primary-light: #4a9fff;
-        --metronic-bg-content: #FCFCFC;
-        --metronic-bg-form: #FFFFFF;
-        --metronic-shadow-form: #F5F5F5;
-        --metronic-border: #DBDFE9;
-        --metronic-text: #9A9CAE;
-        --metronic-text-dark: #4A5568;
-        --metronic-text-hover: #1B84FF;
-        --metronic-danger: #dc2626;
-
-        --shadow-sm: 0 2px 8px rgba(27, 132, 255, 0.06);
-        --shadow-md: 0 4px 20px rgba(27, 132, 255, 0.10);
+        --primary: #1B84FF;
+        --primary-dark: #0a6fd6;
+        --primary-light: #4a9fff;
+        --bg: #F5F5F5;
+        --border: #DBDFE9;
+        --text: #9A9CAE;
+        --text-dark: #4A5568;
+        --danger: #dc2626;
     }
 
-    /* ===== کارت اصلی ===== */
     .vafadar-form-card {
-        background: var(--metronic-bg-form);
-        border: 1px solid var(--metronic-border);
+        background: #fff;
+        border: 1px solid var(--border);
         border-radius: 20px;
-        box-shadow: var(--shadow-sm);
-        transition: all 0.3s ease;
+        box-shadow: 0 2px 8px rgba(27,132,255,.06);
         overflow: hidden;
     }
 
-    .vafadar-form-card:hover {
-        box-shadow: var(--shadow-md);
-    }
-
-    /* ===== هدر فرم ===== */
     .vafadar-form-header {
-        background: var(--metronic-shadow-form);
-        border-bottom: 2px solid var(--metronic-border);
+        background: var(--bg);
+        border-bottom: 2px solid var(--border);
         padding: 18px 28px;
     }
 
     .vafadar-form-header h2 {
-        color: var(--metronic-text-dark);
+        color: var(--text-dark);
         font-size: 20px;
         font-weight: 700;
         display: flex;
@@ -53,87 +42,50 @@
         gap: 10px;
     }
 
-    .vafadar-form-header .header-icon {
+    .header-icon {
         width: 40px;
         height: 40px;
-        background: var(--metronic-primary);
+        background: var(--primary);
         border-radius: 12px;
         display: flex;
         align-items: center;
         justify-content: center;
         color: #fff;
-        box-shadow: 0 4px 12px rgba(27, 132, 255, 0.25);
     }
 
-    /* ===== فیلدها ===== */
     .vafadar-label {
-        color: var(--metronic-text);
+        color: var(--text);
         font-size: 12px;
         font-weight: 600;
         display: block;
         margin-bottom: 5px;
         padding-right: 4px;
-        transition: all 0.3s ease;
     }
 
-    .vafadar-input {
-        width: 100%;
-        padding: 12px 16px;
-        background: var(--metronic-shadow-form);
-        border: 1.5px solid var(--metronic-border);
-        border-radius: 12px;
-        color: var(--metronic-text-dark);
-        font-size: 13px;
-        transition: all 0.3s ease;
-        outline: none;
-    }
-
-    .vafadar-input::placeholder {
-        color: var(--metronic-text);
-        font-size: 12px;
-    }
-
-    .vafadar-input:hover {
-        border-color: var(--metronic-primary-light);
-    }
-
-    .vafadar-input:focus {
-        border-color: var(--metronic-primary);
-        box-shadow: 0 0 0 4px rgba(27, 132, 255, 0.08);
-        background: var(--metronic-bg-form);
-    }
-
-    /* ===== سلکت ===== */
+    .vafadar-input,
     .vafadar-select {
         width: 100%;
         padding: 12px 16px;
-        background: var(--metronic-shadow-form);
-        border: 1.5px solid var(--metronic-border);
+        background: var(--bg);
+        border: 1.5px solid var(--border);
         border-radius: 12px;
-        color: var(--metronic-text-dark);
+        color: var(--text-dark);
         font-size: 13px;
-        transition: all 0.3s ease;
         outline: none;
-        appearance: none;
-        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%239A9CAE' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
-        background-repeat: no-repeat;
-        background-position: left 14px center;
-        cursor: pointer;
+        transition: .25s;
     }
 
-    .vafadar-select:hover {
-        border-color: var(--metronic-primary-light);
-    }
-
+    .vafadar-input:focus,
     .vafadar-select:focus {
-        border-color: var(--metronic-primary);
-        box-shadow: 0 0 0 4px rgba(27, 132, 255, 0.08);
-        background: var(--metronic-bg-form);
+        border-color: var(--primary);
+        box-shadow: 0 0 0 4px rgba(27,132,255,.08);
+        background: #fff;
     }
 
-    /* =====================================================
-       مقدار تخفیف
-    ===================================================== */
+    .vafadar-input::placeholder {
+        color: var(--text);
+        font-size: 12px;
+    }
 
     .discount-value-row {
         display: flex;
@@ -150,132 +102,116 @@
     .discount-type-btn {
         min-width: 95px;
         padding: 0 14px;
-        border: 1.5px solid var(--metronic-border);
+        border: 1.5px solid var(--border);
         border-radius: 12px;
-        background: var(--metronic-shadow-form);
-        color: var(--metronic-text);
+        background: var(--bg);
+        color: var(--text);
         font-size: 12px;
         font-weight: 700;
         cursor: pointer;
-        transition: all .25s ease;
-        white-space: nowrap;
-    }
-
-    .discount-type-btn:hover {
-        border-color: var(--metronic-primary);
-        color: var(--metronic-primary);
-        background: #EFF7FF;
+        transition: .25s;
     }
 
     .discount-type-btn.active {
-        background: var(--metronic-primary);
-        border-color: var(--metronic-primary);
+        background: var(--primary);
+        border-color: var(--primary);
         color: #fff;
-        box-shadow: 0 4px 12px rgba(27, 132, 255, .18);
     }
 
-    /* =====================================================
-       وضعیت تخفیف
-    ===================================================== */
-
-    .discount-status-box {
+    .free-shipping-option {
         display: flex;
         align-items: center;
-        justify-content: space-between;
-        gap: 15px;
-        min-height: 47px;
-        padding: 10px 14px;
-        border: 1.5px solid var(--metronic-border);
-        background: var(--metronic-shadow-form);
-        border-radius: 12px;
-        transition: all .25s ease;
+        gap: 13px;
+        padding: 15px;
+        border: 1.5px solid var(--border);
+        border-radius: 13px;
+        background: var(--bg);
+        cursor: pointer;
+        transition: .25s;
     }
 
-    .discount-status-text {
+    .free-shipping-option input {
+        display: none;
+    }
+
+    .free-shipping-option:has(input:checked) {
+        border-color: var(--primary);
+        background: #EFF7FF;
+    }
+
+    .free-shipping-icon {
+        width: 43px;
+        height: 43px;
+        min-width: 43px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: #E8F3FF;
+        color: var(--primary);
+        border-radius: 11px;
+        font-size: 18px;
+    }
+
+    .free-shipping-content {
         display: flex;
         flex-direction: column;
-        gap: 3px;
+        gap: 5px;
+        flex: 1;
     }
 
-    .discount-status-title {
-        font-size: 12px;
-        font-weight: 700;
-        color: var(--metronic-text-dark);
+    .free-shipping-content strong {
+        font-size: 13px;
+        color: var(--text-dark);
     }
 
-    .discount-status-description {
-        font-size: 10px;
-        color: var(--metronic-text);
+    .free-shipping-check {
+        width: 23px;
+        height: 23px;
+        border: 1.5px solid var(--border);
+        border-radius: 7px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: transparent;
+        font-size: 11px;
     }
 
-    .discount-status-toggle {
-        width: 48px;
-        height: 27px;
-        min-width: 48px;
-        position: relative;
-        border: none;
-        border-radius: 30px;
-        background: #CBD0DA;
-        cursor: pointer;
-        transition: all .3s ease;
-        padding: 3px;
+    .free-shipping-option:has(input:checked) .free-shipping-check {
+        background: var(--primary);
+        border-color: var(--primary);
+        color: white;
     }
 
-    .discount-status-toggle .toggle-dot {
-        display: block;
-        width: 21px;
-        height: 21px;
-        border-radius: 50%;
-        background: #fff;
-        transition: transform .3s ease;
-        box-shadow: 0 1px 4px rgba(0,0,0,.12);
-    }
-
-    .discount-status-toggle.active {
-        background: var(--metronic-primary);
-    }
-
-    .discount-status-toggle.active .toggle-dot {
-        transform: translateX(-21px);
-    }
-
-    /* =====================================================
-       انتخاب محصولات / کاربران / دسته‌بندی‌ها
-    ===================================================== */
+    /* انتخاب‌گرها */
 
     .picker-box {
         width: 100%;
-        border: 1.5px solid var(--metronic-border);
+        border: 1.5px solid var(--border);
         border-radius: 14px;
         background: #fff;
         padding: 12px;
-        transition: border-color .25s ease, box-shadow .25s ease;
+        transition: .25s;
     }
 
     .picker-box:focus-within {
-        border-color: var(--metronic-primary);
-        box-shadow: 0 0 0 4px rgba(27, 132, 255, .06);
+        border-color: var(--primary);
+        box-shadow: 0 0 0 4px rgba(27,132,255,.06);
     }
 
     .picker-search {
         width: 100%;
         padding: 11px 14px;
-        border: 1px solid var(--metronic-border);
+        border: 1px solid var(--border);
         border-radius: 10px;
         outline: none;
-        background: var(--metronic-shadow-form);
-        color: var(--metronic-text-dark);
+        background: var(--bg);
+        color: var(--text-dark);
         font-size: 12px;
-        transition: all .2s ease;
         margin-bottom: 10px;
     }
 
-    .picker-search::placeholder {
-        color: var(--metronic-text);
-    }
-
     .picker-search:focus {
-        border-color: var(--metronic-primary);
+        border-color: var(--primary);
         background: #fff;
     }
 
@@ -288,23 +224,10 @@
         padding: 3px;
     }
 
-    .picker-list::-webkit-scrollbar {
-        width: 5px;
-    }
-
-    .picker-list::-webkit-scrollbar-track {
-        background: #F1F3F6;
-        border-radius: 10px;
-    }
-
-    .picker-list::-webkit-scrollbar-thumb {
-        background: #C9DDF5;
-        border-radius: 10px;
-    }
-
     .picker-option {
         display: flex;
         align-items: center;
+        justify-content: space-between;
         gap: 10px;
         width: 100%;
         padding: 10px 12px;
@@ -312,8 +235,8 @@
         border: 1px solid transparent;
         border-radius: 9px;
         cursor: pointer;
-        transition: all .2s ease;
         background: #fff;
+        transition: .2s;
     }
 
     .picker-option:hover {
@@ -330,13 +253,13 @@
         width: 16px;
         height: 16px;
         min-width: 16px;
-        accent-color: var(--metronic-primary);
+        accent-color: var(--primary);
         cursor: pointer;
         margin: 0;
     }
 
     .picker-option span {
-        color: var(--metronic-text-dark);
+        color: var(--text-dark);
         font-size: 12px;
         font-weight: 500;
         line-height: 1.8;
@@ -344,8 +267,21 @@
     }
 
     .picker-option.selected span {
-        color: var(--metronic-primary-dark);
+        color: var(--primary-dark);
         font-weight: 700;
+    }
+
+    .picker-extra-info {
+        color: var(--primary);
+        background: #EFF7FF;
+        border: 1px solid #DCEBFC;
+        border-radius: 7px;
+        padding: 5px 9px;
+        font-size: 10px;
+        font-weight: 700;
+        white-space: nowrap;
+        direction: ltr;
+        margin-right: auto;
     }
 
     .picker-count {
@@ -354,8 +290,8 @@
         justify-content: space-between;
         padding: 10px 5px 5px;
         margin-top: 8px;
-        border-top: 1px solid var(--metronic-border);
-        color: var(--metronic-text);
+        border-top: 1px solid var(--border);
+        color: var(--text);
         font-size: 11px;
         font-weight: 600;
     }
@@ -363,7 +299,7 @@
     .picker-no-result {
         padding: 20px 10px;
         text-align: center;
-        color: var(--metronic-text);
+        color: var(--text);
         font-size: 12px;
     }
 
@@ -379,13 +315,19 @@
         align-items: center;
         gap: 7px;
         padding: 6px 10px;
-        background: #EFF7FF;
         border: 1px solid #CDE4FF;
-        color: var(--metronic-primary-dark);
+        background: #EFF7FF;
+        color: var(--primary-dark);
         border-radius: 8px;
         font-size: 11px;
         font-weight: 600;
         max-width: 100%;
+    }
+
+    .picker-chip.old-chip {
+        background: #E8FFE9;
+        border-color: #B9E9BC;
+        color: #247A2B;
     }
 
     .picker-chip span {
@@ -405,43 +347,35 @@
         padding: 0;
     }
 
-    /* ===== دکمه ثبت ===== */
     .vafadar-btn {
         padding: 12px 32px;
-        background: var(--metronic-primary);
+        background: var(--primary);
         border: none;
         border-radius: 12px;
         color: #fff;
         font-size: 14px;
         font-weight: 600;
         cursor: pointer;
-        transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+        transition: .3s;
         display: inline-flex;
         align-items: center;
         gap: 8px;
-        box-shadow: 0 4px 16px rgba(27, 132, 255, 0.15);
         white-space: nowrap;
     }
 
     .vafadar-btn:hover {
         transform: translateY(-2px);
-        box-shadow: 0 8px 24px rgba(27, 132, 255, 0.25);
+        box-shadow: 0 8px 24px rgba(27,132,255,.25);
     }
 
-    .vafadar-btn:active {
-        transform: translateY(0) scale(0.97);
-    }
-
-    /* ===== خطا ===== */
     .vafadar-error {
-        color: var(--metronic-danger);
+        color: var(--danger);
         font-size: 12px;
         margin-top: 4px;
         display: block;
         padding-right: 4px;
     }
 
-    /* ===== ریسپانسیو ===== */
     @media (max-width: 768px) {
         .vafadar-form-grid {
             grid-template-columns: 1fr !important;
@@ -487,10 +421,6 @@
             padding: 14px 16px;
         }
 
-        .vafadar-form-header h2 {
-            font-size: 15px;
-        }
-
         .vafadar-form-body {
             padding: 16px !important;
         }
@@ -500,158 +430,97 @@
             font-size: 12px;
         }
 
-        .vafadar-select {
-            padding: 10px 14px;
-            font-size: 12px;
-        }
-
         .picker-box {
             padding: 9px;
         }
+
+        .picker-option {
+            flex-wrap: wrap;
+        }
+
+        .picker-extra-info {
+            margin-right: 26px;
+        }
     }
-
-
-.free-shipping-option {
-    display: flex;
-    align-items: center;
-    gap: 13px;
-    padding: 15px;
-    border: 1.5px solid var(--metronic-border);
-    border-radius: 13px;
-    background: var(--metronic-shadow-form);
-    cursor: pointer;
-    transition: all .25s ease;
-}
-
-.free-shipping-option:hover {
-    border-color: var(--metronic-primary);
-    background: #F3F8FF;
-}
-
-.free-shipping-option input {
-    display: none;
-}
-
-.free-shipping-icon {
-    width: 43px;
-    height: 43px;
-    min-width: 43px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: #E8F3FF;
-    color: var(--metronic-primary);
-    border-radius: 11px;
-    font-size: 18px;
-}
-
-.free-shipping-content {
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
-    flex: 1;
-}
-
-.free-shipping-content strong {
-    font-size: 13px;
-    color: var(--metronic-text-dark);
-}
-
-.free-shipping-content small {
-    font-size: 11px;
-    color: var(--metronic-text);
-    line-height: 1.8;
-}
-
-.free-shipping-check {
-    width: 23px;
-    height: 23px;
-    border: 1.5px solid var(--metronic-border);
-    border-radius: 7px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: transparent;
-    font-size: 11px;
-    transition: all .25s ease;
-}
-
-.free-shipping-option:has(input:checked) {
-    border-color: var(--metronic-primary);
-    background: #EFF7FF;
-}
-
-.free-shipping-option:has(input:checked) .free-shipping-check {
-    background: var(--metronic-primary);
-    border-color: var(--metronic-primary);
-    color: white;
-}
-.picker-extra-info {
-    color: var(--metronic-primary);
-    background: #EFF7FF;
-    border: 1px solid #DCEBFC;
-    border-radius: 7px;
-    padding: 5px 9px;
-    font-size: 10px;
-    font-weight: 700;
-    white-space: nowrap;
-    direction: ltr;
-    margin-right: auto;
-}
-
-.picker-option {
-    justify-content: space-between;
-}
-
-@media (max-width: 480px) {
-    .picker-option {
-        flex-wrap: wrap;
-    }
-
-    .picker-extra-info {
-        margin-right: 26px;
-    }
-}
 </style>
 
+@php
+    $selectedProducts = old('products', $discuntCode->products->pluck('id')->toArray());
+    $selectedUsers = old('users', $discuntCode->users->pluck('id')->toArray());
+    $selectedCategories = old('categories', $discuntCode->categories->pluck('id')->toArray());
+
+    $existingProductIds = $discuntCode->products->pluck('id')->toArray();
+    $existingUserIds = $discuntCode->users->pluck('id')->toArray();
+    $existingCategoryIds = $discuntCode->categories->pluck('id')->toArray();
+
+    $removedProducts = old('removed_products', []);
+    $removedUsers = old('removed_users', []);
+    $removedCategories = old('removed_categories', []);
+@endphp
+
 <div class="w-full flex justify-center py-6">
+
     <div class="w-full max-w-4xl vafadar-form-card">
 
-        <!-- ===== هدر ===== -->
+        {{-- هدر --}}
         <div class="vafadar-form-header">
+
             <h2>
                 <span class="header-icon">
-                    <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                    <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2.5">
                         <path d="M4 7h16M4 12h16M4 17h10"/>
                         <rect x="2" y="3" width="20" height="18" rx="2"/>
                     </svg>
                 </span>
-                ایجاد کد تخفیف جدید
+
+                ویرایش کد تخفیف
             </h2>
-            <p class="text-sm text-[#9A9CAE] mt-1 mr-12">اطلاعات کد تخفیف را وارد کنید</p>
+
+            <p class="text-sm text-[#9A9CAE] mt-1 mr-12">
+                اطلاعات کد تخفیف را ویرایش کنید
+            </p>
+
         </div>
 
-        <!-- ===== فرم ===== -->
-        <form action="{{route('discuntCode.update',['discuntCode'=>$discuntCode->id])}}" method="POST" id="form" class="vafadar-form-body p-6">
+        <form
+            action="{{ route('discuntCode.update', ['discuntCode' => $discuntCode->id]) }}"
+            method="POST"
+            id="form"
+            class="vafadar-form-body p-6"
+        >
+
             @csrf
 
-            <!-- ===== گرید فیلدها ===== -->
             <div class="vafadar-form-grid grid grid-cols-2 max-[420px]:flex max-[420px]:flex-col gap-6">
 
-                <!-- عنوان -->
+                {{-- عنوان --}}
                 <div>
-                    <label class="vafadar-label" for="title">عنوان</label>
-                    <input type="text" id="title" name="title"
+
+                    <label class="vafadar-label" for="title">
+                        عنوان
+                    </label>
+
+                    <input
+                        type="text"
+                        id="title"
+                        name="title"
                         placeholder="عنوان کد تخفیف را وارد کنید"
-                        value="{{ old('title', $discuntCode->title) }}" class="vafadar-input">
+                        value="{{ old('title', $discuntCode->title) }}"
+                        class="vafadar-input"
+                    >
+
                     @error('title')
                         <span class="vafadar-error">{{ $message }}</span>
                     @enderror
+
                 </div>
 
-                {{-- مقدار تخفیف درصدی --}}
-                <div id="percentBox"
-                    class="{{ old('discunt_type', $discuntCode->discunt_type) == 'percent' ? '' : 'hidden' }}">
+                {{-- تخفیف درصدی --}}
+                <div
+                    id="percentBox"
+                    class="{{ old('discunt_type', $discuntCode->discunt_type) == 'percent' ? '' : 'hidden' }}"
+                >
 
                     <label class="vafadar-label" for="number">
                         مقدار تخفیف
@@ -663,28 +532,16 @@
                             type="number"
                             name="number"
                             id="number"
-                            min="1"
-                            max="100"
                             value="{{ old('number', $discuntCode->discunt_type == 'percent' ? $discuntCode->discunt_value : '') }}"
-                            placeholder=" مثلا 20 درصد"
+                            placeholder="مثلا 20 درصد"
                             class="vafadar-input discount-value-input"
                         >
 
-                        <button
-                            type="button"
-                            class="discount-type-btn {{ old('discunt_type', $discuntCode->discunt_type) == 'percent' ? 'active' : '' }}"
-                            data-discount-type="percent"
-                            aria-pressed="{{ old('discunt_type', $discuntCode->discunt_type) == 'percent' ? 'true' : 'false' }}"
-                        >
+                        <button type="button" class="discount-type-btn" data-discount-type="percent">
                             درصدی
                         </button>
 
-                        <button
-                            type="button"
-                            class="discount-type-btn {{ old('discunt_type', $discuntCode->discunt_type) == 'number' ? 'active' : '' }}"
-                            data-discount-type="number"
-                            aria-pressed="{{ old('discunt_type', $discuntCode->discunt_type) == 'number' ? 'true' : 'false' }}"
-                        >
+                        <button type="button" class="discount-type-btn" data-discount-type="number">
                             مبلغ ثابت
                         </button>
 
@@ -696,10 +553,11 @@
 
                 </div>
 
-
-                {{-- مقدار تخفیف مبلغ ثابت --}}
-                <div id="fixedBox"
-                    class="{{ old('discunt_type', $discuntCode->discunt_type) == 'number' ? '' : 'hidden' }}">
+                {{-- تخفیف مبلغ ثابت --}}
+                <div
+                    id="fixedBox"
+                    class="{{ old('discunt_type', $discuntCode->discunt_type) == 'number' ? '' : 'hidden' }}"
+                >
 
                     <label class="vafadar-label" for="price">
                         مقدار تخفیف
@@ -711,27 +569,16 @@
                             type="number"
                             name="price"
                             id="price"
-                            min="1"
                             value="{{ old('price', $discuntCode->discunt_type == 'number' ? $discuntCode->discunt_value : '') }}"
-                            placeholder="مثلا 10,000,000 تومان"
+                            placeholder="مثلا 10000000 تومان"
                             class="vafadar-input discount-value-input"
                         >
 
-                        <button
-                            type="button"
-                            class="discount-type-btn {{ old('discunt_type', $discuntCode->discunt_type) == 'percent' ? 'active' : '' }}"
-                            data-discount-type="percent"
-                            aria-pressed="{{ old('discunt_type', $discuntCode->discunt_type) == 'percent' ? 'true' : 'false' }}"
-                        >
+                        <button type="button" class="discount-type-btn" data-discount-type="percent">
                             درصدی
                         </button>
 
-                        <button
-                            type="button"
-                            class="discount-type-btn {{ old('discunt_type', $discuntCode->discunt_type) == 'number' ? 'active' : '' }}"
-                            data-discount-type="number"
-                            aria-pressed="{{ old('discunt_type', $discuntCode->discunt_type) == 'number' ? 'true' : 'false' }}"
-                        >
+                        <button type="button" class="discount-type-btn" data-discount-type="number">
                             مبلغ ثابت
                         </button>
 
@@ -743,104 +590,126 @@
 
                 </div>
 
-
-                {{-- نوع تخفیف برای ارسال به کنترلر --}}
                 <input
                     type="hidden"
                     name="discunt_type"
                     id="discunt_type"
                     value="{{ old('discunt_type', $discuntCode->discunt_type) }}"
                 >
-                {{-- نوع تخفیف برای ارسال به کنترلر --}}
-                <input type="hidden" name="discunt_type"
-                    id="discunt_type"
-                    value="{{ old('discunt_type', 'percent') }}">
 
-
-                <!-- تاریخ شروع -->
+                {{-- تاریخ شروع --}}
                 <div>
+
                     <label class="vafadar-label" for="start_date">
                         تاریخ شروع اعتبار
                     </label>
 
                     <div class="relative">
-                        <input type="text"
+
+                        <input
+                            type="text"
                             name="start_date"
                             id="start_date"
                             class="vafadar-input"
                             placeholder="انتخاب تاریخ شروع"
-                            value="{{ old('start_date',$discuntCode->start_date) }}"
+                            value="{{ old('start_date', $discuntCode->start_date) }}"
                             autocomplete="off"
-                            readonly>
+                            readonly
+                        >
 
                         <span class="absolute left-4 top-1/2 -translate-y-1/2 text-[#1B84FF] pointer-events-none">
                             <i class="fa fa-calendar-alt"></i>
                         </span>
+
                     </div>
 
                     @error('start_date')
                         <span class="vafadar-error">{{ $message }}</span>
                     @enderror
+
                 </div>
 
-                <!-- تاریخ پایان -->
+                {{-- تاریخ پایان --}}
                 <div>
+
                     <label class="vafadar-label" for="end_date">
                         تاریخ پایان اعتبار
                     </label>
 
                     <div class="relative">
-                        <input type="text"
+
+                        <input
+                            type="text"
                             name="end_date"
                             id="end_date"
                             class="vafadar-input"
                             placeholder="انتخاب تاریخ پایان"
-                            value="{{ old('end_date',$discuntCode->end_date) }}"
+                            value="{{ old('end_date', $discuntCode->end_date) }}"
                             autocomplete="off"
-                            readonly>
+                            readonly
+                        >
 
                         <span class="absolute left-4 top-1/2 -translate-y-1/2 text-[#1B84FF] pointer-events-none">
                             <i class="fa fa-calendar-alt"></i>
                         </span>
+
                     </div>
 
                     @error('end_date')
                         <span class="vafadar-error">{{ $message }}</span>
                     @enderror
+
                 </div>
 
-                <!-- محدودیت استفاده -->
+                {{-- محدودیت استفاده --}}
                 <div>
-                    <label class="vafadar-label" for="usage_limit">محدودیت تعداد استفاده</label>
-                    <input type="number" name="usage_limit" id="usage_limit"
-                        class="vafadar-input" placeholder="مثلاً 100"
-                        value="{{ old('usage_limit' ,$discuntCode->usage_limit) }}" min="1">
+
+                    <label class="vafadar-label" for="usage_limit">
+                        محدودیت تعداد استفاده
+                    </label>
+
+                    <input
+                        type="number"
+                        name="usage_limit"
+                        id="usage_limit"
+                        class="vafadar-input"
+                        placeholder="مثلاً 100"
+                        value="{{ old('usage_limit', $discuntCode->usage_limit) }}"
+                        min="1"
+                    >
+
                     @error('usage_limit')
                         <span class="vafadar-error">{{ $message }}</span>
                     @enderror
+
                 </div>
+
                 {{-- کد تخفیف --}}
-                <div class="">
+                <div>
 
                     <label class="vafadar-label" for="code">
                         کد تخفیف
                     </label>
 
-                    <div class=" flex flex-row gap-1">
+                    <div class="flex flex-row gap-1">
 
                         <input
                             type="text"
                             name="code"
                             id="code"
                             maxlength="5"
-                            value="{{ old('code',$discuntCode->code) }}"
+                            value="{{ old('code', $discuntCode->code) }}"
                             placeholder="کد تخفیف را وارد کنید"
-                            class="vafadar-input w-8/12 "
+                            class="vafadar-input w-8/12"
                             dir="ltr"
                         >
 
-                        <button type="button" class='w-4/12 text-white rounded-xl bg-[#1B84FF] cursor-pointer' id="generateCodeBtn">
-                            <i class="fa fa-sync-alt "></i>
+                        <button
+                            type="button"
+                            class="w-4/12 text-white rounded-xl bg-[#1B84FF] cursor-pointer"
+                            id="generateCodeBtn"
+                        >
+                            <i class="fa fa-sync-alt"></i>
                             تولید کد
                         </button>
 
@@ -851,7 +720,8 @@
                     @enderror
 
                 </div>
-                {{-- مزایای اضافی کد تخفیف --}}
+
+                {{-- مزایای اضافی --}}
                 <div class="col-span-2">
 
                     <label class="vafadar-label">
@@ -860,14 +730,13 @@
 
                     <div class="grid grid-cols-2 gap-4">
 
-                        {{-- ارسال رایگان --}}
                         <label class="free-shipping-option">
 
                             <input
                                 type="checkbox"
                                 name="free_shipping"
                                 value="1"
-                                {{ old('free_shipping' , $discuntCode->free_shipping) == '1' ? 'checked' : '' }}
+                                {{ old('free_shipping', $discuntCode->free_shipping) == '1' ? 'checked' : '' }}
                             >
 
                             <span class="free-shipping-icon">
@@ -884,7 +753,6 @@
 
                         </label>
 
-                        {{-- فعال / غیرفعال --}}
                         <label class="free-shipping-option">
 
                             <input
@@ -912,14 +780,12 @@
 
                 </div>
 
-                
             </div>
 
-            {{-- ===== سه باکس انتخاب: محصولات / کاربران / دسته‌بندی‌ها ===== --}}
-
+            {{-- انتخاب‌گرها --}}
             <div class="flex flex-col gap-6 mt-6">
 
-                {{-- انتخاب محصولات --}}
+                {{-- محصولات --}}
                 <div data-picker="products">
 
                     <label class="vafadar-label">
@@ -928,38 +794,39 @@
 
                     <div class="picker-box">
 
-                        <input type="text" class="picker-search" data-search
-                            placeholder="جستجو بین محصولات...">
+                        <input
+                            type="text"
+                            class="picker-search"
+                            data-search
+                            placeholder="جستجو بین محصولات..."
+                        >
 
                         <div class="picker-list" data-list>
 
                             @foreach($products as $product)
-                                @php
-                                    $productId = $product->id;
-                                    $productName =$product->title;
-                                    $productPrice = $product->price;
-                                @endphp
 
-                                <label class="picker-option "
+                                <label
+                                    class="picker-option"
                                     data-picker-option
-                                    data-title="{{ $productName }}">
+                                    data-title="{{ $product->title }}"
+                                >
 
                                     <input
                                         type="checkbox"
                                         name="products[]"
-                                        value="{{ $productId }}"
-                                        {{ in_array($productId, old('products', [])) ? 'checked' : '' }}
-                                        {{ in_array($productId, old('products', $discuntCode->products->pluck('id')->toArray())) ? 'checked' : '' }}
-
+                                        value="{{ $product->id }}"
+                                        data-existing="{{ in_array($product->id, $existingProductIds) ? '1' : '0' }}"
+                                        {{ in_array($product->id, $selectedProducts) ? 'checked' : '' }}
                                     >
 
-                                    <span>{{ $productName }}</span>
+                                    <span>{{ $product->title }}</span>
 
                                     <small class="picker-extra-info">
-                                        تومان {{ number_format((float) $productPrice) }}
+                                        تومان {{ number_format((float) $product->price) }}
                                     </small>
 
                                 </label>
+
                             @endforeach
 
                         </div>
@@ -972,7 +839,39 @@
                             ۰ مورد انتخاب شده
                         </div>
 
-                        <div class="picker-selected-items" data-selected></div>
+                        <div class="picker-selected-items" data-selected>
+
+                            @foreach($discuntCode->products as $product)
+
+                                @if(
+                                    in_array($product->id, $selectedProducts) &&
+                                    !in_array($product->id, $removedProducts)
+                                )
+
+                                    <div
+                                        class="picker-chip old-chip"
+                                        data-old-chip
+                                        data-item-id="{{ $product->id }}"
+                                    >
+
+                                        <span>{{ $product->title }}</span>
+
+                                        <button
+                                            type="button"
+                                            data-old-remove
+                                            data-id="{{ $product->id }}"
+                                            aria-label="حذف محصول"
+                                        >
+                                            ×
+                                        </button>
+
+                                    </div>
+
+                                @endif
+
+                            @endforeach
+
+                        </div>
 
                     </div>
 
@@ -982,7 +881,7 @@
 
                 </div>
 
-                {{-- انتخاب کاربران --}}
+                {{-- کاربران --}}
                 <div data-picker="users">
 
                     <label class="vafadar-label">
@@ -991,38 +890,39 @@
 
                     <div class="picker-box">
 
-                        <input type="text" class="picker-search" data-search
-                            placeholder="جستجو بین کاربران...">
+                        <input
+                            type="text"
+                            class="picker-search"
+                            data-search
+                            placeholder="جستجو بین کاربران..."
+                        >
 
                         <div class="picker-list" data-list>
 
                             @foreach($users as $user)
-                                @php
-                                    $userId = $user->id;
-                                    $userName = $user->name;
-                                    $userPhone = $user->phoneNumber;
-                                @endphp
 
-                                <label class="picker-option"
+                                <label
+                                    class="picker-option"
                                     data-picker-option
-                                    data-title="{{ $userName }} {{ $userPhone }}">
+                                    data-title="{{ $user->name }} {{ $user->phoneNumber }}"
+                                >
 
                                     <input
                                         type="checkbox"
                                         name="users[]"
-                                        value="{{ $userId }}"
-                                        {{ in_array($userId, old('users', [])) ? 'checked' : '' }}
-                                        {{ in_array($userId, old('users', $discuntCode->users->pluck('id')->toArray())) ? 'checked' : '' }}
-
+                                        value="{{ $user->id }}"
+                                        data-existing="{{ in_array($user->id, $existingUserIds) ? '1' : '0' }}"
+                                        {{ in_array($user->id, $selectedUsers) ? 'checked' : '' }}
                                     >
 
-                                    <span>{{ $userName }}</span>
+                                    <span>{{ $user->name }}</span>
 
                                     <small class="picker-extra-info">
-                                        {{ $userPhone ?: 'شماره تلفن ثبت نشده' }}
+                                        {{ $user->phoneNumber ?: 'شماره تلفن ثبت نشده' }}
                                     </small>
 
                                 </label>
+
                             @endforeach
 
                         </div>
@@ -1035,7 +935,39 @@
                             ۰ مورد انتخاب شده
                         </div>
 
-                        <div class="picker-selected-items" data-selected></div>
+                        <div class="picker-selected-items" data-selected>
+
+                            @foreach($discuntCode->users as $user)
+
+                                @if(
+                                    in_array($user->id, $selectedUsers) &&
+                                    !in_array($user->id, $removedUsers)
+                                )
+
+                                    <div
+                                        class="picker-chip old-chip"
+                                        data-old-chip
+                                        data-item-id="{{ $user->id }}"
+                                    >
+
+                                        <span>{{ $user->name }}</span>
+
+                                        <button
+                                            type="button"
+                                            data-old-remove
+                                            data-id="{{ $user->id }}"
+                                            aria-label="حذف کاربر"
+                                        >
+                                            ×
+                                        </button>
+
+                                    </div>
+
+                                @endif
+
+                            @endforeach
+
+                        </div>
 
                     </div>
 
@@ -1045,7 +977,7 @@
 
                 </div>
 
-                {{-- انتخاب دسته‌بندی‌ها --}}
+                {{-- دسته‌بندی‌ها --}}
                 <div data-picker="categories">
 
                     <label class="vafadar-label">
@@ -1063,27 +995,27 @@
 
                         <div class="picker-list" data-list>
 
-                            @foreach($categories as $key=> $category)
-                                @php
-                                    $categoryId = $category->id;
-                                    $categoryName = $category->title;
-                                @endphp
-
-                                <label class="picker-option"
-                                    data-picker-option
-                                    data-title="{{ $categoryName }}">
-
-                                    <input
-                                        type="checkbox"
-                                        name="categories[]"
-                                        value="{{ $categoryId }}"
-                                        {{ in_array($categoryId, old('categories', [])) ? 'checked' : '' }}
-                                        {{ in_array($categoryId, old('categories', $discuntCode->categories->pluck('id')->toArray())) ? 'checked' : '' }}
+                            @foreach($categories as $category)
+                                @if($category->id!=1)
+                                    <label
+                                        class="picker-option"
+                                        data-picker-option
+                                        data-title="{{ $category->title }}"
                                     >
 
-                                    <span>{{ $categoryName }}</span>
+                                        <input
+                                            type="checkbox"
+                                            name="categories[]"
+                                            value="{{ $category->id }}"
+                                            data-existing="{{ in_array($category->id, $existingCategoryIds) ? '1' : '0' }}"
+                                            {{ in_array($category->id, $selectedCategories) ? 'checked' : '' }}
+                                        >
 
-                                </label>
+                                        <span>{{ $category->title }}</span>
+
+                                    </label>
+                                @endif
+
                             @endforeach
 
                         </div>
@@ -1096,7 +1028,39 @@
                             ۰ مورد انتخاب شده
                         </div>
 
-                        <div class="picker-selected-items" data-selected></div>
+                        <div class="picker-selected-items" data-selected>
+
+                            @foreach($discuntCode->categories as $category)
+
+                                @if(
+                                    in_array($category->id, $selectedCategories) &&
+                                    !in_array($category->id, $removedCategories)
+                                )
+
+                                    <div
+                                        class="picker-chip old-chip"
+                                        data-old-chip
+                                        data-item-id="{{ $category->id }}"
+                                    >
+
+                                        <span>{{ $category->title }}</span>
+
+                                        <button
+                                            type="button"
+                                            data-old-remove
+                                            data-id="{{ $category->id }}"
+                                            aria-label="حذف دسته‌بندی"
+                                        >
+                                            ×
+                                        </button>
+
+                                    </div>
+
+                                @endif
+
+                            @endforeach
+
+                        </div>
 
                     </div>
 
@@ -1108,20 +1072,39 @@
 
             </div>
 
-            <!-- ===== فوتر ===== -->
+            {{-- آرایه شناسه موارد حذف‌شده --}}
+            <div id="removed-items-container">
+
+                @foreach($removedProducts as $removedId)
+                    <input type="hidden" name="removed_products[]" value="{{ $removedId }}">
+                @endforeach
+
+                @foreach($removedUsers as $removedId)
+                    <input type="hidden" name="removed_users[]" value="{{ $removedId }}">
+                @endforeach
+
+                @foreach($removedCategories as $removedId)
+                    <input type="hidden" name="removed_categories[]" value="{{ $removedId }}">
+                @endforeach
+
+            </div>
+
+            {{-- فوتر --}}
             <div class="vafadar-form-footer flex items-center justify-between mt-6 pt-6 border-t border-[#DBDFE9]">
 
                 <button type="submit" class="vafadar-btn">
-                    <span>ثبت کد تخفیف</span>
+
+                    <span>ثبت تغییرات کد تخفیف</span>
 
                     <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none"
                         stroke="currentColor" stroke-width="2.5">
                         <path d="M5 13l4 4L19 7"/>
                     </svg>
+
                 </button>
 
                 <span class="text-xs text-[#9A9CAE]">
-                    * تمامی فیلدها ضروری هستند
+                    * اطلاعات کد تخفیف را بررسی کنید
                 </span>
 
             </div>
@@ -1129,6 +1112,7 @@
         </form>
 
     </div>
+
 </div>
 
 <script>
@@ -1160,10 +1144,14 @@ document.addEventListener('DOMContentLoaded', function () {
             codeInput.classList.add('ring-2', 'ring-[#1B84FF]');
 
             setTimeout(function () {
-                codeInput.classList.remove('ring-2', 'ring-[#1B84FF]');
+                codeInput.classList.remove(
+                    'ring-2',
+                    'ring-[#1B84FF]'
+                );
             }, 400);
 
             codeInput.focus();
+
         });
 
         codeInput.addEventListener('input', function () {
@@ -1174,27 +1162,38 @@ document.addEventListener('DOMContentLoaded', function () {
                 .slice(0, 5);
 
         });
+
     }
 
 
     /* =====================================================
-       انتخاب نوع تخفیف: درصدی / مبلغ ثابت
+       انتخاب نوع تخفیف
     ===================================================== */
 
     const percentBox = document.getElementById('percentBox');
     const fixedBox = document.getElementById('fixedBox');
+
     const discountTypeInput = document.getElementById('discunt_type');
 
-    const discountButtons = document.querySelectorAll('[data-discount-type]');
+    const discountButtons = document.querySelectorAll(
+        '[data-discount-type]'
+    );
+
+    const percentInput = document.getElementById('number');
+    const fixedInput = document.getElementById('price');
+
 
     function setDiscountType(type) {
 
-        if (!percentBox || !fixedBox || !discountTypeInput) return;
+        if (
+            !percentBox ||
+            !fixedBox ||
+            !discountTypeInput ||
+            !percentInput ||
+            !fixedInput
+        ) return;
 
         discountTypeInput.value = type;
-
-        const percentInput = document.getElementById('number');
-        const fixedInput = document.getElementById('price');
 
         if (type === 'percent') {
 
@@ -1226,70 +1225,49 @@ document.addEventListener('DOMContentLoaded', function () {
             );
 
         });
+
     }
+
 
     discountButtons.forEach(function (button) {
 
         button.addEventListener('click', function () {
-
             setDiscountType(this.dataset.discountType);
-
         });
 
     });
 
-    // مقدار اولیه از old یا مقدار پیش‌فرض
-    setDiscountType(discountTypeInput?.value || 'percent');
+
+    setDiscountType(
+        discountTypeInput?.value || 'percent'
+    );
 
 
     /* =====================================================
-       وضعیت تخفیف
-    ===================================================== */
-
-    const statusToggle = document.getElementById('statusToggle');
-    const statusInput = document.getElementById('status');
-    const statusTitle = document.getElementById('statusTitle');
-    const statusDescription = document.getElementById('statusDescription');
-
-    function updateStatus(isActive) {
-
-        statusInput.value = isActive ? '1' : '0';
-
-        statusToggle.classList.toggle('active', isActive);
-
-        statusToggle.setAttribute(
-            'aria-pressed',
-            isActive ? 'true' : 'false'
-        );
-
-        statusTitle.textContent = isActive ? 'فعال' : 'غیرفعال';
-    }
-
-    if (statusToggle && statusInput) {
-
-        statusToggle.addEventListener('click', function () {
-
-            const isActive = statusInput.value !== '1';
-
-            updateStatus(isActive);
-
-        });
-
-        updateStatus(statusInput.value === '1');
-    }
-
-
-    /* =====================================================
-       انتخاب‌گر محصولات / کاربران / دسته‌بندی‌ها
+       انتخاب‌گر محصولات، کاربران و دسته‌بندی‌ها
     ===================================================== */
 
     const pickerCards = document.querySelectorAll('[data-picker]');
 
-    const persianNumber = function (number) {
-        return number.toLocaleString('fa-IR');
+    const removedContainer = document.getElementById(
+        'removed-items-container'
+    );
+
+    const removedFieldNames = {
+        products: 'removed_products[]',
+        users: 'removed_users[]',
+        categories: 'removed_categories[]'
     };
 
+
+    function persianNumber(number) {
+        return number.toLocaleString('fa-IR');
+    }
+
+
     pickerCards.forEach(function (card) {
+
+        const pickerType = card.dataset.picker;
 
         const searchInput = card.querySelector('[data-search]');
         const items = card.querySelectorAll('[data-picker-option]');
@@ -1297,49 +1275,188 @@ document.addEventListener('DOMContentLoaded', function () {
         const counter = card.querySelector('[data-count]');
         const selectedContainer = card.querySelector('[data-selected]');
 
-        if (!searchInput || !counter || !selectedContainer) return;
+        const removedFieldName = removedFieldNames[pickerType];
 
-        // به‌روزرسانی وضعیت یک انتخاب‌گر
+        if (
+            !searchInput ||
+            !counter ||
+            !selectedContainer ||
+            !removedContainer ||
+            !removedFieldName
+        ) return;
+
+
+        /* حذف شناسه از آرایه حذف‌شده‌ها */
+
+        function removeFromRemovedList(id) {
+
+            removedContainer
+                .querySelectorAll('input[name="' + removedFieldName + '"]')
+                .forEach(function (input) {
+
+                    if (input.value === String(id)) {
+                        input.remove();
+                    }
+
+                });
+
+        }
+
+
+        /* اضافه کردن شناسه به آرایه حذف‌شده‌ها */
+
+        function addToRemovedList(id) {
+
+            const alreadyExists = Array.from(
+                removedContainer.querySelectorAll(
+                    'input[name="' + removedFieldName + '"]'
+                )
+            ).some(function (input) {
+
+                return input.value === String(id);
+
+            });
+
+            if (alreadyExists) return;
+
+            const input = document.createElement('input');
+
+            input.type = 'hidden';
+            input.name = removedFieldName;
+            input.value = id;
+
+            removedContainer.appendChild(input);
+
+        }
+
+
+        /* بررسی وجود چیپ قدیمی */
+
+        function oldChipExists(id) {
+
+            return Array.from(
+                selectedContainer.querySelectorAll('[data-old-chip]')
+            ).some(function (chip) {
+
+                return chip.dataset.itemId === String(id);
+
+            });
+
+        }
+
+
+        /* پیدا کردن چک‌باکس بر اساس شناسه */
+
+        function findCheckbox(id) {
+
+            return Array.from(
+                card.querySelectorAll(
+                    '[data-picker-option] input[type="checkbox"]'
+                )
+            ).find(function (input) {
+
+                return input.value === String(id);
+
+            });
+
+        }
+
+
+        /* به‌روزرسانی انتخاب‌گر */
+
         function updatePicker() {
 
             const checkedItems = card.querySelectorAll(
                 '[data-picker-option] input[type="checkbox"]:checked'
             );
 
-            const selectedCount = checkedItems.length;
-
             counter.textContent =
-                persianNumber(selectedCount) + ' مورد انتخاب شده';
+                persianNumber(checkedItems.length) + ' مورد انتخاب شده';
 
-            selectedContainer.innerHTML = '';
+
+            /*
+             * تغییر جدید:
+             * اگر چک‌باکس یک گزینه قدیمی غیرفعال شده باشد،
+             * چیپ سبزرنگ آن هم از پایین لیست حذف می‌شود.
+             */
+
+            selectedContainer
+                .querySelectorAll('[data-old-chip]')
+                .forEach(function (chip) {
+
+                    const id = chip.dataset.itemId;
+                    const checkbox = findCheckbox(id);
+
+                    if (!checkbox || !checkbox.checked) {
+                        chip.remove();
+                    }
+
+                });
+
+
+            // فقط چیپ‌های جدید حذف می‌شوند
+            selectedContainer
+                .querySelectorAll('[data-dynamic-chip]')
+                .forEach(function (chip) {
+                    chip.remove();
+                });
+
 
             checkedItems.forEach(function (checkbox) {
 
                 const option = checkbox.closest('[data-picker-option]');
+
                 const title = option.dataset.title ||
                     option.querySelector('span')?.textContent.trim() ||
                     checkbox.value;
 
-                option.classList.add('selected');
 
+                // اگر چیپ قدیمی وجود دارد، چیپ جدید نساز
+                if (oldChipExists(checkbox.value)) {
+                    return;
+                }
+
+
+                // ساخت چیپ جدید
                 const chip = document.createElement('div');
+
                 chip.className = 'picker-chip';
+                chip.dataset.dynamicChip = 'true';
+
 
                 const text = document.createElement('span');
                 text.textContent = title;
 
-                const removeButton = document.createElement('button');
-                removeButton.type = 'button';
-                removeButton.innerHTML = '&times;';
-                removeButton.setAttribute('aria-label', 'حذف انتخاب');
 
+                const removeButton = document.createElement('button');
+
+                removeButton.type = 'button';
+                removeButton.textContent = '×';
+
+                removeButton.setAttribute(
+                    'aria-label',
+                    'حذف انتخاب'
+                );
+
+
+                // حذف چیپ جدید
                 removeButton.addEventListener('click', function () {
+
+                    /*
+                     * اگر این گزینه قبلاً در دیتابیس وجود داشته،
+                     * حذف آن داخل آرایه حذف‌شده‌ها ثبت می‌شود.
+                     */
+
+                    if (checkbox.dataset.existing === '1') {
+                        addToRemovedList(checkbox.value);
+                    }
 
                     checkbox.checked = false;
 
                     updatePicker();
 
                 });
+
 
                 chip.appendChild(text);
                 chip.appendChild(removeButton);
@@ -1348,10 +1465,13 @@ document.addEventListener('DOMContentLoaded', function () {
 
             });
 
-            // به‌روزرسانی کلاس گزینه‌ها
+
+            // بروزرسانی ظاهر گزینه‌ها
             items.forEach(function (item) {
 
-                const checkbox = item.querySelector('input[type="checkbox"]');
+                const checkbox = item.querySelector(
+                    'input[type="checkbox"]'
+                );
 
                 item.classList.toggle(
                     'selected',
@@ -1362,7 +1482,9 @@ document.addEventListener('DOMContentLoaded', function () {
 
         }
 
-        // جستجوی زنده
+
+        /* جستجوی زنده */
+
         function filterItems() {
 
             const query = searchInput.value.trim().toLowerCase();
@@ -1381,9 +1503,12 @@ document.addEventListener('DOMContentLoaded', function () {
 
                 item.style.display = matched ? 'flex' : 'none';
 
-                if (matched) visibleCount++;
+                if (matched) {
+                    visibleCount++;
+                }
 
             });
+
 
             if (noResult) {
                 noResult.classList.toggle(
@@ -1394,20 +1519,99 @@ document.addEventListener('DOMContentLoaded', function () {
 
         }
 
+
         searchInput.addEventListener('input', filterItems);
 
-        // تغییر وضعیت چک‌باکس‌ها
+
+        /* تغییر وضعیت چک‌باکس‌ها */
+
         items.forEach(function (item) {
 
-            const checkbox = item.querySelector('input[type="checkbox"]');
+            const checkbox = item.querySelector(
+                'input[type="checkbox"]'
+            );
 
             if (!checkbox) return;
 
-            checkbox.addEventListener('change', updatePicker);
+
+            checkbox.addEventListener('change', function () {
+
+                /*
+                 * اگر مورد قدیمی دوباره انتخاب شد،
+                 * شناسه‌اش از آرایه حذف‌شده‌ها پاک شود.
+                 */
+
+                if (
+                    checkbox.dataset.existing === '1' &&
+                    checkbox.checked
+                ) {
+
+                    removeFromRemovedList(checkbox.value);
+
+                }
+
+
+                /*
+                 * اگر مورد قدیمی از داخل لیست چک‌باکس
+                 * غیرفعال شد، شناسه‌اش به آرایه حذف‌شده‌ها اضافه شود.
+                 */
+
+                if (
+                    checkbox.dataset.existing === '1' &&
+                    !checkbox.checked
+                ) {
+
+                    addToRemovedList(checkbox.value);
+
+                }
+
+
+                // با این فراخوانی چیپ قدیمی هم حذف می‌شود
+                updatePicker();
+
+            });
 
         });
 
-        // پاک کردن جستجو با Escape
+
+        /* حذف چیپ‌های قدیمی */
+
+        selectedContainer.addEventListener('click', function (event) {
+
+            const button = event.target.closest('[data-old-remove]');
+
+            if (!button) return;
+
+            const id = button.dataset.id;
+
+            const oldChip = button.closest('[data-old-chip]');
+
+            const checkbox = findCheckbox(id);
+
+
+            // غیرفعال کردن انتخاب مربوط به آن چیپ
+            if (checkbox) {
+                checkbox.checked = false;
+            }
+
+
+            // ثبت شناسه در آرایه حذف‌شده‌ها
+            addToRemovedList(id);
+
+
+            // حذف چیپ قدیمی از صفحه
+            if (oldChip) {
+                oldChip.remove();
+            }
+
+
+            updatePicker();
+
+        });
+
+
+        /* پاک کردن جستجو با Escape */
+
         searchInput.addEventListener('keydown', function (event) {
 
             if (event.key === 'Escape') {
@@ -1420,6 +1624,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
         });
 
+
         // مقداردهی اولیه
         updatePicker();
         filterItems();
@@ -1427,20 +1632,19 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
 
-    /* =====================================================
-       اعتبارسنجی نوع تخفیف
-    ===================================================== */
+    /* ارسال فرم */
 
     const form = document.getElementById('form');
 
     if (form) {
 
-        form.addEventListener('submit', function (event) {
+        form.addEventListener('submit', function () {
+
+            if (!discountTypeInput || !percentInput || !fixedInput) {
+                return;
+            }
 
             const type = discountTypeInput.value;
-
-            const percentInput = document.getElementById('number');
-            const fixedInput = document.getElementById('price');
 
             if (type === 'percent') {
 
@@ -1493,6 +1697,7 @@ $(document).ready(function () {
         }
 
     });
+
 
     $('#end_date').pDatepicker({
 
