@@ -437,9 +437,6 @@ class DiscuntCodeController extends Controller
             $code->end_date
         );
 
-        $startDate = Verta::parse($startDate);
-        $endDate = Verta::parse($endDate);
-        $today = Verta::now();
 
         $code->products;
         $code->users;
@@ -456,8 +453,21 @@ class DiscuntCodeController extends Controller
                 'discuntCode' => $code
             ]);
         }
+        if($code->start_date!=null & $code->end_date!=null){
 
-        if (!$today->between($startDate, $endDate)) {
+            $startDate = Verta::parse($startDate);
+            $endDate = Verta::parse($endDate);
+            $today = Verta::now();
+            if (!$today->between($startDate, $endDate)) {
+                $access = false;
+    
+                return response()->json([
+                    'access' => $access,
+                    'discuntCode' => $code
+                ]);
+            }
+        }
+        if ($code->usage_limit ==0) {
             $access = false;
 
             return response()->json([
@@ -465,14 +475,8 @@ class DiscuntCodeController extends Controller
                 'discuntCode' => $code
             ]);
         }
-
-        if ($code->usage_limit <= 0) {
-            $access = false;
-
-            return response()->json([
-                'access' => $access,
-                'discuntCode' => $code
-            ]);
+        if ($code->usage_limit === null || $code->usage_limit > 0) {
+            $access = true;
         }
 
         if ( count($code->products) > 0 || count($code->users) > 0 || count($code->categories) > 0 ) {

@@ -405,7 +405,7 @@
           </div> -->
           <div class="w-full h-0 transition-all duration-500 overflow-hidden" id='discuntCodeForm'>
             <div class="w-full h-full bg-zin-100 rounded-full  border border-zinc-300 flex justify-between items-center">
-              <input type="text" id="codeInput" class="outline-none w-full px-4 py-2">
+              <input type="text" id="codeInput" maxlength="5" class="outline-none w-full px-4 py-2">
               <div id='checkCodeButton' class="xl:text-sm text-xs text-nowrap xl:px-3 px-2 h-full flex justify-center items-center bg-green-500 rounded-full text-white font-bold cursor-pointer" onclick="checkCode(this)">اعمال کد تخفیف</div>
             </div>
           </div>

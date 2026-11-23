@@ -826,6 +826,7 @@ class UserController extends Controller
             );
     }
     public function cartInformation(Request $request){
+        dd($request->all());
         $products=json_decode($request->products[0], true);
         // dd($products);
         $flag=false;
