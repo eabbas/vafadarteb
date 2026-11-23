@@ -354,6 +354,112 @@
           @endif
         </div>
         <div class="lg:w-3/12 w-full border border-zinc-200 p-3 flex flex-col gap-2 rounded-xl">
+                          <div class="mb-3">
+                    <div class="w-full  transition-all duration-300 mb-5">
+                        <div
+                            class="relative w-full rounded-2xl bg-gradient-to-br from-indigo-800 via-indigo-700 to-purple-800 p-5 sm:p-6 text-white shadow-2xl card-glow overflow-hidden transition hover:shadow-indigo-500/30 duration-300">
+
+                        
+
+                            <!-- محتوای کارت -->
+                            <div class="relative z-10 h-full flex flex-col justify-between">
+
+                                <!-- ردیف بالا: لوگو و تراشه -->
+                                <div class="flex items-center justify-between">
+
+                                    <div class="flex items-center gap-2">
+                                        <div
+                                            class="size-10 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center border border-white/30">
+                                            <span class="text-sm font-bold text-white/90">
+                                                <img src="{{ asset('assets/img/bluebank.jpg') }}" class="size-10 rounded-full" alt="">
+                                            </span>
+                                        </div>
+                                        <span class="text-sm font-bold tracking-wide text-white/90">بانک سامان  </span>
+                                    </div>
+                                    <div
+                                        class="w-10 h-8 rounded-md bg-gradient-to-br from-amber-200 to-amber-400/80 border border-amber-300/50 shadow-inner flex items-center justify-center">
+                                        <div class="grid grid-cols-3 gap-0.5 w-6 h-5 opacity-60">
+                                            <div class="border border-amber-800/30 rounded-sm"></div>
+                                            <div class="border border-amber-800/30 rounded-sm"></div>
+                                            <div class="border border-amber-800/30 rounded-sm"></div>
+                                            <div class="border border-amber-800/30 rounded-sm"></div>
+                                            <div class="border border-amber-800/30 rounded-sm"></div>
+                                            <div class="border border-amber-800/30 rounded-sm"></div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- شماره کارت -->
+                                <div class="w-full flex items-end justify-between">
+                                    <div class="mt-3 sm:mt-4">
+                                        <p class="text-[10px] sm:text-xs text-white/60 uppercase tracking-wider mb-0.5">
+                                            شماره
+                                            کارت</p>
+                                        <div
+                                            class="card-number text-base sm:text-lg md:text-xl font-medium text-white/95 drop-shadow-sm">
+                                            6219861807743892
+                                        </div>
+                                    </div>
+                                    <svg class="w-6 h-6 cursor-pointer text-white" onclick="copyText('6063 7311 2068 4353')" aria-hidden="true"
+                                        xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none"
+                                        viewBox="0 0 24 24">
+                                        <path stroke="currentColor" stroke-linejoin="round" stroke-width="2"
+                                            d="M9 8v3a1 1 0 0 1-1 1H5m11 4h2a1 1 0 0 0 1-1V5a1 1 0 0 0-1-1h-7a1 1 0 0 0-1 1v1m4 3v10a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1v-7.13a1 1 0 0 1 .24-.65L7.7 8.35A1 1 0 0 1 8.46 8H13a1 1 0 0 1 1 1Z" />
+                                    </svg>
+
+                                </div>
+
+                                <!-- شماره شبا -->
+                                <div class="w-full flex items-end justify-between">
+                                    <div class="mt-2 sm:mt-3">
+                                        <p class="text-[10px] sm:text-xs text-white/60 uppercase tracking-wider mb-0.5">
+                                            شماره
+                                            شبا</p>
+                                        <div
+                                            class="sheba-number flex items-center gap-1 text-[11px] sm:text-sm md:text-base font-medium text-white/95">
+                                            <span class="text-white/70 font-sans">IR</span>
+                                            <span class="text-sm">123456789123456789</span>
+                                        </div>
+                                    </div>
+                                    <svg class="w-6 h-6 cursor-pointer text-white" onclick="copyText('67 0600 2002 7001 1408 8140 01')" aria-hidden="true"
+                                        xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none"
+                                        viewBox="0 0 24 24">
+                                        <path stroke="currentColor" stroke-linejoin="round" stroke-width="2"
+                                            d="M9 8v3a1 1 0 0 1-1 1H5m11 4h2a1 1 0 0 0 1-1V5a1 1 0 0 0-1-1h-7a1 1 0 0 0-1 1v1m4 3v10a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1v-7.13a1 1 0 0 1 .24-.65L7.7 8.35A1 1 0 0 1 8.46 8H13a1 1 0 0 1 1 1Z" />
+                                    </svg>
+
+                                </div>
+
+                                <!-- ردیف پایین: نام، تاریخ انقضا و شتاب -->
+                                <div class="flex items-end justify-between mt-2 sm:mt-3">
+                                    <div>
+                                        <p class="text-[9px] sm:text-[10px] text-white/50 uppercase tracking-wider">به نام
+                                        </p>
+                                        <p class="text-sm sm:text-base font-medium text-white/90 tracking-wide">محمد منتظمی
+                                        </p>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <div
+                                class="absolute top-0 left-4 right-4 h-px bg-gradient-to-r from-transparent via-white/40 to-transparent">
+                            </div>
+                            <div
+                                class="absolute inset-0 rounded-2xl bg-gradient-to-tr from-white/5 via-transparent to-white/10 pointer-events-none">
+                            </div>
+                        </div>
+
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium mb-2">رسید پرداخت <span
+                                class="text-red-500">*</span></label>
+                        <input type="file" dir="ltr" name="receipt"
+                            class="w-full bg-gray-100 cursor-pointer border-none rounded-lg p-3 focus:ring-2 focus:ring-(--bg-dark-green) outline-none"
+                            required>
+                    </div>
+                </div>
+
           <div class="flex items-center justify-between">
             <div class="text-(--title) text-nowrap max-xl:text-sm">جمع مبلغ کل</div>
             <div class="w-9/12 flex items-center gap-1">
@@ -394,7 +500,7 @@
             </div>
           </div> -->
           <div class='flex gap-1 text-center items-center mt-2'>
-            <input type="checkbox" id="addDiscuntCode" onclick='showDiscuntCodeForm(this)'>
+            <input type="checkbox" id="addDiscuntCode" value=''  onclick='showDiscuntCodeForm(this)'>
             <label class='xl:text-xs text-[9px]' for="addDiscuntCode"> کد تخفیف دارید؟ <span class='text-(--primary_color)'> برای نوشتن کد اینجا کلیک کنید </span> </label>
           </div>
           <!-- <div class='w-full flex flex-col h-0 overflow-hidden mt-2 transition-all duration-500' id='discuntCodeForm'>
@@ -626,6 +732,8 @@
                         el.innerHTML='کد تخفیف اعمال شد'
                         el.classList.remove('bg-green-100');
                         el.classList.add('bg-yellow-300');
+                        addDiscuntCode.setAttribute('name','discuntCode')
+                        addDiscuntCode.setAttribute('value',data.discuntCode.id)
                       }
                       if(data.access==false){
                         alert('کد تخفیف قابل دسترتس نیست');
@@ -724,6 +832,8 @@
         finalAmount_div.value=parseInt(finalAmount);
         benefit_div.value=parseInt(benefit);
         shipping.value=150000;
+        addDiscuntCode.removeAttribute('name')
+        addDiscuntCode.removeAttribute('value')
       }
     });
 
@@ -742,6 +852,11 @@
         form.appendChild(product_input); 
     }
     addlocalProducts();
+
+    function copyText(number){
+        navigator.clipboard.writeText(number)
+        alert('شماره کپی شد')
+    }
  </script>
 </body>
 </html>
