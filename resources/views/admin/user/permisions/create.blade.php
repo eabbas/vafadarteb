@@ -1,6 +1,6 @@
 @extends('dashboard')
 
-@section('title','ایجاد نقش')
+@section('title','ایجاد مجوز')
 @section('content')
 
 <style>
@@ -246,33 +246,33 @@
                         <path d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/>
                     </svg>
                 </span>
-                ایجاد نقش جدید
+                ایجاد مجوز جدید
             </h1>
-            <p class="sub-text">نقش کاربری را با دسترسی‌های مشخص تعریف کنید</p>
+            <p class="sub-text">مجوز کاربری را با دسترسی‌های مشخص تعریف کنید</p>
         </div>
 
         <!-- ===== فرم ===== -->
         <form action="{{route('permision.store')}}" method="post">
             @csrf
 
-            <!-- ===== بخش اطلاعات نقش ===== -->
+            <!-- ===== بخش اطلاعات مجوز ===== -->
             <div class="vafadar-form-section animate-in">
                 <div class="vafadar-section-title">
                     <svg viewBox="0 0 24 24">
                         <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
                     </svg>
-                    <span>اطلاعات نقش</span>
+                    <span>اطلاعات مجوز</span>
                     <div class="line"></div>
                 </div>
 
                 <div class="space-y-4 grid grid-cols-1 sm:grid-cols-2 gap-2">
                     <div>
                         <label class="vafadar-label"> عنوان فارسی</label>
-                        <input type="text" name="fa_title" placeholder="مثلاً مدیر_سیستم" class="vafadar-input">
+                        <input type="text" name="fa_title"class="vafadar-input">
                     </div>
                     <div>
                         <label class="vafadar-label"> عنوان انگلیسی</label>
-                        <input type="text" name="ea_title" placeholder="مثلاً admin" class="vafadar-input">
+                        <input type="text" name="ea_title" class="vafadar-input">
                     </div>
                 </div>
             </div>
@@ -281,7 +281,7 @@
             <!-- ===== دکمه ثبت ===== -->
             <div class="vafadar-form-section animate-in">
                 <button type="submit" class="vafadar-btn">
-                    <span>ایجاد نقش</span>
+                    <span>ایجاد مجوز</span>
                     <svg viewBox="0 0 24 24">
                         <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/>
                     </svg>

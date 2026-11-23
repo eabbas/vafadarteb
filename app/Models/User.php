@@ -68,19 +68,24 @@ class User extends Authenticatable
     public function roles(){
         return $this->belongsToMany(role::class,'role_users');
     }
-    public function hasRole($roles){
-        Log::info($roles);
-        // $flag=false;
-        // foreach ($roles as $role) {            
-        //     $flag=$this->roles()->whereIn('ea_title',$roles)->exists();
-        //     if($flag==true){
-        //         return true;
-        //     }else{
-        //         return false;
-        //     }
-        // }
-        return $this->roles()->whereIn('ea_title',$roles)->exists();
+    public function hasAccess($permision){
+        foreach ($this->roles as $role) {
+            return $role->permision()->wehreIn('ea_title',$permision)->exists();
+        }
     }
+    // public function hasRole($roles){
+    //     Log::info($roles);
+    //     // $flag=false;
+    //     // foreach ($roles as $role) {            
+    //     //     $flag=$this->roles()->whereIn('ea_title',$roles)->exists();
+    //     //     if($flag==true){
+    //     //         return true;
+    //     //     }else{
+    //     //         return false;
+    //     //     }
+    //     // }
+    //     return $this->roles()->whereIn('ea_title',$roles)->exists();
+    // }
 
     public function carts(){
         return $this->hasMany(cart::class,'user_id');

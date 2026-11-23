@@ -483,7 +483,6 @@
                     </div>
 
 
-                @can('admin_dashboard',['admin1','admin2'])
 
                     <!-- =====  محصولات ===== -->
                     <div class='element flex flex-col items-center gap-2 px-4 py-3 rounded-xl bg-[#1a1a20] shadow-sm hover:shadow-md transition-all mb-3'>
@@ -814,7 +813,6 @@
                                 </svg>
                                 <a href="{{route('user.list')}}" class="hover:text-white transition-colors font-medium">لیست کاربر</a>
                             </div>
-                            @can('role_permision',['admin1'])
                                 <div class="w-full border-t border-[#DBDFE9] my-2"></div>
                                 <span class='text-xs font-semibold text-[#1B84FF] text-start mt-1'>نقش</span>
                                 <div class='w-12/12 justify-start text-white mr-3 flex p-2 text-sm gap-2 sub-menu-item'>
@@ -842,10 +840,8 @@
                                     </svg>
                                     <a href="{{route('permision.list')}}" class="hover:text-white transition-colors font-medium">لیست دسترسی ها</a>
                                 </div>
-                            @endcan
                         </div>
                     </div>
-                @endcan
 
                 <!-- ===== دکمه خروج ===== -->
                 <div class="mt-6 pt-4 border-t border-[#DBDFE9]">
