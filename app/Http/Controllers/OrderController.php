@@ -11,6 +11,7 @@ use App\Models\role_permision;
 use App\Models\headerSetting;
 use App\Models\hero;
 use App\Models\category;
+use App\Models\discunt_code;
 use App\Models\product;
 use App\Models\advertisement;
 use App\Models\product_labels;
@@ -29,13 +30,34 @@ use Log;
 class OrderController extends Controller
 {
     public function store(Request $request){
+        $dateAndTime=explode(' ',verta());
+        $date=implode('/',explode('-',$dateAndTime[0]));
+        $time=$dateAndTime[1];
         $user=Auth::user();
         $code = rand(1000, 100000000);
+        $path=null;
+        if(isset($request->receipt)){
+            $path=Str::uuid().$request->receipt->getClientOriginalName();
+            $request->receipt->storeAs("receipt","$path","public");
+        }
+        $cost=$request->finalAmount;
+        if(isset($request->discuntCode)){
+            $discuntCode=discunt_code::find($request->discuntCode);
+            if($discuntCode->free_shipping==0){
+                $cost=$request->finalAmount+150000;
+            }
+        }
         $order=order::create([
             'address_id'=>$request->address,
             'user_id'=>$user->id,
             'order_status_id'=>1,
             'order_code'=>$code,
+            'description'=>$request->description,
+            'receipt'=>$path,
+            'onlinePayment'=>1,
+            'date'=>$date,
+            'time'=>$time,
+            'cost'=>$cost,
         ]);
         $user->load(['carts'=>function($query){$query->where('order_id',null)->get();}]);
         foreach ($user->carts as $cart) {
@@ -58,7 +80,6 @@ class OrderController extends Controller
                     }
                 }
             }
-            $order->total_price=$total_price;
         }
         // dd($orders);
         return view('client.order.list',['orders'=>$orders]);

@@ -8,6 +8,7 @@ use App\Models\role;
 use App\Models\role_user;
 use App\Models\permision;
 use App\Models\role_permision;
+use App\Models\discunt_code;
 use App\Models\headerSetting;
 use App\Models\hero;
 use App\Models\category;
@@ -826,7 +827,7 @@ class UserController extends Controller
             );
     }
     public function cartInformation(Request $request){
-        dd($request->all());
+        // dd($request->all());
         $products=json_decode($request->products[0], true);
         // dd($products);
         $flag=false;
@@ -883,6 +884,17 @@ class UserController extends Controller
             $receipt=$request->file("receipt")->storeAs("receipts",$fullName,"public");
         }
         $code = rand(1000, 100000000);
+
+        $user=Auth::user();
+        $code = rand(1000, 100000000);
+        $cost=$request->finalAmount;
+        if(isset($request->discuntCode)){
+            $discuntCode=discunt_code::find($request->discuntCode);
+            if($discuntCode->free_shipping==0){
+                $cost=$request->finalAmount+150000;
+            }
+        }
+
         $order=order::create([
             'address_id'=>$address->id,
             'user_id'=>$user->id,
@@ -893,6 +905,7 @@ class UserController extends Controller
             'onlinePayment'=>1,
             'date'=>$date,
             'time'=>$time,
+            'cost'=>$cost,
         ]);
         if($products!=null){
             if(count($products)>0){
