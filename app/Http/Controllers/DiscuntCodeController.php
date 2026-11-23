@@ -475,11 +475,7 @@ class DiscuntCodeController extends Controller
             ]);
         }
 
-        if (
-            count($code->products) > 0 ||
-            count($code->users) > 0 ||
-            count($code->categories) > 0
-        ) {
+        if ( count($code->products) > 0 || count($code->users) > 0 || count($code->categories) > 0 ) {
 
             $users = $code->users->pluck('id')->toArray();
             $products = $code->products->pluck('id')->toArray();
@@ -506,28 +502,27 @@ class DiscuntCodeController extends Controller
 
                     $product = product::find($cart->product_id);
 
-                    if (!$product) {
-                        continue;
-                    }
-
-                    if (count($product->categories) > 0) {
-
-                        $pro_cats_id = $product->categories->pluck('id')->toArray();
-
-                        foreach ($pro_cats_id as $cat_id) {
-
-                            if (in_array($cat_id, $categories)) {
-                                $access = true;
-
-                                return response()->json([
-                                    'access' => $access,
-                                    'discuntCode' => $code
-                                ]);
-                            } else {
-                                $access = false;
+                    if ($product) {
+                        if (count($product->categories) > 0) {
+    
+                            $pro_cats_id = $product->categories->pluck('id')->toArray();
+    
+                            foreach ($pro_cats_id as $cat_id) {
+    
+                                if (in_array($cat_id, $categories)) {
+                                    $access = true;
+    
+                                    return response()->json([
+                                        'access' => $access,
+                                        'discuntCode' => $code
+                                    ]);
+                                } else {
+                                    $access = false;
+                                }
                             }
                         }
                     }
+
                 }
 
                 foreach ($user->carts as $cart) {
