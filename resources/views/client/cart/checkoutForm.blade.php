@@ -355,19 +355,19 @@
         </div>
         <div class="lg:w-3/12 w-full border border-zinc-200 p-3 flex flex-col gap-2 rounded-xl">
           <div class="flex items-center justify-between">
-            <div class="text-(--title) text-nowrap max-xl:text-sm">مبلغ نهایی</div>
+            <div class="text-(--title) text-nowrap max-xl:text-sm">جمع مبلغ کل</div>
             <div class="w-9/12 flex items-center gap-1">
               <!-- <span>{{$finalAmount}}</span> -->
-              <input type="number" name='finalAmount' readonly value="{{$finalAmount}}" id='finalAmount_div' class=' w-full  xl:text-xl text-lg text-(--title) font-bold outline-none text-end appearance-none'>
+              <input type="number" readonly value="{{$sum}}" id='sum' class=' w-full  xl:text-xl text-lg text-zinc-500 font-bold outline-none text-end appearance-none'>
               <div class="xl:text-sm text-xs text-zinc-500">تومان</div>
             </div>
           </div>
-         
+
           <div class="flex items-center justify-between text-(--color-zinc-600)">
             <div class="text-(--title) text-nowrap max-xl:text-sm">هزینه ارسال</div>
             <div class="w-9/12 flex items-center gap-1">
               <!-- <div class="text-xl md:text-2xl font-bold">150.000</div> -->
-              <input type="number" name='send' readonly value="1500000" id='send' class=' w-full  xl:text-xl text-lg text-(--title) font-bold outline-none text-end appearance-none'>
+              <input type="number" name='shipping' readonly value="150000" id='shipping' class=' w-full  xl:text-xl text-lg text-(--title) font-bold outline-none text-end appearance-none'>
               <div class="xl:text-sm text-xs text-zinc-500">تومان</div>
             </div>
           </div>
@@ -375,7 +375,7 @@
             <div class="text-(--title) text-nowrap max-xl:text-sm">سود شما</div>
             <div class="w-9/12 flex items-center gap-1">
               <!-- <span>{{$finalAmount}}</span> -->
-              <input type="number" name='benefit' readonly value="{{$benefit}}" id='benefit_div' class=' w-full  xl:text-xl text-lg text-(--title) font-bold outline-none text-end appearance-none'>
+              <input type="number" name='benefit' readonly value="{{$benefit}}" id='benefit_div' class=' w-full  xl:text-xl text-lg text-(--primary_color) font-bold outline-none text-end appearance-none'>
               <div class="xl:text-sm text-xs text-zinc-500">تومان</div>
             </div>
           </div>
@@ -405,19 +405,19 @@
           </div> -->
           <div class="w-full h-0 transition-all duration-500 overflow-hidden" id='discuntCodeForm'>
             <div class="w-full h-full bg-zin-100 rounded-full  border border-zinc-300 flex justify-between items-center">
-              <input type="text" id="codeInput" class="outline-none w-full px-4 py-2">
+              <input type="text" id="codeInput" maxlength="5" class="outline-none w-full px-4 py-2">
               <div id='checkCodeButton' class="xl:text-sm text-xs text-nowrap xl:px-3 px-2 h-full flex justify-center items-center bg-green-500 rounded-full text-white font-bold cursor-pointer" onclick="checkCode(this)">اعمال کد تخفیف</div>
             </div>
           </div>
           <span class="w-full h-0.5 rounded-full bg-zinc-200"></span>
-          <div class="flex flex-col items-center justify-between mt-3">
-            <div class="w-full flex justify-start text-(--title) text-nowrap font-bold max-xl:text-sm">جمع مبلغ کل</div>
+          <div class="flex items-center justify-between mt-3">
+            <div class="w-full flex justify-start text-(--title) text-nowrap font-bold max-xl:text-sm">مبلغ نهایی</div>
             <div class="w-full flex justify-end items-center gap-1">
-              <!-- <span>{{$finalAmount}}</span> -->
-              <input type="number" readonly value="{{$sum}}" class=' w-full  xl:text-2xl text-xl text-(--primary_color) font-bold outline-none text-end appearance-none'>
-              <div class="xl:text-sm text-xs text-(--primary_color)">تومان</div>
+              <input type="number" name='finalAmount' readonly value="{{$finalAmount}}" id='finalAmount_div'  class=' w-full  xl:text-2xl text-xl text-(--title) font-bold outline-none text-end appearance-none'>
+              <div class="xl:text-sm text-xs text-zinc-500">تومان</div>
             </div>
           </div>
+
           <button class="w-full bg-(--primary_color) hover:opacity-80 text-white text-center font-bold xl:text-xl text-lg mt-6 py-3  rounded-xl shadow-lg transition-all">
             ثبت و ادامه
           </button>
@@ -446,7 +446,9 @@
     let discuntCodeForm=document.getElementById('discuntCodeForm');
     let codeInput = document.getElementById('codeInput')
     let finalAmount_div=document.getElementById('finalAmount_div');
+    let sum=document.getElementById('sum');
     let benefit_div = document.getElementById('benefit_div')
+    let shipping = document.getElementById('shipping')
     let checkCodeButton = document.getElementById('checkCodeButton')
     let form = document.getElementById('form')
     const burgermenu = document.getElementById('burgermenu')
@@ -576,6 +578,8 @@
     }
     let code=''
     function checkCode(el){
+      if("{{Auth::check()}}"){
+
         code=document.getElementById('codeInput').value;
         console.log(code);
         if(code!=''){
@@ -592,29 +596,102 @@
                 type: "post",
                 dataType: "json",
                 data:{
-                    'code':code,
+                  'code':code,
                 },
                 success: function(data) {
+                  console.log(data.access);
+                  if(data.access!='Unavailable'){
+                      if(data.access==true){
+
+                        if(data.discuntCode.discunt_type=='number'){
+                          if(parseInt(finalAmount_div.value)<parseInt(data.discuntCode.discunt_value)){
+                            benefit_div.value=parseInt(benefit_div.value)+parseInt(finalAmount_div.value)
+                            finalAmount_div.value=0;
+                          }else{
+                            finalAmount_div.value=parseInt(finalAmount_div.value)-parseInt(data.discuntCode.discunt_value)
+                            benefit_div.value=parseInt(benefit_div.value)+parseInt(data.discuntCode.discunt_value)
+                          }
+                        }
+                        if(data.discuntCode.discunt_type=='percent'){
+                          let result=parseInt(finalAmount_div.value)*parseInt(data.discuntCode.discunt_value)
+                          result=result/100;
+                          finalAmount_div.value=parseInt(finalAmount_div.value)-parseInt(result)
+                          benefit_div.value=parseInt(benefit_div.value) + result
+                          parseInt(finalAmount_div.value)
+                          parseInt(benefit_div.value) 
+                        }
+                        if(data.discuntCode.free_shipping==1){
+                          shipping.value=0;
+                        }
+                        el.innerHTML='کد تخفیف اعمال شد'
+                        el.classList.remove('bg-green-100');
+                        el.classList.add('bg-yellow-300');
+                      }
+                      if(data.access==false){
+                        alert('کد تخفیف قابل دسترتس نیست');
+                        el.innerHTML="اعمال کد تخفیف"
+                        el.setAttribute('onclick','checkCode(this)');
+                        el.removeAttribute('disable');
+                      }
+                  }else{
+                    alert('کد تخفیف درست نیست');
+                    el.innerHTML="اعمال کد تخفیف"
+                    el.setAttribute('onclick','checkCode(this)');
+                    el.removeAttribute('disable');
+                  }
+                },
+                error: function() {
+                  console.log('☢')
+                }
+            })
+        }else{
+            alert('اول کد تخفیف را وارد کنید');
+        }
+      }else{
+        let jsonProArray = JSON.parse(localStorage.getItem('vafadarLocalStorageProducts'));
+        let productsString = JSON.stringify(jsonProArray);
+
+          code=document.getElementById('codeInput').value;
+          if(code!=''){
+              el.innerHTML= `<div class="size-7 border-4 border-(--border) border-t-(--primary_color) rounded-full animate-spin"></div>`;
+              el.removeAttribute('onclick');
+              el.setAttribute('disable',true);
+              $.ajaxSetup({
+                  headers: {
+                      'X-CSRF-TOKEN': "{{ csrf_token() }}"
+                  }
+              })
+              $.ajax({
+                  url: "{{route('discuntCode.checkCode')}}",
+                  type: "post",
+                  dataType: "json",
+                  data:{
+                    'code':code,
+                    'productsString':productsString,
+                  },
+                  success: function(data) {
                     console.log(data.access);
                     if(data.access!='Unavailable'){
                         if(data.access==true){
-                          el.innerHTML='کد تخفیف اعمال شد'
-                          el.classList.remove('bg-green-100');
-                          el.classList.add('bg-yellow-300');
-                          if(data.discuntCode.number!=null){
-                            finalAmount_div.value=parseInt(finalAmount_div.value)-parseInt(data.discuntCode.number)
-                            benefit_div.value=parseInt(benefit_div.value)+parseInt(data.discuntCode.number)
+                          if(data.discuntCode.discunt_type=="number"){
+                            finalAmount_div.value=parseInt(finalAmount_div.value)-parseInt(data.discuntCode.discunt_value)
+                            benefit_div.value=parseInt(benefit_div.value)+parseInt(data.discuntCode.discunt_value)
                           }
-                          if(data.discuntCode.percent!=null){
-                            let result=parseInt(finalAmount_div.value)*parseInt(data.discuntCode.percent)
+                          if(data.discuntCode.discunt_type=="percent"){
+                            let result=parseInt(finalAmount_div.value)*parseInt(data.discuntCode.discunt_value)
                             result=result/100;
                             finalAmount_div.value=parseInt(finalAmount_div.value)-parseInt(result)
                             benefit_div.value=parseInt(benefit_div.value) + result
-                            parseInt(finalAmount_div.value)
-                            parseInt(benefit_div.value) 
                           }
-                        }if(data.access==false){
-                          alert('کد تخفیف منقصی شد');
+                          if(data.discuntCode.free_shipping==1){
+                            shipping.value=0;
+                          }
+                          el.innerHTML='کد تخفیف اعمال شد'
+                          el.classList.remove('bg-green-100');
+                          el.classList.add('bg-yellow-300');
+                        }
+                        if(data.access==false){
+                          alert('کد تخفیف قابل دسترتس نیست');
                           el.innerHTML="اعمال کد تخفیف"
                           el.setAttribute('onclick','checkCode(this)');
                           el.removeAttribute('disable');
@@ -625,14 +702,16 @@
                       el.setAttribute('onclick','checkCode(this)');
                       el.removeAttribute('disable');
                     }
-                },
-                error: function() {
-                  console.log('☢')
-                }
-            })
-        }else{
-            alert('اول کد تخفیف را وارد کنید');
-        }
+                  },
+                  error: function() {
+                    console.log('☢')
+                  }
+              })
+          }else{
+              alert('اول کد تخفیف را وارد کنید');
+          }
+        
+      }
     }
     
     codeInput.addEventListener('keyup', function(event) {
@@ -644,12 +723,13 @@
         checkCodeButton.classList.add('bg-green-100');
         finalAmount_div.value=parseInt(finalAmount);
         benefit_div.value=parseInt(benefit);
+        shipping.value=150000;
       }
     });
 
 
     function addlocalProducts(){
-        let jsonProArray = JSON.parse(localStorage.getItem('products'));
+        let jsonProArray = JSON.parse(localStorage.getItem('vafadarLocalStorageProducts'));
 
         console.log(jsonProArray);
         let productsString = JSON.stringify(jsonProArray);

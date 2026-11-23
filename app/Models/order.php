@@ -18,6 +18,7 @@ class order extends Model
         'onlinePayment',
         'date',
         'time',
+        'cost',
     ];
 
 

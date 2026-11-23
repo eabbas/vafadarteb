@@ -838,7 +838,7 @@
 
 
         function addlocalProducts(){
-            let jsonProArray = JSON.parse(localStorage.getItem('products'));
+            let jsonProArray = JSON.parse(localStorage.getItem('vafadarLocalStorageProducts'));
 
             console.log(jsonProArray);
 
