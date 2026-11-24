@@ -19,7 +19,7 @@
             </div>
             <span class="inline-flex items-center gap-2 pr-4 pl-1 py-1 bg-[#1B84FF]/10 text-[#1B84FF] text-sm font-medium rounded-xl border border-[#1B84FF]/20">
                 <i class="fas fa-check-circle"></i>
-                <span id="referral-code">{{ Auth::user()->referralCode->code }}</span>
+                <span id="referral-code">{{ Auth::user()->referral_code }}</span>
                 <button
                     type="button"
                     onclick="copyReferralCode(this)"

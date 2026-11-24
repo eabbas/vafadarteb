@@ -40,6 +40,8 @@ class User extends Authenticatable
         'email',
         'password',
         'description',
+        'invitation_code',
+        'referral_code',
     ];
 
     /**

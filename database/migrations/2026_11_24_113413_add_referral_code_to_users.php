@@ -11,11 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('referral_codes', function (Blueprint $table) {
-            $table->id();
-            $table->string('user_id');
-            $table->string('code');
-            $table->timestamps();
+        Schema::table('users', function (Blueprint $table) {
+            $table->string('referral_code')->nullable();
         });
     }
 
@@ -24,6 +21,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('referral_codes');
+        Schema::table('users', function (Blueprint $table) {
+            //
+        });
     }
 };
