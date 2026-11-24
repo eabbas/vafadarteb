@@ -18,7 +18,6 @@ use App\Models\brand;
 use App\Models\order;
 use App\Models\cart;
 use App\Models\advertisement;
-use App\Models\referralCode;
 use App\Models\product_labels;
 use App\Models\phone_code;
 use App\Models\staticUser;
@@ -39,7 +38,7 @@ class UserController extends Controller
         return view('admin.user.create',['roles'=>$roles]);
     }
     public function store(Request $request){
-
+        // dd($request->all());
         $comments=staticUser::all();
         $support_informations=support_information::all();
         $logo = headerSetting::first();
@@ -59,6 +58,7 @@ class UserController extends Controller
                 'phoneNumber'=>['required','max:11'],
                 // 'email'=>['required','max:255'],
                 'password'=>['required','max:255'],
+                'invitation_code' => ['nullable', 'exists:users,referral_code'],
             ],[
                 'name.required'=>'لطفا فیلد مورد نظر را پر فرمایید',
                 'name.max'=>'تعداد کاراکتر های مجاز 255 تا میباشد',
@@ -70,6 +70,7 @@ class UserController extends Controller
                 // 'email.max'=>'تعداد کاراکتر های مجاز 255 تا میباشد',
                 'password.required'=>'لطفا فیلد مورد نظر را پر فرمایید',
                 'password.max'=>'تعداد کاراکتر های مجاز 255 تا میباشد',
+                'invitation_code.exists' => 'کد دعوت وارد شده معتبر نیست.',
             ]
         );
         $products=json_decode($request->products[0], true);
@@ -180,15 +181,13 @@ class UserController extends Controller
             "phoneNumber"=>$validation['phoneNumber'],
             "email"=>$request['email'],
             "password"=>$validation['password'],
+            "referral_code"=>$code,
+            "invitation_code"=>$validation['invitation_code'],
         ]);
         $role=role::where('ea_title','user')->first();
         role_user::create([
             'user_id'=>$createdUser->id,
             'role_id'=>$role->id,
-        ]);
-        referralCode::create([
-            'user_id'=>$createdUser->id,
-            'code'=>$code.$createdUser->id,
         ]);
         Auth::login($createdUser);
         $user=Auth::user();
@@ -268,10 +267,7 @@ class UserController extends Controller
             "phoneNumber"=>$validation['phoneNumber'],
             "email"=>$request['email'],
             "password"=>$validation['password'],
-        ]);
-        referralCode::create([
-            'user_id'=>$createdUser->id,
-            'code'=>$code.$createdUser->id,
+            "referral_code"=>$code,
         ]);
         if(isset($request->roles)){
             foreach ($request->roles as $role_id) {
@@ -670,25 +666,25 @@ class UserController extends Controller
             //     $patternValues,  // pattern values
             // );
             ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-            // $ch = curl_init('https://api.iranpayamak.com/ws/v1/sms/pattern');
-            // curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-            // curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'POST');
-            // curl_setopt($ch, CURLOPT_HTTPHEADER, [
-            //     'Accept: application/json',
-            //     'Api-Key: M1MIQPQ9s85i6dxdzTeRGx9t87AtRQJlXNiu01e7awuQz94TkI',
-            //     'Content-Type: application/json'
-            // ]);
-            // $payload = [
-            //     'code' => '7fvdx77gveizxqn',
-            //     'attributes' => [
-            //         'activation_code' => $code,
-            //     ],
-            //     'recipient' => $request->phoneNumber,
-            //     'line_number' => '50002178584000',
-            //     'number_format' => 'english'
-            // ];
-            // curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($payload));
-            // $response = curl_exec($ch);
+            $ch = curl_init('https://api.iranpayamak.com/ws/v1/sms/pattern');
+            curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+            curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'POST');
+            curl_setopt($ch, CURLOPT_HTTPHEADER, [
+                'Accept: application/json',
+                'Api-Key: M1MIQPQ9s85i6dxdzTeRGx9t87AtRQJlXNiu01e7awuQz94TkI',
+                'Content-Type: application/json'
+            ]);
+            $payload = [
+                'code' => '7fvdx77gveizxqn',
+                'attributes' => [
+                    'activation_code' => $code,
+                ],
+                'recipient' => $request->phoneNumber,
+                'line_number' => '50002178584000',
+                'number_format' => 'english'
+            ];
+            curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($payload));
+            $response = curl_exec($ch);
 
         }
         return response()->json($flag);
@@ -755,32 +751,31 @@ class UserController extends Controller
     //     // dd($request->all());
     // }
     public function signup_with_ajax(Request $request){
-        $chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
-        $code= substr(str_shuffle(str_repeat($chars, 5)), 0,6);
-        $createdUser=User::create([
-            "name"=>$request['name'],
-            "family"=>$request['family'],
-            "phoneNumber"=>$request['phoneNumber'],
-            "email"=>null,
-            "password"=>$request['password'],
-        ]);
-        referralCode::create([
-            'user_id'=>$createdUser->id,
-            'code'=>$code.$createdUser->id,
-        ]);
-        $role=role::where('ea_title','user')->first();
-        role_user::create([
-            'user_id'=>$createdUser->id,
-            'role_id'=>$role->id,
-        ]);
-        Auth::login($createdUser);
-        return redirect()->back();
+        // $chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+        // $code= substr(str_shuffle(str_repeat($chars, 5)), 0,6);
+        // $createdUser=User::create([
+        //     "name"=>$request['name'],
+        //     "family"=>$request['family'],
+        //     "phoneNumber"=>$request['phoneNumber'],
+        //     "email"=>null,
+        //     "password"=>$request['password'],
+        //     "referral_code"=>$code,
+        //     "invitation_code"=>$request['invitation_code'],
+        // ]);
+
+        // $role=role::where('ea_title','user')->first();
+        // role_user::create([
+        //     'user_id'=>$createdUser->id,
+        //     'role_id'=>$role->id,
+        // ]);
+        // Auth::login($createdUser);
+        // return redirect()->back();
         // dd($request->all());
     }
     public function signin_with_ajax(Request $request){
-        $user=User::where('phoneNumber',$request->phoneNumber)->first();
-        Auth::login($user);
-        return redirect()->back();
+        // $user=User::where('phoneNumber',$request->phoneNumber)->first();
+        // Auth::login($user);
+        // return redirect()->back();
         // dd($request->all());
 
     }
