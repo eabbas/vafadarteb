@@ -1229,6 +1229,94 @@ public function recursiveCategory2($categories)
         ]);
     }
 
+    public function contactUs(){
+        $localCash='cashSave';
+        $comments=staticUser::all();
+        $support_informations=support_information::all();
+        $logo = headerSetting::first();
+        $banner = banner::first();
+        $hero = hero::first();
+        $product_label = product_labels::first();
+        $advertisement = advertisement::first();
+        // $product=product::find(8);
+        $user=Auth::user();
+        $flag=false;
+        if($localCash=='cashSave'){
+            if($user){
+                $user->load(['carts'=>function($query){$query->where('order_id',null)->get();}]);
+                if(count($user->carts)>0){
+                    foreach ($user->carts as $cart) {
+                        if($cart->product->medias){
+                            foreach ($cart->product->medias as $media) {
+                                if($media->is_main==1){
+                                    $cart->product->path=$media->path;
+                                }
+                            }
+                        }
+                        if ($cart->product->discunt!=null ||$cart->product->discunt>0 ) {
+                            $campare = $cart->product->price - $cart->product->discunt;
+                            $x = $campare / $cart->product->price;
+                            $cart->product->percent = intval($x * 100);
+                        }
+                        
+                        
+                    }
+                }
+                $is_mainpicture='';
+                $galleryPicture=[];
+            }
+        }
+        $parentCategories=category::where('parent_id',0)->get();
+        $subCats=$this->recursiveCategory1();
+        $brands=brand::where('show_in_home',1)->get();
+
+        $categories = category::has('products')->get();
+        $category_products=[];
+        foreach ($categories[0]->products as $product) {
+            foreach($product->medias as $media){
+                if($media->is_main!=1){
+                    $product->is_main_image=$media->path;
+                }else{
+                    $product->is_main_image=$media->path;
+                }
+            }
+            $category_products[]=$product;
+        }
+        $products=product::all();
+        foreach ($products as $product) {
+            foreach ($product->medias as $media) {
+                if($media->is_main!=1){
+                    $product->is_main_image=$media->path;
+                }else{
+                    $product->is_main_image=$media->path;
+                }
+            }
+        }
+
+
+
+
+
+
+        
+        return view('contactUs',[
+            'user'=>$user,
+            'logo'=>$logo ,
+            'hero'=>$hero ,
+            'SI'=>$support_informations ,
+            'advertisement'=>$advertisement,
+            'product_label'=>$product_label,
+            'comments'=>$comments,
+            'banner'=>$banner,
+            'products'=>$products,
+            'localCash'=>$localCash,
+            'parentCategories'=>$parentCategories,
+            'categories'=>$categories,
+            'category_products'=>$category_products,
+            'subCats'=>$subCats,
+            'brands'=>$brands,
+        ]);
+    }
 
 }
 
