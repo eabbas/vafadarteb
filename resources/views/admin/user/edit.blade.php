@@ -337,7 +337,7 @@
                         @php $checked = $user->roles->contains($role->id) @endphp
                         <label class="vafadar-checkbox-item">
                             <span>{{$role->fa_title}}</span>
-                            <input type="checkbox" name="roles[]" value="{{$role->id}}" {{ $checked ? 'checked' : '' }} class="vafadar-checkbox">
+                            <input type="radio" name="roles[]" value="{{$role->id}}" {{ $checked ? 'checked' : '' }} class="vafadar-checkbox">
                         </label>
                     @endforeach
                 </div>

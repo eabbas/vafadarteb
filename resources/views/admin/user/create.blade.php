@@ -337,7 +337,7 @@
                     @foreach($roles as $role)
                     <label class="vafadar-checkbox-item">
                         <span>{{$role->fa_title}}</span>
-                        <input type="checkbox" name="roles[]" value="{{$role->id}}" class="vafadar-checkbox">
+                        <input type="radio" name="roles[]" value="{{$role->id}}" class="vafadar-checkbox">
                     </label>
                     @endforeach
                 </div>
