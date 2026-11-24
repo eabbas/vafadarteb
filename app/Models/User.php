@@ -68,10 +68,13 @@ class User extends Authenticatable
     public function roles(){
         return $this->belongsToMany(role::class,'role_users');
     }
-    public function hasAccess($permision){
+    public function hasAccess($permission){
         foreach ($this->roles as $role) {
-            return $role->permision()->wehreIn('ea_title',$permision)->exists();
+            if ($role->permisions()->whereIn('ea_title', (array) $permission)->exists()) {
+                return true;
+            }
         }
+        return false;
     }
     // public function hasRole($roles){
     //     Log::info($roles);
