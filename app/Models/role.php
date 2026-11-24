@@ -15,8 +15,8 @@ use App\Models\product_attribute;
 use App\Models\product_category;
 use App\Models\product_media;
 use App\Models\product;
-use App\Models\role_permision;
 use App\Models\role_user;
+use App\Models\role_permision;
 use App\Models\User;
 class role extends Model
 {

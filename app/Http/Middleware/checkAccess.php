@@ -6,7 +6,7 @@ use Closure;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Illuminate\Support\Facades\Auth;
-
+use Illuminate\Support\Facades\Gate;
 class checkAccess
 {
     /**
@@ -26,7 +26,7 @@ class checkAccess
                 return redirect('/');
             }
         }else{
-            return redirect('/');
+            return to_route('user.loginPage');
         }
         return $next($request);
     }
