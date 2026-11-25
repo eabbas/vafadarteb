@@ -738,17 +738,6 @@
                     <div class="value">{{$category->slug}}</div>
                 </div>
 
-                <!-- توضیحات -->
-                <div class="vafadar-info-item">
-                    <div class="label">
-                        <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M4 7h16M4 12h16M4 17h10"/>
-                            <rect x="2" y="3" width="20" height="18" rx="2"/>
-                        </svg>
-                        توضیحات
-                    </div>
-                    <div class="value">{{$category->description ?? '—'}}</div>
-                </div>
 
                 <!-- خلاصه -->
                 <div class="vafadar-info-item">
@@ -813,7 +802,17 @@
                         </div>
                     </div>
                 @endif
-
+                <!-- توضیحات -->
+                <div class="vafadar-info-item w-full col-span-2">
+                    <div class="label">
+                        <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M4 7h16M4 12h16M4 17h10"/>
+                            <rect x="2" y="3" width="20" height="18" rx="2"/>
+                        </svg>
+                        توضیحات
+                    </div>
+                     <span class="value text-sm">{!!$category->description!!}</span>
+                </div>
             </div>
                 @if($category->id!=1)
                     <!-- ===== ویژگی‌ها ===== -->
@@ -835,6 +834,7 @@
                 @endif
 
    
+
 
 
             <!-- ===== دکمه‌های اکشن ===== -->

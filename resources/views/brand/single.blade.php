@@ -182,10 +182,6 @@
                 <span class="value">{{$brand->logo_path}}</span>
             </div>
             <div class="brand-item">
-                <span class="label"> توضیحات</span>
-                <span class="value">{{$brand->description}}</span>
-            </div>
-            <div class="brand-item">
                 <span class="label"> نمایش در خانه</span>
                 <span class="value">
                     @if($brand->show_in_home !=0) 
@@ -210,7 +206,17 @@
                 <span class="value">{{$brand->slug}}</span>
             </div>
         </div>
-
+        <!-- توضیحات -->
+        <div class="vafadar-info-item w-full col-span-2">
+            <div class="label">
+                <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M4 7h16M4 12h16M4 17h10"/>
+                    <rect x="2" y="3" width="20" height="18" rx="2"/>
+                </svg>
+                توضیحات
+            </div>
+                <span class="value text-sm">{!!$brand->description!!}</span>
+        </div>
         <div class="brand-actions">
             <a href="{{route('brand.edit',['brand'=>$brand->id])}}" class="brand-action-btn edit">
                 <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">

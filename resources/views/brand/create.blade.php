@@ -276,9 +276,10 @@
                 </div>
 
                 <!-- توضیحات -->
-                <div>
-                    <label class="vafadar-label" for="description"> توضیحات</label>
-                    <input type="text" id="description" placeholder="توضیحات برند را وارد کنید" name='description' class="vafadar-input">
+                <div class='col-span-2'>
+                    <label class="vafadar-label "> توضیحات</label>
+                    <textarea id="editor" placeholder="توضیحات محصول" rows='4'  name='description' class="vafadar-input"></textarea>
+                    @error('description') <span class="vafadar-error">{{$message}}</span> @enderror
                 </div>
 
                 <!-- ===== توگل‌ها ===== -->
@@ -350,5 +351,6 @@
         });
     });
 </script>
+    <script src="{{asset('assets/js/jaditAJAX.js')}}"></script>
 
 @endsection

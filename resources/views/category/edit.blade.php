@@ -604,19 +604,18 @@ $count=1;
                     @error('slug') <span class="vafadar-error">{{$message}}</span> @enderror
                 </div>
 
-                <!-- توضیحات -->
-                <div>
-                    <label class="vafadar-label"> توضیحات</label>
-                    <input type="text" value="{{$category->description}}" placeholder="توضیحات دسته‌بندی" name='description' class="vafadar-input">
-                    @error('description') <span class="vafadar-error">{{$message}}</span> @enderror
-                </div>
-
                 <!-- خلاصه -->
                 <div>
                     <label class="vafadar-label"> خلاصه</label>
                     <input type="text" value="{{$category->summary}}" placeholder="خلاصه دسته‌بندی" name='summary' class="vafadar-input">
                     @error('summary') <span class="vafadar-error">{{$message}}</span> @enderror
                 </div>
+                    <!-- توضیحات -->
+                    <div class='col-span-2'>
+                        <label class="vafadar-label "> توضیحات</label>
+                        <textarea id="editor" placeholder="توضیحات محصول" rows='4'  name='description' class="vafadar-input">{{$category->description}}</textarea>
+                        @error('description') <span class="vafadar-error">{{$message}}</span> @enderror
+                    </div>
                 @if($category->id!=1)
                     <!-- دسته بندی -->
                     <div class="mb-4">
@@ -826,5 +825,6 @@ $count=1;
         form.append(input);
     }
 </script>
+    <script src="{{asset('assets/js/jaditAJAX.js')}}"></script>
 
 @endsection
