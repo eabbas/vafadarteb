@@ -14,8 +14,8 @@ return new class extends Migration
         Schema::create('categories', function (Blueprint $table) {
             $table->id();
             $table->string("title");
-            $table->string("description");
-            $table->string("summary");
+            $table->longText("description");
+            $table->longText("summary");
             $table->string("parent_id");
             $table->string("show_in_home");
             $table->string("is_active");

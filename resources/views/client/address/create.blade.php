@@ -307,12 +307,12 @@
                 </label>
                 <textarea required name="location" class="metronic-input" placeholder="موقعیت مکانی را وارد کنید..."></textarea>
             </div>
-            <div class="form-group">
-                <label>
-                    <span> توضیحات اضافی </span>
-                </label>
-                <textarea name="description" class="metronic-input" placeholder=" توضیحات خود را وارد کنید..."></textarea>
-            </div>
+                    <!-- توضیحات -->
+                    <div class='col-span-2'>
+                        <label class="vafadar-label "> توضیحات</label>
+                        <textarea id="editor" placeholder="توضیحات محصول" rows='4'  name='description' class="vafadar-input"></textarea>
+                        @error('description') <span class="vafadar-error">{{$message}}</span> @enderror
+                    </div>
             <div class="form-group">
                 <label>
                     <span> کد پستی </span>
@@ -366,5 +366,6 @@
         console.log(province.value);
     }
 </script>
+    <script src="{{asset('assets/js/jaditAJAX.js')}}"></script>
 
 @endsection

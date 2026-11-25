@@ -8,6 +8,14 @@
     <script src="{{asset('assets/js/jquery.js')}}"></script>
     <link rel="stylesheet" href="{{asset('assets/css/index.css')}}">
     <link rel="stylesheet" href="{{asset('assets/css/style.css')}}">
+    <link rel="stylesheet" href="{{asset('assets/css/jadit.css')}}">
+    <script src="{{asset('assets/js/jadit.js')}}"></script>
+    <script>
+        let url="{{ url('/') }}/"
+        let api="{{ url('/api') }}/"
+        let storage="{{ asset('/storage') }}/"
+        let assets="{{ asset('/assets') }}/"
+    </script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
         /* ===== پالت رنگی مترونیک ===== */
@@ -1083,7 +1091,6 @@
             }
             
         }
-
     </script>
     
     @stack('scripts')

@@ -115,12 +115,12 @@ route::group([
     Route::get('/create','create')->middleware(checkAccess::class .':product_create')->name('create');
     Route::post('/store','store')->middleware(checkAccess::class . ':product_create')->name('store');
     Route::any('/searchProduct','searchProduct')->name('searchProduct');
-    Route::get('/list','list')->middleware(checkAccess::class . ':prodcut_list')->name('list');
-    Route::get('/single/product/{product}','single')->middleware(checkAccess::class . ':prodcut_single')->name('single');
+    Route::get('/list','list')->middleware(checkAccess::class . ':product_list')->name('list');
+    Route::get('/single/product/{product}','single')->middleware(checkAccess::class . ':product_single')->name('single');
     Route::get('/single/package/{package}','singlePackage')->name('singlePackage');
-    Route::get('/edit/{product}','edit')->middleware(checkAccess::class . ':prodcut_edit')->name('edit');
-    Route::post('/update/{product}','update')->middleware(checkAccess::class . ':prodcut_edit')->name('update');
-    Route::get('/delete/{product}','delete')->middleware(checkAccess::class . ':prodcut_delete')->name('delete');
+    Route::get('/edit/{product}','edit')->middleware(checkAccess::class . ':product_edit')->name('edit');
+    Route::post('/update/{product}','update')->middleware(checkAccess::class . ':product_edit')->name('update');
+    Route::get('/delete/{product}','delete')->middleware(checkAccess::class . ':product_delete')->name('delete');
     Route::get('category/attributes/{category}','categoryAttributes')->name('categoryAttributes');
     Route::get('/packages/{product}','packages')->name('packages');
     Route::get('/attributes/{product}','attributes')->name('attributes');

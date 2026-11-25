@@ -1,4 +1,5 @@
 @extends('dashboard')
+
 @section('content')
 
 <style>
@@ -458,11 +459,6 @@
                         <input type="text" name="summary" value="{{old('summary')}}" placeholder="خلاصه دسته‌بندی" class="vafadar-input">
                     </div>
 
-                    <!-- توضیحات -->
-                    <div>
-                        <label class=" text-[#9A9CAE]"> توضیحات</label>
-                        <input type="text" name="description" value="{{old('description')}}" placeholder="توضیحات دسته‌بندی" class="vafadar-input">
-                    </div>
 
                     <!-- اسلاگ -->
                     <div>
@@ -475,7 +471,15 @@
                         <label class=" text-[#9A9CAE]"> تصویر</label>
                         <input type="file" name="image_path" class="vafadar-input" style="padding: 8px 12px;">
                     </div>
+
+                    <!-- توضیحات -->
+                    <div class='col-span-2'>
+                        <label class="vafadar-label "> توضیحات</label>
+                        <textarea id="editor" placeholder="توضیحات محصول" rows='4'  name='description' class="vafadar-input"></textarea>
+                        @error('description') <span class="vafadar-error">{{$message}}</span> @enderror
+                    </div>
                 </div>
+
 
                 <div class="vafadar-section-title my-5 text-[#9A9CAE]">
                     <h3>تنظیمات نمایش</h3>
@@ -570,6 +574,9 @@
     function deleteAttributes(el) {
         el.parentElement.remove();
     }
+
 </script>
+
+    <script src="{{asset('assets/js/jaditAJAX.js')}}"></script>
 
 @endsection

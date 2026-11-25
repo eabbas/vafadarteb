@@ -595,10 +595,7 @@
                     <span class="label"> تخفیف</span>
                     <span class="value">{{$product->discunt}}%</span>
                 </div>
-                <div class="vafadar-info-item">
-                    <span class="label"> توضیحات</span>
-                    <span class="value text-sm">{{$product->description}}</span>
-                </div>
+
                 <div class="vafadar-info-item">
                     <span class="label"> دسته‌بندی</span>
                     <span class="value">{{$product->categories[0]->title ?? 'بدون دسته‌بندی'}}</span>
@@ -645,7 +642,17 @@
                     </span>
                 </div>
             </div>
-
+            <!-- توضیحات -->
+            <div class="vafadar-info-item w-full col-span-2">
+                <div class="label">
+                    <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M4 7h16M4 12h16M4 17h10"/>
+                        <rect x="2" y="3" width="20" height="18" rx="2"/>
+                    </svg>
+                    توضیحات
+                </div>
+                    <span class="value text-sm">{!!$product->description!!}</span>
+            </div>
             <!-- ===== ویژگی‌ها ===== -->
             <div class="vafadar-section">
                 <div class="vafadar-section-title">
