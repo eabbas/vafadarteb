@@ -255,26 +255,46 @@
 
                                     </button>
                                 </form>
-                                <div class="w-95/100 mx-auto flex flex-col overflow-y-auto [&::-webkit-scrollbar]:w-1.5  [&::-webkit-scrollbar-thumb]:bg-(--primary_color)  [&::-webkit-scrollbar-thumb]:rounded-full">
-                                    <div class="py-2 px-3 text-(--title) flex justify-between gap-4 items-center rounded-xl hover:bg-gray-50 transition_normal border-2 border-(--product)">
-                                        <div class="flex justify-start gap-4 items-center">
-                                            <div class="sm:size-17 size-14 bg-(--product) rounded-xl flex justify-center items-center p-1">
-                                                <img src="{{asset('storage/'.$logo->logo_path)}}" alt="" class="max-w-full max-h-full min-w-1/2 min-h-1/2">
-                                            </div>
-                                            <div class="flex flex-col gap-2">
-                                                <span class="font-bold max-sm:text-sm">عنوان محصول</span>
-                                                <div class="flex gap-2 items-center text-(--discription)">
-                                                    <span class="sm:text-sm text-xs font-bold">{{number_format(7500000)}}</span>
-                                                    <span class="sm:text-xs text-[10px]">تومان</span>
+                                <?php
+                                $counter=0;
+                                ?>
+                                <div class="w-95/100 mx-auto gap-2 flex flex-col overflow-y-auto [&::-webkit-scrollbar]:w-1.5  [&::-webkit-scrollbar-thumb]:bg-(--primary_color)  [&::-webkit-scrollbar-thumb]:rounded-full">
+                                    @foreach($products as $product)
+                                    @if($product->price!=null || $product->pric>0)
+                                        <?php
+                                            $counter++;
+                                        ?>
+                                        @if($counter<8)
+                                            <a href='{{route("product.client_pro_single",["product"=>$product->id])}}' class="py-2 px-3 text-(--title) flex justify-between gap-4 items-center rounded-xl hover:bg-gray-50 transition_normal border-2 border-(--product)">
+                                                <div class="flex justify-start gap-4 items-center">
+                                                    <div class="sm:size-20 size-17 bg-(--product) rounded-xl flex justify-center items-center  overflow-hidden">
+                                                        @if($product->is_main_image==null)
+                                                            <img src="{{asset('assets/img/defaultPicture.jpg')}}" alt="" class="max-w-full max-h-full min-w-1/2 min-h-1/2">
+                                                        @else
+                                                            <img src="{{asset('storage/product_medias/'.$product->is_main_image)}}" alt="" class="max-w-full max-h-full min-w-1/2 min-h-1/2">
+                                                        @endif
+                                                    </div>
+                                                    <div class="flex flex-col gap-2">
+                                                        <span class="font-bold max-sm:text-sm">{{$product->title}}</span>
+                                                        <div class="flex gap-2 items-center text-(--discription)">
+                                                            @if($product->discunt!=null || $product->discunt>0)
+                                                                <span class="sm:text-sm text-xs font-bold">{{number_format($product->discunt)}}</span>
+                                                            @else
+                                                                <span class="sm:text-sm text-xs font-bold">{{number_format($product->price)}}</span>
+                                                            @endif
+                                                            <span class="sm:text-xs text-[10px]">تومان</span>
+                                                        </div>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                        </div>
-                                        <div>
-                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="sm:size-6 size-4 fill-gray-500">
-                                                <path d="M368 208A160 160 0 1 0 48 208a160 160 0 1 0 320 0zM337.1 371.1C301.7 399.2 256.8 416 208 416C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208c0 48.8-16.8 93.7-44.9 129.1L505 471c9.4 9.4 9.4 24.6 0 33.9s-24.6 9.4-33.9 0L337.1 371.1z" />
-                                            </svg>
-                                        </div>
-                                    </div>
+                                                <div>
+                                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="sm:size-6 size-4 fill-gray-500">
+                                                        <path d="M368 208A160 160 0 1 0 48 208a160 160 0 1 0 320 0zM337.1 371.1C301.7 399.2 256.8 416 208 416C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208c0 48.8-16.8 93.7-44.9 129.1L505 471c9.4 9.4 9.4 24.6 0 33.9s-24.6 9.4-33.9 0L337.1 371.1z" />
+                                                    </svg>
+                                                </div>
+                                            </a>
+                                        @endif
+                                    @endif
+                                    @endforeach
 
 
                                 </div>
